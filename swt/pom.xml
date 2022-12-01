@@ -30,7 +30,7 @@
 		</dependency>
 		
 		<dependency>
-			<artifactId>SWTAndroidXConstraintLayout</artifactId>
+			<artifactId>AndroidXJConstraintLayout</artifactId>
   			<groupId>com.ashera</groupId>
   		</dependency>
 	</dependencies>
