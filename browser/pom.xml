@@ -31,10 +31,10 @@
 
 		<dependency>
 			<groupId>com.ashera</groupId>
-			<artifactId>SWTAndroidX-core</artifactId>
+			<artifactId>AndroidXJ</artifactId>
 		</dependency>
 		<dependency>
-			<artifactId>SWTAndroidXConstraintLayout</artifactId>
+			<artifactId>AndroidXJConstraintLayout</artifactId>
 			<groupId>com.ashera</groupId>
 			<version>${project.version}</version>
 		</dependency>
