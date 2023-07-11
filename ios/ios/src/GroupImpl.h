@@ -24,6 +24,7 @@
 @class ASGroupImpl_GroupBean;
 @class ASGroupImpl_GroupCommandBuilder;
 @class ASWidgetAttribute;
+@class IOSClass;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -39,6 +40,11 @@
 #pragma mark Public
 
 - (instancetype)init;
+
+- (instancetype)initWithNSString:(NSString *)localname;
+
+- (instancetype)initWithNSString:(NSString *)groupName
+                    withNSString:(NSString *)localname;
 
 - (id)asNativeWidget;
 
@@ -57,6 +63,8 @@
 - (ASGroupImpl_GroupCommandBuilder *)getBuilder;
 
 - (id)getPluginWithNSString:(NSString *)plugin;
+
+- (IOSClass *)getViewClass;
 
 - (void)invalidate;
 
@@ -77,13 +85,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
-
-// Disallowed inherited constructors, do not use.
-
-- (instancetype)initWithNSString:(NSString *)arg0
-                    withNSString:(NSString *)arg1 NS_UNAVAILABLE;
+- (void)setVisibleWithBoolean:(jboolean)b;
 
 @end
 
@@ -108,6 +110,18 @@ FOUNDATION_EXPORT ASGroupImpl *new_ASGroupImpl_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ASGroupImpl *create_ASGroupImpl_init(void);
 
+FOUNDATION_EXPORT void ASGroupImpl_initWithNSString_(ASGroupImpl *self, NSString *localname);
+
+FOUNDATION_EXPORT ASGroupImpl *new_ASGroupImpl_initWithNSString_(NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASGroupImpl *create_ASGroupImpl_initWithNSString_(NSString *localname);
+
+FOUNDATION_EXPORT void ASGroupImpl_initWithNSString_withNSString_(ASGroupImpl *self, NSString *groupName, NSString *localname);
+
+FOUNDATION_EXPORT ASGroupImpl *new_ASGroupImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASGroupImpl *create_ASGroupImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname);
+
 J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 @compatibility_alias ComAsheraConstraintlayoutGroupImpl ASGroupImpl;
@@ -129,8 +143,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 #define INCLUDE_ASIMaxDimension 1
 #include "IMaxDimension.h"
 
+@class ADRect;
+@class ADView;
 @class ASGroupImpl;
 @class ASWidgetAttribute;
+@class IOSIntArray;
 @class IOSObjectArray;
 @protocol ASIWidget;
 @protocol JavaUtilList;
@@ -148,11 +165,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 - (id)getAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute;
 
+- (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
+
 - (jint)getMaxHeight;
 
 - (jint)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
+
+- (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
+
+- (ADView *)inflateViewWithNSString:(NSString *)layout;
 
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
@@ -165,6 +188,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;
 
+- (void)remeasure;
+
+- (void)removeFromParent;
+
 - (void)setAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
@@ -172,6 +199,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 - (void)setMaxHeightWithInt:(jint)height;
 
 - (void)setMaxWidthWithInt:(jint)width;
+
+- (void)setMyAttributeWithNSString:(NSString *)name
+                            withId:(id)value;
 
 - (void)setVisibilityWithInt:(jint)visibility;
 
@@ -375,7 +405,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 
 - (ASGroupImpl_GroupCommandBuilder *)setOnLongClickWithNSString:(NSString *)arg0;
 
+- (ASGroupImpl_GroupCommandBuilder *)setOnSwipedWithNSString:(NSString *)arg0;
+
 - (ASGroupImpl_GroupCommandBuilder *)setOnTouchWithNSString:(NSString *)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 

@@ -297,7 +297,7 @@ public class ConstraintLayoutImpl extends BaseHasWidgets {
 
 	@Override
 	public IWidget newInstance() {
-		return new ConstraintLayoutImpl();
+		return new ConstraintLayoutImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")
@@ -318,7 +318,7 @@ public class ConstraintLayoutImpl extends BaseHasWidgets {
 	}
 
 	@Override
-	public boolean remove(IWidget w) {
+	public boolean remove(IWidget w) {		
 		boolean remove = super.remove(w);
 		constraintLayout.removeView((View) w.asWidget());
          ViewGroupImpl.nativeRemoveView(w);            
@@ -941,12 +941,7 @@ return layoutParams.wrapBehaviorInParent;			}
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
 
 		public ConstraintLayoutExt() {
-			
-			
-			
-			
 			super();
-			
 			
 		}
 		
@@ -1027,7 +1022,45 @@ return layoutParams.wrapBehaviorInParent;			}
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(ConstraintLayoutImpl.this);
         }
-		@Override
+        private Map<String, IWidget> templates;
+    	@Override
+    	public r.android.view.View inflateView(java.lang.String layout) {
+    		if (templates == null) {
+    			templates = new java.util.HashMap<String, IWidget>();
+    		}
+    		IWidget template = templates.get(layout);
+    		if (template == null) {
+    			template = (IWidget) quickConvert(layout, "template");
+    			templates.put(layout, template);
+    		}
+    		IWidget widget = template.loadLazyWidgets(ConstraintLayoutImpl.this.getParent());
+    		return (View) widget.asWidget();
+    	}        
+        
+    	@Override
+		public void remeasure() {
+			getFragment().remeasure();
+		}
+    	
+        @Override
+		public void removeFromParent() {
+        	ConstraintLayoutImpl.this.getParent().remove(ConstraintLayoutImpl.this);
+		}
+        @Override
+        public void getLocationOnScreen(int[] appScreenLocation) {
+        	appScreenLocation[0] = htmlElement.getBoundingClientRect().getLeft();
+        	appScreenLocation[1] = htmlElement.getBoundingClientRect().getTop();
+        }
+        @Override
+        public void getWindowVisibleDisplayFrame(r.android.graphics.Rect displayFrame){
+        	
+        	org.teavm.jso.dom.html.TextRectangle boundingClientRect = htmlElement.getBoundingClientRect();
+			displayFrame.top = boundingClientRect.getTop();
+        	displayFrame.left = boundingClientRect.getLeft();
+        	displayFrame.bottom = boundingClientRect.getBottom();
+        	displayFrame.right = boundingClientRect.getRight();
+        }
+        @Override
 		public void offsetTopAndBottom(int offset) {
 			super.offsetTopAndBottom(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
@@ -1037,6 +1070,10 @@ return layoutParams.wrapBehaviorInParent;			}
 			super.offsetLeftAndRight(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
 		}
+		@Override
+		public void setMyAttribute(String name, Object value) {
+			ConstraintLayoutImpl.this.setAttribute(name, value, true);
+		}
         @Override
         public void setVisibility(int visibility) {
             super.setVisibility(visibility);
@@ -1044,12 +1081,11 @@ return layoutParams.wrapBehaviorInParent;			}
             
         }
 	}
-	
-	public void updateMeasuredDimension(int width, int height) {
-		((ConstraintLayoutExt) constraintLayout).updateMeasuredDimension(width, height);
+	@Override
+	public Class getViewClass() {
+		return ConstraintLayoutExt.class;
 	}
 	
-
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
@@ -1199,6 +1235,10 @@ return getOptimizationLevel();			}
 	}
 	
     
+    @Override
+    public void setVisible(boolean b) {
+        ((View)asWidget()).setVisibility(b ? View.VISIBLE : View.GONE);
+    }
 
 	
 private ConstraintLayoutCommandBuilder builder;

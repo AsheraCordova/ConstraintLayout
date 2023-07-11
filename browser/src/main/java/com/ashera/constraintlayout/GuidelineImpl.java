@@ -70,6 +70,12 @@ public class GuidelineImpl extends BaseWidget {
 	public GuidelineImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  GuidelineImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  GuidelineImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class GuidelineExt extends androidx.constraintlayout.widget.Guideline implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -95,11 +101,6 @@ public class GuidelineImpl extends BaseWidget {
 		}
 
 		public GuidelineExt() {
-			
-			
-			
-			
-			
 			super();
 			
 		}
@@ -188,7 +189,45 @@ public class GuidelineImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(GuidelineImpl.this);
         }
-		@Override
+        private Map<String, IWidget> templates;
+    	@Override
+    	public r.android.view.View inflateView(java.lang.String layout) {
+    		if (templates == null) {
+    			templates = new java.util.HashMap<String, IWidget>();
+    		}
+    		IWidget template = templates.get(layout);
+    		if (template == null) {
+    			template = (IWidget) quickConvert(layout, "template");
+    			templates.put(layout, template);
+    		}
+    		IWidget widget = template.loadLazyWidgets(GuidelineImpl.this.getParent());
+    		return (View) widget.asWidget();
+    	}        
+        
+    	@Override
+		public void remeasure() {
+			getFragment().remeasure();
+		}
+    	
+        @Override
+		public void removeFromParent() {
+        	GuidelineImpl.this.getParent().remove(GuidelineImpl.this);
+		}
+        @Override
+        public void getLocationOnScreen(int[] appScreenLocation) {
+        	appScreenLocation[0] = hTMLElement.getBoundingClientRect().getLeft();
+        	appScreenLocation[1] = hTMLElement.getBoundingClientRect().getTop();
+        }
+        @Override
+        public void getWindowVisibleDisplayFrame(r.android.graphics.Rect displayFrame){
+        	
+        	org.teavm.jso.dom.html.TextRectangle boundingClientRect = hTMLElement.getBoundingClientRect();
+			displayFrame.top = boundingClientRect.getTop();
+        	displayFrame.left = boundingClientRect.getLeft();
+        	displayFrame.bottom = boundingClientRect.getBottom();
+        	displayFrame.right = boundingClientRect.getRight();
+        }
+        @Override
 		public void offsetTopAndBottom(int offset) {
 			super.offsetTopAndBottom(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
@@ -198,19 +237,24 @@ public class GuidelineImpl extends BaseWidget {
 			super.offsetLeftAndRight(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
 		}
+		@Override
+		public void setMyAttribute(String name, Object value) {
+			GuidelineImpl.this.setAttribute(name, value, true);
+		}
         @Override
         public void setVisibility(int visibility) {
             super.setVisibility(visibility);
             ((HTMLElement)asNativeWidget()).getStyle().setProperty("display", visibility != View.VISIBLE ? "none" : "block");
             
         }
-	}	
-	public void updateMeasuredDimension(int width, int height) {
+	}	@Override
+	public Class getViewClass() {
+		return GuidelineExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new GuidelineImpl();
+		return new GuidelineImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")
@@ -294,6 +338,10 @@ return getOrientation();				}
 		}
 	}
 	
+    @Override
+    public void setVisible(boolean b) {
+        ((View)asWidget()).setVisibility(b ? View.VISIBLE : View.GONE);
+    }
  
     @Override
     public void requestLayout() {

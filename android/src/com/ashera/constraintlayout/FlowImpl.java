@@ -224,6 +224,12 @@ public class FlowImpl extends BaseWidget {
 	public FlowImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  FlowImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  FlowImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class FlowExt extends androidx.constraintlayout.helper.widget.Flow implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -254,11 +260,6 @@ public class FlowImpl extends BaseWidget {
 
 		public FlowExt(Context context) {
 			super(context);
-			
-			
-			
-			
-			
 			
 		}
 		
@@ -370,14 +371,14 @@ public class FlowImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(FlowImpl.this);
         }
-	}	
-	public void updateMeasuredDimension(int width, int height) {
-	    ((FlowExt) flow).updateMeasuredDimension(width, height);
+	}	@Override
+	public Class getViewClass() {
+		return FlowExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new FlowImpl();
+		return new FlowImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")

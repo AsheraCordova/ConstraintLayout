@@ -75,6 +75,12 @@ public class PlaceholderImpl extends BaseWidget {
 	public PlaceholderImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  PlaceholderImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  PlaceholderImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class PlaceholderExt extends androidx.constraintlayout.widget.Placeholder implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -100,11 +106,6 @@ public class PlaceholderImpl extends BaseWidget {
 		}
 
 		public PlaceholderExt() {
-			
-			
-			
-			
-			
 			super();
 			
 		}
@@ -192,7 +193,46 @@ public class PlaceholderImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(PlaceholderImpl.this);
         }
-		@Override
+        private Map<String, IWidget> templates;
+    	@Override
+    	public r.android.view.View inflateView(java.lang.String layout) {
+    		if (templates == null) {
+    			templates = new java.util.HashMap<String, IWidget>();
+    		}
+    		IWidget template = templates.get(layout);
+    		if (template == null) {
+    			template = (IWidget) quickConvert(layout, "template");
+    			templates.put(layout, template);
+    		}
+    		IWidget widget = template.loadLazyWidgets(PlaceholderImpl.this.getParent());
+    		return (View) widget.asWidget();
+    	}        
+        
+    	@Override
+		public void remeasure() {
+			getFragment().remeasure();
+		}
+    	
+        @Override
+		public void removeFromParent() {
+        	PlaceholderImpl.this.getParent().remove(PlaceholderImpl.this);
+		}
+        @Override
+        public void getLocationOnScreen(int[] appScreenLocation) {
+        	org.eclipse.swt.widgets.Control control = (org.eclipse.swt.widgets.Control) asNativeWidget();
+			appScreenLocation[0] = control.toDisplay(0, 0).x;
+        	appScreenLocation[1] = control.toDisplay(0, 0).y;
+        }
+        @Override
+        public void getWindowVisibleDisplayFrame(r.android.graphics.Rect displayFrame){
+        	org.eclipse.swt.widgets.Shell shell = ((org.eclipse.swt.widgets.Control)asNativeWidget()).getShell();
+        	displayFrame.left = shell.toDisplay(0, 0).x ;
+			displayFrame.top = shell.getShell().toDisplay(0, 0).y ;
+        	displayFrame.bottom = displayFrame.top + shell.getClientArea().height;
+        	displayFrame.right = displayFrame.left + shell.getBounds().width;
+        	
+        }
+        @Override
 		public void offsetTopAndBottom(int offset) {
 			super.offsetTopAndBottom(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
@@ -202,14 +242,18 @@ public class PlaceholderImpl extends BaseWidget {
 			super.offsetLeftAndRight(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
 		}
-	}	
-	public void updateMeasuredDimension(int width, int height) {
-		((PlaceholderExt) placeholder).updateMeasuredDimension(width, height);
+		@Override
+		public void setMyAttribute(String name, Object value) {
+			PlaceholderImpl.this.setAttribute(name, value, true);
+		}
+	}	@Override
+	public Class getViewClass() {
+		return PlaceholderExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new PlaceholderImpl();
+		return new PlaceholderImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")

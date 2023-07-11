@@ -24,6 +24,7 @@
 @class ASFlowImpl_FlowBean;
 @class ASFlowImpl_FlowCommandBuilder;
 @class ASWidgetAttribute;
+@class IOSClass;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -39,6 +40,11 @@
 #pragma mark Public
 
 - (instancetype)init;
+
+- (instancetype)initWithNSString:(NSString *)localname;
+
+- (instancetype)initWithNSString:(NSString *)groupName
+                    withNSString:(NSString *)localname;
 
 - (id)asNativeWidget;
 
@@ -57,6 +63,8 @@
 - (ASFlowImpl_FlowCommandBuilder *)getBuilder;
 
 - (id)getPluginWithNSString:(NSString *)plugin;
+
+- (IOSClass *)getViewClass;
 
 - (void)invalidate;
 
@@ -77,13 +85,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
-
-// Disallowed inherited constructors, do not use.
-
-- (instancetype)initWithNSString:(NSString *)arg0
-                    withNSString:(NSString *)arg1 NS_UNAVAILABLE;
+- (void)setVisibleWithBoolean:(jboolean)b;
 
 @end
 
@@ -107,6 +109,18 @@ FOUNDATION_EXPORT void ASFlowImpl_init(ASFlowImpl *self);
 FOUNDATION_EXPORT ASFlowImpl *new_ASFlowImpl_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ASFlowImpl *create_ASFlowImpl_init(void);
+
+FOUNDATION_EXPORT void ASFlowImpl_initWithNSString_(ASFlowImpl *self, NSString *localname);
+
+FOUNDATION_EXPORT ASFlowImpl *new_ASFlowImpl_initWithNSString_(NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASFlowImpl *create_ASFlowImpl_initWithNSString_(NSString *localname);
+
+FOUNDATION_EXPORT void ASFlowImpl_initWithNSString_withNSString_(ASFlowImpl *self, NSString *groupName, NSString *localname);
+
+FOUNDATION_EXPORT ASFlowImpl *new_ASFlowImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASFlowImpl *create_ASFlowImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl)
 
@@ -417,8 +431,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 #define INCLUDE_ASIMaxDimension 1
 #include "IMaxDimension.h"
 
+@class ADRect;
+@class ADView;
 @class ASFlowImpl;
 @class ASWidgetAttribute;
+@class IOSIntArray;
 @class IOSObjectArray;
 @protocol ASIWidget;
 @protocol JavaUtilList;
@@ -436,11 +453,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 
 - (id)getAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute;
 
+- (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
+
 - (jint)getMaxHeight;
 
 - (jint)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
+
+- (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
+
+- (ADView *)inflateViewWithNSString:(NSString *)layout;
 
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
@@ -453,6 +476,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;
 
+- (void)remeasure;
+
+- (void)removeFromParent;
+
 - (void)setAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
@@ -460,6 +487,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 - (void)setMaxHeightWithInt:(jint)height;
 
 - (void)setMaxWidthWithInt:(jint)width;
+
+- (void)setMyAttributeWithNSString:(NSString *)name
+                            withId:(id)value;
 
 - (void)setVisibilityWithInt:(jint)visibility;
 
@@ -691,9 +721,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 
 - (ASFlowImpl_FlowCommandBuilder *)setOnLongClickWithNSString:(NSString *)arg0;
 
+- (ASFlowImpl_FlowCommandBuilder *)setOnSwipedWithNSString:(NSString *)arg0;
+
 - (ASFlowImpl_FlowCommandBuilder *)setOnTouchWithNSString:(NSString *)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setOrientationWithNSString:(NSString *)value;
+
+- (ASFlowImpl_FlowCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 

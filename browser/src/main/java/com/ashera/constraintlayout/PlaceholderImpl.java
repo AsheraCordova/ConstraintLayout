@@ -72,6 +72,12 @@ public class PlaceholderImpl extends BaseWidget {
 	public PlaceholderImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  PlaceholderImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  PlaceholderImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class PlaceholderExt extends androidx.constraintlayout.widget.Placeholder implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -97,11 +103,6 @@ public class PlaceholderImpl extends BaseWidget {
 		}
 
 		public PlaceholderExt() {
-			
-			
-			
-			
-			
 			super();
 			
 		}
@@ -189,7 +190,45 @@ public class PlaceholderImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(PlaceholderImpl.this);
         }
-		@Override
+        private Map<String, IWidget> templates;
+    	@Override
+    	public r.android.view.View inflateView(java.lang.String layout) {
+    		if (templates == null) {
+    			templates = new java.util.HashMap<String, IWidget>();
+    		}
+    		IWidget template = templates.get(layout);
+    		if (template == null) {
+    			template = (IWidget) quickConvert(layout, "template");
+    			templates.put(layout, template);
+    		}
+    		IWidget widget = template.loadLazyWidgets(PlaceholderImpl.this.getParent());
+    		return (View) widget.asWidget();
+    	}        
+        
+    	@Override
+		public void remeasure() {
+			getFragment().remeasure();
+		}
+    	
+        @Override
+		public void removeFromParent() {
+        	PlaceholderImpl.this.getParent().remove(PlaceholderImpl.this);
+		}
+        @Override
+        public void getLocationOnScreen(int[] appScreenLocation) {
+        	appScreenLocation[0] = hTMLElement.getBoundingClientRect().getLeft();
+        	appScreenLocation[1] = hTMLElement.getBoundingClientRect().getTop();
+        }
+        @Override
+        public void getWindowVisibleDisplayFrame(r.android.graphics.Rect displayFrame){
+        	
+        	org.teavm.jso.dom.html.TextRectangle boundingClientRect = hTMLElement.getBoundingClientRect();
+			displayFrame.top = boundingClientRect.getTop();
+        	displayFrame.left = boundingClientRect.getLeft();
+        	displayFrame.bottom = boundingClientRect.getBottom();
+        	displayFrame.right = boundingClientRect.getRight();
+        }
+        @Override
 		public void offsetTopAndBottom(int offset) {
 			super.offsetTopAndBottom(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
@@ -199,13 +238,18 @@ public class PlaceholderImpl extends BaseWidget {
 			super.offsetLeftAndRight(offset);
 			ViewImpl.nativeMakeFrame(asNativeWidget(), getLeft(), getTop(), getRight(), getBottom());
 		}
-	}	
-	public void updateMeasuredDimension(int width, int height) {
+		@Override
+		public void setMyAttribute(String name, Object value) {
+			PlaceholderImpl.this.setAttribute(name, value, true);
+		}
+	}	@Override
+	public Class getViewClass() {
+		return PlaceholderExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new PlaceholderImpl();
+		return new PlaceholderImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")
@@ -301,6 +345,10 @@ return getContent();				}
 		}
 	}
 	
+    @Override
+    public void setVisible(boolean b) {
+        ((View)asWidget()).setVisibility(b ? View.VISIBLE : View.GONE);
+    }
  
     @Override
     public void requestLayout() {

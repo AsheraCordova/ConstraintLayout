@@ -57,6 +57,12 @@ public class GroupImpl extends BaseWidget {
 	public GroupImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  GroupImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  GroupImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class GroupExt extends androidx.constraintlayout.widget.Group implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -87,11 +93,6 @@ public class GroupImpl extends BaseWidget {
 
 		public GroupExt(Context context) {
 			super(context);
-			
-			
-			
-			
-			
 			
 		}
 		
@@ -203,14 +204,14 @@ public class GroupImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(GroupImpl.this);
         }
-	}	
-	public void updateMeasuredDimension(int width, int height) {
-	    ((GroupExt) group).updateMeasuredDimension(width, height);
+	}	@Override
+	public Class getViewClass() {
+		return GroupExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new GroupImpl();
+		return new GroupImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")

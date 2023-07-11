@@ -80,6 +80,12 @@ public class BarrierImpl extends BaseWidget {
 	public BarrierImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  BarrierImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  BarrierImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class BarrierExt extends androidx.constraintlayout.widget.Barrier implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -110,11 +116,6 @@ public class BarrierImpl extends BaseWidget {
 
 		public BarrierExt(Context context) {
 			super(context);
-			
-			
-			
-			
-			
 			
 		}
 		
@@ -226,14 +227,14 @@ public class BarrierImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(BarrierImpl.this);
         }
-	}	
-	public void updateMeasuredDimension(int width, int height) {
-	    ((BarrierExt) barrier).updateMeasuredDimension(width, height);
+	}	@Override
+	public Class getViewClass() {
+		return BarrierExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new BarrierImpl();
+		return new BarrierImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")

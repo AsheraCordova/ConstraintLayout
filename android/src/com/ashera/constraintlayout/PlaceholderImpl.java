@@ -77,6 +77,12 @@ public class PlaceholderImpl extends BaseWidget {
 	public PlaceholderImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  PlaceholderImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  PlaceholderImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class PlaceholderExt extends androidx.constraintlayout.widget.Placeholder implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -107,11 +113,6 @@ public class PlaceholderImpl extends BaseWidget {
 
 		public PlaceholderExt(Context context) {
 			super(context);
-			
-			
-			
-			
-			
 			
 		}
 		
@@ -223,14 +224,14 @@ public class PlaceholderImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(PlaceholderImpl.this);
         }
-	}	
-	public void updateMeasuredDimension(int width, int height) {
-	    ((PlaceholderExt) placeholder).updateMeasuredDimension(width, height);
+	}	@Override
+	public Class getViewClass() {
+		return PlaceholderExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new PlaceholderImpl();
+		return new PlaceholderImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")

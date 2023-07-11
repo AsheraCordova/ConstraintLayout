@@ -24,6 +24,7 @@
 @class ASPlaceholderImpl_PlaceholderBean;
 @class ASPlaceholderImpl_PlaceholderCommandBuilder;
 @class ASWidgetAttribute;
+@class IOSClass;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -39,6 +40,11 @@
 #pragma mark Public
 
 - (instancetype)init;
+
+- (instancetype)initWithNSString:(NSString *)localname;
+
+- (instancetype)initWithNSString:(NSString *)groupName
+                    withNSString:(NSString *)localname;
 
 - (id)asNativeWidget;
 
@@ -57,6 +63,8 @@
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)getBuilder;
 
 - (id)getPluginWithNSString:(NSString *)plugin;
+
+- (IOSClass *)getViewClass;
 
 - (void)invalidate;
 
@@ -77,13 +85,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
-
-// Disallowed inherited constructors, do not use.
-
-- (instancetype)initWithNSString:(NSString *)arg0
-                    withNSString:(NSString *)arg1 NS_UNAVAILABLE;
+- (void)setVisibleWithBoolean:(jboolean)b;
 
 @end
 
@@ -107,6 +109,18 @@ FOUNDATION_EXPORT void ASPlaceholderImpl_init(ASPlaceholderImpl *self);
 FOUNDATION_EXPORT ASPlaceholderImpl *new_ASPlaceholderImpl_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ASPlaceholderImpl *create_ASPlaceholderImpl_init(void);
+
+FOUNDATION_EXPORT void ASPlaceholderImpl_initWithNSString_(ASPlaceholderImpl *self, NSString *localname);
+
+FOUNDATION_EXPORT ASPlaceholderImpl *new_ASPlaceholderImpl_initWithNSString_(NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASPlaceholderImpl *create_ASPlaceholderImpl_initWithNSString_(NSString *localname);
+
+FOUNDATION_EXPORT void ASPlaceholderImpl_initWithNSString_withNSString_(ASPlaceholderImpl *self, NSString *groupName, NSString *localname);
+
+FOUNDATION_EXPORT ASPlaceholderImpl *new_ASPlaceholderImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASPlaceholderImpl *create_ASPlaceholderImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl)
 
@@ -165,8 +179,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 #define INCLUDE_ASIMaxDimension 1
 #include "IMaxDimension.h"
 
+@class ADRect;
+@class ADView;
 @class ASPlaceholderImpl;
 @class ASWidgetAttribute;
+@class IOSIntArray;
 @class IOSObjectArray;
 @protocol ASIWidget;
 @protocol JavaUtilList;
@@ -184,11 +201,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
 - (id)getAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute;
 
+- (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
+
 - (jint)getMaxHeight;
 
 - (jint)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
+
+- (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
+
+- (ADView *)inflateViewWithNSString:(NSString *)layout;
 
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
@@ -201,6 +224,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;
 
+- (void)remeasure;
+
+- (void)removeFromParent;
+
 - (void)setAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
@@ -208,6 +235,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 - (void)setMaxHeightWithInt:(jint)height;
 
 - (void)setMaxWidthWithInt:(jint)width;
+
+- (void)setMyAttributeWithNSString:(NSString *)name
+                            withId:(id)value;
 
 - (void)setVisibilityWithInt:(jint)visibility;
 
@@ -413,7 +443,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnLongClickWithNSString:(NSString *)arg0;
 
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnSwipedWithNSString:(NSString *)arg0;
+
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnTouchWithNSString:(NSString *)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setPlaceholder_emptyVisibilityWithNSString:(NSString *)value;
 

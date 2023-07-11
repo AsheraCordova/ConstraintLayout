@@ -66,6 +66,12 @@ public class CircularFlowImpl extends BaseWidget {
 	public CircularFlowImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  CircularFlowImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  CircularFlowImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class CircularFlowExt extends androidx.constraintlayout.helper.widget.CircularFlow implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -96,11 +102,6 @@ public class CircularFlowImpl extends BaseWidget {
 
 		public CircularFlowExt(Context context) {
 			super(context);
-			
-			
-			
-			
-			
 			
 		}
 		
@@ -212,14 +213,14 @@ public class CircularFlowImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(CircularFlowImpl.this);
         }
-	}	
-	public void updateMeasuredDimension(int width, int height) {
-	    ((CircularFlowExt) circularFlow).updateMeasuredDimension(width, height);
+	}	@Override
+	public Class getViewClass() {
+		return CircularFlowExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new CircularFlowImpl();
+		return new CircularFlowImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")

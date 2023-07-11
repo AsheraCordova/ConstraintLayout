@@ -25,6 +25,7 @@
 @class ASConstraintLayoutImpl_ConstraintLayoutCommandParamsBuilder;
 @class ASConstraintLayoutImpl_ConstraintLayoutParamsBean;
 @class ASWidgetAttribute;
+@class IOSClass;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -70,6 +71,8 @@
 
 - (id)getPluginWithNSString:(NSString *)plugin;
 
+- (IOSClass *)getViewClass;
+
 - (void)invalidate;
 
 - (void)loadAttributesWithNSString:(NSString *)localName;
@@ -96,8 +99,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)setVisibleWithBoolean:(jboolean)b;
 
 @end
 
@@ -510,8 +512,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_Layout_wrapBehaviorInParent)
 #define INCLUDE_ASILifeCycleDecorator 1
 #include "ILifeCycleDecorator.h"
 
+@class ADRect;
+@class ADView;
 @class ASConstraintLayoutImpl;
 @class ASWidgetAttribute;
+@class IOSIntArray;
 @class IOSObjectArray;
 @protocol ASIWidget;
 @protocol JavaUtilList;
@@ -529,7 +534,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_Layout_wrapBehaviorInParent)
 
 - (id)getAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute;
 
+- (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
+
 - (id<JavaUtilList>)getMethods;
+
+- (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
+
+- (ADView *)inflateViewWithNSString:(NSString *)layout;
 
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
@@ -542,9 +553,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_Layout_wrapBehaviorInParent)
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;
 
+- (void)remeasure;
+
+- (void)removeFromParent;
+
 - (void)setAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
+
+- (void)setMyAttributeWithNSString:(NSString *)name
+                            withId:(id)value;
 
 - (void)setVisibilityWithInt:(jint)visibility;
 
@@ -642,6 +660,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setBackgroundTintWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setChildXmlWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
@@ -759,6 +779,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setMinWidthWithNSString:(NSString *)value;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setModelDescPathWithNSString:(NSString *)arg0;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setModelForWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setModelIdPathWithNSString:(NSString *)arg0;
@@ -787,9 +809,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnLongClickWithNSString:(NSString *)arg0;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnSwipedWithNSString:(NSString *)arg0;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnTouchWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOptimizationLevelWithNSString:(NSString *)value;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setPaddingBottomWithNSString:(NSString *)arg0;
 
@@ -966,6 +992,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetMinHeight;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetMinWidth;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetModelDescPath;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetModelIdPath;
 

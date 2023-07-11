@@ -24,6 +24,7 @@
 @class ASBarrierImpl_BarrierBean;
 @class ASBarrierImpl_BarrierCommandBuilder;
 @class ASWidgetAttribute;
+@class IOSClass;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -39,6 +40,11 @@
 #pragma mark Public
 
 - (instancetype)init;
+
+- (instancetype)initWithNSString:(NSString *)localname;
+
+- (instancetype)initWithNSString:(NSString *)groupName
+                    withNSString:(NSString *)localname;
 
 - (id)asNativeWidget;
 
@@ -57,6 +63,8 @@
 - (ASBarrierImpl_BarrierCommandBuilder *)getBuilder;
 
 - (id)getPluginWithNSString:(NSString *)plugin;
+
+- (IOSClass *)getViewClass;
 
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
@@ -79,13 +87,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
-
-// Disallowed inherited constructors, do not use.
-
-- (instancetype)initWithNSString:(NSString *)arg0
-                    withNSString:(NSString *)arg1 NS_UNAVAILABLE;
+- (void)setVisibleWithBoolean:(jboolean)b;
 
 @end
 
@@ -109,6 +111,18 @@ FOUNDATION_EXPORT void ASBarrierImpl_init(ASBarrierImpl *self);
 FOUNDATION_EXPORT ASBarrierImpl *new_ASBarrierImpl_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ASBarrierImpl *create_ASBarrierImpl_init(void);
+
+FOUNDATION_EXPORT void ASBarrierImpl_initWithNSString_(ASBarrierImpl *self, NSString *localname);
+
+FOUNDATION_EXPORT ASBarrierImpl *new_ASBarrierImpl_initWithNSString_(NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASBarrierImpl *create_ASBarrierImpl_initWithNSString_(NSString *localname);
+
+FOUNDATION_EXPORT void ASBarrierImpl_initWithNSString_withNSString_(ASBarrierImpl *self, NSString *groupName, NSString *localname);
+
+FOUNDATION_EXPORT ASBarrierImpl *new_ASBarrierImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASBarrierImpl *create_ASBarrierImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl)
 
@@ -168,8 +182,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierImpl_barrierDirection)
 #include "IMaxDimension.h"
 
 @class ADContext;
+@class ADRect;
+@class ADView;
 @class ASBarrierImpl;
 @class ASWidgetAttribute;
+@class IOSIntArray;
 @class IOSObjectArray;
 @protocol ASIWidget;
 @protocol JavaUtilList;
@@ -187,11 +204,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierImpl_barrierDirection)
 
 - (id)getAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute;
 
+- (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
+
 - (jint)getMaxHeight;
 
 - (jint)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
+
+- (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
+
+- (ADView *)inflateViewWithNSString:(NSString *)layout;
 
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
@@ -204,6 +227,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierImpl_barrierDirection)
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;
 
+- (void)remeasure;
+
+- (void)removeFromParent;
+
 - (void)setAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
@@ -211,6 +238,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierImpl_barrierDirection)
 - (void)setMaxHeightWithInt:(jint)height;
 
 - (void)setMaxWidthWithInt:(jint)width;
+
+- (void)setMyAttributeWithNSString:(NSString *)name
+                            withId:(id)value;
 
 - (void)setVisibilityWithInt:(jint)visibility;
 
@@ -420,7 +450,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setOnLongClickWithNSString:(NSString *)arg0;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)setOnSwipedWithNSString:(NSString *)arg0;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)setOnTouchWithNSString:(NSString *)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 

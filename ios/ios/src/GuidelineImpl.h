@@ -24,6 +24,7 @@
 @class ASGuidelineImpl_GuidelineBean;
 @class ASGuidelineImpl_GuidelineCommandBuilder;
 @class ASWidgetAttribute;
+@class IOSClass;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -39,6 +40,11 @@
 #pragma mark Public
 
 - (instancetype)init;
+
+- (instancetype)initWithNSString:(NSString *)localname;
+
+- (instancetype)initWithNSString:(NSString *)groupName
+                    withNSString:(NSString *)localname;
 
 - (id)asNativeWidget;
 
@@ -58,6 +64,8 @@
 
 - (id)getPluginWithNSString:(NSString *)plugin;
 
+- (IOSClass *)getViewClass;
+
 - (void)invalidate;
 
 - (void)loadAttributesWithNSString:(NSString *)attributeName;
@@ -75,13 +83,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
-
-// Disallowed inherited constructors, do not use.
-
-- (instancetype)initWithNSString:(NSString *)arg0
-                    withNSString:(NSString *)arg1 NS_UNAVAILABLE;
+- (void)setVisibleWithBoolean:(jboolean)b;
 
 @end
 
@@ -105,6 +107,18 @@ FOUNDATION_EXPORT void ASGuidelineImpl_init(ASGuidelineImpl *self);
 FOUNDATION_EXPORT ASGuidelineImpl *new_ASGuidelineImpl_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ASGuidelineImpl *create_ASGuidelineImpl_init(void);
+
+FOUNDATION_EXPORT void ASGuidelineImpl_initWithNSString_(ASGuidelineImpl *self, NSString *localname);
+
+FOUNDATION_EXPORT ASGuidelineImpl *new_ASGuidelineImpl_initWithNSString_(NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASGuidelineImpl *create_ASGuidelineImpl_initWithNSString_(NSString *localname);
+
+FOUNDATION_EXPORT void ASGuidelineImpl_initWithNSString_withNSString_(ASGuidelineImpl *self, NSString *groupName, NSString *localname);
+
+FOUNDATION_EXPORT ASGuidelineImpl *new_ASGuidelineImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ASGuidelineImpl *create_ASGuidelineImpl_initWithNSString_withNSString_(NSString *groupName, NSString *localname);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl)
 
@@ -164,8 +178,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_Orientation)
 #include "IMaxDimension.h"
 
 @class ADContext;
+@class ADRect;
+@class ADView;
 @class ASGuidelineImpl;
 @class ASWidgetAttribute;
+@class IOSIntArray;
 @class IOSObjectArray;
 @protocol ASIWidget;
 @protocol JavaUtilList;
@@ -183,11 +200,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_Orientation)
 
 - (id)getAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute;
 
+- (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
+
 - (jint)getMaxHeight;
 
 - (jint)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
+
+- (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
+
+- (ADView *)inflateViewWithNSString:(NSString *)layout;
 
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
@@ -200,6 +223,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_Orientation)
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;
 
+- (void)remeasure;
+
+- (void)removeFromParent;
+
 - (void)setAttributeWithASWidgetAttribute:(ASWidgetAttribute *)widgetAttribute
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
@@ -207,6 +234,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_Orientation)
 - (void)setMaxHeightWithInt:(jint)height;
 
 - (void)setMaxWidthWithInt:(jint)width;
+
+- (void)setMyAttributeWithNSString:(NSString *)name
+                            withId:(id)value;
 
 - (void)setVisibilityWithInt:(jint)visibility;
 
@@ -410,9 +440,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setOnLongClickWithNSString:(NSString *)arg0;
 
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setOnSwipedWithNSString:(NSString *)arg0;
+
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setOnTouchWithNSString:(NSString *)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setOrientationWithNSString:(NSString *)value;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 

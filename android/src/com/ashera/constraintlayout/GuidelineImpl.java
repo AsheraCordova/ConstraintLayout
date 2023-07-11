@@ -75,6 +75,12 @@ public class GuidelineImpl extends BaseWidget {
 	public GuidelineImpl() {
 		super(GROUP_NAME, LOCAL_NAME);
 	}
+	public  GuidelineImpl(String localname) {
+		super(GROUP_NAME, localname);
+	}
+	public  GuidelineImpl(String groupName, String localname) {
+		super(groupName, localname);
+	}
 
 		
 	public class GuidelineExt extends androidx.constraintlayout.widget.Guideline implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
@@ -105,11 +111,6 @@ public class GuidelineImpl extends BaseWidget {
 
 		public GuidelineExt(Context context) {
 			super(context);
-			
-			
-			
-			
-			
 			
 		}
 		
@@ -221,14 +222,14 @@ public class GuidelineImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(GuidelineImpl.this);
         }
-	}	
-	public void updateMeasuredDimension(int width, int height) {
-	    ((GuidelineExt) guideline).updateMeasuredDimension(width, height);
+	}	@Override
+	public Class getViewClass() {
+		return GuidelineExt.class;
 	}
 
 	@Override
 	public IWidget newInstance() {
-		return new GuidelineImpl();
+		return new GuidelineImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")

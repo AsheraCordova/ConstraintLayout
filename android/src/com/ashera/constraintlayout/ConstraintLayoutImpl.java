@@ -299,7 +299,7 @@ public class ConstraintLayoutImpl extends BaseHasWidgets {
 
 	@Override
 	public IWidget newInstance() {
-		return new ConstraintLayoutImpl();
+		return new ConstraintLayoutImpl(groupName, localName);
 	}
 	
 	@SuppressLint("NewApi")
@@ -344,7 +344,7 @@ Context context = (Context) fragment.getRootActivity();
 	}
 
 	@Override
-	public boolean remove(IWidget w) {
+	public boolean remove(IWidget w) {		
 		boolean remove = super.remove(w);
 		constraintLayout.removeView((View) w.asWidget());
 		return remove;
@@ -971,11 +971,6 @@ return layoutParams.wrapBehaviorInParent;			}
 		public ConstraintLayoutExt(Context context) {
 			super(context);
 			
-			
-			
-			
-			
-			
 		}
 		
 		@Override
@@ -1080,12 +1075,11 @@ return layoutParams.wrapBehaviorInParent;			}
         	ViewImpl.drawableStateChanged(ConstraintLayoutImpl.this);
         }
 	}
-	
-	public void updateMeasuredDimension(int width, int height) {
-		((ConstraintLayoutExt) constraintLayout).updateMeasuredDimension(width, height);
+	@Override
+	public Class getViewClass() {
+		return ConstraintLayoutExt.class;
 	}
 	
-
 	@SuppressLint("NewApi")
 	@Override
 	public void setAttribute(WidgetAttribute key, String strValue, Object objValue, ILifeCycleDecorator decorator) {
