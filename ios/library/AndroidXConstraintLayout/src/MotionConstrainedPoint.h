@@ -46,7 +46,7 @@
 
 #pragma mark Public
 
-- (instancetype)initPackagePrivate;
+- (instancetype)init;
 
 - (void)addValuesWithJavaUtilHashMap:(JavaUtilHashMap *)splines
                              withInt:(jint)mFramePosition;
@@ -97,10 +97,6 @@
                  withFloat:(jfloat)w
                  withFloat:(jfloat)h;
 
-// Disallowed inherited constructors, do not use.
-
-- (instancetype)init NS_UNAVAILABLE;
-
 @end
 
 J2OBJC_STATIC_INIT(ADXMotionConstrainedPoint)
@@ -132,11 +128,11 @@ inline IOSObjectArray *ADXMotionConstrainedPoint_set_names(IOSObjectArray *value
 FOUNDATION_EXPORT IOSObjectArray *ADXMotionConstrainedPoint_names;
 J2OBJC_STATIC_FIELD_OBJ(ADXMotionConstrainedPoint, names, IOSObjectArray *)
 
-FOUNDATION_EXPORT void ADXMotionConstrainedPoint_initPackagePrivate(ADXMotionConstrainedPoint *self);
+FOUNDATION_EXPORT void ADXMotionConstrainedPoint_init(ADXMotionConstrainedPoint *self);
 
-FOUNDATION_EXPORT ADXMotionConstrainedPoint *new_ADXMotionConstrainedPoint_initPackagePrivate(void) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXMotionConstrainedPoint *new_ADXMotionConstrainedPoint_init(void) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXMotionConstrainedPoint *create_ADXMotionConstrainedPoint_initPackagePrivate(void);
+FOUNDATION_EXPORT ADXMotionConstrainedPoint *create_ADXMotionConstrainedPoint_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionConstrainedPoint)
 

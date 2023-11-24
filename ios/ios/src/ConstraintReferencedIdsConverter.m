@@ -7,9 +7,11 @@
 #include "IFragment.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
+#include "IWidget.h"
 #include "IdGenerator.h"
 #include "J2ObjC_source.h"
 #include "StringUtils.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
 #include "java/util/Map.h"
@@ -30,7 +32,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   IOSObjectArray *ids = [((NSString *) nil_chk(value)) java_split:@","];
   IOSIntArray *idRefs = [IOSIntArray newArrayWithLength:((IOSObjectArray *) nil_chk(ids))->size_];
   for (jint i = 0; i < ids->size_; i++) {
-    *IOSIntArray_GetRef(idRefs, i) = ASIdGenerator_getIdWithNSString_(JreStrcat("$$", @"@+id/", [((NSString *) nil_chk(IOSObjectArray_Get(ids, i))) java_trim]));
+    *IOSIntArray_GetRef(idRefs, i) = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<ASIWidget>) nil_chk([((id<ASIFragment>) nil_chk(fragment)) getRootWidget])) quickConvertWithId:JreStrcat("$$", @"@+id/", [((NSString *) nil_chk(IOSObjectArray_Get(ids, i))) java_trim]) withNSString:@"id"], [JavaLangInteger class]))) intValue];
   }
   return idRefs;
 }

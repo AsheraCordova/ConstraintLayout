@@ -23,6 +23,7 @@
 #define ADXConstraintAttribute_
 
 @class ADView;
+@class ADXConstraintAttribute_AttributeType;
 @class IOSFloatArray;
 @class JavaUtilHashMap;
 
@@ -37,11 +38,31 @@
 - (instancetype)initWithADXConstraintAttribute:(ADXConstraintAttribute *)source
                                         withId:(id)value;
 
+- (instancetype)initWithNSString:(NSString *)name
+withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *)attributeType
+                          withId:(id)value
+                     withBoolean:(jboolean)method;
+
+- (void)applyCustomWithADView:(ADView *)view;
+
 + (JavaUtilHashMap *)extractAttributesWithJavaUtilHashMap:(JavaUtilHashMap *)base
                                                withADView:(ADView *)view;
 
+- (ADXConstraintAttribute_AttributeType *)getType;
+
+- (void)getValuesToInterpolateWithFloatArray:(IOSFloatArray *)ret;
+
+- (jfloat)getValueToInterpolate;
+
+- (jboolean)isContinuous;
+
+- (jint)numberOfInterpolatedValues;
+
 + (void)setAttributesWithADView:(ADView *)view
             withJavaUtilHashMap:(JavaUtilHashMap *)map;
+
+- (void)setInterpolatedValueWithADView:(ADView *)view
+                        withFloatArray:(IOSFloatArray *)value;
 
 - (void)setValueWithFloatArray:(IOSFloatArray *)value;
 
@@ -56,6 +77,12 @@
 J2OBJC_EMPTY_STATIC_INIT(ADXConstraintAttribute)
 
 J2OBJC_FIELD_SETTER(ADXConstraintAttribute, mName_, NSString *)
+
+FOUNDATION_EXPORT void ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(ADXConstraintAttribute *self, NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method);
+
+FOUNDATION_EXPORT ADXConstraintAttribute *new_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ADXConstraintAttribute *create_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method);
 
 FOUNDATION_EXPORT void ADXConstraintAttribute_initWithADXConstraintAttribute_withId_(ADXConstraintAttribute *self, ADXConstraintAttribute *source, id value);
 

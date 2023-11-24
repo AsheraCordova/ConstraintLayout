@@ -244,6 +244,20 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierImpl_barrierDirection)
 
 - (void)setVisibilityWithInt:(jint)visibility;
 
+- (void)state0;
+
+- (void)state1;
+
+- (void)state2;
+
+- (void)state3;
+
+- (void)state4;
+
+- (void)stateNo;
+
+- (void)stateYes;
+
 - (void)updateMeasuredDimensionWithInt:(jint)width
                                withInt:(jint)height;
 
@@ -294,9 +308,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (id)getBarrierDirection;
 
+- (id)getBarrierMargin;
+
 - (id)getConstraint_referenced_ids;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)invalidate;
+
+- (id)isBarrierAllowsGoneWidgets;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)notifyDataSetChangedWithBoolean:(jboolean)arg0;
 
@@ -320,7 +338,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)setBarrierAllowsGoneWidgetsWithBoolean:(jboolean)value;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)setBarrierDirectionWithNSString:(NSString *)value;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)setBarrierMarginWithNSString:(NSString *)value;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
@@ -514,7 +536,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetBackgroundTintMode;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierAllowsGoneWidgets;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierDirection;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierMargin;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetClickable;
 
@@ -687,9 +713,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierCommandBuilder)
 
 - (id)getBarrierDirection;
 
+- (id)getBarrierMargin;
+
 - (id)getConstraint_referenced_ids;
 
+- (id)isBarrierAllowsGoneWidgets;
+
+- (void)setBarrierAllowsGoneWidgetsWithBoolean:(jboolean)value;
+
 - (void)setBarrierDirectionWithNSString:(NSString *)value;
+
+- (void)setBarrierMarginWithNSString:(NSString *)value;
 
 - (void)setConstraint_referenced_idsWithNSString:(NSString *)value;
 

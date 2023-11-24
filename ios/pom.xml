@@ -31,7 +31,7 @@
 		</dependency>
 		
 		<dependency>
-			<artifactId>SWTAndroidXConstraintLayout</artifactId>
+			<artifactId>AndroidXJConstraintLayout</artifactId>
   			<groupId>com.ashera</groupId>
   			<version>${project.version}</version>
   		</dependency>

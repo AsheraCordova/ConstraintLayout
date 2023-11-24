@@ -29,6 +29,7 @@
 @class ADXConstraintWidgetContainer;
 @class ADXHelperWidget;
 @class IOSIntArray;
+@class IOSObjectArray;
 @class JavaUtilHashMap;
 @protocol ADXHelper;
 
@@ -89,6 +90,8 @@
 - (void)applyLayoutFeaturesWithADXConstraintLayout:(ADXConstraintLayout *)container;
 
 - (void)applyLayoutFeaturesInConstraintSetWithADXConstraintLayout:(ADXConstraintLayout *)container;
+
+- (IOSObjectArray *)getViewsWithADXConstraintLayout:(ADXConstraintLayout *)layout;
 
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;

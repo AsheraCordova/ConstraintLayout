@@ -16,7 +16,12 @@
 #if !defined (ADXConstraintSet_) && (INCLUDE_ALL_ConstraintSet || defined(INCLUDE_ADXConstraintSet))
 #define ADXConstraintSet_
 
+@class ADSparseArray;
+@class ADXConstraintHelper;
 @class ADXConstraintLayout;
+@class ADXConstraintLayout_LayoutParams;
+@class ADXConstraintSet_Constraint;
+@class ADXConstraintWidget;
 @class ADXConstraints;
 @class IOSFloatArray;
 @class IOSIntArray;
@@ -44,7 +49,19 @@
                           withInt:(jint)topId
                           withInt:(jint)bottomId;
 
+- (void)applyCustomAttributesWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout;
+
+- (void)applyDeltaFromWithADXConstraintSet:(ADXConstraintSet *)cs;
+
 - (void)applyToWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout;
+
+- (void)applyToHelperWithADXConstraintHelper:(ADXConstraintHelper *)helper
+                     withADXConstraintWidget:(ADXConstraintWidget *)child
+        withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
+                           withADSparseArray:(ADSparseArray *)mapIdToWidget;
+
+- (void)applyToLayoutParamsWithInt:(jint)id_
+withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams;
 
 - (void)centerWithInt:(jint)centerID
               withInt:(jint)firstID
@@ -180,7 +197,27 @@
                     withFloatArray:(IOSFloatArray *)weights
                            withInt:(jint)style;
 
+- (ADXConstraintSet_Constraint *)getWithInt:(jint)id_;
+
 - (jboolean)getApplyElevationWithInt:(jint)viewId;
+
+- (ADXConstraintSet_Constraint *)getConstraintWithInt:(jint)id_;
+
+- (jint)getHeightWithInt:(jint)viewId;
+
+- (ADXConstraintSet_Constraint *)getParametersWithInt:(jint)mId;
+
+- (jint)getVisibilityWithInt:(jint)viewId;
+
+- (jint)getVisibilityModeWithInt:(jint)viewId;
+
+- (jint)getWidthWithInt:(jint)viewId;
+
+- (jboolean)isForceId;
+
+- (void)readFallbackWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout;
+
+- (void)readFallbackWithADXConstraintSet:(ADXConstraintSet *)set;
 
 - (void)removeFromHorizontalChainWithInt:(jint)viewId;
 
@@ -200,6 +237,8 @@
 
 - (void)setElevationWithInt:(jint)viewId
                   withFloat:(jfloat)elevation;
+
+- (void)setForceIdWithBoolean:(jboolean)forceId;
 
 - (void)setGoneMarginWithInt:(jint)viewId
                      withInt:(jint)anchor
@@ -264,6 +303,8 @@
 
 - (void)setTranslationZWithInt:(jint)viewId
                      withFloat:(jfloat)translationZ;
+
+- (void)setValidateOnParseWithBoolean:(jboolean)validate;
 
 - (void)setVerticalBiasWithInt:(jint)viewId
                      withFloat:(jfloat)bias;
@@ -659,12 +700,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintSet_Motion)
 #if !defined (ADXConstraintSet_Constraint_) && (INCLUDE_ALL_ConstraintSet || defined(INCLUDE_ADXConstraintSet_Constraint))
 #define ADXConstraintSet_Constraint_
 
+@class ADXConstraintHelper;
 @class ADXConstraintLayout_LayoutParams;
 @class ADXConstraintSet_Constraint_Delta;
 @class ADXConstraintSet_Layout;
 @class ADXConstraintSet_Motion;
 @class ADXConstraintSet_PropertySet;
 @class ADXConstraintSet_Transform;
+@class ADXConstraints_LayoutParams;
 @class JavaUtilHashMap;
 
 @interface ADXConstraintSet_Constraint : NSObject {
@@ -683,9 +726,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintSet_Motion)
 
 - (instancetype)init;
 
+- (void)applyDeltaWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c;
+
 - (void)applyToWithADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)param;
 
 - (ADXConstraintSet_Constraint *)java_clone;
+
+- (void)fillFromConstraintsWithADXConstraintHelper:(ADXConstraintHelper *)helper
+                                           withInt:(jint)viewId
+                   withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param;
+
+- (void)fillFromConstraintsWithInt:(jint)viewId
+   withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param;
 
 @end
 
@@ -712,11 +764,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintSet_Constraint)
 #if !defined (ADXConstraintSet_Constraint_Delta_) && (INCLUDE_ALL_ConstraintSet || defined(INCLUDE_ADXConstraintSet_Constraint_Delta))
 #define ADXConstraintSet_Constraint_Delta_
 
+@class ADXConstraintSet_Constraint;
+@class IOSBooleanArray;
+@class IOSFloatArray;
+@class IOSIntArray;
+@class IOSObjectArray;
+
 @interface ADXConstraintSet_Constraint_Delta : NSObject {
  @public
+  IOSIntArray *mTypeInt_;
+  IOSIntArray *mValueInt_;
   jint mCountInt_;
+  IOSIntArray *mTypeFloat_;
+  IOSFloatArray *mValueFloat_;
   jint mCountFloat_;
+  IOSIntArray *mTypeString_;
+  IOSObjectArray *mValueString_;
   jint mCountString_;
+  IOSIntArray *mTypeBoolean_;
+  IOSBooleanArray *mValueBoolean_;
   jint mCountBoolean_;
 }
 
@@ -724,9 +790,20 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintSet_Constraint)
 
 - (instancetype)init;
 
+- (void)applyDeltaWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c;
+
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXConstraintSet_Constraint_Delta)
+
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mTypeInt_, IOSIntArray *)
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mValueInt_, IOSIntArray *)
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mTypeFloat_, IOSIntArray *)
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mValueFloat_, IOSFloatArray *)
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mTypeString_, IOSIntArray *)
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mValueString_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mTypeBoolean_, IOSIntArray *)
+J2OBJC_FIELD_SETTER(ADXConstraintSet_Constraint_Delta, mValueBoolean_, IOSBooleanArray *)
 
 FOUNDATION_EXPORT void ADXConstraintSet_Constraint_Delta_init(ADXConstraintSet_Constraint_Delta *self);
 

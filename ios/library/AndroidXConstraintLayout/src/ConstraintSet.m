@@ -14,6 +14,7 @@
 #include "Constraints.h"
 #include "Context.h"
 #include "Guideline.h"
+#include "HelperWidget.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
@@ -21,6 +22,7 @@
 #include "Log.h"
 #include "R.h"
 #include "Resources.h"
+#include "SparseArray.h"
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
@@ -30,6 +32,7 @@
 #include "java/lang/Integer.h"
 #include "java/lang/RuntimeException.h"
 #include "java/util/Arrays.h"
+#include "java/util/Collection.h"
 #include "java/util/HashMap.h"
 #include "java/util/HashSet.h"
 #include "java/util/Set.h"
@@ -55,9 +58,23 @@
                              withInt:(jint)left
                              withInt:(jint)right;
 
-- (ADXConstraintSet_Constraint *)getWithInt:(jint)id_;
-
 - (NSString *)sideToStringWithInt:(jint)side;
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                           withFloat:(jfloat)value;
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                             withInt:(jint)value;
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                        withNSString:(NSString *)value;
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                         withBoolean:(jboolean)value;
 
 - (IOSIntArray *)convertReferenceStringWithADView:(ADView *)view
                                      withNSString:(NSString *)referenceIdString;
@@ -505,9 +522,15 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintSet, KEY_PERCENT_PARENT, NSString *)
 
 __attribute__((unused)) static void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(ADXConstraintSet *self, jint leftId, jint leftSide, jint rightId, jint rightSide, IOSIntArray *chainIds, IOSFloatArray *weights, jint style, jint left, jint right);
 
-__attribute__((unused)) static ADXConstraintSet_Constraint *ADXConstraintSet_getWithInt_(ADXConstraintSet *self, jint id_);
-
 __attribute__((unused)) static NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, jint side);
+
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(ADXConstraintSet_Constraint *c, jint type, jfloat value);
+
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(ADXConstraintSet_Constraint *c, jint type, jint value);
+
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(ADXConstraintSet_Constraint *c, jint type, NSString *value);
+
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(ADXConstraintSet_Constraint *c, jint type, jboolean value);
 
 __attribute__((unused)) static IOSIntArray *ADXConstraintSet_convertReferenceStringWithADView_withNSString_(ADXConstraintSet *self, ADView *view, NSString *referenceIdString);
 
@@ -825,21 +848,10 @@ J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, QUANTIZE_MOTION_INTERPOLAT
 
 @interface ADXConstraintSet_Constraint ()
 
-- (void)fillFromConstraintsWithADXConstraintHelper:(ADXConstraintHelper *)helper
-                                           withInt:(jint)viewId
-                   withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param;
-
-- (void)fillFromConstraintsWithInt:(jint)viewId
-   withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param;
-
 - (void)fillFromWithInt:(jint)viewId
 withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)param;
 
 @end
-
-__attribute__((unused)) static void ADXConstraintSet_Constraint_fillFromConstraintsWithADXConstraintHelper_withInt_withADXConstraints_LayoutParams_(ADXConstraintSet_Constraint *self, ADXConstraintHelper *helper, jint viewId, ADXConstraints_LayoutParams *param);
-
-__attribute__((unused)) static void ADXConstraintSet_Constraint_fillFromConstraintsWithInt_withADXConstraints_LayoutParams_(ADXConstraintSet_Constraint *self, jint viewId, ADXConstraints_LayoutParams *param);
 
 __attribute__((unused)) static void ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(ADXConstraintSet_Constraint *self, jint viewId, ADXConstraintLayout_LayoutParams *param);
 
@@ -867,6 +879,126 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
   return self;
 }
 J2OBJC_IGNORE_DESIGNATED_END
+
+- (ADXConstraintSet_Constraint *)getParametersWithInt:(jint)mId {
+  return [self getWithInt:mId];
+}
+
+- (void)readFallbackWithADXConstraintSet:(ADXConstraintSet *)set {
+  for (JavaLangInteger * __strong key in nil_chk([((JavaUtilHashMap *) nil_chk(((ADXConstraintSet *) nil_chk(set))->mConstraints_)) keySet])) {
+    jint id_ = [((JavaLangInteger *) nil_chk(key)) intValue];
+    ADXConstraintSet_Constraint *parent = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(set->mConstraints_)) getWithId:key]);
+    if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+      [((JavaUtilHashMap *) nil_chk(mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(id_) withId:create_ADXConstraintSet_Constraint_init()];
+    }
+    ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
+    if (constraint == nil) {
+      continue;
+    }
+    if (!((ADXConstraintSet_Layout *) nil_chk(constraint->layout_))->mApply_) {
+      [constraint->layout_ copyFromWithADXConstraintSet_Layout:((ADXConstraintSet_Constraint *) nil_chk(parent))->layout_];
+    }
+    if (!((ADXConstraintSet_PropertySet *) nil_chk(constraint->propertySet_))->mApply_) {
+      [constraint->propertySet_ copyFromWithADXConstraintSet_PropertySet:((ADXConstraintSet_Constraint *) nil_chk(parent))->propertySet_];
+    }
+    if (!((ADXConstraintSet_Transform *) nil_chk(constraint->transform_))->mApply_) {
+      [constraint->transform_ copyFromWithADXConstraintSet_Transform:((ADXConstraintSet_Constraint *) nil_chk(parent))->transform_];
+    }
+    if (!((ADXConstraintSet_Motion *) nil_chk(constraint->motion_))->mApply_) {
+      [constraint->motion_ copyFromWithADXConstraintSet_Motion:((ADXConstraintSet_Constraint *) nil_chk(parent))->motion_];
+    }
+    for (NSString * __strong s in nil_chk([((JavaUtilHashMap *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(parent))->mCustomConstraints_)) keySet])) {
+      if (![((JavaUtilHashMap *) nil_chk(constraint->mCustomConstraints_)) containsKeyWithId:s]) {
+        [((JavaUtilHashMap *) nil_chk(constraint->mCustomConstraints_)) putWithId:s withId:[parent->mCustomConstraints_ getWithId:s]];
+      }
+    }
+  }
+}
+
+- (void)readFallbackWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout {
+  jint count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
+  for (jint i = 0; i < count; i++) {
+    ADView *view = JreRetainedLocalValue([constraintLayout getChildAtWithInt:i]);
+    ADXConstraintLayout_LayoutParams *param = (ADXConstraintLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(view)) getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
+    jint id_ = [view getId];
+    if (mForceId_ && id_ == -1) {
+      @throw create_JavaLangRuntimeException_initWithNSString_(@"All children of ConstraintLayout must have ids to use ConstraintSet");
+    }
+    if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+      [((JavaUtilHashMap *) nil_chk(mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(id_) withId:create_ADXConstraintSet_Constraint_init()];
+    }
+    ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
+    if (constraint == nil) {
+      continue;
+    }
+    if (!((ADXConstraintSet_Layout *) nil_chk(constraint->layout_))->mApply_) {
+      ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(constraint, id_, param);
+      if ([view isKindOfClass:[ADXConstraintHelper class]]) {
+        JreStrongAssign(&constraint->layout_->mReferenceIds_, [((ADXConstraintHelper *) view) getReferencedIds]);
+        if ([view isKindOfClass:[ADXBarrier class]]) {
+          ADXBarrier *barrier = (ADXBarrier *) view;
+          constraint->layout_->mBarrierAllowsGoneWidgets_ = [barrier getAllowsGoneWidget];
+          constraint->layout_->mBarrierDirection_ = [barrier getType];
+          constraint->layout_->mBarrierMargin_ = [barrier getMargin];
+        }
+      }
+      constraint->layout_->mApply_ = true;
+    }
+    if (!((ADXConstraintSet_PropertySet *) nil_chk(constraint->propertySet_))->mApply_) {
+      constraint->propertySet_->visibility_ = [view getVisibility];
+      constraint->propertySet_->alpha_ = [view getAlpha];
+      constraint->propertySet_->mApply_ = true;
+    }
+    {
+      if (!((ADXConstraintSet_Transform *) nil_chk(constraint->transform_))->mApply_) {
+        constraint->transform_->mApply_ = true;
+        constraint->transform_->rotation_ = [view getRotation];
+        constraint->transform_->rotationX_ = [view getRotationX];
+        constraint->transform_->rotationY_ = [view getRotationY];
+        constraint->transform_->scaleX_ = [view getScaleX];
+        constraint->transform_->scaleY_ = [view getScaleY];
+        jfloat pivotX = [view getPivotX];
+        jfloat pivotY = [view getPivotY];
+        if (pivotX != 0.0 || pivotY != 0.0) {
+          constraint->transform_->transformPivotX_ = pivotX;
+          constraint->transform_->transformPivotY_ = pivotY;
+        }
+        constraint->transform_->translationX_ = [view getTranslationX];
+        constraint->transform_->translationY_ = [view getTranslationY];
+        {
+          constraint->transform_->translationZ_ = [view getTranslationZ];
+          if (constraint->transform_->applyElevation_) {
+            constraint->transform_->elevation_ = [view getElevation];
+          }
+        }
+      }
+    }
+  }
+}
+
+- (void)applyDeltaFromWithADXConstraintSet:(ADXConstraintSet *)cs {
+  for (ADXConstraintSet_Constraint * __strong from in nil_chk([((JavaUtilHashMap *) nil_chk(((ADXConstraintSet *) nil_chk(cs))->mConstraints_)) values])) {
+    if (((ADXConstraintSet_Constraint *) nil_chk(from))->mDelta_ != nil) {
+      if (from->mTargetString_ != nil) {
+        jint count = 0;
+        for (JavaLangInteger *boxed__ in nil_chk([((JavaUtilHashMap *) nil_chk(mConstraints_)) keySet])) {
+          jint key = [((JavaLangInteger *) nil_chk(boxed__)) intValue];
+          ADXConstraintSet_Constraint *potential = JreRetainedLocalValue([self getConstraintWithInt:key]);
+          if (((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(potential))->layout_))->mConstraintTag_ != nil) {
+            if ([((NSString *) nil_chk(from->mTargetString_)) java_matches:potential->layout_->mConstraintTag_]) {
+              [((ADXConstraintSet_Constraint_Delta *) nil_chk(from->mDelta_)) applyDeltaWithADXConstraintSet_Constraint:potential];
+              [((JavaUtilHashMap *) nil_chk(potential->mCustomConstraints_)) putAllWithJavaUtilMap:(JavaUtilHashMap *) cast_chk([from->mCustomConstraints_ java_clone], [JavaUtilHashMap class])];
+            }
+          }
+        }
+      }
+      else {
+        ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getConstraintWithInt:from->mViewId_]);
+        [((ADXConstraintSet_Constraint_Delta *) nil_chk(from->mDelta_)) applyDeltaWithADXConstraintSet_Constraint:constraint];
+      }
+    }
+  }
+}
 
 - (void)cloneWithADXConstraintSet:(ADXConstraintSet *)set {
   [((JavaUtilHashMap *) nil_chk(mConstraints_)) clear];
@@ -950,9 +1082,9 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
     if ([view isKindOfClass:[ADXConstraintHelper class]]) {
       ADXConstraintHelper *helper = (ADXConstraintHelper *) view;
-      ADXConstraintSet_Constraint_fillFromConstraintsWithADXConstraintHelper_withInt_withADXConstraints_LayoutParams_(constraint, helper, id_, param);
+      [constraint fillFromConstraintsWithADXConstraintHelper:helper withInt:id_ withADXConstraints_LayoutParams:param];
     }
-    ADXConstraintSet_Constraint_fillFromConstraintsWithInt_withADXConstraints_LayoutParams_(constraint, id_, param);
+    [constraint fillFromConstraintsWithInt:id_ withADXConstraints_LayoutParams:param];
   }
 }
 
@@ -960,6 +1092,52 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self applyToInternalWithADXConstraintLayout:constraintLayout withBoolean:true];
   [((ADXConstraintLayout *) nil_chk(constraintLayout)) setConstraintSetWithADXConstraintSet:nil];
   [constraintLayout requestLayout];
+}
+
+- (void)applyCustomAttributesWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout {
+  jint count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
+  for (jint i = 0; i < count; i++) {
+    ADView *view = JreRetainedLocalValue([constraintLayout getChildAtWithInt:i]);
+    jint id_ = [((ADView *) nil_chk(view)) getId];
+    if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+      ADLog_wWithNSString_withNSString_(ADXConstraintSet_TAG, JreStrcat("$$", @"id unknown ", ADXCLDebug_getNameWithADView_(view)));
+      continue;
+    }
+    if (mForceId_ && id_ == -1) {
+      @throw create_JavaLangRuntimeException_initWithNSString_(@"All children of ConstraintLayout must have ids to use ConstraintSet");
+    }
+    if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+      ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
+      if (constraint == nil) {
+        continue;
+      }
+      ADXConstraintAttribute_setAttributesWithADView_withJavaUtilHashMap_(view, constraint->mCustomConstraints_);
+    }
+  }
+}
+
+- (void)applyToHelperWithADXConstraintHelper:(ADXConstraintHelper *)helper
+                     withADXConstraintWidget:(ADXConstraintWidget *)child
+        withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
+                           withADSparseArray:(ADSparseArray *)mapIdToWidget {
+  jint id_ = [((ADXConstraintHelper *) nil_chk(helper)) getId];
+  if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+    ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
+    if (constraint != nil && [child isKindOfClass:[ADXHelperWidget class]]) {
+      ADXHelperWidget *helperWidget = (ADXHelperWidget *) cast_chk(child, [ADXHelperWidget class]);
+      [helper loadParametersWithADXConstraintSet_Constraint:constraint withADXHelperWidget:helperWidget withADXConstraintLayout_LayoutParams:layoutParams withADSparseArray:mapIdToWidget];
+    }
+  }
+}
+
+- (void)applyToLayoutParamsWithInt:(jint)id_
+withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams {
+  if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+    ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
+    if (constraint != nil) {
+      [constraint applyToWithADXConstraintLayout_LayoutParams:layoutParams];
+    }
+  }
 }
 
 - (void)applyToInternalWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout
@@ -1197,16 +1375,16 @@ J2OBJC_IGNORE_DESIGNATED_END
     @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"must have 2 or more widgets in a chain");
   }
   if (weights != nil) {
-    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, IOSIntArray_Get(chainIds, 0))))->layout_))->verticalWeight_ = IOSFloatArray_Get(weights, 0);
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, 0)]))->layout_))->verticalWeight_ = IOSFloatArray_Get(weights, 0);
   }
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, IOSIntArray_Get(chainIds, 0))))->layout_))->verticalChainStyle_ = style;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, 0)]))->layout_))->verticalChainStyle_ = style;
   [self connectWithInt:IOSIntArray_Get(chainIds, 0) withInt:ADXConstraintSet_TOP withInt:topId withInt:topSide withInt:0];
   for (jint i = 1; i < chainIds->size_; i++) {
     jint chainId = IOSIntArray_Get(chainIds, i);
     [self connectWithInt:IOSIntArray_Get(chainIds, i) withInt:ADXConstraintSet_TOP withInt:IOSIntArray_Get(chainIds, i - 1) withInt:ADXConstraintSet_BOTTOM withInt:0];
     [self connectWithInt:IOSIntArray_Get(chainIds, i - 1) withInt:ADXConstraintSet_BOTTOM withInt:IOSIntArray_Get(chainIds, i) withInt:ADXConstraintSet_TOP withInt:0];
     if (weights != nil) {
-      ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, IOSIntArray_Get(chainIds, i))))->layout_->verticalWeight_ = IOSFloatArray_Get(weights, i);
+      ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, i)]))->layout_->verticalWeight_ = IOSFloatArray_Get(weights, i);
     }
   }
   [self connectWithInt:IOSIntArray_Get(chainIds, chainIds->size_ - 1) withInt:ADXConstraintSet_BOTTOM withInt:bottomId withInt:bottomSide withInt:0];
@@ -1616,7 +1794,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setMarginWithInt:(jint)viewId
                  withInt:(jint)anchor
                  withInt:(jint)value {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, viewId);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   switch (anchor) {
     case ADXConstraintSet_LEFT:
     ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->leftMargin_ = value;
@@ -1647,7 +1825,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setGoneMarginWithInt:(jint)viewId
                      withInt:(jint)anchor
                      withInt:(jint)value {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, viewId);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   switch (anchor) {
     case ADXConstraintSet_LEFT:
     ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->goneLeftMargin_ = value;
@@ -1677,105 +1855,121 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setHorizontalBiasWithInt:(jint)viewId
                        withFloat:(jfloat)bias {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->horizontalBias_ = bias;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->horizontalBias_ = bias;
 }
 
 - (void)setVerticalBiasWithInt:(jint)viewId
                      withFloat:(jfloat)bias {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->verticalBias_ = bias;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->verticalBias_ = bias;
 }
 
 - (void)setDimensionRatioWithInt:(jint)viewId
                     withNSString:(NSString *)ratio {
-  JreStrongAssign(&((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->dimensionRatio_, ratio);
+  JreStrongAssign(&((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->dimensionRatio_, ratio);
 }
 
 - (void)setVisibilityWithInt:(jint)viewId
                      withInt:(jint)visibility {
-  ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->propertySet_))->visibility_ = visibility;
+  ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->visibility_ = visibility;
+}
+
+- (jint)getVisibilityModeWithInt:(jint)viewId {
+  return ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->mVisibilityMode_;
+}
+
+- (jint)getVisibilityWithInt:(jint)viewId {
+  return ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->visibility_;
+}
+
+- (jint)getHeightWithInt:(jint)viewId {
+  return ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mHeight_;
+}
+
+- (jint)getWidthWithInt:(jint)viewId {
+  return ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mWidth_;
 }
 
 - (void)setAlphaWithInt:(jint)viewId
               withFloat:(jfloat)alpha {
-  ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->propertySet_))->alpha_ = alpha;
+  ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->alpha_ = alpha;
 }
 
 - (jboolean)getApplyElevationWithInt:(jint)viewId {
-  return ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->applyElevation_;
+  return ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->applyElevation_;
 }
 
 - (void)setApplyElevationWithInt:(jint)viewId
                      withBoolean:(jboolean)apply {
   {
-    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->applyElevation_ = apply;
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->applyElevation_ = apply;
   }
 }
 
 - (void)setElevationWithInt:(jint)viewId
                   withFloat:(jfloat)elevation {
   {
-    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->elevation_ = elevation;
-    ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_->applyElevation_ = true;
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->elevation_ = elevation;
+    ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_->applyElevation_ = true;
   }
 }
 
 - (void)setRotationWithInt:(jint)viewId
                  withFloat:(jfloat)rotation {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->rotation_ = rotation;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->rotation_ = rotation;
 }
 
 - (void)setRotationXWithInt:(jint)viewId
                   withFloat:(jfloat)rotationX {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->rotationX_ = rotationX;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->rotationX_ = rotationX;
 }
 
 - (void)setRotationYWithInt:(jint)viewId
                   withFloat:(jfloat)rotationY {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->rotationY_ = rotationY;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->rotationY_ = rotationY;
 }
 
 - (void)setScaleXWithInt:(jint)viewId
                withFloat:(jfloat)scaleX {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->scaleX_ = scaleX;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->scaleX_ = scaleX;
 }
 
 - (void)setScaleYWithInt:(jint)viewId
                withFloat:(jfloat)scaleY {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->scaleY_ = scaleY;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->scaleY_ = scaleY;
 }
 
 - (void)setTransformPivotXWithInt:(jint)viewId
                         withFloat:(jfloat)transformPivotX {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->transformPivotX_ = transformPivotX;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->transformPivotX_ = transformPivotX;
 }
 
 - (void)setTransformPivotYWithInt:(jint)viewId
                         withFloat:(jfloat)transformPivotY {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->transformPivotY_ = transformPivotY;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->transformPivotY_ = transformPivotY;
 }
 
 - (void)setTransformPivotWithInt:(jint)viewId
                        withFloat:(jfloat)transformPivotX
                        withFloat:(jfloat)transformPivotY {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, viewId);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->transform_))->transformPivotY_ = transformPivotY;
   constraint->transform_->transformPivotX_ = transformPivotX;
 }
 
 - (void)setTranslationXWithInt:(jint)viewId
                      withFloat:(jfloat)translationX {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->translationX_ = translationX;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->translationX_ = translationX;
 }
 
 - (void)setTranslationYWithInt:(jint)viewId
                      withFloat:(jfloat)translationY {
-  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->translationY_ = translationY;
+  ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->translationY_ = translationY;
 }
 
 - (void)setTranslationWithInt:(jint)viewId
                     withFloat:(jfloat)translationX
                     withFloat:(jfloat)translationY {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, viewId);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->transform_))->translationX_ = translationX;
   constraint->transform_->translationY_ = translationY;
 }
@@ -1783,25 +1977,25 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setTranslationZWithInt:(jint)viewId
                      withFloat:(jfloat)translationZ {
   {
-    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->transform_))->translationZ_ = translationZ;
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->translationZ_ = translationZ;
   }
 }
 
 - (void)constrainHeightWithInt:(jint)viewId
                        withInt:(jint)height {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->mHeight_ = height;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mHeight_ = height;
 }
 
 - (void)constrainWidthWithInt:(jint)viewId
                       withInt:(jint)width {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->mWidth_ = width;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mWidth_ = width;
 }
 
 - (void)constrainCircleWithInt:(jint)viewId
                        withInt:(jint)id_
                        withInt:(jint)radius
                      withFloat:(jfloat)angle {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, viewId);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->circleConstraint_ = id_;
   constraint->layout_->circleRadius_ = radius;
   constraint->layout_->circleAngle_ = angle;
@@ -1809,62 +2003,62 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)constrainMaxHeightWithInt:(jint)viewId
                           withInt:(jint)height {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->heightMax_ = height;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightMax_ = height;
 }
 
 - (void)constrainMaxWidthWithInt:(jint)viewId
                          withInt:(jint)width {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->widthMax_ = width;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthMax_ = width;
 }
 
 - (void)constrainMinHeightWithInt:(jint)viewId
                           withInt:(jint)height {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->heightMin_ = height;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightMin_ = height;
 }
 
 - (void)constrainMinWidthWithInt:(jint)viewId
                          withInt:(jint)width {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->widthMin_ = width;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthMin_ = width;
 }
 
 - (void)constrainPercentWidthWithInt:(jint)viewId
                            withFloat:(jfloat)percent {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->widthPercent_ = percent;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthPercent_ = percent;
 }
 
 - (void)constrainPercentHeightWithInt:(jint)viewId
                             withFloat:(jfloat)percent {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->heightPercent_ = percent;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightPercent_ = percent;
 }
 
 - (void)constrainDefaultHeightWithInt:(jint)viewId
                               withInt:(jint)height {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->heightDefault_ = height;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightDefault_ = height;
 }
 
 - (void)constrainDefaultWidthWithInt:(jint)viewId
                              withInt:(jint)width {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->widthDefault_ = width;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthDefault_ = width;
 }
 
 - (void)setHorizontalWeightWithInt:(jint)viewId
                          withFloat:(jfloat)weight {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->horizontalWeight_ = weight;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->horizontalWeight_ = weight;
 }
 
 - (void)setVerticalWeightWithInt:(jint)viewId
                        withFloat:(jfloat)weight {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->verticalWeight_ = weight;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->verticalWeight_ = weight;
 }
 
 - (void)setHorizontalChainStyleWithInt:(jint)viewId
                                withInt:(jint)chainStyle {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->horizontalChainStyle_ = chainStyle;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->horizontalChainStyle_ = chainStyle;
 }
 
 - (void)setVerticalChainStyleWithInt:(jint)viewId
                              withInt:(jint)chainStyle {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, viewId)))->layout_))->verticalChainStyle_ = chainStyle;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->verticalChainStyle_ = chainStyle;
 }
 
 - (void)addToHorizontalChainWithInt:(jint)viewId
@@ -1978,7 +2172,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)createWithInt:(jint)guidelineID
               withInt:(jint)orientation {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, guidelineID);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:guidelineID]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->mIsGuideline_ = true;
   constraint->layout_->orientation_ = orientation;
 }
@@ -1987,7 +2181,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                      withInt:(jint)direction
                      withInt:(jint)margin
                 withIntArray:(IOSIntArray *)referenced {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, id_);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:id_]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->mHelperType_ = ADXConstraintSet_BARRIER_TYPE;
   constraint->layout_->mBarrierDirection_ = direction;
   constraint->layout_->mBarrierMargin_ = margin;
@@ -1997,42 +2191,88 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setGuidelineBeginWithInt:(jint)guidelineID
                          withInt:(jint)margin {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_))->guideBegin_ = margin;
-  ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_->guideEnd_ = ADXConstraintSet_Layout_UNSET;
-  ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_->guidePercent_ = ADXConstraintSet_Layout_UNSET;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_))->guideBegin_ = margin;
+  ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideEnd_ = ADXConstraintSet_Layout_UNSET;
+  ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guidePercent_ = ADXConstraintSet_Layout_UNSET;
 }
 
 - (void)setGuidelineEndWithInt:(jint)guidelineID
                        withInt:(jint)margin {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_))->guideEnd_ = margin;
-  ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_->guideBegin_ = ADXConstraintSet_Layout_UNSET;
-  ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_->guidePercent_ = ADXConstraintSet_Layout_UNSET;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_))->guideEnd_ = margin;
+  ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideBegin_ = ADXConstraintSet_Layout_UNSET;
+  ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guidePercent_ = ADXConstraintSet_Layout_UNSET;
 }
 
 - (void)setGuidelinePercentWithInt:(jint)guidelineID
                          withFloat:(jfloat)ratio {
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_))->guidePercent_ = ratio;
-  ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_->guideEnd_ = ADXConstraintSet_Layout_UNSET;
-  ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, guidelineID)))->layout_->guideBegin_ = ADXConstraintSet_Layout_UNSET;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_))->guidePercent_ = ratio;
+  ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideEnd_ = ADXConstraintSet_Layout_UNSET;
+  ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideBegin_ = ADXConstraintSet_Layout_UNSET;
 }
 
 - (void)setBarrierTypeWithInt:(jint)id_
                       withInt:(jint)type {
-  ADXConstraintSet_Constraint *constraint = ADXConstraintSet_getWithInt_(self, id_);
+  ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:id_]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->mHelperType_ = type;
 }
 
 - (ADXConstraintSet_Constraint *)getWithInt:(jint)id_ {
-  return ADXConstraintSet_getWithInt_(self, id_);
+  if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+    [((JavaUtilHashMap *) nil_chk(mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(id_) withId:create_ADXConstraintSet_Constraint_init()];
+  }
+  return [((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)];
 }
 
 - (NSString *)sideToStringWithInt:(jint)side {
   return ADXConstraintSet_sideToStringWithInt_(self, side);
 }
 
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                           withFloat:(jfloat)value {
+  ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(c, type, value);
+}
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                             withInt:(jint)value {
+  ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(c, type, value);
+}
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                        withNSString:(NSString *)value {
+  ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(c, type, value);
+}
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(jint)type
+                                         withBoolean:(jboolean)value {
+  ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(c, type, value);
+}
+
 - (IOSIntArray *)convertReferenceStringWithADView:(ADView *)view
                                      withNSString:(NSString *)referenceIdString {
   return ADXConstraintSet_convertReferenceStringWithADView_withNSString_(self, view, referenceIdString);
+}
+
+- (ADXConstraintSet_Constraint *)getConstraintWithInt:(jint)id_ {
+  if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
+    return [((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)];
+  }
+  return nil;
+}
+
+- (jboolean)isForceId {
+  return mForceId_;
+}
+
+- (void)setForceIdWithBoolean:(jboolean)forceId {
+  self->mForceId_ = forceId;
+}
+
+- (void)setValidateOnParseWithBoolean:(jboolean)validate {
+  mValidate_ = validate;
 }
 
 - (void)dealloc {
@@ -2046,157 +2286,195 @@ J2OBJC_IGNORE_DESIGNATED_END
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 0, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 0, 3, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 4, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 5, 6, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 7, 8, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 9, 8, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 10, 8, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 11, 8, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 12, 13, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 14, 13, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 15, 13, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 14, 16, -1, -1, -1, -1 },
+    { NULL, "LADXConstraintSet_Constraint;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 5, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 6, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 6, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 8, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 9, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 10, 11, -1, 12, -1, -1 },
+    { NULL, "V", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 15, 16, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 17, 18, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 17, 19, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 9, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 10, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 11, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 21, 22, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 21, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 23, 24, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 25, 24, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 26, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 28, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 29, 30, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 31, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 32, 27, -1, -1, -1, -1 },
-    { NULL, "Z", 0x1, 33, 22, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 34, 35, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 36, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 37, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 38, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 39, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 40, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 41, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 42, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 43, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 44, 45, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 46, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 47, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 48, 45, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 49, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 50, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 51, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 52, 53, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 54, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 55, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 56, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 57, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 58, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 59, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 60, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 61, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 62, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 63, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 64, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 65, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 66, 24, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 67, 24, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 68, 24, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 69, 22, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 70, 22, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 71, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x81, 72, 73, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 74, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 75, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 76, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 77, 20, -1, -1, -1, -1 },
-    { NULL, "LADXConstraintSet_Constraint;", 0x2, 78, 22, -1, -1, -1, -1 },
-    { NULL, "LNSString;", 0x2, 79, 22, -1, -1, -1, -1 },
-    { NULL, "[I", 0x2, 80, 81, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 19, 18, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 20, 18, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 21, 18, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 22, 23, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 24, 23, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 25, 23, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 24, 26, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 27, 28, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 27, 29, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 19, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 20, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 21, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 31, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 31, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 32, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 34, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 37, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 38, 39, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 40, 30, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 41, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 42, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 43, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 44, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 45, 36, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 46, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 47, 48, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 49, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 50, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 51, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 52, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 53, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 54, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 55, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 56, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 57, 58, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 59, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 60, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 61, 58, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 62, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 63, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 64, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 65, 66, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 67, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 68, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 69, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 70, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 71, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 72, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 73, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 74, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 75, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 76, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 77, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 78, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 79, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 80, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 81, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 82, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 83, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 84, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x81, 85, 86, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 87, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 88, 30, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 89, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 90, 30, -1, -1, -1, -1 },
+    { NULL, "LADXConstraintSet_Constraint;", 0x1, 91, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x2, 92, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 93, 94, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 93, 95, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 93, 96, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 93, 97, -1, -1, -1, -1 },
+    { NULL, "[I", 0x2, 98, 99, -1, -1, -1, -1 },
+    { NULL, "LADXConstraintSet_Constraint;", 0x1, 100, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 101, 102, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 103, 102, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(cloneWithADXConstraintSet:);
-  methods[2].selector = @selector(cloneWithADXConstraintLayout:);
-  methods[3].selector = @selector(cloneWithADXConstraints:);
-  methods[4].selector = @selector(applyToWithADXConstraintLayout:);
-  methods[5].selector = @selector(applyToInternalWithADXConstraintLayout:withBoolean:);
-  methods[6].selector = @selector(centerWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
-  methods[7].selector = @selector(centerHorizontallyWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
-  methods[8].selector = @selector(centerHorizontallyRtlWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
-  methods[9].selector = @selector(centerVerticallyWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
-  methods[10].selector = @selector(createVerticalChainWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:);
-  methods[11].selector = @selector(createHorizontalChainWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:);
-  methods[12].selector = @selector(createHorizontalChainRtlWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:);
-  methods[13].selector = @selector(createHorizontalChainWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:withInt:withInt:);
-  methods[14].selector = @selector(connectWithInt:withInt:withInt:withInt:withInt:);
-  methods[15].selector = @selector(connectWithInt:withInt:withInt:withInt:);
-  methods[16].selector = @selector(centerHorizontallyWithInt:withInt:);
-  methods[17].selector = @selector(centerHorizontallyRtlWithInt:withInt:);
-  methods[18].selector = @selector(centerVerticallyWithInt:withInt:);
-  methods[19].selector = @selector(clearWithInt:);
-  methods[20].selector = @selector(clearWithInt:withInt:);
-  methods[21].selector = @selector(setMarginWithInt:withInt:withInt:);
-  methods[22].selector = @selector(setGoneMarginWithInt:withInt:withInt:);
-  methods[23].selector = @selector(setHorizontalBiasWithInt:withFloat:);
-  methods[24].selector = @selector(setVerticalBiasWithInt:withFloat:);
-  methods[25].selector = @selector(setDimensionRatioWithInt:withNSString:);
-  methods[26].selector = @selector(setVisibilityWithInt:withInt:);
-  methods[27].selector = @selector(setAlphaWithInt:withFloat:);
-  methods[28].selector = @selector(getApplyElevationWithInt:);
-  methods[29].selector = @selector(setApplyElevationWithInt:withBoolean:);
-  methods[30].selector = @selector(setElevationWithInt:withFloat:);
-  methods[31].selector = @selector(setRotationWithInt:withFloat:);
-  methods[32].selector = @selector(setRotationXWithInt:withFloat:);
-  methods[33].selector = @selector(setRotationYWithInt:withFloat:);
-  methods[34].selector = @selector(setScaleXWithInt:withFloat:);
-  methods[35].selector = @selector(setScaleYWithInt:withFloat:);
-  methods[36].selector = @selector(setTransformPivotXWithInt:withFloat:);
-  methods[37].selector = @selector(setTransformPivotYWithInt:withFloat:);
-  methods[38].selector = @selector(setTransformPivotWithInt:withFloat:withFloat:);
-  methods[39].selector = @selector(setTranslationXWithInt:withFloat:);
-  methods[40].selector = @selector(setTranslationYWithInt:withFloat:);
-  methods[41].selector = @selector(setTranslationWithInt:withFloat:withFloat:);
-  methods[42].selector = @selector(setTranslationZWithInt:withFloat:);
-  methods[43].selector = @selector(constrainHeightWithInt:withInt:);
-  methods[44].selector = @selector(constrainWidthWithInt:withInt:);
-  methods[45].selector = @selector(constrainCircleWithInt:withInt:withInt:withFloat:);
-  methods[46].selector = @selector(constrainMaxHeightWithInt:withInt:);
-  methods[47].selector = @selector(constrainMaxWidthWithInt:withInt:);
-  methods[48].selector = @selector(constrainMinHeightWithInt:withInt:);
-  methods[49].selector = @selector(constrainMinWidthWithInt:withInt:);
-  methods[50].selector = @selector(constrainPercentWidthWithInt:withFloat:);
-  methods[51].selector = @selector(constrainPercentHeightWithInt:withFloat:);
-  methods[52].selector = @selector(constrainDefaultHeightWithInt:withInt:);
-  methods[53].selector = @selector(constrainDefaultWidthWithInt:withInt:);
-  methods[54].selector = @selector(setHorizontalWeightWithInt:withFloat:);
-  methods[55].selector = @selector(setVerticalWeightWithInt:withFloat:);
-  methods[56].selector = @selector(setHorizontalChainStyleWithInt:withInt:);
-  methods[57].selector = @selector(setVerticalChainStyleWithInt:withInt:);
-  methods[58].selector = @selector(addToHorizontalChainWithInt:withInt:withInt:);
-  methods[59].selector = @selector(addToHorizontalChainRTLWithInt:withInt:withInt:);
-  methods[60].selector = @selector(addToVerticalChainWithInt:withInt:withInt:);
-  methods[61].selector = @selector(removeFromVerticalChainWithInt:);
-  methods[62].selector = @selector(removeFromHorizontalChainWithInt:);
-  methods[63].selector = @selector(createWithInt:withInt:);
-  methods[64].selector = @selector(createBarrierWithInt:withInt:withInt:withIntArray:);
-  methods[65].selector = @selector(setGuidelineBeginWithInt:withInt:);
-  methods[66].selector = @selector(setGuidelineEndWithInt:withInt:);
-  methods[67].selector = @selector(setGuidelinePercentWithInt:withFloat:);
-  methods[68].selector = @selector(setBarrierTypeWithInt:withInt:);
-  methods[69].selector = @selector(getWithInt:);
-  methods[70].selector = @selector(sideToStringWithInt:);
-  methods[71].selector = @selector(convertReferenceStringWithADView:withNSString:);
+  methods[1].selector = @selector(getParametersWithInt:);
+  methods[2].selector = @selector(readFallbackWithADXConstraintSet:);
+  methods[3].selector = @selector(readFallbackWithADXConstraintLayout:);
+  methods[4].selector = @selector(applyDeltaFromWithADXConstraintSet:);
+  methods[5].selector = @selector(cloneWithADXConstraintSet:);
+  methods[6].selector = @selector(cloneWithADXConstraintLayout:);
+  methods[7].selector = @selector(cloneWithADXConstraints:);
+  methods[8].selector = @selector(applyToWithADXConstraintLayout:);
+  methods[9].selector = @selector(applyCustomAttributesWithADXConstraintLayout:);
+  methods[10].selector = @selector(applyToHelperWithADXConstraintHelper:withADXConstraintWidget:withADXConstraintLayout_LayoutParams:withADSparseArray:);
+  methods[11].selector = @selector(applyToLayoutParamsWithInt:withADXConstraintLayout_LayoutParams:);
+  methods[12].selector = @selector(applyToInternalWithADXConstraintLayout:withBoolean:);
+  methods[13].selector = @selector(centerWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
+  methods[14].selector = @selector(centerHorizontallyWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
+  methods[15].selector = @selector(centerHorizontallyRtlWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
+  methods[16].selector = @selector(centerVerticallyWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withFloat:);
+  methods[17].selector = @selector(createVerticalChainWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:);
+  methods[18].selector = @selector(createHorizontalChainWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:);
+  methods[19].selector = @selector(createHorizontalChainRtlWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:);
+  methods[20].selector = @selector(createHorizontalChainWithInt:withInt:withInt:withInt:withIntArray:withFloatArray:withInt:withInt:withInt:);
+  methods[21].selector = @selector(connectWithInt:withInt:withInt:withInt:withInt:);
+  methods[22].selector = @selector(connectWithInt:withInt:withInt:withInt:);
+  methods[23].selector = @selector(centerHorizontallyWithInt:withInt:);
+  methods[24].selector = @selector(centerHorizontallyRtlWithInt:withInt:);
+  methods[25].selector = @selector(centerVerticallyWithInt:withInt:);
+  methods[26].selector = @selector(clearWithInt:);
+  methods[27].selector = @selector(clearWithInt:withInt:);
+  methods[28].selector = @selector(setMarginWithInt:withInt:withInt:);
+  methods[29].selector = @selector(setGoneMarginWithInt:withInt:withInt:);
+  methods[30].selector = @selector(setHorizontalBiasWithInt:withFloat:);
+  methods[31].selector = @selector(setVerticalBiasWithInt:withFloat:);
+  methods[32].selector = @selector(setDimensionRatioWithInt:withNSString:);
+  methods[33].selector = @selector(setVisibilityWithInt:withInt:);
+  methods[34].selector = @selector(getVisibilityModeWithInt:);
+  methods[35].selector = @selector(getVisibilityWithInt:);
+  methods[36].selector = @selector(getHeightWithInt:);
+  methods[37].selector = @selector(getWidthWithInt:);
+  methods[38].selector = @selector(setAlphaWithInt:withFloat:);
+  methods[39].selector = @selector(getApplyElevationWithInt:);
+  methods[40].selector = @selector(setApplyElevationWithInt:withBoolean:);
+  methods[41].selector = @selector(setElevationWithInt:withFloat:);
+  methods[42].selector = @selector(setRotationWithInt:withFloat:);
+  methods[43].selector = @selector(setRotationXWithInt:withFloat:);
+  methods[44].selector = @selector(setRotationYWithInt:withFloat:);
+  methods[45].selector = @selector(setScaleXWithInt:withFloat:);
+  methods[46].selector = @selector(setScaleYWithInt:withFloat:);
+  methods[47].selector = @selector(setTransformPivotXWithInt:withFloat:);
+  methods[48].selector = @selector(setTransformPivotYWithInt:withFloat:);
+  methods[49].selector = @selector(setTransformPivotWithInt:withFloat:withFloat:);
+  methods[50].selector = @selector(setTranslationXWithInt:withFloat:);
+  methods[51].selector = @selector(setTranslationYWithInt:withFloat:);
+  methods[52].selector = @selector(setTranslationWithInt:withFloat:withFloat:);
+  methods[53].selector = @selector(setTranslationZWithInt:withFloat:);
+  methods[54].selector = @selector(constrainHeightWithInt:withInt:);
+  methods[55].selector = @selector(constrainWidthWithInt:withInt:);
+  methods[56].selector = @selector(constrainCircleWithInt:withInt:withInt:withFloat:);
+  methods[57].selector = @selector(constrainMaxHeightWithInt:withInt:);
+  methods[58].selector = @selector(constrainMaxWidthWithInt:withInt:);
+  methods[59].selector = @selector(constrainMinHeightWithInt:withInt:);
+  methods[60].selector = @selector(constrainMinWidthWithInt:withInt:);
+  methods[61].selector = @selector(constrainPercentWidthWithInt:withFloat:);
+  methods[62].selector = @selector(constrainPercentHeightWithInt:withFloat:);
+  methods[63].selector = @selector(constrainDefaultHeightWithInt:withInt:);
+  methods[64].selector = @selector(constrainDefaultWidthWithInt:withInt:);
+  methods[65].selector = @selector(setHorizontalWeightWithInt:withFloat:);
+  methods[66].selector = @selector(setVerticalWeightWithInt:withFloat:);
+  methods[67].selector = @selector(setHorizontalChainStyleWithInt:withInt:);
+  methods[68].selector = @selector(setVerticalChainStyleWithInt:withInt:);
+  methods[69].selector = @selector(addToHorizontalChainWithInt:withInt:withInt:);
+  methods[70].selector = @selector(addToHorizontalChainRTLWithInt:withInt:withInt:);
+  methods[71].selector = @selector(addToVerticalChainWithInt:withInt:withInt:);
+  methods[72].selector = @selector(removeFromVerticalChainWithInt:);
+  methods[73].selector = @selector(removeFromHorizontalChainWithInt:);
+  methods[74].selector = @selector(createWithInt:withInt:);
+  methods[75].selector = @selector(createBarrierWithInt:withInt:withInt:withIntArray:);
+  methods[76].selector = @selector(setGuidelineBeginWithInt:withInt:);
+  methods[77].selector = @selector(setGuidelineEndWithInt:withInt:);
+  methods[78].selector = @selector(setGuidelinePercentWithInt:withFloat:);
+  methods[79].selector = @selector(setBarrierTypeWithInt:withInt:);
+  methods[80].selector = @selector(getWithInt:);
+  methods[81].selector = @selector(sideToStringWithInt:);
+  methods[82].selector = @selector(setDeltaValueWithADXConstraintSet_Constraint:withInt:withFloat:);
+  methods[83].selector = @selector(setDeltaValueWithADXConstraintSet_Constraint:withInt:withInt:);
+  methods[84].selector = @selector(setDeltaValueWithADXConstraintSet_Constraint:withInt:withNSString:);
+  methods[85].selector = @selector(setDeltaValueWithADXConstraintSet_Constraint:withInt:withBoolean:);
+  methods[86].selector = @selector(convertReferenceStringWithADView:withNSString:);
+  methods[87].selector = @selector(getConstraintWithInt:);
+  methods[88].selector = @selector(isForceId);
+  methods[89].selector = @selector(setForceIdWithBoolean:);
+  methods[90].selector = @selector(setValidateOnParseWithBoolean:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 82, -1, -1 },
-    { "ERROR_MESSAGE", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 83, -1, -1 },
+    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 104, -1, -1 },
+    { "ERROR_MESSAGE", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 105, -1, -1 },
     { "INTERNAL_MATCH_PARENT", "I", .constantValue.asInt = ADXConstraintSet_INTERNAL_MATCH_PARENT, 0x1a, -1, -1, -1, -1 },
     { "INTERNAL_WRAP_CONTENT", "I", .constantValue.asInt = ADXConstraintSet_INTERNAL_WRAP_CONTENT, 0x1a, -1, -1, -1, -1 },
     { "INTERNAL_MATCH_CONSTRAINT", "I", .constantValue.asInt = ADXConstraintSet_INTERNAL_MATCH_CONSTRAINT, 0x1a, -1, -1, -1, -1 },
@@ -2210,7 +2488,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "ROTATE_RIGHT_OF_PORTRATE", "I", .constantValue.asInt = ADXConstraintSet_ROTATE_RIGHT_OF_PORTRATE, 0x19, -1, -1, -1, -1 },
     { "ROTATE_LEFT_OF_PORTRATE", "I", .constantValue.asInt = ADXConstraintSet_ROTATE_LEFT_OF_PORTRATE, 0x19, -1, -1, -1, -1 },
     { "mRotate_", "I", .constantValue.asLong = 0, 0x1, -1, -1, -1, -1 },
-    { "mSavedAttributes_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x2, -1, -1, 84, -1 },
+    { "mSavedAttributes_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x2, -1, -1, 106, -1 },
     { "mForceId_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "UNSET", "I", .constantValue.asInt = ADXConstraintSet_UNSET, 0x19, -1, -1, -1, -1 },
     { "MATCH_CONSTRAINT", "I", .constantValue.asInt = ADXConstraintSet_MATCH_CONSTRAINT, 0x19, -1, -1, -1, -1 },
@@ -2241,7 +2519,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "CHAIN_PACKED", "I", .constantValue.asInt = ADXConstraintSet_CHAIN_PACKED, 0x19, -1, -1, -1, -1 },
     { "DEBUG", "Z", .constantValue.asBOOL = ADXConstraintSet_DEBUG, 0x1a, -1, -1, -1, -1 },
     { "BARRIER_TYPE", "I", .constantValue.asInt = ADXConstraintSet_BARRIER_TYPE, 0x1a, -1, -1, -1, -1 },
-    { "mConstraints_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x2, -1, -1, 85, -1 },
+    { "mConstraints_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x2, -1, -1, 107, -1 },
     { "BASELINE_TO_BASELINE", "I", .constantValue.asInt = ADXConstraintSet_BASELINE_TO_BASELINE, 0x1a, -1, -1, -1, -1 },
     { "BOTTOM_MARGIN", "I", .constantValue.asInt = ADXConstraintSet_BOTTOM_MARGIN, 0x1a, -1, -1, -1, -1 },
     { "BOTTOM_TO_BOTTOM", "I", .constantValue.asInt = ADXConstraintSet_BOTTOM_TO_BOTTOM, 0x1a, -1, -1, -1, -1 },
@@ -2340,12 +2618,12 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "LAYOUT_CONSTRAINT_HEIGHT", "I", .constantValue.asInt = ADXConstraintSet_LAYOUT_CONSTRAINT_HEIGHT, 0x1a, -1, -1, -1, -1 },
     { "LAYOUT_WRAP_BEHAVIOR", "I", .constantValue.asInt = ADXConstraintSet_LAYOUT_WRAP_BEHAVIOR, 0x1a, -1, -1, -1, -1 },
     { "MOTION_TARGET", "I", .constantValue.asInt = ADXConstraintSet_MOTION_TARGET, 0x1a, -1, -1, -1, -1 },
-    { "KEY_WEIGHT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 86, -1, -1 },
-    { "KEY_RATIO", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 87, -1, -1 },
-    { "KEY_PERCENT_PARENT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 88, -1, -1 },
+    { "KEY_WEIGHT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 108, -1, -1 },
+    { "KEY_RATIO", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 109, -1, -1 },
+    { "KEY_PERCENT_PARENT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 110, -1, -1 },
   };
-  static const void *ptrTable[] = { "clone", "LADXConstraintSet;", "LADXConstraintLayout;", "LADXConstraints;", "applyTo", "applyToInternal", "LADXConstraintLayout;Z", "center", "IIIIIIIF", "centerHorizontally", "centerHorizontallyRtl", "centerVertically", "createVerticalChain", "IIII[I[FI", "createHorizontalChain", "createHorizontalChainRtl", "IIII[I[FIII", "connect", "IIIII", "IIII", "II", "clear", "I", "setMargin", "III", "setGoneMargin", "setHorizontalBias", "IF", "setVerticalBias", "setDimensionRatio", "ILNSString;", "setVisibility", "setAlpha", "getApplyElevation", "setApplyElevation", "IZ", "setElevation", "setRotation", "setRotationX", "setRotationY", "setScaleX", "setScaleY", "setTransformPivotX", "setTransformPivotY", "setTransformPivot", "IFF", "setTranslationX", "setTranslationY", "setTranslation", "setTranslationZ", "constrainHeight", "constrainWidth", "constrainCircle", "IIIF", "constrainMaxHeight", "constrainMaxWidth", "constrainMinHeight", "constrainMinWidth", "constrainPercentWidth", "constrainPercentHeight", "constrainDefaultHeight", "constrainDefaultWidth", "setHorizontalWeight", "setVerticalWeight", "setHorizontalChainStyle", "setVerticalChainStyle", "addToHorizontalChain", "addToHorizontalChainRTL", "addToVerticalChain", "removeFromVerticalChain", "removeFromHorizontalChain", "create", "createBarrier", "III[I", "setGuidelineBegin", "setGuidelineEnd", "setGuidelinePercent", "setBarrierType", "get", "sideToString", "convertReferenceString", "LADView;LNSString;", &ADXConstraintSet_TAG, &ADXConstraintSet_ERROR_MESSAGE, "Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;", "Ljava/util/HashMap<Ljava/lang/Integer;Landroidx/constraintlayout/widget/ConstraintSet$Constraint;>;", &ADXConstraintSet_KEY_WEIGHT, &ADXConstraintSet_KEY_RATIO, &ADXConstraintSet_KEY_PERCENT_PARENT, "LADXConstraintSet_Layout;LADXConstraintSet_Transform;LADXConstraintSet_PropertySet;LADXConstraintSet_Motion;LADXConstraintSet_Constraint;" };
-  static const J2ObjcClassInfo _ADXConstraintSet = { "ConstraintSet", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x1, 72, 148, -1, 89, -1, -1, -1 };
+  static const void *ptrTable[] = { "getParameters", "I", "readFallback", "LADXConstraintSet;", "LADXConstraintLayout;", "applyDeltaFrom", "clone", "LADXConstraints;", "applyTo", "applyCustomAttributes", "applyToHelper", "LADXConstraintHelper;LADXConstraintWidget;LADXConstraintLayout_LayoutParams;LADSparseArray;", "(Landroidx/constraintlayout/widget/ConstraintHelper;Landroidx/constraintlayout/core/widgets/ConstraintWidget;Landroidx/constraintlayout/widget/ConstraintLayout$LayoutParams;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "applyToLayoutParams", "ILADXConstraintLayout_LayoutParams;", "applyToInternal", "LADXConstraintLayout;Z", "center", "IIIIIIIF", "centerHorizontally", "centerHorizontallyRtl", "centerVertically", "createVerticalChain", "IIII[I[FI", "createHorizontalChain", "createHorizontalChainRtl", "IIII[I[FIII", "connect", "IIIII", "IIII", "II", "clear", "setMargin", "III", "setGoneMargin", "setHorizontalBias", "IF", "setVerticalBias", "setDimensionRatio", "ILNSString;", "setVisibility", "getVisibilityMode", "getVisibility", "getHeight", "getWidth", "setAlpha", "getApplyElevation", "setApplyElevation", "IZ", "setElevation", "setRotation", "setRotationX", "setRotationY", "setScaleX", "setScaleY", "setTransformPivotX", "setTransformPivotY", "setTransformPivot", "IFF", "setTranslationX", "setTranslationY", "setTranslation", "setTranslationZ", "constrainHeight", "constrainWidth", "constrainCircle", "IIIF", "constrainMaxHeight", "constrainMaxWidth", "constrainMinHeight", "constrainMinWidth", "constrainPercentWidth", "constrainPercentHeight", "constrainDefaultHeight", "constrainDefaultWidth", "setHorizontalWeight", "setVerticalWeight", "setHorizontalChainStyle", "setVerticalChainStyle", "addToHorizontalChain", "addToHorizontalChainRTL", "addToVerticalChain", "removeFromVerticalChain", "removeFromHorizontalChain", "create", "createBarrier", "III[I", "setGuidelineBegin", "setGuidelineEnd", "setGuidelinePercent", "setBarrierType", "get", "sideToString", "setDeltaValue", "LADXConstraintSet_Constraint;IF", "LADXConstraintSet_Constraint;II", "LADXConstraintSet_Constraint;ILNSString;", "LADXConstraintSet_Constraint;IZ", "convertReferenceString", "LADView;LNSString;", "getConstraint", "setForceId", "Z", "setValidateOnParse", &ADXConstraintSet_TAG, &ADXConstraintSet_ERROR_MESSAGE, "Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;", "Ljava/util/HashMap<Ljava/lang/Integer;Landroidx/constraintlayout/widget/ConstraintSet$Constraint;>;", &ADXConstraintSet_KEY_WEIGHT, &ADXConstraintSet_KEY_RATIO, &ADXConstraintSet_KEY_PERCENT_PARENT, "LADXConstraintSet_Layout;LADXConstraintSet_Transform;LADXConstraintSet_PropertySet;LADXConstraintSet_Motion;LADXConstraintSet_Constraint;" };
+  static const J2ObjcClassInfo _ADXConstraintSet = { "ConstraintSet", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x1, 91, 148, -1, 111, -1, -1, -1 };
   return &_ADXConstraintSet;
 }
 
@@ -2376,26 +2654,19 @@ void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withI
     @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"must have 2 or more widgets in a chain");
   }
   if (weights != nil) {
-    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, IOSIntArray_Get(chainIds, 0))))->layout_))->horizontalWeight_ = IOSFloatArray_Get(weights, 0);
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, 0)]))->layout_))->horizontalWeight_ = IOSFloatArray_Get(weights, 0);
   }
-  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, IOSIntArray_Get(chainIds, 0))))->layout_))->horizontalChainStyle_ = style;
+  ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, 0)]))->layout_))->horizontalChainStyle_ = style;
   [self connectWithInt:IOSIntArray_Get(chainIds, 0) withInt:left withInt:leftId withInt:leftSide withInt:ADXConstraintSet_UNSET];
   for (jint i = 1; i < chainIds->size_; i++) {
     jint chainId = IOSIntArray_Get(chainIds, i);
     [self connectWithInt:IOSIntArray_Get(chainIds, i) withInt:left withInt:IOSIntArray_Get(chainIds, i - 1) withInt:right withInt:ADXConstraintSet_UNSET];
     [self connectWithInt:IOSIntArray_Get(chainIds, i - 1) withInt:right withInt:IOSIntArray_Get(chainIds, i) withInt:left withInt:ADXConstraintSet_UNSET];
     if (weights != nil) {
-      ((ADXConstraintSet_Constraint *) nil_chk(ADXConstraintSet_getWithInt_(self, IOSIntArray_Get(chainIds, i))))->layout_->horizontalWeight_ = IOSFloatArray_Get(weights, i);
+      ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, i)]))->layout_->horizontalWeight_ = IOSFloatArray_Get(weights, i);
     }
   }
   [self connectWithInt:IOSIntArray_Get(chainIds, chainIds->size_ - 1) withInt:right withInt:rightId withInt:rightSide withInt:ADXConstraintSet_UNSET];
-}
-
-ADXConstraintSet_Constraint *ADXConstraintSet_getWithInt_(ADXConstraintSet *self, jint id_) {
-  if (![((JavaUtilHashMap *) nil_chk(self->mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
-    [((JavaUtilHashMap *) nil_chk(self->mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(id_) withId:create_ADXConstraintSet_Constraint_init()];
-  }
-  return [((JavaUtilHashMap *) nil_chk(self->mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)];
 }
 
 NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, jint side) {
@@ -2416,6 +2687,281 @@ NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, jint sid
     return @"end";
   }
   return @"undefined";
+}
+
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(ADXConstraintSet_Constraint *c, jint type, jfloat value) {
+  ADXConstraintSet_initialize();
+  switch (type) {
+    case ADXConstraintSet_GUIDE_PERCENT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->guidePercent_ = value;
+    break;
+    case ADXConstraintSet_CIRCLE_ANGLE:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->circleAngle_ = value;
+    break;
+    case ADXConstraintSet_HORIZONTAL_BIAS:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->horizontalBias_ = value;
+    break;
+    case ADXConstraintSet_VERTICAL_BIAS:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->verticalBias_ = value;
+    break;
+    case ADXConstraintSet_ALPHA:
+    ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->propertySet_))->alpha_ = value;
+    break;
+    case ADXConstraintSet_ELEVATION:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->elevation_ = value;
+    c->transform_->applyElevation_ = true;
+    break;
+    case ADXConstraintSet_ROTATION:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->rotation_ = value;
+    break;
+    case ADXConstraintSet_ROTATION_X:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->rotationX_ = value;
+    break;
+    case ADXConstraintSet_ROTATION_Y:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->rotationY_ = value;
+    break;
+    case ADXConstraintSet_SCALE_X:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->scaleX_ = value;
+    break;
+    case ADXConstraintSet_SCALE_Y:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->scaleY_ = value;
+    break;
+    case ADXConstraintSet_TRANSFORM_PIVOT_X:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->transformPivotX_ = value;
+    break;
+    case ADXConstraintSet_TRANSFORM_PIVOT_Y:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->transformPivotY_ = value;
+    break;
+    case ADXConstraintSet_TRANSLATION_X:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->translationX_ = value;
+    break;
+    case ADXConstraintSet_TRANSLATION_Y:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->translationY_ = value;
+    break;
+    case ADXConstraintSet_TRANSLATION_Z:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->translationZ_ = value;
+    break;
+    case ADXConstraintSet_VERTICAL_WEIGHT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->verticalWeight_ = value;
+    break;
+    case ADXConstraintSet_HORIZONTAL_WEIGHT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->horizontalWeight_ = value;
+    break;
+    case ADXConstraintSet_WIDTH_PERCENT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->widthPercent_ = value;
+    break;
+    case ADXConstraintSet_HEIGHT_PERCENT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->heightPercent_ = value;
+    break;
+    case ADXConstraintSet_PROGRESS:
+    ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->propertySet_))->mProgress_ = value;
+    break;
+    case ADXConstraintSet_TRANSITION_PATH_ROTATE:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mPathRotate_ = value;
+    break;
+    case ADXConstraintSet_MOTION_STAGGER:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mMotionStagger_ = value;
+    break;
+    case ADXConstraintSet_QUANTIZE_MOTION_PHASE:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mQuantizeMotionPhase_ = value;
+    break;
+    case ADXConstraintSet_UNUSED:
+    break;
+    default:
+    ADLog_wWithNSString_withNSString_(ADXConstraintSet_TAG, @"Unknown attribute 0x");
+  }
+}
+
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(ADXConstraintSet_Constraint *c, jint type, jint value) {
+  ADXConstraintSet_initialize();
+  switch (type) {
+    case ADXConstraintSet_EDITOR_ABSOLUTE_X:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->editorAbsoluteX_ = value;
+    break;
+    case ADXConstraintSet_EDITOR_ABSOLUTE_Y:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->editorAbsoluteY_ = value;
+    break;
+    case ADXConstraintSet_LAYOUT_WRAP_BEHAVIOR:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mWrapBehavior_ = value;
+    break;
+    case ADXConstraintSet_GUIDE_BEGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->guideBegin_ = value;
+    break;
+    case ADXConstraintSet_GUIDE_END:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->guideEnd_ = value;
+    break;
+    case ADXConstraintSet_ORIENTATION:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->orientation_ = value;
+    break;
+    case ADXConstraintSet_CIRCLE:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->circleConstraint_ = value;
+    break;
+    case ADXConstraintSet_CIRCLE_RADIUS:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->circleRadius_ = value;
+    break;
+    case ADXConstraintSet_GONE_LEFT_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->goneLeftMargin_ = value;
+    break;
+    case ADXConstraintSet_GONE_TOP_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->goneTopMargin_ = value;
+    break;
+    case ADXConstraintSet_GONE_RIGHT_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->goneRightMargin_ = value;
+    break;
+    case ADXConstraintSet_GONE_BOTTOM_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->goneBottomMargin_ = value;
+    break;
+    case ADXConstraintSet_GONE_START_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->goneStartMargin_ = value;
+    break;
+    case ADXConstraintSet_GONE_END_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->goneEndMargin_ = value;
+    break;
+    case ADXConstraintSet_GONE_BASELINE_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->goneBaselineMargin_ = value;
+    break;
+    case ADXConstraintSet_LEFT_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->leftMargin_ = value;
+    break;
+    case ADXConstraintSet_RIGHT_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->rightMargin_ = value;
+    break;
+    case ADXConstraintSet_START_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->startMargin_ = value;
+    break;
+    case ADXConstraintSet_END_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->endMargin_ = value;
+    break;
+    case ADXConstraintSet_TOP_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->topMargin_ = value;
+    break;
+    case ADXConstraintSet_BOTTOM_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->bottomMargin_ = value;
+    break;
+    case ADXConstraintSet_BASELINE_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->baselineMargin_ = value;
+    break;
+    case ADXConstraintSet_LAYOUT_WIDTH:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mWidth_ = value;
+    break;
+    case ADXConstraintSet_LAYOUT_HEIGHT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mHeight_ = value;
+    break;
+    case ADXConstraintSet_WIDTH_DEFAULT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->widthDefault_ = value;
+    break;
+    case ADXConstraintSet_HEIGHT_DEFAULT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->heightDefault_ = value;
+    break;
+    case ADXConstraintSet_HEIGHT_MAX:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->heightMax_ = value;
+    break;
+    case ADXConstraintSet_WIDTH_MAX:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->widthMax_ = value;
+    break;
+    case ADXConstraintSet_HEIGHT_MIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->heightMin_ = value;
+    break;
+    case ADXConstraintSet_WIDTH_MIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->widthMin_ = value;
+    break;
+    case ADXConstraintSet_LAYOUT_VISIBILITY:
+    ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->propertySet_))->visibility_ = value;
+    break;
+    case ADXConstraintSet_VISIBILITY_MODE:
+    ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->propertySet_))->mVisibilityMode_ = value;
+    break;
+    case ADXConstraintSet_TRANSFORM_PIVOT_TARGET:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->transformPivotTarget_ = value;
+    break;
+    case ADXConstraintSet_VERTICAL_STYLE:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->verticalChainStyle_ = value;
+    break;
+    case ADXConstraintSet_HORIZONTAL_STYLE:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->horizontalChainStyle_ = value;
+    break;
+    case ADXConstraintSet_VIEW_ID:
+    ((ADXConstraintSet_Constraint *) nil_chk(c))->mViewId_ = value;
+    break;
+    case ADXConstraintSet_ANIMATE_RELATIVE_TO:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mAnimateRelativeTo_ = value;
+    break;
+    case ADXConstraintSet_ANIMATE_CIRCLE_ANGLE_TO:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mAnimateCircleAngleTo_ = value;
+    break;
+    case ADXConstraintSet_PATH_MOTION_ARC:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mPathMotionArc_ = value;
+    break;
+    case ADXConstraintSet_QUANTIZE_MOTION_STEPS:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mQuantizeMotionSteps_ = value;
+    break;
+    case ADXConstraintSet_QUANTIZE_MOTION_INTERPOLATOR_TYPE:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mQuantizeInterpolatorType_ = value;
+    break;
+    case ADXConstraintSet_QUANTIZE_MOTION_INTERPOLATOR_ID:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mQuantizeInterpolatorID_ = value;
+    break;
+    case ADXConstraintSet_DRAW_PATH:
+    ((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mDrawPath_ = value;
+    break;
+    case ADXConstraintSet_BARRIER_DIRECTION:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mBarrierDirection_ = value;
+    break;
+    case ADXConstraintSet_BARRIER_MARGIN:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mBarrierMargin_ = value;
+    break;
+    case ADXConstraintSet_UNUSED:
+    break;
+    default:
+    ADLog_wWithNSString_withNSString_(ADXConstraintSet_TAG, @"Unknown attribute 0x");
+  }
+}
+
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(ADXConstraintSet_Constraint *c, jint type, NSString *value) {
+  ADXConstraintSet_initialize();
+  switch (type) {
+    case ADXConstraintSet_DIMENSION_RATIO:
+    JreStrongAssign(&((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->dimensionRatio_, value);
+    break;
+    case ADXConstraintSet_TRANSITION_EASING:
+    JreStrongAssign(&((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mTransitionEasing_, value);
+    break;
+    case ADXConstraintSet_QUANTIZE_MOTION_INTERPOLATOR_STR:
+    JreStrongAssign(&((ADXConstraintSet_Motion *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->motion_))->mQuantizeInterpolatorString_, value);
+    break;
+    case ADXConstraintSet_CONSTRAINT_REFERENCED_IDS:
+    JreStrongAssign(&((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mReferenceIdString_, value);
+    break;
+    case ADXConstraintSet_CONSTRAINT_TAG:
+    JreStrongAssign(&((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mConstraintTag_, value);
+    break;
+    case ADXConstraintSet_UNUSED:
+    break;
+    default:
+    ADLog_wWithNSString_withNSString_(ADXConstraintSet_TAG, @"Unknown attribute 0x");
+  }
+}
+
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(ADXConstraintSet_Constraint *c, jint type, jboolean value) {
+  ADXConstraintSet_initialize();
+  switch (type) {
+    case ADXConstraintSet_CONSTRAINED_WIDTH:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->constrainedWidth_ = value;
+    break;
+    case ADXConstraintSet_CONSTRAINED_HEIGHT:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->constrainedHeight_ = value;
+    break;
+    case ADXConstraintSet_ELEVATION:
+    ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->transform_))->applyElevation_ = value;
+    break;
+    case ADXConstraintSet_BARRIER_ALLOWS_GONE_WIDGETS:
+    ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(c))->layout_))->mBarrierAllowsGoneWidgets_ = value;
+    break;
+    case ADXConstraintSet_UNUSED:
+    break;
+    default:
+    ADLog_wWithNSString_withNSString_(ADXConstraintSet_TAG, @"Unknown attribute 0x");
+  }
 }
 
 IOSIntArray *ADXConstraintSet_convertReferenceStringWithADView_withNSString_(ADXConstraintSet *self, ADView *view, NSString *referenceIdString) {
@@ -3035,6 +3581,12 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
+- (void)applyDeltaWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c {
+  if (mDelta_ != nil) {
+    [mDelta_ applyDeltaWithADXConstraintSet_Constraint:c];
+  }
+}
+
 - (ADXConstraintSet_Constraint *)java_clone {
   ADXConstraintSet_Constraint *clone = create_ADXConstraintSet_Constraint_init();
   [((ADXConstraintSet_Layout *) nil_chk(clone->layout_)) copyFromWithADXConstraintSet_Layout:layout_];
@@ -3049,12 +3601,32 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)fillFromConstraintsWithADXConstraintHelper:(ADXConstraintHelper *)helper
                                            withInt:(jint)viewId
                    withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param {
-  ADXConstraintSet_Constraint_fillFromConstraintsWithADXConstraintHelper_withInt_withADXConstraints_LayoutParams_(self, helper, viewId, param);
+  [self fillFromConstraintsWithInt:viewId withADXConstraints_LayoutParams:param];
+  if ([helper isKindOfClass:[ADXBarrier class]]) {
+    ((ADXConstraintSet_Layout *) nil_chk(layout_))->mHelperType_ = ADXConstraintSet_BARRIER_TYPE;
+    ADXBarrier *barrier = (ADXBarrier *) helper;
+    layout_->mBarrierDirection_ = [((ADXBarrier *) nil_chk(barrier)) getType];
+    JreStrongAssign(&layout_->mReferenceIds_, [barrier getReferencedIds]);
+    layout_->mBarrierMargin_ = [barrier getMargin];
+  }
 }
 
 - (void)fillFromConstraintsWithInt:(jint)viewId
    withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param {
-  ADXConstraintSet_Constraint_fillFromConstraintsWithInt_withADXConstraints_LayoutParams_(self, viewId, param);
+  ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(self, viewId, param);
+  ((ADXConstraintSet_PropertySet *) nil_chk(propertySet_))->alpha_ = ((ADXConstraints_LayoutParams *) nil_chk(param))->alpha_;
+  ((ADXConstraintSet_Transform *) nil_chk(transform_))->rotation_ = param->rotation_;
+  transform_->rotationX_ = param->rotationX_;
+  transform_->rotationY_ = param->rotationY_;
+  transform_->scaleX_ = param->scaleX_;
+  transform_->scaleY_ = param->scaleY_;
+  transform_->transformPivotX_ = param->transformPivotX_;
+  transform_->transformPivotY_ = param->transformPivotY_;
+  transform_->translationX_ = param->translationX_;
+  transform_->translationY_ = param->translationY_;
+  transform_->translationZ_ = param->translationZ_;
+  transform_->elevation_ = param->elevation_;
+  transform_->applyElevation_ = param->applyElevation_;
 }
 
 - (void)fillFromWithInt:(jint)viewId
@@ -3139,21 +3711,23 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)param {
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LADXConstraintSet_Constraint;", 0x1, 0, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 1, 3, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 4, 5, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LADXConstraintSet_Constraint;", 0x1, 2, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 3, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 6, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 8, 9, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
-  methods[1].selector = @selector(java_clone);
-  methods[2].selector = @selector(fillFromConstraintsWithADXConstraintHelper:withInt:withADXConstraints_LayoutParams:);
-  methods[3].selector = @selector(fillFromConstraintsWithInt:withADXConstraints_LayoutParams:);
-  methods[4].selector = @selector(fillFromWithInt:withADXConstraintLayout_LayoutParams:);
-  methods[5].selector = @selector(applyToWithADXConstraintLayout_LayoutParams:);
+  methods[1].selector = @selector(applyDeltaWithADXConstraintSet_Constraint:);
+  methods[2].selector = @selector(java_clone);
+  methods[3].selector = @selector(fillFromConstraintsWithADXConstraintHelper:withInt:withADXConstraints_LayoutParams:);
+  methods[4].selector = @selector(fillFromConstraintsWithInt:withADXConstraints_LayoutParams:);
+  methods[5].selector = @selector(fillFromWithInt:withADXConstraintLayout_LayoutParams:);
+  methods[6].selector = @selector(applyToWithADXConstraintLayout_LayoutParams:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "mViewId_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
@@ -3162,11 +3736,11 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)param {
     { "motion_", "LADXConstraintSet_Motion;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
     { "layout_", "LADXConstraintSet_Layout;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
     { "transform_", "LADXConstraintSet_Transform;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
-    { "mCustomConstraints_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x1, -1, -1, 8, -1 },
+    { "mCustomConstraints_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x1, -1, -1, 10, -1 },
     { "mDelta_", "LADXConstraintSet_Constraint_Delta;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "clone", "fillFromConstraints", "LADXConstraintHelper;ILADXConstraints_LayoutParams;", "ILADXConstraints_LayoutParams;", "fillFrom", "ILADXConstraintLayout_LayoutParams;", "applyTo", "LADXConstraintLayout_LayoutParams;", "Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;", "LADXConstraintSet;", "LADXConstraintSet_Constraint_Delta;" };
-  static const J2ObjcClassInfo _ADXConstraintSet_Constraint = { "Constraint", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x9, 6, 8, 9, 10, -1, -1, -1 };
+  static const void *ptrTable[] = { "applyDelta", "LADXConstraintSet_Constraint;", "clone", "fillFromConstraints", "LADXConstraintHelper;ILADXConstraints_LayoutParams;", "ILADXConstraints_LayoutParams;", "fillFrom", "ILADXConstraintLayout_LayoutParams;", "applyTo", "LADXConstraintLayout_LayoutParams;", "Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;", "LADXConstraintSet;", "LADXConstraintSet_Constraint_Delta;" };
+  static const J2ObjcClassInfo _ADXConstraintSet_Constraint = { "Constraint", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x9, 7, 8, 11, 12, -1, -1, -1 };
   return &_ADXConstraintSet_Constraint;
 }
 
@@ -3187,34 +3761,6 @@ ADXConstraintSet_Constraint *new_ADXConstraintSet_Constraint_init() {
 
 ADXConstraintSet_Constraint *create_ADXConstraintSet_Constraint_init() {
   J2OBJC_CREATE_IMPL(ADXConstraintSet_Constraint, init)
-}
-
-void ADXConstraintSet_Constraint_fillFromConstraintsWithADXConstraintHelper_withInt_withADXConstraints_LayoutParams_(ADXConstraintSet_Constraint *self, ADXConstraintHelper *helper, jint viewId, ADXConstraints_LayoutParams *param) {
-  ADXConstraintSet_Constraint_fillFromConstraintsWithInt_withADXConstraints_LayoutParams_(self, viewId, param);
-  if ([helper isKindOfClass:[ADXBarrier class]]) {
-    ((ADXConstraintSet_Layout *) nil_chk(self->layout_))->mHelperType_ = ADXConstraintSet_BARRIER_TYPE;
-    ADXBarrier *barrier = (ADXBarrier *) helper;
-    self->layout_->mBarrierDirection_ = [((ADXBarrier *) nil_chk(barrier)) getType];
-    JreStrongAssign(&self->layout_->mReferenceIds_, [barrier getReferencedIds]);
-    self->layout_->mBarrierMargin_ = [barrier getMargin];
-  }
-}
-
-void ADXConstraintSet_Constraint_fillFromConstraintsWithInt_withADXConstraints_LayoutParams_(ADXConstraintSet_Constraint *self, jint viewId, ADXConstraints_LayoutParams *param) {
-  ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(self, viewId, param);
-  ((ADXConstraintSet_PropertySet *) nil_chk(self->propertySet_))->alpha_ = ((ADXConstraints_LayoutParams *) nil_chk(param))->alpha_;
-  ((ADXConstraintSet_Transform *) nil_chk(self->transform_))->rotation_ = param->rotation_;
-  self->transform_->rotationX_ = param->rotationX_;
-  self->transform_->rotationY_ = param->rotationY_;
-  self->transform_->scaleX_ = param->scaleX_;
-  self->transform_->scaleY_ = param->scaleY_;
-  self->transform_->transformPivotX_ = param->transformPivotX_;
-  self->transform_->transformPivotY_ = param->transformPivotY_;
-  self->transform_->translationX_ = param->translationX_;
-  self->transform_->translationY_ = param->translationY_;
-  self->transform_->translationZ_ = param->translationZ_;
-  self->transform_->elevation_ = param->elevation_;
-  self->transform_->applyElevation_ = param->applyElevation_;
 }
 
 void ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(ADXConstraintSet_Constraint *self, jint viewId, ADXConstraintLayout_LayoutParams *param) {
@@ -3294,27 +3840,64 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
+- (void)applyDeltaWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c {
+  for (jint i = 0; i < mCountInt_; i++) {
+    ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(c, IOSIntArray_Get(nil_chk(mTypeInt_), i), IOSIntArray_Get(nil_chk(mValueInt_), i));
+  }
+  for (jint i = 0; i < mCountFloat_; i++) {
+    ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(c, IOSIntArray_Get(nil_chk(mTypeFloat_), i), IOSFloatArray_Get(nil_chk(mValueFloat_), i));
+  }
+  for (jint i = 0; i < mCountString_; i++) {
+    ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(c, IOSIntArray_Get(nil_chk(mTypeString_), i), IOSObjectArray_Get(nil_chk(mValueString_), i));
+  }
+  for (jint i = 0; i < mCountBoolean_; i++) {
+    ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(c, IOSIntArray_Get(nil_chk(mTypeBoolean_), i), IOSBooleanArray_Get(nil_chk(mValueBoolean_), i));
+  }
+}
+
+- (void)dealloc {
+  RELEASE_(mTypeInt_);
+  RELEASE_(mValueInt_);
+  RELEASE_(mTypeFloat_);
+  RELEASE_(mValueFloat_);
+  RELEASE_(mTypeString_);
+  RELEASE_(mValueString_);
+  RELEASE_(mTypeBoolean_);
+  RELEASE_(mValueBoolean_);
+  [super dealloc];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 0, 1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
+  methods[1].selector = @selector(applyDeltaWithADXConstraintSet_Constraint:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "INITIAL_BOOLEAN", "I", .constantValue.asInt = ADXConstraintSet_Constraint_Delta_INITIAL_BOOLEAN, 0x1a, -1, -1, -1, -1 },
     { "INITIAL_INT", "I", .constantValue.asInt = ADXConstraintSet_Constraint_Delta_INITIAL_INT, 0x1a, -1, -1, -1, -1 },
     { "INITIAL_FLOAT", "I", .constantValue.asInt = ADXConstraintSet_Constraint_Delta_INITIAL_FLOAT, 0x1a, -1, -1, -1, -1 },
     { "INITIAL_STRING", "I", .constantValue.asInt = ADXConstraintSet_Constraint_Delta_INITIAL_STRING, 0x1a, -1, -1, -1, -1 },
+    { "mTypeInt_", "[I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "mValueInt_", "[I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mCountInt_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "mTypeFloat_", "[I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "mValueFloat_", "[F", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mCountFloat_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "mTypeString_", "[I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "mValueString_", "[LNSString;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mCountString_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "mTypeBoolean_", "[I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "mValueBoolean_", "[Z", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mCountBoolean_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LADXConstraintSet_Constraint;" };
-  static const J2ObjcClassInfo _ADXConstraintSet_Constraint_Delta = { "Delta", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x8, 1, 8, 0, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "applyDelta", "LADXConstraintSet_Constraint;" };
+  static const J2ObjcClassInfo _ADXConstraintSet_Constraint_Delta = { "Delta", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x8, 2, 16, 1, -1, -1, -1, -1 };
   return &_ADXConstraintSet_Constraint_Delta;
 }
 
@@ -3322,9 +3905,17 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 void ADXConstraintSet_Constraint_Delta_init(ADXConstraintSet_Constraint_Delta *self) {
   NSObject_init(self);
+  JreStrongAssignAndConsume(&self->mTypeInt_, [IOSIntArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_INT]);
+  JreStrongAssignAndConsume(&self->mValueInt_, [IOSIntArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_INT]);
   self->mCountInt_ = 0;
+  JreStrongAssignAndConsume(&self->mTypeFloat_, [IOSIntArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_FLOAT]);
+  JreStrongAssignAndConsume(&self->mValueFloat_, [IOSFloatArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_FLOAT]);
   self->mCountFloat_ = 0;
+  JreStrongAssignAndConsume(&self->mTypeString_, [IOSIntArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_STRING]);
+  JreStrongAssignAndConsume(&self->mValueString_, [IOSObjectArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_STRING type:NSString_class_()]);
   self->mCountString_ = 0;
+  JreStrongAssignAndConsume(&self->mTypeBoolean_, [IOSIntArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_BOOLEAN]);
+  JreStrongAssignAndConsume(&self->mValueBoolean_, [IOSBooleanArray newArrayWithLength:ADXConstraintSet_Constraint_Delta_INITIAL_BOOLEAN]);
   self->mCountBoolean_ = 0;
 }
 

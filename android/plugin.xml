@@ -27,6 +27,7 @@
      <source-file src="src/com/ashera/constraintlayout/FlowImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="src/com/ashera/constraintlayout/GroupImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="src/com/ashera/constraintlayout/GuidelineImpl.java" target-dir="src/com/ashera/constraintlayout"/>
+     <source-file src="src/com/ashera/constraintlayout/MotionLayoutImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="src/com/ashera/constraintlayout/PlaceholderImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <!-- src end -->
      
@@ -37,6 +38,7 @@
      <source-file src="tsc/src/android/widget/FlowImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="tsc/src/android/widget/GroupImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="tsc/src/android/widget/GuidelineImpl.ts" target-dir="tsc/src/android/widget"/>
+     <source-file src="tsc/src/android/widget/MotionLayoutImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="tsc/src/android/widget/PlaceholderImpl.ts" target-dir="tsc/src/android/widget"/>
      <!-- tsc end -->
   </platform>

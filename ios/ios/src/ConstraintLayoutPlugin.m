@@ -11,6 +11,7 @@
 #include "GroupImpl.h"
 #include "GuidelineImpl.h"
 #include "J2ObjC_source.h"
+#include "MotionLayoutImpl.h"
 #include "PlaceholderImpl.h"
 #include "WidgetFactory.h"
 
@@ -66,6 +67,7 @@ void ASConstraintLayoutPlugin_initPlugin() {
   ASWidgetFactory_register__WithASIWidget_(new_ASPlaceholderImpl_init());
   ASWidgetFactory_register__WithASIWidget_(new_ASFlowImpl_init());
   ASWidgetFactory_register__WithASIWidget_(new_ASCircularFlowImpl_init());
+  ASWidgetFactory_register__WithASIWidget_(new_ASMotionLayoutImpl_init());
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutPlugin)

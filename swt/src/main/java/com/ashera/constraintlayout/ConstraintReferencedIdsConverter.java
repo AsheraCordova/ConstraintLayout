@@ -14,7 +14,7 @@ public class ConstraintReferencedIdsConverter implements IConverter<int[], Strin
         int[] idRefs = new int[ids.length];
 
         for (int i = 0; i < ids.length; i++) {
-            idRefs[i] = IdGenerator.getId("@+id/" + ids[i].trim());
+            idRefs[i] = (int) fragment.getRootWidget().quickConvert("@+id/" + ids[i].trim(), "id");
 
         }
         return idRefs;

@@ -1081,6 +1081,31 @@ return layoutParams.wrapBehaviorInParent;			}
             ((org.eclipse.swt.widgets.Control)asNativeWidget()).setVisible(View.VISIBLE == visibility);
             
         }
+        
+        	public void state0() {
+        		ViewImpl.state(ConstraintLayoutImpl.this, 0);
+        	}
+        	public void state1() {
+        		ViewImpl.state(ConstraintLayoutImpl.this, 1);
+        	}
+        	public void state2() {
+        		ViewImpl.state(ConstraintLayoutImpl.this, 2);
+        	}
+        	public void state3() {
+        		ViewImpl.state(ConstraintLayoutImpl.this, 3);
+        	}
+        	public void state4() {
+        		ViewImpl.state(ConstraintLayoutImpl.this, 4);
+        	}
+                        
+        public void stateYes() {
+        	ViewImpl.stateYes(ConstraintLayoutImpl.this);
+        	
+        }
+        
+        public void stateNo() {
+        	ViewImpl.stateNo(ConstraintLayoutImpl.this);
+        }
 	}
 	@Override
 	public Class getViewClass() {
@@ -1231,7 +1256,7 @@ return getOptimizationLevel();			}
 	public void setId(String id){
 		if (id != null && !id.equals("")){
 			super.setId(id);
-			constraintLayout.setId(IdGenerator.getId(id));
+			constraintLayout.setId((int) quickConvert(id, "id"));
 		}
 	}
 	

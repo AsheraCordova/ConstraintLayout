@@ -229,6 +229,31 @@ public class GroupImpl extends BaseWidget {
             ((HTMLElement)asNativeWidget()).getStyle().setProperty("display", visibility != View.VISIBLE ? "none" : "block");
             
         }
+        
+        	public void state0() {
+        		ViewImpl.state(GroupImpl.this, 0);
+        	}
+        	public void state1() {
+        		ViewImpl.state(GroupImpl.this, 1);
+        	}
+        	public void state2() {
+        		ViewImpl.state(GroupImpl.this, 2);
+        	}
+        	public void state3() {
+        		ViewImpl.state(GroupImpl.this, 3);
+        	}
+        	public void state4() {
+        		ViewImpl.state(GroupImpl.this, 4);
+        	}
+                        
+        public void stateYes() {
+        	ViewImpl.stateYes(GroupImpl.this);
+        	
+        }
+        
+        public void stateNo() {
+        	ViewImpl.stateNo(GroupImpl.this);
+        }
 	}	@Override
 	public Class getViewClass() {
 		return GroupExt.class;
@@ -316,7 +341,7 @@ return getConstraintReferencedIds();				}
 	public void setId(String id){
 		if (id != null && !id.equals("")){
 			super.setId(id);
-			group.setId(IdGenerator.getId(id));
+			group.setId((int) quickConvert(id, "id"));
 		}
 	}
 	

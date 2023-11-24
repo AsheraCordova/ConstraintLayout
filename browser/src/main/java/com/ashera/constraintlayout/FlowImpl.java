@@ -389,6 +389,31 @@ public class FlowImpl extends BaseWidget {
 		public void setMyAttribute(String name, Object value) {
 			FlowImpl.this.setAttribute(name, value, true);
 		}
+        
+        	public void state0() {
+        		ViewImpl.state(FlowImpl.this, 0);
+        	}
+        	public void state1() {
+        		ViewImpl.state(FlowImpl.this, 1);
+        	}
+        	public void state2() {
+        		ViewImpl.state(FlowImpl.this, 2);
+        	}
+        	public void state3() {
+        		ViewImpl.state(FlowImpl.this, 3);
+        	}
+        	public void state4() {
+        		ViewImpl.state(FlowImpl.this, 4);
+        	}
+                        
+        public void stateYes() {
+        	ViewImpl.stateYes(FlowImpl.this);
+        	
+        }
+        
+        public void stateNo() {
+        	ViewImpl.stateNo(FlowImpl.this);
+        }
 	}	@Override
 	public Class getViewClass() {
 		return FlowExt.class;
@@ -626,7 +651,7 @@ return getConstraintReferencedIds();				}
 	public void setId(String id){
 		if (id != null && !id.equals("")){
 			super.setId(id);
-			flow.setId(IdGenerator.getId(id));
+			flow.setId((int) quickConvert(id, "id"));
 		}
 	}
 	

@@ -28,7 +28,10 @@
 #include "java/util/HashMap.h"
 
 
-@interface ADXConstraintHelper ()
+@interface ADXConstraintHelper () {
+ @public
+  IOSObjectArray *mViews_;
+}
 
 - (void)addRscIDWithInt:(jint)id_;
 
@@ -43,6 +46,8 @@
                                      withNSString:(NSString *)referenceIdString;
 
 @end
+
+J2OBJC_FIELD_SETTER(ADXConstraintHelper, mViews_, IOSObjectArray *)
 
 __attribute__((unused)) static void ADXConstraintHelper_addRscIDWithInt_(ADXConstraintHelper *self, jint id_);
 
@@ -235,6 +240,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
+- (IOSObjectArray *)getViewsWithADXConstraintLayout:(ADXConstraintLayout *)layout {
+  if (mViews_ == nil || mViews_->size_ != mCount_) {
+    JreStrongAssignAndConsume(&mViews_, [IOSObjectArray newArrayWithLength:mCount_ type:ADView_class_()]);
+  }
+  for (jint i = 0; i < mCount_; i++) {
+    jint id_ = IOSIntArray_Get(nil_chk(mIds_), i);
+    IOSObjectArray_Set(nil_chk(mViews_), i, [((ADXConstraintLayout *) nil_chk(layout)) getViewByIdWithInt:id_]);
+  }
+  return mViews_;
+}
+
 - (void)updatePostLayoutWithADXConstraintLayout:(ADXConstraintLayout *)container {
 }
 
@@ -319,6 +335,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   RELEASE_(myContext_);
   RELEASE_(mHelperWidget_);
   RELEASE_(mReferenceIds_);
+  RELEASE_(mViews_);
   RELEASE_(mMap_);
   [super dealloc];
 }
@@ -342,14 +359,15 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x4, 16, 15, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 17, 15, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 17, 18, -1, 19, -1, -1 },
-    { NULL, "V", 0x1, 20, 15, -1, -1, -1, -1 },
+    { NULL, "[LADView;", 0x4, 20, 15, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 21, 15, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 22, 23, -1, 24, -1, -1 },
-    { NULL, "[I", 0x2, 25, 26, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 27, 28, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 29, 30, -1, -1, -1, -1 },
-    { NULL, "Z", 0x1, 31, 6, -1, -1, -1, -1 },
-    { NULL, "I", 0x1, 32, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 22, 15, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 23, 24, -1, 25, -1, -1 },
+    { NULL, "[I", 0x2, 26, 27, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 28, 29, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 31, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 32, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 33, 6, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -371,14 +389,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[14].selector = @selector(applyLayoutFeaturesInConstraintSetWithADXConstraintLayout:);
   methods[15].selector = @selector(updatePreLayoutWithADXConstraintLayout:);
   methods[16].selector = @selector(updatePreLayoutWithADXConstraintWidgetContainer:withADXHelper:withADSparseArray:);
-  methods[17].selector = @selector(updatePostLayoutWithADXConstraintLayout:);
-  methods[18].selector = @selector(updatePostMeasureWithADXConstraintLayout:);
-  methods[19].selector = @selector(loadParametersWithADXConstraintSet_Constraint:withADXHelperWidget:withADXConstraintLayout_LayoutParams:withADSparseArray:);
-  methods[20].selector = @selector(convertReferenceStringWithADView:withNSString:);
-  methods[21].selector = @selector(resolveRtlWithADXConstraintWidget:withBoolean:);
-  methods[22].selector = @selector(setTagWithInt:withId:);
-  methods[23].selector = @selector(containsIdWithInt:);
-  methods[24].selector = @selector(indexFromIdWithInt:);
+  methods[17].selector = @selector(getViewsWithADXConstraintLayout:);
+  methods[18].selector = @selector(updatePostLayoutWithADXConstraintLayout:);
+  methods[19].selector = @selector(updatePostMeasureWithADXConstraintLayout:);
+  methods[20].selector = @selector(loadParametersWithADXConstraintSet_Constraint:withADXHelperWidget:withADXConstraintLayout_LayoutParams:withADSparseArray:);
+  methods[21].selector = @selector(convertReferenceStringWithADView:withNSString:);
+  methods[22].selector = @selector(resolveRtlWithADXConstraintWidget:withBoolean:);
+  methods[23].selector = @selector(setTagWithInt:withId:);
+  methods[24].selector = @selector(containsIdWithInt:);
+  methods[25].selector = @selector(indexFromIdWithInt:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "mIds_", "[I", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
@@ -387,10 +406,11 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mHelperWidget_", "LADXHelper;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "mUseViewMeasure_", "Z", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "mReferenceIds_", "LNSString;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
-    { "mMap_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x4, -1, -1, 33, -1 },
+    { "mViews_", "[LADView;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "mMap_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x4, -1, -1, 34, -1 },
   };
-  static const void *ptrTable[] = { "addView", "LADView;", "removeView", "setReferencedIds", "[I", "addRscID", "I", "onMeasure", "II", "addID", "LNSString;", "findId", "LADXConstraintLayout;LNSString;", "setIds", "applyLayoutFeatures", "LADXConstraintLayout;", "applyLayoutFeaturesInConstraintSet", "updatePreLayout", "LADXConstraintWidgetContainer;LADXHelper;LADSparseArray;", "(Landroidx/constraintlayout/core/widgets/ConstraintWidgetContainer;Landroidx/constraintlayout/core/widgets/Helper;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "updatePostLayout", "updatePostMeasure", "loadParameters", "LADXConstraintSet_Constraint;LADXHelperWidget;LADXConstraintLayout_LayoutParams;LADSparseArray;", "(Landroidx/constraintlayout/widget/ConstraintSet$Constraint;Landroidx/constraintlayout/core/widgets/HelperWidget;Landroidx/constraintlayout/widget/ConstraintLayout$LayoutParams;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "convertReferenceString", "LADView;LNSString;", "resolveRtl", "LADXConstraintWidget;Z", "setTag", "ILNSObject;", "containsId", "indexFromId", "Ljava/util/HashMap<Ljava/lang/Integer;Ljava/lang/String;>;" };
-  static const J2ObjcClassInfo _ADXConstraintHelper = { "ConstraintHelper", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x401, 25, 7, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "addView", "LADView;", "removeView", "setReferencedIds", "[I", "addRscID", "I", "onMeasure", "II", "addID", "LNSString;", "findId", "LADXConstraintLayout;LNSString;", "setIds", "applyLayoutFeatures", "LADXConstraintLayout;", "applyLayoutFeaturesInConstraintSet", "updatePreLayout", "LADXConstraintWidgetContainer;LADXHelper;LADSparseArray;", "(Landroidx/constraintlayout/core/widgets/ConstraintWidgetContainer;Landroidx/constraintlayout/core/widgets/Helper;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "getViews", "updatePostLayout", "updatePostMeasure", "loadParameters", "LADXConstraintSet_Constraint;LADXHelperWidget;LADXConstraintLayout_LayoutParams;LADSparseArray;", "(Landroidx/constraintlayout/widget/ConstraintSet$Constraint;Landroidx/constraintlayout/core/widgets/HelperWidget;Landroidx/constraintlayout/widget/ConstraintLayout$LayoutParams;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "convertReferenceString", "LADView;LNSString;", "resolveRtl", "LADXConstraintWidget;Z", "setTag", "ILNSObject;", "containsId", "indexFromId", "Ljava/util/HashMap<Ljava/lang/Integer;Ljava/lang/String;>;" };
+  static const J2ObjcClassInfo _ADXConstraintHelper = { "ConstraintHelper", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x401, 26, 8, -1, -1, -1, -1, -1 };
   return &_ADXConstraintHelper;
 }
 
@@ -400,6 +420,7 @@ void ADXConstraintHelper_init(ADXConstraintHelper *self) {
   ADView_init(self);
   JreStrongAssignAndConsume(&self->mIds_, [IOSIntArray newArrayWithLength:32]);
   self->mUseViewMeasure_ = false;
+  JreStrongAssign(&self->mViews_, nil);
   JreStrongAssignAndConsume(&self->mMap_, new_JavaUtilHashMap_init());
 }
 

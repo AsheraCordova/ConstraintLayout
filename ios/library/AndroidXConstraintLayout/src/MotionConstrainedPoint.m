@@ -65,10 +65,12 @@ IOSObjectArray *ADXMotionConstrainedPoint_names;
 
 @implementation ADXMotionConstrainedPoint
 
-- (instancetype)initPackagePrivate {
-  ADXMotionConstrainedPoint_initPackagePrivate(self);
+J2OBJC_IGNORE_DESIGNATED_BEGIN
+- (instancetype)init {
+  ADXMotionConstrainedPoint_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jboolean)diffWithFloat:(jfloat)a
                 withFloat:(jfloat)b {
@@ -329,7 +331,7 @@ IOSObjectArray *ADXMotionConstrainedPoint_names;
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initPackagePrivate);
+  methods[0].selector = @selector(init);
   methods[1].selector = @selector(diffWithFloat:withFloat:);
   methods[2].selector = @selector(differentWithADXMotionConstrainedPoint:withJavaUtilHashSet:);
   methods[3].selector = @selector(differentWithADXMotionConstrainedPoint:withBooleanArray:withNSStringArray:);
@@ -381,7 +383,7 @@ IOSObjectArray *ADXMotionConstrainedPoint_names;
     { "mTempDelta_", "[D", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "diff", "FF", "different", "LADXMotionConstrainedPoint;LJavaUtilHashSet;", "(Landroidx/constraintlayout/core/motion/MotionConstrainedPoint;Ljava/util/HashSet<Ljava/lang/String;>;)V", "LADXMotionConstrainedPoint;[Z[LNSString;", "fillStandard", "[D[I", "hasCustomData", "LNSString;", "getCustomDataCount", "getCustomData", "LNSString;[DI", "setBounds", "FFFF", "compareTo", "LADXMotionConstrainedPoint;", "applyParameters", "LADXMotionWidget;", "addValues", "LJavaUtilHashMap;I", "(Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/core/motion/utils/SplineSet;>;I)V", "setState", "LADXCLRect;LADXMotionWidget;IF", &ADXMotionConstrainedPoint_TAG, &ADXMotionConstrainedPoint_names, "Ljava/util/LinkedHashMap<Ljava/lang/String;Landroidx/constraintlayout/core/motion/CustomVariable;>;", "Ljava/lang/Object;Ljava/lang/Comparable<Landroidx/constraintlayout/core/motion/MotionConstrainedPoint;>;" };
-  static const J2ObjcClassInfo _ADXMotionConstrainedPoint = { "MotionConstrainedPoint", "androidx.constraintlayout.core.motion", ptrTable, methods, fields, 7, 0x0, 14, 34, -1, -1, -1, 27, -1 };
+  static const J2ObjcClassInfo _ADXMotionConstrainedPoint = { "MotionConstrainedPoint", "androidx.constraintlayout.core.motion", ptrTable, methods, fields, 7, 0x1, 14, 34, -1, -1, -1, 27, -1 };
   return &_ADXMotionConstrainedPoint;
 }
 
@@ -394,7 +396,7 @@ IOSObjectArray *ADXMotionConstrainedPoint_names;
 
 @end
 
-void ADXMotionConstrainedPoint_initPackagePrivate(ADXMotionConstrainedPoint *self) {
+void ADXMotionConstrainedPoint_init(ADXMotionConstrainedPoint *self) {
   NSObject_init(self);
   self->alpha_ = 1;
   self->mVisibilityMode_ = ADXMotionWidget_VISIBILITY_MODE_NORMAL;
@@ -420,12 +422,12 @@ void ADXMotionConstrainedPoint_initPackagePrivate(ADXMotionConstrainedPoint *sel
   JreStrongAssignAndConsume(&self->mTempDelta_, [IOSDoubleArray newArrayWithLength:18]);
 }
 
-ADXMotionConstrainedPoint *new_ADXMotionConstrainedPoint_initPackagePrivate() {
-  J2OBJC_NEW_IMPL(ADXMotionConstrainedPoint, initPackagePrivate)
+ADXMotionConstrainedPoint *new_ADXMotionConstrainedPoint_init() {
+  J2OBJC_NEW_IMPL(ADXMotionConstrainedPoint, init)
 }
 
-ADXMotionConstrainedPoint *create_ADXMotionConstrainedPoint_initPackagePrivate() {
-  J2OBJC_CREATE_IMPL(ADXMotionConstrainedPoint, initPackagePrivate)
+ADXMotionConstrainedPoint *create_ADXMotionConstrainedPoint_init() {
+  J2OBJC_CREATE_IMPL(ADXMotionConstrainedPoint, init)
 }
 
 jboolean ADXMotionConstrainedPoint_diffWithFloat_withFloat_(ADXMotionConstrainedPoint *self, jfloat a, jfloat b) {

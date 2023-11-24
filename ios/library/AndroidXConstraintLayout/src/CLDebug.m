@@ -4,7 +4,11 @@
 //
 
 #include "CLDebug.h"
+#include "Context.h"
+#include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "MotionEvent.h"
+#include "MotionLayout.h"
 #include "View.h"
 
 
@@ -21,19 +25,66 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXCLDebug_getNameWithADView_(view);
 }
 
++ (NSString *)getLocation {
+  return ADXCLDebug_getLocation();
+}
+
++ (void)logStackWithNSString:(NSString *)tag
+                withNSString:(NSString *)string
+                     withInt:(jint)i {
+  ADXCLDebug_logStackWithNSString_withNSString_withInt_(tag, string, i);
+}
+
++ (jint)getNameWithADContext:(ADContext *)context
+                     withInt:(jint)mCurrentState {
+  return ADXCLDebug_getNameWithADContext_withInt_(context, mCurrentState);
+}
+
++ (NSString *)getLoc {
+  return ADXCLDebug_getLoc();
+}
+
++ (NSString *)getNameWithADContext:(ADContext *)context
+                      withIntArray:(IOSIntArray *)referencedIds {
+  return ADXCLDebug_getNameWithADContext_withIntArray_(context, referencedIds);
+}
+
++ (NSString *)getStateWithADXMotionLayout:(ADXMotionLayout *)motionLayout
+                                  withInt:(jint)currentState {
+  return ADXCLDebug_getStateWithADXMotionLayout_withInt_(motionLayout, currentState);
+}
+
++ (NSString *)getActionTypeWithADMotionEvent:(ADMotionEvent *)event {
+  return ADXCLDebug_getActionTypeWithADMotionEvent_(event);
+}
+
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSString;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 2, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 0, 4, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, 0, 5, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, 6, 7, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, 8, 9, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(getNameWithADView:);
+  methods[2].selector = @selector(getLocation);
+  methods[3].selector = @selector(logStackWithNSString:withNSString:withInt:);
+  methods[4].selector = @selector(getNameWithADContext:withInt:);
+  methods[5].selector = @selector(getLoc);
+  methods[6].selector = @selector(getNameWithADContext:withIntArray:);
+  methods[7].selector = @selector(getStateWithADXMotionLayout:withInt:);
+  methods[8].selector = @selector(getActionTypeWithADMotionEvent:);
   #pragma clang diagnostic pop
-  static const void *ptrTable[] = { "getName", "LADView;" };
-  static const J2ObjcClassInfo _ADXCLDebug = { "CLDebug", "androidx.constraintlayout.motion.widget", ptrTable, methods, NULL, 7, 0x1, 2, 0, -1, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "getName", "LADView;", "logStack", "LNSString;LNSString;I", "LADContext;I", "LADContext;[I", "getState", "LADXMotionLayout;I", "getActionType", "LADMotionEvent;" };
+  static const J2ObjcClassInfo _ADXCLDebug = { "CLDebug", "androidx.constraintlayout.motion.widget", ptrTable, methods, NULL, 7, 0x1, 9, 0, -1, -1, -1, -1, -1 };
   return &_ADXCLDebug;
 }
 
@@ -54,6 +105,40 @@ ADXCLDebug *create_ADXCLDebug_init() {
 NSString *ADXCLDebug_getNameWithADView_(ADView *view) {
   ADXCLDebug_initialize();
   return @"";
+}
+
+NSString *ADXCLDebug_getLocation() {
+  ADXCLDebug_initialize();
+  return @"";
+}
+
+void ADXCLDebug_logStackWithNSString_withNSString_withInt_(NSString *tag, NSString *string, jint i) {
+  ADXCLDebug_initialize();
+}
+
+jint ADXCLDebug_getNameWithADContext_withInt_(ADContext *context, jint mCurrentState) {
+  ADXCLDebug_initialize();
+  return 0;
+}
+
+NSString *ADXCLDebug_getLoc() {
+  ADXCLDebug_initialize();
+  return nil;
+}
+
+NSString *ADXCLDebug_getNameWithADContext_withIntArray_(ADContext *context, IOSIntArray *referencedIds) {
+  ADXCLDebug_initialize();
+  return nil;
+}
+
+NSString *ADXCLDebug_getStateWithADXMotionLayout_withInt_(ADXMotionLayout *motionLayout, jint currentState) {
+  ADXCLDebug_initialize();
+  return nil;
+}
+
+NSString *ADXCLDebug_getActionTypeWithADMotionEvent_(ADMotionEvent *event) {
+  ADXCLDebug_initialize();
+  return nil;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLDebug)

@@ -247,6 +247,31 @@ public class GuidelineImpl extends BaseWidget {
             ((HTMLElement)asNativeWidget()).getStyle().setProperty("display", visibility != View.VISIBLE ? "none" : "block");
             
         }
+        
+        	public void state0() {
+        		ViewImpl.state(GuidelineImpl.this, 0);
+        	}
+        	public void state1() {
+        		ViewImpl.state(GuidelineImpl.this, 1);
+        	}
+        	public void state2() {
+        		ViewImpl.state(GuidelineImpl.this, 2);
+        	}
+        	public void state3() {
+        		ViewImpl.state(GuidelineImpl.this, 3);
+        	}
+        	public void state4() {
+        		ViewImpl.state(GuidelineImpl.this, 4);
+        	}
+                        
+        public void stateYes() {
+        	ViewImpl.stateYes(GuidelineImpl.this);
+        	
+        }
+        
+        public void stateNo() {
+        	ViewImpl.stateNo(GuidelineImpl.this);
+        }
 	}	@Override
 	public Class getViewClass() {
 		return GuidelineExt.class;
@@ -334,7 +359,7 @@ return getOrientation();				}
 	public void setId(String id){
 		if (id != null && !id.equals("")){
 			super.setId(id);
-			guideline.setId(IdGenerator.getId(id));
+			guideline.setId((int) quickConvert(id, "id"));
 		}
 	}
 	

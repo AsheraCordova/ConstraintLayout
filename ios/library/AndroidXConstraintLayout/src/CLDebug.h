@@ -16,7 +16,11 @@
 #if !defined (ADXCLDebug_) && (INCLUDE_ALL_CLDebug || defined(INCLUDE_ADXCLDebug))
 #define ADXCLDebug_
 
+@class ADContext;
+@class ADMotionEvent;
 @class ADView;
+@class ADXMotionLayout;
+@class IOSIntArray;
 
 @interface ADXCLDebug : NSObject
 
@@ -24,7 +28,26 @@
 
 - (instancetype)init;
 
++ (NSString *)getActionTypeWithADMotionEvent:(ADMotionEvent *)event;
+
++ (NSString *)getLoc;
+
++ (NSString *)getLocation;
+
++ (jint)getNameWithADContext:(ADContext *)context
+                     withInt:(jint)mCurrentState;
+
++ (NSString *)getNameWithADContext:(ADContext *)context
+                      withIntArray:(IOSIntArray *)referencedIds;
+
 + (NSString *)getNameWithADView:(ADView *)view;
+
++ (NSString *)getStateWithADXMotionLayout:(ADXMotionLayout *)motionLayout
+                                  withInt:(jint)currentState;
+
++ (void)logStackWithNSString:(NSString *)tag
+                withNSString:(NSString *)string
+                     withInt:(jint)i;
 
 @end
 
@@ -37,6 +60,20 @@ FOUNDATION_EXPORT ADXCLDebug *new_ADXCLDebug_init(void) NS_RETURNS_RETAINED;
 FOUNDATION_EXPORT ADXCLDebug *create_ADXCLDebug_init(void);
 
 FOUNDATION_EXPORT NSString *ADXCLDebug_getNameWithADView_(ADView *view);
+
+FOUNDATION_EXPORT NSString *ADXCLDebug_getLocation(void);
+
+FOUNDATION_EXPORT void ADXCLDebug_logStackWithNSString_withNSString_withInt_(NSString *tag, NSString *string, jint i);
+
+FOUNDATION_EXPORT jint ADXCLDebug_getNameWithADContext_withInt_(ADContext *context, jint mCurrentState);
+
+FOUNDATION_EXPORT NSString *ADXCLDebug_getLoc(void);
+
+FOUNDATION_EXPORT NSString *ADXCLDebug_getNameWithADContext_withIntArray_(ADContext *context, IOSIntArray *referencedIds);
+
+FOUNDATION_EXPORT NSString *ADXCLDebug_getStateWithADXMotionLayout_withInt_(ADXMotionLayout *motionLayout, jint currentState);
+
+FOUNDATION_EXPORT NSString *ADXCLDebug_getActionTypeWithADMotionEvent_(ADMotionEvent *event);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLDebug)
 

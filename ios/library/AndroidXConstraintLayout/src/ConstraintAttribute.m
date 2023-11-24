@@ -11,15 +11,15 @@
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
-#include "Log.h"
+#include "PluginInvoker.h"
 #include "View.h"
 #include "java/lang/Boolean.h"
-#include "java/lang/CharSequence.h"
 #include "java/lang/Enum.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalAccessException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
+#include "java/lang/Math.h"
 #include "java/lang/NoSuchMethodException.h"
 #include "java/lang/RuntimeException.h"
 #include "java/lang/reflect/InvocationTargetException.h"
@@ -55,6 +55,92 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
 
 @implementation ADXConstraintAttribute
 
+- (ADXConstraintAttribute_AttributeType *)getType {
+  return mType_;
+}
+
+- (jboolean)isContinuous {
+  switch ([mType_ ordinal]) {
+    case ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE:
+    case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
+    case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
+    return false;
+    default:
+    return true;
+  }
+}
+
+- (jint)numberOfInterpolatedValues {
+  switch ([mType_ ordinal]) {
+    case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
+    case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
+    return 4;
+    default:
+    return 1;
+  }
+}
+
+- (jfloat)getValueToInterpolate {
+  switch ([mType_ ordinal]) {
+    case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
+    return mIntegerValue_;
+    case ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE:
+    return mFloatValue_;
+    case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
+    case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
+    @throw create_JavaLangRuntimeException_initWithNSString_(@"Color does not have a single color to interpolate");
+    case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
+    @throw create_JavaLangRuntimeException_initWithNSString_(@"Cannot interpolate String");
+    case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
+    return mBooleanValue_ ? 1 : 0;
+    case ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE:
+    return mFloatValue_;
+  }
+  return JavaLangFloat_NaN;
+}
+
+- (void)getValuesToInterpolateWithFloatArray:(IOSFloatArray *)ret {
+  {
+    jint a;
+    jint r;
+    jint g;
+    jint b;
+    jfloat f_r;
+    jfloat f_g;
+    jfloat f_b;
+    switch ([mType_ ordinal]) {
+      case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
+      *IOSFloatArray_GetRef(nil_chk(ret), 0) = mIntegerValue_;
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE:
+      *IOSFloatArray_GetRef(nil_chk(ret), 0) = mFloatValue_;
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
+      case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
+      a = (jint) 0xFF & (JreRShift32(mColorValue_, 24));
+      r = (jint) 0xFF & (JreRShift32(mColorValue_, 16));
+      g = (jint) 0xFF & (JreRShift32(mColorValue_, 8));
+      b = (jint) 0xFF & (mColorValue_);
+      f_r = (jfloat) JavaLangMath_powWithDouble_withDouble_(r / 255.0f, 2.2);
+      f_g = (jfloat) JavaLangMath_powWithDouble_withDouble_(g / 255.0f, 2.2);
+      f_b = (jfloat) JavaLangMath_powWithDouble_withDouble_(b / 255.0f, 2.2);
+      *IOSFloatArray_GetRef(nil_chk(ret), 0) = f_r;
+      *IOSFloatArray_GetRef(ret, 1) = f_g;
+      *IOSFloatArray_GetRef(ret, 2) = f_b;
+      *IOSFloatArray_GetRef(ret, 3) = a / 255.0f;
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
+      @throw create_JavaLangRuntimeException_initWithNSString_(@"Color does not have a single color to interpolate");
+      case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
+      *IOSFloatArray_GetRef(nil_chk(ret), 0) = mBooleanValue_ ? 1 : 0;
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE:
+      *IOSFloatArray_GetRef(nil_chk(ret), 0) = mFloatValue_;
+      break;
+    }
+  }
+}
+
 - (void)setValueWithFloatArray:(IOSFloatArray *)value {
   switch ([mType_ ordinal]) {
     case ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE:
@@ -77,6 +163,14 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
     case ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE:
     mFloatValue_ = IOSFloatArray_Get(nil_chk(value), 0);
   }
+}
+
+- (instancetype)initWithNSString:(NSString *)name
+withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *)attributeType
+                          withId:(id)value
+                     withBoolean:(jboolean)method {
+  ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(self, name, attributeType, value, method);
+  return self;
 }
 
 - (instancetype)initWithADXConstraintAttribute:(ADXConstraintAttribute *)source
@@ -115,13 +209,89 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
   return ADXConstraintAttribute_extractAttributesWithJavaUtilHashMap_withADView_(base, view);
 }
 
++ (jint)clampWithInt:(jint)c {
+  return ADXConstraintAttribute_clampWithInt_(c);
+}
+
 + (void)setAttributesWithADView:(ADView *)view
             withJavaUtilHashMap:(JavaUtilHashMap *)map {
   ADXConstraintAttribute_setAttributesWithADView_withJavaUtilHashMap_(view, map);
 }
 
-+ (jint)clampWithInt:(jint)c {
-  return ADXConstraintAttribute_clampWithInt_(c);
+- (void)setInterpolatedValueWithADView:(ADView *)view
+                        withFloatArray:(IOSFloatArray *)value {
+  {
+    jint r;
+    jint g;
+    jint b;
+    jint a;
+    jint color;
+    switch ([mType_ ordinal]) {
+      case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
+      case ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE:
+      case ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:mName_ withId:JavaLangFloat_valueOfWithFloat_(IOSFloatArray_Get(nil_chk(value), 0))];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
+      {
+        jint r = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+        jint g = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+        jint b = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+        jint a = ADXConstraintAttribute_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
+        jint color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
+        ADColorDrawable *drawable = create_ADColorDrawable_init();
+        [drawable setColorWithInt:color];
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:mName_ withId:drawable];
+      }
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
+      r = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+      g = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+      b = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+      a = ADXConstraintAttribute_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
+      color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:mName_ withId:ASPluginInvoker_getColorWithNSString_(ADColor_formatColorWithInt_(color))];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
+      @throw create_JavaLangRuntimeException_initWithNSString_(JreStrcat("$$", @"unable to interpolate strings ", mName_));
+      case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:mName_ withId:JavaLangBoolean_valueOfWithBoolean_(IOSFloatArray_Get(nil_chk(value), 0) > 0.5f)];
+      break;
+    }
+  }
+}
+
+- (void)applyCustomWithADView:(ADView *)view {
+  NSString *name = JreRetainedLocalValue(self->mName_);
+  {
+    ADColorDrawable *drawable;
+    switch ([self->mType_ ordinal]) {
+      case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
+      case ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangInteger_valueOfWithInt_(self->mIntegerValue_)];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangFloat_valueOfWithFloat_(self->mFloatValue_)];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
+      drawable = create_ADColorDrawable_init();
+      [drawable setColorWithInt:self->mColorValue_];
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:drawable];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:ASPluginInvoker_getColorWithNSString_(ADColor_formatColorWithInt_(mColorValue_))];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:mStringValue_];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangBoolean_valueOfWithBoolean_(mBooleanValue_)];
+      break;
+      case ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE:
+      [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangFloat_valueOfWithFloat_(mFloatValue_)];
+      break;
+    }
+  }
 }
 
 - (void)dealloc {
@@ -133,25 +303,41 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
+    { NULL, "LADXConstraintAttribute_AttributeType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "F", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
-    { NULL, NULL, 0x1, -1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 0, 3, -1, -1, -1, -1 },
-    { NULL, "LJavaUtilHashMap;", 0x9, 4, 5, -1, 6, -1, -1 },
-    { NULL, "V", 0x9, 7, 8, -1, 9, -1, -1 },
-    { NULL, "I", 0xa, 10, 11, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 5, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilHashMap;", 0x9, 6, 7, -1, 8, -1, -1 },
+    { NULL, "I", 0xa, 9, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 11, 12, -1, 13, -1, -1 },
+    { NULL, "V", 0x1, 14, 15, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 16, 17, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(setValueWithFloatArray:);
-  methods[1].selector = @selector(initWithADXConstraintAttribute:withId:);
-  methods[2].selector = @selector(setValueWithId:);
-  methods[3].selector = @selector(extractAttributesWithJavaUtilHashMap:withADView:);
-  methods[4].selector = @selector(setAttributesWithADView:withJavaUtilHashMap:);
-  methods[5].selector = @selector(clampWithInt:);
+  methods[0].selector = @selector(getType);
+  methods[1].selector = @selector(isContinuous);
+  methods[2].selector = @selector(numberOfInterpolatedValues);
+  methods[3].selector = @selector(getValueToInterpolate);
+  methods[4].selector = @selector(getValuesToInterpolateWithFloatArray:);
+  methods[5].selector = @selector(setValueWithFloatArray:);
+  methods[6].selector = @selector(initWithNSString:withADXConstraintAttribute_AttributeType:withId:withBoolean:);
+  methods[7].selector = @selector(initWithADXConstraintAttribute:withId:);
+  methods[8].selector = @selector(setValueWithId:);
+  methods[9].selector = @selector(extractAttributesWithJavaUtilHashMap:withADView:);
+  methods[10].selector = @selector(clampWithInt:);
+  methods[11].selector = @selector(setAttributesWithADView:withJavaUtilHashMap:);
+  methods[12].selector = @selector(setInterpolatedValueWithADView:withFloatArray:);
+  methods[13].selector = @selector(applyCustomWithADView:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 12, -1, -1 },
+    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 18, -1, -1 },
     { "mMethod_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mName_", "LNSString;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mType_", "LADXConstraintAttribute_AttributeType;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -161,12 +347,29 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
     { "mBooleanValue_", "Z", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mColorValue_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "setValue", "[F", "LADXConstraintAttribute;LNSObject;", "LNSObject;", "extractAttributes", "LJavaUtilHashMap;LADView;", "(Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;Lr/android/view/View;)Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;", "setAttributes", "LADView;LJavaUtilHashMap;", "(Lr/android/view/View;Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;)V", "clamp", "I", &ADXConstraintAttribute_TAG, "LADXConstraintAttribute_AttributeType;" };
-  static const J2ObjcClassInfo _ADXConstraintAttribute = { "ConstraintAttribute", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x1, 6, 9, -1, 13, -1, -1, -1 };
+  static const void *ptrTable[] = { "getValuesToInterpolate", "[F", "setValue", "LNSString;LADXConstraintAttribute_AttributeType;LNSObject;Z", "LADXConstraintAttribute;LNSObject;", "LNSObject;", "extractAttributes", "LJavaUtilHashMap;LADView;", "(Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;Lr/android/view/View;)Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;", "clamp", "I", "setAttributes", "LADView;LJavaUtilHashMap;", "(Lr/android/view/View;Ljava/util/HashMap<Ljava/lang/String;Landroidx/constraintlayout/widget/ConstraintAttribute;>;)V", "setInterpolatedValue", "LADView;[F", "applyCustom", "LADView;", &ADXConstraintAttribute_TAG, "LADXConstraintAttribute_AttributeType;" };
+  static const J2ObjcClassInfo _ADXConstraintAttribute = { "ConstraintAttribute", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x1, 14, 9, -1, 19, -1, -1, -1 };
   return &_ADXConstraintAttribute;
 }
 
 @end
+
+void ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(ADXConstraintAttribute *self, NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) {
+  NSObject_init(self);
+  self->mMethod_ = false;
+  JreStrongAssign(&self->mName_, name);
+  JreStrongAssign(&self->mType_, attributeType);
+  self->mMethod_ = method;
+  [self setValueWithId:value];
+}
+
+ADXConstraintAttribute *new_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) {
+  J2OBJC_NEW_IMPL(ADXConstraintAttribute, initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_, name, attributeType, value, method)
+}
+
+ADXConstraintAttribute *create_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) {
+  J2OBJC_CREATE_IMPL(ADXConstraintAttribute, initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_, name, attributeType, value, method)
+}
 
 void ADXConstraintAttribute_initWithADXConstraintAttribute_withId_(ADXConstraintAttribute *self, ADXConstraintAttribute *source, id value) {
   NSObject_init(self);
@@ -215,72 +418,6 @@ JavaUtilHashMap *ADXConstraintAttribute_extractAttributesWithJavaUtilHashMap_wit
   return ret;
 }
 
-void ADXConstraintAttribute_setAttributesWithADView_withJavaUtilHashMap_(ADView *view, JavaUtilHashMap *map) {
-  ADXConstraintAttribute_initialize();
-  IOSClass *viewClass = [((ADView *) nil_chk(view)) java_getClass];
-  for (NSString * __strong name in nil_chk([((JavaUtilHashMap *) nil_chk(map)) keySet])) {
-    ADXConstraintAttribute *constraintAttribute = JreRetainedLocalValue([map getWithId:name]);
-    NSString *methodName = JreRetainedLocalValue(name);
-    if (!((ADXConstraintAttribute *) nil_chk(constraintAttribute))->mMethod_) {
-      methodName = JreStrcat("$$", @"set", methodName);
-    }
-    @try {
-      JavaLangReflectMethod *method;
-      {
-        ADColorDrawable *drawable;
-        switch ([constraintAttribute->mType_ ordinal]) {
-          case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangInteger, TYPE) } count:1 type:IOSClass_class_()]];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangInteger_valueOfWithInt_(constraintAttribute->mIntegerValue_) } count:1 type:NSObject_class_()]];
-          break;
-          case ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangFloat, TYPE) } count:1 type:IOSClass_class_()]];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangFloat_valueOfWithFloat_(constraintAttribute->mFloatValue_) } count:1 type:NSObject_class_()]];
-          break;
-          case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ ADDrawable_class_() } count:1 type:IOSClass_class_()]];
-          drawable = create_ADColorDrawable_init();
-          [drawable setColorWithInt:constraintAttribute->mColorValue_];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ drawable } count:1 type:NSObject_class_()]];
-          break;
-          case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangInteger, TYPE) } count:1 type:IOSClass_class_()]];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangInteger_valueOfWithInt_(constraintAttribute->mColorValue_) } count:1 type:NSObject_class_()]];
-          break;
-          case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangCharSequence_class_() } count:1 type:IOSClass_class_()]];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ constraintAttribute->mStringValue_ } count:1 type:NSObject_class_()]];
-          break;
-          case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangBoolean, TYPE) } count:1 type:IOSClass_class_()]];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangBoolean_valueOfWithBoolean_(constraintAttribute->mBooleanValue_) } count:1 type:NSObject_class_()]];
-          break;
-          case ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangFloat, TYPE) } count:1 type:IOSClass_class_()]];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangFloat_valueOfWithFloat_(constraintAttribute->mFloatValue_) } count:1 type:NSObject_class_()]];
-          break;
-          case ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE:
-          method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangInteger, TYPE) } count:1 type:IOSClass_class_()]];
-          [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangInteger_valueOfWithInt_(constraintAttribute->mIntegerValue_) } count:1 type:NSObject_class_()]];
-        }
-      }
-    }
-    @catch (JavaLangNoSuchMethodException *e) {
-      ADLog_eWithNSString_withNSString_(ADXConstraintAttribute_TAG, [e getMessage]);
-      ADLog_eWithNSString_withNSString_(ADXConstraintAttribute_TAG, JreStrcat("$$$$", @" Custom Attribute \"", name, @"\" not found on ", [viewClass getName]));
-      ADLog_eWithNSString_withNSString_(ADXConstraintAttribute_TAG, JreStrcat("$$$", [viewClass getName], @" must have a method ", methodName));
-    }
-    @catch (JavaLangIllegalAccessException *e) {
-      ADLog_eWithNSString_withNSString_(ADXConstraintAttribute_TAG, JreStrcat("$$$$", @" Custom Attribute \"", name, @"\" not found on ", [viewClass getName]));
-      [e printStackTrace];
-    }
-    @catch (JavaLangReflectInvocationTargetException *e) {
-      ADLog_eWithNSString_withNSString_(ADXConstraintAttribute_TAG, JreStrcat("$$$$", @" Custom Attribute \"", name, @"\" not found on ", [viewClass getName]));
-      [e printStackTrace];
-    }
-  }
-}
-
 jint ADXConstraintAttribute_clampWithInt_(jint c) {
   ADXConstraintAttribute_initialize();
   jint N = 255;
@@ -289,6 +426,43 @@ jint ADXConstraintAttribute_clampWithInt_(jint c) {
   c &= (JreRShift32(c, 31));
   c += N;
   return c;
+}
+
+void ADXConstraintAttribute_setAttributesWithADView_withJavaUtilHashMap_(ADView *view, JavaUtilHashMap *map) {
+  ADXConstraintAttribute_initialize();
+  for (NSString * __strong name in nil_chk([((JavaUtilHashMap *) nil_chk(map)) keySet])) {
+    ADXConstraintAttribute *constraintAttribute = JreRetainedLocalValue([map getWithId:name]);
+    {
+      ADColorDrawable *drawable;
+      switch ([((ADXConstraintAttribute *) nil_chk(constraintAttribute))->mType_ ordinal]) {
+        case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangInteger_valueOfWithInt_(constraintAttribute->mIntegerValue_)];
+        break;
+        case ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE:
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangFloat_valueOfWithFloat_(constraintAttribute->mFloatValue_)];
+        break;
+        case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
+        drawable = create_ADColorDrawable_init();
+        [drawable setColorWithInt:constraintAttribute->mColorValue_];
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:drawable];
+        break;
+        case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:ASPluginInvoker_getColorWithNSString_(ADColor_formatColorWithInt_(constraintAttribute->mColorValue_))];
+        break;
+        case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:constraintAttribute->mStringValue_];
+        break;
+        case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangBoolean_valueOfWithBoolean_(constraintAttribute->mBooleanValue_)];
+        break;
+        case ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE:
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangFloat_valueOfWithFloat_(constraintAttribute->mFloatValue_)];
+        break;
+        case ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE:
+        [((ADView *) nil_chk(view)) setMyAttributeWithNSString:name withId:JavaLangInteger_valueOfWithInt_(constraintAttribute->mIntegerValue_)];
+      }
+    }
+  }
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintAttribute)

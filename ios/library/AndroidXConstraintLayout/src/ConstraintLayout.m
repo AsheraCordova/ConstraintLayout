@@ -8,6 +8,7 @@
 #include "ConstraintAnchor.h"
 #include "ConstraintHelper.h"
 #include "ConstraintLayout.h"
+#include "ConstraintLayoutStates.h"
 #include "ConstraintSet.h"
 #include "ConstraintWidget.h"
 #include "ConstraintWidgetContainer.h"
@@ -21,6 +22,7 @@
 #include "Optimizer.h"
 #include "Placeholder.h"
 #include "Resources.h"
+#include "SharedValues.h"
 #include "SparseArray.h"
 #include "View.h"
 #include "ViewGroup.h"
@@ -102,6 +104,11 @@ inline jboolean ADXConstraintLayout_get_OPTIMIZE_HEIGHT_CHANGE(void);
 #define ADXConstraintLayout_OPTIMIZE_HEIGHT_CHANGE false
 J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, OPTIMIZE_HEIGHT_CHANGE, jboolean)
 
+inline ADXSharedValues *ADXConstraintLayout_get_sSharedValues(void);
+inline ADXSharedValues *ADXConstraintLayout_set_sSharedValues(ADXSharedValues *value);
+static ADXSharedValues *ADXConstraintLayout_sSharedValues;
+J2OBJC_STATIC_FIELD_OBJ(ADXConstraintLayout, sSharedValues, ADXSharedValues *)
+
 __attribute__((unused)) static jboolean ADXConstraintLayout_updateHierarchy(ADXConstraintLayout *self);
 
 __attribute__((unused)) static void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self);
@@ -132,6 +139,10 @@ __attribute__((unused)) static jboolean ADXConstraintLayout_Measurer_isSimilarSp
 NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
 
 @implementation ADXConstraintLayout
+
++ (ADXSharedValues *)getSharedValues {
+  return ADXConstraintLayout_getSharedValues();
+}
 
 - (void)setDesignInformationWithInt:(jint)type
                              withId:(id)value1
@@ -715,6 +726,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   RELEASE_(mConstraintHelpers_);
   RELEASE_(mLayoutWidget_);
   RELEASE_(mConstraintSet_);
+  RELEASE_(mConstraintLayoutSpec_);
   RELEASE_(mDesignIds_);
   RELEASE_(mTempMapIdToWidget_);
   RELEASE_(mMetrics_);
@@ -724,6 +736,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
+    { NULL, "LADXSharedValues;", 0x9, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 0, 1, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x1, 2, 3, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 4, 5, -1, -1, -1, -1 },
@@ -762,40 +775,41 @@ J2OBJC_IGNORE_DESIGNATED_END
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(setDesignInformationWithInt:withId:withId:);
-  methods[1].selector = @selector(getDesignInformationWithInt:withId:);
-  methods[2].selector = @selector(onViewAddedWithADView:);
-  methods[3].selector = @selector(onViewRemovedWithADView:);
-  methods[4].selector = @selector(setMinWidthWithInt:);
-  methods[5].selector = @selector(setMinHeightWithInt:);
-  methods[6].selector = @selector(getMinWidth);
-  methods[7].selector = @selector(getMinHeight);
-  methods[8].selector = @selector(setMaxWidthWithInt:);
-  methods[9].selector = @selector(setMaxHeightWithInt:);
-  methods[10].selector = @selector(getMaxWidth);
-  methods[11].selector = @selector(getMaxHeight);
-  methods[12].selector = @selector(updateHierarchy);
-  methods[13].selector = @selector(setChildrenConstraints);
-  methods[14].selector = @selector(applyConstraintsFromLayoutParamsWithBoolean:withADView:withADXConstraintWidget:withADXConstraintLayout_LayoutParams:withADSparseArray:);
-  methods[15].selector = @selector(setWidgetBaselineWithADXConstraintWidget:withADXConstraintLayout_LayoutParams:withADSparseArray:withInt:withADXConstraintAnchor_Type:);
-  methods[16].selector = @selector(getTargetWidgetWithInt:);
-  methods[17].selector = @selector(getViewWidgetWithADView:);
-  methods[18].selector = @selector(resolveSystemWithADXConstraintWidgetContainer:withInt:withInt:withInt:);
-  methods[19].selector = @selector(resolveMeasuredDimensionWithInt:withInt:withInt:withInt:withBoolean:withBoolean:);
-  methods[20].selector = @selector(onMeasureWithInt:withInt:);
-  methods[21].selector = @selector(isRtl);
-  methods[22].selector = @selector(getPaddingWidth);
-  methods[23].selector = @selector(setSelfDimensionBehaviourWithADXConstraintWidgetContainer:withInt:withInt:withInt:withInt:);
-  methods[24].selector = @selector(onLayoutWithBoolean:withInt:withInt:withInt:withInt:);
-  methods[25].selector = @selector(setOptimizationLevelWithInt:);
-  methods[26].selector = @selector(getOptimizationLevel);
-  methods[27].selector = @selector(generateDefaultLayoutParams);
-  methods[28].selector = @selector(setConstraintSetWithADXConstraintSet:);
-  methods[29].selector = @selector(getViewByIdWithInt:);
-  methods[30].selector = @selector(requestLayout);
-  methods[31].selector = @selector(markHierarchyDirty);
-  methods[32].selector = @selector(init);
-  methods[33].selector = @selector(release__);
+  methods[0].selector = @selector(getSharedValues);
+  methods[1].selector = @selector(setDesignInformationWithInt:withId:withId:);
+  methods[2].selector = @selector(getDesignInformationWithInt:withId:);
+  methods[3].selector = @selector(onViewAddedWithADView:);
+  methods[4].selector = @selector(onViewRemovedWithADView:);
+  methods[5].selector = @selector(setMinWidthWithInt:);
+  methods[6].selector = @selector(setMinHeightWithInt:);
+  methods[7].selector = @selector(getMinWidth);
+  methods[8].selector = @selector(getMinHeight);
+  methods[9].selector = @selector(setMaxWidthWithInt:);
+  methods[10].selector = @selector(setMaxHeightWithInt:);
+  methods[11].selector = @selector(getMaxWidth);
+  methods[12].selector = @selector(getMaxHeight);
+  methods[13].selector = @selector(updateHierarchy);
+  methods[14].selector = @selector(setChildrenConstraints);
+  methods[15].selector = @selector(applyConstraintsFromLayoutParamsWithBoolean:withADView:withADXConstraintWidget:withADXConstraintLayout_LayoutParams:withADSparseArray:);
+  methods[16].selector = @selector(setWidgetBaselineWithADXConstraintWidget:withADXConstraintLayout_LayoutParams:withADSparseArray:withInt:withADXConstraintAnchor_Type:);
+  methods[17].selector = @selector(getTargetWidgetWithInt:);
+  methods[18].selector = @selector(getViewWidgetWithADView:);
+  methods[19].selector = @selector(resolveSystemWithADXConstraintWidgetContainer:withInt:withInt:withInt:);
+  methods[20].selector = @selector(resolveMeasuredDimensionWithInt:withInt:withInt:withInt:withBoolean:withBoolean:);
+  methods[21].selector = @selector(onMeasureWithInt:withInt:);
+  methods[22].selector = @selector(isRtl);
+  methods[23].selector = @selector(getPaddingWidth);
+  methods[24].selector = @selector(setSelfDimensionBehaviourWithADXConstraintWidgetContainer:withInt:withInt:withInt:withInt:);
+  methods[25].selector = @selector(onLayoutWithBoolean:withInt:withInt:withInt:withInt:);
+  methods[26].selector = @selector(setOptimizationLevelWithInt:);
+  methods[27].selector = @selector(getOptimizationLevel);
+  methods[28].selector = @selector(generateDefaultLayoutParams);
+  methods[29].selector = @selector(setConstraintSetWithADXConstraintSet:);
+  methods[30].selector = @selector(getViewByIdWithInt:);
+  methods[31].selector = @selector(requestLayout);
+  methods[32].selector = @selector(markHierarchyDirty);
+  methods[33].selector = @selector(init);
+  methods[34].selector = @selector(release__);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "VERSION", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 35, -1, -1 },
@@ -815,6 +829,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mDirtyHierarchy_", "Z", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "mOptimizationLevel_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mConstraintSet_", "LADXConstraintSet;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "mConstraintLayoutSpec_", "LADXConstraintLayoutStates;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "mConstraintSetId_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mDesignIds_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x2, -1, -1, 41, -1 },
     { "mLastMeasureWidth_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -826,16 +841,25 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mTempMapIdToWidget_", "LADSparseArray;", .constantValue.asLong = 0, 0x2, -1, -1, 42, -1 },
     { "DESIGN_INFO_ID", "I", .constantValue.asInt = ADXConstraintLayout_DESIGN_INFO_ID, 0x19, -1, -1, -1, -1 },
     { "mMetrics_", "LADXMetrics;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "sSharedValues", "LADXSharedValues;", .constantValue.asLong = 0, 0xa, -1, 43, -1, -1 },
     { "mMeasurer_", "LADXConstraintLayout_Measurer;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mOnMeasureWidthMeasureSpec_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mOnMeasureHeightMeasureSpec_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "setDesignInformation", "ILNSObject;LNSObject;", "getDesignInformation", "ILNSObject;", "onViewAdded", "LADView;", "onViewRemoved", "setMinWidth", "I", "setMinHeight", "setMaxWidth", "setMaxHeight", "applyConstraintsFromLayoutParams", "ZLADView;LADXConstraintWidget;LADXConstraintLayout_LayoutParams;LADSparseArray;", "(ZLr/android/view/View;Landroidx/constraintlayout/core/widgets/ConstraintWidget;Landroidx/constraintlayout/widget/ConstraintLayout$LayoutParams;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "setWidgetBaseline", "LADXConstraintWidget;LADXConstraintLayout_LayoutParams;LADSparseArray;ILADXConstraintAnchor_Type;", "(Landroidx/constraintlayout/core/widgets/ConstraintWidget;Landroidx/constraintlayout/widget/ConstraintLayout$LayoutParams;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;ILandroidx/constraintlayout/core/widgets/ConstraintAnchor$Type;)V", "getTargetWidget", "getViewWidget", "resolveSystem", "LADXConstraintWidgetContainer;III", "resolveMeasuredDimension", "IIIIZZ", "onMeasure", "II", "setSelfDimensionBehaviour", "LADXConstraintWidgetContainer;IIII", "onLayout", "ZIIII", "setOptimizationLevel", "setConstraintSet", "LADXConstraintSet;", "getViewById", "release", &ADXConstraintLayout_VERSION, &ADXConstraintLayout_TAG, "Lr/android/util/SparseArray<Lr/android/view/View;>;", "Ljava/util/ArrayList<Landroidx/constraintlayout/widget/ConstraintHelper;>;", "mMinWidth", "mMinHeight", "Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/Integer;>;", "Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;", "LADXConstraintLayout_Measurer;LADXConstraintLayout_LayoutParams;" };
-  static const J2ObjcClassInfo _ADXConstraintLayout = { "ConstraintLayout", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x1, 34, 31, -1, 43, -1, -1, -1 };
+  static const void *ptrTable[] = { "setDesignInformation", "ILNSObject;LNSObject;", "getDesignInformation", "ILNSObject;", "onViewAdded", "LADView;", "onViewRemoved", "setMinWidth", "I", "setMinHeight", "setMaxWidth", "setMaxHeight", "applyConstraintsFromLayoutParams", "ZLADView;LADXConstraintWidget;LADXConstraintLayout_LayoutParams;LADSparseArray;", "(ZLr/android/view/View;Landroidx/constraintlayout/core/widgets/ConstraintWidget;Landroidx/constraintlayout/widget/ConstraintLayout$LayoutParams;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "setWidgetBaseline", "LADXConstraintWidget;LADXConstraintLayout_LayoutParams;LADSparseArray;ILADXConstraintAnchor_Type;", "(Landroidx/constraintlayout/core/widgets/ConstraintWidget;Landroidx/constraintlayout/widget/ConstraintLayout$LayoutParams;Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;ILandroidx/constraintlayout/core/widgets/ConstraintAnchor$Type;)V", "getTargetWidget", "getViewWidget", "resolveSystem", "LADXConstraintWidgetContainer;III", "resolveMeasuredDimension", "IIIIZZ", "onMeasure", "II", "setSelfDimensionBehaviour", "LADXConstraintWidgetContainer;IIII", "onLayout", "ZIIII", "setOptimizationLevel", "setConstraintSet", "LADXConstraintSet;", "getViewById", "release", &ADXConstraintLayout_VERSION, &ADXConstraintLayout_TAG, "Lr/android/util/SparseArray<Lr/android/view/View;>;", "Ljava/util/ArrayList<Landroidx/constraintlayout/widget/ConstraintHelper;>;", "mMinWidth", "mMinHeight", "Ljava/util/HashMap<Ljava/lang/String;Ljava/lang/Integer;>;", "Lr/android/util/SparseArray<Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;", &ADXConstraintLayout_sSharedValues, "LADXConstraintLayout_Measurer;LADXConstraintLayout_LayoutParams;" };
+  static const J2ObjcClassInfo _ADXConstraintLayout = { "ConstraintLayout", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x1, 35, 33, -1, 44, -1, -1, -1 };
   return &_ADXConstraintLayout;
 }
 
 @end
+
+ADXSharedValues *ADXConstraintLayout_getSharedValues() {
+  ADXConstraintLayout_initialize();
+  if (ADXConstraintLayout_sSharedValues == nil) {
+    JreStrongAssignAndConsume(&ADXConstraintLayout_sSharedValues, new_ADXSharedValues_init());
+  }
+  return ADXConstraintLayout_sSharedValues;
+}
 
 jboolean ADXConstraintLayout_updateHierarchy(ADXConstraintLayout *self) {
   jint count = [self getChildCount];
@@ -1013,6 +1037,7 @@ void ADXConstraintLayout_init(ADXConstraintLayout *self) {
   self->mDirtyHierarchy_ = true;
   self->mOptimizationLevel_ = ADXOptimizer_OPTIMIZATION_STANDARD;
   JreStrongAssign(&self->mConstraintSet_, nil);
+  JreStrongAssign(&self->mConstraintLayoutSpec_, nil);
   self->mConstraintSetId_ = -1;
   JreStrongAssignAndConsume(&self->mDesignIds_, new_JavaUtilHashMap_init());
   self->mLastMeasureWidth_ = -1;
@@ -1504,6 +1529,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout_Measurer)
   }
 }
 
+- (NSString *)getConstraintTag {
+  return constraintTag_;
+}
+
 - (void)dealloc {
   RELEASE_(dimensionRatio_);
   RELEASE_(constraintTag_);
@@ -1518,6 +1547,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout_Measurer)
     { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, 2, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -1527,6 +1557,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout_Measurer)
   methods[2].selector = @selector(initWithInt:withInt:);
   methods[3].selector = @selector(initWithADViewGroup_LayoutParams:);
   methods[4].selector = @selector(resolveLayoutDirectionWithInt:);
+  methods[5].selector = @selector(getConstraintTag);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "MATCH_CONSTRAINT", "I", .constantValue.asInt = ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT, 0x19, -1, -1, -1, -1 },
@@ -1629,7 +1660,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout_Measurer)
     { "helped_", "Z", .constantValue.asLong = 0, 0x1, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXConstraintLayout_LayoutParams;", "II", "LADViewGroup_LayoutParams;", "resolveLayoutDirection", "I", "LADXConstraintLayout;" };
-  static const J2ObjcClassInfo _ADXConstraintLayout_LayoutParams = { "LayoutParams", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x9, 5, 98, 5, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _ADXConstraintLayout_LayoutParams = { "LayoutParams", "androidx.constraintlayout.widget", ptrTable, methods, fields, 7, 0x9, 6, 98, 5, -1, -1, -1, -1 };
   return &_ADXConstraintLayout_LayoutParams;
 }
 

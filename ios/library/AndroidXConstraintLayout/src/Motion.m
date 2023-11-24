@@ -1458,8 +1458,8 @@ void ADXMotion_initWithADXMotionWidget_(ADXMotion *self, ADXMotionWidget *view) 
   self->mCurveFitType_ = ADXMotionWidget_UNSET;
   JreStrongAssignAndConsume(&self->mStartMotionPath_, new_ADXMotionPaths_init());
   JreStrongAssignAndConsume(&self->mEndMotionPath_, new_ADXMotionPaths_init());
-  JreStrongAssignAndConsume(&self->mStartPoint_, new_ADXMotionConstrainedPoint_initPackagePrivate());
-  JreStrongAssignAndConsume(&self->mEndPoint_, new_ADXMotionConstrainedPoint_initPackagePrivate());
+  JreStrongAssignAndConsume(&self->mStartPoint_, new_ADXMotionConstrainedPoint_init());
+  JreStrongAssignAndConsume(&self->mEndPoint_, new_ADXMotionConstrainedPoint_init());
   self->mMotionStagger_ = JavaLangFloat_NaN;
   self->mStaggerOffset_ = 0;
   self->mStaggerScale_ = 1.0f;

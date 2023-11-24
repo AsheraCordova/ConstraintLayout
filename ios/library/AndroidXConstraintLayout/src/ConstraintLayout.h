@@ -22,17 +22,20 @@
 
 @class ADSparseArray;
 @class ADView;
+@class ADXConstraintLayoutStates;
 @class ADXConstraintLayout_LayoutParams;
 @class ADXConstraintLayout_Measurer;
 @class ADXConstraintSet;
 @class ADXConstraintWidget;
 @class ADXConstraintWidgetContainer;
+@class ADXSharedValues;
 
 @interface ADXConstraintLayout : ADViewGroup {
  @public
   ADSparseArray *mChildrenByIds_;
   ADXConstraintWidgetContainer *mLayoutWidget_;
   jboolean mDirtyHierarchy_;
+  ADXConstraintLayoutStates *mConstraintLayoutSpec_;
   jint mLastMeasureWidthSize_;
   jint mLastMeasureHeightSize_;
   jint mLastMeasureWidthMode_;
@@ -56,6 +59,8 @@
 - (jint)getMinWidth;
 
 - (jint)getOptimizationLevel;
+
++ (ADXSharedValues *)getSharedValues;
 
 - (ADView *)getViewByIdWithInt:(jint)id_;
 
@@ -130,6 +135,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXConstraintLayout)
 
 J2OBJC_FIELD_SETTER(ADXConstraintLayout, mChildrenByIds_, ADSparseArray *)
 J2OBJC_FIELD_SETTER(ADXConstraintLayout, mLayoutWidget_, ADXConstraintWidgetContainer *)
+J2OBJC_FIELD_SETTER(ADXConstraintLayout, mConstraintLayoutSpec_, ADXConstraintLayoutStates *)
 J2OBJC_FIELD_SETTER(ADXConstraintLayout, mMeasurer_, ADXConstraintLayout_Measurer *)
 
 inline NSString *ADXConstraintLayout_get_VERSION(void);
@@ -140,6 +146,8 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintLayout, VERSION, NSString *)
 inline jint ADXConstraintLayout_get_DESIGN_INFO_ID(void);
 #define ADXConstraintLayout_DESIGN_INFO_ID 0
 J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, DESIGN_INFO_ID, jint)
+
+FOUNDATION_EXPORT ADXSharedValues *ADXConstraintLayout_getSharedValues(void);
 
 FOUNDATION_EXPORT void ADXConstraintLayout_init(ADXConstraintLayout *self);
 
@@ -306,6 +314,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout_Measurer)
 - (instancetype)initWithADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)source;
 
 - (instancetype)initWithADViewGroup_LayoutParams:(ADViewGroup_LayoutParams *)source;
+
+- (NSString *)getConstraintTag;
 
 - (void)resolveLayoutDirectionWithInt:(jint)layoutDirection;
 

@@ -75,6 +75,8 @@ public class BarrierImpl extends BaseWidget {
 		ConverterFactory.register("androidx.constraintlayout.widget.Barrier.BarrierImpl.barrierDirection", new BarrierImpl_barrierDirection());
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("barrierDirection").withType("androidx.constraintlayout.widget.Barrier.BarrierImpl.barrierDirection"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("constraint_referenced_ids").withType("BarrierImpl.constraintReferencedIds"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("barrierMargin").withType("dimension"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("barrierAllowsGoneWidgets").withType("boolean"));
 	}
 	
 	public BarrierImpl() {
@@ -227,6 +229,31 @@ public class BarrierImpl extends BaseWidget {
         	super.drawableStateChanged();
         	ViewImpl.drawableStateChanged(BarrierImpl.this);
         }
+        
+        	public void state0() {
+        		ViewImpl.state(BarrierImpl.this, 0);
+        	}
+        	public void state1() {
+        		ViewImpl.state(BarrierImpl.this, 1);
+        	}
+        	public void state2() {
+        		ViewImpl.state(BarrierImpl.this, 2);
+        	}
+        	public void state3() {
+        		ViewImpl.state(BarrierImpl.this, 3);
+        	}
+        	public void state4() {
+        		ViewImpl.state(BarrierImpl.this, 4);
+        	}
+                        
+        public void stateYes() {
+        	ViewImpl.stateYes(BarrierImpl.this);
+        	
+        }
+        
+        public void stateNo() {
+        	ViewImpl.stateNo(BarrierImpl.this);
+        }
 	}	@Override
 	public Class getViewClass() {
 		return BarrierExt.class;
@@ -281,7 +308,7 @@ Context context = (Context) fragment.getRootActivity();
 				
 
 
-		 setBarrierDirection(objValue);
+		 barrier.setType((int)objValue);
 
 
 
@@ -291,7 +318,27 @@ Context context = (Context) fragment.getRootActivity();
 				
 
 
-		 setConstraintReferenced_ids(objValue);
+		 barrier.setReferencedIds((int[]) objValue);
+
+
+
+			}
+			break;
+			case "barrierMargin": {
+				
+
+
+		 barrier.setMargin((int)objValue);
+
+
+
+			}
+			break;
+			case "barrierAllowsGoneWidgets": {
+				
+
+
+		barrier.setAllowsGoneWidget((boolean)objValue);
 
 
 
@@ -313,9 +360,13 @@ Context context = (Context) fragment.getRootActivity();
 		}
 		switch (key.getAttributeName()) {
 			case "barrierDirection": {
-return getBarrierDirection();				}
+return barrier.getType();				}
 			case "constraint_referenced_ids": {
-return getConstraintReferencedIds();				}
+return barrier.getReferencedIds();				}
+			case "barrierMargin": {
+return barrier.getMargin();				}
+			case "barrierAllowsGoneWidgets": {
+return barrier.getAllowsGoneWidget();				}
 		}
 		
 		return null;
@@ -328,27 +379,8 @@ return getConstraintReferencedIds();				}
 
 	
 
-    private void setConstraintReferenced_ids(Object objValue) {
-        barrier.setReferencedIds((int[]) objValue);
-    }
-
-    private void setBarrierDirection(Object objValue) {
-        barrier.setType((int) objValue);
-
-    }
-    
     static {
         ConverterFactory.register("BarrierImpl.constraintReferencedIds", new ConstraintReferencedIdsConverter());
-    }
-    
-
-    
-    private Object getConstraintReferencedIds() {
-        return barrier.getReferencedIds();
-    }
-    
-    private Object getBarrierDirection() {
-        return barrier.getType();
     }
     
 
@@ -364,7 +396,7 @@ return getConstraintReferencedIds();				}
 	public void setId(String id){
 		if (id != null && !id.equals("")){
 			super.setId(id);
-			barrier.setId(IdGenerator.getId(id));
+			barrier.setId((int) quickConvert(id, "id"));
 		}
 	}
 	
@@ -455,6 +487,44 @@ public BarrierCommandBuilder setConstraint_referenced_ids(String value) {
 
 	attrs.put("value", value);
 return this;}
+public BarrierCommandBuilder tryGetBarrierMargin() {
+	Map<String, Object> attrs = initCommand("barrierMargin");
+	attrs.put("type", "attribute");
+	attrs.put("getter", true);
+	attrs.put("orderGet", ++orderGet);
+return this;}
+
+public Object getBarrierMargin() {
+	Map<String, Object> attrs = initCommand("barrierMargin");
+	return attrs.get("commandReturnValue");
+}
+public BarrierCommandBuilder setBarrierMargin(String value) {
+	Map<String, Object> attrs = initCommand("barrierMargin");
+	attrs.put("type", "attribute");
+	attrs.put("setter", true);
+	attrs.put("orderSet", ++orderSet);
+
+	attrs.put("value", value);
+return this;}
+public BarrierCommandBuilder tryGetBarrierAllowsGoneWidgets() {
+	Map<String, Object> attrs = initCommand("barrierAllowsGoneWidgets");
+	attrs.put("type", "attribute");
+	attrs.put("getter", true);
+	attrs.put("orderGet", ++orderGet);
+return this;}
+
+public Object isBarrierAllowsGoneWidgets() {
+	Map<String, Object> attrs = initCommand("barrierAllowsGoneWidgets");
+	return attrs.get("commandReturnValue");
+}
+public BarrierCommandBuilder setBarrierAllowsGoneWidgets(boolean value) {
+	Map<String, Object> attrs = initCommand("barrierAllowsGoneWidgets");
+	attrs.put("type", "attribute");
+	attrs.put("setter", true);
+	attrs.put("orderSet", ++orderSet);
+
+	attrs.put("value", value);
+return this;}
 }
 public class BarrierBean extends com.ashera.layout.ViewImpl.ViewBean{
 		public BarrierBean() {
@@ -472,6 +542,20 @@ public Object getConstraint_referenced_ids() {
 }
 public void setConstraint_referenced_ids(String value) {
 	getBuilder().reset().setConstraint_referenced_ids(value).execute(true);
+}
+
+public Object getBarrierMargin() {
+	return getBuilder().reset().tryGetBarrierMargin().execute(false).getBarrierMargin(); 
+}
+public void setBarrierMargin(String value) {
+	getBuilder().reset().setBarrierMargin(value).execute(true);
+}
+
+public Object isBarrierAllowsGoneWidgets() {
+	return getBuilder().reset().tryGetBarrierAllowsGoneWidgets().execute(false).isBarrierAllowsGoneWidgets(); 
+}
+public void setBarrierAllowsGoneWidgets(boolean value) {
+	getBuilder().reset().setBarrierAllowsGoneWidgets(value).execute(true);
 }
 
 }

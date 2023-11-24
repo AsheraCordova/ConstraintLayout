@@ -259,6 +259,31 @@ public class PlaceholderImpl extends BaseWidget {
             ViewImpl.nativeSetVisibility(asNativeWidget(), visibility != View.VISIBLE);
             
         }
+        
+        	public void state0() {
+        		ViewImpl.state(PlaceholderImpl.this, 0);
+        	}
+        	public void state1() {
+        		ViewImpl.state(PlaceholderImpl.this, 1);
+        	}
+        	public void state2() {
+        		ViewImpl.state(PlaceholderImpl.this, 2);
+        	}
+        	public void state3() {
+        		ViewImpl.state(PlaceholderImpl.this, 3);
+        	}
+        	public void state4() {
+        		ViewImpl.state(PlaceholderImpl.this, 4);
+        	}
+                        
+        public void stateYes() {
+        	ViewImpl.stateYes(PlaceholderImpl.this);
+        	
+        }
+        
+        public void stateNo() {
+        	ViewImpl.stateNo(PlaceholderImpl.this);
+        }
 	}	@Override
 	public Class getViewClass() {
 		return PlaceholderExt.class;
@@ -365,7 +390,7 @@ return getContent();				}
 	public void setId(String id){
 		if (id != null && !id.equals("")){
 			super.setId(id);
-			placeholder.setId(IdGenerator.getId(id));
+			placeholder.setId((int) quickConvert(id, "id"));
 		}
 	}
 	

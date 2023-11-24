@@ -25,6 +25,8 @@ import { ScopedObject } from '../../app/ScopedObject';
 
 
 
+
+
 // end - imports
 import {ViewImpl} from './ViewImpl';
 export abstract class BarrierImpl<T> extends ViewImpl<T>{
@@ -37,6 +39,12 @@ export abstract class BarrierImpl<T> extends ViewImpl<T>{
 	@Type(() => CommandAttr)
 	@Expose({ name: "constraint_referenced_ids" })
 	constraint_referenced_ids!:CommandAttr<string>| undefined;
+	@Type(() => CommandAttr)
+	@Expose({ name: "barrierMargin" })
+	barrierMargin!:CommandAttr<string>| undefined;
+	@Type(() => CommandAttr)
+	@Expose({ name: "barrierAllowsGoneWidgets" })
+	barrierAllowsGoneWidgets!:CommandAttr<boolean>| undefined;
 
 	@Exclude()
 	protected thisPointer: T;	
@@ -45,6 +53,8 @@ export abstract class BarrierImpl<T> extends ViewImpl<T>{
 		super.reset();
 		this.barrierDirection = undefined;
 		this.constraint_referenced_ids = undefined;
+		this.barrierMargin = undefined;
+		this.barrierAllowsGoneWidgets = undefined;
 		return this.thisPointer;
 	}
 	constructor(id: string, path: string[], event:  string) {
@@ -113,6 +123,70 @@ export abstract class BarrierImpl<T> extends ViewImpl<T>{
 		this.constraint_referenced_ids.setValue(value);
 		this.orderSet++;
 		this.constraint_referenced_ids.setOrderSet(this.orderSet);
+		return this.thisPointer;
+	}
+		
+
+	public tryGetBarrierMargin() : T {
+		this.resetIfRequired();
+		if (this.barrierMargin == null || this.barrierMargin == undefined) {
+			this.barrierMargin = new CommandAttr<string>()
+		}
+		
+		this.barrierMargin.setGetter(true);
+		this.orderGet++;
+		this.barrierMargin.setOrderGet(this.orderGet);
+		return this.thisPointer;
+	}
+	
+	public getBarrierMargin() : string {
+		if (this.barrierMargin == null || this.barrierMargin == undefined) {
+			this.barrierMargin = new CommandAttr<string>();
+		}
+		return this.barrierMargin.getCommandReturnValue();
+	}
+	public setBarrierMargin(value : string) : T {
+		this.resetIfRequired();
+		if (this.barrierMargin == null || this.barrierMargin == undefined) {
+			this.barrierMargin = new CommandAttr<string>();
+		}
+		
+		this.barrierMargin.setSetter(true);
+		this.barrierMargin.setValue(value);
+		this.orderSet++;
+		this.barrierMargin.setOrderSet(this.orderSet);
+		return this.thisPointer;
+	}
+		
+
+	public tryGetBarrierAllowsGoneWidgets() : T {
+		this.resetIfRequired();
+		if (this.barrierAllowsGoneWidgets == null || this.barrierAllowsGoneWidgets == undefined) {
+			this.barrierAllowsGoneWidgets = new CommandAttr<boolean>()
+		}
+		
+		this.barrierAllowsGoneWidgets.setGetter(true);
+		this.orderGet++;
+		this.barrierAllowsGoneWidgets.setOrderGet(this.orderGet);
+		return this.thisPointer;
+	}
+	
+	public isBarrierAllowsGoneWidgets() : boolean {
+		if (this.barrierAllowsGoneWidgets == null || this.barrierAllowsGoneWidgets == undefined) {
+			this.barrierAllowsGoneWidgets = new CommandAttr<boolean>();
+		}
+		return this.barrierAllowsGoneWidgets.getCommandReturnValue();
+	}
+	public setBarrierAllowsGoneWidgets(value : boolean) : T {
+		this.resetIfRequired();
+		if (this.barrierAllowsGoneWidgets == null || this.barrierAllowsGoneWidgets == undefined) {
+			this.barrierAllowsGoneWidgets = new CommandAttr<boolean>();
+		}
+		
+		this.barrierAllowsGoneWidgets.setSetter(true);
+		this.barrierAllowsGoneWidgets.setValue(value);
+		this.orderSet++;
+		this.barrierAllowsGoneWidgets.setOrderSet(this.orderSet);
 		return this.thisPointer;
 	}
 		
