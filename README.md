@@ -25,5 +25,6 @@ cordova plugin add https://github.com/AsheraCordova/ConstraintLayout.git
 * androidx.constraintlayout.widget.Placeholder
 * androidx.constraintlayout.helper.widget.Flow
 * androidx.constraintlayout.helper.widget.CircularFlow
+* androidx.constraintlayout.motion.widget.MotionLayout
 
 See examples on https://asheracordova.github.io/playground/index.html.
