@@ -50,4 +50,4 @@ KeyTrigger in motionlayout internally uses reflection in android. As reflection 
 Method        | Description
 ------------- | -------------
 state[0-3]    | Method to be used when the number of states are greater than 2
-state[Yes|No] | Method to be used when the number of states is 2. hide and show methods are provided which triggers visibility change.
+state[Yes/No] | Method to be used when the number of states is 2. hide and show methods are provided which triggers visibility change.
