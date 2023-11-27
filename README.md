@@ -32,6 +32,7 @@ See examples on https://asheracordova.github.io/playground/index.html.
 ## MotionLayout
 
 Important Links:
+
 https://developer.android.com/develop/ui/views/animations/motionlayout
 https://developer.android.com/develop/ui/views/animations/motionlayout/examples
 
