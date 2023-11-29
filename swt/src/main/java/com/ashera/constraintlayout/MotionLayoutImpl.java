@@ -3403,7 +3403,11 @@ return this;}
 		private void setLayoutDescription(Object objValue) {
 			layoutDescription = (String) objValue;
 		motionLayout.initMotionScene();
-		String html = PluginInvoker.getFileAsset("res/" + ((String) objValue).substring(1) + ".xml", fragment);
+		String html = fragment.getInlineResource(layoutDescription);
+		if (html == null) {
+			html = PluginInvoker.getFileAsset("res/" + ((String) objValue).substring(1) + ".xml", fragment);
+		}
+		
 		com.ashera.parser.html.HtmlParser.parse(new org.xml.sax.ContentHandler() {
 			private androidx.constraintlayout.widget.ConstraintSet constraintSet;
 			private int constraintSetId;

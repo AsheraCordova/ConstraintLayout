@@ -5564,7 +5564,10 @@ id ASMotionLayoutImpl_getOptimizationLevel(ASMotionLayoutImpl *self) {
 void ASMotionLayoutImpl_setLayoutDescriptionWithId_(ASMotionLayoutImpl *self, id objValue) {
   self->layoutDescription_ = (NSString *) cast_chk(objValue, [NSString class]);
   [((ADXMotionLayout *) nil_chk(self->motionLayout_)) initMotionScene];
-  NSString *html = ASPluginInvoker_getFileAssetWithNSString_withASIFragment_(JreStrcat("$$$", @"res_", [((NSString *) nil_chk(((NSString *) cast_chk(objValue, [NSString class])))) java_substring:1], @".xml"), self->fragment_);
+  NSString *html = [((id<ASIFragment>) nil_chk(self->fragment_)) getInlineResourceWithNSString:self->layoutDescription_];
+  if (html == nil) {
+    html = ASPluginInvoker_getFileAssetWithNSString_withASIFragment_(JreStrcat("$$$", @"res_", [((NSString *) nil_chk(((NSString *) cast_chk(objValue, [NSString class])))) java_substring:1], @".xml"), self->fragment_);
+  }
   ASHtmlParser_parseWithOrgXmlSaxContentHandler_withNSString_(new_ASMotionLayoutImpl_1_initWithASMotionLayoutImpl_(self), html);
 }
 
