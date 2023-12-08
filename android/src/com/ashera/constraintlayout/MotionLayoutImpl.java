@@ -965,6 +965,9 @@ return layoutParams.wrapBehaviorInParent;			}
 	public class MotionLayoutExt extends androidx.constraintlayout.motion.widget.MotionLayout implements ILifeCycleDecorator{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		public IWidget getWidget() {
+			return MotionLayoutImpl.this;
+		}
 
 		public MotionLayoutExt(Context context, android.util.AttributeSet attrs, int defStyleAttr) {
 	        super(context, attrs, defStyleAttr);
@@ -3373,6 +3376,7 @@ private void postSetAttribute(WidgetAttribute key, String strValue, Object objVa
 				public boolean onPreDraw () {
 					motionLayout.getViewTreeObserver().removeOnPreDrawListener(this);
 					motionLayout.loadLayoutDescription(layoutDescription);
+					getFragment().getEventBus().notifyObservers("layoutDescription", new Object());
 					return true;
 				}
 			});

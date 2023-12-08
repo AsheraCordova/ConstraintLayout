@@ -19,6 +19,7 @@ public class AndroidXConstraintLayout extends CordovaPlugin {
         WidgetFactory.register(new com.ashera.constraintlayout.FlowImpl());
         WidgetFactory.register(new com.ashera.constraintlayout.CircularFlowImpl());
         WidgetFactory.register(new com.ashera.constraintlayout.MotionLayoutImpl());
+        WidgetFactory.register(new com.ashera.constraintlayout.CarouselImpl());
         //end - widgets
 
     }

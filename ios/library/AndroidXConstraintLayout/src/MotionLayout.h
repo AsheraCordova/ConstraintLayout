@@ -31,6 +31,7 @@
 
 @class ADMotionEvent;
 @class ADRect;
+@class ADView;
 @class ADXConstraintSet;
 @class ADXMotionController;
 @class ADXMotionLayout_Model;
@@ -101,6 +102,8 @@
 
 - (jint)getCurrentState;
 
+- (JavaUtilArrayList *)getDefinedTransitions;
+
 - (jint)getEndState;
 
 - (jfloat)getProgress;
@@ -123,11 +126,19 @@
 
 - (jboolean)onTouchEventWithADMotionEvent:(ADMotionEvent *)event;
 
+- (void)onViewAddedWithADView:(ADView *)view;
+
+- (void)onViewRemovedWithADView:(ADView *)view;
+
 - (void)postInit;
 
 - (void)rebuildScene;
 
 - (void)requestLayout;
+
+- (void)setOnHideWithFloat:(jfloat)progress;
+
+- (void)setOnShowWithFloat:(jfloat)progress;
 
 - (void)setProgressWithFloat:(jfloat)pos;
 
@@ -142,6 +153,8 @@
 
 - (void)setTransitionWithInt:(jint)beginId
                      withInt:(jint)endId;
+
+- (void)setTransitionDurationWithInt:(jint)milliseconds;
 
 - (void)touchAnimateToWithInt:(jint)touchUpMode
                     withFloat:(jfloat)position

@@ -21,6 +21,7 @@
 	 <!-- start src -->
      <source-file src="android/src/com/ashera/constraintlayout/AndroidXConstraintLayout.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="android/src/com/ashera/constraintlayout/BarrierImpl.java" target-dir="src/com/ashera/constraintlayout"/>
+     <source-file src="android/src/com/ashera/constraintlayout/CarouselImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="android/src/com/ashera/constraintlayout/CircularFlowImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="android/src/com/ashera/constraintlayout/ConstraintLayoutImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="android/src/com/ashera/constraintlayout/ConstraintReferencedIdsConverter.java" target-dir="src/com/ashera/constraintlayout"/>
@@ -33,6 +34,7 @@
      
      <!-- start tsc -->
      <source-file src="android/tsc/src/android/widget/BarrierImpl.ts" target-dir="tsc/src/android/widget"/>
+     <source-file src="android/tsc/src/android/widget/CarouselImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="android/tsc/src/android/widget/CircularFlowImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="android/tsc/src/android/widget/ConstraintLayoutImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="android/tsc/src/android/widget/FlowImpl.ts" target-dir="tsc/src/android/widget"/>
@@ -52,6 +54,7 @@
 
 	 <!-- start tsc -->
      <source-file src="ios/tsc/src/ios/widget/BarrierImpl.ts" target-dir="tsc/src/ios/widget"/>
+     <source-file src="ios/tsc/src/ios/widget/CarouselImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="ios/tsc/src/ios/widget/CircularFlowImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="ios/tsc/src/ios/widget/ConstraintLayoutImpl.ts" target-dir="tsc/src/ios/widget"/>
      <source-file src="ios/tsc/src/ios/widget/FlowImpl.ts" target-dir="tsc/src/ios/widget"/>
@@ -63,6 +66,8 @@
 	<!-- start ios -->
      <header-file src="ios/ios/src/BarrierImpl.h" target-dir="ConstraintLayoutPlugin/ios/src"/>
      <source-file src="ios/ios/src/BarrierImpl.m" target-dir="ConstraintLayoutPlugin/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
+     <header-file src="ios/ios/src/CarouselImpl.h" target-dir="ConstraintLayoutPlugin/ios/src"/>
+     <source-file src="ios/ios/src/CarouselImpl.m" target-dir="ConstraintLayoutPlugin/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <header-file src="ios/ios/src/CircularFlowImpl.h" target-dir="ConstraintLayoutPlugin/ios/src"/>
      <source-file src="ios/ios/src/CircularFlowImpl.m" target-dir="ConstraintLayoutPlugin/ios/src" compiler-flags="-fobjc-arc-exceptions"/>
      <header-file src="ios/ios/src/ConstraintLayoutCordovaPlugin.h" target-dir="ConstraintLayoutPlugin/ios/src"/>
@@ -107,6 +112,8 @@
      <source-file src="ios/library/AndroidXConstraintLayout/src/BasicMeasure.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="ios/library/AndroidXConstraintLayout/src/Cache.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>
      <source-file src="ios/library/AndroidXConstraintLayout/src/Cache.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="ios/library/AndroidXConstraintLayout/src/Carousel.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>
+     <source-file src="ios/library/AndroidXConstraintLayout/src/Carousel.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="ios/library/AndroidXConstraintLayout/src/Chain.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>
      <source-file src="ios/library/AndroidXConstraintLayout/src/Chain.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="ios/library/AndroidXConstraintLayout/src/ChainHead.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>

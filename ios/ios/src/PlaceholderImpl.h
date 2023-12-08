@@ -209,6 +209,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -340,6 +342,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 

@@ -177,6 +177,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -320,6 +322,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 

@@ -969,6 +969,9 @@ return layoutParams.wrapBehaviorInParent;			}
 	public class MotionLayoutExt extends androidx.constraintlayout.motion.widget.MotionLayout implements ILifeCycleDecorator{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		public IWidget getWidget() {
+			return MotionLayoutImpl.this;
+		}
 
 		public MotionLayoutExt() {
 			super();
@@ -1444,10 +1447,14 @@ return getOptimizationLevel();			}
 						constraintId = getId(id);
 						if (atts.getLength() > 1) {
 							androidx.constraintlayout.widget.ConstraintSet.Constraint constraint = constraintSet.getConstraint(constraintId);
-							androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams = new androidx.constraintlayout.widget.Constraints.LayoutParams(-2, -2);
-							androidx.constraintlayout.widget.Barrier barrier = new androidx.constraintlayout.widget.Barrier();
-							parseConstraint(MotionLayoutImpl.this, barrier, constraint.motion, constraint.propertySet, layoutParams, atts);
-							constraint.fillFromConstraints(barrier, constraintId, layoutParams);
+							
+							if (constraint != null) {
+								androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams = new androidx.constraintlayout.widget.Constraints.LayoutParams(-2, -2);
+								androidx.constraintlayout.widget.Barrier barrier = new androidx.constraintlayout.widget.Barrier();
+								
+								parseConstraint(MotionLayoutImpl.this, barrier, constraint.motion, constraint.propertySet, layoutParams, atts);
+								constraint.fillFromConstraints(barrier, constraintId, layoutParams);
+							}
 						}
 					}
 					break;
@@ -1550,9 +1557,18 @@ return getOptimizationLevel();			}
 					androidx.constraintlayout.motion.widget.OnSwipe onSwipe = new androidx.constraintlayout.motion.widget.OnSwipe();
 					onSwipe.setDragDirection(dragDirection);
 					onSwipe.setTouchAnchorId(touchAnchorId);
-					onSwipe.setTouchAnchorSide(touchAnchorSide);
+					if (touchAnchorSide != -1) {
+						onSwipe.setTouchAnchorSide(touchAnchorSide);
+					}
 					transition.setOnSwipe(onSwipe);
-					IWidget widget = findWidgetById(IdGenerator.getName(touchAnchorId));
+					IWidget widget;
+					
+					if (touchAnchorId == -1) {
+						widget = MotionLayoutImpl.this;
+					} else {
+						widget = findWidgetById(IdGenerator.getName(touchAnchorId));
+					}
+					
 					nativeAddOnSwipe(transition, widget);
 					
 					break;
@@ -1806,6 +1822,9 @@ return getOptimizationLevel();			}
 			}
 			
 		}, html);
+		if (!isInitialised()) {
+			getFragment().getEventBus().notifyObservers("layoutDescription", new Object());
+		}
 	}
 
 @Override
@@ -1955,6 +1974,7 @@ setAlpha(w, barrier, motion, propertySet, layoutParams, value);
 break;
 case "elevation":
 setElevation(w, barrier, motion, propertySet, layoutParams, value);
+setElevationAdditional(w, barrier, motion, propertySet, layoutParams, value);
 break;
 case "rotation":
 setRotation(w, barrier, motion, propertySet, layoutParams, value);
@@ -3417,6 +3437,7 @@ for (int i = 0; i < atts.getLength(); i++) {
 					switch (atts.getLocalName(i)) {
 case "elevation":
 setElevation(w, transform, value);
+setElevationAdditional(w, transform, value);
 break;
 case "rotation":
 setRotation(w, transform, value);
@@ -4026,7 +4047,10 @@ private void processTouchEvent(androidx.constraintlayout.motion.widget.MotionSce
 	motionEvent.setRawX(clientX);
 	motionEvent.setRawY(clientY);
 	motionEvent.setAction(event);
-	motionLayout.onTouchEvent(motionEvent);	
+	motionLayout.post(() -> {
+		motionLayout.onTouchEvent(motionEvent);	
+	});
+		
 }
 
 
@@ -4037,6 +4061,15 @@ private String getValue(String key, org.xml.sax.Attributes attributes) {
 	}
 	
 	return attributes.getValue(key);
+}
+
+
+private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
+	layoutParams.applyElevation = true;
+}
+
+private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Transform transform, String value) {
+	transform.applyElevation = true;	
 }
 
 

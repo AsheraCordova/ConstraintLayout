@@ -212,6 +212,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierImpl_barrierDirection)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -355,6 +357,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 - (ASBarrierImpl_BarrierCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 

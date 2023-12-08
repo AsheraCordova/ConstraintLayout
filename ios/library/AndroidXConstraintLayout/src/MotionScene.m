@@ -614,6 +614,15 @@ __attribute__((unused)) static ADXMotionScene_1 *create_ADXMotionScene_1_initWit
   return mDefaultDuration_;
 }
 
+- (void)setDurationWithInt:(jint)duration {
+  if (mCurrentTransition_ != nil) {
+    [mCurrentTransition_ setDurationWithInt:duration];
+  }
+  else {
+    mDefaultDuration_ = duration;
+  }
+}
+
 - (jint)gatPathMotionArc {
   return (mCurrentTransition_ != nil) ? ((ADXMotionScene_Transition *) nil_chk(mCurrentTransition_))->mPathMotionArc_ : ADXMotionScene_UNSET;
 }
@@ -777,6 +786,7 @@ __attribute__((unused)) static ADXMotionScene_1 *create_ADXMotionScene_1_initWit
     { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "LADInterpolator;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 9, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "F", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "F", 0x0, -1, -1, -1, -1, -1, -1 },
@@ -788,12 +798,12 @@ __attribute__((unused)) static ADXMotionScene_1 *create_ADXMotionScene_1_initWit
     { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x0, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x0, 30, 7, -1, -1, -1, -1 },
-    { NULL, "Z", 0x2, 31, 9, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 32, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 31, 7, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 32, 9, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 33, 34, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, 7, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 34, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 35, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 36, 37, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -825,26 +835,27 @@ __attribute__((unused)) static ADXMotionScene_1 *create_ADXMotionScene_1_initWit
   methods[24].selector = @selector(getEndId);
   methods[25].selector = @selector(getInterpolator);
   methods[26].selector = @selector(getDuration);
-  methods[27].selector = @selector(gatPathMotionArc);
-  methods[28].selector = @selector(getStaggered);
-  methods[29].selector = @selector(getMaxAcceleration);
-  methods[30].selector = @selector(getMaxVelocity);
-  methods[31].selector = @selector(getSpringStiffiness);
-  methods[32].selector = @selector(getSpringMass);
-  methods[33].selector = @selector(getSpringDamping);
-  methods[34].selector = @selector(getSpringStopThreshold);
-  methods[35].selector = @selector(getSpringBoundary);
-  methods[36].selector = @selector(getAutoCompleteMode);
-  methods[37].selector = @selector(setupTouch);
-  methods[38].selector = @selector(readFallbackWithADXMotionLayout:);
-  methods[39].selector = @selector(hasCycleDependencyWithInt:);
-  methods[40].selector = @selector(readConstraintChainWithInt:withADXMotionLayout:);
-  methods[41].selector = @selector(initWithADXMotionLayout:);
-  methods[42].selector = @selector(putDerivedIdWithInt:withInt:);
-  methods[43].selector = @selector(copyDerivedContraintsWithADXConstraintSet:withInt:withADXMotionLayout:);
+  methods[27].selector = @selector(setDurationWithInt:);
+  methods[28].selector = @selector(gatPathMotionArc);
+  methods[29].selector = @selector(getStaggered);
+  methods[30].selector = @selector(getMaxAcceleration);
+  methods[31].selector = @selector(getMaxVelocity);
+  methods[32].selector = @selector(getSpringStiffiness);
+  methods[33].selector = @selector(getSpringMass);
+  methods[34].selector = @selector(getSpringDamping);
+  methods[35].selector = @selector(getSpringStopThreshold);
+  methods[36].selector = @selector(getSpringBoundary);
+  methods[37].selector = @selector(getAutoCompleteMode);
+  methods[38].selector = @selector(setupTouch);
+  methods[39].selector = @selector(readFallbackWithADXMotionLayout:);
+  methods[40].selector = @selector(hasCycleDependencyWithInt:);
+  methods[41].selector = @selector(readConstraintChainWithInt:withADXMotionLayout:);
+  methods[42].selector = @selector(initWithADXMotionLayout:);
+  methods[43].selector = @selector(putDerivedIdWithInt:withInt:);
+  methods[44].selector = @selector(copyDerivedContraintsWithADXConstraintSet:withInt:withADXMotionLayout:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 37, -1, -1 },
+    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 38, -1, -1 },
     { "DEBUG", "Z", .constantValue.asBOOL = ADXMotionScene_DEBUG, 0x1a, -1, -1, -1, -1 },
     { "MIN_DURATION", "I", .constantValue.asInt = ADXMotionScene_MIN_DURATION, 0x1a, -1, -1, -1, -1 },
     { "TRANSITION_BACKWARD", "I", .constantValue.asInt = ADXMotionScene_TRANSITION_BACKWARD, 0x18, -1, -1, -1, -1 },
@@ -856,10 +867,10 @@ __attribute__((unused)) static ADXMotionScene_1 *create_ADXMotionScene_1_initWit
     { "mStateSet_", "LADXCLStateSet;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mCurrentTransition_", "LADXMotionScene_Transition;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mDisableAutoTransition_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "mTransitionList_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 38, -1 },
+    { "mTransitionList_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 39, -1 },
     { "mDefaultTransition_", "LADXMotionScene_Transition;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "mAbstractTransitionList_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 38, -1 },
-    { "mConstraintSetMap_", "LADSparseArray;", .constantValue.asLong = 0, 0x2, -1, -1, 39, -1 },
+    { "mAbstractTransitionList_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 39, -1 },
+    { "mConstraintSetMap_", "LADSparseArray;", .constantValue.asLong = 0, 0x2, -1, -1, 40, -1 },
     { "mDeriveMap_", "LADSparseIntArray;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "DEBUG_DESKTOP_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mDefaultDuration_", "I", .constantValue.asLong = 0, 0x1, -1, -1, -1, -1 },
@@ -882,8 +893,8 @@ __attribute__((unused)) static ADXMotionScene_1 *create_ADXMotionScene_1_initWit
     { "OVERSHOOT", "I", .constantValue.asInt = ADXMotionScene_OVERSHOOT, 0x18, -1, -1, -1, -1 },
     { "ANTICIPATE", "I", .constantValue.asInt = ADXMotionScene_ANTICIPATE, 0x18, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "setTransition", "II", "addTransition", "LADXMotionScene_Transition;", "removeTransition", "getIndex", "validateLayout", "LADXMotionLayout;", "getRealID", "I", "getTransitionsWithState", "(I)Ljava/util/List<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "addOnClickListeners", "LADXMotionLayout;I", "bestTransitionFor", "IFFLADMotionEvent;", "()Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "getTransitionById", "autoTransition", "viewTransition", "I[LADView;", "getConstraintSet", "LADContext;LNSString;", "III", "setConstraintSet", "ILADXConstraintSet;", "getKeyFrames", "LADXMotionController;", "processTouchEvent", "LADMotionEvent;ILADXMotionLayout;", "readFallback", "hasCycleDependency", "readConstraintChain", "ILADXMotionLayout;", "putDerivedId", "copyDerivedContraints", "LADXConstraintSet;ILADXMotionLayout;", &ADXMotionScene_TAG, "Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "Lr/android/util/SparseArray<Landroidx/constraintlayout/widget/ConstraintSet;>;" };
-  static const J2ObjcClassInfo _ADXMotionScene = { "MotionScene", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x1, 44, 37, -1, 3, -1, -1, -1 };
+  static const void *ptrTable[] = { "setTransition", "II", "addTransition", "LADXMotionScene_Transition;", "removeTransition", "getIndex", "validateLayout", "LADXMotionLayout;", "getRealID", "I", "getTransitionsWithState", "(I)Ljava/util/List<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "addOnClickListeners", "LADXMotionLayout;I", "bestTransitionFor", "IFFLADMotionEvent;", "()Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "getTransitionById", "autoTransition", "viewTransition", "I[LADView;", "getConstraintSet", "LADContext;LNSString;", "III", "setConstraintSet", "ILADXConstraintSet;", "getKeyFrames", "LADXMotionController;", "processTouchEvent", "LADMotionEvent;ILADXMotionLayout;", "setDuration", "readFallback", "hasCycleDependency", "readConstraintChain", "ILADXMotionLayout;", "putDerivedId", "copyDerivedContraints", "LADXConstraintSet;ILADXMotionLayout;", &ADXMotionScene_TAG, "Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "Lr/android/util/SparseArray<Landroidx/constraintlayout/widget/ConstraintSet;>;" };
+  static const J2ObjcClassInfo _ADXMotionScene = { "MotionScene", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x1, 45, 37, -1, 3, -1, -1, -1 };
   return &_ADXMotionScene;
 }
 

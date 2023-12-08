@@ -88,6 +88,8 @@
 - (void)setConstraintSetWithInt:(jint)id_
            withADXConstraintSet:(ADXConstraintSet *)set;
 
+- (void)setDurationWithInt:(jint)duration;
+
 - (void)setTransitionWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition;
 
 - (jboolean)validateLayoutWithADXMotionLayout:(ADXMotionLayout *)layout;

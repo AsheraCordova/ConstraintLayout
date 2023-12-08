@@ -461,6 +461,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -590,6 +592,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 - (ASFlowImpl_FlowCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASFlowImpl_FlowCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 

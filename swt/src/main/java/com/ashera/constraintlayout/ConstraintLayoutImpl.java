@@ -939,6 +939,9 @@ return layoutParams.wrapBehaviorInParent;			}
 	public class ConstraintLayoutExt extends androidx.constraintlayout.widget.ConstraintLayout implements ILifeCycleDecorator{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		public IWidget getWidget() {
+			return ConstraintLayoutImpl.this;
+		}
 
 		public ConstraintLayoutExt() {
 			super();

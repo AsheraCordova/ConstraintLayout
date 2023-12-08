@@ -208,6 +208,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_Orientation)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -337,6 +339,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 

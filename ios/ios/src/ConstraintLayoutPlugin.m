@@ -4,6 +4,7 @@
 //
 
 #include "BarrierImpl.h"
+#include "CarouselImpl.h"
 #include "CircularFlowImpl.h"
 #include "ConstraintLayoutImpl.h"
 #include "ConstraintLayoutPlugin.h"
@@ -68,6 +69,7 @@ void ASConstraintLayoutPlugin_initPlugin() {
   ASWidgetFactory_register__WithASIWidget_(new_ASFlowImpl_init());
   ASWidgetFactory_register__WithASIWidget_(new_ASCircularFlowImpl_init());
   ASWidgetFactory_register__WithASIWidget_(new_ASMotionLayoutImpl_init());
+  ASWidgetFactory_register__WithASIWidget_(new_ASCarouselImpl_init());
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutPlugin)

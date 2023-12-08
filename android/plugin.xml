@@ -21,6 +21,7 @@
 	 <!-- start src -->
      <source-file src="src/com/ashera/constraintlayout/AndroidXConstraintLayout.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="src/com/ashera/constraintlayout/BarrierImpl.java" target-dir="src/com/ashera/constraintlayout"/>
+     <source-file src="src/com/ashera/constraintlayout/CarouselImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="src/com/ashera/constraintlayout/CircularFlowImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="src/com/ashera/constraintlayout/ConstraintLayoutImpl.java" target-dir="src/com/ashera/constraintlayout"/>
      <source-file src="src/com/ashera/constraintlayout/ConstraintReferencedIdsConverter.java" target-dir="src/com/ashera/constraintlayout"/>
@@ -33,6 +34,7 @@
      
      <!-- start tsc -->
      <source-file src="tsc/src/android/widget/BarrierImpl.ts" target-dir="tsc/src/android/widget"/>
+     <source-file src="tsc/src/android/widget/CarouselImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="tsc/src/android/widget/CircularFlowImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="tsc/src/android/widget/ConstraintLayoutImpl.ts" target-dir="tsc/src/android/widget"/>
      <source-file src="tsc/src/android/widget/FlowImpl.ts" target-dir="tsc/src/android/widget"/>

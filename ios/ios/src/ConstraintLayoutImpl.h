@@ -538,6 +538,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_Layout_wrapBehaviorInParent)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -690,6 +692,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 

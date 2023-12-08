@@ -546,6 +546,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -736,6 +738,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 

@@ -173,6 +173,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 - (id<JavaUtilList>)getMethods;
 
+- (id<ASIWidget>)getWidget;
+
 - (void)getWindowVisibleDisplayFrameWithADRect:(ADRect *)displayFrame;
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout;
@@ -302,6 +304,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 - (ASGroupImpl_GroupCommandBuilder *)setCustomErrorMessageValuesWithNSString:(NSString *)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setDuplicateParentStateWithBoolean:(jboolean)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)setElevationWithNSString:(NSString *)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setEnabledWithBoolean:(jboolean)arg0;
 
