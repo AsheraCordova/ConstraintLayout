@@ -4,5 +4,5 @@ repositories {
 }
 
 dependencies {
-	implementation group: 'androidx.constraintlayout', name: 'constraintlayout', version: '2.1.0'
+	implementation group: 'androidx.constraintlayout', name: 'constraintlayout', version: '2.1.1'
 }

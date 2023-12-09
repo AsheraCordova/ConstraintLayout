@@ -92,7 +92,7 @@ public class CarouselImpl extends BaseWidget {
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_touchUp_velocityThreshold").withType("float"));
 		ConverterFactory.register("androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior", new Carousel_emptyViewsBehavior());
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_emptyViewsBehavior").withType("androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("constraint_referenced_ids").withType("BarrierImpl.constraintReferencedIds"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("constraint_referenced_ids").withType("BarrierImpl.constraintReferencedIds").beforeChildAdd());
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("jumpToIndex").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("jumpTolast").withType("nil"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("jumpToNext").withType("nil"));

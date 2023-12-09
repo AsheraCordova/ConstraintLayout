@@ -2387,12 +2387,12 @@ withADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)c {
   if (this$0_->mCurrentState_ == [this$0_ getStartState]) {
     [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
     if (mStart_ != nil) {
-      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
+      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
     }
   }
   else {
     if (mStart_ != nil) {
-      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
+      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
     }
     [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
   }
@@ -2404,16 +2404,16 @@ withADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)c {
     this$0_->mWidthMeasureMode_ = widthMode;
     this$0_->mHeightMeasureMode_ = heightMode;
     if (this$0_->mCurrentState_ == [this$0_ getStartState]) {
-      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(((ADXConstraintSet *) nil_chk(mEnd_))->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
+      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
       if (mStart_ != nil) {
-        [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
+        [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
       }
     }
     else {
       if (mStart_ != nil) {
-        [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
+        [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutStart_ withInt:optimisationLevel withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mStart_ == nil || mStart_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
       }
-      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(((ADXConstraintSet *) nil_chk(mEnd_))->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
+      [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
     }
     this$0_->mStartWrapWidth_ = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutStart_)) getWidth];
     this$0_->mStartWrapHeight_ = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutStart_)) getHeight];
