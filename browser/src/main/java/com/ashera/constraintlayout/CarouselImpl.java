@@ -80,18 +80,18 @@ public class CarouselImpl extends BaseWidget {
 		ViewImpl.register(attributeName);
 
 
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_firstView").withType("id"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_previousState").withType("id"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_nextState").withType("id"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_infinite").withType("boolean"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_forwardTransition").withType("id"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_backwardTransition").withType("id"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_touchUp_dampeningFactor").withType("float"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_firstView").withType("id").beforeChildAdd());
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_previousState").withType("id").beforeChildAdd());
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_nextState").withType("id").beforeChildAdd());
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_infinite").withType("boolean").beforeChildAdd());
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_forwardTransition").withType("id").beforeChildAdd());
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_backwardTransition").withType("id").beforeChildAdd());
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_touchUp_dampeningFactor").withType("float").beforeChildAdd());
 		ConverterFactory.register("androidx.constraintlayout.helper.widget.Carousel.carousel_touchUpMode", new Carousel_touchUpMode());
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_touchUpMode").withType("androidx.constraintlayout.helper.widget.Carousel.carousel_touchUpMode"));
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_touchUp_velocityThreshold").withType("float"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_touchUpMode").withType("androidx.constraintlayout.helper.widget.Carousel.carousel_touchUpMode").beforeChildAdd());
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_touchUp_velocityThreshold").withType("float").beforeChildAdd());
 		ConverterFactory.register("androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior", new Carousel_emptyViewsBehavior());
-		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_emptyViewsBehavior").withType("androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior"));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("carousel_emptyViewsBehavior").withType("androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior").beforeChildAdd());
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("constraint_referenced_ids").withType("BarrierImpl.constraintReferencedIds").beforeChildAdd());
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("jumpToIndex").withType("int"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("jumpTolast").withType("nil"));
@@ -124,6 +124,16 @@ public class CarouselImpl extends BaseWidget {
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
 		public IWidget getWidget() {
 			return CarouselImpl.this;
+		}
+		@Override
+		public void onAttachedToWindow() {
+			try {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+					super.onAttachedToWindow();
+				}
+			} catch (Exception e) {
+				// ignore excepiton
+			}
 		}
 
 		public CarouselExt() {
@@ -897,14 +907,6 @@ private Object getFirstView() {
 }
 private androidx.constraintlayout.helper.widget.Carousel carousel;	
 
-@Override
-public boolean isAfterParentInitRequired() {
-	return true;
-}
-@Override
-public void afterParentInit() {
-	carousel.onAttachedToWindow();
-}
 private void initItems() {
 	carousel.updateItems();
 }

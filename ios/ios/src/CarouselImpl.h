@@ -46,8 +46,6 @@
 - (instancetype)initWithNSString:(NSString *)groupName
                     withNSString:(NSString *)localname;
 
-- (void)afterParentInit;
-
 - (id)asNativeWidget;
 
 - (id)asWidget;
@@ -73,8 +71,6 @@
 - (void)initialized OBJC_METHOD_FAMILY_NONE;
 
 - (void)invalidate;
-
-- (jboolean)isAfterParentInitRequired;
 
 - (void)loadAttributesWithNSString:(NSString *)attributeName;
 
@@ -254,6 +250,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_emptyViewsBehavior)
 - (void)offsetLeftAndRightWithInt:(jint)offset;
 
 - (void)offsetTopAndBottomWithInt:(jint)offset;
+
+- (void)onAttachedToWindow;
 
 - (void)onMeasureWithInt:(jint)widthMeasureSpec
                  withInt:(jint)heightMeasureSpec;

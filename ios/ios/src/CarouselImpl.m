@@ -38,6 +38,7 @@
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
 #include "java/lang/Boolean.h"
+#include "java/lang/Exception.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -380,18 +381,18 @@ NSString *ASCarouselImpl_GROUP_NAME = @"androidx.constraintlayout.helper.widget.
 
 - (void)loadAttributesWithNSString:(NSString *)attributeName {
   ASViewImpl_register__WithNSString_(attributeName);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_firstView"])) withTypeWithNSString:@"id"]);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_previousState"])) withTypeWithNSString:@"id"]);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_nextState"])) withTypeWithNSString:@"id"]);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_infinite"])) withTypeWithNSString:@"boolean"]);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_forwardTransition"])) withTypeWithNSString:@"id"]);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_backwardTransition"])) withTypeWithNSString:@"id"]);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_touchUp_dampeningFactor"])) withTypeWithNSString:@"float"]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_firstView"])) withTypeWithNSString:@"id"])) beforeChildAdd]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_previousState"])) withTypeWithNSString:@"id"])) beforeChildAdd]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_nextState"])) withTypeWithNSString:@"id"])) beforeChildAdd]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_infinite"])) withTypeWithNSString:@"boolean"])) beforeChildAdd]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_forwardTransition"])) withTypeWithNSString:@"id"])) beforeChildAdd]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_backwardTransition"])) withTypeWithNSString:@"id"])) beforeChildAdd]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_touchUp_dampeningFactor"])) withTypeWithNSString:@"float"])) beforeChildAdd]);
   ASConverterFactory_register__WithNSString_withASIConverter_(@"androidx.constraintlayout.helper.widget.Carousel.carousel_touchUpMode", new_ASCarouselImpl_Carousel_touchUpMode_init());
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_touchUpMode"])) withTypeWithNSString:@"androidx.constraintlayout.helper.widget.Carousel.carousel_touchUpMode"]);
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_touchUp_velocityThreshold"])) withTypeWithNSString:@"float"]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_touchUpMode"])) withTypeWithNSString:@"androidx.constraintlayout.helper.widget.Carousel.carousel_touchUpMode"])) beforeChildAdd]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_touchUp_velocityThreshold"])) withTypeWithNSString:@"float"])) beforeChildAdd]);
   ASConverterFactory_register__WithNSString_withASIConverter_(@"androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior", new_ASCarouselImpl_Carousel_emptyViewsBehavior_init());
-  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_emptyViewsBehavior"])) withTypeWithNSString:@"androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior"]);
+  ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"carousel_emptyViewsBehavior"])) withTypeWithNSString:@"androidx.constraintlayout.helper.widget.Carousel.carousel_emptyViewsBehavior"])) beforeChildAdd]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"constraint_referenced_ids"])) withTypeWithNSString:@"BarrierImpl.constraintReferencedIds"])) beforeChildAdd]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"jumpToIndex"])) withTypeWithNSString:@"int"]);
   ASWidgetFactory_registerAttributeWithNSString_withASWidgetAttribute_Builder_(localName_, [((ASWidgetAttribute_Builder *) nil_chk([new_ASWidgetAttribute_Builder_init() withNameWithNSString:@"jumpTolast"])) withTypeWithNSString:@"nil"]);
@@ -796,14 +797,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ASCarouselImpl_getFirstView(self);
 }
 
-- (jboolean)isAfterParentInitRequired {
-  return true;
-}
-
-- (void)afterParentInit {
-  [((ADXCarousel *) nil_chk(carousel_)) onAttachedToWindow];
-}
-
 - (void)initItems {
   ASCarouselImpl_initItems(self);
 }
@@ -915,8 +908,6 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x101, 35, 1, -1, -1, -1, -1 },
@@ -979,20 +970,18 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[43].selector = @selector(getNextState);
   methods[44].selector = @selector(getPreviousState);
   methods[45].selector = @selector(getFirstView);
-  methods[46].selector = @selector(isAfterParentInitRequired);
-  methods[47].selector = @selector(afterParentInit);
-  methods[48].selector = @selector(initItems);
-  methods[49].selector = @selector(asNativeWidget);
-  methods[50].selector = @selector(checkIosVersionWithNSString:);
-  methods[51].selector = @selector(setIdWithNSString:);
-  methods[52].selector = @selector(setVisibleWithBoolean:);
-  methods[53].selector = @selector(requestLayout);
-  methods[54].selector = @selector(invalidate);
-  methods[55].selector = @selector(getPluginWithNSString:);
-  methods[56].selector = @selector(getBean);
-  methods[57].selector = @selector(getBuilder);
-  methods[58].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[59].selector = @selector(createView);
+  methods[46].selector = @selector(initItems);
+  methods[47].selector = @selector(asNativeWidget);
+  methods[48].selector = @selector(checkIosVersionWithNSString:);
+  methods[49].selector = @selector(setIdWithNSString:);
+  methods[50].selector = @selector(setVisibleWithBoolean:);
+  methods[51].selector = @selector(requestLayout);
+  methods[52].selector = @selector(invalidate);
+  methods[53].selector = @selector(getPluginWithNSString:);
+  methods[54].selector = @selector(getBean);
+  methods[55].selector = @selector(getBuilder);
+  methods[56].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[57].selector = @selector(createView);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 43, -1, -1 },
@@ -1010,7 +999,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "bean_", "LASCarouselImpl_CarouselBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "updateModelRecurse", "LASIWidget;LNSObject;", "setNewItemListener", "LNSObject;", "setChildDataScopeKey", "setDataScopeKey", "setChildDataKey", "setDataKey", "transitionToLast", "I", "transitionToNext", "transitionToPrevious", "transitionToIndex", "II", "jumpToIndex", "setEmptyViewsBehavior", "setTouchUpMode", "setTouchUp_velocityThreshold", "setTouchUp_dampeningFactor", "setBackwardTransition", "setForwardTransition", "setInfinite", "setNextState", "setPreviousState", "setFirstView", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASCarouselImpl_LOCAL_NAME, &ASCarouselImpl_GROUP_NAME, "listener", "LASCarouselImpl_Carousel_touchUpMode;LASCarouselImpl_Carousel_emptyViewsBehavior;LASCarouselImpl_CarouselExt;LASCarouselImpl_CarouselListener;LASCarouselImpl_NewItemListener;LASCarouselImpl_CarouselCommandBuilder;LASCarouselImpl_CarouselBean;" };
-  static const J2ObjcClassInfo _ASCarouselImpl = { "CarouselImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 60, 13, -1, 46, -1, -1, -1 };
+  static const J2ObjcClassInfo _ASCarouselImpl = { "CarouselImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 58, 13, -1, 46, -1, -1, -1 };
   return &_ASCarouselImpl;
 }
 
@@ -1394,6 +1383,16 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
   return this$0_;
 }
 
+- (void)onAttachedToWindow {
+  @try {
+    {
+      [super onAttachedToWindow];
+    }
+  }
+  @catch (JavaLangException *e) {
+  }
+}
+
 - (instancetype)initWithASCarouselImpl:(ASCarouselImpl *)outer$ {
   ASCarouselImpl_CarouselExt_initWithASCarouselImpl_(self, outer$);
   return self;
@@ -1559,6 +1558,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
 + (const J2ObjcClassInfo *)__metadata {
   static J2ObjcMethodInfo methods[] = {
     { NULL, "LASIWidget;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
     { NULL, "V", 0x4, 3, 4, -1, -1, -1, -1 },
@@ -1591,33 +1591,34 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getWidget);
-  methods[1].selector = @selector(initWithASCarouselImpl:);
-  methods[2].selector = @selector(onMeasureWithInt:withInt:);
-  methods[3].selector = @selector(onLayoutWithBoolean:withInt:withInt:withInt:withInt:);
-  methods[4].selector = @selector(executeWithNSString:withNSObjectArray:);
-  methods[5].selector = @selector(updateMeasuredDimensionWithInt:withInt:);
-  methods[6].selector = @selector(newInstanceWithASIWidget:);
-  methods[7].selector = @selector(setAttributeWithASWidgetAttribute:withNSString:withId:);
-  methods[8].selector = @selector(getMethods);
-  methods[9].selector = @selector(initialized);
-  methods[10].selector = @selector(getAttributeWithASWidgetAttribute:);
-  methods[11].selector = @selector(drawableStateChanged);
-  methods[12].selector = @selector(inflateViewWithNSString:);
-  methods[13].selector = @selector(remeasure);
-  methods[14].selector = @selector(removeFromParent);
-  methods[15].selector = @selector(getLocationOnScreenWithIntArray:);
-  methods[16].selector = @selector(getWindowVisibleDisplayFrameWithADRect:);
-  methods[17].selector = @selector(offsetTopAndBottomWithInt:);
-  methods[18].selector = @selector(offsetLeftAndRightWithInt:);
-  methods[19].selector = @selector(setMyAttributeWithNSString:withId:);
-  methods[20].selector = @selector(setVisibilityWithInt:);
-  methods[21].selector = @selector(state0);
-  methods[22].selector = @selector(state1);
-  methods[23].selector = @selector(state2);
-  methods[24].selector = @selector(state3);
-  methods[25].selector = @selector(state4);
-  methods[26].selector = @selector(stateYes);
-  methods[27].selector = @selector(stateNo);
+  methods[1].selector = @selector(onAttachedToWindow);
+  methods[2].selector = @selector(initWithASCarouselImpl:);
+  methods[3].selector = @selector(onMeasureWithInt:withInt:);
+  methods[4].selector = @selector(onLayoutWithBoolean:withInt:withInt:withInt:withInt:);
+  methods[5].selector = @selector(executeWithNSString:withNSObjectArray:);
+  methods[6].selector = @selector(updateMeasuredDimensionWithInt:withInt:);
+  methods[7].selector = @selector(newInstanceWithASIWidget:);
+  methods[8].selector = @selector(setAttributeWithASWidgetAttribute:withNSString:withId:);
+  methods[9].selector = @selector(getMethods);
+  methods[10].selector = @selector(initialized);
+  methods[11].selector = @selector(getAttributeWithASWidgetAttribute:);
+  methods[12].selector = @selector(drawableStateChanged);
+  methods[13].selector = @selector(inflateViewWithNSString:);
+  methods[14].selector = @selector(remeasure);
+  methods[15].selector = @selector(removeFromParent);
+  methods[16].selector = @selector(getLocationOnScreenWithIntArray:);
+  methods[17].selector = @selector(getWindowVisibleDisplayFrameWithADRect:);
+  methods[18].selector = @selector(offsetTopAndBottomWithInt:);
+  methods[19].selector = @selector(offsetLeftAndRightWithInt:);
+  methods[20].selector = @selector(setMyAttributeWithNSString:withId:);
+  methods[21].selector = @selector(setVisibilityWithInt:);
+  methods[22].selector = @selector(state0);
+  methods[23].selector = @selector(state1);
+  methods[24].selector = @selector(state2);
+  methods[25].selector = @selector(state3);
+  methods[26].selector = @selector(state4);
+  methods[27].selector = @selector(stateYes);
+  methods[28].selector = @selector(stateNo);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LASCarouselImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
@@ -1626,7 +1627,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
     { "templates_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 27, -1 },
   };
   static const void *ptrTable[] = { "LASCarouselImpl;", "onMeasure", "II", "onLayout", "ZIIII", "execute", "LNSString;[LNSObject;", "updateMeasuredDimension", "newInstance", "LASIWidget;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;", "()Ljava/util/List<Ljava/lang/String;>;", "getAttribute", "LASWidgetAttribute;", "inflateView", "LNSString;", "getLocationOnScreen", "[I", "getWindowVisibleDisplayFrame", "LADRect;", "offsetTopAndBottom", "I", "offsetLeftAndRight", "setMyAttribute", "LNSString;LNSObject;", "setVisibility", "Ljava/util/Map<Ljava/lang/String;Lcom/ashera/widget/IWidget;>;" };
-  static const J2ObjcClassInfo _ASCarouselImpl_CarouselExt = { "CarouselExt", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 28, 4, 0, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _ASCarouselImpl_CarouselExt = { "CarouselExt", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 29, 4, 0, -1, -1, -1, -1 };
   return &_ASCarouselImpl_CarouselExt;
 }
 
