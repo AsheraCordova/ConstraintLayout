@@ -574,6 +574,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -676,6 +686,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
                                                                   withId:(id)arg1;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)addModelWithId:(id)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)endAnimator;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -863,6 +877,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setOnChildViewAddedWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setOnChildViewRemovedWithNSString:(NSString *)arg0;
@@ -952,6 +974,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)startAnimator;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetAddStatesFromChildren;
 

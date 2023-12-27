@@ -241,6 +241,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -300,6 +310,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 #pragma mark Public
 
 - (instancetype)initWithASPlaceholderImpl:(ASPlaceholderImpl *)outer$;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)endAnimator;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -453,6 +467,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -518,6 +540,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)startAnimator;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetAlpha;
 

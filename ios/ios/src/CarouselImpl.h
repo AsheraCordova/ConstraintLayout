@@ -267,6 +267,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_emptyViewsBehavior)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -364,6 +374,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 #pragma mark Public
 
 - (instancetype)initWithASCarouselImpl:(ASCarouselImpl *)outer$;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)endAnimator;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -571,6 +585,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASCarouselImpl_CarouselCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASCarouselImpl_CarouselCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -636,6 +658,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 - (ASCarouselImpl_CarouselCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)startAnimator;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)transitionToIndexWithInt:(jint)index
                                                             withInt:(jint)delay;

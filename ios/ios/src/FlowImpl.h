@@ -493,6 +493,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -552,6 +562,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 #pragma mark Public
 
 - (instancetype)initWithASFlowImpl:(ASFlowImpl *)outer$;
+
+- (ASFlowImpl_FlowCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASFlowImpl_FlowCommandBuilder *)endAnimator;
 
 - (ASFlowImpl_FlowCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -731,6 +745,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 
 - (ASFlowImpl_FlowCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASFlowImpl_FlowCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASFlowImpl_FlowCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASFlowImpl_FlowCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASFlowImpl_FlowCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASFlowImpl_FlowCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -796,6 +818,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 - (ASFlowImpl_FlowCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASFlowImpl_FlowCommandBuilder *)startAnimator;
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetAlpha;
 

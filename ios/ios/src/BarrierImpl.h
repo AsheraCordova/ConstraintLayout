@@ -244,6 +244,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierImpl_barrierDirection)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -305,6 +315,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 #pragma mark Public
 
 - (instancetype)initWithASBarrierImpl:(ASBarrierImpl *)outer$;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)endAnimator;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -468,6 +482,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -531,6 +553,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 - (ASBarrierImpl_BarrierCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)startAnimator;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetAlpha;
 

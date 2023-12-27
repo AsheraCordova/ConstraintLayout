@@ -209,6 +209,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -272,6 +282,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)addViewToCircularFlowWithNSString:(NSString *)viewId
                                                                              withInt:(jint)radius
                                                                            withFloat:(jfloat)angle;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)endAnimator;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -433,6 +447,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -496,6 +518,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)startAnimator;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetAlpha;
 

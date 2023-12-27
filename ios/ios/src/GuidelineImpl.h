@@ -240,6 +240,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_Orientation)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -301,6 +311,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 #pragma mark Public
 
 - (instancetype)initWithASGuidelineImpl:(ASGuidelineImpl *)outer$;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)endAnimator;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -450,6 +464,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -515,6 +537,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)startAnimator;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetAlpha;
 

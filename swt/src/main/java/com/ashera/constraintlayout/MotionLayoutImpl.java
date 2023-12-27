@@ -1079,6 +1079,26 @@ return layoutParams.wrapBehaviorInParent;			}
 		}
 		@Override
 		public void setMyAttribute(String name, Object value) {
+			if (name.equals("state0")) {
+				setState0(value);
+				return;
+			}
+			if (name.equals("state1")) {
+				setState1(value);
+				return;
+			}
+			if (name.equals("state2")) {
+				setState2(value);
+				return;
+			}
+			if (name.equals("state3")) {
+				setState3(value);
+				return;
+			}
+			if (name.equals("state4")) {
+				setState4(value);
+				return;
+			}
 			MotionLayoutImpl.this.setAttribute(name, value, true);
 		}
         @Override
@@ -1088,6 +1108,21 @@ return layoutParams.wrapBehaviorInParent;			}
             
         }
         
+    	public void setState0(Object value) {
+    		ViewImpl.setState(MotionLayoutImpl.this, 0, value);
+    	}
+    	public void setState1(Object value) {
+    		ViewImpl.setState(MotionLayoutImpl.this, 1, value);
+    	}
+    	public void setState2(Object value) {
+    		ViewImpl.setState(MotionLayoutImpl.this, 2, value);
+    	}
+    	public void setState3(Object value) {
+    		ViewImpl.setState(MotionLayoutImpl.this, 3, value);
+    	}
+    	public void setState4(Object value) {
+    		ViewImpl.setState(MotionLayoutImpl.this, 4, value);
+    	}
         	public void state0() {
         		ViewImpl.state(MotionLayoutImpl.this, 0);
         	}
@@ -3456,7 +3491,7 @@ return this;}
 							id = atts.getValue(i);
 							break;
 						case "deriveConstraintsFrom":
-							derivedId = getValue(attrName, atts);
+							derivedId = ViewImpl.getValue(attrName, atts);
 							break;
 						}
 					}
@@ -3477,7 +3512,7 @@ return this;}
 					boolean method = false;
 					for (int i = 0; i < atts.getLength(); i++) {
 						String attrName = atts.getLocalName(i);
-						String attrValue = getValue(attrName, atts);
+						String attrValue = ViewImpl.getValue(attrName, atts);
 						switch (attrName) {
 						case "name":
 							name = attrValue;
@@ -3602,10 +3637,10 @@ return this;}
 						String name = atts.getLocalName(i);
 						switch (name) {
 						case "clickAction":
-							clickAction = (int) getClickAction(getValue(name, atts));
+							clickAction = (int) getClickAction(ViewImpl.getValue(name, atts));
 							break;
 						case "targetId":
-							targetId = (int) getId(getValue(name, atts));
+							targetId = (int) getId(ViewImpl.getValue(name, atts));
 							break;
 						default:
 							break;
@@ -3630,13 +3665,13 @@ return this;}
 						String name = atts.getLocalName(i);
 						switch (name) {
 						case "dragDirection":
-							dragDirection = (int) getDragDirection(getValue(name, atts));
+							dragDirection = (int) getDragDirection(ViewImpl.getValue(name, atts));
 							break;
 						case "touchAnchorId":
-							touchAnchorId = (int) getId(getValue(name, atts));
+							touchAnchorId = (int) getId(ViewImpl.getValue(name, atts));
 							break;
 						case "touchAnchorSide":
-							touchAnchorSide = (int) getTouchAnchorSide(getValue(name, atts));
+							touchAnchorSide = (int) getTouchAnchorSide(ViewImpl.getValue(name, atts));
 							break;
 							
 						default:
@@ -3687,7 +3722,7 @@ return this;}
 					androidx.constraintlayout.motion.widget.KeyCycle keyCycle = new androidx.constraintlayout.motion.widget.KeyCycle();
 					for (int i = 0; i < atts.getLength(); i++) {
 						String name = atts.getLocalName(i);
-						String value = getValue(name, atts);
+						String value = ViewImpl.getValue(name, atts);
 						switch (name) {
 						case "rotation":
 						case "rotationX":
@@ -3746,7 +3781,7 @@ return this;}
 					androidx.constraintlayout.motion.widget.KeyTimeCycle keyCycle = new androidx.constraintlayout.motion.widget.KeyTimeCycle();
 					for (int i = 0; i < atts.getLength(); i++) {
 						String name = atts.getLocalName(i);
-						String value = getValue(name, atts);
+						String value = ViewImpl.getValue(name, atts);
 						switch (name) {
 						case "rotation":
 						case "rotationX":
@@ -3802,7 +3837,7 @@ return this;}
 					androidx.constraintlayout.motion.widget.KeyAttributes keyAttribute = new androidx.constraintlayout.motion.widget.KeyAttributes();
 					for (int i = 0; i < atts.getLength(); i++) {
 						String name = atts.getLocalName(i);
-						String value = getValue(name, atts);
+						String value = ViewImpl.getValue(name, atts);
 						switch (name) {
 						case "rotation":
 						case "rotationX":
@@ -4048,7 +4083,7 @@ private int getWaveShape(String value) {
 private void parseConstraint(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "orientation":
 setOrientation(w, barrier, motion, propertySet, layoutParams, value);
@@ -4904,7 +4939,7 @@ private void setRightMargin(Object objValue, androidx.constraintlayout.widget.Co
 private void parseMotion(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Motion motion,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "animateRelativeTo":
 setAnimateRelativeTo(w, motion, value);
@@ -4976,7 +5011,7 @@ motion.mQuantizeMotionPhase = (float) w.quickConvert(strValue, "float");
 private void parseLayout(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Layout layoutParams,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "layout_width":
 setWidth(w, layoutParams, value);
@@ -5523,7 +5558,7 @@ layoutParams.mBarrierAllowsGoneWidgets = (boolean) w.quickConvert(strValue, "boo
 private void parseTransform(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Transform transform,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "elevation":
 setElevation(w, transform, value);
@@ -5613,7 +5648,7 @@ transform.translationZ = (float) w.quickConvert(strValue, "dimensionfloat");
 private void parsePropertySet(IWidget w, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "visibility":
 setVisibility(w, propertySet, value);
@@ -5646,7 +5681,7 @@ propertySet.alpha = (float) w.quickConvert(strValue, "float");
 private void parseKeyPosition(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "keyPositionType":
 setKeyPositionType(w, keyPosition, value);
@@ -5748,7 +5783,7 @@ keyPosition.mDrawPath = getDrawPath(strValue);
 private void parseTransition(IWidget w, androidx.constraintlayout.motion.widget.MotionScene.Transition transition,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "constraintSetStart":
 setConstraintSetStart(w, transition, value);
@@ -5890,7 +5925,7 @@ transition.mTransitionFlags = (int) w.quickConvert(strValue, "transitionFlags.fl
 private void parseKeyTrigger(IWidget w, androidx.constraintlayout.motion.widget.KeyTrigger keyTrigger,  org.xml.sax.Attributes atts) {
 for (int i = 0; i < atts.getLength(); i++) {
 					String name = atts.getLocalName(i);
-					String value = getValue(name, atts);
+					String value = ViewImpl.getValue(name, atts);
 					switch (atts.getLocalName(i)) {
 case "framePosition":
 setFramePosition(w, keyTrigger, value);
@@ -6141,16 +6176,6 @@ private void processTouchEvent(androidx.constraintlayout.motion.widget.MotionSce
 		motionLayout.onTouchEvent(motionEvent);	
 	});
 		
-}
-
-
-private String getValue(String key, org.xml.sax.Attributes attributes) {
-	String os = PluginInvoker.getOS().toLowerCase();
-	if (attributes.getValue(key + "-" + os) != null) {
-		return attributes.getValue(key + "-" + os);
-	}
-	
-	return attributes.getValue(key);
 }
 
 

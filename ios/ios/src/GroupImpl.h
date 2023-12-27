@@ -205,6 +205,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -264,6 +274,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 #pragma mark Public
 
 - (instancetype)initWithASGroupImpl:(ASGroupImpl *)outer$;
+
+- (ASGroupImpl_GroupCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)endAnimator;
 
 - (ASGroupImpl_GroupCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -415,6 +429,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 
 - (ASGroupImpl_GroupCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASGroupImpl_GroupCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASGroupImpl_GroupCommandBuilder *)setOnClickWithNSString:(NSString *)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setOnDragWithNSString:(NSString *)arg0;
@@ -478,6 +500,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 - (ASGroupImpl_GroupCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)startAnimator;
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetAlpha;
 

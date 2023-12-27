@@ -566,6 +566,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_Layout_wrapBehaviorInParent)
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
 
+- (void)setState0WithId:(id)value;
+
+- (void)setState1WithId:(id)value;
+
+- (void)setState2WithId:(id)value;
+
+- (void)setState3WithId:(id)value;
+
+- (void)setState4WithId:(id)value;
+
 - (void)setVisibilityWithInt:(jint)visibility;
 
 - (void)state0;
@@ -632,6 +642,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
                                                                           withId:(id)arg1;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)addModelWithId:(id)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)animatorXmlWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)endAnimator;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)executeWithBoolean:(jboolean)setter;
 
@@ -815,6 +829,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setModelUiToPojoWithNSString:(NSString *)arg0;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnAnimationCancelWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnAnimationEndWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnAnimationRepeatWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnAnimationStartWithNSString:(NSString *)arg0;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnChildViewAddedWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setOnChildViewRemovedWithNSString:(NSString *)arg0;
@@ -902,6 +924,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setVisibilityWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setZIndexWithInt:(jint)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)startAnimator;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetAddStatesFromChildren;
 

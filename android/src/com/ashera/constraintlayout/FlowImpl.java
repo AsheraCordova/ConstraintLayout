@@ -375,6 +375,116 @@ public class FlowImpl extends BaseWidget {
         	ViewImpl.drawableStateChanged(FlowImpl.this);
         }
         
+    	public void setState0(float value) {
+    		ViewImpl.setState(FlowImpl.this, 0, value);
+    	}
+    	public void setState0(int value) {
+    		ViewImpl.setState(FlowImpl.this, 0, value);
+    	}
+    	public void setState0(double value) {
+    		ViewImpl.setState(FlowImpl.this, 0, value);
+    	}
+    	
+    	public void setState0(Float value) {
+    		ViewImpl.setState(FlowImpl.this, 0, value);
+    	}
+    	public void setState0(Integer value) {
+    		ViewImpl.setState(FlowImpl.this, 0, value);
+    	}
+    	public void setState0(Double value) {
+    		ViewImpl.setState(FlowImpl.this, 0, value);
+    	}
+    	public void setState0(Object value) {
+    		ViewImpl.setState(FlowImpl.this, 0, value);
+    	}
+    	public void setState1(float value) {
+    		ViewImpl.setState(FlowImpl.this, 1, value);
+    	}
+    	public void setState1(int value) {
+    		ViewImpl.setState(FlowImpl.this, 1, value);
+    	}
+    	public void setState1(double value) {
+    		ViewImpl.setState(FlowImpl.this, 1, value);
+    	}
+    	
+    	public void setState1(Float value) {
+    		ViewImpl.setState(FlowImpl.this, 1, value);
+    	}
+    	public void setState1(Integer value) {
+    		ViewImpl.setState(FlowImpl.this, 1, value);
+    	}
+    	public void setState1(Double value) {
+    		ViewImpl.setState(FlowImpl.this, 1, value);
+    	}
+    	public void setState1(Object value) {
+    		ViewImpl.setState(FlowImpl.this, 1, value);
+    	}
+    	public void setState2(float value) {
+    		ViewImpl.setState(FlowImpl.this, 2, value);
+    	}
+    	public void setState2(int value) {
+    		ViewImpl.setState(FlowImpl.this, 2, value);
+    	}
+    	public void setState2(double value) {
+    		ViewImpl.setState(FlowImpl.this, 2, value);
+    	}
+    	
+    	public void setState2(Float value) {
+    		ViewImpl.setState(FlowImpl.this, 2, value);
+    	}
+    	public void setState2(Integer value) {
+    		ViewImpl.setState(FlowImpl.this, 2, value);
+    	}
+    	public void setState2(Double value) {
+    		ViewImpl.setState(FlowImpl.this, 2, value);
+    	}
+    	public void setState2(Object value) {
+    		ViewImpl.setState(FlowImpl.this, 2, value);
+    	}
+    	public void setState3(float value) {
+    		ViewImpl.setState(FlowImpl.this, 3, value);
+    	}
+    	public void setState3(int value) {
+    		ViewImpl.setState(FlowImpl.this, 3, value);
+    	}
+    	public void setState3(double value) {
+    		ViewImpl.setState(FlowImpl.this, 3, value);
+    	}
+    	
+    	public void setState3(Float value) {
+    		ViewImpl.setState(FlowImpl.this, 3, value);
+    	}
+    	public void setState3(Integer value) {
+    		ViewImpl.setState(FlowImpl.this, 3, value);
+    	}
+    	public void setState3(Double value) {
+    		ViewImpl.setState(FlowImpl.this, 3, value);
+    	}
+    	public void setState3(Object value) {
+    		ViewImpl.setState(FlowImpl.this, 3, value);
+    	}
+    	public void setState4(float value) {
+    		ViewImpl.setState(FlowImpl.this, 4, value);
+    	}
+    	public void setState4(int value) {
+    		ViewImpl.setState(FlowImpl.this, 4, value);
+    	}
+    	public void setState4(double value) {
+    		ViewImpl.setState(FlowImpl.this, 4, value);
+    	}
+    	
+    	public void setState4(Float value) {
+    		ViewImpl.setState(FlowImpl.this, 4, value);
+    	}
+    	public void setState4(Integer value) {
+    		ViewImpl.setState(FlowImpl.this, 4, value);
+    	}
+    	public void setState4(Double value) {
+    		ViewImpl.setState(FlowImpl.this, 4, value);
+    	}
+    	public void setState4(Object value) {
+    		ViewImpl.setState(FlowImpl.this, 4, value);
+    	}
         	public void state0() {
         		ViewImpl.state(FlowImpl.this, 0);
         	}
