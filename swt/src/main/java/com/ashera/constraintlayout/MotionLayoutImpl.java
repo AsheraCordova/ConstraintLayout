@@ -221,6 +221,7 @@ public class MotionLayoutImpl extends BaseHasWidgets {
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("maxHeight").withType("dimension"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("layoutDescription").withType("string").withOrder(100));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("progress").withType("float").withOrder(100));
+		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("reduceFlicker").withType("boolean"));
 		ConverterFactory.register("androidx.constraintlayout.motion.widget.MotionLayout.optimizationLevel", new OptimizationLevel());
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("optimizationLevel").withType("androidx.constraintlayout.motion.widget.MotionLayout.optimizationLevel"));
 		WidgetFactory.registerAttribute(localName, new WidgetAttribute.Builder().withName("layout_optimizationLevel").withType("androidx.constraintlayout.motion.widget.MotionLayout.optimizationLevel"));
@@ -324,7 +325,7 @@ public class MotionLayoutImpl extends BaseHasWidgets {
 	public boolean remove(IWidget w) {		
 		boolean remove = super.remove(w);
 		motionLayout.removeView((View) w.asWidget());
-         ViewGroupImpl.nativeRemoveView(w);            
+		 nativeRemoveView(w);            
 		return remove;
 	}
 	
@@ -335,10 +336,22 @@ public class MotionLayoutImpl extends BaseHasWidgets {
 
         if (index + 1 <= motionLayout.getChildCount()) {
             motionLayout.removeViewAt(index);
-            ViewGroupImpl.nativeRemoveView(widget);            
+            nativeRemoveView(widget);
         }    
         return remove;
     }
+	
+	private void nativeRemoveView(IWidget widget) {
+		r.android.animation.LayoutTransition layoutTransition = motionLayout.getLayoutTransition();
+		if (layoutTransition != null && (
+				layoutTransition.isTransitionTypeEnabled(r.android.animation.LayoutTransition.CHANGE_DISAPPEARING) ||
+				layoutTransition.isTransitionTypeEnabled(r.android.animation.LayoutTransition.DISAPPEARING)
+				)) {
+			addToBufferedRunnables(() -> ViewGroupImpl.nativeRemoveView(widget));          
+		} else {
+			ViewGroupImpl.nativeRemoveView(widget);
+		}
+	}
 	
 	@Override
 	public void add(IWidget w, int index) {
@@ -1147,6 +1160,12 @@ return layoutParams.wrapBehaviorInParent;			}
         public void stateNo() {
         	ViewImpl.stateNo(MotionLayoutImpl.this);
         }
+     
+		@Override
+		public void endViewTransition(r.android.view.View view) {
+			super.endViewTransition(view);
+			runBufferedRunnables();
+		}
 	}
 	@Override
 	public Class getViewClass() {
@@ -1213,6 +1232,15 @@ return layoutParams.wrapBehaviorInParent;			}
 
 			}
 			break;
+			case "reduceFlicker": {
+
+
+		setReduceFlicker((boolean) objValue);
+
+
+
+			}
+			break;
 			case "optimizationLevel": {
 
 
@@ -1263,6 +1291,9 @@ return getOptimizationLevel();			}
         pane = new org.eclipse.swt.widgets.Composite((org.eclipse.swt.widgets.Composite)ViewImpl.getParent(this), getStyle(params, fragment));
         ((org.eclipse.swt.widgets.Composite)pane).setLayout(new org.eclipse.nebula.widgets.layout.AbsoluteLayout());
     }
+    public boolean isWidgetDisposed() {
+		return ((org.eclipse.swt.widgets.Control) pane).isDisposed();
+	}
     
     @Override
     public void requestLayout() {
@@ -1501,6 +1532,14 @@ public MotionLayoutCommandBuilder setProgress(float value) {
 
 	attrs.put("value", value);
 return this;}
+public MotionLayoutCommandBuilder setReduceFlicker(boolean value) {
+	Map<String, Object> attrs = initCommand("reduceFlicker");
+	attrs.put("type", "attribute");
+	attrs.put("setter", true);
+	attrs.put("orderSet", ++orderSet);
+
+	attrs.put("value", value);
+return this;}
 public MotionLayoutCommandBuilder tryGetOptimizationLevel() {
 	Map<String, Object> attrs = initCommand("optimizationLevel");
 	attrs.put("type", "attribute");
@@ -1581,6 +1620,10 @@ public Object getProgress() {
 }
 public void setProgress(float value) {
 	getBuilder().reset().setProgress(value).execute(true);
+}
+
+public void setReduceFlicker(boolean value) {
+	getBuilder().reset().setReduceFlicker(value).execute(true);
 }
 
 public Object getOptimizationLevel() {
@@ -6185,6 +6228,11 @@ private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.
 
 private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Transform transform, String value) {
 	transform.applyElevation = true;	
+}
+
+private void setReduceFlicker(boolean flag) {
+	motionLayout.setReduceFlicker(flag);
+	
 }
 //end - codecopy
 

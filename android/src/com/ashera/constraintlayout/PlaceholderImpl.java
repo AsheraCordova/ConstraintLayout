@@ -362,6 +362,7 @@ public class PlaceholderImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(PlaceholderImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return PlaceholderExt.class;
@@ -494,7 +495,6 @@ return getContent();				}
 
     	}
     }
-    
 	
 private PlaceholderCommandBuilder builder;
 private PlaceholderBean bean;
@@ -587,7 +587,7 @@ public void setContent(String value) {
 }
 
 
-    
+	
 	//end - body
 	//start - codecopy
 	private void setContent(Object objValue) {

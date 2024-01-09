@@ -305,6 +305,7 @@ public class PlaceholderImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(PlaceholderImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return PlaceholderExt.class;
@@ -429,7 +430,6 @@ return getContent();				}
 
     	}
     }
-    
 	
 private PlaceholderCommandBuilder builder;
 private PlaceholderBean bean;
@@ -522,7 +522,7 @@ public void setContent(String value) {
 }
 
 
-    
+	
 	//end - body
 	private void nativeCreate(Map<String, Object> params) {
 		hTMLElement = org.teavm.jso.dom.html.HTMLDocument.current().createElement("div");

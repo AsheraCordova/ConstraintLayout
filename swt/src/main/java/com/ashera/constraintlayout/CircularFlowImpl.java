@@ -298,6 +298,7 @@ public class CircularFlowImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(CircularFlowImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return CircularFlowExt.class;
@@ -591,7 +592,9 @@ return getConstraintReferencedIds();				}
 
     	}
     }
-    
+	public boolean isWidgetDisposed() {
+		return composite.isDisposed();
+	}
 	
 private CircularFlowCommandBuilder builder;
 private CircularFlowBean bean;
@@ -798,7 +801,7 @@ angle).execute(true);
 }
 
 
-    
+	
 	//end - body
 
 

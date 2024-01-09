@@ -336,6 +336,7 @@ public class CarouselImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(CarouselImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return CarouselExt.class;
@@ -1051,7 +1052,6 @@ public java.util.Map<String, Object> getOnNewItemEventObj(int index) {
 
     	}
     }
-    
 	
 private CarouselCommandBuilder builder;
 private CarouselBean bean;
@@ -1540,7 +1540,7 @@ public void setOnNewItem(String value) {
 }
 
 
-    
+	
 	//end - body
 
 

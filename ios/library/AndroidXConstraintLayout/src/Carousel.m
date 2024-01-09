@@ -692,10 +692,12 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCarousel_Adapter)
 }
 
 - (void)run {
+  [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) setRedrawWithBoolean:false];
   [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) setProgressWithFloat:0];
   [this$0_ updateItems];
   [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) remeasure];
   [((id<ADXCarousel_Adapter>) nil_chk(this$0_->mAdapter_)) onNewItemWithInt:this$0_->mIndex_];
+  [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) setRedrawWithBoolean:true];
   jfloat velocity = [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) getVelocity];
   if (this$0_->touchUpMode_ == ADXCarousel_TOUCH_UP_CARRY_ON && velocity > this$0_->velocityThreshold_ && this$0_->mIndex_ < [((id<ADXCarousel_Adapter>) nil_chk(this$0_->mAdapter_)) count] - 1) {
     jfloat v = velocity * this$0_->dampening_;

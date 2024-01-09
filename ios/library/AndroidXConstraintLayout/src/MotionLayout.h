@@ -145,6 +145,8 @@
 - (void)setProgressWithFloat:(jfloat)pos
                    withFloat:(jfloat)velocity;
 
+- (void)setReduceFlickerWithBoolean:(jboolean)reduceFlicker;
+
 - (void)setStateWithInt:(jint)id_
                 withInt:(jint)screenWidth
                 withInt:(jint)screenHeight;

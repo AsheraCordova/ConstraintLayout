@@ -294,6 +294,7 @@ public class CircularFlowImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(CircularFlowImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return CircularFlowExt.class;
@@ -628,7 +629,6 @@ return getConstraintReferencedIds();				}
 
     	}
     }
-    
 	
 private CircularFlowCommandBuilder builder;
 private CircularFlowBean bean;
@@ -835,7 +835,7 @@ angle).execute(true);
 }
 
 
-    
+	
 	//end - body
 	private void nativeCreate(Map<String, Object> params) {
 		hTMLElement = org.teavm.jso.dom.html.HTMLDocument.current().createElement("div");

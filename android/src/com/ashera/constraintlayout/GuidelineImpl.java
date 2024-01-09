@@ -360,6 +360,7 @@ public class GuidelineImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(GuidelineImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return GuidelineExt.class;
@@ -494,7 +495,6 @@ return getOrientation();				}
 
     	}
     }
-    
 	
 private GuidelineCommandBuilder builder;
 private GuidelineBean bean;
@@ -561,7 +561,7 @@ public void setOrientation(String value) {
 }
 
 
-    
+	
 	//end - body
 	
 }

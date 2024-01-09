@@ -317,6 +317,7 @@ public class BarrierImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(BarrierImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return BarrierExt.class;
@@ -457,7 +458,6 @@ return barrier.getAllowsGoneWidget();				}
 
     	}
     }
-    
 	
 private BarrierCommandBuilder builder;
 private BarrierBean bean;
@@ -602,7 +602,7 @@ public void setBarrierAllowsGoneWidgets(boolean value) {
 }
 
 
-    
+	
 	//end - body
 
 	@Override

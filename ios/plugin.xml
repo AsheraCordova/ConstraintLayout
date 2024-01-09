@@ -217,6 +217,8 @@
      <source-file src="library/AndroidXConstraintLayout/src/KeyFrameArray.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/AndroidXConstraintLayout/src/KeyFrames.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>
      <source-file src="library/AndroidXConstraintLayout/src/KeyFrames.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
+     <header-file src="library/AndroidXConstraintLayout/src/KeyParser.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>
+     <source-file src="library/AndroidXConstraintLayout/src/KeyParser.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/AndroidXConstraintLayout/src/KeyPosition.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>
      <source-file src="library/AndroidXConstraintLayout/src/KeyPosition.m" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src" compiler-flags="-fno-objc-arc"/>
      <header-file src="library/AndroidXConstraintLayout/src/KeyPositionBase.h" target-dir="ConstraintLayoutPlugin/AndroidXConstraintLayout/src"/>

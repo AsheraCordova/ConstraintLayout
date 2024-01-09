@@ -314,6 +314,7 @@ public class GuidelineImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(GuidelineImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return GuidelineExt.class;
@@ -430,7 +431,9 @@ return getOrientation();				}
 
     	}
     }
-    
+	public boolean isWidgetDisposed() {
+		return composite.isDisposed();
+	}
 	
 private GuidelineCommandBuilder builder;
 private GuidelineBean bean;
@@ -497,7 +500,7 @@ public void setOrientation(String value) {
 }
 
 
-    
+	
 	//end - body
     private void nativeCreate(Map<String, Object> params) {
         composite = new Composite(ViewImpl.getParent(this), org.eclipse.swt.SWT.NONE);

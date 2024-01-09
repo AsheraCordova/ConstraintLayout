@@ -537,6 +537,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 
 - (void)drawableStateChanged;
 
+- (void)endViewTransitionWithADView:(ADView *)view;
+
 - (void)executeWithNSString:(NSString *)method
           withNSObjectArray:(IOSObjectArray *)canvas;
 
@@ -925,6 +927,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setProgressWithFloat:(jfloat)value;
 
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setReduceFlickerWithBoolean:(jboolean)value;
+
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -1211,6 +1215,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_MotionLayoutCommandBuilder)
 - (void)setOptimizationLevelWithNSString:(NSString *)value;
 
 - (void)setProgressWithFloat:(jfloat)value;
+
+- (void)setReduceFlickerWithBoolean:(jboolean)value;
 
 // Disallowed inherited constructors, do not use.
 

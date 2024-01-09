@@ -302,6 +302,7 @@ public class GroupImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(GroupImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return GroupExt.class;
@@ -421,7 +422,6 @@ return getConstraintReferencedIds();				}
 
     	}
     }
-    
 	
 private GroupCommandBuilder builder;
 private GroupBean bean;
@@ -488,7 +488,7 @@ public void setConstraint_referenced_ids(String value) {
 }
 
 
-    
+	
 	//end - body
 
 	 public native void nativeCreate(Map<String, Object> params)/*-[

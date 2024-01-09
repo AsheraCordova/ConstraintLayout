@@ -104,6 +104,7 @@
   jint mPreviouseRotation_;
   jboolean mDelayedApply_;
   jboolean mNeedsFireTransitionCompleted_;
+  jboolean reduceFlicker_;
   ADXMotionLayout_MyTracker *myTracker_;
 }
 
@@ -814,7 +815,11 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
     [self setMeasuredDimensionWithInt:androidLayoutWidth withInt:androidLayoutHeight];
   }
-  ADXMotionLayout_evaluateLayout(self);
+  if (!reduceFlicker_) {
+    [self setRedrawWithBoolean:false];
+    ADXMotionLayout_evaluateLayout(self);
+    [self setRedrawWithBoolean:true];
+  }
 }
 
 - (void)evaluateLayout {
@@ -822,6 +827,9 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)endTriggerWithBoolean:(jboolean)start {
+  if (reduceFlicker_) {
+    ADXMotionLayout_evaluateLayout(self);
+  }
   jint n = [self getChildCount];
   for (jint i = 0; i < n; i++) {
     ADView *child = [self getChildAtWithInt:i];
@@ -1273,6 +1281,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   return mScene_;
 }
 
+- (void)setReduceFlickerWithBoolean:(jboolean)reduceFlicker {
+  self->reduceFlicker_ = reduceFlicker;
+}
+
 - (void)postInit {
   if (mCurrentState_ == ADXConstraintSet_UNSET && mScene_ != nil) {
     mCurrentState_ = [mScene_ getStartId];
@@ -1403,6 +1415,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
     { NULL, "LADXMotionScene;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 47, 24, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LADXMotionLayout_MotionTracker;", 0x1, -1, -1, -1, -1, -1, -1 },
   };
@@ -1468,8 +1481,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[56].selector = @selector(invalidate);
   methods[57].selector = @selector(run);
   methods[58].selector = @selector(getScene);
-  methods[59].selector = @selector(postInit);
-  methods[60].selector = @selector(obtainVelocityTracker);
+  methods[59].selector = @selector(setReduceFlickerWithBoolean:);
+  methods[60].selector = @selector(postInit);
+  methods[61].selector = @selector(obtainVelocityTracker);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "TOUCH_UP_COMPLETE", "I", .constantValue.asInt = ADXMotionLayout_TOUCH_UP_COMPLETE, 0x19, -1, -1, -1, -1 },
@@ -1480,9 +1494,9 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "TOUCH_UP_DECELERATE_AND_COMPLETE", "I", .constantValue.asInt = ADXMotionLayout_TOUCH_UP_DECELERATE_AND_COMPLETE, 0x19, -1, -1, -1, -1 },
     { "TOUCH_UP_NEVER_TO_START", "I", .constantValue.asInt = ADXMotionLayout_TOUCH_UP_NEVER_TO_START, 0x19, -1, -1, -1, -1 },
     { "TOUCH_UP_NEVER_TO_END", "I", .constantValue.asInt = ADXMotionLayout_TOUCH_UP_NEVER_TO_END, 0x19, -1, -1, -1, -1 },
-    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 47, -1, -1 },
+    { "TAG", "LNSString;", .constantValue.asLong = 0, 0x18, -1, 48, -1, -1 },
     { "DEBUG", "Z", .constantValue.asBOOL = ADXMotionLayout_DEBUG, 0x1a, -1, -1, -1, -1 },
-    { "IS_IN_EDIT_MODE", "Z", .constantValue.asLong = 0, 0x9, -1, 48, -1, -1 },
+    { "IS_IN_EDIT_MODE", "Z", .constantValue.asLong = 0, 0x9, -1, 49, -1, -1 },
     { "mScene_", "LADXMotionScene;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mInterpolator_", "LADInterpolator;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mProgressInterpolator_", "LADInterpolator;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
@@ -1493,7 +1507,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mLastWidthMeasureSpec_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mLastHeightMeasureSpec_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mInteractionEnabled_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "mFrameArrayList_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x0, -1, -1, 49, -1 },
+    { "mFrameArrayList_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x0, -1, -1, 50, -1 },
     { "mAnimationStartTime_", "J", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mTransitionDuration_", "F", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mTransitionPosition_", "F", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
@@ -1524,10 +1538,10 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mScrollTargetDY_", "F", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mScrollTargetDT_", "F", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mKeepAnimating_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "mOnShowHelpers_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 50, -1 },
-    { "mOnHideHelpers_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 50, -1 },
-    { "mDecoratorsHelpers_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 50, -1 },
-    { "mTransitionListeners_", "LJavaUtilConcurrentCopyOnWriteArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 51, -1 },
+    { "mOnShowHelpers_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 51, -1 },
+    { "mOnHideHelpers_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 51, -1 },
+    { "mDecoratorsHelpers_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 51, -1 },
+    { "mTransitionListeners_", "LJavaUtilConcurrentCopyOnWriteArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 52, -1 },
     { "mFrames_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mLastFps_", "F", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mListenerState_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -1553,7 +1567,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mScheduledTransitions_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mInRotation_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mRotatMode_", "I", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
-    { "mPreRotate_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x0, -1, -1, 52, -1 },
+    { "mPreRotate_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x0, -1, -1, 53, -1 },
     { "mPreRotateWidth_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mPreRotateHeight_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "mPreviouseRotation_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -1563,11 +1577,12 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "EPSILON", "F", .constantValue.asFloat = ADXMotionLayout_EPSILON, 0x1a, -1, -1, -1, -1 },
     { "mModel_", "LADXMotionLayout_Model;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
     { "mNeedsFireTransitionCompleted_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "mTransitionCompleted_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x0, -1, -1, 53, -1 },
+    { "mTransitionCompleted_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x0, -1, -1, 54, -1 },
+    { "reduceFlicker_", "Z", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "myTracker_", "LADXMotionLayout_MyTracker;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "getMotionController", "I", "setState", "LADXMotionLayout_TransitionState;", "setTransition", "II", "LADXMotionScene_Transition;", "III", "setProgress", "FF", "F", "touchAnimateTo", "IFF", "willJump", "FFF", "animateTo", "transitionToEnd", "LJavaLangRunnable;", "transitionToState", "IIII", "toRect", "LADXConstraintWidget;", "onMeasure", "endTrigger", "Z", "evaluate", "onLayout", "ZIIII", "onTouchEvent", "LADMotionEvent;", "getAnchorDpDt", "IFFF[F", "fireTrigger", "IZF", "onViewAdded", "LADView;", "onViewRemoved", "setOnShow", "setOnHide", "getConstraintSet", "updateState", "ILADXConstraintSet;", "()Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "setTransitionDuration", "getTransition", "viewTransition", "I[LADView;", &ADXMotionLayout_TAG, &ADXMotionLayout_IS_IN_EDIT_MODE, "Ljava/util/HashMap<Lr/android/view/View;Landroidx/constraintlayout/motion/widget/MotionController;>;", "Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionHelper;>;", "Ljava/util/concurrent/CopyOnWriteArrayList<Landroidx/constraintlayout/motion/widget/MotionLayout$TransitionListener;>;", "Ljava/util/HashMap<Lr/android/view/View;Landroidx/constraintlayout/core/motion/utils/ViewState;>;", "Ljava/util/ArrayList<Ljava/lang/Integer;>;", "LADXMotionLayout_TransitionState;LADXMotionLayout_MotionTracker;LADXMotionLayout_StateCache;LADXMotionLayout_DecelerateInterpolator;LADXMotionLayout_Model;LADXMotionLayout_TransitionListener;LADXMotionLayout_MyTracker;" };
-  static const J2ObjcClassInfo _ADXMotionLayout = { "MotionLayout", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x1, 61, 93, -1, 54, -1, -1, -1 };
+  static const void *ptrTable[] = { "getMotionController", "I", "setState", "LADXMotionLayout_TransitionState;", "setTransition", "II", "LADXMotionScene_Transition;", "III", "setProgress", "FF", "F", "touchAnimateTo", "IFF", "willJump", "FFF", "animateTo", "transitionToEnd", "LJavaLangRunnable;", "transitionToState", "IIII", "toRect", "LADXConstraintWidget;", "onMeasure", "endTrigger", "Z", "evaluate", "onLayout", "ZIIII", "onTouchEvent", "LADMotionEvent;", "getAnchorDpDt", "IFFF[F", "fireTrigger", "IZF", "onViewAdded", "LADView;", "onViewRemoved", "setOnShow", "setOnHide", "getConstraintSet", "updateState", "ILADXConstraintSet;", "()Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionScene$Transition;>;", "setTransitionDuration", "getTransition", "viewTransition", "I[LADView;", "setReduceFlicker", &ADXMotionLayout_TAG, &ADXMotionLayout_IS_IN_EDIT_MODE, "Ljava/util/HashMap<Lr/android/view/View;Landroidx/constraintlayout/motion/widget/MotionController;>;", "Ljava/util/ArrayList<Landroidx/constraintlayout/motion/widget/MotionHelper;>;", "Ljava/util/concurrent/CopyOnWriteArrayList<Landroidx/constraintlayout/motion/widget/MotionLayout$TransitionListener;>;", "Ljava/util/HashMap<Lr/android/view/View;Landroidx/constraintlayout/core/motion/utils/ViewState;>;", "Ljava/util/ArrayList<Ljava/lang/Integer;>;", "LADXMotionLayout_TransitionState;LADXMotionLayout_MotionTracker;LADXMotionLayout_StateCache;LADXMotionLayout_DecelerateInterpolator;LADXMotionLayout_Model;LADXMotionLayout_TransitionListener;LADXMotionLayout_MyTracker;" };
+  static const J2ObjcClassInfo _ADXMotionLayout = { "MotionLayout", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x1, 62, 94, -1, 55, -1, -1, -1 };
   return &_ADXMotionLayout;
 }
 
@@ -1887,7 +1902,9 @@ void ADXMotionLayout_processTransitionCompleted(ADXMotionLayout *self) {
 void ADXMotionLayout_run(ADXMotionLayout *self) {
   if (self->mLayoutWidget_ != nil) {
     @try {
+      [self setRedrawWithBoolean:false];
       [self evaluateWithBoolean:false];
+      [self setRedrawWithBoolean:true];
     }
     @catch (JavaLangException *e) {
     }

@@ -21,6 +21,7 @@
 #include "IWidget.h"
 #include "IWidgetLifeCycleListener.h"
 #include "J2ObjC_source.h"
+#include "LayoutTransition.h"
 #include "MeasureEvent.h"
 #include "OnLayoutEvent.h"
 #include "Rect.h"
@@ -33,6 +34,7 @@
 #include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
+#include "java/lang/Runnable.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/HashMap.h"
 #include "java/util/List.h"
@@ -45,6 +47,7 @@
 @protocol JavaUtilMap;
 
 
+#pragma clang diagnostic ignored "-Wprotocol"
 #pragma clang diagnostic ignored "-Wincomplete-implementation"
 
 @interface ASConstraintLayoutImpl () {
@@ -60,6 +63,8 @@
 - (void)addDellocHandler;
 
 - (void)setWidgetOnNativeClass;
+
+- (void)nativeRemoveViewWithASIWidget:(id<ASIWidget>)widget;
 
 - (void)createLayoutParamsWithADView:(ADView *)view;
 
@@ -95,6 +100,8 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ASConstraintLayoutImpl, DELLOC_EVENT, NSString *)
 __attribute__((unused)) static void ASConstraintLayoutImpl_addDellocHandler(ASConstraintLayoutImpl *self);
 
 __attribute__((unused)) static void ASConstraintLayoutImpl_setWidgetOnNativeClass(ASConstraintLayoutImpl *self);
+
+__attribute__((unused)) static void ASConstraintLayoutImpl_nativeRemoveViewWithASIWidget_(ASConstraintLayoutImpl *self, id<ASIWidget> widget);
 
 __attribute__((unused)) static void ASConstraintLayoutImpl_createLayoutParamsWithADView_(ASConstraintLayoutImpl *self, ADView *view);
 
@@ -235,6 +242,23 @@ J2OBJC_FIELD_SETTER(ASConstraintLayoutImpl_ConstraintLayoutExt, templates_, id<J
 
 @end
 
+@interface ASConstraintLayoutImpl_$Lambda$1 : NSObject < JavaLangRunnable > {
+ @public
+  id<ASIWidget> val$widget_;
+}
+
+- (void)run;
+
+@end
+
+J2OBJC_EMPTY_STATIC_INIT(ASConstraintLayoutImpl_$Lambda$1)
+
+__attribute__((unused)) static void ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(ASConstraintLayoutImpl_$Lambda$1 *self, id<ASIWidget> capture$0);
+
+__attribute__((unused)) static ASConstraintLayoutImpl_$Lambda$1 *new_ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static ASConstraintLayoutImpl_$Lambda$1 *create_ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0);
+
 J2OBJC_INITIALIZED_DEFN(ASConstraintLayoutImpl)
 
 NSString *ASConstraintLayoutImpl_LOCAL_NAME = @"androidx.constraintlayout.widget.ConstraintLayout";
@@ -363,7 +387,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (jboolean)removeWithASIWidget:(id<ASIWidget>)w {
   jboolean remove = [super removeWithASIWidget:w];
   [((ADXConstraintLayout *) nil_chk(constraintLayout_)) removeViewWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ADView class])];
-  ASViewGroupImpl_nativeRemoveViewWithASIWidget_(w);
+  ASConstraintLayoutImpl_nativeRemoveViewWithASIWidget_(self, w);
   return remove;
 }
 
@@ -372,9 +396,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   jboolean remove = [super removeWithInt:index];
   if (index + 1 <= [((ADXConstraintLayout *) nil_chk(constraintLayout_)) getChildCount]) {
     [((ADXConstraintLayout *) nil_chk(constraintLayout_)) removeViewAtWithInt:index];
-    ASViewGroupImpl_nativeRemoveViewWithASIWidget_(widget);
+    ASConstraintLayoutImpl_nativeRemoveViewWithASIWidget_(self, widget);
   }
   return remove;
+}
+
+- (void)nativeRemoveViewWithASIWidget:(id<ASIWidget>)widget {
+  ASConstraintLayoutImpl_nativeRemoveViewWithASIWidget_(self, widget);
 }
 
 - (void)addWithASIWidget:(id<ASIWidget>)w
@@ -1142,28 +1170,29 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, 6, 7, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, 6, 8, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 9, 10, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 11, 12, -1, -1, -1, -1 },
-    { NULL, "LADXConstraintLayout_LayoutParams;", 0x2, 13, 12, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 14, 15, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 16, 17, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 9, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LADXConstraintLayout_LayoutParams;", 0x2, 14, 13, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 15, 16, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x1, 17, 18, -1, -1, -1, -1 },
     { NULL, "LIOSClass;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 18, 19, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 20, 21, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 19, 20, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x1, 21, 22, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "Z", 0x101, 22, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x101, 23, 24, -1, 25, -1, -1 },
+    { NULL, "Z", 0x101, 23, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x101, 24, 25, -1, 26, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 26, 27, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 28, 27, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x2, 29, 30, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x2, 31, 30, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 32, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 27, 28, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 29, 28, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, 30, 31, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, 32, 31, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 33, 34, -1, -1, -1, -1 },
     { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 34, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 35, 36, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 37, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 36, 37, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x1, 38, 1, -1, -1, -1, -1 },
     { NULL, "LASConstraintLayoutImpl_ConstraintLayoutBean;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LASConstraintLayoutImpl_ConstraintLayoutCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "LASConstraintLayoutImpl_ConstraintLayoutParamsBean;", 0x1, -1, -1, -1, -1, -1, -1 },
@@ -1183,46 +1212,47 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[8].selector = @selector(asWidget);
   methods[9].selector = @selector(removeWithASIWidget:);
   methods[10].selector = @selector(removeWithInt:);
-  methods[11].selector = @selector(addWithASIWidget:withInt:);
-  methods[12].selector = @selector(createLayoutParamsWithADView:);
-  methods[13].selector = @selector(getLayoutParamsWithADView:);
-  methods[14].selector = @selector(setChildAttributeWithASIWidget:withASWidgetAttribute:withNSString:withId:);
-  methods[15].selector = @selector(getChildAttributeWithASIWidget:withASWidgetAttribute:);
-  methods[16].selector = @selector(getViewClass);
-  methods[17].selector = @selector(setAttributeWithASWidgetAttribute:withNSString:withId:withASILifeCycleDecorator:);
-  methods[18].selector = @selector(getAttributeWithASWidgetAttribute:withASILifeCycleDecorator:);
-  methods[19].selector = @selector(asNativeWidget);
-  methods[20].selector = @selector(checkIosVersionWithNSString:);
-  methods[21].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[22].selector = @selector(requestLayout);
-  methods[23].selector = @selector(invalidate);
-  methods[24].selector = @selector(setLayout_constraintHeightWithADXConstraintLayout_LayoutParams:withId:);
-  methods[25].selector = @selector(setLayout_constraintWidthWithADXConstraintLayout_LayoutParams:withId:);
-  methods[26].selector = @selector(getLayout_constraintHeightWithADXConstraintLayout_LayoutParams:);
-  methods[27].selector = @selector(getLayout_constraintWidthWithADXConstraintLayout_LayoutParams:);
-  methods[28].selector = @selector(setOptimizationLevelWithId:);
-  methods[29].selector = @selector(getOptimizationLevel);
-  methods[30].selector = @selector(setIdWithNSString:);
-  methods[31].selector = @selector(setVisibleWithBoolean:);
-  methods[32].selector = @selector(getPluginWithNSString:);
-  methods[33].selector = @selector(getBean);
-  methods[34].selector = @selector(getBuilder);
-  methods[35].selector = @selector(getParamsBean);
-  methods[36].selector = @selector(getParamsBuilder);
+  methods[11].selector = @selector(nativeRemoveViewWithASIWidget:);
+  methods[12].selector = @selector(addWithASIWidget:withInt:);
+  methods[13].selector = @selector(createLayoutParamsWithADView:);
+  methods[14].selector = @selector(getLayoutParamsWithADView:);
+  methods[15].selector = @selector(setChildAttributeWithASIWidget:withASWidgetAttribute:withNSString:withId:);
+  methods[16].selector = @selector(getChildAttributeWithASIWidget:withASWidgetAttribute:);
+  methods[17].selector = @selector(getViewClass);
+  methods[18].selector = @selector(setAttributeWithASWidgetAttribute:withNSString:withId:withASILifeCycleDecorator:);
+  methods[19].selector = @selector(getAttributeWithASWidgetAttribute:withASILifeCycleDecorator:);
+  methods[20].selector = @selector(asNativeWidget);
+  methods[21].selector = @selector(checkIosVersionWithNSString:);
+  methods[22].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[23].selector = @selector(requestLayout);
+  methods[24].selector = @selector(invalidate);
+  methods[25].selector = @selector(setLayout_constraintHeightWithADXConstraintLayout_LayoutParams:withId:);
+  methods[26].selector = @selector(setLayout_constraintWidthWithADXConstraintLayout_LayoutParams:withId:);
+  methods[27].selector = @selector(getLayout_constraintHeightWithADXConstraintLayout_LayoutParams:);
+  methods[28].selector = @selector(getLayout_constraintWidthWithADXConstraintLayout_LayoutParams:);
+  methods[29].selector = @selector(setOptimizationLevelWithId:);
+  methods[30].selector = @selector(getOptimizationLevel);
+  methods[31].selector = @selector(setIdWithNSString:);
+  methods[32].selector = @selector(setVisibleWithBoolean:);
+  methods[33].selector = @selector(getPluginWithNSString:);
+  methods[34].selector = @selector(getBean);
+  methods[35].selector = @selector(getBuilder);
+  methods[36].selector = @selector(getParamsBean);
+  methods[37].selector = @selector(getParamsBuilder);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 38, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 39, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 39, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 40, -1, -1 },
     { "constraintLayout_", "LADXConstraintLayout;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "DELLOC_EVENT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 40, -1, -1 },
+    { "DELLOC_EVENT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 41, -1, -1 },
     { "builder_", "LASConstraintLayoutImpl_ConstraintLayoutCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "bean_", "LASConstraintLayoutImpl_ConstraintLayoutBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "paramsBuilder_", "LASConstraintLayoutImpl_ConstraintLayoutCommandParamsBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "paramsBean_", "LASConstraintLayoutImpl_ConstraintLayoutParamsBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;LNSObject;", "setLayout_constraintWidth", "getLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;", "getLayout_constraintWidth", "setOptimizationLevel", "LNSObject;", "setId", "setVisible", "Z", "getPlugin", &ASConstraintLayoutImpl_LOCAL_NAME, &ASConstraintLayoutImpl_GROUP_NAME, &ASConstraintLayoutImpl_DELLOC_EVENT, "LASConstraintLayoutImpl_DallocHandler;LASConstraintLayoutImpl_OptimizationLevel;LASConstraintLayoutImpl_Orientation;LASConstraintLayoutImpl_Layout_constraintWidth;LASConstraintLayoutImpl_Layout_constraintHeight;LASConstraintLayoutImpl_Layout_constraintWidth_default;LASConstraintLayoutImpl_Layout_constraintHeight_default;LASConstraintLayoutImpl_Layout_constraintHorizontal_chainStyle;LASConstraintLayoutImpl_Layout_constraintVertical_chainStyle;LASConstraintLayoutImpl_Layout_wrapBehaviorInParent;LASConstraintLayoutImpl_ConstraintLayoutExt;LASConstraintLayoutImpl_ConstraintLayoutCommandBuilder;LASConstraintLayoutImpl_ConstraintLayoutBean;LASConstraintLayoutImpl_ConstraintLayoutParamsBean;LASConstraintLayoutImpl_ConstraintLayoutCommandParamsBuilder;" };
-  static const J2ObjcClassInfo _ASConstraintLayoutImpl = { "ConstraintLayoutImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 37, 9, -1, 41, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;LNSObject;", "setLayout_constraintWidth", "getLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;", "getLayout_constraintWidth", "setOptimizationLevel", "LNSObject;", "setId", "setVisible", "Z", "getPlugin", &ASConstraintLayoutImpl_LOCAL_NAME, &ASConstraintLayoutImpl_GROUP_NAME, &ASConstraintLayoutImpl_DELLOC_EVENT, "LASConstraintLayoutImpl_DallocHandler;LASConstraintLayoutImpl_OptimizationLevel;LASConstraintLayoutImpl_Orientation;LASConstraintLayoutImpl_Layout_constraintWidth;LASConstraintLayoutImpl_Layout_constraintHeight;LASConstraintLayoutImpl_Layout_constraintWidth_default;LASConstraintLayoutImpl_Layout_constraintHeight_default;LASConstraintLayoutImpl_Layout_constraintHorizontal_chainStyle;LASConstraintLayoutImpl_Layout_constraintVertical_chainStyle;LASConstraintLayoutImpl_Layout_wrapBehaviorInParent;LASConstraintLayoutImpl_ConstraintLayoutExt;LASConstraintLayoutImpl_ConstraintLayoutCommandBuilder;LASConstraintLayoutImpl_ConstraintLayoutBean;LASConstraintLayoutImpl_ConstraintLayoutParamsBean;LASConstraintLayoutImpl_ConstraintLayoutCommandParamsBuilder;" };
+  static const J2ObjcClassInfo _ASConstraintLayoutImpl = { "ConstraintLayoutImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 38, 9, -1, 42, -1, -1, -1 };
   return &_ASConstraintLayoutImpl;
 }
 
@@ -1277,6 +1307,16 @@ ASConstraintLayoutImpl *create_ASConstraintLayoutImpl_initWithNSString_withNSStr
 
 void ASConstraintLayoutImpl_setWidgetOnNativeClass(ASConstraintLayoutImpl *self) {
   ((ASUIView*) [self asNativeWidget]).widget = self;
+}
+
+void ASConstraintLayoutImpl_nativeRemoveViewWithASIWidget_(ASConstraintLayoutImpl *self, id<ASIWidget> widget) {
+  ADLayoutTransition *layoutTransition = [((ADXConstraintLayout *) nil_chk(self->constraintLayout_)) getLayoutTransition];
+  if (layoutTransition != nil && ([layoutTransition isTransitionTypeEnabledWithInt:ADLayoutTransition_CHANGE_DISAPPEARING] || [layoutTransition isTransitionTypeEnabledWithInt:ADLayoutTransition_DISAPPEARING])) {
+    [self addToBufferedRunnablesWithJavaLangRunnable:new_ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(widget)];
+  }
+  else {
+    ASViewGroupImpl_nativeRemoveViewWithASIWidget_(widget);
+  }
 }
 
 void ASConstraintLayoutImpl_createLayoutParamsWithADView_(ASConstraintLayoutImpl *self, ADView *view) {
@@ -2133,6 +2173,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
   ASViewImpl_stateNoWithASIWidget_(this$0_);
 }
 
+- (void)endViewTransitionWithADView:(ADView *)view {
+  [super endViewTransitionWithADView:view];
+  [this$0_ runBufferedRunnables];
+}
+
 - (void)__javaClone:(ASConstraintLayoutImpl_ConstraintLayoutExt *)original {
   [super __javaClone:original];
   JreRelease(this$0_);
@@ -2173,6 +2218,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 33, 34, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -2210,15 +2256,16 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
   methods[30].selector = @selector(state4);
   methods[31].selector = @selector(stateYes);
   methods[32].selector = @selector(stateNo);
+  methods[33].selector = @selector(endViewTransitionWithADView:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LASConstraintLayoutImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "measureFinished_", "LASMeasureEvent;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "onLayoutEvent_", "LASOnLayoutEvent;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "templates_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 33, -1 },
+    { "templates_", "LJavaUtilMap;", .constantValue.asLong = 0, 0x2, -1, -1, 35, -1 },
   };
-  static const void *ptrTable[] = { "LASConstraintLayoutImpl;", "onMeasure", "II", "onLayout", "ZIIII", "execute", "LNSString;[LNSObject;", "updateMeasuredDimension", "newInstance", "LASIWidget;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;", "()Ljava/util/List<Ljava/lang/String;>;", "getAttribute", "LASWidgetAttribute;", "inflateView", "LNSString;", "getLocationOnScreen", "[I", "getWindowVisibleDisplayFrame", "LADRect;", "offsetTopAndBottom", "I", "offsetLeftAndRight", "setMyAttribute", "LNSString;LNSObject;", "setVisibility", "setState0", "LNSObject;", "setState1", "setState2", "setState3", "setState4", "Ljava/util/Map<Ljava/lang/String;Lcom/ashera/widget/IWidget;>;" };
-  static const J2ObjcClassInfo _ASConstraintLayoutImpl_ConstraintLayoutExt = { "ConstraintLayoutExt", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 33, 4, 0, -1, -1, -1, -1 };
+  static const void *ptrTable[] = { "LASConstraintLayoutImpl;", "onMeasure", "II", "onLayout", "ZIIII", "execute", "LNSString;[LNSObject;", "updateMeasuredDimension", "newInstance", "LASIWidget;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;", "()Ljava/util/List<Ljava/lang/String;>;", "getAttribute", "LASWidgetAttribute;", "inflateView", "LNSString;", "getLocationOnScreen", "[I", "getWindowVisibleDisplayFrame", "LADRect;", "offsetTopAndBottom", "I", "offsetLeftAndRight", "setMyAttribute", "LNSString;LNSObject;", "setVisibility", "setState0", "LNSObject;", "setState1", "setState2", "setState3", "setState4", "endViewTransition", "LADView;", "Ljava/util/Map<Ljava/lang/String;Lcom/ashera/widget/IWidget;>;" };
+  static const J2ObjcClassInfo _ASConstraintLayoutImpl_ConstraintLayoutExt = { "ConstraintLayoutExt", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 34, 4, 0, -1, -1, -1, -1 };
   return &_ASConstraintLayoutImpl_ConstraintLayoutExt;
 }
 
@@ -5195,3 +5242,24 @@ ASConstraintLayoutImpl_ConstraintLayoutCommandParamsBuilder *create_ASConstraint
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_ConstraintLayoutCommandParamsBuilder)
+
+@implementation ASConstraintLayoutImpl_$Lambda$1
+
+- (void)run {
+  ASViewGroupImpl_nativeRemoveViewWithASIWidget_(val$widget_);
+}
+
+@end
+
+void ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(ASConstraintLayoutImpl_$Lambda$1 *self, id<ASIWidget> capture$0) {
+  self->val$widget_ = capture$0;
+  NSObject_init(self);
+}
+
+ASConstraintLayoutImpl_$Lambda$1 *new_ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0) {
+  J2OBJC_NEW_IMPL(ASConstraintLayoutImpl_$Lambda$1, initWithASIWidget_, capture$0)
+}
+
+ASConstraintLayoutImpl_$Lambda$1 *create_ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0) {
+  J2OBJC_CREATE_IMPL(ASConstraintLayoutImpl_$Lambda$1, initWithASIWidget_, capture$0)
+}

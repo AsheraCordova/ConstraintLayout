@@ -131,6 +131,7 @@ import { ScopedObject } from '../../app/ScopedObject';
 
 
 
+
 import {ViewGroupImpl_LayoutParams} from './ViewGroupImpl';
 
 // end - imports
@@ -158,6 +159,9 @@ export abstract class MotionLayoutImpl<T> extends ViewGroupImpl<T>{
 	@Expose({ name: "progress" })
 	progress!:CommandAttr<number>| undefined;
 	@Type(() => CommandAttr)
+	@Expose({ name: "reduceFlicker" })
+	reduceFlicker!:CommandAttr<boolean>| undefined;
+	@Type(() => CommandAttr)
 	@Expose({ name: "optimizationLevel" })
 	optimizationLevel!:CommandAttr<OptimizationLevel>| undefined;
 
@@ -172,6 +176,7 @@ export abstract class MotionLayoutImpl<T> extends ViewGroupImpl<T>{
 		this.maxHeight = undefined;
 		this.layoutDescription = undefined;
 		this.progress = undefined;
+		this.reduceFlicker = undefined;
 		this.optimizationLevel = undefined;
 		return this.thisPointer;
 	}
@@ -351,6 +356,20 @@ export abstract class MotionLayoutImpl<T> extends ViewGroupImpl<T>{
 		this.progress.setValue(value);
 		this.orderSet++;
 		this.progress.setOrderSet(this.orderSet);
+		return this.thisPointer;
+	}
+		
+
+	public setReduceFlicker(value : boolean) : T {
+		this.resetIfRequired();
+		if (this.reduceFlicker == null || this.reduceFlicker == undefined) {
+			this.reduceFlicker = new CommandAttr<boolean>();
+		}
+		
+		this.reduceFlicker.setSetter(true);
+		this.reduceFlicker.setValue(value);
+		this.orderSet++;
+		this.reduceFlicker.setOrderSet(this.orderSet);
 		return this.thisPointer;
 	}
 		

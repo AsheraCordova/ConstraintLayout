@@ -469,6 +469,7 @@ public class FlowImpl extends BaseWidget {
         public void stateNo() {
         	ViewImpl.stateNo(FlowImpl.this);
         }
+     
 	}	@Override
 	public Class getViewClass() {
 		return FlowExt.class;
@@ -738,7 +739,6 @@ return getConstraintReferencedIds();				}
 
     	}
     }
-    
 	
 private FlowCommandBuilder builder;
 private FlowBean bean;
@@ -985,7 +985,7 @@ public void setConstraint_referenced_ids(String value) {
 }
 
 
-    
+	
 	//end - body
 	public native void nativeCreate(Map<String, Object> params)/*-[
 		ASUIView* uiView = [ASUIView new];
