@@ -364,7 +364,7 @@ public class ConstraintLayoutImpl extends BaseHasWidgets {
         }    
         return remove;
     }
-	
+
 	private void nativeRemoveView(IWidget widget) {
 		r.android.animation.LayoutTransition layoutTransition = constraintLayout.getLayoutTransition();
 		if (layoutTransition != null && (
