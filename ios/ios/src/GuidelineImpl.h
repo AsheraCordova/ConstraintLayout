@@ -344,6 +344,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
 
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setContentDescriptionWithNSString:(NSString *)arg0;
@@ -442,6 +444,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -488,6 +492,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -505,6 +511,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -547,6 +555,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetBackgroundTint;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetBottom;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetClickable;
 
@@ -628,6 +638,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetLayoutDirection;
 
+- (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetLeft;
+
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetLongClickable;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetMaxHeight;
@@ -648,6 +660,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetOrientation;
 
+- (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetRight;
+
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetRotation;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetRotationX;
@@ -663,6 +677,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGuidelineImpl_GuidelineExt)
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetTextAlignment;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetTextDirection;
+
+- (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetTop;
 
 - (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetTransformPivotX;
 

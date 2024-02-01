@@ -681,6 +681,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setAlphaWithFloat:(jfloat)arg0;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setAnimateLayoutChangesWithBoolean:(jboolean)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setAnimateParentHierarchyWithBoolean:(jboolean)arg0;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setAsDragSourceWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setAttributeUnderTestWithNSString:(NSString *)arg0;
@@ -692,6 +696,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setBackgroundTintWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setChildXmlWithNSString:(NSString *)arg0;
 
@@ -801,6 +807,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setLayoutModeWithNSString:(NSString *)arg0;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setLayoutTransitionDurationWithInt:(jint)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setLayoutTransitionWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setListitemWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
@@ -877,6 +889,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setPaddingWithNSString:(NSString *)arg0;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -894,6 +908,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -938,6 +954,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetBackgroundTint;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetBottom;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetClickable;
 
@@ -1027,6 +1045,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetLayoutMode;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetLeft;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetLongClickable;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetMaxHeight;
@@ -1063,6 +1083,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetPaddingTop;
 
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetRight;
+
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetRotation;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetRotationX;
@@ -1078,6 +1100,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutImpl_ConstraintLayoutExt)
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetTextAlignment;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetTextDirection;
+
+- (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetTop;
 
 - (ASConstraintLayoutImpl_ConstraintLayoutCommandBuilder *)tryGetTransformPivotX;
 

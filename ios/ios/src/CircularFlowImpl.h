@@ -315,6 +315,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
 
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCircularflow_anglesWithNSString:(NSString *)value;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCircularflow_defaultAngleWithFloat:(jfloat)value;
@@ -425,6 +427,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -469,6 +473,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -486,6 +492,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -528,6 +536,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetBackgroundTint;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetBottom;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetClickable;
 
@@ -611,6 +621,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetLayoutDirection;
 
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetLeft;
+
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetLongClickable;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetMaxHeight;
@@ -629,6 +641,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetModelUiToPojo;
 
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetRight;
+
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetRotation;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetRotationX;
@@ -644,6 +658,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCircularFlowImpl_CircularFlowExt)
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetTextAlignment;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetTextDirection;
+
+- (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetTop;
 
 - (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetTransformPivotX;
 

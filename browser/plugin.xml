@@ -13,5 +13,17 @@
       </feature>
     </config-file>
    	<framework src="core.gradle" custom="true" type="gradleReference" />
+   	
+   	<!-- start tsc -->
+     <source-file src="tsc/src/web/widget/BarrierImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/CarouselImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/CircularFlowImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/ConstraintLayoutImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/FlowImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/GroupImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/GuidelineImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/MotionLayoutImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="tsc/src/web/widget/PlaceholderImpl.ts" target-dir="tsc/src/web/widget"/>
+     <!-- tsc end -->
   </platform>
 </plugin>

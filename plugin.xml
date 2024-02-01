@@ -404,6 +404,18 @@
       </feature>
     </config-file>
    	<framework src="browser/core.gradle" custom="true" type="gradleReference" />
+   	
+   	<!-- start tsc -->
+     <source-file src="browser/tsc/src/web/widget/BarrierImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/CarouselImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/CircularFlowImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/ConstraintLayoutImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/FlowImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/GroupImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/GuidelineImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/MotionLayoutImpl.ts" target-dir="tsc/src/web/widget"/>
+     <source-file src="browser/tsc/src/web/widget/PlaceholderImpl.ts" target-dir="tsc/src/web/widget"/>
+     <!-- tsc end -->
   </platform>
   <platform name="swt">
   	<config-file target="res/xml/config.xml" parent="/*">
@@ -413,6 +425,19 @@
       </feature>
     </config-file>
    	<framework src="swt/core.gradle" custom="true" type="gradleReference" />
+   	
+   	 <!-- start tsc -->
+     <source-file src="swt/tsc/src/swt/widget/BarrierImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/CarouselImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/CircularFlowImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/ConstraintLayoutImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/FlowImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/GroupImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/GuidelineImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/MotionLayoutImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <source-file src="swt/tsc/src/swt/widget/PlaceholderImpl.ts" target-dir="tsc/src/swt/widget"/>
+     <!-- tsc end -->
+   	
   </platform>
 
 

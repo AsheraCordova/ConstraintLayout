@@ -727,6 +727,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setAlphaWithFloat:(jfloat)arg0;
 
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setAnimateLayoutChangesWithBoolean:(jboolean)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setAnimateParentHierarchyWithBoolean:(jboolean)arg0;
+
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setAsDragSourceWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setAttributeUnderTestWithNSString:(NSString *)arg0;
@@ -738,6 +742,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setBackgroundTintWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setChildXmlWithNSString:(NSString *)arg0;
 
@@ -849,6 +855,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setLayoutModeWithNSString:(NSString *)arg0;
 
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setLayoutTransitionDurationWithInt:(jint)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setLayoutTransitionWithNSString:(NSString *)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setListitemWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
@@ -929,6 +941,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setReduceFlickerWithBoolean:(jboolean)value;
 
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -946,6 +960,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -990,6 +1006,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetBackgroundTint;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetBottom;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetClickable;
 
@@ -1079,6 +1097,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetLayoutMode;
 
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetLeft;
+
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetLongClickable;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetMaxHeight;
@@ -1117,6 +1137,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetProgress;
 
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetRight;
+
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetRotation;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetRotationX;
@@ -1132,6 +1154,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetTextAlignment;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetTextDirection;
+
+- (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetTop;
 
 - (ASMotionLayoutImpl_MotionLayoutCommandBuilder *)tryGetTransformPivotX;
 

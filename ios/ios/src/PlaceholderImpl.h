@@ -345,6 +345,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
 
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setContentWithNSString:(NSString *)value;
@@ -445,6 +447,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -491,6 +495,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setPlaceholder_emptyVisibilityWithNSString:(NSString *)value;
 
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -508,6 +514,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -550,6 +558,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetBackgroundTint;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetBottom;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetClickable;
 
@@ -633,6 +643,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetLayoutDirection;
 
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetLeft;
+
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetLongClickable;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetMaxHeight;
@@ -653,6 +665,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetPlaceholder_emptyVisibility;
 
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetRight;
+
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetRotation;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetRotationX;
@@ -668,6 +682,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetTextAlignment;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetTextDirection;
+
+- (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetTop;
 
 - (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetTransformPivotX;
 

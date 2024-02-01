@@ -595,6 +595,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 
 - (ASFlowImpl_FlowCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
 
+- (ASFlowImpl_FlowCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASFlowImpl_FlowCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setConstraint_referenced_idsWithNSString:(NSString *)value;
@@ -723,6 +725,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 
 - (ASFlowImpl_FlowCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASFlowImpl_FlowCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASFlowImpl_FlowCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -769,6 +773,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 
 - (ASFlowImpl_FlowCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
+- (ASFlowImpl_FlowCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASFlowImpl_FlowCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -786,6 +792,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 - (ASFlowImpl_FlowCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASFlowImpl_FlowCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASFlowImpl_FlowCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -828,6 +836,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 - (ASFlowImpl_FlowCommandBuilder *)tryGetBackgroundTint;
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASFlowImpl_FlowCommandBuilder *)tryGetBottom;
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetClickable;
 
@@ -911,6 +921,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetLayoutDirection;
 
+- (ASFlowImpl_FlowCommandBuilder *)tryGetLeft;
+
 - (ASFlowImpl_FlowCommandBuilder *)tryGetLongClickable;
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetMaxHeight;
@@ -929,6 +941,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetModelUiToPojo;
 
+- (ASFlowImpl_FlowCommandBuilder *)tryGetRight;
+
 - (ASFlowImpl_FlowCommandBuilder *)tryGetRotation;
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetRotationX;
@@ -944,6 +958,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
 - (ASFlowImpl_FlowCommandBuilder *)tryGetTextAlignment;
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetTextDirection;
+
+- (ASFlowImpl_FlowCommandBuilder *)tryGetTop;
 
 - (ASFlowImpl_FlowCommandBuilder *)tryGetTransformPivotX;
 

@@ -307,6 +307,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 
 - (ASGroupImpl_GroupCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
 
+- (ASGroupImpl_GroupCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASGroupImpl_GroupCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setConstraint_referenced_idsWithNSString:(NSString *)value;
@@ -407,6 +409,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 
 - (ASGroupImpl_GroupCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASGroupImpl_GroupCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASGroupImpl_GroupCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -451,6 +455,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 
 - (ASGroupImpl_GroupCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
+- (ASGroupImpl_GroupCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASGroupImpl_GroupCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -468,6 +474,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 - (ASGroupImpl_GroupCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASGroupImpl_GroupCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASGroupImpl_GroupCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -510,6 +518,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 - (ASGroupImpl_GroupCommandBuilder *)tryGetBackgroundTint;
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASGroupImpl_GroupCommandBuilder *)tryGetBottom;
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetClickable;
 
@@ -593,6 +603,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetLayoutDirection;
 
+- (ASGroupImpl_GroupCommandBuilder *)tryGetLeft;
+
 - (ASGroupImpl_GroupCommandBuilder *)tryGetLongClickable;
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetMaxHeight;
@@ -611,6 +623,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetModelUiToPojo;
 
+- (ASGroupImpl_GroupCommandBuilder *)tryGetRight;
+
 - (ASGroupImpl_GroupCommandBuilder *)tryGetRotation;
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetRotationX;
@@ -626,6 +640,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
 - (ASGroupImpl_GroupCommandBuilder *)tryGetTextAlignment;
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetTextDirection;
+
+- (ASGroupImpl_GroupCommandBuilder *)tryGetTop;
 
 - (ASGroupImpl_GroupCommandBuilder *)tryGetTransformPivotX;
 

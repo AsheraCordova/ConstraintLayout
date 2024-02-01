@@ -360,6 +360,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setBarrierMarginWithNSString:(NSString *)value;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)setClickableWithBoolean:(jboolean)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setConstraint_referenced_idsWithNSString:(NSString *)value;
@@ -460,6 +462,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -504,6 +508,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -521,6 +527,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 - (ASBarrierImpl_BarrierCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -569,6 +577,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierDirection;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierMargin;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)tryGetBottom;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetClickable;
 
@@ -652,6 +662,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetLayoutDirection;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)tryGetLeft;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetLongClickable;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetMaxHeight;
@@ -670,6 +682,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetModelUiToPojo;
 
+- (ASBarrierImpl_BarrierCommandBuilder *)tryGetRight;
+
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetRotation;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetRotationX;
@@ -685,6 +699,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASBarrierImpl_BarrierExt)
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetTextAlignment;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetTextDirection;
+
+- (ASBarrierImpl_BarrierCommandBuilder *)tryGetTop;
 
 - (ASBarrierImpl_BarrierCommandBuilder *)tryGetTransformPivotX;
 

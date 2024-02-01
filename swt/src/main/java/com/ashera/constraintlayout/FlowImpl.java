@@ -360,7 +360,9 @@ public class FlowImpl extends BaseWidget {
         
     	@Override
 		public void remeasure() {
-			getFragment().remeasure();
+    		if (getFragment() != null) {
+    			getFragment().remeasure();
+    		}
 		}
     	
         @Override

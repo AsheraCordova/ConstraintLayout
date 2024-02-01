@@ -435,6 +435,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setBackgroundWithNSString:(NSString *)arg0;
 
+- (ASCarouselImpl_CarouselCommandBuilder *)setBottomWithNSString:(NSString *)arg0;
+
 - (ASCarouselImpl_CarouselCommandBuilder *)setCarousel_backwardTransitionWithNSString:(NSString *)value;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setCarousel_emptyViewsBehaviorWithNSString:(NSString *)value;
@@ -563,6 +565,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setLayoutDirectionWithNSString:(NSString *)arg0;
 
+- (ASCarouselImpl_CarouselCommandBuilder *)setLeftWithNSString:(NSString *)arg0;
+
 - (ASCarouselImpl_CarouselCommandBuilder *)setLongClickableWithBoolean:(jboolean)arg0;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setMaxHeightWithNSString:(NSString *)arg0;
@@ -609,6 +613,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setOutsideTouchableWithBoolean:(jboolean)arg0;
 
+- (ASCarouselImpl_CarouselCommandBuilder *)setRightWithNSString:(NSString *)arg0;
+
 - (ASCarouselImpl_CarouselCommandBuilder *)setRotationWithFloat:(jfloat)arg0;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setRotationXWithFloat:(jfloat)arg0;
@@ -626,6 +632,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 - (ASCarouselImpl_CarouselCommandBuilder *)setTextAlignmentWithNSString:(NSString *)arg0;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setTextDirectionWithNSString:(NSString *)arg0;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)setTopWithNSString:(NSString *)arg0;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)setTransformPivotXWithNSString:(NSString *)arg0;
 
@@ -677,6 +685,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetBackgroundTint;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetBackgroundTintMode;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)tryGetBottom;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetCarousel_backwardTransition;
 
@@ -780,6 +790,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetLayoutDirection;
 
+- (ASCarouselImpl_CarouselCommandBuilder *)tryGetLeft;
+
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetLongClickable;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetMaxHeight;
@@ -798,6 +810,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetModelUiToPojo;
 
+- (ASCarouselImpl_CarouselCommandBuilder *)tryGetRight;
+
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetRotation;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetRotationX;
@@ -813,6 +827,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetTextAlignment;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetTextDirection;
+
+- (ASCarouselImpl_CarouselCommandBuilder *)tryGetTop;
 
 - (ASCarouselImpl_CarouselCommandBuilder *)tryGetTransformPivotX;
 
