@@ -16,6 +16,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -26,11 +27,11 @@ export abstract class GuidelineImpl<T> extends ViewImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "orientation" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "orientation" }))
 	orientation!:CommandAttr<Orientation>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	

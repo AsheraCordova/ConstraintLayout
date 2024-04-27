@@ -70,6 +70,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -140,32 +141,32 @@ export abstract class MotionLayoutImpl<T> extends ViewGroupImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "minWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "minWidth" }))
 	minWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "minHeight" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "minHeight" }))
 	minHeight!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "maxWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "maxWidth" }))
 	maxWidth!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "maxHeight" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "maxHeight" }))
 	maxHeight!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layoutDescription" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layoutDescription" }))
 	layoutDescription!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "progress" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "progress" }))
 	progress!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "reduceFlicker" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "reduceFlicker" }))
 	reduceFlicker!:CommandAttr<boolean>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "optimizationLevel" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "optimizationLevel" }))
 	optimizationLevel!:CommandAttr<OptimizationLevel>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	
@@ -443,166 +444,166 @@ export abstract class MotionLayoutImpl<T> extends ViewGroupImpl<T>{
 	
 //start - staticinit
 export abstract class MotionLayoutImpl_LayoutParams<T> extends ViewGroupImpl_LayoutParams<T> {
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_orientation" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_orientation" }))
 	layout_orientation!:CommandAttr<Orientation>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintCircle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintCircle" }))
 	layout_constraintCircle!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintCircleRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintCircleRadius" }))
 	layout_constraintCircleRadius!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintCircleAngle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintCircleAngle" }))
 	layout_constraintCircleAngle!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintGuide_begin" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintGuide_begin" }))
 	layout_constraintGuide_begin!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintGuide_end" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintGuide_end" }))
 	layout_constraintGuide_end!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintGuide_percent" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintGuide_percent" }))
 	layout_constraintGuide_percent!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintLeft_toLeftOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintLeft_toLeftOf" }))
 	layout_constraintLeft_toLeftOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintLeft_toRightOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintLeft_toRightOf" }))
 	layout_constraintLeft_toRightOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintRight_toLeftOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintRight_toLeftOf" }))
 	layout_constraintRight_toLeftOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintRight_toRightOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintRight_toRightOf" }))
 	layout_constraintRight_toRightOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintTop_toTopOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintTop_toTopOf" }))
 	layout_constraintTop_toTopOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintTop_toBottomOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintTop_toBottomOf" }))
 	layout_constraintTop_toBottomOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintBottom_toTopOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintBottom_toTopOf" }))
 	layout_constraintBottom_toTopOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintBottom_toBottomOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintBottom_toBottomOf" }))
 	layout_constraintBottom_toBottomOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintBaseline_toBaselineOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintBaseline_toBaselineOf" }))
 	layout_constraintBaseline_toBaselineOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintBaseline_toTopOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintBaseline_toTopOf" }))
 	layout_constraintBaseline_toTopOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintBaseline_toBottomOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintBaseline_toBottomOf" }))
 	layout_constraintBaseline_toBottomOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintStart_toEndOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintStart_toEndOf" }))
 	layout_constraintStart_toEndOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintStart_toStartOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintStart_toStartOf" }))
 	layout_constraintStart_toStartOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintEnd_toStartOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintEnd_toStartOf" }))
 	layout_constraintEnd_toStartOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintEnd_toEndOf" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintEnd_toEndOf" }))
 	layout_constraintEnd_toEndOf!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_goneMarginLeft" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_goneMarginLeft" }))
 	layout_goneMarginLeft!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_goneMarginTop" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_goneMarginTop" }))
 	layout_goneMarginTop!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_goneMarginRight" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_goneMarginRight" }))
 	layout_goneMarginRight!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_goneMarginBottom" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_goneMarginBottom" }))
 	layout_goneMarginBottom!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_goneMarginStart" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_goneMarginStart" }))
 	layout_goneMarginStart!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_goneMarginEnd" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_goneMarginEnd" }))
 	layout_goneMarginEnd!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_goneMarginBaseline" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_goneMarginBaseline" }))
 	layout_goneMarginBaseline!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_marginBaseline" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_marginBaseline" }))
 	layout_marginBaseline!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintWidth" }))
 	layout_constraintWidth!:CommandAttr<Layout_constraintWidth>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHeight" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHeight" }))
 	layout_constraintHeight!:CommandAttr<Layout_constraintHeight>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constrainedWidth" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constrainedWidth" }))
 	layout_constrainedWidth!:CommandAttr<boolean>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constrainedHeight" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constrainedHeight" }))
 	layout_constrainedHeight!:CommandAttr<boolean>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHorizontal_bias" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHorizontal_bias" }))
 	layout_constraintHorizontal_bias!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintVertical_bias" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintVertical_bias" }))
 	layout_constraintVertical_bias!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintWidth_default" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintWidth_default" }))
 	layout_constraintWidth_default!:CommandAttr<Layout_constraintWidth_default>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHeight_default" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHeight_default" }))
 	layout_constraintHeight_default!:CommandAttr<Layout_constraintHeight_default>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintWidth_min" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintWidth_min" }))
 	layout_constraintWidth_min!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintWidth_max" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintWidth_max" }))
 	layout_constraintWidth_max!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintWidth_percent" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintWidth_percent" }))
 	layout_constraintWidth_percent!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHeight_min" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHeight_min" }))
 	layout_constraintHeight_min!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHeight_max" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHeight_max" }))
 	layout_constraintHeight_max!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHeight_percent" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHeight_percent" }))
 	layout_constraintHeight_percent!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintDimensionRatio" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintDimensionRatio" }))
 	layout_constraintDimensionRatio!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHorizontal_weight" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHorizontal_weight" }))
 	layout_constraintHorizontal_weight!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintVertical_weight" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintVertical_weight" }))
 	layout_constraintVertical_weight!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintHorizontal_chainStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintHorizontal_chainStyle" }))
 	layout_constraintHorizontal_chainStyle!:CommandAttr<Layout_constraintHorizontal_chainStyle>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintVertical_chainStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintVertical_chainStyle" }))
 	layout_constraintVertical_chainStyle!:CommandAttr<Layout_constraintVertical_chainStyle>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_editor_absoluteX" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_editor_absoluteX" }))
 	layout_editor_absoluteX!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_editor_absoluteY" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_editor_absoluteY" }))
 	layout_editor_absoluteY!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_constraintTag" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_constraintTag" }))
 	layout_constraintTag!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "layout_wrapBehaviorInParent" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "layout_wrapBehaviorInParent" }))
 	layout_wrapBehaviorInParent!:CommandAttr<Layout_wrapBehaviorInParent>| undefined;
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	

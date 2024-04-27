@@ -52,6 +52,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -77,56 +78,56 @@ export abstract class FlowImpl<T> extends ViewImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "orientation" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "orientation" }))
 	orientation!:CommandAttr<Orientation>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_horizontalStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_horizontalStyle" }))
 	flow_horizontalStyle!:CommandAttr<Flow_horizontalStyle>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_verticalStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_verticalStyle" }))
 	flow_verticalStyle!:CommandAttr<Flow_verticalStyle>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_wrapMode" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_wrapMode" }))
 	flow_wrapMode!:CommandAttr<Flow_wrapMode>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_maxElementsWrap" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_maxElementsWrap" }))
 	flow_maxElementsWrap!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_horizontalGap" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_horizontalGap" }))
 	flow_horizontalGap!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_verticalGap" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_verticalGap" }))
 	flow_verticalGap!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_verticalAlign" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_verticalAlign" }))
 	flow_verticalAlign!:CommandAttr<Flow_verticalAlign>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_horizontalAlign" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_horizontalAlign" }))
 	flow_horizontalAlign!:CommandAttr<Flow_horizontalAlign>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_verticalBias" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_verticalBias" }))
 	flow_verticalBias!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_horizontalBias" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_horizontalBias" }))
 	flow_horizontalBias!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_firstHorizontalStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_firstHorizontalStyle" }))
 	flow_firstHorizontalStyle!:CommandAttr<Flow_firstHorizontalStyle>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_firstVerticalStyle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_firstVerticalStyle" }))
 	flow_firstVerticalStyle!:CommandAttr<Flow_firstVerticalStyle>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_firstHorizontalBias" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_firstHorizontalBias" }))
 	flow_firstHorizontalBias!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "flow_firstVerticalBias" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "flow_firstVerticalBias" }))
 	flow_firstVerticalBias!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "constraint_referenced_ids" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "constraint_referenced_ids" }))
 	constraint_referenced_ids!:CommandAttr<string>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	

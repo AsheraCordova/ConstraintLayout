@@ -20,6 +20,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -37,9 +38,9 @@ import { ScopedObject } from '../../app/ScopedObject';
 
 
 export class CarouselImpl_transitionToIndex {
-@Expose({ name: "index" })
+@decorate(Expose({ name: "index" }))
 index!:number;
-@Expose({ name: "delay" })
+@decorate(Expose({ name: "delay" }))
 delay!:number;
 }
 
@@ -58,80 +59,80 @@ export abstract class CarouselImpl<T> extends ViewGroupImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_firstView" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_firstView" }))
 	carousel_firstView!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_previousState" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_previousState" }))
 	carousel_previousState!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_nextState" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_nextState" }))
 	carousel_nextState!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_infinite" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_infinite" }))
 	carousel_infinite!:CommandAttr<boolean>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_forwardTransition" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_forwardTransition" }))
 	carousel_forwardTransition!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_backwardTransition" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_backwardTransition" }))
 	carousel_backwardTransition!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_touchUp_dampeningFactor" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_touchUp_dampeningFactor" }))
 	carousel_touchUp_dampeningFactor!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_touchUpMode" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_touchUpMode" }))
 	carousel_touchUpMode!:CommandAttr<Carousel_touchUpMode>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_touchUp_velocityThreshold" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_touchUp_velocityThreshold" }))
 	carousel_touchUp_velocityThreshold!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "carousel_emptyViewsBehavior" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "carousel_emptyViewsBehavior" }))
 	carousel_emptyViewsBehavior!:CommandAttr<Carousel_emptyViewsBehavior>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "constraint_referenced_ids" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "constraint_referenced_ids" }))
 	constraint_referenced_ids!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "jumpToIndex" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "jumpToIndex" }))
 	jumpToIndex_!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "jumpTolast" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "jumpTolast" }))
 	jumpTolast_!:CommandAttr<void>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "jumpToNext" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "jumpToNext" }))
 	jumpToNext_!:CommandAttr<void>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "jumpToPrevious" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "jumpToPrevious" }))
 	jumpToPrevious_!:CommandAttr<void>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "transitionToIndex" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "transitionToIndex" }))
 	transitionToIndex_!:CommandAttr<CarouselImpl_transitionToIndex>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "transitionToLast" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "transitionToLast" }))
 	transitionToLast_!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "transitionToNext" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "transitionToNext" }))
 	transitionToNext_!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "transitionToPrevious" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "transitionToPrevious" }))
 	transitionToPrevious_!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "dataKey" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "dataKey" }))
 	dataKey!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "childDataKey" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "childDataKey" }))
 	childDataKey!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "dataScopeKey" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "dataScopeKey" }))
 	dataScopeKey!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "childDataScopeKey" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "childDataScopeKey" }))
 	childDataScopeKey!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "onNewItem" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "onNewItem" }))
 	onNewItem!:CommandAttr<string>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	

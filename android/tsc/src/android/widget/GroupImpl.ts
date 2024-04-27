@@ -13,6 +13,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -23,11 +24,11 @@ export abstract class GroupImpl<T> extends ViewImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "constraint_referenced_ids" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "constraint_referenced_ids" }))
 	constraint_referenced_ids!:CommandAttr<string>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	

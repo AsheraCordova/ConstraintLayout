@@ -20,6 +20,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -34,20 +35,20 @@ export abstract class BarrierImpl<T> extends ViewImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "barrierDirection" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "barrierDirection" }))
 	barrierDirection!:CommandAttr<BarrierImpl_barrierDirection>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "constraint_referenced_ids" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "constraint_referenced_ids" }))
 	constraint_referenced_ids!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "barrierMargin" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "barrierMargin" }))
 	barrierMargin!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "barrierAllowsGoneWidgets" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "barrierAllowsGoneWidgets" }))
 	barrierAllowsGoneWidgets!:CommandAttr<boolean>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	

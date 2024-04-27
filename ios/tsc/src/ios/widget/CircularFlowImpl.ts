@@ -13,6 +13,7 @@ import {MotionEvent} from '../../app/MotionEvent';
 import {DragEvent} from '../../app/DragEvent';
 import {KeyEvent} from '../../app/KeyEvent';
 import { ScopedObject } from '../../app/ScopedObject';
+import { Mixin, decorate } from 'ts-mixer';
 
 
 
@@ -21,31 +22,31 @@ import { ScopedObject } from '../../app/ScopedObject';
 
 
 export class CircularFlowImpl_addViewToCircularFlow {
-@Expose({ name: "viewId" })
+@decorate(Expose({ name: "viewId" }))
 viewId!:string;
-@Expose({ name: "radius" })
+@decorate(Expose({ name: "radius" }))
 radius!:number;
-@Expose({ name: "angle" })
+@decorate(Expose({ name: "angle" }))
 angle!:number;
 }
 export class CircularFlowImpl_updateReference {
-@Expose({ name: "viewId" })
+@decorate(Expose({ name: "viewId" }))
 viewId!:string;
-@Expose({ name: "radius" })
+@decorate(Expose({ name: "radius" }))
 radius!:number;
-@Expose({ name: "angle" })
+@decorate(Expose({ name: "angle" }))
 angle!:number;
 }
 export class CircularFlowImpl_updateRadius {
-@Expose({ name: "viewId" })
+@decorate(Expose({ name: "viewId" }))
 viewId!:string;
-@Expose({ name: "radius" })
+@decorate(Expose({ name: "radius" }))
 radius!:number;
 }
 export class CircularFlowImpl_updateAngle {
-@Expose({ name: "viewId" })
+@decorate(Expose({ name: "viewId" }))
 viewId!:string;
-@Expose({ name: "angle" })
+@decorate(Expose({ name: "angle" }))
 angle!:number;
 }
 
@@ -56,38 +57,38 @@ export abstract class CircularFlowImpl<T> extends ViewImpl<T>{
 	//start - body
 	static initialize() {
     }	
-	@Type(() => CommandAttr)
-	@Expose({ name: "circularflow_radiusInDP" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "circularflow_radiusInDP" }))
 	circularflow_radiusInDP!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "circularflow_angles" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "circularflow_angles" }))
 	circularflow_angles!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "circularflow_viewCenter" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "circularflow_viewCenter" }))
 	circularflow_viewCenter!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "circularflow_defaultRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "circularflow_defaultRadius" }))
 	circularflow_defaultRadius!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "circularflow_defaultAngle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "circularflow_defaultAngle" }))
 	circularflow_defaultAngle!:CommandAttr<number>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "constraint_referenced_ids" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "constraint_referenced_ids" }))
 	constraint_referenced_ids!:CommandAttr<string>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "addViewToCircularFlow" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "addViewToCircularFlow" }))
 	addViewToCircularFlow_!:CommandAttr<CircularFlowImpl_addViewToCircularFlow>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "updateReference" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "updateReference" }))
 	updateReference_!:CommandAttr<CircularFlowImpl_updateReference>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "updateRadius" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "updateRadius" }))
 	updateRadius_!:CommandAttr<CircularFlowImpl_updateRadius>| undefined;
-	@Type(() => CommandAttr)
-	@Expose({ name: "updateAngle" })
+	@decorate(Type(() => CommandAttr))
+	@decorate(Expose({ name: "updateAngle" }))
 	updateAngle_!:CommandAttr<CircularFlowImpl_updateAngle>| undefined;
 
-	@Exclude()
+	@decorate(Exclude())
 	protected thisPointer: T;	
 	protected abstract getThisPointer(): T;
 	reset() : T {	
