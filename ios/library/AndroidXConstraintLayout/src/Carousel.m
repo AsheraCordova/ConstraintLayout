@@ -252,13 +252,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   else {
     return;
   }
+  [((JavaUtilArrayList *) nil_chk(mList_)) clear];
   for (jint i = 0; i < mCount_; i++) {
     jint id_ = IOSIntArray_Get(nil_chk(mIds_), i);
     ADView *view = JreRetainedLocalValue([((ADXMotionLayout *) nil_chk(container)) getViewByIdWithInt:id_]);
     if (firstViewReference_ == id_) {
       startIndex_ = i;
     }
-    [((JavaUtilArrayList *) nil_chk(mList_)) addWithId:view];
+    [mList_ addWithId:view];
   }
   JreStrongAssign(&mMotionLayout_, container);
   if (touchUpMode_ == ADXCarousel_TOUCH_UP_CARRY_ON) {
