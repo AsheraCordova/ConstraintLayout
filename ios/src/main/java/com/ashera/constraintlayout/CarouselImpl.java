@@ -133,6 +133,7 @@ public class CarouselImpl extends BaseWidget {
 	public class CarouselExt extends androidx.constraintlayout.helper.widget.Carousel implements ILifeCycleDecorator{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		private List<IWidget> overlays;
 		public IWidget getWidget() {
 			return CarouselImpl.this;
 		}
@@ -169,9 +170,12 @@ public class CarouselImpl extends BaseWidget {
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {
 			super.onLayout(changed, l, t, r, b);
 			ViewImpl.setDrawableBounds(CarouselImpl.this, l, t, r, b);
+			if (!isOverlay()) {
 			ViewImpl.nativeMakeFrame(asNativeWidget(), l, t, r, b);
+			}
 			replayBufferedEvents();
 	        ViewImpl.redrawDrawables(CarouselImpl.this);
+	        overlays = ViewImpl.drawOverlay(CarouselImpl.this, overlays);
 			
 			IWidgetLifeCycleListener listener = (IWidgetLifeCycleListener) getListener();
 			if (listener != null) {
@@ -300,7 +304,7 @@ public class CarouselImpl extends BaseWidget {
 				setState4(value);
 				return;
 			}
-			CarouselImpl.this.setAttribute(name, value, true);
+			CarouselImpl.this.setAttribute(name, value, !(value instanceof String));
 		}
         @Override
         public void setVisibility(int visibility) {

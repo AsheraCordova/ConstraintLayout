@@ -951,6 +951,7 @@ return layoutParams.wrapBehaviorInParent;			}
 	public class ConstraintLayoutExt extends androidx.constraintlayout.widget.ConstraintLayout implements ILifeCycleDecorator{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		private List<IWidget> overlays;
 		public IWidget getWidget() {
 			return ConstraintLayoutImpl.this;
 		}
@@ -977,9 +978,12 @@ return layoutParams.wrapBehaviorInParent;			}
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {
 			super.onLayout(changed, l, t, r, b);
 			ViewImpl.setDrawableBounds(ConstraintLayoutImpl.this, l, t, r, b);
+			if (!isOverlay()) {
 			ViewImpl.nativeMakeFrame(asNativeWidget(), l, t, r, b);
+			}
 			replayBufferedEvents();
 	        ViewImpl.redrawDrawables(ConstraintLayoutImpl.this);
+	        overlays = ViewImpl.drawOverlay(ConstraintLayoutImpl.this, overlays);
 			
 			IWidgetLifeCycleListener listener = (IWidgetLifeCycleListener) getListener();
 			if (listener != null) {
@@ -1110,7 +1114,7 @@ return layoutParams.wrapBehaviorInParent;			}
 				setState4(value);
 				return;
 			}
-			ConstraintLayoutImpl.this.setAttribute(name, value, true);
+			ConstraintLayoutImpl.this.setAttribute(name, value, !(value instanceof String));
 		}
         @Override
         public void setVisibility(int visibility) {

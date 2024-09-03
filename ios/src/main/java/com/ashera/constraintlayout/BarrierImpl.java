@@ -99,6 +99,7 @@ public class BarrierImpl extends BaseWidget {
 	public class BarrierExt extends androidx.constraintlayout.widget.Barrier implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		private List<IWidget> overlays;
 		public IWidget getWidget() {
 			return BarrierImpl.this;
 		}
@@ -150,9 +151,12 @@ public class BarrierImpl extends BaseWidget {
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {
 			super.onLayout(changed, l, t, r, b);
 			ViewImpl.setDrawableBounds(BarrierImpl.this, l, t, r, b);
+			if (!isOverlay()) {
 			ViewImpl.nativeMakeFrame(asNativeWidget(), l, t, r, b);
+			}
 			replayBufferedEvents();
 	        ViewImpl.redrawDrawables(BarrierImpl.this);
+	        overlays = ViewImpl.drawOverlay(BarrierImpl.this, overlays);
 			
 			IWidgetLifeCycleListener listener = (IWidgetLifeCycleListener) getListener();
 			if (listener != null) {
@@ -281,7 +285,7 @@ public class BarrierImpl extends BaseWidget {
 				setState4(value);
 				return;
 			}
-			BarrierImpl.this.setAttribute(name, value, true);
+			BarrierImpl.this.setAttribute(name, value, !(value instanceof String));
 		}
         @Override
         public void setVisibility(int visibility) {

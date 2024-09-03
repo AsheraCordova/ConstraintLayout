@@ -81,6 +81,7 @@ public class GuidelineImpl extends BaseWidget {
 	public class GuidelineExt extends androidx.constraintlayout.widget.Guideline implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		private List<IWidget> overlays;
 		public IWidget getWidget() {
 			return GuidelineImpl.this;
 		}
@@ -132,9 +133,12 @@ public class GuidelineImpl extends BaseWidget {
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {
 			super.onLayout(changed, l, t, r, b);
 			ViewImpl.setDrawableBounds(GuidelineImpl.this, l, t, r, b);
+			if (!isOverlay()) {
 			ViewImpl.nativeMakeFrame(asNativeWidget(), l, t, r, b);
+			}
 			replayBufferedEvents();
 	        ViewImpl.redrawDrawables(GuidelineImpl.this);
+	        overlays = ViewImpl.drawOverlay(GuidelineImpl.this, overlays);
 			
 			IWidgetLifeCycleListener listener = (IWidgetLifeCycleListener) getListener();
 			if (listener != null) {
@@ -264,7 +268,7 @@ public class GuidelineImpl extends BaseWidget {
 				setState4(value);
 				return;
 			}
-			GuidelineImpl.this.setAttribute(name, value, true);
+			GuidelineImpl.this.setAttribute(name, value, !(value instanceof String));
 		}
         @Override
         public void setVisibility(int visibility) {

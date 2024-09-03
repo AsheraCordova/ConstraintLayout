@@ -74,6 +74,7 @@ public class GroupImpl extends BaseWidget {
 	public class GroupExt extends androidx.constraintlayout.widget.Group implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		private List<IWidget> overlays;
 		public IWidget getWidget() {
 			return GroupImpl.this;
 		}
@@ -125,9 +126,12 @@ public class GroupImpl extends BaseWidget {
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {
 			super.onLayout(changed, l, t, r, b);
 			ViewImpl.setDrawableBounds(GroupImpl.this, l, t, r, b);
+			if (!isOverlay()) {
 			ViewImpl.nativeMakeFrame(asNativeWidget(), l, t, r, b);
+			}
 			replayBufferedEvents();
 	        ViewImpl.redrawDrawables(GroupImpl.this);
+	        overlays = ViewImpl.drawOverlay(GroupImpl.this, overlays);
 			
 			IWidgetLifeCycleListener listener = (IWidgetLifeCycleListener) getListener();
 			if (listener != null) {
@@ -256,7 +260,7 @@ public class GroupImpl extends BaseWidget {
 				setState4(value);
 				return;
 			}
-			GroupImpl.this.setAttribute(name, value, true);
+			GroupImpl.this.setAttribute(name, value, !(value instanceof String));
 		}
         @Override
         public void setVisibility(int visibility) {

@@ -77,6 +77,7 @@ public class CircularFlowImpl extends BaseWidget {
 	public class CircularFlowExt extends androidx.constraintlayout.helper.widget.CircularFlow implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		
 		public IWidget getWidget() {
 			return CircularFlowImpl.this;
 		}
@@ -131,7 +132,9 @@ public class CircularFlowImpl extends BaseWidget {
 		@Override
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {
 			super.onLayout(changed, l, t, r, b);
+			
 			ViewImpl.nativeMakeFrame(asNativeWidget(), l, t, r, b);
+			
 			replayBufferedEvents();
 			
 			IWidgetLifeCycleListener listener = (IWidgetLifeCycleListener) getListener();

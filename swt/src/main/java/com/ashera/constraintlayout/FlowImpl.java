@@ -233,6 +233,7 @@ public class FlowImpl extends BaseWidget {
 	public class FlowExt extends androidx.constraintlayout.helper.widget.Flow implements ILifeCycleDecorator, com.ashera.widget.IMaxDimension{
 		private MeasureEvent measureFinished = new MeasureEvent();
 		private OnLayoutEvent onLayoutEvent = new OnLayoutEvent();
+		private List<IWidget> overlays;
 		public IWidget getWidget() {
 			return FlowImpl.this;
 		}
@@ -284,8 +285,11 @@ public class FlowImpl extends BaseWidget {
 		protected void onLayout(boolean changed, int l, int t, int r, int b) {
 			super.onLayout(changed, l, t, r, b);
 			ViewImpl.setDrawableBounds(FlowImpl.this, l, t, r, b);
+			if (!isOverlay()) {
+			}
 			replayBufferedEvents();
 	        ViewImpl.redrawDrawables(FlowImpl.this);
+	        overlays = ViewImpl.drawOverlay(FlowImpl.this, overlays);
 			
 			IWidgetLifeCycleListener listener = (IWidgetLifeCycleListener) getListener();
 			if (listener != null) {
@@ -416,7 +420,7 @@ public class FlowImpl extends BaseWidget {
 				setState4(value);
 				return;
 			}
-			FlowImpl.this.setAttribute(name, value, true);
+			FlowImpl.this.setAttribute(name, value, !(value instanceof String));
 		}
         
     	public void setState0(Object value) {
