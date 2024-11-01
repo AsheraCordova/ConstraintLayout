@@ -217,7 +217,9 @@ public class CircularFlowImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(CircularFlowImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(CircularFlowImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -355,6 +357,7 @@ public class CircularFlowImpl extends BaseWidget {
         	ViewImpl.stateNo(CircularFlowImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return CircularFlowExt.class;

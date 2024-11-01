@@ -565,7 +565,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
 - (void)drawableStateChanged {
   [super drawableStateChanged];
-  ASViewImpl_drawableStateChangedWithASIWidget_(this$0_);
+  if (![this$0_ isWidgetDisposed]) {
+    ASViewImpl_drawableStateChangedWithASIWidget_(this$0_);
+  }
 }
 
 - (ADView *)inflateViewWithNSString:(NSString *)layout {

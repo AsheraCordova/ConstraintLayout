@@ -195,7 +195,9 @@ public class PlaceholderImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(PlaceholderImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(PlaceholderImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -208,9 +210,10 @@ public class PlaceholderImpl extends BaseWidget {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(PlaceholderImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -312,6 +315,7 @@ public class PlaceholderImpl extends BaseWidget {
         	ViewImpl.stateNo(PlaceholderImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return PlaceholderExt.class;

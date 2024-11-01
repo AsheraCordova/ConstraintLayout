@@ -187,7 +187,9 @@ public class CircularFlowImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(CircularFlowImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(CircularFlowImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -200,9 +202,10 @@ public class CircularFlowImpl extends BaseWidget {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(CircularFlowImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -305,6 +308,7 @@ public class CircularFlowImpl extends BaseWidget {
         	ViewImpl.stateNo(CircularFlowImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return CircularFlowExt.class;

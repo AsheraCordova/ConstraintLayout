@@ -197,7 +197,9 @@ public class GuidelineImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(GuidelineImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(GuidelineImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -210,9 +212,10 @@ public class GuidelineImpl extends BaseWidget {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(GuidelineImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -277,7 +280,10 @@ public class GuidelineImpl extends BaseWidget {
         @Override
         public void setVisibility(int visibility) {
             super.setVisibility(visibility);
-            ((org.eclipse.swt.widgets.Control)asNativeWidget()).setVisible(View.VISIBLE == visibility);
+            org.eclipse.swt.widgets.Control control = ((org.eclipse.swt.widgets.Control)asNativeWidget());
+            if (!control.isDisposed()) {
+            	control.setVisible(View.VISIBLE == visibility);
+            }
             
         }
         
@@ -321,6 +327,7 @@ public class GuidelineImpl extends BaseWidget {
         	ViewImpl.stateNo(GuidelineImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return GuidelineExt.class;

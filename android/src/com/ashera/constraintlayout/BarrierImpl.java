@@ -233,7 +233,9 @@ public class BarrierImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(BarrierImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(BarrierImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -371,6 +373,7 @@ public class BarrierImpl extends BaseWidget {
         	ViewImpl.stateNo(BarrierImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return BarrierExt.class;

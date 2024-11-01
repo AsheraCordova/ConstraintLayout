@@ -226,7 +226,9 @@ public class GuidelineImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(GuidelineImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(GuidelineImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -364,6 +366,7 @@ public class GuidelineImpl extends BaseWidget {
         	ViewImpl.stateNo(GuidelineImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return GuidelineExt.class;

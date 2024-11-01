@@ -345,7 +345,9 @@ public class FlowImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(FlowImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(FlowImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -358,9 +360,10 @@ public class FlowImpl extends BaseWidget {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(FlowImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -463,6 +466,7 @@ public class FlowImpl extends BaseWidget {
         	ViewImpl.stateNo(FlowImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return FlowExt.class;

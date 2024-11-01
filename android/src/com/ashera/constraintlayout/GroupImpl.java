@@ -208,7 +208,9 @@ public class GroupImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(GroupImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(GroupImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -346,6 +348,7 @@ public class GroupImpl extends BaseWidget {
         	ViewImpl.stateNo(GroupImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return GroupExt.class;

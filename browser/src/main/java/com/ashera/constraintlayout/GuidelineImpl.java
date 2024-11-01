@@ -194,7 +194,9 @@ public class GuidelineImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(GuidelineImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(GuidelineImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -207,9 +209,10 @@ public class GuidelineImpl extends BaseWidget {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(GuidelineImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -317,6 +320,7 @@ public class GuidelineImpl extends BaseWidget {
         	ViewImpl.stateNo(GuidelineImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return GuidelineExt.class;

@@ -220,7 +220,9 @@ public class CarouselImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(CarouselImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(CarouselImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -233,9 +235,10 @@ public class CarouselImpl extends BaseWidget {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(CarouselImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -343,6 +346,7 @@ public class CarouselImpl extends BaseWidget {
         	ViewImpl.stateNo(CarouselImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return CarouselExt.class;

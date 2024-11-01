@@ -252,7 +252,9 @@ public class CarouselImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(CarouselImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(CarouselImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -390,6 +392,7 @@ public class CarouselImpl extends BaseWidget {
         	ViewImpl.stateNo(CarouselImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return CarouselExt.class;

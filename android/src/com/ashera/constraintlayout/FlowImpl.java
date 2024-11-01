@@ -375,7 +375,9 @@ public class FlowImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(FlowImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(FlowImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -513,6 +515,7 @@ public class FlowImpl extends BaseWidget {
         	ViewImpl.stateNo(FlowImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return FlowExt.class;

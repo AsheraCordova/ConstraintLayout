@@ -228,7 +228,9 @@ public class PlaceholderImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(PlaceholderImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(PlaceholderImpl.this);
+        	}
         }
         
     	public void setState0(float value) {
@@ -366,6 +368,7 @@ public class PlaceholderImpl extends BaseWidget {
         	ViewImpl.stateNo(PlaceholderImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return PlaceholderExt.class;

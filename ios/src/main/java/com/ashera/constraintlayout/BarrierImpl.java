@@ -212,7 +212,9 @@ public class BarrierImpl extends BaseWidget {
         @Override
         public void drawableStateChanged() {
         	super.drawableStateChanged();
-        	ViewImpl.drawableStateChanged(BarrierImpl.this);
+        	if (!isWidgetDisposed()) {
+        		ViewImpl.drawableStateChanged(BarrierImpl.this);
+        	}
         }
         private Map<String, IWidget> templates;
     	@Override
@@ -225,9 +227,10 @@ public class BarrierImpl extends BaseWidget {
     			template = (IWidget) quickConvert(layout, "template");
     			templates.put(layout, template);
     		}
+    		
     		IWidget widget = template.loadLazyWidgets(BarrierImpl.this.getParent());
-    		return (View) widget.asWidget();
-    	}        
+			return (View) widget.asWidget();
+    	}   
         
     	@Override
 		public void remeasure() {
@@ -334,6 +337,7 @@ public class BarrierImpl extends BaseWidget {
         	ViewImpl.stateNo(BarrierImpl.this);
         }
      
+	
 	}	@Override
 	public Class getViewClass() {
 		return BarrierExt.class;
