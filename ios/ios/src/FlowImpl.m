@@ -10,7 +10,6 @@
 #include "Flow.h"
 #include "FlowImpl.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -27,7 +26,6 @@
 #include "ViewParent.h"
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
-#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -47,13 +45,7 @@
 @protocol JavaUtilMap;
 
 
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@interface ASFlowImpl () {
- @public
-  ASFlowImpl_FlowCommandBuilder *builder_;
-  ASFlowImpl_FlowBean *bean_;
-}
+@interface ASFlowImpl ()
 
 - (void)setWidgetOnNativeClass;
 
@@ -62,9 +54,6 @@
 - (id)getConstraintReferencedIds;
 
 @end
-
-J2OBJC_FIELD_SETTER(ASFlowImpl, builder_, ASFlowImpl_FlowCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASFlowImpl, bean_, ASFlowImpl_FlowBean *)
 
 __attribute__((unused)) static void ASFlowImpl_setWidgetOnNativeClass(ASFlowImpl *self);
 
@@ -161,20 +150,6 @@ J2OBJC_FIELD_SETTER(ASFlowImpl_FlowExt, measureFinished_, ASMeasureEvent *)
 J2OBJC_FIELD_SETTER(ASFlowImpl_FlowExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASFlowImpl_FlowExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASFlowImpl_FlowExt, templates_, id<JavaUtilMap>)
-
-@interface ASFlowImpl_FlowCommandBuilder () {
- @public
-  ASFlowImpl *this$0_;
-}
-
-@end
-
-@interface ASFlowImpl_FlowBean () {
- @public
-  ASFlowImpl *this$0_;
-}
-
-@end
 
 J2OBJC_INITIALIZED_DEFN(ASFlowImpl)
 
@@ -404,24 +379,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASFlowImpl_FlowBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASFlowImpl_FlowBean_initWithASFlowImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASFlowImpl_FlowCommandBuilder_initWithASFlowImpl_(self);
-  }
-  return builder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   ASUIView* uiView = [ASUIView new];
   uiView.backgroundColor = [UIColor clearColor];
@@ -453,10 +410,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 14, 15, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 16, 1, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x101, 17, 18, -1, 19, -1, -1 },
+    { NULL, "V", 0x101, 16, 17, -1, 18, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -481,22 +435,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[16].selector = @selector(setVisibleWithBoolean:);
   methods[17].selector = @selector(requestLayout);
   methods[18].selector = @selector(invalidate);
-  methods[19].selector = @selector(getPluginWithNSString:);
-  methods[20].selector = @selector(getBean);
-  methods[21].selector = @selector(getBuilder);
-  methods[22].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[23].selector = @selector(nativeRequestLayout);
+  methods[19].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[20].selector = @selector(nativeRequestLayout);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 19, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "flow_", "LADXFlow;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
-    { "builder_", "LASFlowImpl_FlowCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASFlowImpl_FlowBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setConstraintReferenced_ids", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASFlowImpl_LOCAL_NAME, &ASFlowImpl_GROUP_NAME, "LASFlowImpl_Orientation;LASFlowImpl_Flow_horizontalStyle;LASFlowImpl_Flow_verticalStyle;LASFlowImpl_Flow_wrapMode;LASFlowImpl_Flow_verticalAlign;LASFlowImpl_Flow_horizontalAlign;LASFlowImpl_Flow_firstHorizontalStyle;LASFlowImpl_Flow_firstVerticalStyle;LASFlowImpl_FlowExt;LASFlowImpl_FlowCommandBuilder;LASFlowImpl_FlowBean;" };
-  static const J2ObjcClassInfo _ASFlowImpl = { "FlowImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 24, 6, -1, 22, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setConstraintReferenced_ids", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASFlowImpl_LOCAL_NAME, &ASFlowImpl_GROUP_NAME, "LASFlowImpl_Orientation;LASFlowImpl_Flow_horizontalStyle;LASFlowImpl_Flow_verticalStyle;LASFlowImpl_Flow_wrapMode;LASFlowImpl_Flow_verticalAlign;LASFlowImpl_Flow_horizontalAlign;LASFlowImpl_Flow_firstHorizontalStyle;LASFlowImpl_Flow_firstVerticalStyle;LASFlowImpl_FlowExt;" };
+  static const J2ObjcClassInfo _ASFlowImpl = { "FlowImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 21, 4, -1, 21, -1, -1, -1 };
   return &_ASFlowImpl;
 }
 
@@ -1393,391 +1342,3 @@ ASFlowImpl_FlowExt *create_ASFlowImpl_FlowExt_initWithASFlowImpl_(ASFlowImpl *ou
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASFlowImpl_FlowExt)
-
-@implementation ASFlowImpl_FlowCommandBuilder
-
-- (instancetype)initWithASFlowImpl:(ASFlowImpl *)outer$ {
-  ASFlowImpl_FlowCommandBuilder_initWithASFlowImpl_(self, outer$);
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setOrientationWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"orientation"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_horizontalStyleWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_horizontalStyle"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_verticalStyleWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_verticalStyle"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_wrapModeWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_wrapMode"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_maxElementsWrapWithInt:(jint)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_maxElementsWrap"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangInteger_valueOfWithInt_(value)];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_horizontalGapWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_horizontalGap"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_verticalGapWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_verticalGap"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_verticalAlignWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_verticalAlign"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_horizontalAlignWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_horizontalAlign"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_verticalBiasWithFloat:(jfloat)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_verticalBias"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangFloat_valueOfWithFloat_(value)];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_horizontalBiasWithFloat:(jfloat)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_horizontalBias"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangFloat_valueOfWithFloat_(value)];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_firstHorizontalStyleWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_firstHorizontalStyle"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_firstVerticalStyleWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_firstVerticalStyle"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_firstHorizontalBiasWithFloat:(jfloat)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_firstHorizontalBias"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangFloat_valueOfWithFloat_(value)];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setFlow_firstVerticalBiasWithFloat:(jfloat)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"flow_firstVerticalBias"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangFloat_valueOfWithFloat_(value)];
-  return self;
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)tryGetConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASFlowImpl_FlowCommandBuilder *)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 5, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 6, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 7, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 8, 9, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 10, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 11, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 12, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 13, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 14, 15, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 16, 15, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 17, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 18, 4, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 19, 15, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 20, 15, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASFlowImpl_FlowCommandBuilder;", 0x1, 21, 4, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASFlowImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(setOrientationWithNSString:);
-  methods[3].selector = @selector(setFlow_horizontalStyleWithNSString:);
-  methods[4].selector = @selector(setFlow_verticalStyleWithNSString:);
-  methods[5].selector = @selector(setFlow_wrapModeWithNSString:);
-  methods[6].selector = @selector(setFlow_maxElementsWrapWithInt:);
-  methods[7].selector = @selector(setFlow_horizontalGapWithNSString:);
-  methods[8].selector = @selector(setFlow_verticalGapWithNSString:);
-  methods[9].selector = @selector(setFlow_verticalAlignWithNSString:);
-  methods[10].selector = @selector(setFlow_horizontalAlignWithNSString:);
-  methods[11].selector = @selector(setFlow_verticalBiasWithFloat:);
-  methods[12].selector = @selector(setFlow_horizontalBiasWithFloat:);
-  methods[13].selector = @selector(setFlow_firstHorizontalStyleWithNSString:);
-  methods[14].selector = @selector(setFlow_firstVerticalStyleWithNSString:);
-  methods[15].selector = @selector(setFlow_firstHorizontalBiasWithFloat:);
-  methods[16].selector = @selector(setFlow_firstVerticalBiasWithFloat:);
-  methods[17].selector = @selector(tryGetConstraint_referenced_ids);
-  methods[18].selector = @selector(getConstraint_referenced_ids);
-  methods[19].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASFlowImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASFlowImpl;", "execute", "Z", "setOrientation", "LNSString;", "setFlow_horizontalStyle", "setFlow_verticalStyle", "setFlow_wrapMode", "setFlow_maxElementsWrap", "I", "setFlow_horizontalGap", "setFlow_verticalGap", "setFlow_verticalAlign", "setFlow_horizontalAlign", "setFlow_verticalBias", "F", "setFlow_horizontalBias", "setFlow_firstHorizontalStyle", "setFlow_firstVerticalStyle", "setFlow_firstHorizontalBias", "setFlow_firstVerticalBias", "setConstraint_referenced_ids", "Lcom/ashera/layout/ViewImpl$ViewCommandBuilder<Lcom/ashera/constraintlayout/FlowImpl$FlowCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASFlowImpl_FlowCommandBuilder = { "FlowCommandBuilder", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 20, 1, 0, -1, -1, 22, -1 };
-  return &_ASFlowImpl_FlowCommandBuilder;
-}
-
-@end
-
-void ASFlowImpl_FlowCommandBuilder_initWithASFlowImpl_(ASFlowImpl_FlowCommandBuilder *self, ASFlowImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewCommandBuilder_init(self);
-}
-
-ASFlowImpl_FlowCommandBuilder *new_ASFlowImpl_FlowCommandBuilder_initWithASFlowImpl_(ASFlowImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASFlowImpl_FlowCommandBuilder, initWithASFlowImpl_, outer$)
-}
-
-ASFlowImpl_FlowCommandBuilder *create_ASFlowImpl_FlowCommandBuilder_initWithASFlowImpl_(ASFlowImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASFlowImpl_FlowCommandBuilder, initWithASFlowImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASFlowImpl_FlowCommandBuilder)
-
-@implementation ASFlowImpl_FlowBean
-
-- (instancetype)initWithASFlowImpl:(ASFlowImpl *)outer$ {
-  ASFlowImpl_FlowBean_initWithASFlowImpl_(self, outer$);
-  return self;
-}
-
-- (void)setOrientationWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setOrientationWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_horizontalStyleWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_horizontalStyleWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_verticalStyleWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_verticalStyleWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_wrapModeWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_wrapModeWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_maxElementsWrapWithInt:(jint)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_maxElementsWrapWithInt:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_horizontalGapWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_horizontalGapWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_verticalGapWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_verticalGapWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_verticalAlignWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_verticalAlignWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_horizontalAlignWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_horizontalAlignWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_verticalBiasWithFloat:(jfloat)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_verticalBiasWithFloat:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_horizontalBiasWithFloat:(jfloat)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_horizontalBiasWithFloat:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_firstHorizontalStyleWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_firstHorizontalStyleWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_firstVerticalStyleWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_firstVerticalStyleWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_firstHorizontalBiasWithFloat:(jfloat)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_firstHorizontalBiasWithFloat:value])) executeWithBoolean:true];
-}
-
-- (void)setFlow_firstVerticalBiasWithFloat:(jfloat)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setFlow_firstVerticalBiasWithFloat:value])) executeWithBoolean:true];
-}
-
-- (id)getConstraint_referenced_ids {
-  return [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetConstraint_referenced_ids])) executeWithBoolean:false])) getConstraint_referenced_ids];
-}
-
-- (void)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  (void) [((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([((ASFlowImpl_FlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setConstraint_referenced_idsWithNSString:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 3, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 4, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 5, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 6, 7, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 8, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 9, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 10, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 11, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 12, 13, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 14, 13, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 15, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 16, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 17, 13, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 18, 13, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 19, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASFlowImpl:);
-  methods[1].selector = @selector(setOrientationWithNSString:);
-  methods[2].selector = @selector(setFlow_horizontalStyleWithNSString:);
-  methods[3].selector = @selector(setFlow_verticalStyleWithNSString:);
-  methods[4].selector = @selector(setFlow_wrapModeWithNSString:);
-  methods[5].selector = @selector(setFlow_maxElementsWrapWithInt:);
-  methods[6].selector = @selector(setFlow_horizontalGapWithNSString:);
-  methods[7].selector = @selector(setFlow_verticalGapWithNSString:);
-  methods[8].selector = @selector(setFlow_verticalAlignWithNSString:);
-  methods[9].selector = @selector(setFlow_horizontalAlignWithNSString:);
-  methods[10].selector = @selector(setFlow_verticalBiasWithFloat:);
-  methods[11].selector = @selector(setFlow_horizontalBiasWithFloat:);
-  methods[12].selector = @selector(setFlow_firstHorizontalStyleWithNSString:);
-  methods[13].selector = @selector(setFlow_firstVerticalStyleWithNSString:);
-  methods[14].selector = @selector(setFlow_firstHorizontalBiasWithFloat:);
-  methods[15].selector = @selector(setFlow_firstVerticalBiasWithFloat:);
-  methods[16].selector = @selector(getConstraint_referenced_ids);
-  methods[17].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASFlowImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASFlowImpl;", "setOrientation", "LNSString;", "setFlow_horizontalStyle", "setFlow_verticalStyle", "setFlow_wrapMode", "setFlow_maxElementsWrap", "I", "setFlow_horizontalGap", "setFlow_verticalGap", "setFlow_verticalAlign", "setFlow_horizontalAlign", "setFlow_verticalBias", "F", "setFlow_horizontalBias", "setFlow_firstHorizontalStyle", "setFlow_firstVerticalStyle", "setFlow_firstHorizontalBias", "setFlow_firstVerticalBias", "setConstraint_referenced_ids" };
-  static const J2ObjcClassInfo _ASFlowImpl_FlowBean = { "FlowBean", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 18, 1, 0, -1, -1, -1, -1 };
-  return &_ASFlowImpl_FlowBean;
-}
-
-@end
-
-void ASFlowImpl_FlowBean_initWithASFlowImpl_(ASFlowImpl_FlowBean *self, ASFlowImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewBean_initWithASIWidget_(self, outer$);
-}
-
-ASFlowImpl_FlowBean *new_ASFlowImpl_FlowBean_initWithASFlowImpl_(ASFlowImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASFlowImpl_FlowBean, initWithASFlowImpl_, outer$)
-}
-
-ASFlowImpl_FlowBean *create_ASFlowImpl_FlowBean_initWithASFlowImpl_(ASFlowImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASFlowImpl_FlowBean, initWithASFlowImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASFlowImpl_FlowBean)

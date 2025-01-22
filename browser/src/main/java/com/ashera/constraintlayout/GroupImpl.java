@@ -415,74 +415,9 @@ return getConstraintReferencedIds();				}
 
     	}
     }
-	
-private GroupCommandBuilder builder;
-private GroupBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public GroupBean getBean() {
-	if (bean == null) {
-		bean = new GroupBean();
-	}
-	return bean;
-}
-public GroupCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new GroupCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class GroupCommandBuilder extends com.ashera.layout.ViewImpl.ViewCommandBuilder <GroupCommandBuilder> {
-    public GroupCommandBuilder() {
-	}
-	
-	public GroupCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-public GroupCommandBuilder tryGetConstraint_referenced_ids() {
-	Map<String, Object> attrs = initCommand("constraint_referenced_ids");
-	attrs.put("type", "attribute");
-	attrs.put("getter", true);
-	attrs.put("orderGet", ++orderGet);
-return this;}
-
-public Object getConstraint_referenced_ids() {
-	Map<String, Object> attrs = initCommand("constraint_referenced_ids");
-	return attrs.get("commandReturnValue");
-}
-public GroupCommandBuilder setConstraint_referenced_ids(String value) {
-	Map<String, Object> attrs = initCommand("constraint_referenced_ids");
-	attrs.put("type", "attribute");
-	attrs.put("setter", true);
-	attrs.put("orderSet", ++orderSet);
-
-	attrs.put("value", value);
-return this;}
-}
-public class GroupBean extends com.ashera.layout.ViewImpl.ViewBean{
-		public GroupBean() {
-			super(GroupImpl.this);
-		}
-public Object getConstraint_referenced_ids() {
-	return getBuilder().reset().tryGetConstraint_referenced_ids().execute(false).getConstraint_referenced_ids(); 
-}
-public void setConstraint_referenced_ids(String value) {
-	getBuilder().reset().setConstraint_referenced_ids(value).execute(true);
-}
-
-}
-
 
 	
-	//end - body
+		//end - body
 	private void nativeCreate(Map<String, Object> params) {
 		hTMLElement = org.teavm.jso.dom.html.HTMLDocument.current().createElement("div");
     	hTMLElement.getStyle().setProperty("box-sizing", "border-box");

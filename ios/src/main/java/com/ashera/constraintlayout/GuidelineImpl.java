@@ -449,74 +449,9 @@ return getOrientation();				}
 
     	}
     }
-	
-private GuidelineCommandBuilder builder;
-private GuidelineBean bean;
-public Object getPlugin(String plugin) {
-	return WidgetFactory.getAttributable(plugin).newInstance(this);
-}
-public GuidelineBean getBean() {
-	if (bean == null) {
-		bean = new GuidelineBean();
-	}
-	return bean;
-}
-public GuidelineCommandBuilder getBuilder() {
-	if (builder == null) {
-		builder = new GuidelineCommandBuilder();
-	}
-	return builder;
-}
-
-
-public  class GuidelineCommandBuilder extends com.ashera.layout.ViewImpl.ViewCommandBuilder <GuidelineCommandBuilder> {
-    public GuidelineCommandBuilder() {
-	}
-	
-	public GuidelineCommandBuilder execute(boolean setter) {
-		if (setter) {
-			executeCommand(command, null, IWidget.COMMAND_EXEC_SETTER_METHOD);
-			getFragment().remeasure();
-		}
-		executeCommand(command, null, IWidget.COMMAND_EXEC_GETTER_METHOD);
-return this;	}
-
-public GuidelineCommandBuilder tryGetOrientation() {
-	Map<String, Object> attrs = initCommand("orientation");
-	attrs.put("type", "attribute");
-	attrs.put("getter", true);
-	attrs.put("orderGet", ++orderGet);
-return this;}
-
-public Object getOrientation() {
-	Map<String, Object> attrs = initCommand("orientation");
-	return attrs.get("commandReturnValue");
-}
-public GuidelineCommandBuilder setOrientation(String value) {
-	Map<String, Object> attrs = initCommand("orientation");
-	attrs.put("type", "attribute");
-	attrs.put("setter", true);
-	attrs.put("orderSet", ++orderSet);
-
-	attrs.put("value", value);
-return this;}
-}
-public class GuidelineBean extends com.ashera.layout.ViewImpl.ViewBean{
-		public GuidelineBean() {
-			super(GuidelineImpl.this);
-		}
-public Object getOrientation() {
-	return getBuilder().reset().tryGetOrientation().execute(false).getOrientation(); 
-}
-public void setOrientation(String value) {
-	getBuilder().reset().setOrientation(value).execute(true);
-}
-
-}
-
 
 	
-	//end - body
+		//end - body
 
 	 public native void nativeCreate(Map<String, Object> params)/*-[
 		ASUIView* uiView = [ASUIView new];

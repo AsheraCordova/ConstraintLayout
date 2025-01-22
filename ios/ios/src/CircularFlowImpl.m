@@ -9,7 +9,6 @@
 #include "ConstraintReferencedIdsConverter.h"
 #include "ConverterFactory.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -28,7 +27,6 @@
 #include "ViewParent.h"
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
-#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -48,13 +46,7 @@
 @protocol JavaUtilMap;
 
 
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@interface ASCircularFlowImpl () {
- @public
-  ASCircularFlowImpl_CircularFlowCommandBuilder *builder_;
-  ASCircularFlowImpl_CircularFlowBean *bean_;
-}
+@interface ASCircularFlowImpl ()
 
 - (void)setWidgetOnNativeClass;
 
@@ -88,9 +80,6 @@
                      withFloat:(jfloat)angle;
 
 @end
-
-J2OBJC_FIELD_SETTER(ASCircularFlowImpl, builder_, ASCircularFlowImpl_CircularFlowCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASCircularFlowImpl, bean_, ASCircularFlowImpl_CircularFlowBean *)
 
 __attribute__((unused)) static void ASCircularFlowImpl_setWidgetOnNativeClass(ASCircularFlowImpl *self);
 
@@ -131,20 +120,6 @@ J2OBJC_FIELD_SETTER(ASCircularFlowImpl_CircularFlowExt, measureFinished_, ASMeas
 J2OBJC_FIELD_SETTER(ASCircularFlowImpl_CircularFlowExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASCircularFlowImpl_CircularFlowExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASCircularFlowImpl_CircularFlowExt, templates_, id<JavaUtilMap>)
-
-@interface ASCircularFlowImpl_CircularFlowCommandBuilder () {
- @public
-  ASCircularFlowImpl *this$0_;
-}
-
-@end
-
-@interface ASCircularFlowImpl_CircularFlowBean () {
- @public
-  ASCircularFlowImpl *this$0_;
-}
-
-@end
 
 J2OBJC_INITIALIZED_DEFN(ASCircularFlowImpl)
 
@@ -441,24 +416,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASCircularFlowImpl_CircularFlowBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASCircularFlowImpl_CircularFlowBean_initWithASCircularFlowImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASCircularFlowImpl_CircularFlowCommandBuilder_initWithASCircularFlowImpl_(self);
-  }
-  return builder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   ASUIView* uiView = [ASUIView new];
   uiView.backgroundColor = [UIColor clearColor];
@@ -500,10 +457,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 25, 26, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 27, 1, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x101, 28, 29, -1, 30, -1, -1 },
+    { NULL, "V", 0x101, 27, 28, -1, 29, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -538,22 +492,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[26].selector = @selector(setVisibleWithBoolean:);
   methods[27].selector = @selector(requestLayout);
   methods[28].selector = @selector(invalidate);
-  methods[29].selector = @selector(getPluginWithNSString:);
-  methods[30].selector = @selector(getBean);
-  methods[31].selector = @selector(getBuilder);
-  methods[32].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[33].selector = @selector(nativeRequestLayout);
+  methods[29].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[30].selector = @selector(nativeRequestLayout);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 32, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "circularFlow_", "LADXCircularFlow;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
-    { "builder_", "LASCircularFlowImpl_CircularFlowCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASCircularFlowImpl_CircularFlowBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setConstraintReferenced_ids", "LNSObject;", "setViewCenter", "setAngles", "setRadiusInDP", "postSetAttribute", "addViewToCircularFlow", "IIF", "updateAngle", "IF", "updateRadius", "II", "updateReference", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASCircularFlowImpl_LOCAL_NAME, &ASCircularFlowImpl_GROUP_NAME, "LASCircularFlowImpl_CircularFlowExt;LASCircularFlowImpl_CircularFlowCommandBuilder;LASCircularFlowImpl_CircularFlowBean;" };
-  static const J2ObjcClassInfo _ASCircularFlowImpl = { "CircularFlowImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 34, 6, -1, 33, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setConstraintReferenced_ids", "LNSObject;", "setViewCenter", "setAngles", "setRadiusInDP", "postSetAttribute", "addViewToCircularFlow", "IIF", "updateAngle", "IF", "updateRadius", "II", "updateReference", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASCircularFlowImpl_LOCAL_NAME, &ASCircularFlowImpl_GROUP_NAME, "LASCircularFlowImpl_CircularFlowExt;" };
+  static const J2ObjcClassInfo _ASCircularFlowImpl = { "CircularFlowImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 31, 4, -1, 32, -1, -1, -1 };
   return &_ASCircularFlowImpl;
 }
 
@@ -1012,315 +961,3 @@ ASCircularFlowImpl_CircularFlowExt *create_ASCircularFlowImpl_CircularFlowExt_in
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl_CircularFlowExt)
-
-@implementation ASCircularFlowImpl_CircularFlowCommandBuilder
-
-- (instancetype)initWithASCircularFlowImpl:(ASCircularFlowImpl *)outer$ {
-  ASCircularFlowImpl_CircularFlowCommandBuilder_initWithASCircularFlowImpl_(self, outer$);
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCircularflow_radiusInDPWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"circularflow_radiusInDP"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCircularflow_anglesWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"circularflow_angles"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCircularflow_viewCenterWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"circularflow_viewCenter"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCircularflow_defaultRadiusWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"circularflow_defaultRadius"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setCircularflow_defaultAngleWithFloat:(jfloat)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"circularflow_defaultAngle"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangFloat_valueOfWithFloat_(value)];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)tryGetConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)addViewToCircularFlowWithNSString:(NSString *)viewId
-                                                                             withInt:(jint)radius
-                                                                           withFloat:(jfloat)angle {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"addViewToCircularFlow"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  id<JavaUtilMap> wrapper = new_JavaUtilHashMap_init();
-  (void) [wrapper putWithId:@"viewId" withId:viewId];
-  (void) [wrapper putWithId:@"radius" withId:JavaLangInteger_valueOfWithInt_(radius)];
-  (void) [wrapper putWithId:@"angle" withId:JavaLangFloat_valueOfWithFloat_(angle)];
-  (void) [attrs putWithId:@"value" withId:wrapper];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)updateReferenceWithNSString:(NSString *)viewId
-                                                                       withInt:(jint)radius
-                                                                     withFloat:(jfloat)angle {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"updateReference"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  id<JavaUtilMap> wrapper = new_JavaUtilHashMap_init();
-  (void) [wrapper putWithId:@"viewId" withId:viewId];
-  (void) [wrapper putWithId:@"radius" withId:JavaLangInteger_valueOfWithInt_(radius)];
-  (void) [wrapper putWithId:@"angle" withId:JavaLangFloat_valueOfWithFloat_(angle)];
-  (void) [attrs putWithId:@"value" withId:wrapper];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)updateRadiusWithNSString:(NSString *)viewId
-                                                                    withInt:(jint)radius {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"updateRadius"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  id<JavaUtilMap> wrapper = new_JavaUtilHashMap_init();
-  (void) [wrapper putWithId:@"viewId" withId:viewId];
-  (void) [wrapper putWithId:@"radius" withId:JavaLangInteger_valueOfWithInt_(radius)];
-  (void) [attrs putWithId:@"value" withId:wrapper];
-  return self;
-}
-
-- (ASCircularFlowImpl_CircularFlowCommandBuilder *)updateAngleWithNSString:(NSString *)viewId
-                                                                 withFloat:(jfloat)angle {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"updateAngle"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  id<JavaUtilMap> wrapper = new_JavaUtilHashMap_init();
-  (void) [wrapper putWithId:@"viewId" withId:viewId];
-  (void) [wrapper putWithId:@"angle" withId:JavaLangFloat_valueOfWithFloat_(angle)];
-  (void) [attrs putWithId:@"value" withId:wrapper];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 5, 4, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 6, 4, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 7, 4, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 8, 9, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 10, 4, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 11, 12, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 13, 12, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 14, 15, -1, -1, -1, -1 },
-    { NULL, "LASCircularFlowImpl_CircularFlowCommandBuilder;", 0x1, 16, 17, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASCircularFlowImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(setCircularflow_radiusInDPWithNSString:);
-  methods[3].selector = @selector(setCircularflow_anglesWithNSString:);
-  methods[4].selector = @selector(setCircularflow_viewCenterWithNSString:);
-  methods[5].selector = @selector(setCircularflow_defaultRadiusWithNSString:);
-  methods[6].selector = @selector(setCircularflow_defaultAngleWithFloat:);
-  methods[7].selector = @selector(tryGetConstraint_referenced_ids);
-  methods[8].selector = @selector(getConstraint_referenced_ids);
-  methods[9].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  methods[10].selector = @selector(addViewToCircularFlowWithNSString:withInt:withFloat:);
-  methods[11].selector = @selector(updateReferenceWithNSString:withInt:withFloat:);
-  methods[12].selector = @selector(updateRadiusWithNSString:withInt:);
-  methods[13].selector = @selector(updateAngleWithNSString:withFloat:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASCircularFlowImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASCircularFlowImpl;", "execute", "Z", "setCircularflow_radiusInDP", "LNSString;", "setCircularflow_angles", "setCircularflow_viewCenter", "setCircularflow_defaultRadius", "setCircularflow_defaultAngle", "F", "setConstraint_referenced_ids", "addViewToCircularFlow", "LNSString;IF", "updateReference", "updateRadius", "LNSString;I", "updateAngle", "LNSString;F", "Lcom/ashera/layout/ViewImpl$ViewCommandBuilder<Lcom/ashera/constraintlayout/CircularFlowImpl$CircularFlowCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASCircularFlowImpl_CircularFlowCommandBuilder = { "CircularFlowCommandBuilder", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 14, 1, 0, -1, -1, 18, -1 };
-  return &_ASCircularFlowImpl_CircularFlowCommandBuilder;
-}
-
-@end
-
-void ASCircularFlowImpl_CircularFlowCommandBuilder_initWithASCircularFlowImpl_(ASCircularFlowImpl_CircularFlowCommandBuilder *self, ASCircularFlowImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewCommandBuilder_init(self);
-}
-
-ASCircularFlowImpl_CircularFlowCommandBuilder *new_ASCircularFlowImpl_CircularFlowCommandBuilder_initWithASCircularFlowImpl_(ASCircularFlowImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASCircularFlowImpl_CircularFlowCommandBuilder, initWithASCircularFlowImpl_, outer$)
-}
-
-ASCircularFlowImpl_CircularFlowCommandBuilder *create_ASCircularFlowImpl_CircularFlowCommandBuilder_initWithASCircularFlowImpl_(ASCircularFlowImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASCircularFlowImpl_CircularFlowCommandBuilder, initWithASCircularFlowImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl_CircularFlowCommandBuilder)
-
-@implementation ASCircularFlowImpl_CircularFlowBean
-
-- (instancetype)initWithASCircularFlowImpl:(ASCircularFlowImpl *)outer$ {
-  ASCircularFlowImpl_CircularFlowBean_initWithASCircularFlowImpl_(self, outer$);
-  return self;
-}
-
-- (void)setCircularflow_radiusInDPWithNSString:(NSString *)value {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setCircularflow_radiusInDPWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setCircularflow_anglesWithNSString:(NSString *)value {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setCircularflow_anglesWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setCircularflow_viewCenterWithNSString:(NSString *)value {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setCircularflow_viewCenterWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setCircularflow_defaultRadiusWithNSString:(NSString *)value {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setCircularflow_defaultRadiusWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)setCircularflow_defaultAngleWithFloat:(jfloat)value {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setCircularflow_defaultAngleWithFloat:value])) executeWithBoolean:true];
-}
-
-- (id)getConstraint_referenced_ids {
-  return [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetConstraint_referenced_ids])) executeWithBoolean:false])) getConstraint_referenced_ids];
-}
-
-- (void)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setConstraint_referenced_idsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (void)addViewToCircularFlowWithNSString:(NSString *)viewId
-                                  withInt:(jint)radius
-                                withFloat:(jfloat)angle {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) addViewToCircularFlowWithNSString:viewId withInt:radius withFloat:angle])) executeWithBoolean:true];
-}
-
-- (void)updateReferenceWithNSString:(NSString *)viewId
-                            withInt:(jint)radius
-                          withFloat:(jfloat)angle {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) updateReferenceWithNSString:viewId withInt:radius withFloat:angle])) executeWithBoolean:true];
-}
-
-- (void)updateRadiusWithNSString:(NSString *)viewId
-                         withInt:(jint)radius {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) updateRadiusWithNSString:viewId withInt:radius])) executeWithBoolean:true];
-}
-
-- (void)updateAngleWithNSString:(NSString *)viewId
-                      withFloat:(jfloat)angle {
-  (void) [((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([((ASCircularFlowImpl_CircularFlowCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) updateAngleWithNSString:viewId withFloat:angle])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 3, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 4, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 5, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 6, 7, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 8, 2, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 9, 10, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 11, 10, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 12, 13, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 14, 15, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASCircularFlowImpl:);
-  methods[1].selector = @selector(setCircularflow_radiusInDPWithNSString:);
-  methods[2].selector = @selector(setCircularflow_anglesWithNSString:);
-  methods[3].selector = @selector(setCircularflow_viewCenterWithNSString:);
-  methods[4].selector = @selector(setCircularflow_defaultRadiusWithNSString:);
-  methods[5].selector = @selector(setCircularflow_defaultAngleWithFloat:);
-  methods[6].selector = @selector(getConstraint_referenced_ids);
-  methods[7].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  methods[8].selector = @selector(addViewToCircularFlowWithNSString:withInt:withFloat:);
-  methods[9].selector = @selector(updateReferenceWithNSString:withInt:withFloat:);
-  methods[10].selector = @selector(updateRadiusWithNSString:withInt:);
-  methods[11].selector = @selector(updateAngleWithNSString:withFloat:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASCircularFlowImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASCircularFlowImpl;", "setCircularflow_radiusInDP", "LNSString;", "setCircularflow_angles", "setCircularflow_viewCenter", "setCircularflow_defaultRadius", "setCircularflow_defaultAngle", "F", "setConstraint_referenced_ids", "addViewToCircularFlow", "LNSString;IF", "updateReference", "updateRadius", "LNSString;I", "updateAngle", "LNSString;F" };
-  static const J2ObjcClassInfo _ASCircularFlowImpl_CircularFlowBean = { "CircularFlowBean", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 12, 1, 0, -1, -1, -1, -1 };
-  return &_ASCircularFlowImpl_CircularFlowBean;
-}
-
-@end
-
-void ASCircularFlowImpl_CircularFlowBean_initWithASCircularFlowImpl_(ASCircularFlowImpl_CircularFlowBean *self, ASCircularFlowImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewBean_initWithASIWidget_(self, outer$);
-}
-
-ASCircularFlowImpl_CircularFlowBean *new_ASCircularFlowImpl_CircularFlowBean_initWithASCircularFlowImpl_(ASCircularFlowImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASCircularFlowImpl_CircularFlowBean, initWithASCircularFlowImpl_, outer$)
-}
-
-ASCircularFlowImpl_CircularFlowBean *create_ASCircularFlowImpl_CircularFlowBean_initWithASCircularFlowImpl_(ASCircularFlowImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASCircularFlowImpl_CircularFlowBean, initWithASCircularFlowImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl_CircularFlowBean)

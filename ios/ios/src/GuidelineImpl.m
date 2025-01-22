@@ -10,7 +10,6 @@
 #include "Guideline.h"
 #include "GuidelineImpl.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -27,7 +26,6 @@
 #include "ViewImpl.h"
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
-#include "java/lang/Boolean.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/HashMap.h"
@@ -46,13 +44,7 @@
 @protocol JavaUtilMap;
 
 
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@interface ASGuidelineImpl () {
- @public
-  ASGuidelineImpl_GuidelineCommandBuilder *builder_;
-  ASGuidelineImpl_GuidelineBean *bean_;
-}
+@interface ASGuidelineImpl ()
 
 - (void)setWidgetOnNativeClass;
 
@@ -61,9 +53,6 @@
 - (id)getOrientation;
 
 @end
-
-J2OBJC_FIELD_SETTER(ASGuidelineImpl, builder_, ASGuidelineImpl_GuidelineCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASGuidelineImpl, bean_, ASGuidelineImpl_GuidelineBean *)
 
 __attribute__((unused)) static void ASGuidelineImpl_setWidgetOnNativeClass(ASGuidelineImpl *self);
 
@@ -97,20 +86,6 @@ J2OBJC_FIELD_SETTER(ASGuidelineImpl_GuidelineExt, measureFinished_, ASMeasureEve
 J2OBJC_FIELD_SETTER(ASGuidelineImpl_GuidelineExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASGuidelineImpl_GuidelineExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASGuidelineImpl_GuidelineExt, templates_, id<JavaUtilMap>)
-
-@interface ASGuidelineImpl_GuidelineCommandBuilder () {
- @public
-  ASGuidelineImpl *this$0_;
-}
-
-@end
-
-@interface ASGuidelineImpl_GuidelineBean () {
- @public
-  ASGuidelineImpl *this$0_;
-}
-
-@end
 
 NSString *ASGuidelineImpl_LOCAL_NAME = @"androidx.constraintlayout.widget.Guideline";
 NSString *ASGuidelineImpl_GROUP_NAME = @"androidx.constraintlayout.widget.Guideline";
@@ -240,24 +215,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASGuidelineImpl_GuidelineBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASGuidelineImpl_GuidelineBean_initWithASGuidelineImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASGuidelineImpl_GuidelineCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASGuidelineImpl_GuidelineCommandBuilder_initWithASGuidelineImpl_(self);
-  }
-  return builder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   ASUIView* uiView = [ASUIView new];
   uiView.backgroundColor = [UIColor clearColor];
@@ -285,10 +242,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 14, 15, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 16, 1, -1, -1, -1, -1 },
-    { NULL, "LASGuidelineImpl_GuidelineBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASGuidelineImpl_GuidelineCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x101, 17, 18, -1, 19, -1, -1 },
+    { NULL, "V", 0x101, 16, 17, -1, 18, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -312,21 +266,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[16].selector = @selector(setVisibleWithBoolean:);
   methods[17].selector = @selector(requestLayout);
   methods[18].selector = @selector(invalidate);
-  methods[19].selector = @selector(getPluginWithNSString:);
-  methods[20].selector = @selector(getBean);
-  methods[21].selector = @selector(getBuilder);
-  methods[22].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[19].selector = @selector(nativeCreateWithJavaUtilMap:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 19, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "guideline_", "LADXGuideline;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
-    { "builder_", "LASGuidelineImpl_GuidelineCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASGuidelineImpl_GuidelineBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setOrientation", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASGuidelineImpl_LOCAL_NAME, &ASGuidelineImpl_GROUP_NAME, "LASGuidelineImpl_Orientation;LASGuidelineImpl_GuidelineExt;LASGuidelineImpl_GuidelineCommandBuilder;LASGuidelineImpl_GuidelineBean;" };
-  static const J2ObjcClassInfo _ASGuidelineImpl = { "GuidelineImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 23, 6, -1, 22, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setOrientation", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASGuidelineImpl_LOCAL_NAME, &ASGuidelineImpl_GROUP_NAME, "LASGuidelineImpl_Orientation;LASGuidelineImpl_GuidelineExt;" };
+  static const J2ObjcClassInfo _ASGuidelineImpl = { "GuidelineImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 20, 4, -1, 21, -1, -1, -1 };
   return &_ASGuidelineImpl;
 }
 
@@ -794,136 +743,3 @@ ASGuidelineImpl_GuidelineExt *create_ASGuidelineImpl_GuidelineExt_initWithASGuid
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASGuidelineImpl_GuidelineExt)
-
-@implementation ASGuidelineImpl_GuidelineCommandBuilder
-
-- (instancetype)initWithASGuidelineImpl:(ASGuidelineImpl *)outer$ {
-  ASGuidelineImpl_GuidelineCommandBuilder_initWithASGuidelineImpl_(self, outer$);
-  return self;
-}
-
-- (ASGuidelineImpl_GuidelineCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASGuidelineImpl_GuidelineCommandBuilder *)tryGetOrientation {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"orientation"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getOrientation {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"orientation"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASGuidelineImpl_GuidelineCommandBuilder *)setOrientationWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"orientation"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASGuidelineImpl_GuidelineCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASGuidelineImpl_GuidelineCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASGuidelineImpl_GuidelineCommandBuilder;", 0x1, 3, 4, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASGuidelineImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(tryGetOrientation);
-  methods[3].selector = @selector(getOrientation);
-  methods[4].selector = @selector(setOrientationWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASGuidelineImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASGuidelineImpl;", "execute", "Z", "setOrientation", "LNSString;", "Lcom/ashera/layout/ViewImpl$ViewCommandBuilder<Lcom/ashera/constraintlayout/GuidelineImpl$GuidelineCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASGuidelineImpl_GuidelineCommandBuilder = { "GuidelineCommandBuilder", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 5, 1, 0, -1, -1, 5, -1 };
-  return &_ASGuidelineImpl_GuidelineCommandBuilder;
-}
-
-@end
-
-void ASGuidelineImpl_GuidelineCommandBuilder_initWithASGuidelineImpl_(ASGuidelineImpl_GuidelineCommandBuilder *self, ASGuidelineImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewCommandBuilder_init(self);
-}
-
-ASGuidelineImpl_GuidelineCommandBuilder *new_ASGuidelineImpl_GuidelineCommandBuilder_initWithASGuidelineImpl_(ASGuidelineImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASGuidelineImpl_GuidelineCommandBuilder, initWithASGuidelineImpl_, outer$)
-}
-
-ASGuidelineImpl_GuidelineCommandBuilder *create_ASGuidelineImpl_GuidelineCommandBuilder_initWithASGuidelineImpl_(ASGuidelineImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASGuidelineImpl_GuidelineCommandBuilder, initWithASGuidelineImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASGuidelineImpl_GuidelineCommandBuilder)
-
-@implementation ASGuidelineImpl_GuidelineBean
-
-- (instancetype)initWithASGuidelineImpl:(ASGuidelineImpl *)outer$ {
-  ASGuidelineImpl_GuidelineBean_initWithASGuidelineImpl_(self, outer$);
-  return self;
-}
-
-- (id)getOrientation {
-  return [((ASGuidelineImpl_GuidelineCommandBuilder *) nil_chk([((ASGuidelineImpl_GuidelineCommandBuilder *) nil_chk([((ASGuidelineImpl_GuidelineCommandBuilder *) nil_chk([((ASGuidelineImpl_GuidelineCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetOrientation])) executeWithBoolean:false])) getOrientation];
-}
-
-- (void)setOrientationWithNSString:(NSString *)value {
-  (void) [((ASGuidelineImpl_GuidelineCommandBuilder *) nil_chk([((ASGuidelineImpl_GuidelineCommandBuilder *) nil_chk([((ASGuidelineImpl_GuidelineCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setOrientationWithNSString:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASGuidelineImpl:);
-  methods[1].selector = @selector(getOrientation);
-  methods[2].selector = @selector(setOrientationWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASGuidelineImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASGuidelineImpl;", "setOrientation", "LNSString;" };
-  static const J2ObjcClassInfo _ASGuidelineImpl_GuidelineBean = { "GuidelineBean", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 3, 1, 0, -1, -1, -1, -1 };
-  return &_ASGuidelineImpl_GuidelineBean;
-}
-
-@end
-
-void ASGuidelineImpl_GuidelineBean_initWithASGuidelineImpl_(ASGuidelineImpl_GuidelineBean *self, ASGuidelineImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewBean_initWithASIWidget_(self, outer$);
-}
-
-ASGuidelineImpl_GuidelineBean *new_ASGuidelineImpl_GuidelineBean_initWithASGuidelineImpl_(ASGuidelineImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASGuidelineImpl_GuidelineBean, initWithASGuidelineImpl_, outer$)
-}
-
-ASGuidelineImpl_GuidelineBean *create_ASGuidelineImpl_GuidelineBean_initWithASGuidelineImpl_(ASGuidelineImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASGuidelineImpl_GuidelineBean, initWithASGuidelineImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASGuidelineImpl_GuidelineBean)

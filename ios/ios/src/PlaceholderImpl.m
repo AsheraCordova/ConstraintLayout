@@ -7,7 +7,6 @@
 #include "BaseWidget.h"
 #include "ConverterFactory.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -26,7 +25,6 @@
 #include "ViewParent.h"
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
-#include "java/lang/Boolean.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/HashMap.h"
@@ -45,13 +43,7 @@
 @protocol JavaUtilMap;
 
 
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@interface ASPlaceholderImpl () {
- @public
-  ASPlaceholderImpl_PlaceholderCommandBuilder *builder_;
-  ASPlaceholderImpl_PlaceholderBean *bean_;
-}
+@interface ASPlaceholderImpl ()
 
 - (void)setWidgetOnNativeClass;
 
@@ -60,9 +52,6 @@
 - (id)getContent;
 
 @end
-
-J2OBJC_FIELD_SETTER(ASPlaceholderImpl, builder_, ASPlaceholderImpl_PlaceholderCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASPlaceholderImpl, bean_, ASPlaceholderImpl_PlaceholderBean *)
 
 __attribute__((unused)) static void ASPlaceholderImpl_setWidgetOnNativeClass(ASPlaceholderImpl *self);
 
@@ -96,20 +85,6 @@ J2OBJC_FIELD_SETTER(ASPlaceholderImpl_PlaceholderExt, measureFinished_, ASMeasur
 J2OBJC_FIELD_SETTER(ASPlaceholderImpl_PlaceholderExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASPlaceholderImpl_PlaceholderExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASPlaceholderImpl_PlaceholderExt, templates_, id<JavaUtilMap>)
-
-@interface ASPlaceholderImpl_PlaceholderCommandBuilder () {
- @public
-  ASPlaceholderImpl *this$0_;
-}
-
-@end
-
-@interface ASPlaceholderImpl_PlaceholderBean () {
- @public
-  ASPlaceholderImpl *this$0_;
-}
-
-@end
 
 NSString *ASPlaceholderImpl_LOCAL_NAME = @"androidx.constraintlayout.widget.Placeholder";
 NSString *ASPlaceholderImpl_GROUP_NAME = @"androidx.constraintlayout.widget.Placeholder";
@@ -250,24 +225,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASPlaceholderImpl_PlaceholderBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASPlaceholderImpl_PlaceholderBean_initWithASPlaceholderImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASPlaceholderImpl_PlaceholderCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASPlaceholderImpl_PlaceholderCommandBuilder_initWithASPlaceholderImpl_(self);
-  }
-  return builder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   ASUIView* uiView = [ASUIView new];
   uiView.backgroundColor = [UIColor clearColor];
@@ -299,10 +256,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 14, 15, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 16, 1, -1, -1, -1, -1 },
-    { NULL, "LASPlaceholderImpl_PlaceholderBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASPlaceholderImpl_PlaceholderCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x101, 17, 18, -1, 19, -1, -1 },
+    { NULL, "V", 0x101, 16, 17, -1, 18, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -327,22 +281,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[16].selector = @selector(setVisibleWithBoolean:);
   methods[17].selector = @selector(requestLayout);
   methods[18].selector = @selector(invalidate);
-  methods[19].selector = @selector(getPluginWithNSString:);
-  methods[20].selector = @selector(getBean);
-  methods[21].selector = @selector(getBuilder);
-  methods[22].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[23].selector = @selector(nativeRequestLayout);
+  methods[19].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[20].selector = @selector(nativeRequestLayout);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 19, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "placeholder_", "LADXPlaceholder;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
-    { "builder_", "LASPlaceholderImpl_PlaceholderCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASPlaceholderImpl_PlaceholderBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setContent", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASPlaceholderImpl_LOCAL_NAME, &ASPlaceholderImpl_GROUP_NAME, "LASPlaceholderImpl_Placeholder_emptyVisibility;LASPlaceholderImpl_PlaceholderExt;LASPlaceholderImpl_PlaceholderCommandBuilder;LASPlaceholderImpl_PlaceholderBean;" };
-  static const J2ObjcClassInfo _ASPlaceholderImpl = { "PlaceholderImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 24, 6, -1, 22, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setContent", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASPlaceholderImpl_LOCAL_NAME, &ASPlaceholderImpl_GROUP_NAME, "LASPlaceholderImpl_Placeholder_emptyVisibility;LASPlaceholderImpl_PlaceholderExt;" };
+  static const J2ObjcClassInfo _ASPlaceholderImpl = { "PlaceholderImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 21, 4, -1, 21, -1, -1, -1 };
   return &_ASPlaceholderImpl;
 }
 
@@ -813,176 +762,3 @@ ASPlaceholderImpl_PlaceholderExt *create_ASPlaceholderImpl_PlaceholderExt_initWi
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASPlaceholderImpl_PlaceholderExt)
-
-@implementation ASPlaceholderImpl_PlaceholderCommandBuilder
-
-- (instancetype)initWithASPlaceholderImpl:(ASPlaceholderImpl *)outer$ {
-  ASPlaceholderImpl_PlaceholderCommandBuilder_initWithASPlaceholderImpl_(self, outer$);
-  return self;
-}
-
-- (ASPlaceholderImpl_PlaceholderCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetPlaceholder_emptyVisibility {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"placeholder_emptyVisibility"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getPlaceholder_emptyVisibility {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"placeholder_emptyVisibility"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setPlaceholder_emptyVisibilityWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"placeholder_emptyVisibility"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASPlaceholderImpl_PlaceholderCommandBuilder *)tryGetContent {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"content"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getContent {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"content"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASPlaceholderImpl_PlaceholderCommandBuilder *)setContentWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"content"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASPlaceholderImpl_PlaceholderCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASPlaceholderImpl_PlaceholderCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASPlaceholderImpl_PlaceholderCommandBuilder;", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LASPlaceholderImpl_PlaceholderCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASPlaceholderImpl_PlaceholderCommandBuilder;", 0x1, 5, 4, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASPlaceholderImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(tryGetPlaceholder_emptyVisibility);
-  methods[3].selector = @selector(getPlaceholder_emptyVisibility);
-  methods[4].selector = @selector(setPlaceholder_emptyVisibilityWithNSString:);
-  methods[5].selector = @selector(tryGetContent);
-  methods[6].selector = @selector(getContent);
-  methods[7].selector = @selector(setContentWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASPlaceholderImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASPlaceholderImpl;", "execute", "Z", "setPlaceholder_emptyVisibility", "LNSString;", "setContent", "Lcom/ashera/layout/ViewImpl$ViewCommandBuilder<Lcom/ashera/constraintlayout/PlaceholderImpl$PlaceholderCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASPlaceholderImpl_PlaceholderCommandBuilder = { "PlaceholderCommandBuilder", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 8, 1, 0, -1, -1, 6, -1 };
-  return &_ASPlaceholderImpl_PlaceholderCommandBuilder;
-}
-
-@end
-
-void ASPlaceholderImpl_PlaceholderCommandBuilder_initWithASPlaceholderImpl_(ASPlaceholderImpl_PlaceholderCommandBuilder *self, ASPlaceholderImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewCommandBuilder_init(self);
-}
-
-ASPlaceholderImpl_PlaceholderCommandBuilder *new_ASPlaceholderImpl_PlaceholderCommandBuilder_initWithASPlaceholderImpl_(ASPlaceholderImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASPlaceholderImpl_PlaceholderCommandBuilder, initWithASPlaceholderImpl_, outer$)
-}
-
-ASPlaceholderImpl_PlaceholderCommandBuilder *create_ASPlaceholderImpl_PlaceholderCommandBuilder_initWithASPlaceholderImpl_(ASPlaceholderImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASPlaceholderImpl_PlaceholderCommandBuilder, initWithASPlaceholderImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASPlaceholderImpl_PlaceholderCommandBuilder)
-
-@implementation ASPlaceholderImpl_PlaceholderBean
-
-- (instancetype)initWithASPlaceholderImpl:(ASPlaceholderImpl *)outer$ {
-  ASPlaceholderImpl_PlaceholderBean_initWithASPlaceholderImpl_(self, outer$);
-  return self;
-}
-
-- (id)getPlaceholder_emptyVisibility {
-  return [((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetPlaceholder_emptyVisibility])) executeWithBoolean:false])) getPlaceholder_emptyVisibility];
-}
-
-- (void)setPlaceholder_emptyVisibilityWithNSString:(NSString *)value {
-  (void) [((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setPlaceholder_emptyVisibilityWithNSString:value])) executeWithBoolean:true];
-}
-
-- (id)getContent {
-  return [((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetContent])) executeWithBoolean:false])) getContent];
-}
-
-- (void)setContentWithNSString:(NSString *)value {
-  (void) [((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([((ASPlaceholderImpl_PlaceholderCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setContentWithNSString:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 3, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASPlaceholderImpl:);
-  methods[1].selector = @selector(getPlaceholder_emptyVisibility);
-  methods[2].selector = @selector(setPlaceholder_emptyVisibilityWithNSString:);
-  methods[3].selector = @selector(getContent);
-  methods[4].selector = @selector(setContentWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASPlaceholderImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASPlaceholderImpl;", "setPlaceholder_emptyVisibility", "LNSString;", "setContent" };
-  static const J2ObjcClassInfo _ASPlaceholderImpl_PlaceholderBean = { "PlaceholderBean", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 5, 1, 0, -1, -1, -1, -1 };
-  return &_ASPlaceholderImpl_PlaceholderBean;
-}
-
-@end
-
-void ASPlaceholderImpl_PlaceholderBean_initWithASPlaceholderImpl_(ASPlaceholderImpl_PlaceholderBean *self, ASPlaceholderImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewBean_initWithASIWidget_(self, outer$);
-}
-
-ASPlaceholderImpl_PlaceholderBean *new_ASPlaceholderImpl_PlaceholderBean_initWithASPlaceholderImpl_(ASPlaceholderImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASPlaceholderImpl_PlaceholderBean, initWithASPlaceholderImpl_, outer$)
-}
-
-ASPlaceholderImpl_PlaceholderBean *create_ASPlaceholderImpl_PlaceholderBean_initWithASPlaceholderImpl_(ASPlaceholderImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASPlaceholderImpl_PlaceholderBean, initWithASPlaceholderImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASPlaceholderImpl_PlaceholderBean)

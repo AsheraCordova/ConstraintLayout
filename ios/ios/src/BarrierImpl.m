@@ -10,7 +10,6 @@
 #include "ConstraintReferencedIdsConverter.h"
 #include "ConverterFactory.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -46,20 +45,11 @@
 @protocol JavaUtilMap;
 
 
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@interface ASBarrierImpl () {
- @public
-  ASBarrierImpl_BarrierCommandBuilder *builder_;
-  ASBarrierImpl_BarrierBean *bean_;
-}
+@interface ASBarrierImpl ()
 
 - (void)setWidgetOnNativeClass;
 
 @end
-
-J2OBJC_FIELD_SETTER(ASBarrierImpl, builder_, ASBarrierImpl_BarrierCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASBarrierImpl, bean_, ASBarrierImpl_BarrierBean *)
 
 __attribute__((unused)) static void ASBarrierImpl_setWidgetOnNativeClass(ASBarrierImpl *self);
 
@@ -89,20 +79,6 @@ J2OBJC_FIELD_SETTER(ASBarrierImpl_BarrierExt, measureFinished_, ASMeasureEvent *
 J2OBJC_FIELD_SETTER(ASBarrierImpl_BarrierExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASBarrierImpl_BarrierExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASBarrierImpl_BarrierExt, templates_, id<JavaUtilMap>)
-
-@interface ASBarrierImpl_BarrierCommandBuilder () {
- @public
-  ASBarrierImpl *this$0_;
-}
-
-@end
-
-@interface ASBarrierImpl_BarrierBean () {
- @public
-  ASBarrierImpl *this$0_;
-}
-
-@end
 
 J2OBJC_INITIALIZED_DEFN(ASBarrierImpl)
 
@@ -257,24 +233,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASBarrierImpl_BarrierBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASBarrierImpl_BarrierBean_initWithASBarrierImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASBarrierImpl_BarrierCommandBuilder_initWithASBarrierImpl_(self);
-  }
-  return builder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   ASUIView* uiView = [ASUIView new];
   uiView.backgroundColor = [UIColor clearColor];
@@ -309,10 +267,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 12, 13, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 14, 1, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x101, 15, 16, -1, 17, -1, -1 },
+    { NULL, "V", 0x101, 14, 15, -1, 16, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
   };
@@ -336,23 +291,18 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[14].selector = @selector(setVisibleWithBoolean:);
   methods[15].selector = @selector(requestLayout);
   methods[16].selector = @selector(invalidate);
-  methods[17].selector = @selector(getPluginWithNSString:);
-  methods[18].selector = @selector(getBean);
-  methods[19].selector = @selector(getBuilder);
-  methods[20].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[21].selector = @selector(initialized);
-  methods[22].selector = @selector(nativeRequestLayout);
+  methods[17].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[18].selector = @selector(initialized);
+  methods[19].selector = @selector(nativeRequestLayout);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 18, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 19, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 17, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 18, -1, -1 },
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "barrier_", "LADXBarrier;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
-    { "builder_", "LASBarrierImpl_BarrierCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASBarrierImpl_BarrierBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASBarrierImpl_LOCAL_NAME, &ASBarrierImpl_GROUP_NAME, "LASBarrierImpl_BarrierImpl_barrierDirection;LASBarrierImpl_BarrierExt;LASBarrierImpl_BarrierCommandBuilder;LASBarrierImpl_BarrierBean;" };
-  static const J2ObjcClassInfo _ASBarrierImpl = { "BarrierImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 23, 6, -1, 20, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASBarrierImpl_LOCAL_NAME, &ASBarrierImpl_GROUP_NAME, "LASBarrierImpl_BarrierImpl_barrierDirection;LASBarrierImpl_BarrierExt;" };
+  static const J2ObjcClassInfo _ASBarrierImpl = { "BarrierImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 20, 4, -1, 19, -1, -1, -1 };
   return &_ASBarrierImpl;
 }
 
@@ -824,256 +774,3 @@ ASBarrierImpl_BarrierExt *create_ASBarrierImpl_BarrierExt_initWithASBarrierImpl_
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBarrierImpl_BarrierExt)
-
-@implementation ASBarrierImpl_BarrierCommandBuilder
-
-- (instancetype)initWithASBarrierImpl:(ASBarrierImpl *)outer$ {
-  ASBarrierImpl_BarrierCommandBuilder_initWithASBarrierImpl_(self, outer$);
-  return self;
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierDirection {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierDirection"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getBarrierDirection {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierDirection"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)setBarrierDirectionWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierDirection"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)tryGetConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierMargin {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierMargin"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getBarrierMargin {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierMargin"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)setBarrierMarginWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierMargin"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)tryGetBarrierAllowsGoneWidgets {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierAllowsGoneWidgets"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)isBarrierAllowsGoneWidgets {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierAllowsGoneWidgets"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASBarrierImpl_BarrierCommandBuilder *)setBarrierAllowsGoneWidgetsWithBoolean:(jboolean)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"barrierAllowsGoneWidgets"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:JavaLangBoolean_valueOfWithBoolean_(value)];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, 5, 4, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, 6, 4, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASBarrierImpl_BarrierCommandBuilder;", 0x1, 7, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBarrierImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(tryGetBarrierDirection);
-  methods[3].selector = @selector(getBarrierDirection);
-  methods[4].selector = @selector(setBarrierDirectionWithNSString:);
-  methods[5].selector = @selector(tryGetConstraint_referenced_ids);
-  methods[6].selector = @selector(getConstraint_referenced_ids);
-  methods[7].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  methods[8].selector = @selector(tryGetBarrierMargin);
-  methods[9].selector = @selector(getBarrierMargin);
-  methods[10].selector = @selector(setBarrierMarginWithNSString:);
-  methods[11].selector = @selector(tryGetBarrierAllowsGoneWidgets);
-  methods[12].selector = @selector(isBarrierAllowsGoneWidgets);
-  methods[13].selector = @selector(setBarrierAllowsGoneWidgetsWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASBarrierImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASBarrierImpl;", "execute", "Z", "setBarrierDirection", "LNSString;", "setConstraint_referenced_ids", "setBarrierMargin", "setBarrierAllowsGoneWidgets", "Lcom/ashera/layout/ViewImpl$ViewCommandBuilder<Lcom/ashera/constraintlayout/BarrierImpl$BarrierCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASBarrierImpl_BarrierCommandBuilder = { "BarrierCommandBuilder", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 14, 1, 0, -1, -1, 8, -1 };
-  return &_ASBarrierImpl_BarrierCommandBuilder;
-}
-
-@end
-
-void ASBarrierImpl_BarrierCommandBuilder_initWithASBarrierImpl_(ASBarrierImpl_BarrierCommandBuilder *self, ASBarrierImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewCommandBuilder_init(self);
-}
-
-ASBarrierImpl_BarrierCommandBuilder *new_ASBarrierImpl_BarrierCommandBuilder_initWithASBarrierImpl_(ASBarrierImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBarrierImpl_BarrierCommandBuilder, initWithASBarrierImpl_, outer$)
-}
-
-ASBarrierImpl_BarrierCommandBuilder *create_ASBarrierImpl_BarrierCommandBuilder_initWithASBarrierImpl_(ASBarrierImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBarrierImpl_BarrierCommandBuilder, initWithASBarrierImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBarrierImpl_BarrierCommandBuilder)
-
-@implementation ASBarrierImpl_BarrierBean
-
-- (instancetype)initWithASBarrierImpl:(ASBarrierImpl *)outer$ {
-  ASBarrierImpl_BarrierBean_initWithASBarrierImpl_(self, outer$);
-  return self;
-}
-
-- (id)getBarrierDirection {
-  return [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetBarrierDirection])) executeWithBoolean:false])) getBarrierDirection];
-}
-
-- (void)setBarrierDirectionWithNSString:(NSString *)value {
-  (void) [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBarrierDirectionWithNSString:value])) executeWithBoolean:true];
-}
-
-- (id)getConstraint_referenced_ids {
-  return [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetConstraint_referenced_ids])) executeWithBoolean:false])) getConstraint_referenced_ids];
-}
-
-- (void)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  (void) [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setConstraint_referenced_idsWithNSString:value])) executeWithBoolean:true];
-}
-
-- (id)getBarrierMargin {
-  return [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetBarrierMargin])) executeWithBoolean:false])) getBarrierMargin];
-}
-
-- (void)setBarrierMarginWithNSString:(NSString *)value {
-  (void) [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBarrierMarginWithNSString:value])) executeWithBoolean:true];
-}
-
-- (id)isBarrierAllowsGoneWidgets {
-  return [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetBarrierAllowsGoneWidgets])) executeWithBoolean:false])) isBarrierAllowsGoneWidgets];
-}
-
-- (void)setBarrierAllowsGoneWidgetsWithBoolean:(jboolean)value {
-  (void) [((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([((ASBarrierImpl_BarrierCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setBarrierAllowsGoneWidgetsWithBoolean:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 3, 2, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 4, 2, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 5, 6, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASBarrierImpl:);
-  methods[1].selector = @selector(getBarrierDirection);
-  methods[2].selector = @selector(setBarrierDirectionWithNSString:);
-  methods[3].selector = @selector(getConstraint_referenced_ids);
-  methods[4].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  methods[5].selector = @selector(getBarrierMargin);
-  methods[6].selector = @selector(setBarrierMarginWithNSString:);
-  methods[7].selector = @selector(isBarrierAllowsGoneWidgets);
-  methods[8].selector = @selector(setBarrierAllowsGoneWidgetsWithBoolean:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASBarrierImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASBarrierImpl;", "setBarrierDirection", "LNSString;", "setConstraint_referenced_ids", "setBarrierMargin", "setBarrierAllowsGoneWidgets", "Z" };
-  static const J2ObjcClassInfo _ASBarrierImpl_BarrierBean = { "BarrierBean", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 9, 1, 0, -1, -1, -1, -1 };
-  return &_ASBarrierImpl_BarrierBean;
-}
-
-@end
-
-void ASBarrierImpl_BarrierBean_initWithASBarrierImpl_(ASBarrierImpl_BarrierBean *self, ASBarrierImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewBean_initWithASIWidget_(self, outer$);
-}
-
-ASBarrierImpl_BarrierBean *new_ASBarrierImpl_BarrierBean_initWithASBarrierImpl_(ASBarrierImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASBarrierImpl_BarrierBean, initWithASBarrierImpl_, outer$)
-}
-
-ASBarrierImpl_BarrierBean *create_ASBarrierImpl_BarrierBean_initWithASBarrierImpl_(ASBarrierImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASBarrierImpl_BarrierBean, initWithASBarrierImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASBarrierImpl_BarrierBean)

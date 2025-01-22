@@ -9,7 +9,6 @@
 #include "Group.h"
 #include "GroupImpl.h"
 #include "HasWidgets.h"
-#include "IAttributable.h"
 #include "IFragment.h"
 #include "ILifeCycleDecorator.h"
 #include "IOSClass.h"
@@ -26,7 +25,6 @@
 #include "ViewParent.h"
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
-#include "java/lang/Boolean.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/HashMap.h"
@@ -45,13 +43,7 @@
 @protocol JavaUtilMap;
 
 
-#pragma clang diagnostic ignored "-Wincomplete-implementation"
-
-@interface ASGroupImpl () {
- @public
-  ASGroupImpl_GroupCommandBuilder *builder_;
-  ASGroupImpl_GroupBean *bean_;
-}
+@interface ASGroupImpl ()
 
 - (void)setWidgetOnNativeClass;
 
@@ -60,9 +52,6 @@
 - (id)getConstraintReferencedIds;
 
 @end
-
-J2OBJC_FIELD_SETTER(ASGroupImpl, builder_, ASGroupImpl_GroupCommandBuilder *)
-J2OBJC_FIELD_SETTER(ASGroupImpl, bean_, ASGroupImpl_GroupBean *)
 
 __attribute__((unused)) static void ASGroupImpl_setWidgetOnNativeClass(ASGroupImpl *self);
 
@@ -87,20 +76,6 @@ J2OBJC_FIELD_SETTER(ASGroupImpl_GroupExt, measureFinished_, ASMeasureEvent *)
 J2OBJC_FIELD_SETTER(ASGroupImpl_GroupExt, onLayoutEvent_, ASOnLayoutEvent *)
 J2OBJC_FIELD_SETTER(ASGroupImpl_GroupExt, overlays_, id<JavaUtilList>)
 J2OBJC_FIELD_SETTER(ASGroupImpl_GroupExt, templates_, id<JavaUtilMap>)
-
-@interface ASGroupImpl_GroupCommandBuilder () {
- @public
-  ASGroupImpl *this$0_;
-}
-
-@end
-
-@interface ASGroupImpl_GroupBean () {
- @public
-  ASGroupImpl *this$0_;
-}
-
-@end
 
 J2OBJC_INITIALIZED_DEFN(ASGroupImpl)
 
@@ -232,24 +207,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (id)getPluginWithNSString:(NSString *)plugin {
-  return [((id<ASIAttributable>) nil_chk(ASWidgetFactory_getAttributableWithNSString_(plugin))) newInstanceWithASIWidget:self];
-}
-
-- (ASGroupImpl_GroupBean *)getBean {
-  if (bean_ == nil) {
-    bean_ = new_ASGroupImpl_GroupBean_initWithASGroupImpl_(self);
-  }
-  return bean_;
-}
-
-- (ASGroupImpl_GroupCommandBuilder *)getBuilder {
-  if (builder_ == nil) {
-    builder_ = new_ASGroupImpl_GroupCommandBuilder_initWithASGroupImpl_(self);
-  }
-  return builder_;
-}
-
 - (void)nativeCreateWithJavaUtilMap:(id<JavaUtilMap>)params {
   ASUIView* uiView = [ASUIView new];
   uiView.backgroundColor = [UIColor clearColor];
@@ -281,10 +238,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "V", 0x1, 14, 15, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, 16, 1, -1, -1, -1, -1 },
-    { NULL, "LASGroupImpl_GroupBean;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASGroupImpl_GroupCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x101, 17, 18, -1, 19, -1, -1 },
+    { NULL, "V", 0x101, 16, 17, -1, 18, -1, -1 },
     { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
@@ -309,22 +263,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[16].selector = @selector(setVisibleWithBoolean:);
   methods[17].selector = @selector(requestLayout);
   methods[18].selector = @selector(invalidate);
-  methods[19].selector = @selector(getPluginWithNSString:);
-  methods[20].selector = @selector(getBean);
-  methods[21].selector = @selector(getBuilder);
-  methods[22].selector = @selector(nativeCreateWithJavaUtilMap:);
-  methods[23].selector = @selector(nativeRequestLayout);
+  methods[19].selector = @selector(nativeCreateWithJavaUtilMap:);
+  methods[20].selector = @selector(nativeRequestLayout);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 19, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
     { "group_", "LADXGroup;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
-    { "builder_", "LASGroupImpl_GroupCommandBuilder;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "bean_", "LASGroupImpl_GroupBean;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setConstraintReferenced_ids", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "getPlugin", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASGroupImpl_LOCAL_NAME, &ASGroupImpl_GROUP_NAME, "LASGroupImpl_GroupExt;LASGroupImpl_GroupCommandBuilder;LASGroupImpl_GroupBean;" };
-  static const J2ObjcClassInfo _ASGroupImpl = { "GroupImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 24, 6, -1, 22, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "setConstraintReferenced_ids", "LNSObject;", "checkIosVersion", "setId", "setVisible", "Z", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", &ASGroupImpl_LOCAL_NAME, &ASGroupImpl_GROUP_NAME, "LASGroupImpl_GroupExt;" };
+  static const J2ObjcClassInfo _ASGroupImpl = { "GroupImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 21, 4, -1, 21, -1, -1, -1 };
   return &_ASGroupImpl;
 }
 
@@ -741,136 +690,3 @@ ASGroupImpl_GroupExt *create_ASGroupImpl_GroupExt_initWithASGroupImpl_(ASGroupIm
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASGroupImpl_GroupExt)
-
-@implementation ASGroupImpl_GroupCommandBuilder
-
-- (instancetype)initWithASGroupImpl:(ASGroupImpl *)outer$ {
-  ASGroupImpl_GroupCommandBuilder_initWithASGroupImpl_(self, outer$);
-  return self;
-}
-
-- (ASGroupImpl_GroupCommandBuilder *)executeWithBoolean:(jboolean)setter {
-  if (setter) {
-    [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_SETTER_METHOD];
-    [((id<ASIFragment>) nil_chk([this$0_ getFragment])) remeasure];
-  }
-  [this$0_ executeCommandWithJavaUtilMap:command_ withASIWidget_CommandCallBack:nil withInt:ASIWidget_COMMAND_EXEC_GETTER_METHOD];
-  return self;
-}
-
-- (ASGroupImpl_GroupCommandBuilder *)tryGetConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"getter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderGet" withId:JavaLangInteger_valueOfWithInt_(++orderGet_)];
-  return self;
-}
-
-- (id)getConstraint_referenced_ids {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  return [((id<JavaUtilMap>) nil_chk(attrs)) getWithId:@"commandReturnValue"];
-}
-
-- (ASGroupImpl_GroupCommandBuilder *)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  id<JavaUtilMap> attrs = [self initCommandWithNSString:@"constraint_referenced_ids"];
-  (void) [((id<JavaUtilMap>) nil_chk(attrs)) putWithId:@"type" withId:@"attribute"];
-  (void) [attrs putWithId:@"setter" withId:JavaLangBoolean_valueOfWithBoolean_(true)];
-  (void) [attrs putWithId:@"orderSet" withId:JavaLangInteger_valueOfWithInt_(++orderSet_)];
-  (void) [attrs putWithId:@"value" withId:value];
-  return self;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LASGroupImpl_GroupCommandBuilder;", 0x1, 1, 2, -1, -1, -1, -1 },
-    { NULL, "LASGroupImpl_GroupCommandBuilder;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "LASGroupImpl_GroupCommandBuilder;", 0x1, 3, 4, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASGroupImpl:);
-  methods[1].selector = @selector(executeWithBoolean:);
-  methods[2].selector = @selector(tryGetConstraint_referenced_ids);
-  methods[3].selector = @selector(getConstraint_referenced_ids);
-  methods[4].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASGroupImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASGroupImpl;", "execute", "Z", "setConstraint_referenced_ids", "LNSString;", "Lcom/ashera/layout/ViewImpl$ViewCommandBuilder<Lcom/ashera/constraintlayout/GroupImpl$GroupCommandBuilder;>;" };
-  static const J2ObjcClassInfo _ASGroupImpl_GroupCommandBuilder = { "GroupCommandBuilder", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 5, 1, 0, -1, -1, 5, -1 };
-  return &_ASGroupImpl_GroupCommandBuilder;
-}
-
-@end
-
-void ASGroupImpl_GroupCommandBuilder_initWithASGroupImpl_(ASGroupImpl_GroupCommandBuilder *self, ASGroupImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewCommandBuilder_init(self);
-}
-
-ASGroupImpl_GroupCommandBuilder *new_ASGroupImpl_GroupCommandBuilder_initWithASGroupImpl_(ASGroupImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASGroupImpl_GroupCommandBuilder, initWithASGroupImpl_, outer$)
-}
-
-ASGroupImpl_GroupCommandBuilder *create_ASGroupImpl_GroupCommandBuilder_initWithASGroupImpl_(ASGroupImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASGroupImpl_GroupCommandBuilder, initWithASGroupImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASGroupImpl_GroupCommandBuilder)
-
-@implementation ASGroupImpl_GroupBean
-
-- (instancetype)initWithASGroupImpl:(ASGroupImpl *)outer$ {
-  ASGroupImpl_GroupBean_initWithASGroupImpl_(self, outer$);
-  return self;
-}
-
-- (id)getConstraint_referenced_ids {
-  return [((ASGroupImpl_GroupCommandBuilder *) nil_chk([((ASGroupImpl_GroupCommandBuilder *) nil_chk([((ASGroupImpl_GroupCommandBuilder *) nil_chk([((ASGroupImpl_GroupCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) tryGetConstraint_referenced_ids])) executeWithBoolean:false])) getConstraint_referenced_ids];
-}
-
-- (void)setConstraint_referenced_idsWithNSString:(NSString *)value {
-  (void) [((ASGroupImpl_GroupCommandBuilder *) nil_chk([((ASGroupImpl_GroupCommandBuilder *) nil_chk([((ASGroupImpl_GroupCommandBuilder *) nil_chk([this$0_ getBuilder])) reset])) setConstraint_referenced_idsWithNSString:value])) executeWithBoolean:true];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static J2ObjcMethodInfo methods[] = {
-    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
-    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
-  };
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
-  #pragma clang diagnostic ignored "-Wundeclared-selector"
-  methods[0].selector = @selector(initWithASGroupImpl:);
-  methods[1].selector = @selector(getConstraint_referenced_ids);
-  methods[2].selector = @selector(setConstraint_referenced_idsWithNSString:);
-  #pragma clang diagnostic pop
-  static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", "LASGroupImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
-  };
-  static const void *ptrTable[] = { "LASGroupImpl;", "setConstraint_referenced_ids", "LNSString;" };
-  static const J2ObjcClassInfo _ASGroupImpl_GroupBean = { "GroupBean", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 3, 1, 0, -1, -1, -1, -1 };
-  return &_ASGroupImpl_GroupBean;
-}
-
-@end
-
-void ASGroupImpl_GroupBean_initWithASGroupImpl_(ASGroupImpl_GroupBean *self, ASGroupImpl *outer$) {
-  self->this$0_ = outer$;
-  ASViewImpl_ViewBean_initWithASIWidget_(self, outer$);
-}
-
-ASGroupImpl_GroupBean *new_ASGroupImpl_GroupBean_initWithASGroupImpl_(ASGroupImpl *outer$) {
-  J2OBJC_NEW_IMPL(ASGroupImpl_GroupBean, initWithASGroupImpl_, outer$)
-}
-
-ASGroupImpl_GroupBean *create_ASGroupImpl_GroupBean_initWithASGroupImpl_(ASGroupImpl *outer$) {
-  J2OBJC_CREATE_IMPL(ASGroupImpl_GroupBean, initWithASGroupImpl_, outer$)
-}
-
-J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASGroupImpl_GroupBean)
