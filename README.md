@@ -2,19 +2,20 @@
 
 ConstraintLayout project adds support for ConstraintLayout layout and other helper layouts available with ConstraintLayout.
 
-Important Links:
+## Installation
+To install the plugin use:
+
+```
+cordova plugin add https://github.com/AsheraCordova/ConstraintLayout.git
+```
+
+## Important Links
 
 https://asheracordova.github.io/doc/androidx/constraintlayout/widget/package-summary.html
 
 https://asheracordova.github.io/doc/help-doc.html
 
 https://github.com/AsheraCordova/playground
-
-To install the plugin use:
-
-```
-cordova plugin add https://github.com/AsheraCordova/ConstraintLayout.git
-```
 
 ## Widgets
 
