@@ -51,6 +51,7 @@
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
 #include "java/lang/Boolean.h"
+#include "java/lang/Exception.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Runnable.h"
@@ -1112,22 +1113,27 @@ withADXConstraintSet_PropertySet:(ADXConstraintSet_PropertySet *)propertySet
 
 - (void)setPercentXWithASIWidget:(id<ASIWidget>)w
               withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                    withNSString:(NSString *)name
                     withNSString:(NSString *)strValue;
 
 - (void)setPercentYWithASIWidget:(id<ASIWidget>)w
               withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                    withNSString:(NSString *)name
                     withNSString:(NSString *)strValue;
 
 - (void)setPercentWidthWithASIWidget:(id<ASIWidget>)w
                   withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                        withNSString:(NSString *)name
                         withNSString:(NSString *)strValue;
 
 - (void)setPercentHeightWithASIWidget:(id<ASIWidget>)w
                    withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                         withNSString:(NSString *)name
                          withNSString:(NSString *)strValue;
 
 - (void)setTransitionEasingWithASIWidget:(id<ASIWidget>)w
                       withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                            withNSString:(NSString *)name
                             withNSString:(NSString *)strValue;
 
 - (void)setPathMotionArcWithASIWidget:(id<ASIWidget>)w
@@ -1138,6 +1144,7 @@ withADXConstraintSet_PropertySet:(ADXConstraintSet_PropertySet *)propertySet
 
 - (void)setDrawPathWithASIWidget:(id<ASIWidget>)w
               withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                    withNSString:(NSString *)name
                     withNSString:(NSString *)strValue;
 
 - (void)parseTransitionWithASIWidget:(id<ASIWidget>)w
@@ -1174,9 +1181,9 @@ withADXConstraintSet_PropertySet:(ADXConstraintSet_PropertySet *)propertySet
    withADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
                     withNSString:(NSString *)strValue;
 
-- (void)setTransitionFlagsWithASIWidget:(id<ASIWidget>)w
-          withADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
-                           withNSString:(NSString *)strValue;
+- (void)setTransitionFlagWithASIWidget:(id<ASIWidget>)w
+         withADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
+                          withNSString:(NSString *)strValue;
 
 - (void)parseKeyTriggerWithASIWidget:(id<ASIWidget>)w
                    withADXKeyTrigger:(ADXKeyTrigger *)keyTrigger
@@ -1340,11 +1347,6 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams;
                     withADXKeyTrigger:(ADXKeyTrigger *)keyTrigger
                          withNSString:(NSString *)strValue;
 
-- (void)processTouchEventWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
-                                               withInt:(jint)event
-                                               withInt:(jint)clientX
-                                               withInt:(jint)clientY;
-
 - (void)setElevationAdditionalWithASIWidget:(id<ASIWidget>)w
                              withADXBarrier:(ADXBarrier *)barrier
                 withADXConstraintSet_Motion:(ADXConstraintSet_Motion *)motion
@@ -1355,6 +1357,11 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams;
 - (void)setElevationAdditionalWithASIWidget:(id<ASIWidget>)w
              withADXConstraintSet_Transform:(ADXConstraintSet_Transform *)transform
                                withNSString:(NSString *)value;
+
+- (void)processTouchEventWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
+                                               withInt:(jint)event
+                                               withInt:(jint)clientX
+                                               withInt:(jint)clientY;
 
 - (void)setReduceFlickerWithBoolean:(jboolean)flag;
 
@@ -1776,21 +1783,21 @@ __attribute__((unused)) static void ASMotionLayoutImpl_parseKeyPositionWithASIWi
 
 __attribute__((unused)) static jint ASMotionLayoutImpl_getKeyPositionTypeWithNSString_(ASMotionLayoutImpl *self, NSString *value);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue);
+__attribute__((unused)) static void ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue);
+__attribute__((unused)) static void ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue);
+__attribute__((unused)) static void ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue);
+__attribute__((unused)) static void ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue);
+__attribute__((unused)) static void ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue);
 
 __attribute__((unused)) static void ASMotionLayoutImpl_setPathMotionArcWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue);
 
 __attribute__((unused)) static jint ASMotionLayoutImpl_getCurveFitWithNSString_(ASMotionLayoutImpl *self, NSString *value);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue);
+__attribute__((unused)) static void ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue);
 
 __attribute__((unused)) static void ASMotionLayoutImpl_parseTransitionWithASIWidget_withADXMotionScene_Transition_withOrgXmlSaxAttributes_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, id<OrgXmlSaxAttributes> atts);
 
@@ -1812,7 +1819,7 @@ __attribute__((unused)) static jint ASMotionLayoutImpl_getMotionInterpolatorWith
 
 __attribute__((unused)) static void ASMotionLayoutImpl_setDurationWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_setTransitionFlagsWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue);
+__attribute__((unused)) static void ASMotionLayoutImpl_setTransitionFlagWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue);
 
 __attribute__((unused)) static void ASMotionLayoutImpl_parseKeyTriggerWithASIWidget_withADXKeyTrigger_withOrgXmlSaxAttributes_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyTrigger *keyTrigger, id<OrgXmlSaxAttributes> atts);
 
@@ -1896,11 +1903,11 @@ __attribute__((unused)) static void ASMotionLayoutImpl_setMotionTargetWithASIWid
 
 __attribute__((unused)) static void ASMotionLayoutImpl_setFramePositionWithASIWidget_withADXKeyTrigger_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyTrigger *keyTrigger, NSString *strValue);
 
-__attribute__((unused)) static void ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(ASMotionLayoutImpl *self, ADXMotionScene_Transition *transition, jint event, jint clientX, jint clientY);
-
 __attribute__((unused)) static void ASMotionLayoutImpl_setElevationAdditionalWithASIWidget_withADXBarrier_withADXConstraintSet_Motion_withADXConstraintSet_PropertySet_withADXConstraints_LayoutParams_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXBarrier *barrier, ADXConstraintSet_Motion *motion, ADXConstraintSet_PropertySet *propertySet, ADXConstraints_LayoutParams *layoutParams, NSString *strValue);
 
 __attribute__((unused)) static void ASMotionLayoutImpl_setElevationAdditionalWithASIWidget_withADXConstraintSet_Transform_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXConstraintSet_Transform *transform, NSString *value);
+
+__attribute__((unused)) static void ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(ASMotionLayoutImpl *self, ADXMotionScene_Transition *transition, jint event, jint clientX, jint clientY);
 
 __attribute__((unused)) static void ASMotionLayoutImpl_setReduceFlickerWithBoolean_(ASMotionLayoutImpl *self, jboolean flag);
 
@@ -4459,32 +4466,37 @@ withADXConstraintSet_PropertySet:(ADXConstraintSet_PropertySet *)propertySet
 
 - (void)setPercentXWithASIWidget:(id<ASIWidget>)w
               withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                    withNSString:(NSString *)name
                     withNSString:(NSString *)strValue {
-  ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, strValue);
+  ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, strValue);
 }
 
 - (void)setPercentYWithASIWidget:(id<ASIWidget>)w
               withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                    withNSString:(NSString *)name
                     withNSString:(NSString *)strValue {
-  ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, strValue);
+  ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, strValue);
 }
 
 - (void)setPercentWidthWithASIWidget:(id<ASIWidget>)w
                   withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                        withNSString:(NSString *)name
                         withNSString:(NSString *)strValue {
-  ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, strValue);
+  ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, strValue);
 }
 
 - (void)setPercentHeightWithASIWidget:(id<ASIWidget>)w
                    withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                         withNSString:(NSString *)name
                          withNSString:(NSString *)strValue {
-  ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, strValue);
+  ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, strValue);
 }
 
 - (void)setTransitionEasingWithASIWidget:(id<ASIWidget>)w
                       withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                            withNSString:(NSString *)name
                             withNSString:(NSString *)strValue {
-  ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, strValue);
+  ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, strValue);
 }
 
 - (void)setPathMotionArcWithASIWidget:(id<ASIWidget>)w
@@ -4499,8 +4511,9 @@ withADXConstraintSet_PropertySet:(ADXConstraintSet_PropertySet *)propertySet
 
 - (void)setDrawPathWithASIWidget:(id<ASIWidget>)w
               withADXKeyPosition:(ADXKeyPosition *)keyPosition
+                    withNSString:(NSString *)name
                     withNSString:(NSString *)strValue {
-  ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, strValue);
+  ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, strValue);
 }
 
 - (void)parseTransitionWithASIWidget:(id<ASIWidget>)w
@@ -4557,10 +4570,10 @@ withADXConstraintSet_PropertySet:(ADXConstraintSet_PropertySet *)propertySet
   ASMotionLayoutImpl_setDurationWithASIWidget_withADXMotionScene_Transition_withNSString_(self, w, transition, strValue);
 }
 
-- (void)setTransitionFlagsWithASIWidget:(id<ASIWidget>)w
-          withADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
-                           withNSString:(NSString *)strValue {
-  ASMotionLayoutImpl_setTransitionFlagsWithASIWidget_withADXMotionScene_Transition_withNSString_(self, w, transition, strValue);
+- (void)setTransitionFlagWithASIWidget:(id<ASIWidget>)w
+         withADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
+                          withNSString:(NSString *)strValue {
+  ASMotionLayoutImpl_setTransitionFlagWithASIWidget_withADXMotionScene_Transition_withNSString_(self, w, transition, strValue);
 }
 
 - (void)parseKeyTriggerWithASIWidget:(id<ASIWidget>)w
@@ -4807,13 +4820,6 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
   ASMotionLayoutImpl_setFramePositionWithASIWidget_withADXKeyTrigger_withNSString_(self, w, keyTrigger, strValue);
 }
 
-- (void)processTouchEventWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
-                                               withInt:(jint)event
-                                               withInt:(jint)clientX
-                                               withInt:(jint)clientY {
-  ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(self, transition, event, clientX, clientY);
-}
-
 - (void)setElevationAdditionalWithASIWidget:(id<ASIWidget>)w
                              withADXBarrier:(ADXBarrier *)barrier
                 withADXConstraintSet_Motion:(ADXConstraintSet_Motion *)motion
@@ -4827,6 +4833,13 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
              withADXConstraintSet_Transform:(ADXConstraintSet_Transform *)transform
                                withNSString:(NSString *)value {
   ASMotionLayoutImpl_setElevationAdditionalWithASIWidget_withADXConstraintSet_Transform_withNSString_(self, w, transform, value);
+}
+
+- (void)processTouchEventWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
+                                               withInt:(jint)event
+                                               withInt:(jint)clientX
+                                               withInt:(jint)clientY {
+  ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(self, transition, event, clientX, clientY);
 }
 
 - (void)setReduceFlickerWithBoolean:(jboolean)flag {
@@ -5088,69 +5101,69 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
     { NULL, "V", 0x2, 160, 158, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 161, 158, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 126, 158, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 128, 158, -1, -1, -1, -1 },
-    { NULL, "I", 0x2, 162, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 128, 162, -1, -1, -1, -1 },
+    { NULL, "I", 0x2, 163, 1, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 131, 158, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 163, 164, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 165, 166, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 167, 166, -1, -1, -1, -1 },
-    { NULL, "I", 0x2, 168, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 169, 166, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 128, 166, -1, -1, -1, -1 },
-    { NULL, "I", 0x2, 170, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 171, 166, -1, -1, -1, -1 },
-    { NULL, "I", 0x2, 172, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 173, 166, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 174, 166, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 175, 176, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 177, 143, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 164, 165, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 166, 167, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 168, 167, -1, -1, -1, -1 },
+    { NULL, "I", 0x2, 169, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 170, 167, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 128, 167, -1, -1, -1, -1 },
+    { NULL, "I", 0x2, 171, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 172, 167, -1, -1, -1, -1 },
+    { NULL, "I", 0x2, 173, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 174, 167, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 175, 167, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 176, 177, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 178, 143, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 177, 43, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 179, 43, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 27, 180, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 29, 180, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 181, 138, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 182, 183, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 184, 183, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 179, 143, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 178, 43, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 180, 43, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 27, 181, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 29, 181, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 182, 138, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 183, 184, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 185, 184, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 68, 146, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 67, 146, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 66, 146, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 65, 146, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 64, 146, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 63, 146, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 29, 185, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 27, 185, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 29, 186, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 27, 186, -1, -1, -1, -1 },
     { NULL, "V", 0x2, 120, 146, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 186, 158, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 187, 158, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 188, 158, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 189, 158, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 190, 158, -1, -1, -1, -1 },
-    { NULL, "I", 0x2, 191, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 192, 166, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 193, 166, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 194, 166, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 195, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 197, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 198, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 199, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 200, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 201, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 202, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 203, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 204, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 205, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 206, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 188, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 189, 196, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 207, 208, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 209, 43, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 209, 150, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 210, 211, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 212, 20, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 213, 1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 214, 211, -1, -1, -1, -1 },
-    { NULL, "V", 0x2, 215, 216, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 187, 162, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 188, 162, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 189, 162, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 190, 162, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 191, 162, -1, -1, -1, -1 },
+    { NULL, "I", 0x2, 192, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 193, 167, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 194, 167, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 195, 167, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 196, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 198, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 199, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 200, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 201, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 202, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 203, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 204, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 205, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 206, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 207, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 189, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 190, 197, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 208, 43, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 208, 150, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 209, 210, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 211, 212, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 213, 20, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 214, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 215, 212, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 216, 217, -1, -1, -1, -1 },
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
@@ -5377,14 +5390,14 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
   methods[219].selector = @selector(setAlphaWithASIWidget:withADXConstraintSet_PropertySet:withNSString:);
   methods[220].selector = @selector(parseKeyPositionWithASIWidget:withADXKeyPosition:withOrgXmlSaxAttributes:);
   methods[221].selector = @selector(getKeyPositionTypeWithNSString:);
-  methods[222].selector = @selector(setPercentXWithASIWidget:withADXKeyPosition:withNSString:);
-  methods[223].selector = @selector(setPercentYWithASIWidget:withADXKeyPosition:withNSString:);
-  methods[224].selector = @selector(setPercentWidthWithASIWidget:withADXKeyPosition:withNSString:);
-  methods[225].selector = @selector(setPercentHeightWithASIWidget:withADXKeyPosition:withNSString:);
-  methods[226].selector = @selector(setTransitionEasingWithASIWidget:withADXKeyPosition:withNSString:);
+  methods[222].selector = @selector(setPercentXWithASIWidget:withADXKeyPosition:withNSString:withNSString:);
+  methods[223].selector = @selector(setPercentYWithASIWidget:withADXKeyPosition:withNSString:withNSString:);
+  methods[224].selector = @selector(setPercentWidthWithASIWidget:withADXKeyPosition:withNSString:withNSString:);
+  methods[225].selector = @selector(setPercentHeightWithASIWidget:withADXKeyPosition:withNSString:withNSString:);
+  methods[226].selector = @selector(setTransitionEasingWithASIWidget:withADXKeyPosition:withNSString:withNSString:);
   methods[227].selector = @selector(setPathMotionArcWithASIWidget:withADXKeyPosition:withNSString:);
   methods[228].selector = @selector(getCurveFitWithNSString:);
-  methods[229].selector = @selector(setDrawPathWithASIWidget:withADXKeyPosition:withNSString:);
+  methods[229].selector = @selector(setDrawPathWithASIWidget:withADXKeyPosition:withNSString:withNSString:);
   methods[230].selector = @selector(parseTransitionWithASIWidget:withADXMotionScene_Transition:withOrgXmlSaxAttributes:);
   methods[231].selector = @selector(setConstraintSetStartWithASIWidget:withADXMotionScene_Transition:withNSString:);
   methods[232].selector = @selector(setConstraintSetEndWithASIWidget:withADXMotionScene_Transition:withNSString:);
@@ -5395,7 +5408,7 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
   methods[237].selector = @selector(setAutoTransitionWithASIWidget:withADXMotionScene_Transition:withNSString:);
   methods[238].selector = @selector(getMotionInterpolatorWithNSString:);
   methods[239].selector = @selector(setDurationWithASIWidget:withADXMotionScene_Transition:withNSString:);
-  methods[240].selector = @selector(setTransitionFlagsWithASIWidget:withADXMotionScene_Transition:withNSString:);
+  methods[240].selector = @selector(setTransitionFlagWithASIWidget:withADXMotionScene_Transition:withNSString:);
   methods[241].selector = @selector(parseKeyTriggerWithASIWidget:withADXKeyTrigger:withOrgXmlSaxAttributes:);
   methods[242].selector = @selector(setQuantizeMotionInterpolatorWithASIWidget:withADXConstraintSet_Motion:withNSString:);
   methods[243].selector = @selector(setMotionPathRotateWithASIWidget:withADXConstraintSet_Motion:withNSString:);
@@ -5437,9 +5450,9 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
   methods[279].selector = @selector(setTriggerReceiverWithASIWidget:withADXKeyTrigger:withNSString:);
   methods[280].selector = @selector(setMotionTargetWithASIWidget:withADXKeyTrigger:withNSString:);
   methods[281].selector = @selector(setFramePositionWithASIWidget:withADXKeyTrigger:withNSString:);
-  methods[282].selector = @selector(processTouchEventWithADXMotionScene_Transition:withInt:withInt:withInt:);
-  methods[283].selector = @selector(setElevationAdditionalWithASIWidget:withADXBarrier:withADXConstraintSet_Motion:withADXConstraintSet_PropertySet:withADXConstraints_LayoutParams:withNSString:);
-  methods[284].selector = @selector(setElevationAdditionalWithASIWidget:withADXConstraintSet_Transform:withNSString:);
+  methods[282].selector = @selector(setElevationAdditionalWithASIWidget:withADXBarrier:withADXConstraintSet_Motion:withADXConstraintSet_PropertySet:withADXConstraints_LayoutParams:withNSString:);
+  methods[283].selector = @selector(setElevationAdditionalWithASIWidget:withADXConstraintSet_Transform:withNSString:);
+  methods[284].selector = @selector(processTouchEventWithADXMotionScene_Transition:withInt:withInt:withInt:);
   methods[285].selector = @selector(setReduceFlickerWithBoolean:);
   methods[286].selector = @selector(postSetAttributeWithASWidgetAttribute:withNSString:withId:withASILifeCycleDecorator:);
   methods[287].selector = @selector(setIdWithNSString:);
@@ -5448,10 +5461,10 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "uiView_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 217, -1, -1 },
-    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 218, -1, -1 },
+    { "LOCAL_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 218, -1, -1 },
+    { "GROUP_NAME", "LNSString;", .constantValue.asLong = 0, 0x19, -1, 219, -1, -1 },
     { "motionLayout_", "LADXMotionLayout;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
-    { "DELLOC_EVENT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 219, -1, -1 },
+    { "DELLOC_EVENT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 220, -1, -1 },
     { "constraintId_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "action_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "keyFrames_", "LADXKeyFrames;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
@@ -5459,8 +5472,8 @@ withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)layoutParams {
     { "layoutDescription_", "LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "motionEvent_", "LADMotionEvent;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;LNSObject;", "setLayout_constraintWidth", "getLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;", "getLayout_constraintWidth", "setOptimizationLevel", "LNSObject;", "setLayoutDescription", "getTouchAnchorSide", "getDragDirection", "getWaveVariesBy", "getWaveShape", "parseConstraint", "LASIWidget;LADXBarrier;LADXConstraintSet_Motion;LADXConstraintSet_PropertySet;LADXConstraints_LayoutParams;LOrgXmlSaxAttributes;", "setOrientation", "LASIWidget;LADXBarrier;LADXConstraintSet_Motion;LADXConstraintSet_PropertySet;LADXConstraints_LayoutParams;LNSString;", "setVisibility", "getVisibilityMode", "setVisibilityMode", "setAlpha", "setElevation", "setRotation", "setRotationX", "setRotationY", "setScaleX", "setScaleY", "setTransformPivotX", "setTransformPivotY", "setTranslationX", "setTranslationY", "setTranslationZ", "setWidth", "setHeight", "setConstraintWidth", "setConstraintHeight", "setMarginStart", "setMarginBottom", "setMarginTop", "setMarginEnd", "setMarginLeft", "setMarginRight", "setConstraintCircle", "setConstraintCircleRadius", "setConstraintCircleAngle", "setConstraintGuide_begin", "setConstraintGuide_end", "setConstraintGuide_percent", "setConstraintLeft_toLeftOf", "setConstraintLeft_toRightOf", "setConstraintRight_toLeftOf", "setConstraintRight_toRightOf", "setConstraintTop_toTopOf", "setConstraintTop_toBottomOf", "setConstraintBottom_toTopOf", "setConstraintBottom_toBottomOf", "setConstraintBaseline_toBaselineOf", "setConstraintBaseline_toTopOf", "setConstraintBaseline_toBottomOf", "setConstraintStart_toEndOf", "setConstraintStart_toStartOf", "setConstraintEnd_toStartOf", "setConstraintEnd_toEndOf", "setGoneMarginLeft", "setGoneMarginTop", "setGoneMarginRight", "setGoneMarginBottom", "setGoneMarginStart", "setGoneMarginEnd", "setGoneMarginBaseline", "setMarginBaseline", "setConstrainedWidth", "setConstrainedHeight", "setConstraintHorizontal_bias", "setConstraintVertical_bias", "setConstraintWidth_default", "setConstraintHeight_default", "setConstraintWidth_min", "setConstraintWidth_max", "setConstraintWidth_percent", "setConstraintHeight_min", "setConstraintHeight_max", "setConstraintHeight_percent", "setConstraintDimensionRatio", "setConstraintHorizontal_weight", "setConstraintVertical_weight", "setConstraintHorizontal_chainStyle", "setConstraintVertical_chainStyle", "setEditor_absoluteX", "setEditor_absoluteY", "setWrapBehaviorInParent", "setBarrierDirection", "setBarrierMargin", "setConstraint_referenced_ids", "setBarrierAllowsGoneWidgets", "setAnimateRelativeTo", "getAnimateCircleAngleTo", "setAnimateCircleAngleTo", "getTransitionEasing", "setTransitionEasing", "getPathMotionArc", "setPathMotionArc", "setPolarRelativeTo", "getDrawPath", "setDrawPath", "setConstraintTag", "setMotionStagger", "setQuantizeMotionSteps", "setQuantizeMotionPhase", "getQuantizeMotionInterpolator", "setEndMargin", "LNSObject;LADXConstraints_LayoutParams;LASIWidget;", "setLeftMargin", "setRightMargin", "parseMotion", "LASIWidget;LADXConstraintSet_Motion;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_Motion;LNSString;", "parseLayout", "LASIWidget;LADXConstraintSet_Layout;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_Layout;LNSString;", "getBarrierDirection", "parseTransform", "LASIWidget;LADXConstraintSet_Transform;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_Transform;LNSString;", "parsePropertySet", "LASIWidget;LADXConstraintSet_PropertySet;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_PropertySet;LNSString;", "parseKeyPosition", "LASIWidget;LADXKeyPosition;LOrgXmlSaxAttributes;", "getKeyPositionType", "setPercentX", "LASIWidget;LADXKeyPosition;LNSString;", "setPercentY", "setPercentWidth", "setPercentHeight", "getCurveFit", "parseTransition", "LASIWidget;LADXMotionScene_Transition;LOrgXmlSaxAttributes;", "setConstraintSetStart", "LASIWidget;LADXMotionScene_Transition;LNSString;", "setConstraintSetEnd", "getLayoutDuringTransition", "setLayoutDuringTransition", "getAutoTransition", "setAutoTransition", "getMotionInterpolator", "setDuration", "setTransitionFlags", "parseKeyTrigger", "LASIWidget;LADXKeyTrigger;LOrgXmlSaxAttributes;", "setQuantizeMotionInterpolator", "setMotionPathRotate", "setTransitionPathRotate", "LADXConstraints_LayoutParams;LNSObject;", "setStartMargin", "setBottomMargin", "LNSObject;LADXConstraints_LayoutParams;", "setTopMargin", "LADXConstraintSet_Layout;LNSObject;", "setSizePercent", "setCurveFit", "setMotionTarget", "setFramePosition", "setKeyPositionType", "getId", "setStaggered", "setMotionInterpolator", "setTransitionDisable", "setMotion_triggerOnCollision", "LASIWidget;LADXKeyTrigger;LNSString;", "setMotion_postLayoutCollision", "setTriggerId", "setTriggerSlack", "setViewTransitionOnCross", "setViewTransitionOnPositiveCross", "setViewTransitionOnNegativeCross", "setOnCross", "setOnPositiveCross", "setOnNegativeCross", "setTriggerReceiver", "processTouchEvent", "LADXMotionScene_Transition;III", "setElevationAdditional", "setReduceFlicker", "Z", "postSetAttribute", "setId", "setVisible", "nativeAddOnSwipe", "LADXMotionScene_Transition;LASIWidget;", &ASMotionLayoutImpl_LOCAL_NAME, &ASMotionLayoutImpl_GROUP_NAME, &ASMotionLayoutImpl_DELLOC_EVENT, "LASMotionLayoutImpl_DallocHandler;LASMotionLayoutImpl_OptimizationLevel;LASMotionLayoutImpl_Orientation;LASMotionLayoutImpl_Layout_constraintWidth;LASMotionLayoutImpl_Layout_constraintHeight;LASMotionLayoutImpl_Layout_constraintWidth_default;LASMotionLayoutImpl_Layout_constraintHeight_default;LASMotionLayoutImpl_Layout_constraintHorizontal_chainStyle;LASMotionLayoutImpl_Layout_constraintVertical_chainStyle;LASMotionLayoutImpl_Layout_wrapBehaviorInParent;LASMotionLayoutImpl_MotionLayoutExt;LASMotionLayoutImpl_TransitionFlagsConverter;" };
-  static const J2ObjcClassInfo _ASMotionLayoutImpl = { "MotionLayoutImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 290, 11, -1, 220, -1, -1, -1 };
+  static const void *ptrTable[] = { "loadAttributes", "LNSString;", "LNSString;LNSString;", "create", "LASIFragment;LJavaUtilMap;", "(Lcom/ashera/core/IFragment;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "remove", "LASIWidget;", "I", "nativeRemoveView", "add", "LASIWidget;I", "createLayoutParams", "LADView;", "getLayoutParams", "setChildAttribute", "LASIWidget;LASWidgetAttribute;LNSString;LNSObject;", "getChildAttribute", "LASIWidget;LASWidgetAttribute;", "setAttribute", "LASWidgetAttribute;LNSString;LNSObject;LASILifeCycleDecorator;", "getAttribute", "LASWidgetAttribute;LASILifeCycleDecorator;", "checkIosVersion", "nativeCreate", "LJavaUtilMap;", "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;)V", "setLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;LNSObject;", "setLayout_constraintWidth", "getLayout_constraintHeight", "LADXConstraintLayout_LayoutParams;", "getLayout_constraintWidth", "setOptimizationLevel", "LNSObject;", "setLayoutDescription", "getTouchAnchorSide", "getDragDirection", "getWaveVariesBy", "getWaveShape", "parseConstraint", "LASIWidget;LADXBarrier;LADXConstraintSet_Motion;LADXConstraintSet_PropertySet;LADXConstraints_LayoutParams;LOrgXmlSaxAttributes;", "setOrientation", "LASIWidget;LADXBarrier;LADXConstraintSet_Motion;LADXConstraintSet_PropertySet;LADXConstraints_LayoutParams;LNSString;", "setVisibility", "getVisibilityMode", "setVisibilityMode", "setAlpha", "setElevation", "setRotation", "setRotationX", "setRotationY", "setScaleX", "setScaleY", "setTransformPivotX", "setTransformPivotY", "setTranslationX", "setTranslationY", "setTranslationZ", "setWidth", "setHeight", "setConstraintWidth", "setConstraintHeight", "setMarginStart", "setMarginBottom", "setMarginTop", "setMarginEnd", "setMarginLeft", "setMarginRight", "setConstraintCircle", "setConstraintCircleRadius", "setConstraintCircleAngle", "setConstraintGuide_begin", "setConstraintGuide_end", "setConstraintGuide_percent", "setConstraintLeft_toLeftOf", "setConstraintLeft_toRightOf", "setConstraintRight_toLeftOf", "setConstraintRight_toRightOf", "setConstraintTop_toTopOf", "setConstraintTop_toBottomOf", "setConstraintBottom_toTopOf", "setConstraintBottom_toBottomOf", "setConstraintBaseline_toBaselineOf", "setConstraintBaseline_toTopOf", "setConstraintBaseline_toBottomOf", "setConstraintStart_toEndOf", "setConstraintStart_toStartOf", "setConstraintEnd_toStartOf", "setConstraintEnd_toEndOf", "setGoneMarginLeft", "setGoneMarginTop", "setGoneMarginRight", "setGoneMarginBottom", "setGoneMarginStart", "setGoneMarginEnd", "setGoneMarginBaseline", "setMarginBaseline", "setConstrainedWidth", "setConstrainedHeight", "setConstraintHorizontal_bias", "setConstraintVertical_bias", "setConstraintWidth_default", "setConstraintHeight_default", "setConstraintWidth_min", "setConstraintWidth_max", "setConstraintWidth_percent", "setConstraintHeight_min", "setConstraintHeight_max", "setConstraintHeight_percent", "setConstraintDimensionRatio", "setConstraintHorizontal_weight", "setConstraintVertical_weight", "setConstraintHorizontal_chainStyle", "setConstraintVertical_chainStyle", "setEditor_absoluteX", "setEditor_absoluteY", "setWrapBehaviorInParent", "setBarrierDirection", "setBarrierMargin", "setConstraint_referenced_ids", "setBarrierAllowsGoneWidgets", "setAnimateRelativeTo", "getAnimateCircleAngleTo", "setAnimateCircleAngleTo", "getTransitionEasing", "setTransitionEasing", "getPathMotionArc", "setPathMotionArc", "setPolarRelativeTo", "getDrawPath", "setDrawPath", "setConstraintTag", "setMotionStagger", "setQuantizeMotionSteps", "setQuantizeMotionPhase", "getQuantizeMotionInterpolator", "setEndMargin", "LNSObject;LADXConstraints_LayoutParams;LASIWidget;", "setLeftMargin", "setRightMargin", "parseMotion", "LASIWidget;LADXConstraintSet_Motion;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_Motion;LNSString;", "parseLayout", "LASIWidget;LADXConstraintSet_Layout;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_Layout;LNSString;", "getBarrierDirection", "parseTransform", "LASIWidget;LADXConstraintSet_Transform;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_Transform;LNSString;", "parsePropertySet", "LASIWidget;LADXConstraintSet_PropertySet;LOrgXmlSaxAttributes;", "LASIWidget;LADXConstraintSet_PropertySet;LNSString;", "parseKeyPosition", "LASIWidget;LADXKeyPosition;LOrgXmlSaxAttributes;", "getKeyPositionType", "setPercentX", "LASIWidget;LADXKeyPosition;LNSString;LNSString;", "setPercentY", "setPercentWidth", "setPercentHeight", "LASIWidget;LADXKeyPosition;LNSString;", "getCurveFit", "parseTransition", "LASIWidget;LADXMotionScene_Transition;LOrgXmlSaxAttributes;", "setConstraintSetStart", "LASIWidget;LADXMotionScene_Transition;LNSString;", "setConstraintSetEnd", "getLayoutDuringTransition", "setLayoutDuringTransition", "getAutoTransition", "setAutoTransition", "getMotionInterpolator", "setDuration", "setTransitionFlag", "parseKeyTrigger", "LASIWidget;LADXKeyTrigger;LOrgXmlSaxAttributes;", "setQuantizeMotionInterpolator", "setMotionPathRotate", "setTransitionPathRotate", "LADXConstraints_LayoutParams;LNSObject;", "setStartMargin", "setBottomMargin", "LNSObject;LADXConstraints_LayoutParams;", "setTopMargin", "LADXConstraintSet_Layout;LNSObject;", "setSizePercent", "setCurveFit", "setMotionTarget", "setFramePosition", "setKeyPositionType", "getId", "setStaggered", "setMotionInterpolator", "setTransitionDisable", "setMotion_triggerOnCollision", "LASIWidget;LADXKeyTrigger;LNSString;", "setMotion_postLayoutCollision", "setTriggerId", "setTriggerSlack", "setViewTransitionOnCross", "setViewTransitionOnPositiveCross", "setViewTransitionOnNegativeCross", "setOnCross", "setOnPositiveCross", "setOnNegativeCross", "setTriggerReceiver", "setElevationAdditional", "processTouchEvent", "LADXMotionScene_Transition;III", "setReduceFlicker", "Z", "postSetAttribute", "setId", "setVisible", "nativeAddOnSwipe", "LADXMotionScene_Transition;LASIWidget;", &ASMotionLayoutImpl_LOCAL_NAME, &ASMotionLayoutImpl_GROUP_NAME, &ASMotionLayoutImpl_DELLOC_EVENT, "LASMotionLayoutImpl_DallocHandler;LASMotionLayoutImpl_OptimizationLevel;LASMotionLayoutImpl_Orientation;LASMotionLayoutImpl_Layout_constraintWidth;LASMotionLayoutImpl_Layout_constraintHeight;LASMotionLayoutImpl_Layout_constraintWidth_default;LASMotionLayoutImpl_Layout_constraintHeight_default;LASMotionLayoutImpl_Layout_constraintHorizontal_chainStyle;LASMotionLayoutImpl_Layout_constraintVertical_chainStyle;LASMotionLayoutImpl_Layout_wrapBehaviorInParent;LASMotionLayoutImpl_MotionLayoutExt;LASMotionLayoutImpl_TransitionFlagsConverter;" };
+  static const J2ObjcClassInfo _ASMotionLayoutImpl = { "MotionLayoutImpl", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x1, 290, 11, -1, 221, -1, -1, -1 };
   return &_ASMotionLayoutImpl;
 }
 
@@ -5584,10 +5597,14 @@ id ASMotionLayoutImpl_getOptimizationLevel(ASMotionLayoutImpl *self) {
 
 void ASMotionLayoutImpl_setLayoutDescriptionWithId_(ASMotionLayoutImpl *self, id objValue) {
   self->layoutDescription_ = (NSString *) cast_chk(objValue, [NSString class]);
-  [((ADXMotionLayout *) nil_chk(self->motionLayout_)) initMotionScene];
+  @try {
+    [((ADXMotionLayout *) nil_chk(self->motionLayout_)) setSceneWithADXMotionScene:new_ADXMotionScene_initWithADXMotionLayout_(self->motionLayout_)];
+  }
+  @catch (JavaLangException *e) {
+  }
   NSString *html = [((id<ASIFragment>) nil_chk(self->fragment_)) getInlineResourceWithNSString:self->layoutDescription_];
   if (html == nil) {
-    html = ASPluginInvoker_getFileAssetWithNSString_withASIFragment_(JreStrcat("$$$", @"res_", [((NSString *) nil_chk(((NSString *) cast_chk(objValue, [NSString class])))) java_substring:1], @".xml"), self->fragment_);
+    html = ASPluginInvoker_getFileAssetWithNSString_withASIFragment_(JreStrcat("$$$", @"res_", [((NSString *) nil_chk(((NSString *) cast_chk(objValue, [NSString class])))) java_replace:@"@" withSequence:@""], @".xml"), self->fragment_);
   }
   ASHtmlParser_parseWithOrgXmlSaxContentHandler_withNSString_(new_ASMotionLayoutImpl_1_initWithASMotionLayoutImpl_(self), html);
   if (![self isInitialised]) {
@@ -5598,7 +5615,7 @@ void ASMotionLayoutImpl_setLayoutDescriptionWithId_(ASMotionLayoutImpl *self, id
 jint ASMotionLayoutImpl_getFirstTransitionId(ASMotionLayoutImpl *self) {
   JavaUtilArrayList *definedTransitions = [((ADXMotionScene *) nil_chk([((ADXMotionLayout *) nil_chk(self->motionLayout_)) getScene])) getDefinedTransitions];
   if ([((JavaUtilArrayList *) nil_chk(definedTransitions)) size] > 0) {
-    return ((ADXMotionScene_Transition *) nil_chk([definedTransitions getWithInt:0]))->mId_;
+    return [((ADXMotionScene_Transition *) nil_chk([definedTransitions getWithInt:0])) getId];
   }
   return -1;
 }
@@ -7232,16 +7249,16 @@ void ASMotionLayoutImpl_parseKeyPositionWithASIWidget_withADXKeyPosition_withOrg
       ASMotionLayoutImpl_setKeyPositionTypeWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
       break;
       case 1:
-      ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
+      ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, value);
       break;
       case 2:
-      ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
+      ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, value);
       break;
       case 3:
-      ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
+      ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, value);
       break;
       case 4:
-      ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
+      ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, value);
       break;
       case 5:
       ASMotionLayoutImpl_setFramePositionWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
@@ -7250,7 +7267,7 @@ void ASMotionLayoutImpl_parseKeyPositionWithASIWidget_withADXKeyPosition_withOrg
       ASMotionLayoutImpl_setMotionTargetWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
       break;
       case 7:
-      ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
+      ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, value);
       break;
       case 8:
       ASMotionLayoutImpl_setPathMotionArcWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
@@ -7259,7 +7276,7 @@ void ASMotionLayoutImpl_parseKeyPositionWithASIWidget_withADXKeyPosition_withOrg
       ASMotionLayoutImpl_setCurveFitWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
       break;
       case 10:
-      ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
+      ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_withNSString_(self, w, keyPosition, name, value);
       break;
       case 11:
       ASMotionLayoutImpl_setSizePercentWithASIWidget_withADXKeyPosition_withNSString_(self, w, keyPosition, value);
@@ -7282,24 +7299,24 @@ jint ASMotionLayoutImpl_getKeyPositionTypeWithNSString_(ASMotionLayoutImpl *self
   return 0;
 }
 
-void ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
-  ((ADXKeyPosition *) nil_chk(keyPosition))->mPercentX_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+void ASMotionLayoutImpl_setPercentXWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue) {
+  [((ADXKeyPosition *) nil_chk(keyPosition)) setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class])];
 }
 
-void ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
-  ((ADXKeyPosition *) nil_chk(keyPosition))->mPercentY_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+void ASMotionLayoutImpl_setPercentYWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue) {
+  [((ADXKeyPosition *) nil_chk(keyPosition)) setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class])];
 }
 
-void ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
-  ((ADXKeyPosition *) nil_chk(keyPosition))->mPercentWidth_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+void ASMotionLayoutImpl_setPercentWidthWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue) {
+  [((ADXKeyPosition *) nil_chk(keyPosition)) setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class])];
 }
 
-void ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
-  ((ADXKeyPosition *) nil_chk(keyPosition))->mPercentHeight_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+void ASMotionLayoutImpl_setPercentHeightWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue) {
+  [((ADXKeyPosition *) nil_chk(keyPosition)) setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class])];
 }
 
-void ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
-  ((ADXKeyPosition *) nil_chk(keyPosition))->mTransitionEasing_ = strValue;
+void ASMotionLayoutImpl_setTransitionEasingWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue) {
+  [((ADXKeyPosition *) nil_chk(keyPosition)) setValueWithNSString:name withId:strValue];
 }
 
 void ASMotionLayoutImpl_setPathMotionArcWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
@@ -7318,8 +7335,8 @@ jint ASMotionLayoutImpl_getCurveFitWithNSString_(ASMotionLayoutImpl *self, NSStr
   return 0;
 }
 
-void ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
-  ((ADXKeyPosition *) nil_chk(keyPosition))->mDrawPath_ = ASMotionLayoutImpl_getDrawPathWithNSString_(self, strValue);
+void ASMotionLayoutImpl_setDrawPathWithASIWidget_withADXKeyPosition_withNSString_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *name, NSString *strValue) {
+  [((ADXKeyPosition *) nil_chk(keyPosition)) setValueWithNSString:name withId:JavaLangInteger_valueOfWithInt_(ASMotionLayoutImpl_getDrawPathWithNSString_(self, strValue))];
 }
 
 void ASMotionLayoutImpl_parseTransitionWithASIWidget_withADXMotionScene_Transition_withOrgXmlSaxAttributes_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, id<OrgXmlSaxAttributes> atts) {
@@ -7355,7 +7372,7 @@ void ASMotionLayoutImpl_parseTransitionWithASIWidget_withADXMotionScene_Transiti
       ASMotionLayoutImpl_setStaggeredWithASIWidget_withADXMotionScene_Transition_withNSString_(self, w, transition, value);
       break;
       case 9:
-      ASMotionLayoutImpl_setTransitionFlagsWithASIWidget_withADXMotionScene_Transition_withNSString_(self, w, transition, value);
+      ASMotionLayoutImpl_setTransitionFlagWithASIWidget_withADXMotionScene_Transition_withNSString_(self, w, transition, value);
       break;
     }
   }
@@ -7382,11 +7399,11 @@ jint ASMotionLayoutImpl_getLayoutDuringTransitionWithNSString_(ASMotionLayoutImp
 }
 
 void ASMotionLayoutImpl_setLayoutDuringTransitionWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue) {
-  ((ADXMotionScene_Transition *) nil_chk(transition))->mLayoutDuringTransition_ = ASMotionLayoutImpl_getLayoutDuringTransitionWithNSString_(self, strValue);
+  [((ADXMotionScene_Transition *) nil_chk(transition)) setLayoutDuringTransitionWithInt:ASMotionLayoutImpl_getLayoutDuringTransitionWithNSString_(self, strValue)];
 }
 
 void ASMotionLayoutImpl_setPathMotionArcWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue) {
-  ((ADXMotionScene_Transition *) nil_chk(transition))->mPathMotionArc_ = ASMotionLayoutImpl_getPathMotionArcWithNSString_(self, strValue);
+  [((ADXMotionScene_Transition *) nil_chk(transition)) setPathMotionArcWithInt:ASMotionLayoutImpl_getPathMotionArcWithNSString_(self, strValue)];
 }
 
 jint ASMotionLayoutImpl_getAutoTransitionWithNSString_(ASMotionLayoutImpl *self, NSString *value) {
@@ -7408,7 +7425,7 @@ jint ASMotionLayoutImpl_getAutoTransitionWithNSString_(ASMotionLayoutImpl *self,
 }
 
 void ASMotionLayoutImpl_setAutoTransitionWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue) {
-  ((ADXMotionScene_Transition *) nil_chk(transition))->mAutoTransition_ = ASMotionLayoutImpl_getAutoTransitionWithNSString_(self, strValue);
+  [((ADXMotionScene_Transition *) nil_chk(transition)) setAutoTransitionWithInt:ASMotionLayoutImpl_getAutoTransitionWithNSString_(self, strValue)];
 }
 
 jint ASMotionLayoutImpl_getMotionInterpolatorWithNSString_(ASMotionLayoutImpl *self, NSString *value) {
@@ -7434,11 +7451,11 @@ jint ASMotionLayoutImpl_getMotionInterpolatorWithNSString_(ASMotionLayoutImpl *s
 }
 
 void ASMotionLayoutImpl_setDurationWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue) {
-  ((ADXMotionScene_Transition *) nil_chk(transition))->mDuration_ = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"int"], [JavaLangInteger class]))) intValue];
+  [((ADXMotionScene_Transition *) nil_chk(transition)) setDurationWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"int"], [JavaLangInteger class]))) intValue]];
 }
 
-void ASMotionLayoutImpl_setTransitionFlagsWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue) {
-  ((ADXMotionScene_Transition *) nil_chk(transition))->mTransitionFlags_ = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"transitionFlags.flag"], [JavaLangInteger class]))) intValue];
+void ASMotionLayoutImpl_setTransitionFlagWithASIWidget_withADXMotionScene_Transition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXMotionScene_Transition *transition, NSString *strValue) {
+  [((ADXMotionScene_Transition *) nil_chk(transition)) setTransitionFlagWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"transitionFlags.flag"], [JavaLangInteger class]))) intValue]];
 }
 
 void ASMotionLayoutImpl_parseKeyTriggerWithASIWidget_withADXKeyTrigger_withOrgXmlSaxAttributes_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyTrigger *keyTrigger, id<OrgXmlSaxAttributes> atts) {
@@ -7573,7 +7590,9 @@ void ASMotionLayoutImpl_setConstraint_referenced_idsWithASIWidget_withADXConstra
 }
 
 void ASMotionLayoutImpl_setSizePercentWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
-  ((ADXKeyPosition *) nil_chk(keyPosition))->mPercentHeight_ = keyPosition->mPercentWidth_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+  jfloat val = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([((id<ASIWidget>) nil_chk(w)) quickConvertWithId:strValue withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+  [((ADXKeyPosition *) nil_chk(keyPosition)) setValueWithNSString:ADXKeyPosition_PERCENT_HEIGHT withId:JavaLangFloat_valueOfWithFloat_(val)];
+  [keyPosition setValueWithNSString:ADXKeyPosition_PERCENT_WIDTH withId:JavaLangFloat_valueOfWithFloat_(val)];
 }
 
 void ASMotionLayoutImpl_setCurveFitWithASIWidget_withADXKeyPosition_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXKeyPosition *keyPosition, NSString *strValue) {
@@ -7664,19 +7683,19 @@ void ASMotionLayoutImpl_setFramePositionWithASIWidget_withADXKeyTrigger_withNSSt
   keyTrigger->mFireThreshold_ = (val + .5f) / 100.0f;
 }
 
-void ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(ASMotionLayoutImpl *self, ADXMotionScene_Transition *transition, jint event, jint clientX, jint clientY) {
-  [((ADMotionEvent *) nil_chk(self->motionEvent_)) setRawXWithInt:clientX];
-  [((ADMotionEvent *) nil_chk(self->motionEvent_)) setRawYWithInt:clientY];
-  [((ADMotionEvent *) nil_chk(self->motionEvent_)) setActionWithInt:event];
-  [((ADXMotionLayout *) nil_chk(self->motionLayout_)) postWithJavaLangRunnable:new_ASMotionLayoutImpl_$Lambda$2_initWithASMotionLayoutImpl_(self)];
-}
-
 void ASMotionLayoutImpl_setElevationAdditionalWithASIWidget_withADXBarrier_withADXConstraintSet_Motion_withADXConstraintSet_PropertySet_withADXConstraints_LayoutParams_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXBarrier *barrier, ADXConstraintSet_Motion *motion, ADXConstraintSet_PropertySet *propertySet, ADXConstraints_LayoutParams *layoutParams, NSString *strValue) {
   ((ADXConstraints_LayoutParams *) nil_chk(layoutParams))->applyElevation_ = true;
 }
 
 void ASMotionLayoutImpl_setElevationAdditionalWithASIWidget_withADXConstraintSet_Transform_withNSString_(ASMotionLayoutImpl *self, id<ASIWidget> w, ADXConstraintSet_Transform *transform, NSString *value) {
   ((ADXConstraintSet_Transform *) nil_chk(transform))->applyElevation_ = true;
+}
+
+void ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(ASMotionLayoutImpl *self, ADXMotionScene_Transition *transition, jint event, jint clientX, jint clientY) {
+  [((ADMotionEvent *) nil_chk(self->motionEvent_)) setRawXWithInt:clientX];
+  [((ADMotionEvent *) nil_chk(self->motionEvent_)) setRawYWithInt:clientY];
+  [((ADMotionEvent *) nil_chk(self->motionEvent_)) setActionWithInt:event];
+  [((ADXMotionLayout *) nil_chk(self->motionLayout_)) postWithJavaLangRunnable:new_ASMotionLayoutImpl_$Lambda$2_initWithASMotionLayoutImpl_(self)];
 }
 
 void ASMotionLayoutImpl_setReduceFlickerWithBoolean_(ASMotionLayoutImpl *self, jboolean flag) {
@@ -8829,7 +8848,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASMotionLayoutImpl_MotionLayoutExt)
       }
       if (clickAction != -1) {
         ADXMotionScene_Transition_TransitionOnClick *clickListener = new_ADXMotionScene_Transition_TransitionOnClick_initWithADXMotionScene_Transition_withInt_withInt_(transition_, targetId, clickAction);
-        [clickListener addOnClickListenersWithADXMotionLayout:this$0_->motionLayout_ withInt:((ADXMotionScene_Transition *) nil_chk(transition_))->mId_ withADXMotionScene_Transition:transition_];
+        jint mConstraintSetStart = (jint) ((ADXMotionScene_Transition *) nil_chk(transition_))->mConstraintSetStart_;
+        transition_->mConstraintSetStart_ = -1;
+        [clickListener addOnClickListenersWithADXMotionLayout:this$0_->motionLayout_ withInt:[((ADXMotionLayout *) nil_chk(this$0_->motionLayout_)) getCurrentState] withADXMotionScene_Transition:transition_];
+        ((ADXMotionScene_Transition *) nil_chk(transition_))->mConstraintSetStart_ = mConstraintSetStart;
       }
       break;
     }
@@ -8916,19 +8938,19 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASMotionLayoutImpl_MotionLayoutExt)
           [keyCycle setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"dimensionfloat"], [JavaLangFloat class])];
           break;
           case 12:
-          keyCycle->mWaveOffset_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+          [keyCycle setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"float"], [JavaLangFloat class])];
           break;
           case 13:
-          keyCycle->mWavePeriod_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+          [keyCycle setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"float"], [JavaLangFloat class])];
           break;
           case 14:
-          keyCycle->mWaveShape_ = (jint) ASMotionLayoutImpl_getWaveShapeWithNSString_(this$0_, value);
+          [keyCycle setValueWithNSString:name withId:JavaLangInteger_valueOfWithInt_((jint) ASMotionLayoutImpl_getWaveShapeWithNSString_(this$0_, value))];
           break;
           case 15:
           keyCycle->mWaveVariesBy_ = (jint) ASMotionLayoutImpl_getWaveVariesByWithNSString_(this$0_, value);
           break;
           case 16:
-          keyCycle->mWavePhase_ = [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"float"], [JavaLangFloat class]))) floatValue];
+          [keyCycle setValueWithNSString:name withId:(JavaLangFloat *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"float"], [JavaLangFloat class])];
           break;
           case 17:
           [keyCycle setFramePositionWithInt:[((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([this$0_ quickConvertWithId:value withNSString:@"int"], [JavaLangInteger class]))) intValue]];

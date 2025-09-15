@@ -1367,18 +1367,22 @@ private void postSetAttribute(WidgetAttribute key, String strValue, Object objVa
 
 
 
+	//start - androidonly
 	private int constraintId = -1;
 	private int action;
 	private androidx.constraintlayout.motion.widget.KeyFrames keyFrames;
 	private int idCounter = 0;
 	private String layoutDescription;
-	private MotionEvent motionEvent = new MotionEvent();
-		private void setLayoutDescription(Object objValue) {
-			layoutDescription = (String) objValue;
-		motionLayout.initMotionScene();
+	
+	private void setLayoutDescription(Object objValue) {
+		layoutDescription = (String) objValue;
+		try {
+			motionLayout.setScene(new androidx.constraintlayout.motion.widget.MotionScene(motionLayout));
+		} catch (Exception e) {
+		}
 		String html = fragment.getInlineResource(layoutDescription);
 		if (html == null) {
-			html = PluginInvoker.getFileAsset("res/" + ((String) objValue).substring(1) + ".xml", fragment);
+			html = PluginInvoker.getFileAsset("res/" + ((String) objValue).replace("@", "") + ".xml", fragment);
 		}
 		
 		com.ashera.parser.html.HtmlParser.parse(new org.xml.sax.ContentHandler() {
@@ -1585,7 +1589,10 @@ private void postSetAttribute(WidgetAttribute key, String strValue, Object objVa
 					if (clickAction != -1) {
 						androidx.constraintlayout.motion.widget.MotionScene.Transition.TransitionOnClick clickListener = new androidx.constraintlayout.motion.widget.MotionScene.Transition.TransitionOnClick(transition, 
 							targetId, clickAction);
-						clickListener.addOnClickListeners(motionLayout, transition.mId, transition);
+						int mConstraintSetStart = (int) transition.mConstraintSetStart;
+						transition.mConstraintSetStart = -1;
+						clickListener.addOnClickListeners(motionLayout, motionLayout.getCurrentState(), transition);
+						transition.mConstraintSetStart = mConstraintSetStart;
 					}
 
 					
@@ -1676,19 +1683,19 @@ private void postSetAttribute(WidgetAttribute key, String strValue, Object objVa
 							keyCycle.setValue(name, (float) quickConvert(value, "dimensionfloat"));
 							break;
 						case "waveOffset":
-							keyCycle.mWaveOffset = (float) quickConvert(value, "float");
+							keyCycle.setValue(name, (float) quickConvert(value, "float"));
 							break;
 						case "wavePeriod":
-							keyCycle.mWavePeriod = (float) quickConvert(value, "float");
+							keyCycle.setValue(name, (float) quickConvert(value, "float"));
 							break;
 						case "waveShape":
-							keyCycle.mWaveShape = (int) getWaveShape(value);
+							keyCycle.setValue(name, (int) getWaveShape(value));
 							break;
 						case "waveVariesBy":
 							keyCycle.mWaveVariesBy = (int) getWaveVariesBy(value);
 							break;
 						case "wavePhase":
-							keyCycle.mWavePhase = (float) quickConvert(value, "float");
+							keyCycle.setValue(name, (float) quickConvert(value, "float"));
 							break;
 						case "framePosition":
 							keyCycle.setFramePosition((int) quickConvert(value, "int"));
@@ -1902,7 +1909,7 @@ public void initialized() {
 private int getFirstTransitionId() {
 	ArrayList<androidx.constraintlayout.motion.widget.MotionScene.Transition> definedTransitions = motionLayout.getScene().getDefinedTransitions();
 	if (definedTransitions.size() > 0) {
-		return definedTransitions.get(0).mId;
+		return definedTransitions.get(0).getId();
 	}
 	
 	return -1;
@@ -2316,6 +2323,7 @@ default:
 
 private void setVisibilityMode(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
 propertySet.mVisibilityMode = getVisibilityMode(strValue);
+
 }
 
 private void setAlpha(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
@@ -2748,6 +2756,7 @@ default:
 
 private void setAnimateCircleAngleTo(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
 motion.mAnimateCircleAngleTo = getAnimateCircleAngleTo(strValue);
+
 }
 
 private int getTransitionEasing(String value) {
@@ -2768,6 +2777,7 @@ default:
 
 private void setTransitionEasing(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
 motion.mTransitionEasing = strValue;
+
 }
 
 private int getPathMotionArc(String value) {
@@ -2788,6 +2798,7 @@ default:
 
 private void setPathMotionArc(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
 motion.mPathMotionArc = getPathMotionArc(strValue);
+
 }
 
 private void setPolarRelativeTo(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
@@ -2816,6 +2827,7 @@ default:
 
 private void setDrawPath(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
 motion.mDrawPath = getDrawPath(strValue);
+
 }
 
 private void setConstraintTag(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
@@ -2915,14 +2927,17 @@ motion.mAnimateRelativeTo = (int) w.quickConvert(strValue, "id");
 
 private void setAnimateCircleAngleTo(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Motion motion, String strValue) {
 motion.mAnimateCircleAngleTo = getAnimateCircleAngleTo(strValue);
+
 }
 
 private void setTransitionEasing(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Motion motion, String strValue) {
 motion.mTransitionEasing = strValue;
+
 }
 
 private void setPathMotionArc(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Motion motion, String strValue) {
 motion.mPathMotionArc = getPathMotionArc(strValue);
+
 }
 
 private void setMotionStagger(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Motion motion, String strValue) {
@@ -2931,6 +2946,7 @@ motion.mMotionStagger = (float) w.quickConvert(strValue, "float");
 
 private void setDrawPath(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Motion motion, String strValue) {
 motion.mDrawPath = getDrawPath(strValue);
+
 }
 
 private void setQuantizeMotionSteps(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Motion motion, String strValue) {
@@ -3477,6 +3493,7 @@ default:
 
 private void setBarrierDirection(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Layout layoutParams, String strValue) {
 layoutParams.mBarrierDirection = getBarrierDirection(strValue);
+
 }
 
 private void setBarrierMargin(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Layout layoutParams, String strValue) {
@@ -3603,6 +3620,7 @@ propertySet.visibility = (int) w.quickConvert(strValue, "View.visibility");
 
 private void setVisibilityMode(IWidget w, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, String strValue) {
 propertySet.mVisibilityMode = getVisibilityMode(strValue);
+
 }
 
 private void setAlpha(IWidget w, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, String strValue) {
@@ -3622,16 +3640,16 @@ case "keyPositionType":
 setKeyPositionType(w, keyPosition, value);
 break;
 case "percentX":
-setPercentX(w, keyPosition, value);
+setPercentX(w, keyPosition, name, value);
 break;
 case "percentY":
-setPercentY(w, keyPosition, value);
+setPercentY(w, keyPosition, name, value);
 break;
 case "percentWidth":
-setPercentWidth(w, keyPosition, value);
+setPercentWidth(w, keyPosition, name, value);
 break;
 case "percentHeight":
-setPercentHeight(w, keyPosition, value);
+setPercentHeight(w, keyPosition, name, value);
 break;
 case "framePosition":
 setFramePosition(w, keyPosition, value);
@@ -3640,7 +3658,7 @@ case "motionTarget":
 setMotionTarget(w, keyPosition, value);
 break;
 case "transitionEasing":
-setTransitionEasing(w, keyPosition, value);
+setTransitionEasing(w, keyPosition, name, value);
 break;
 case "pathMotionArc":
 setPathMotionArc(w, keyPosition, value);
@@ -3649,7 +3667,7 @@ case "curveFit":
 setCurveFit(w, keyPosition, value);
 break;
 case "drawPath":
-setDrawPath(w, keyPosition, value);
+setDrawPath(w, keyPosition, name, value);
 break;
 case "sizePercent":
 setSizePercent(w, keyPosition, value);
@@ -3671,28 +3689,30 @@ default:
 	return 0;
 }
 
-private void setPercentX(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
-keyPosition.mPercentX = (float) w.quickConvert(strValue, "float");
+private void setPercentX(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String name, String strValue) {
+keyPosition.setValue(name, (float) w.quickConvert(strValue, "float"));
 }
 
-private void setPercentY(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
-keyPosition.mPercentY = (float) w.quickConvert(strValue, "float");
+private void setPercentY(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String name, String strValue) {
+keyPosition.setValue(name, (float) w.quickConvert(strValue, "float"));
 }
 
-private void setPercentWidth(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
-keyPosition.mPercentWidth = (float) w.quickConvert(strValue, "float");
+private void setPercentWidth(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String name, String strValue) {
+keyPosition.setValue(name, (float) w.quickConvert(strValue, "float"));
 }
 
-private void setPercentHeight(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
-keyPosition.mPercentHeight = (float) w.quickConvert(strValue, "float");
+private void setPercentHeight(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String name, String strValue) {
+keyPosition.setValue(name, (float) w.quickConvert(strValue, "float"));
 }
 
-private void setTransitionEasing(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
-keyPosition.mTransitionEasing = strValue;
+private void setTransitionEasing(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String name, String strValue) {
+keyPosition.setValue(name, strValue);
+
 }
 
 private void setPathMotionArc(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
 keyPosition.mPathMotionArc = getPathMotionArc(strValue);
+
 }
 
 private int getCurveFit(String value) {
@@ -3707,8 +3727,9 @@ default:
 	return 0;
 }
 
-private void setDrawPath(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
-keyPosition.mDrawPath = getDrawPath(strValue);
+private void setDrawPath(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String name, String strValue) {
+keyPosition.setValue(name, getDrawPath(strValue));
+
 }
 
 //end - KeyPosition
@@ -3748,7 +3769,7 @@ case "staggered":
 setStaggered(w, transition, value);
 break;
 case "transitionFlags":
-setTransitionFlags(w, transition, value);
+setTransitionFlag(w, transition, value);
 break;}
 }
 }
@@ -3774,11 +3795,11 @@ default:
 }
 
 private void setLayoutDuringTransition(IWidget w, androidx.constraintlayout.motion.widget.MotionScene.Transition transition, String strValue) {
-transition.mLayoutDuringTransition = getLayoutDuringTransition(strValue);
+transition.setLayoutDuringTransition(getLayoutDuringTransition(strValue));
 }
 
 private void setPathMotionArc(IWidget w, androidx.constraintlayout.motion.widget.MotionScene.Transition transition, String strValue) {
-transition.mPathMotionArc = getPathMotionArc(strValue);
+transition.setPathMotionArc(getPathMotionArc(strValue));
 }
 
 private int getAutoTransition(String value) {
@@ -3800,7 +3821,7 @@ default:
 }
 
 private void setAutoTransition(IWidget w, androidx.constraintlayout.motion.widget.MotionScene.Transition transition, String strValue) {
-transition.mAutoTransition = getAutoTransition(strValue);
+transition.setAutoTransition(getAutoTransition(strValue));
 }
 
 private int getMotionInterpolator(String value) {
@@ -3826,7 +3847,7 @@ default:
 }
 
 private void setDuration(IWidget w, androidx.constraintlayout.motion.widget.MotionScene.Transition transition, String strValue) {
-transition.mDuration = (int) w.quickConvert(strValue, "int");
+transition.setDuration((int) w.quickConvert(strValue, "int"));
 }
 		final static class TransitionFlagsConverter  extends AbstractBitFlagConverter{
 		private Map<String, Integer> mapping = new HashMap<>();
@@ -3850,8 +3871,8 @@ static {
         ConverterFactory.register("transitionFlags.flag", new TransitionFlagsConverter());
     }
 
-private void setTransitionFlags(IWidget w, androidx.constraintlayout.motion.widget.MotionScene.Transition transition, String strValue) {
-transition.mTransitionFlags = (int) w.quickConvert(strValue, "transitionFlags.flag");
+private void setTransitionFlag(IWidget w, androidx.constraintlayout.motion.widget.MotionScene.Transition transition, String strValue) {
+transition.setTransitionFlag((int) w.quickConvert(strValue, "transitionFlags.flag"));
 }
 
 //end - Transition
@@ -4004,7 +4025,9 @@ private void setConstraint_referenced_ids(IWidget w, androidx.constraintlayout.w
 
 
 private void setSizePercent(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
-	keyPosition.mPercentHeight = keyPosition.mPercentWidth = (float) w.quickConvert(strValue, "float");	
+	float val = (float) w.quickConvert(strValue, "float");
+	keyPosition.setValue(androidx.constraintlayout.motion.widget.KeyPosition.PERCENT_HEIGHT, val);
+	keyPosition.setValue(androidx.constraintlayout.motion.widget.KeyPosition.PERCENT_WIDTH, val);
 }
 
 private void setCurveFit(IWidget w, androidx.constraintlayout.motion.widget.KeyPosition keyPosition, String strValue) {
@@ -4102,6 +4125,17 @@ private void setFramePosition(IWidget w, androidx.constraintlayout.motion.widget
 	keyTrigger.mFireThreshold = (val + .5f) / 100f;
 }
 
+private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
+	layoutParams.applyElevation = true;
+}
+
+private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Transform transform, String value) {
+	transform.applyElevation = true;	
+}
+
+//end - androidonly
+
+private MotionEvent motionEvent = new MotionEvent();
 
 private void processTouchEvent(androidx.constraintlayout.motion.widget.MotionScene.Transition transition, int event, int clientX, int clientY) {
 	motionEvent.setRawX(clientX);
@@ -4111,15 +4145,6 @@ private void processTouchEvent(androidx.constraintlayout.motion.widget.MotionSce
 		motionLayout.onTouchEvent(motionEvent);	
 	});
 		
-}
-
-
-private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.Barrier barrier, androidx.constraintlayout.widget.ConstraintSet.Motion motion, androidx.constraintlayout.widget.ConstraintSet.PropertySet propertySet, androidx.constraintlayout.widget.Constraints.LayoutParams layoutParams, String strValue) {
-	layoutParams.applyElevation = true;
-}
-
-private void setElevationAdditional(IWidget w, androidx.constraintlayout.widget.ConstraintSet.Transform transform, String value) {
-	transform.applyElevation = true;	
 }
 
 private void setReduceFlicker(boolean flag) {

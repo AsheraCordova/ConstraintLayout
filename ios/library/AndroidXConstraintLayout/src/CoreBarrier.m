@@ -8,14 +8,11 @@
 #include "ConstraintWidget.h"
 #include "CoreBarrier.h"
 #include "HelperWidget.h"
-#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
 #include "SolverVariable.h"
-#include "java/lang/Deprecated.h"
 #include "java/lang/Math.h"
-#include "java/lang/annotation/Annotation.h"
 #include "java/util/HashMap.h"
 
 
@@ -35,8 +32,6 @@ J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, USE_RESOLUTION, jboolean)
 inline jboolean ADXCoreBarrier_get_USE_RELAX_GONE(void);
 #define ADXCoreBarrier_USE_RELAX_GONE false
 J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, USE_RELAX_GONE, jboolean)
-
-__attribute__((unused)) static IOSObjectArray *ADXCoreBarrier__Annotations$0(void);
 
 @implementation ADXCoreBarrier
 
@@ -312,15 +307,15 @@ J2OBJC_IGNORE_DESIGNATED_END
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
     { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
-    { NULL, "Z", 0x1, -1, -1, -1, -1, 5, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 6, 7, -1, 8, -1, -1 },
-    { NULL, "LNSString;", 0x1, 9, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 5, 6, -1, 7, -1, -1 },
+    { NULL, "LNSString;", 0x1, 8, -1, -1, -1, -1, -1 },
     { NULL, "V", 0x4, -1, -1, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 10, 11, -1, -1, -1, -1 },
-    { NULL, "V", 0x1, 12, 2, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 11, 2, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
     { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
@@ -359,7 +354,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     { "mMargin_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
     { "resolved_", "Z", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LNSString;", "setBarrierType", "I", "setAllowsGoneWidget", "Z", (void *)&ADXCoreBarrier__Annotations$0, "copy", "LADXConstraintWidget;LJavaUtilHashMap;", "(Landroidx/constraintlayout/core/widgets/ConstraintWidget;Ljava/util/HashMap<Landroidx/constraintlayout/core/widgets/ConstraintWidget;Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "toString", "addToSolver", "LADXLinearSystem;Z", "setMargin" };
+  static const void *ptrTable[] = { "LNSString;", "setBarrierType", "I", "setAllowsGoneWidget", "Z", "copy", "LADXConstraintWidget;LJavaUtilHashMap;", "(Landroidx/constraintlayout/core/widgets/ConstraintWidget;Ljava/util/HashMap<Landroidx/constraintlayout/core/widgets/ConstraintWidget;Landroidx/constraintlayout/core/widgets/ConstraintWidget;>;)V", "toString", "addToSolver", "LADXLinearSystem;Z", "setMargin" };
   static const J2ObjcClassInfo _ADXCoreBarrier = { "CoreBarrier", "androidx.constraintlayout.core.widgets", ptrTable, methods, fields, 7, 0x1, 18, 10, -1, -1, -1, -1, -1 };
   return &_ADXCoreBarrier;
 }
@@ -397,10 +392,6 @@ ADXCoreBarrier *new_ADXCoreBarrier_initWithNSString_(NSString *debugName) {
 
 ADXCoreBarrier *create_ADXCoreBarrier_initWithNSString_(NSString *debugName) {
   J2OBJC_CREATE_IMPL(ADXCoreBarrier, initWithNSString_, debugName)
-}
-
-IOSObjectArray *ADXCoreBarrier__Annotations$0() {
-  return [IOSObjectArray arrayWithObjects:(id[]){ create_JavaLangDeprecated() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCoreBarrier)

@@ -116,8 +116,6 @@
 
 - (jfloat)getVelocity;
 
-- (void)initMotionScene OBJC_METHOD_FAMILY_NONE;
-
 - (void)invalidate;
 
 - (jboolean)isInteractionEnabled;
@@ -146,6 +144,8 @@
                    withFloat:(jfloat)velocity;
 
 - (void)setReduceFlickerWithBoolean:(jboolean)reduceFlicker;
+
+- (void)setSceneWithADXMotionScene:(ADXMotionScene *)scene;
 
 - (void)setStateWithInt:(jint)id_
                 withInt:(jint)screenWidth

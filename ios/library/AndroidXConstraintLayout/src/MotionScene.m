@@ -1374,7 +1374,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionScene_Transition)
   listen |= (((mMode_ & ADXMotionScene_Transition_TransitionOnClick_ANIM_TO_END) != 0) && currentState == start);
   listen |= (((mMode_ & ADXMotionScene_Transition_TransitionOnClick_ANIM_TO_START) != 0) && currentState == end);
   listen |= (((mMode_ & ADXMotionScene_Transition_TransitionOnClick_JUMP_TO_START) != 0) && currentState == end);
-  {
+  if (listen) {
     [v setMyAttributeWithNSString:@"onClick" withId:self];
   }
 }

@@ -802,6 +802,7 @@ public java.util.Map<String, Object> getOnNewItemEventObj(int index) {
     obj.put("eventType", "newitem");
     obj.put("fragmentId", w.getFragment().getFragmentId());
     obj.put("actionUrl", w.getFragment().getActionUrl());
+    obj.put("namespace", w.getFragment().getNamespace());
     
     if (w.getComponentId() != null) {
     	obj.put("componentId", w.getComponentId());
@@ -1130,7 +1131,10 @@ public void initialized() {
 //end - codecopy
 
 	private void initItems() {
-		carousel.refresh();
+		try {
+			carousel.refresh();
+		} catch (Exception e) {
+		}
 	}
 
 }
