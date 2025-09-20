@@ -3,10 +3,22 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\TypedValues.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "TypedValues.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXTypedValues : NSObject
@@ -52,6 +64,8 @@ NSString *ADXTypedValues_S_CUSTOM = @"CUSTOM";
 
 J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXTypedValues)
 
+J2OBJC_NAME_MAPPING(ADXTypedValues, "androidx.constraintlayout.core.motion.utils", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXTypedValues_Attributes)
 
 NSString *ADXTypedValues_Attributes_S_CURVE_FIT = @"curveFit";
@@ -79,11 +93,11 @@ IOSObjectArray *ADXTypedValues_Attributes_KEY_WORDS;
 
 @implementation ADXTypedValues_Attributes
 
-+ (jint)getIdWithNSString:(NSString *)name {
++ (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Attributes_getIdWithNSString_(name);
 }
 
-+ (jint)getTypeWithInt:(jint)name {
++ (int32_t)getTypeWithInt:(int32_t)name {
   return ADXTypedValues_Attributes_getTypeWithInt_(name);
 }
 
@@ -154,7 +168,7 @@ IOSObjectArray *ADXTypedValues_Attributes_KEY_WORDS;
 
 @end
 
-jint ADXTypedValues_Attributes_getIdWithNSString_(NSString *name) {
+int32_t ADXTypedValues_Attributes_getIdWithNSString_(NSString *name) {
   ADXTypedValues_Attributes_initialize();
   switch (JreIndexOfStr(name, (id[]){ ADXTypedValues_Attributes_S_CURVE_FIT, ADXTypedValues_Attributes_S_VISIBILITY, ADXTypedValues_Attributes_S_ALPHA, ADXTypedValues_Attributes_S_TRANSLATION_X, ADXTypedValues_Attributes_S_TRANSLATION_Y, ADXTypedValues_Attributes_S_TRANSLATION_Z, ADXTypedValues_Attributes_S_ELEVATION, ADXTypedValues_Attributes_S_ROTATION_X, ADXTypedValues_Attributes_S_ROTATION_Y, ADXTypedValues_Attributes_S_ROTATION_Z, ADXTypedValues_Attributes_S_SCALE_X, ADXTypedValues_Attributes_S_SCALE_Y, ADXTypedValues_Attributes_S_PIVOT_X, ADXTypedValues_Attributes_S_PIVOT_Y, ADXTypedValues_Attributes_S_PROGRESS, ADXTypedValues_Attributes_S_PATH_ROTATE, ADXTypedValues_Attributes_S_EASING, ADXTypedValues_Attributes_S_FRAME, ADXTypedValues_Attributes_S_TARGET, ADXTypedValues_Attributes_S_PIVOT_TARGET }, 20)) {
     case 0:
@@ -201,7 +215,7 @@ jint ADXTypedValues_Attributes_getIdWithNSString_(NSString *name) {
   return -1;
 }
 
-jint ADXTypedValues_Attributes_getTypeWithInt_(jint name) {
+int32_t ADXTypedValues_Attributes_getTypeWithInt_(int32_t name) {
   ADXTypedValues_Attributes_initialize();
   switch (name) {
     case ADXTypedValues_Attributes_TYPE_CURVE_FIT:
@@ -261,7 +275,7 @@ IOSObjectArray *ADXTypedValues_Cycle_KEY_WORDS;
 
 @implementation ADXTypedValues_Cycle
 
-+ (jint)getIdWithNSString:(NSString *)name {
++ (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Cycle_getIdWithNSString_(name);
 }
 
@@ -335,7 +349,7 @@ IOSObjectArray *ADXTypedValues_Cycle_KEY_WORDS;
 
 @end
 
-jint ADXTypedValues_Cycle_getIdWithNSString_(NSString *name) {
+int32_t ADXTypedValues_Cycle_getIdWithNSString_(NSString *name) {
   ADXTypedValues_Cycle_initialize();
   switch (JreIndexOfStr(name, (id[]){ ADXTypedValues_Cycle_S_CURVE_FIT, ADXTypedValues_Cycle_S_VISIBILITY, ADXTypedValues_Cycle_S_ALPHA, ADXTypedValues_Cycle_S_TRANSLATION_X, ADXTypedValues_Cycle_S_TRANSLATION_Y, ADXTypedValues_Cycle_S_TRANSLATION_Z, ADXTypedValues_Cycle_S_ROTATION_X, ADXTypedValues_Cycle_S_ROTATION_Y, ADXTypedValues_Cycle_S_ROTATION_Z, ADXTypedValues_Cycle_S_SCALE_X, ADXTypedValues_Cycle_S_SCALE_Y, ADXTypedValues_Cycle_S_PIVOT_X, ADXTypedValues_Cycle_S_PIVOT_Y, ADXTypedValues_Cycle_S_PROGRESS, ADXTypedValues_Cycle_S_PATH_ROTATE, ADXTypedValues_Cycle_S_EASING }, 16)) {
     case 0:
@@ -394,7 +408,7 @@ IOSObjectArray *ADXTypedValues_Trigger_KEY_WORDS;
 
 @implementation ADXTypedValues_Trigger
 
-+ (jint)getIdWithNSString:(NSString *)name {
++ (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Trigger_getIdWithNSString_(name);
 }
 
@@ -448,7 +462,7 @@ IOSObjectArray *ADXTypedValues_Trigger_KEY_WORDS;
 
 @end
 
-jint ADXTypedValues_Trigger_getIdWithNSString_(NSString *name) {
+int32_t ADXTypedValues_Trigger_getIdWithNSString_(NSString *name) {
   ADXTypedValues_Trigger_initialize();
   switch (JreIndexOfStr(name, (id[]){ ADXTypedValues_Trigger_VIEW_TRANSITION_ON_CROSS, ADXTypedValues_Trigger_VIEW_TRANSITION_ON_POSITIVE_CROSS, ADXTypedValues_Trigger_VIEW_TRANSITION_ON_NEGATIVE_CROSS, ADXTypedValues_Trigger_POST_LAYOUT, ADXTypedValues_Trigger_TRIGGER_SLACK, ADXTypedValues_Trigger_TRIGGER_COLLISION_VIEW, ADXTypedValues_Trigger_TRIGGER_COLLISION_ID, ADXTypedValues_Trigger_TRIGGER_ID, ADXTypedValues_Trigger_POSITIVE_CROSS, ADXTypedValues_Trigger_NEGATIVE_CROSS, ADXTypedValues_Trigger_TRIGGER_RECEIVER, ADXTypedValues_Trigger_CROSS }, 12)) {
     case 0:
@@ -494,7 +508,7 @@ IOSObjectArray *ADXTypedValues_Position_KEY_WORDS;
 
 @implementation ADXTypedValues_Position
 
-+ (jint)getIdWithNSString:(NSString *)name {
++ (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Position_getIdWithNSString_(name);
 }
 
@@ -541,7 +555,7 @@ IOSObjectArray *ADXTypedValues_Position_KEY_WORDS;
 
 @end
 
-jint ADXTypedValues_Position_getIdWithNSString_(NSString *name) {
+int32_t ADXTypedValues_Position_getIdWithNSString_(NSString *name) {
   ADXTypedValues_Position_initialize();
   switch (JreIndexOfStr(name, (id[]){ ADXTypedValues_Position_S_TRANSITION_EASING, ADXTypedValues_Position_S_DRAWPATH, ADXTypedValues_Position_S_PERCENT_WIDTH, ADXTypedValues_Position_S_PERCENT_HEIGHT, ADXTypedValues_Position_S_SIZE_PERCENT, ADXTypedValues_Position_S_PERCENT_X, ADXTypedValues_Position_S_PERCENT_Y }, 7)) {
     case 0:
@@ -583,7 +597,7 @@ IOSObjectArray *ADXTypedValues_Motion_KEY_WORDS;
 
 @implementation ADXTypedValues_Motion
 
-+ (jint)getIdWithNSString:(NSString *)name {
++ (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Motion_getIdWithNSString_(name);
 }
 
@@ -639,7 +653,7 @@ IOSObjectArray *ADXTypedValues_Motion_KEY_WORDS;
 
 @end
 
-jint ADXTypedValues_Motion_getIdWithNSString_(NSString *name) {
+int32_t ADXTypedValues_Motion_getIdWithNSString_(NSString *name) {
   ADXTypedValues_Motion_initialize();
   switch (JreIndexOfStr(name, (id[]){ ADXTypedValues_Motion_S_STAGGER, ADXTypedValues_Motion_S_PATH_ROTATE, ADXTypedValues_Motion_S_QUANTIZE_MOTION_PHASE, ADXTypedValues_Motion_S_EASING, ADXTypedValues_Motion_S_QUANTIZE_INTERPOLATOR, ADXTypedValues_Motion_S_ANIMATE_RELATIVE_TO, ADXTypedValues_Motion_S_ANIMATE_CIRCLEANGLE_TO, ADXTypedValues_Motion_S_PATHMOTION_ARC, ADXTypedValues_Motion_S_DRAW_PATH, ADXTypedValues_Motion_S_POLAR_RELATIVETO, ADXTypedValues_Motion_S_QUANTIZE_MOTIONSTEPS, ADXTypedValues_Motion_S_QUANTIZE_INTERPOLATOR_TYPE, ADXTypedValues_Motion_S_QUANTIZE_INTERPOLATOR_ID }, 13)) {
     case 0:
@@ -687,7 +701,7 @@ IOSObjectArray *ADXTypedValues_Custom_KEY_WORDS;
 
 @implementation ADXTypedValues_Custom
 
-+ (jint)getIdWithNSString:(NSString *)name {
++ (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Custom_getIdWithNSString_(name);
 }
 
@@ -731,7 +745,7 @@ IOSObjectArray *ADXTypedValues_Custom_KEY_WORDS;
 
 @end
 
-jint ADXTypedValues_Custom_getIdWithNSString_(NSString *name) {
+int32_t ADXTypedValues_Custom_getIdWithNSString_(NSString *name) {
   ADXTypedValues_Custom_initialize();
   switch (JreIndexOfStr(name, (id[]){ ADXTypedValues_Custom_S_INT, ADXTypedValues_Custom_S_FLOAT, ADXTypedValues_Custom_S_COLOR, ADXTypedValues_Custom_S_STRING, ADXTypedValues_Custom_S_BOOLEAN, ADXTypedValues_Custom_S_DIMENSION, ADXTypedValues_Custom_S_REFERENCE }, 7)) {
     case 0:

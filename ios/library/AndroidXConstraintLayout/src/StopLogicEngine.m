@@ -3,49 +3,66 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\StopLogicEngine.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "StopLogicEngine.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXStopLogicEngine () {
  @public
-  jfloat mStage1Velocity_;
-  jfloat mStage2Velocity_;
-  jfloat mStage3Velocity_;
-  jfloat mStage1Duration_;
-  jfloat mStage2Duration_;
-  jfloat mStage3Duration_;
-  jfloat mStage1EndPosition_;
-  jfloat mStage2EndPosition_;
-  jfloat mStage3EndPosition_;
-  jint mNumberOfStages_;
+  float mStage1Velocity_;
+  float mStage2Velocity_;
+  float mStage3Velocity_;
+  float mStage1Duration_;
+  float mStage2Duration_;
+  float mStage3Duration_;
+  float mStage1EndPosition_;
+  float mStage2EndPosition_;
+  float mStage3EndPosition_;
+  int32_t mNumberOfStages_;
   NSString *mType_;
-  jboolean mBackwards_;
-  jfloat mStartPosition_;
-  jfloat mLastPosition_;
-  jboolean mDone_;
+  bool mBackwards_;
+  float mStartPosition_;
+  float mLastPosition_;
+  bool mDone_;
 }
 
-- (jfloat)calcYWithFloat:(jfloat)time;
+- (float)calcYWithFloat:(float)time;
 
-- (void)setupWithFloat:(jfloat)velocity
-             withFloat:(jfloat)distance
-             withFloat:(jfloat)maxAcceleration
-             withFloat:(jfloat)maxVelocity
-             withFloat:(jfloat)maxTime;
+- (void)setupWithFloat:(float)velocity
+             withFloat:(float)distance
+             withFloat:(float)maxAcceleration
+             withFloat:(float)maxVelocity
+             withFloat:(float)maxTime;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXStopLogicEngine, mType_, NSString *)
 
-inline jfloat ADXStopLogicEngine_get_EPSILON(void);
+inline float ADXStopLogicEngine_get_EPSILON(void);
 #define ADXStopLogicEngine_EPSILON 1.0E-5f
-J2OBJC_STATIC_FIELD_CONSTANT(ADXStopLogicEngine, EPSILON, jfloat)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXStopLogicEngine, EPSILON, float)
 
-__attribute__((unused)) static jfloat ADXStopLogicEngine_calcYWithFloat_(ADXStopLogicEngine *self, jfloat time);
+__attribute__((unused)) static float ADXStopLogicEngine_calcYWithFloat_(ADXStopLogicEngine *self, float time);
 
-__attribute__((unused)) static void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(ADXStopLogicEngine *self, jfloat velocity, jfloat distance, jfloat maxAcceleration, jfloat maxVelocity, jfloat maxTime);
+__attribute__((unused)) static void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(ADXStopLogicEngine *self, float velocity, float distance, float maxAcceleration, float maxVelocity, float maxTime);
 
 @implementation ADXStopLogicEngine
 
@@ -57,7 +74,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)debugWithNSString:(NSString *)desc
-                      withFloat:(jfloat)time {
+                      withFloat:(float)time {
   NSString *ret = JreStrcat("$$$C", desc, @" ===== ", mType_, 0x000a);
   JreStrAppend(&ret, "$$$F$IC", desc, (mBackwards_ ? @"backwards" : @"forward "), @" time = ", time, @"  stages ", mNumberOfStages_, 0x000a);
   JreStrAppend(&ret, "$$F$F$FC", desc, @" dur ", mStage1Duration_, @" vel ", mStage1Velocity_, @" pos ", mStage1EndPosition_, 0x000a);
@@ -93,7 +110,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ret;
 }
 
-- (jfloat)getVelocityWithFloat:(jfloat)x {
+- (float)getVelocityWithFloat:(float)x {
   if (x <= mStage1Duration_) {
     return mStage1Velocity_ + (mStage2Velocity_ - mStage1Velocity_) * x / (mStage1Duration_);
   }
@@ -114,16 +131,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   return mStage3EndPosition_;
 }
 
-- (jfloat)calcYWithFloat:(jfloat)time {
+- (float)calcYWithFloat:(float)time {
   return ADXStopLogicEngine_calcYWithFloat_(self, time);
 }
 
-- (void)configWithFloat:(jfloat)currentPos
-              withFloat:(jfloat)destination
-              withFloat:(jfloat)currentVelocity
-              withFloat:(jfloat)maxTime
-              withFloat:(jfloat)maxAcceleration
-              withFloat:(jfloat)maxVelocity {
+- (void)configWithFloat:(float)currentPos
+              withFloat:(float)destination
+              withFloat:(float)currentVelocity
+              withFloat:(float)maxTime
+              withFloat:(float)maxAcceleration
+              withFloat:(float)maxVelocity {
   mDone_ = false;
   mStartPosition_ = currentPos;
   mBackwards_ = (currentPos > destination);
@@ -135,25 +152,25 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v {
-  jfloat y = ADXStopLogicEngine_calcYWithFloat_(self, v);
+- (float)getInterpolationWithFloat:(float)v {
+  float y = ADXStopLogicEngine_calcYWithFloat_(self, v);
   mLastPosition_ = v;
   return (mBackwards_) ? mStartPosition_ - y : mStartPosition_ + y;
 }
 
-- (jfloat)getVelocity {
+- (float)getVelocity {
   return (mBackwards_) ? -[self getVelocityWithFloat:mLastPosition_] : [self getVelocityWithFloat:mLastPosition_];
 }
 
-- (jboolean)isStopped {
+- (bool)isStopped {
   return [self getVelocity] < ADXStopLogicEngine_EPSILON && JavaLangMath_absWithFloat_(mStage3EndPosition_ - mLastPosition_) < ADXStopLogicEngine_EPSILON;
 }
 
-- (void)setupWithFloat:(jfloat)velocity
-             withFloat:(jfloat)distance
-             withFloat:(jfloat)maxAcceleration
-             withFloat:(jfloat)maxVelocity
-             withFloat:(jfloat)maxTime {
+- (void)setupWithFloat:(float)velocity
+             withFloat:(float)distance
+             withFloat:(float)maxAcceleration
+             withFloat:(float)maxVelocity
+             withFloat:(float)maxTime {
   ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(self, velocity, distance, maxAcceleration, maxVelocity, maxTime);
 }
 
@@ -226,7 +243,7 @@ ADXStopLogicEngine *create_ADXStopLogicEngine_init() {
   J2OBJC_CREATE_IMPL(ADXStopLogicEngine, init)
 }
 
-jfloat ADXStopLogicEngine_calcYWithFloat_(ADXStopLogicEngine *self, jfloat time) {
+float ADXStopLogicEngine_calcYWithFloat_(ADXStopLogicEngine *self, float time) {
   self->mDone_ = false;
   if (time <= self->mStage1Duration_) {
     return self->mStage1Velocity_ * time + (self->mStage2Velocity_ - self->mStage1Velocity_) * time * time / (2 * self->mStage1Duration_);
@@ -249,19 +266,19 @@ jfloat ADXStopLogicEngine_calcYWithFloat_(ADXStopLogicEngine *self, jfloat time)
   return self->mStage3EndPosition_;
 }
 
-void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(ADXStopLogicEngine *self, jfloat velocity, jfloat distance, jfloat maxAcceleration, jfloat maxVelocity, jfloat maxTime) {
+void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(ADXStopLogicEngine *self, float velocity, float distance, float maxAcceleration, float maxVelocity, float maxTime) {
   self->mDone_ = false;
   if (velocity == 0) {
     velocity = 0.0001f;
   }
   self->mStage1Velocity_ = velocity;
-  jfloat min_time_to_stop = velocity / maxAcceleration;
-  jfloat stopDistance = min_time_to_stop * velocity / 2;
+  float min_time_to_stop = velocity / maxAcceleration;
+  float stopDistance = min_time_to_stop * velocity / 2;
   if (velocity < 0) {
-    jfloat timeToZeroVelocity = (-velocity) / maxAcceleration;
-    jfloat reversDistanceTraveled = timeToZeroVelocity * velocity / 2;
-    jfloat totalDistance = distance - reversDistanceTraveled;
-    jfloat peak_v = (jfloat) JavaLangMath_sqrtWithDouble_(maxAcceleration * totalDistance);
+    float timeToZeroVelocity = (-velocity) / maxAcceleration;
+    float reversDistanceTraveled = timeToZeroVelocity * velocity / 2;
+    float totalDistance = distance - reversDistanceTraveled;
+    float peak_v = (float) JavaLangMath_sqrtWithDouble_(maxAcceleration * totalDistance);
     if (peak_v < maxVelocity) {
       JreStrongAssign(&self->mType_, @"backward accelerate, decelerate");
       self->mNumberOfStages_ = 2;
@@ -282,8 +299,8 @@ void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(
     self->mStage3Velocity_ = maxVelocity;
     self->mStage1Duration_ = (maxVelocity - velocity) / maxAcceleration;
     self->mStage3Duration_ = maxVelocity / maxAcceleration;
-    jfloat accDist = (velocity + maxVelocity) * self->mStage1Duration_ / 2;
-    jfloat decDist = (maxVelocity * self->mStage3Duration_) / 2;
+    float accDist = (velocity + maxVelocity) * self->mStage1Duration_ / 2;
+    float decDist = (maxVelocity * self->mStage3Duration_) / 2;
     self->mStage2Duration_ = (distance - accDist - decDist) / maxVelocity;
     self->mStage1EndPosition_ = accDist;
     self->mStage2EndPosition_ = (distance - decDist);
@@ -292,7 +309,7 @@ void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(
   }
   if (stopDistance >= distance) {
     JreStrongAssign(&self->mType_, @"hard stop");
-    jfloat time = 2 * distance / velocity;
+    float time = 2 * distance / velocity;
     self->mNumberOfStages_ = 1;
     self->mStage1Velocity_ = velocity;
     self->mStage2Velocity_ = 0;
@@ -300,8 +317,8 @@ void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(
     self->mStage1Duration_ = time;
     return;
   }
-  jfloat distance_before_break = distance - stopDistance;
-  jfloat cruseTime = distance_before_break / velocity;
+  float distance_before_break = distance - stopDistance;
+  float cruseTime = distance_before_break / velocity;
   if (cruseTime + min_time_to_stop < maxTime) {
     JreStrongAssign(&self->mType_, @"cruse decelerate");
     self->mNumberOfStages_ = 2;
@@ -314,7 +331,7 @@ void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(
     self->mStage2Duration_ = velocity / maxAcceleration;
     return;
   }
-  jfloat peak_v = (jfloat) JavaLangMath_sqrtWithDouble_(maxAcceleration * distance + velocity * velocity / 2);
+  float peak_v = (float) JavaLangMath_sqrtWithDouble_(maxAcceleration * distance + velocity * velocity / 2);
   self->mStage1Duration_ = (peak_v - velocity) / maxAcceleration;
   self->mStage2Duration_ = peak_v / maxAcceleration;
   if (peak_v < maxVelocity) {
@@ -336,8 +353,8 @@ void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(
   self->mStage3Velocity_ = maxVelocity;
   self->mStage1Duration_ = (maxVelocity - velocity) / maxAcceleration;
   self->mStage3Duration_ = maxVelocity / maxAcceleration;
-  jfloat accDist = (velocity + maxVelocity) * self->mStage1Duration_ / 2;
-  jfloat decDist = (maxVelocity * self->mStage3Duration_) / 2;
+  float accDist = (velocity + maxVelocity) * self->mStage1Duration_ / 2;
+  float decDist = (maxVelocity * self->mStage3Duration_) / 2;
   self->mStage2Duration_ = (distance - accDist - decDist) / maxVelocity;
   self->mStage1EndPosition_ = accDist;
   self->mStage2EndPosition_ = (distance - decDist);
@@ -345,3 +362,5 @@ void ADXStopLogicEngine_setupWithFloat_withFloat_withFloat_withFloat_withFloat_(
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXStopLogicEngine)
+
+J2OBJC_NAME_MAPPING(ADXStopLogicEngine, "androidx.constraintlayout.core.motion.utils", "ADX")

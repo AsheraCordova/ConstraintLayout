@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\BasicMeasure.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BasicMeasure")
@@ -17,6 +18,8 @@
 #define ADXBasicMeasure_
 
 @class ADXConstraintWidgetContainer;
+@class JavaLangInteger;
+@class JavaLangLong;
 
 /*!
  @brief Implements basic measure for linear resolution
@@ -38,16 +41,16 @@
  @param lastMeasureWidth
  @param lastMeasureHeight
  */
-- (jlong)solverMeasureWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
-                                               withInt:(jint)optimizationLevel
-                                               withInt:(jint)paddingX
-                                               withInt:(jint)paddingY
-                                               withInt:(jint)widthMode
-                                               withInt:(jint)widthSize
-                                               withInt:(jint)heightMode
-                                               withInt:(jint)heightSize
-                                               withInt:(jint)lastMeasureWidth
-                                               withInt:(jint)lastMeasureHeight;
+- (int64_t)solverMeasureWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
+                                                 withInt:(int32_t)optimizationLevel
+                                                 withInt:(int32_t)paddingX
+                                                 withInt:(int32_t)paddingY
+                                                 withInt:(int32_t)widthMode
+                                                 withInt:(int32_t)widthSize
+                                                 withInt:(int32_t)heightMode
+                                                 withInt:(int32_t)heightSize
+                                                 withInt:(int32_t)lastMeasureWidth
+                                                 withInt:(int32_t)lastMeasureHeight;
 
 - (void)updateHierarchyWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout;
 
@@ -59,29 +62,29 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXBasicMeasure)
 
-inline jint ADXBasicMeasure_get_UNSPECIFIED(void);
+inline int32_t ADXBasicMeasure_get_UNSPECIFIED(void);
 #define ADXBasicMeasure_UNSPECIFIED 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, UNSPECIFIED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, UNSPECIFIED, int32_t)
 
-inline jint ADXBasicMeasure_get_EXACTLY(void);
+inline int32_t ADXBasicMeasure_get_EXACTLY(void);
 #define ADXBasicMeasure_EXACTLY 1073741824
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, EXACTLY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, EXACTLY, int32_t)
 
-inline jint ADXBasicMeasure_get_AT_MOST(void);
-#define ADXBasicMeasure_AT_MOST ((jint) 0x80000000)
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, AT_MOST, jint)
+inline int32_t ADXBasicMeasure_get_AT_MOST(void);
+#define ADXBasicMeasure_AT_MOST ((int32_t) 0x80000000)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, AT_MOST, int32_t)
 
-inline jint ADXBasicMeasure_get_MATCH_PARENT(void);
+inline int32_t ADXBasicMeasure_get_MATCH_PARENT(void);
 #define ADXBasicMeasure_MATCH_PARENT -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, MATCH_PARENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, MATCH_PARENT, int32_t)
 
-inline jint ADXBasicMeasure_get_WRAP_CONTENT(void);
+inline int32_t ADXBasicMeasure_get_WRAP_CONTENT(void);
 #define ADXBasicMeasure_WRAP_CONTENT -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, WRAP_CONTENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, WRAP_CONTENT, int32_t)
 
-inline jint ADXBasicMeasure_get_FIXED(void);
+inline int32_t ADXBasicMeasure_get_FIXED(void);
 #define ADXBasicMeasure_FIXED -3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, FIXED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBasicMeasure, FIXED, int32_t)
 
 FOUNDATION_EXPORT void ADXBasicMeasure_initWithADXConstraintWidgetContainer_(ADXBasicMeasure *self, ADXConstraintWidgetContainer *constraintWidgetContainer);
 
@@ -92,6 +95,7 @@ FOUNDATION_EXPORT ADXBasicMeasure *create_ADXBasicMeasure_initWithADXConstraintW
 J2OBJC_TYPE_LITERAL_HEADER(ADXBasicMeasure)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerBasicMeasure ADXBasicMeasure;
+
 
 #endif
 
@@ -114,25 +118,28 @@ J2OBJC_EMPTY_STATIC_INIT(ADXBasicMeasure_Measurer)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXBasicMeasure_Measurer)
 
+
 #endif
 
 #if !defined (ADXBasicMeasure_Measure_) && (INCLUDE_ALL_BasicMeasure || defined(INCLUDE_ADXBasicMeasure_Measure))
 #define ADXBasicMeasure_Measure_
 
 @class ADXConstraintWidget_DimensionBehaviour;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXBasicMeasure_Measure : NSObject {
  @public
   ADXConstraintWidget_DimensionBehaviour *horizontalBehavior_;
   ADXConstraintWidget_DimensionBehaviour *verticalBehavior_;
-  jint horizontalDimension_;
-  jint verticalDimension_;
-  jint measuredWidth_;
-  jint measuredHeight_;
-  jint measuredBaseline_;
-  jboolean measuredHasBaseline_;
-  jboolean measuredNeedsSolverPass_;
-  jint measureStrategy_;
+  int32_t horizontalDimension_;
+  int32_t verticalDimension_;
+  int32_t measuredWidth_;
+  int32_t measuredHeight_;
+  int32_t measuredBaseline_;
+  bool measuredHasBaseline_;
+  bool measuredNeedsSolverPass_;
+  int32_t measureStrategy_;
 }
 
 #pragma mark Public
@@ -146,26 +153,26 @@ J2OBJC_EMPTY_STATIC_INIT(ADXBasicMeasure_Measure)
 J2OBJC_FIELD_SETTER(ADXBasicMeasure_Measure, horizontalBehavior_, ADXConstraintWidget_DimensionBehaviour *)
 J2OBJC_FIELD_SETTER(ADXBasicMeasure_Measure, verticalBehavior_, ADXConstraintWidget_DimensionBehaviour *)
 
-inline jint ADXBasicMeasure_Measure_get_SELF_DIMENSIONS(void);
-inline jint ADXBasicMeasure_Measure_set_SELF_DIMENSIONS(jint value);
-inline jint *ADXBasicMeasure_Measure_getRef_SELF_DIMENSIONS(void);
+inline int32_t ADXBasicMeasure_Measure_get_SELF_DIMENSIONS(void);
+inline int32_t ADXBasicMeasure_Measure_set_SELF_DIMENSIONS(int32_t value);
+inline int32_t *ADXBasicMeasure_Measure_getRef_SELF_DIMENSIONS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXBasicMeasure_Measure_SELF_DIMENSIONS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXBasicMeasure_Measure, SELF_DIMENSIONS, jint)
+FOUNDATION_EXPORT int32_t ADXBasicMeasure_Measure_SELF_DIMENSIONS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXBasicMeasure_Measure, SELF_DIMENSIONS, int32_t)
 
-inline jint ADXBasicMeasure_Measure_get_TRY_GIVEN_DIMENSIONS(void);
-inline jint ADXBasicMeasure_Measure_set_TRY_GIVEN_DIMENSIONS(jint value);
-inline jint *ADXBasicMeasure_Measure_getRef_TRY_GIVEN_DIMENSIONS(void);
+inline int32_t ADXBasicMeasure_Measure_get_TRY_GIVEN_DIMENSIONS(void);
+inline int32_t ADXBasicMeasure_Measure_set_TRY_GIVEN_DIMENSIONS(int32_t value);
+inline int32_t *ADXBasicMeasure_Measure_getRef_TRY_GIVEN_DIMENSIONS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXBasicMeasure_Measure_TRY_GIVEN_DIMENSIONS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXBasicMeasure_Measure, TRY_GIVEN_DIMENSIONS, jint)
+FOUNDATION_EXPORT int32_t ADXBasicMeasure_Measure_TRY_GIVEN_DIMENSIONS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXBasicMeasure_Measure, TRY_GIVEN_DIMENSIONS, int32_t)
 
-inline jint ADXBasicMeasure_Measure_get_USE_GIVEN_DIMENSIONS(void);
-inline jint ADXBasicMeasure_Measure_set_USE_GIVEN_DIMENSIONS(jint value);
-inline jint *ADXBasicMeasure_Measure_getRef_USE_GIVEN_DIMENSIONS(void);
+inline int32_t ADXBasicMeasure_Measure_get_USE_GIVEN_DIMENSIONS(void);
+inline int32_t ADXBasicMeasure_Measure_set_USE_GIVEN_DIMENSIONS(int32_t value);
+inline int32_t *ADXBasicMeasure_Measure_getRef_USE_GIVEN_DIMENSIONS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXBasicMeasure_Measure_USE_GIVEN_DIMENSIONS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS, jint)
+FOUNDATION_EXPORT int32_t ADXBasicMeasure_Measure_USE_GIVEN_DIMENSIONS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS, int32_t)
 
 FOUNDATION_EXPORT void ADXBasicMeasure_Measure_init(ADXBasicMeasure_Measure *self);
 
@@ -174,6 +181,7 @@ FOUNDATION_EXPORT ADXBasicMeasure_Measure *new_ADXBasicMeasure_Measure_init(void
 FOUNDATION_EXPORT ADXBasicMeasure_Measure *create_ADXBasicMeasure_Measure_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXBasicMeasure_Measure)
+
 
 #endif
 

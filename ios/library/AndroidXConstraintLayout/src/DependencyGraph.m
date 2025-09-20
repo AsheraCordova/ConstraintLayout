@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\DependencyGraph.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BasicMeasure.h"
 #include "ChainRun.h"
 #include "ConstraintAnchor.h"
@@ -25,6 +30,11 @@
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/StringBuilder.h"
 #include "java/lang/System.h"
@@ -32,14 +42,19 @@
 #include "java/util/HashSet.h"
 #include "java/util/List.h"
 
-@class JavaUtilArrayList;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXDependencyGraph () {
  @public
   ADXConstraintWidgetContainer *container_;
-  jboolean mNeedBuildGraph_;
-  jboolean mNeedRedoMeasures_;
+  bool mNeedBuildGraph_;
+  bool mNeedRedoMeasures_;
   ADXConstraintWidgetContainer *mContainer_;
   JavaUtilArrayList *mRuns_;
   JavaUtilArrayList *runGroups_;
@@ -47,8 +62,8 @@
   ADXBasicMeasure_Measure *mMeasure_;
 }
 
-- (jint)computeWrapWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
-                                            withInt:(jint)orientation;
+- (int32_t)computeWrapWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
+                                               withInt:(int32_t)orientation;
 
 /*!
  @brief Convenience function to fill in the measure spec
@@ -60,27 +75,27 @@
  */
 - (void)measureWithADXConstraintWidget:(ADXConstraintWidget *)widget
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)horizontalBehavior
-                               withInt:(jint)horizontalDimension
+                               withInt:(int32_t)horizontalDimension
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)verticalBehavior
-                               withInt:(jint)verticalDimension;
+                               withInt:(int32_t)verticalDimension;
 
-- (jboolean)basicMeasureWidgetsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)constraintWidgetContainer;
+- (bool)basicMeasureWidgetsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)constraintWidgetContainer;
 
 - (void)displayGraph;
 
 - (void)applyGroupWithADXDependencyNode:(ADXDependencyNode *)node
-                                withInt:(jint)orientation
-                                withInt:(jint)direction
+                                withInt:(int32_t)orientation
+                                withInt:(int32_t)direction
                   withADXDependencyNode:(ADXDependencyNode *)end
                   withJavaUtilArrayList:(JavaUtilArrayList *)groups
                         withADXRunGroup:(ADXRunGroup *)group;
 
 - (void)findGroupWithADXWidgetRun:(ADXWidgetRun *)run
-                          withInt:(jint)orientation
+                          withInt:(int32_t)orientation
             withJavaUtilArrayList:(JavaUtilArrayList *)groups;
 
 - (NSString *)generateDisplayNodeWithADXDependencyNode:(ADXDependencyNode *)node
-                                           withBoolean:(jboolean)centeredConnection
+                                           withBoolean:(bool)centeredConnection
                                           withNSString:(NSString *)content;
 
 - (NSString *)nodeDefinitionWithADXWidgetRun:(ADXWidgetRun *)run;
@@ -88,8 +103,8 @@ withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehavio
 - (NSString *)generateChainDisplayGraphWithADXChainRun:(ADXChainRun *)chain
                                           withNSString:(NSString *)content;
 
-- (jboolean)isCenteredConnectionWithADXDependencyNode:(ADXDependencyNode *)start
-                                withADXDependencyNode:(ADXDependencyNode *)end;
+- (bool)isCenteredConnectionWithADXDependencyNode:(ADXDependencyNode *)start
+                            withADXDependencyNode:(ADXDependencyNode *)end;
 
 - (NSString *)generateDisplayGraphWithADXWidgetRun:(ADXWidgetRun *)root
                                       withNSString:(NSString *)content;
@@ -103,29 +118,29 @@ J2OBJC_FIELD_SETTER(ADXDependencyGraph, runGroups_, JavaUtilArrayList *)
 J2OBJC_FIELD_SETTER(ADXDependencyGraph, mMeasurer_, id<ADXBasicMeasure_Measurer>)
 J2OBJC_FIELD_SETTER(ADXDependencyGraph, mMeasure_, ADXBasicMeasure_Measure *)
 
-inline jboolean ADXDependencyGraph_get_USE_GROUPS(void);
+inline bool ADXDependencyGraph_get_USE_GROUPS(void);
 #define ADXDependencyGraph_USE_GROUPS true
-J2OBJC_STATIC_FIELD_CONSTANT(ADXDependencyGraph, USE_GROUPS, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXDependencyGraph, USE_GROUPS, bool)
 
-__attribute__((unused)) static jint ADXDependencyGraph_computeWrapWithADXConstraintWidgetContainer_withInt_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *container, jint orientation);
+__attribute__((unused)) static int32_t ADXDependencyGraph_computeWrapWithADXConstraintWidgetContainer_withInt_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *container, int32_t orientation);
 
-__attribute__((unused)) static void ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(ADXDependencyGraph *self, ADXConstraintWidget *widget, ADXConstraintWidget_DimensionBehaviour *horizontalBehavior, jint horizontalDimension, ADXConstraintWidget_DimensionBehaviour *verticalBehavior, jint verticalDimension);
+__attribute__((unused)) static void ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(ADXDependencyGraph *self, ADXConstraintWidget *widget, ADXConstraintWidget_DimensionBehaviour *horizontalBehavior, int32_t horizontalDimension, ADXConstraintWidget_DimensionBehaviour *verticalBehavior, int32_t verticalDimension);
 
-__attribute__((unused)) static jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *constraintWidgetContainer);
+__attribute__((unused)) static bool ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *constraintWidgetContainer);
 
 __attribute__((unused)) static void ADXDependencyGraph_displayGraph(ADXDependencyGraph *self);
 
-__attribute__((unused)) static void ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXDependencyNode_withJavaUtilArrayList_withADXRunGroup_(ADXDependencyGraph *self, ADXDependencyNode *node, jint orientation, jint direction, ADXDependencyNode *end, JavaUtilArrayList *groups, ADXRunGroup *group);
+__attribute__((unused)) static void ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXDependencyNode_withJavaUtilArrayList_withADXRunGroup_(ADXDependencyGraph *self, ADXDependencyNode *node, int32_t orientation, int32_t direction, ADXDependencyNode *end, JavaUtilArrayList *groups, ADXRunGroup *group);
 
-__attribute__((unused)) static void ADXDependencyGraph_findGroupWithADXWidgetRun_withInt_withJavaUtilArrayList_(ADXDependencyGraph *self, ADXWidgetRun *run, jint orientation, JavaUtilArrayList *groups);
+__attribute__((unused)) static void ADXDependencyGraph_findGroupWithADXWidgetRun_withInt_withJavaUtilArrayList_(ADXDependencyGraph *self, ADXWidgetRun *run, int32_t orientation, JavaUtilArrayList *groups);
 
-__attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolean_withNSString_(ADXDependencyGraph *self, ADXDependencyNode *node, jboolean centeredConnection, NSString *content);
+__attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolean_withNSString_(ADXDependencyGraph *self, ADXDependencyNode *node, bool centeredConnection, NSString *content);
 
 __attribute__((unused)) static NSString *ADXDependencyGraph_nodeDefinitionWithADXWidgetRun_(ADXDependencyGraph *self, ADXWidgetRun *run);
 
 __attribute__((unused)) static NSString *ADXDependencyGraph_generateChainDisplayGraphWithADXChainRun_withNSString_(ADXDependencyGraph *self, ADXChainRun *chain, NSString *content);
 
-__attribute__((unused)) static jboolean ADXDependencyGraph_isCenteredConnectionWithADXDependencyNode_withADXDependencyNode_(ADXDependencyGraph *self, ADXDependencyNode *start, ADXDependencyNode *end);
+__attribute__((unused)) static bool ADXDependencyGraph_isCenteredConnectionWithADXDependencyNode_withADXDependencyNode_(ADXDependencyGraph *self, ADXDependencyNode *start, ADXDependencyNode *end);
 
 __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraphWithADXWidgetRun_withNSString_(ADXDependencyGraph *self, ADXWidgetRun *root, NSString *content);
 
@@ -140,8 +155,8 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   JreStrongAssign(&mMeasurer_, measurer);
 }
 
-- (jint)computeWrapWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
-                                            withInt:(jint)orientation {
+- (int32_t)computeWrapWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
+                                               withInt:(int32_t)orientation {
   return ADXDependencyGraph_computeWrapWithADXConstraintWidgetContainer_withInt_(self, container, orientation);
 }
 
@@ -150,7 +165,7 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   if (mNeedBuildGraph_) {
     [self buildGraph];
     {
-      jboolean hasBarrier = false;
+      bool hasBarrier = false;
       for (ADXConstraintWidget * __strong widget in nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->mChildren_)) {
         *IOSBooleanArray_GetRef(nil_chk(((ADXConstraintWidget *) nil_chk(widget))->isTerminalWidget_), ADXConstraintWidget_HORIZONTAL) = true;
         *IOSBooleanArray_GetRef(widget->isTerminalWidget_, ADXConstraintWidget_VERTICAL) = true;
@@ -167,7 +182,7 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   }
 }
 
-- (jboolean)directMeasureWithBoolean:(jboolean)optimizeWrap {
+- (bool)directMeasureWithBoolean:(bool)optimizeWrap {
   optimizeWrap &= ADXDependencyGraph_USE_GROUPS;
   if (mNeedBuildGraph_ || mNeedRedoMeasures_) {
     for (ADXConstraintWidget * __strong widget in nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->mChildren_)) {
@@ -182,7 +197,7 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
     [((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->verticalRun_)) reset];
     mNeedRedoMeasures_ = false;
   }
-  jboolean avoid = ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(self, mContainer_);
+  bool avoid = ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(self, mContainer_);
   if (avoid) {
     return false;
   }
@@ -193,8 +208,8 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   if (mNeedBuildGraph_) {
     [self buildGraph];
   }
-  jint x1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getX];
-  jint y1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getY];
+  int32_t x1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getX];
+  int32_t y1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getY];
   [((ADXDependencyNode *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->horizontalRun_))->start_)) resolveWithInt:x1];
   [((ADXDependencyNode *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->verticalRun_))->start_)) resolveWithInt:y1];
   [self measureWidgets];
@@ -218,14 +233,14 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
       [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->verticalRun_))->dimension_)) resolveWithInt:[container_ getHeight]];
     }
   }
-  jboolean checkRoot = false;
+  bool checkRoot = false;
   if (IOSObjectArray_Get(nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->mListDimensionBehaviors_), ADXConstraintWidget_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || IOSObjectArray_Get(container_->mListDimensionBehaviors_, ADXConstraintWidget_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-    jint x2 = x1 + [container_ getWidth];
+    int32_t x2 = x1 + [container_ getWidth];
     [((ADXDependencyNode *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->horizontalRun_))->end_)) resolveWithInt:x2];
     [((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->horizontalRun_))->dimension_)) resolveWithInt:x2 - x1];
     [self measureWidgets];
     if (IOSObjectArray_Get(nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->mListDimensionBehaviors_), ADXConstraintWidget_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || IOSObjectArray_Get(container_->mListDimensionBehaviors_, ADXConstraintWidget_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-      jint y2 = y1 + [container_ getHeight];
+      int32_t y2 = y1 + [container_ getHeight];
       [((ADXDependencyNode *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->verticalRun_))->end_)) resolveWithInt:y2];
       [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->verticalRun_))->dimension_)) resolveWithInt:y2 - y1];
     }
@@ -235,14 +250,14 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   else {
   }
   for (ADXWidgetRun * __strong run in nil_chk(mRuns_)) {
-    if (((ADXWidgetRun *) nil_chk(run))->widget_ == container_ && !run->resolved_) {
+    if (JreObjectEqualsEquals(((ADXWidgetRun *) nil_chk(run))->widget_, container_) && !run->resolved_) {
       continue;
     }
     [run applyToWidget];
   }
-  jboolean allResolved = true;
+  bool allResolved = true;
   for (ADXWidgetRun * __strong run in mRuns_) {
-    if (!checkRoot && ((ADXWidgetRun *) nil_chk(run))->widget_ == container_) {
+    if (!checkRoot && JreObjectEqualsEquals(((ADXWidgetRun *) nil_chk(run))->widget_, container_)) {
       continue;
     }
     if (!((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(run))->start_))->resolved_) {
@@ -263,7 +278,7 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   return allResolved;
 }
 
-- (jboolean)directMeasureSetupWithBoolean:(jboolean)optimizeWrap {
+- (bool)directMeasureSetupWithBoolean:(bool)optimizeWrap {
   if (mNeedBuildGraph_) {
     for (ADXConstraintWidget * __strong widget in nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->mChildren_)) {
       [((ADXConstraintWidget *) nil_chk(widget)) ensureWidgetRuns];
@@ -285,7 +300,7 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
     [container_->verticalRun_ reset];
     [self buildGraph];
   }
-  jboolean avoid = ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(self, mContainer_);
+  bool avoid = ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(self, mContainer_);
   if (avoid) {
     return false;
   }
@@ -296,13 +311,13 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   return true;
 }
 
-- (jboolean)directMeasureWithOrientationWithBoolean:(jboolean)optimizeWrap
-                                            withInt:(jint)orientation {
+- (bool)directMeasureWithOrientationWithBoolean:(bool)optimizeWrap
+                                        withInt:(int32_t)orientation {
   optimizeWrap &= ADXDependencyGraph_USE_GROUPS;
   ADXConstraintWidget_DimensionBehaviour *originalHorizontalDimension = JreRetainedLocalValue([((ADXConstraintWidgetContainer *) nil_chk(container_)) getDimensionBehaviourWithInt:ADXConstraintWidget_HORIZONTAL]);
   ADXConstraintWidget_DimensionBehaviour *originalVerticalDimension = JreRetainedLocalValue([((ADXConstraintWidgetContainer *) nil_chk(container_)) getDimensionBehaviourWithInt:ADXConstraintWidget_VERTICAL]);
-  jint x1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getX];
-  jint y1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getY];
+  int32_t x1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getX];
+  int32_t y1 = [((ADXConstraintWidgetContainer *) nil_chk(container_)) getY];
   if (optimizeWrap && (originalHorizontalDimension == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || originalVerticalDimension == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT))) {
     for (ADXWidgetRun * __strong run in nil_chk(mRuns_)) {
       if (((ADXWidgetRun *) nil_chk(run))->orientation_ == orientation && ![run supportsWrapComputation]) {
@@ -325,10 +340,10 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
       }
     }
   }
-  jboolean checkRoot = false;
+  bool checkRoot = false;
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
     if (IOSObjectArray_Get(nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->mListDimensionBehaviors_), ADXConstraintWidget_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || IOSObjectArray_Get(container_->mListDimensionBehaviors_, ADXConstraintWidget_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-      jint x2 = x1 + [container_ getWidth];
+      int32_t x2 = x1 + [container_ getWidth];
       [((ADXDependencyNode *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->horizontalRun_))->end_)) resolveWithInt:x2];
       [((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->horizontalRun_))->dimension_)) resolveWithInt:x2 - x1];
       checkRoot = true;
@@ -336,7 +351,7 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
   }
   else {
     if (IOSObjectArray_Get(nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->mListDimensionBehaviors_), ADXConstraintWidget_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || IOSObjectArray_Get(container_->mListDimensionBehaviors_, ADXConstraintWidget_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-      jint y2 = y1 + [container_ getHeight];
+      int32_t y2 = y1 + [container_ getHeight];
       [((ADXDependencyNode *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->verticalRun_))->end_)) resolveWithInt:y2];
       [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container_))->verticalRun_))->dimension_)) resolveWithInt:y2 - y1];
       checkRoot = true;
@@ -347,17 +362,17 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
     if (((ADXWidgetRun *) nil_chk(run))->orientation_ != orientation) {
       continue;
     }
-    if (run->widget_ == container_ && !run->resolved_) {
+    if (JreObjectEqualsEquals(run->widget_, container_) && !run->resolved_) {
       continue;
     }
     [run applyToWidget];
   }
-  jboolean allResolved = true;
+  bool allResolved = true;
   for (ADXWidgetRun * __strong run in mRuns_) {
     if (((ADXWidgetRun *) nil_chk(run))->orientation_ != orientation) {
       continue;
     }
-    if (!checkRoot && run->widget_ == container_) {
+    if (!checkRoot && JreObjectEqualsEquals(run->widget_, container_)) {
       continue;
     }
     if (!((ADXDependencyNode *) nil_chk(run->start_))->resolved_) {
@@ -380,13 +395,13 @@ __attribute__((unused)) static NSString *ADXDependencyGraph_generateDisplayGraph
 
 - (void)measureWithADXConstraintWidget:(ADXConstraintWidget *)widget
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)horizontalBehavior
-                               withInt:(jint)horizontalDimension
+                               withInt:(int32_t)horizontalDimension
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)verticalBehavior
-                               withInt:(jint)verticalDimension {
+                               withInt:(int32_t)verticalDimension {
   ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, horizontalBehavior, horizontalDimension, verticalBehavior, verticalDimension);
 }
 
-- (jboolean)basicMeasureWidgetsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)constraintWidgetContainer {
+- (bool)basicMeasureWidgetsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)constraintWidgetContainer {
   return ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(self, constraintWidgetContainer);
 }
 
@@ -397,12 +412,12 @@ withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehavio
     }
     ADXConstraintWidget_DimensionBehaviour *horiz = IOSObjectArray_Get(nil_chk(widget->mListDimensionBehaviors_), ADXConstraintWidget_HORIZONTAL);
     ADXConstraintWidget_DimensionBehaviour *vert = IOSObjectArray_Get(widget->mListDimensionBehaviors_, ADXConstraintWidget_VERTICAL);
-    jint horizMatchConstraintsType = widget->mMatchConstraintDefaultWidth_;
-    jint vertMatchConstraintsType = widget->mMatchConstraintDefaultHeight_;
-    jboolean horizWrap = horiz == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (horiz == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && horizMatchConstraintsType == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP);
-    jboolean vertWrap = vert == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (vert == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && vertMatchConstraintsType == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP);
-    jboolean horizResolved = ((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(widget->horizontalRun_))->dimension_))->resolved_;
-    jboolean vertResolved = ((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_->resolved_;
+    int32_t horizMatchConstraintsType = widget->mMatchConstraintDefaultWidth_;
+    int32_t vertMatchConstraintsType = widget->mMatchConstraintDefaultHeight_;
+    bool horizWrap = horiz == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (horiz == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && horizMatchConstraintsType == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP);
+    bool vertWrap = vert == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (vert == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && vertMatchConstraintsType == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP);
+    bool horizResolved = ((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(widget->horizontalRun_))->dimension_))->resolved_;
+    bool vertResolved = ((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_->resolved_;
     if (horizResolved && vertResolved) {
       ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), widget->horizontalRun_->dimension_->value_, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), widget->verticalRun_->dimension_->value_);
       widget->measured_ = true;
@@ -499,7 +514,7 @@ withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehavio
     [((ADXWidgetRun *) nil_chk(run)) clear];
   }
   for (ADXWidgetRun * __strong run in runs) {
-    if (((ADXWidgetRun *) nil_chk(run))->widget_ == mContainer_) {
+    if (JreObjectEqualsEquals(((ADXWidgetRun *) nil_chk(run))->widget_, mContainer_)) {
       continue;
     }
     [run apply];
@@ -511,8 +526,8 @@ withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehavio
 }
 
 - (void)applyGroupWithADXDependencyNode:(ADXDependencyNode *)node
-                                withInt:(jint)orientation
-                                withInt:(jint)direction
+                                withInt:(int32_t)orientation
+                                withInt:(int32_t)direction
                   withADXDependencyNode:(ADXDependencyNode *)end
                   withJavaUtilArrayList:(JavaUtilArrayList *)groups
                         withADXRunGroup:(ADXRunGroup *)group {
@@ -520,13 +535,13 @@ withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehavio
 }
 
 - (void)findGroupWithADXWidgetRun:(ADXWidgetRun *)run
-                          withInt:(jint)orientation
+                          withInt:(int32_t)orientation
             withJavaUtilArrayList:(JavaUtilArrayList *)groups {
   ADXDependencyGraph_findGroupWithADXWidgetRun_withInt_withJavaUtilArrayList_(self, run, orientation, groups);
 }
 
 - (NSString *)generateDisplayNodeWithADXDependencyNode:(ADXDependencyNode *)node
-                                           withBoolean:(jboolean)centeredConnection
+                                           withBoolean:(bool)centeredConnection
                                           withNSString:(NSString *)content {
   return ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolean_withNSString_(self, node, centeredConnection, content);
 }
@@ -540,8 +555,8 @@ withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehavio
   return ADXDependencyGraph_generateChainDisplayGraphWithADXChainRun_withNSString_(self, chain, content);
 }
 
-- (jboolean)isCenteredConnectionWithADXDependencyNode:(ADXDependencyNode *)start
-                                withADXDependencyNode:(ADXDependencyNode *)end {
+- (bool)isCenteredConnectionWithADXDependencyNode:(ADXDependencyNode *)start
+                            withADXDependencyNode:(ADXDependencyNode *)end {
   return ADXDependencyGraph_isCenteredConnectionWithADXDependencyNode_withADXDependencyNode_(self, start, end);
 }
 
@@ -652,18 +667,18 @@ ADXDependencyGraph *create_ADXDependencyGraph_initWithADXConstraintWidgetContain
   J2OBJC_CREATE_IMPL(ADXDependencyGraph, initWithADXConstraintWidgetContainer_, container)
 }
 
-jint ADXDependencyGraph_computeWrapWithADXConstraintWidgetContainer_withInt_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *container, jint orientation) {
-  jint count = [((JavaUtilArrayList *) nil_chk(self->mGroups_)) size];
-  jlong wrapSize = 0;
-  for (jint i = 0; i < count; i++) {
+int32_t ADXDependencyGraph_computeWrapWithADXConstraintWidgetContainer_withInt_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *container, int32_t orientation) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(self->mGroups_)) size];
+  int64_t wrapSize = 0;
+  for (int32_t i = 0; i < count; i++) {
     ADXRunGroup *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(self->mGroups_)) getWithInt:i]);
-    jlong size = [((ADXRunGroup *) nil_chk(run)) computeWrapSizeWithADXConstraintWidgetContainer:container withInt:orientation];
+    int64_t size = [((ADXRunGroup *) nil_chk(run)) computeWrapSizeWithADXConstraintWidgetContainer:container withInt:orientation];
     wrapSize = JavaLangMath_maxWithLong_withLong_(wrapSize, size);
   }
-  return (jint) wrapSize;
+  return (int32_t) wrapSize;
 }
 
-void ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(ADXDependencyGraph *self, ADXConstraintWidget *widget, ADXConstraintWidget_DimensionBehaviour *horizontalBehavior, jint horizontalDimension, ADXConstraintWidget_DimensionBehaviour *verticalBehavior, jint verticalDimension) {
+void ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(ADXDependencyGraph *self, ADXConstraintWidget *widget, ADXConstraintWidget_DimensionBehaviour *horizontalBehavior, int32_t horizontalDimension, ADXConstraintWidget_DimensionBehaviour *verticalBehavior, int32_t verticalDimension) {
   JreStrongAssign(&((ADXBasicMeasure_Measure *) nil_chk(self->mMeasure_))->horizontalBehavior_, horizontalBehavior);
   JreStrongAssign(&self->mMeasure_->verticalBehavior_, verticalBehavior);
   self->mMeasure_->horizontalDimension_ = horizontalDimension;
@@ -675,7 +690,7 @@ void ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_D
   [widget setBaselineDistanceWithInt:((ADXBasicMeasure_Measure *) nil_chk(self->mMeasure_))->measuredBaseline_];
 }
 
-jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *constraintWidgetContainer) {
+bool ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_(ADXDependencyGraph *self, ADXConstraintWidgetContainer *constraintWidgetContainer) {
   for (ADXConstraintWidget * __strong widget in nil_chk(((ADXConstraintWidgetContainer *) nil_chk(constraintWidgetContainer))->mChildren_)) {
     ADXConstraintWidget_DimensionBehaviour *horizontal = IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(widget))->mListDimensionBehaviors_), ADXConstraintWidget_HORIZONTAL);
     ADXConstraintWidget_DimensionBehaviour *vertical = IOSObjectArray_Get(widget->mListDimensionBehaviors_, ADXConstraintWidget_VERTICAL);
@@ -720,12 +735,12 @@ jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_
     JreStrongAssign(&((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimensionBehavior_, vertical);
     widget->verticalRun_->matchConstraintsType_ = widget->mMatchConstraintDefaultHeight_;
     if ((horizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) || horizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || horizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)) && (vertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) || vertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || vertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT))) {
-      jint width = [widget getWidth];
+      int32_t width = [widget getWidth];
       if (horizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
         width = [constraintWidgetContainer getWidth] - ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mMargin_ - ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mMargin_;
         horizontal = JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
       }
-      jint height = [widget getHeight];
+      int32_t height = [widget getHeight];
       if (vertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
         height = [constraintWidgetContainer getHeight] - ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mMargin_ - ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mMargin_;
         vertical = JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
@@ -741,8 +756,8 @@ jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_
         if (vertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)) {
           ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT), 0, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT), 0);
         }
-        jint height = [widget getHeight];
-        jint width = JreFpToInt((height * widget->mDimensionRatio_ + 0.5f));
+        int32_t height = [widget getHeight];
+        int32_t width = JreFpToInt((height * widget->mDimensionRatio_ + 0.5f));
         ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), width, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), height);
         [((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(widget->horizontalRun_))->dimension_)) resolveWithInt:[widget getWidth]];
         [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_)) resolveWithInt:[widget getHeight]];
@@ -756,9 +771,9 @@ jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_
       }
       else if (widget->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT) {
         if (IOSObjectArray_Get(nil_chk(constraintWidgetContainer->mListDimensionBehaviors_), ADXConstraintWidget_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || IOSObjectArray_Get(constraintWidgetContainer->mListDimensionBehaviors_, ADXConstraintWidget_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-          jfloat percent = widget->mMatchConstraintPercentWidth_;
-          jint width = JreFpToInt((0.5f + percent * [constraintWidgetContainer getWidth]));
-          jint height = [widget getHeight];
+          float percent = widget->mMatchConstraintPercentWidth_;
+          int32_t width = JreFpToInt((0.5f + percent * [constraintWidgetContainer getWidth]));
+          int32_t height = [widget getHeight];
           ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), width, vertical, height);
           [((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(widget->horizontalRun_))->dimension_)) resolveWithInt:[widget getWidth]];
           [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_)) resolveWithInt:[widget getHeight]];
@@ -781,12 +796,12 @@ jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_
         if (horizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)) {
           ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT), 0, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT), 0);
         }
-        jint width = [widget getWidth];
-        jfloat ratio = widget->mDimensionRatio_;
+        int32_t width = [widget getWidth];
+        float ratio = widget->mDimensionRatio_;
         if ([widget getDimensionRatioSide] == ADXConstraintWidget_UNKNOWN) {
           ratio = 1.0f / ratio;
         }
-        jint height = JreFpToInt((width * ratio + 0.5f));
+        int32_t height = JreFpToInt((width * ratio + 0.5f));
         ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), width, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), height);
         [((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(widget->horizontalRun_))->dimension_)) resolveWithInt:[widget getWidth]];
         [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_)) resolveWithInt:[widget getHeight]];
@@ -800,9 +815,9 @@ jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_
       }
       else if (widget->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT) {
         if (IOSObjectArray_Get(nil_chk(constraintWidgetContainer->mListDimensionBehaviors_), ADXConstraintWidget_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || IOSObjectArray_Get(constraintWidgetContainer->mListDimensionBehaviors_, ADXConstraintWidget_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-          jfloat percent = widget->mMatchConstraintPercentHeight_;
-          jint width = [widget getWidth];
-          jint height = JreFpToInt((0.5f + percent * [constraintWidgetContainer getHeight]));
+          float percent = widget->mMatchConstraintPercentHeight_;
+          int32_t width = [widget getWidth];
+          int32_t height = JreFpToInt((0.5f + percent * [constraintWidgetContainer getHeight]));
           ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, horizontal, width, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), height);
           [((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(widget->horizontalRun_))->dimension_)) resolveWithInt:[widget getWidth]];
           [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_)) resolveWithInt:[widget getHeight]];
@@ -827,10 +842,10 @@ jboolean ADXDependencyGraph_basicMeasureWidgetsWithADXConstraintWidgetContainer_
         ((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_))->wrapValue_ = [widget getHeight];
       }
       else if (widget->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT && widget->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT && IOSObjectArray_Get(nil_chk(constraintWidgetContainer->mListDimensionBehaviors_), ADXConstraintWidget_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) && IOSObjectArray_Get(constraintWidgetContainer->mListDimensionBehaviors_, ADXConstraintWidget_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED)) {
-        jfloat horizPercent = widget->mMatchConstraintPercentWidth_;
-        jfloat vertPercent = widget->mMatchConstraintPercentHeight_;
-        jint width = JreFpToInt((0.5f + horizPercent * [constraintWidgetContainer getWidth]));
-        jint height = JreFpToInt((0.5f + vertPercent * [constraintWidgetContainer getHeight]));
+        float horizPercent = widget->mMatchConstraintPercentWidth_;
+        float vertPercent = widget->mMatchConstraintPercentHeight_;
+        int32_t width = JreFpToInt((0.5f + horizPercent * [constraintWidgetContainer getWidth]));
+        int32_t height = JreFpToInt((0.5f + vertPercent * [constraintWidgetContainer getHeight]));
         ADXDependencyGraph_measureWithADXConstraintWidget_withADXConstraintWidget_DimensionBehaviour_withInt_withADXConstraintWidget_DimensionBehaviour_withInt_(self, widget, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), width, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED), height);
         [((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(widget->horizontalRun_))->dimension_)) resolveWithInt:[widget getWidth]];
         [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(widget->verticalRun_))->dimension_)) resolveWithInt:[widget getHeight]];
@@ -850,9 +865,9 @@ void ADXDependencyGraph_displayGraph(ADXDependencyGraph *self) {
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$$", @"content:<<\n", content, @"\n>>")];
 }
 
-void ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXDependencyNode_withJavaUtilArrayList_withADXRunGroup_(ADXDependencyGraph *self, ADXDependencyNode *node, jint orientation, jint direction, ADXDependencyNode *end, JavaUtilArrayList *groups, ADXRunGroup *group) {
+void ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXDependencyNode_withJavaUtilArrayList_withADXRunGroup_(ADXDependencyGraph *self, ADXDependencyNode *node, int32_t orientation, int32_t direction, ADXDependencyNode *end, JavaUtilArrayList *groups, ADXRunGroup *group) {
   ADXWidgetRun *run = JreRetainedLocalValue(((ADXDependencyNode *) nil_chk(node))->run_);
-  if (((ADXWidgetRun *) nil_chk(run))->runGroup_ != nil || run == ((ADXConstraintWidgetContainer *) nil_chk(self->container_))->horizontalRun_ || run == self->container_->verticalRun_) {
+  if (((ADXWidgetRun *) nil_chk(run))->runGroup_ != nil || JreObjectEqualsEquals(run, ((ADXConstraintWidgetContainer *) nil_chk(self->container_))->horizontalRun_) || JreObjectEqualsEquals(run, self->container_->verticalRun_)) {
     return;
   }
   if (group == nil) {
@@ -879,13 +894,13 @@ void ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXD
     }
   }
   for (ADXDependencyNode * __strong target in nil_chk(run->start_->targets_)) {
-    if (target == end) {
+    if (JreObjectEqualsEquals(target, end)) {
       group->dual_ = true;
     }
     ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXDependencyNode_withJavaUtilArrayList_withADXRunGroup_(self, target, orientation, ADXRunGroup_START, end, groups, group);
   }
   for (ADXDependencyNode * __strong target in run->end_->targets_) {
-    if (target == end) {
+    if (JreObjectEqualsEquals(target, end)) {
       group->dual_ = true;
     }
     ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXDependencyNode_withJavaUtilArrayList_withADXRunGroup_(self, target, orientation, ADXRunGroup_END, end, groups, group);
@@ -897,7 +912,7 @@ void ADXDependencyGraph_applyGroupWithADXDependencyNode_withInt_withInt_withADXD
   }
 }
 
-void ADXDependencyGraph_findGroupWithADXWidgetRun_withInt_withJavaUtilArrayList_(ADXDependencyGraph *self, ADXWidgetRun *run, jint orientation, JavaUtilArrayList *groups) {
+void ADXDependencyGraph_findGroupWithADXWidgetRun_withInt_withJavaUtilArrayList_(ADXDependencyGraph *self, ADXWidgetRun *run, int32_t orientation, JavaUtilArrayList *groups) {
   for (id<ADXDependency> __strong dependent in nil_chk(((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(run))->start_))->dependencies_)) {
     if ([dependent isKindOfClass:[ADXDependencyNode class]]) {
       ADXDependencyNode *node = (ADXDependencyNode *) dependent;
@@ -928,7 +943,7 @@ void ADXDependencyGraph_findGroupWithADXWidgetRun_withInt_withJavaUtilArrayList_
   }
 }
 
-NSString *ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolean_withNSString_(ADXDependencyGraph *self, ADXDependencyNode *node, jboolean centeredConnection, NSString *content) {
+NSString *ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolean_withNSString_(ADXDependencyGraph *self, ADXDependencyNode *node, bool centeredConnection, NSString *content) {
   JavaLangStringBuilder *contentBuilder = create_JavaLangStringBuilder_initWithNSString_(content);
   for (ADXDependencyNode * __strong target in nil_chk(((ADXDependencyNode *) nil_chk(node))->targets_)) {
     NSString *constraint = JreStrcat("C$", 0x000a, [node name]);
@@ -957,7 +972,7 @@ NSString *ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolea
 }
 
 NSString *ADXDependencyGraph_nodeDefinitionWithADXWidgetRun_(ADXDependencyGraph *self, ADXWidgetRun *run) {
-  jint orientation = [run isKindOfClass:[ADXVerticalWidgetRun class]] ? ADXConstraintWidget_VERTICAL : ADXConstraintWidget_HORIZONTAL;
+  int32_t orientation = [run isKindOfClass:[ADXVerticalWidgetRun class]] ? ADXConstraintWidget_VERTICAL : ADXConstraintWidget_HORIZONTAL;
   NSString *name = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getDebugName]);
   JavaLangStringBuilder *definition = create_JavaLangStringBuilder_initWithNSString_(name);
   ADXConstraintWidget_DimensionBehaviour *behaviour = orientation == ADXConstraintWidget_HORIZONTAL ? [((ADXConstraintWidget *) nil_chk(run->widget_)) getHorizontalDimensionBehaviour] : [((ADXConstraintWidget *) nil_chk(run->widget_)) getVerticalDimensionBehaviour];
@@ -1033,7 +1048,7 @@ NSString *ADXDependencyGraph_nodeDefinitionWithADXWidgetRun_(ADXDependencyGraph 
 }
 
 NSString *ADXDependencyGraph_generateChainDisplayGraphWithADXChainRun_withNSString_(ADXDependencyGraph *self, ADXChainRun *chain, NSString *content) {
-  jint orientation = ((ADXChainRun *) nil_chk(chain))->orientation_;
+  int32_t orientation = ((ADXChainRun *) nil_chk(chain))->orientation_;
   JavaLangStringBuilder *subgroup = create_JavaLangStringBuilder_initWithNSString_(@"subgraph ");
   [subgroup appendWithNSString:@"cluster_"];
   [subgroup appendWithNSString:[((ADXConstraintWidget *) nil_chk(chain->widget_)) getDebugName]];
@@ -1060,16 +1075,16 @@ NSString *ADXDependencyGraph_generateChainDisplayGraphWithADXChainRun_withNSStri
   return JreStrcat("$$@", content, definitions, subgroup);
 }
 
-jboolean ADXDependencyGraph_isCenteredConnectionWithADXDependencyNode_withADXDependencyNode_(ADXDependencyGraph *self, ADXDependencyNode *start, ADXDependencyNode *end) {
-  jint startTargets = 0;
-  jint endTargets = 0;
+bool ADXDependencyGraph_isCenteredConnectionWithADXDependencyNode_withADXDependencyNode_(ADXDependencyGraph *self, ADXDependencyNode *start, ADXDependencyNode *end) {
+  int32_t startTargets = 0;
+  int32_t endTargets = 0;
   for (ADXDependencyNode * __strong s in nil_chk(((ADXDependencyNode *) nil_chk(start))->targets_)) {
-    if (s != end) {
+    if (!JreObjectEqualsEquals(s, end)) {
       startTargets++;
     }
   }
   for (ADXDependencyNode * __strong e in ((ADXDependencyNode *) nil_chk(end))->targets_) {
-    if (e != start) {
+    if (!JreObjectEqualsEquals(e, start)) {
       endTargets++;
     }
   }
@@ -1084,7 +1099,7 @@ NSString *ADXDependencyGraph_generateDisplayGraphWithADXWidgetRun_withNSString_(
     return content;
   }
   [sb appendWithNSString:ADXDependencyGraph_nodeDefinitionWithADXWidgetRun_(self, root)];
-  jboolean centeredConnection = ADXDependencyGraph_isCenteredConnectionWithADXDependencyNode_withADXDependencyNode_(self, start, end);
+  bool centeredConnection = ADXDependencyGraph_isCenteredConnectionWithADXDependencyNode_withADXDependencyNode_(self, start, end);
   content = ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolean_withNSString_(self, start, centeredConnection, content);
   content = ADXDependencyGraph_generateDisplayNodeWithADXDependencyNode_withBoolean_withNSString_(self, end, centeredConnection, content);
   if ([root isKindOfClass:[ADXVerticalWidgetRun class]]) {
@@ -1154,3 +1169,5 @@ NSString *ADXDependencyGraph_generateDisplayGraphWithADXWidgetRun_withNSString_(
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXDependencyGraph)
+
+J2OBJC_NAME_MAPPING(ADXDependencyGraph, "androidx.constraintlayout.core.widgets.analyzer", "ADX")

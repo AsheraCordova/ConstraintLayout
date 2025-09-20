@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\DimensionDependency.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_DimensionDependency")
@@ -21,17 +22,18 @@
 #include "DependencyNode.h"
 
 @class ADXWidgetRun;
+@class JavaLangInteger;
 
 @interface ADXDimensionDependency : ADXDependencyNode {
  @public
-  jint wrapValue_;
+  int32_t wrapValue_;
 }
 
 #pragma mark Public
 
 - (instancetype)initPackagePrivateWithADXWidgetRun:(ADXWidgetRun *)run;
 
-- (void)resolveWithInt:(jint)value;
+- (void)resolveWithInt:(int32_t)value;
 
 // Disallowed inherited constructors, do not use.
 
@@ -50,6 +52,7 @@ FOUNDATION_EXPORT ADXDimensionDependency *create_ADXDimensionDependency_initPack
 J2OBJC_TYPE_LITERAL_HEADER(ADXDimensionDependency)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerDimensionDependency ADXDimensionDependency;
+
 
 #endif
 

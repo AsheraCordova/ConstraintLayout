@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyPositionBase.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyPositionBase")
@@ -24,6 +25,9 @@
 @class ADView;
 @class IOSFloatArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashSet;
 
 /*!
@@ -31,7 +35,7 @@
  */
 @interface ADXKeyPositionBase : ADXKey {
  @public
-  jint mCurveFit_;
+  int32_t mCurveFit_;
 }
 
 #pragma mark Public
@@ -44,12 +48,12 @@
  @param x
  @param y
  */
-- (jboolean)intersectsWithInt:(jint)layoutWidth
-                      withInt:(jint)layoutHeight
-                  withADRectF:(ADRectF *)start
-                  withADRectF:(ADRectF *)end
-                    withFloat:(jfloat)x
-                    withFloat:(jfloat)y;
+- (bool)intersectsWithInt:(int32_t)layoutWidth
+                  withInt:(int32_t)layoutHeight
+              withADRectF:(ADRectF *)start
+              withADRectF:(ADRectF *)end
+                withFloat:(float)x
+                withFloat:(float)y;
 
 #pragma mark Package-Private
 
@@ -64,22 +68,22 @@
  @param end_x
  @param end_y
  */
-- (void)calcPositionWithInt:(jint)layoutWidth
-                    withInt:(jint)layoutHeight
-                  withFloat:(jfloat)start_x
-                  withFloat:(jfloat)start_y
-                  withFloat:(jfloat)end_x
-                  withFloat:(jfloat)end_y;
+- (void)calcPositionWithInt:(int32_t)layoutWidth
+                    withInt:(int32_t)layoutHeight
+                  withFloat:(float)start_x
+                  withFloat:(float)start_y
+                  withFloat:(float)end_x
+                  withFloat:(float)end_y;
 
 - (void)getAttributeNamesWithJavaUtilHashSet:(JavaUtilHashSet *)attributes;
 
 /*!
  */
-- (jfloat)getPositionX;
+- (float)getPositionX;
 
 /*!
  */
-- (jfloat)getPositionY;
+- (float)getPositionY;
 
 /*!
  @param view
@@ -93,8 +97,8 @@
 - (void)positionAttributesWithADView:(ADView *)view
                          withADRectF:(ADRectF *)start
                          withADRectF:(ADRectF *)end
-                           withFloat:(jfloat)x
-                           withFloat:(jfloat)y
+                           withFloat:(float)x
+                           withFloat:(float)y
                    withNSStringArray:(IOSObjectArray *)attribute
                       withFloatArray:(IOSFloatArray *)value;
 
@@ -106,15 +110,16 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXKeyPositionBase)
 
-inline jfloat ADXKeyPositionBase_get_SELECTION_SLOPE(void);
+inline float ADXKeyPositionBase_get_SELECTION_SLOPE(void);
 #define ADXKeyPositionBase_SELECTION_SLOPE 20.0f
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyPositionBase, SELECTION_SLOPE, jfloat)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyPositionBase, SELECTION_SLOPE, float)
 
 FOUNDATION_EXPORT void ADXKeyPositionBase_initPackagePrivate(ADXKeyPositionBase *self);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyPositionBase)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetKeyPositionBase ADXKeyPositionBase;
+
 
 #endif
 

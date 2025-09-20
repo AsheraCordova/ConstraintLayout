@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Barrier.h"
 #include "BasicMeasure.h"
 #include "Bundle.h"
@@ -48,11 +53,14 @@
 #include "ViewGroup.h"
 #include "ViewParent.h"
 #include "ViewState.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Enum.h"
 #include "java/lang/Exception.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/System.h"
@@ -60,59 +68,62 @@
 #include "java/util/HashMap.h"
 #include "java/util/concurrent/CopyOnWriteArrayList.h"
 
-@class JavaUtilArrayList;
-@class JavaUtilConcurrentCopyOnWriteArrayList;
-@protocol JavaLangRunnable;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
 @interface ADXMotionLayout () {
  @public
-  jint mBeginState_;
-  jint mEndState_;
-  jint mLastWidthMeasureSpec_;
-  jint mLastHeightMeasureSpec_;
-  jboolean mInteractionEnabled_;
-  jlong mAnimationStartTime_;
-  jfloat mTransitionDuration_;
-  jlong mTransitionLastTime_;
-  jboolean mTransitionInstantly_;
+  int32_t mBeginState_;
+  int32_t mEndState_;
+  int32_t mLastWidthMeasureSpec_;
+  int32_t mLastHeightMeasureSpec_;
+  bool mInteractionEnabled_;
+  int64_t mAnimationStartTime_;
+  float mTransitionDuration_;
+  int64_t mTransitionLastTime_;
+  bool mTransitionInstantly_;
   id<ADXMotionLayout_TransitionListener> mTransitionListener_;
-  jfloat lastPos_;
-  jfloat lastY_;
-  jboolean mTemporalInterpolator_;
+  float lastPos_;
+  float lastY_;
+  bool mTemporalInterpolator_;
   ADXStopLogic *mStopLogic_;
   ADXMotionLayout_DecelerateInterpolator *mDecelerateLogic_;
-  jboolean mKeepAnimating_;
+  bool mKeepAnimating_;
   JavaUtilArrayList *mOnShowHelpers_;
   JavaUtilArrayList *mOnHideHelpers_;
   JavaUtilArrayList *mDecoratorsHelpers_;
   JavaUtilConcurrentCopyOnWriteArrayList *mTransitionListeners_;
-  jint mFrames_;
-  jfloat mLastFps_;
-  jint mListenerState_;
-  jfloat mListenerPosition_;
+  int32_t mFrames_;
+  float mLastFps_;
+  int32_t mListenerState_;
+  float mListenerPosition_;
   ADXKeyCache *mKeyCache_;
-  jboolean mInLayout_;
+  bool mInLayout_;
   ADXMotionLayout_StateCache *mStateCache_;
   id<JavaLangRunnable> mOnComplete_;
   IOSIntArray *mScheduledTransitionTo_;
-  jboolean mInRotation_;
-  jint mPreRotateWidth_;
-  jint mPreRotateHeight_;
-  jint mPreviouseRotation_;
-  jboolean mDelayedApply_;
-  jboolean mNeedsFireTransitionCompleted_;
-  jboolean reduceFlicker_;
+  bool mInRotation_;
+  int32_t mPreRotateWidth_;
+  int32_t mPreRotateHeight_;
+  int32_t mPreviouseRotation_;
+  bool mDelayedApply_;
+  bool mNeedsFireTransitionCompleted_;
+  bool reduceFlicker_;
   ADXMotionLayout_MyTracker *myTracker_;
 }
 
 - (void)setupMotionViews;
 
-+ (jboolean)willJumpWithFloat:(jfloat)velocity
-                    withFloat:(jfloat)position
-                    withFloat:(jfloat)maxAcceleration;
++ (bool)willJumpWithFloat:(float)velocity
+                withFloat:(float)position
+                withFloat:(float)maxAcceleration;
 
 - (void)computeCurrentPositions;
 
@@ -141,17 +152,17 @@ J2OBJC_FIELD_SETTER(ADXMotionLayout, mOnComplete_, id<JavaLangRunnable>)
 J2OBJC_FIELD_SETTER(ADXMotionLayout, mScheduledTransitionTo_, IOSIntArray *)
 J2OBJC_FIELD_SETTER(ADXMotionLayout, myTracker_, ADXMotionLayout_MyTracker *)
 
-inline jboolean ADXMotionLayout_get_DEBUG(void);
+inline bool ADXMotionLayout_get_DEBUG(void);
 #define ADXMotionLayout_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG, bool)
 
-inline jfloat ADXMotionLayout_get_EPSILON(void);
+inline float ADXMotionLayout_get_EPSILON(void);
 #define ADXMotionLayout_EPSILON 1.0E-5f
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, EPSILON, jfloat)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, EPSILON, float)
 
 __attribute__((unused)) static void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self);
 
-__attribute__((unused)) static jboolean ADXMotionLayout_willJumpWithFloat_withFloat_withFloat_(jfloat velocity, jfloat position, jfloat maxAcceleration);
+__attribute__((unused)) static bool ADXMotionLayout_willJumpWithFloat_withFloat_withFloat_(float velocity, float position, float maxAcceleration);
 
 __attribute__((unused)) static void ADXMotionLayout_computeCurrentPositions(ADXMotionLayout *self);
 
@@ -165,7 +176,7 @@ __attribute__((unused)) static void ADXMotionLayout_processTransitionCompleted(A
 
 __attribute__((unused)) static void ADXMotionLayout_run(ADXMotionLayout *self);
 
-__attribute__((unused)) static void ADXMotionLayout_TransitionState_initWithNSString_withInt_(ADXMotionLayout_TransitionState *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXMotionLayout_TransitionState_initWithNSString_withInt_(ADXMotionLayout_TransitionState *self, NSString *__name, int32_t __ordinal);
 
 @interface ADXMotionLayout_MotionTracker : NSObject
 
@@ -235,6 +246,7 @@ __attribute__((unused)) static ADXMotionLayout_1 *new_ADXMotionLayout_1_initWith
 
 __attribute__((unused)) static ADXMotionLayout_1 *create_ADXMotionLayout_1_initWithADXMotionLayout_(ADXMotionLayout *outer$);
 
+
 @interface ADXMotionLayout_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
   ADXMotionLayout *target$_;
@@ -252,8 +264,9 @@ __attribute__((unused)) static ADXMotionLayout_$Lambda$1 *new_ADXMotionLayout_$L
 
 __attribute__((unused)) static ADXMotionLayout_$Lambda$1 *create_ADXMotionLayout_$Lambda$1_initWithADXMotionLayout_(ADXMotionLayout *outer$);
 
+
 NSString *ADXMotionLayout_TAG = @"MotionLayout";
-jboolean ADXMotionLayout_IS_IN_EDIT_MODE;
+bool ADXMotionLayout_IS_IN_EDIT_MODE;
 
 @implementation ADXMotionLayout
 
@@ -264,11 +277,11 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (ADXMotionController *)getMotionControllerWithInt:(jint)mTouchAnchorId {
+- (ADXMotionController *)getMotionControllerWithInt:(int32_t)mTouchAnchorId {
   return [((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:[self findViewByIdWithInt:mTouchAnchorId]];
 }
 
-- (jlong)getNanoTime {
+- (int64_t)getNanoTime {
   return JavaLangSystem_nanoTime();
 }
 
@@ -301,8 +314,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setTransitionWithInt:(jint)beginId
-                     withInt:(jint)endId {
+- (void)setTransitionWithInt:(int32_t)beginId
+                     withInt:(int32_t)endId {
   if (![self isAttachedToWindow]) {
     if (mStateCache_ == nil) {
       JreStrongAssignAndConsume(&mStateCache_, new_ADXMotionLayout_StateCache_initWithADXMotionLayout_(self));
@@ -322,10 +335,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setTransitionWithInt:(jint)transitionId {
+- (void)setTransitionWithInt:(int32_t)transitionId {
   if (mScene_ != nil) {
     ADXMotionScene_Transition *transition = JreRetainedLocalValue([self getTransitionWithInt:transitionId]);
-    jint current = mCurrentState_;
+    int32_t current = mCurrentState_;
     mBeginState_ = [((ADXMotionScene_Transition *) nil_chk(transition)) getStartConstraintSetId];
     mEndState_ = [transition getEndConstraintSetId];
     if (![self isAttachedToWindow]) {
@@ -336,7 +349,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       [((ADXMotionLayout_StateCache *) nil_chk(mStateCache_)) setEndStateWithInt:mEndState_];
       return;
     }
-    jfloat pos = JavaLangFloat_NaN;
+    float pos = JavaLangFloat_NaN;
     if (mCurrentState_ == mBeginState_) {
       pos = 0;
     }
@@ -381,8 +394,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     mTransitionGoalPosition_ = 0;
   }
   mTransitionLastTime_ = ([((ADXMotionScene_Transition *) nil_chk(transition)) isTransitionFlagWithInt:ADXMotionScene_Transition_TRANSITION_FLAG_FIRST_DRAW]) ? -1 : [self getNanoTime];
-  jint newBeginState = [((ADXMotionScene *) nil_chk(mScene_)) getStartId];
-  jint newEndState = [((ADXMotionScene *) nil_chk(mScene_)) getEndId];
+  int32_t newBeginState = [((ADXMotionScene *) nil_chk(mScene_)) getStartId];
+  int32_t newEndState = [((ADXMotionScene *) nil_chk(mScene_)) getEndId];
   if (newBeginState == mBeginState_ && newEndState == mEndState_) {
     return;
   }
@@ -395,9 +408,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self rebuildScene];
 }
 
-- (void)setStateWithInt:(jint)id_
-                withInt:(jint)screenWidth
-                withInt:(jint)screenHeight {
+- (void)setStateWithInt:(int32_t)id_
+                withInt:(int32_t)screenWidth
+                withInt:(int32_t)screenHeight {
   [self setStateWithADXMotionLayout_TransitionState:JreLoadEnum(ADXMotionLayout_TransitionState, SETUP)];
   mCurrentState_ = id_;
   mBeginState_ = ADXConstraintSet_UNSET;
@@ -410,8 +423,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setProgressWithFloat:(jfloat)pos
-                   withFloat:(jfloat)velocity {
+- (void)setProgressWithFloat:(float)pos
+                   withFloat:(float)velocity {
   if (![self isAttachedToWindow]) {
     if (mStateCache_ == nil) {
       JreStrongAssignAndConsume(&mStateCache_, new_ADXMotionLayout_StateCache_initWithADXMotionLayout_(self));
@@ -426,7 +439,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self animateToWithFloat:1];
 }
 
-- (void)setProgressWithFloat:(jfloat)pos {
+- (void)setProgressWithFloat:(float)pos {
   if (pos < 0.0f || pos > 1.0f) {
     ADLog_wWithNSString_withNSString_(ADXMotionLayout_TAG, @"Warning! Progress is defined for values between 0.0 and 1.0 inclusive");
   }
@@ -476,9 +489,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXMotionLayout_setupMotionViews(self);
 }
 
-- (void)touchAnimateToWithInt:(jint)touchUpMode
-                    withFloat:(jfloat)position
-                    withFloat:(jfloat)currentVelocity {
+- (void)touchAnimateToWithInt:(int32_t)touchUpMode
+                    withFloat:(float)position
+                    withFloat:(float)currentVelocity {
   if (mScene_ == nil) {
     return;
   }
@@ -509,7 +522,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       else {
         [((ADXStopLogic *) nil_chk(mStopLogic_)) springConfigWithFloat:mTransitionLastPosition_ withFloat:position withFloat:currentVelocity withFloat:[((ADXMotionScene *) nil_chk(mScene_)) getSpringMass] withFloat:[((ADXMotionScene *) nil_chk(mScene_)) getSpringStiffiness] withFloat:[((ADXMotionScene *) nil_chk(mScene_)) getSpringDamping] withFloat:[((ADXMotionScene *) nil_chk(mScene_)) getSpringStopThreshold] withInt:[((ADXMotionScene *) nil_chk(mScene_)) getSpringBoundary]];
       }
-      jint currentState = mCurrentState_;
+      int32_t currentState = mCurrentState_;
       mTransitionGoalPosition_ = position;
       mCurrentState_ = currentState;
       JreStrongAssign(&mInterpolator_, mStopLogic_);
@@ -534,7 +547,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       else {
         [((ADXStopLogic *) nil_chk(mStopLogic_)) configWithFloat:mTransitionLastPosition_ withFloat:position withFloat:currentVelocity withFloat:mTransitionDuration_ withFloat:[((ADXMotionScene *) nil_chk(mScene_)) getMaxAcceleration] withFloat:[((ADXMotionScene *) nil_chk(mScene_)) getMaxVelocity]];
         mLastVelocity_ = 0;
-        jint currentState = mCurrentState_;
+        int32_t currentState = mCurrentState_;
         mTransitionGoalPosition_ = position;
         mCurrentState_ = currentState;
         JreStrongAssign(&mInterpolator_, mStopLogic_);
@@ -547,13 +560,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self invalidate];
 }
 
-+ (jboolean)willJumpWithFloat:(jfloat)velocity
-                    withFloat:(jfloat)position
-                    withFloat:(jfloat)maxAcceleration {
++ (bool)willJumpWithFloat:(float)velocity
+                withFloat:(float)position
+                withFloat:(float)maxAcceleration {
   return ADXMotionLayout_willJumpWithFloat_withFloat_withFloat_(velocity, position, maxAcceleration);
 }
 
-- (void)animateToWithFloat:(jfloat)position {
+- (void)animateToWithFloat:(float)position {
   if (mScene_ == nil) {
     return;
   }
@@ -564,7 +577,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     return;
   }
   mTemporalInterpolator_ = false;
-  jfloat currentPosition = mTransitionLastPosition_;
+  float currentPosition = mTransitionLastPosition_;
   mTransitionGoalPosition_ = position;
   mTransitionDuration_ = [mScene_ getDuration] / 1000.0f;
   [self setProgressWithFloat:mTransitionGoalPosition_];
@@ -596,7 +609,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&mOnComplete_, onComplete);
 }
 
-- (void)transitionToStateWithInt:(jint)id_ {
+- (void)transitionToStateWithInt:(int32_t)id_ {
   if (![self isAttachedToWindow]) {
     if (mStateCache_ == nil) {
       JreStrongAssignAndConsume(&mStateCache_, new_ADXMotionLayout_StateCache_initWithADXMotionLayout_(self));
@@ -607,8 +620,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self transitionToStateWithInt:id_ withInt:-1 withInt:-1];
 }
 
-- (void)transitionToStateWithInt:(jint)id_
-                         withInt:(jint)duration {
+- (void)transitionToStateWithInt:(int32_t)id_
+                         withInt:(int32_t)duration {
   if (![self isAttachedToWindow]) {
     if (mStateCache_ == nil) {
       JreStrongAssignAndConsume(&mStateCache_, new_ADXMotionLayout_StateCache_initWithADXMotionLayout_(self));
@@ -619,18 +632,18 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self transitionToStateWithInt:id_ withInt:-1 withInt:-1 withInt:duration];
 }
 
-- (void)transitionToStateWithInt:(jint)id_
-                         withInt:(jint)screenWidth
-                         withInt:(jint)screenHeight {
+- (void)transitionToStateWithInt:(int32_t)id_
+                         withInt:(int32_t)screenWidth
+                         withInt:(int32_t)screenHeight {
   [self transitionToStateWithInt:id_ withInt:screenWidth withInt:screenHeight withInt:-1];
 }
 
-- (void)transitionToStateWithInt:(jint)id_
-                         withInt:(jint)screenWidth
-                         withInt:(jint)screenHeight
-                         withInt:(jint)duration {
+- (void)transitionToStateWithInt:(int32_t)id_
+                         withInt:(int32_t)screenWidth
+                         withInt:(int32_t)screenHeight
+                         withInt:(int32_t)duration {
   if (mScene_ != nil && mScene_->mStateSet_ != nil) {
-    jint tmp_id = [mScene_->mStateSet_ convertToConstraintSetWithInt:mCurrentState_ withInt:id_ withFloat:screenWidth withFloat:screenHeight];
+    int32_t tmp_id = [mScene_->mStateSet_ convertToConstraintSetWithInt:mCurrentState_ withInt:id_ withFloat:screenWidth withFloat:screenHeight];
     if (tmp_id != -1) {
       id_ = tmp_id;
     }
@@ -683,9 +696,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   else if (duration > 0) {
     mTransitionDuration_ = duration / 1000.0f;
   }
-  jint n = [self getChildCount];
+  int32_t n = [self getChildCount];
   [((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) clear];
-  for (jint i = 0; i < n; i++) {
+  for (int32_t i = 0; i < n; i++) {
     ADView *v = JreRetainedLocalValue([self getChildAtWithInt:i]);
     ADXMotionController *f = create_ADXMotionController_initWithADView_(v);
     [((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) putWithId:v withId:f];
@@ -696,10 +709,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self rebuildScene];
   [((ADXMotionLayout_Model *) nil_chk(mModel_)) build];
   ADXMotionLayout_computeCurrentPositions(self);
-  jint layoutWidth = [self getWidth];
-  jint layoutHeight = [self getHeight];
+  int32_t layoutWidth = [self getWidth];
+  int32_t layoutHeight = [self getHeight];
   if (mDecoratorsHelpers_ != nil) {
-    for (jint i = 0; i < n; i++) {
+    for (int32_t i = 0; i < n; i++) {
       ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
       if (motionController == nil) {
         continue;
@@ -709,7 +722,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     for (ADXMotionHelper * __strong mDecoratorsHelper in nil_chk(mDecoratorsHelpers_)) {
       [((ADXMotionHelper *) nil_chk(mDecoratorsHelper)) onPreSetupWithADXMotionLayout:self withJavaUtilHashMap:mFrameArrayList_];
     }
-    for (jint i = 0; i < n; i++) {
+    for (int32_t i = 0; i < n; i++) {
       ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
       if (motionController == nil) {
         continue;
@@ -718,7 +731,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   else {
-    for (jint i = 0; i < n; i++) {
+    for (int32_t i = 0; i < n; i++) {
       ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
       if (motionController == nil) {
         continue;
@@ -727,21 +740,21 @@ J2OBJC_IGNORE_DESIGNATED_END
       [motionController setupWithInt:layoutWidth withInt:layoutHeight withFloat:mTransitionDuration_ withLong:[self getNanoTime]];
     }
   }
-  jfloat stagger = [((ADXMotionScene *) nil_chk(mScene_)) getStaggered];
+  float stagger = [((ADXMotionScene *) nil_chk(mScene_)) getStaggered];
   if (stagger != 0.0f) {
-    jfloat min = JavaLangFloat_MAX_VALUE;
-    jfloat max = -JavaLangFloat_MAX_VALUE;
-    for (jint i = 0; i < n; i++) {
+    float min = JavaLangFloat_MAX_VALUE;
+    float max = -JavaLangFloat_MAX_VALUE;
+    for (int32_t i = 0; i < n; i++) {
       ADXMotionController *f = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
-      jfloat x = [((ADXMotionController *) nil_chk(f)) getFinalX];
-      jfloat y = [f getFinalY];
+      float x = [((ADXMotionController *) nil_chk(f)) getFinalX];
+      float y = [f getFinalY];
       min = JavaLangMath_minWithFloat_withFloat_(min, y + x);
       max = JavaLangMath_maxWithFloat_withFloat_(max, y + x);
     }
-    for (jint i = 0; i < n; i++) {
+    for (int32_t i = 0; i < n; i++) {
       ADXMotionController *f = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
-      jfloat x = [((ADXMotionController *) nil_chk(f)) getFinalX];
-      jfloat y = [f getFinalY];
+      float x = [((ADXMotionController *) nil_chk(f)) getFinalX];
+      float y = [f getFinalY];
       f->mStaggerScale_ = 1 / (1 - stagger);
       f->mStaggerOffset_ = stagger - stagger * (x + y - (min)) / (max - (min));
     }
@@ -752,7 +765,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self invalidate];
 }
 
-- (jfloat)getVelocity {
+- (float)getVelocity {
   return mLastVelocity_;
 }
 
@@ -769,13 +782,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   [super requestLayout];
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   if (mScene_ == nil) {
     [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
     return;
   }
-  jboolean recalc = (mLastWidthMeasureSpec_ != widthMeasureSpec || mLastHeightMeasureSpec_ != heightMeasureSpec);
+  bool recalc = (mLastWidthMeasureSpec_ != widthMeasureSpec || mLastHeightMeasureSpec_ != heightMeasureSpec);
   if (mNeedsFireTransitionCompleted_) {
     mNeedsFireTransitionCompleted_ = false;
     [self onNewStateAttachHandlers];
@@ -787,9 +800,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   mLastWidthMeasureSpec_ = widthMeasureSpec;
   mLastHeightMeasureSpec_ = heightMeasureSpec;
-  jint startId = [((ADXMotionScene *) nil_chk(mScene_)) getStartId];
-  jint endId = [((ADXMotionScene *) nil_chk(mScene_)) getEndId];
-  jboolean setMeasure = true;
+  int32_t startId = [((ADXMotionScene *) nil_chk(mScene_)) getStartId];
+  int32_t endId = [((ADXMotionScene *) nil_chk(mScene_)) getEndId];
+  bool setMeasure = true;
   if ((recalc || [((ADXMotionLayout_Model *) nil_chk(mModel_)) isNotConfiguredWithWithInt:startId withInt:endId]) && mBeginState_ != ADXConstraintSet_UNSET) {
     [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
     [((ADXMotionLayout_Model *) nil_chk(mModel_)) initFromWithADXConstraintWidgetContainer:mLayoutWidget_ withADXConstraintSet:[((ADXMotionScene *) nil_chk(mScene_)) getConstraintSetWithInt:startId] withADXConstraintSet:[((ADXMotionScene *) nil_chk(mScene_)) getConstraintSetWithInt:endId]];
@@ -801,10 +814,10 @@ J2OBJC_IGNORE_DESIGNATED_END
     [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
   }
   if (mMeasureDuringTransition_ || setMeasure) {
-    jint heightPadding = [self getPaddingTop] + [self getPaddingBottom];
-    jint widthPadding = [self getPaddingLeft] + [self getPaddingRight];
-    jint androidLayoutWidth = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) getWidth] + widthPadding;
-    jint androidLayoutHeight = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) getHeight] + heightPadding;
+    int32_t heightPadding = [self getPaddingTop] + [self getPaddingBottom];
+    int32_t widthPadding = [self getPaddingLeft] + [self getPaddingRight];
+    int32_t androidLayoutWidth = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) getWidth] + widthPadding;
+    int32_t androidLayoutHeight = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) getHeight] + heightPadding;
     if (mWidthMeasureMode_ == ADView_MeasureSpec_AT_MOST || mWidthMeasureMode_ == ADView_MeasureSpec_UNSPECIFIED) {
       androidLayoutWidth = JreFpToInt((mStartWrapWidth_ + mPostInterpolationPosition_ * (mEndWrapWidth_ - mStartWrapWidth_)));
       [self requestLayout];
@@ -826,12 +839,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXMotionLayout_evaluateLayout(self);
 }
 
-- (void)endTriggerWithBoolean:(jboolean)start {
+- (void)endTriggerWithBoolean:(bool)start {
   if (reduceFlicker_) {
     ADXMotionLayout_evaluateLayout(self);
   }
-  jint n = [self getChildCount];
-  for (jint i = 0; i < n; i++) {
+  int32_t n = [self getChildCount];
+  for (int32_t i = 0; i < n; i++) {
     ADView *child = [self getChildAtWithInt:i];
     ADXMotionController *frame = [((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:child];
     if (frame != nil) {
@@ -840,23 +853,23 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)evaluateWithBoolean:(jboolean)force {
+- (void)evaluateWithBoolean:(bool)force {
   if (mTransitionLastTime_ == -1) {
     mTransitionLastTime_ = [self getNanoTime];
   }
   if (mTransitionLastPosition_ > 0.0f && mTransitionLastPosition_ < 1.0f) {
     mCurrentState_ = ADXConstraintSet_UNSET;
   }
-  jboolean newState = false;
+  bool newState = false;
   if (mKeepAnimating_ || (mInTransition_ && (force || mTransitionGoalPosition_ != mTransitionLastPosition_))) {
-    jfloat dir = JavaLangMath_signumWithFloat_(mTransitionGoalPosition_ - mTransitionLastPosition_);
-    jlong currentTime = [self getNanoTime];
-    jfloat deltaPos = 0.0f;
+    float dir = JavaLangMath_signumWithFloat_(mTransitionGoalPosition_ - mTransitionLastPosition_);
+    int64_t currentTime = [self getNanoTime];
+    float deltaPos = 0.0f;
     if (!([mInterpolator_ isKindOfClass:[ADXMotionInterpolator class]])) {
       deltaPos = dir * (currentTime - mTransitionLastTime_) * 1E-9f / mTransitionDuration_;
     }
-    jfloat position = mTransitionLastPosition_ + deltaPos;
-    jboolean done = false;
+    float position = mTransitionLastPosition_ + deltaPos;
+    bool done = false;
     if (mTransitionInstantly_) {
       position = mTransitionGoalPosition_;
     }
@@ -868,22 +881,22 @@ J2OBJC_IGNORE_DESIGNATED_END
     mTransitionLastPosition_ = position;
     mTransitionPosition_ = position;
     mTransitionLastTime_ = currentTime;
-    jint NOT_STOP_LOGIC = 0;
-    jint STOP_LOGIC_CONTINUE = 1;
-    jint STOP_LOGIC_STOP = 2;
-    jint stopLogicDone = NOT_STOP_LOGIC;
+    int32_t NOT_STOP_LOGIC = 0;
+    int32_t STOP_LOGIC_CONTINUE = 1;
+    int32_t STOP_LOGIC_STOP = 2;
+    int32_t stopLogicDone = NOT_STOP_LOGIC;
     if (mInterpolator_ != nil && !done) {
       if (mTemporalInterpolator_) {
-        jfloat time = (currentTime - mAnimationStartTime_) * 1E-9f;
+        float time = (currentTime - mAnimationStartTime_) * 1E-9f;
         position = [mInterpolator_ getInterpolationWithFloat:time];
-        if (mInterpolator_ == mStopLogic_) {
-          jboolean dp = [((ADXStopLogic *) nil_chk(mStopLogic_)) isStopped];
+        if (JreObjectEqualsEquals(mInterpolator_, mStopLogic_)) {
+          bool dp = [((ADXStopLogic *) nil_chk(mStopLogic_)) isStopped];
           stopLogicDone = (dp) ? STOP_LOGIC_STOP : STOP_LOGIC_CONTINUE;
         }
         mTransitionLastPosition_ = position;
         mTransitionLastTime_ = currentTime;
         if ([mInterpolator_ isKindOfClass:[ADXMotionInterpolator class]]) {
-          jfloat lastVelocity = [((ADXMotionInterpolator *) nil_chk(((ADXMotionInterpolator *) mInterpolator_))) getVelocity];
+          float lastVelocity = [((ADXMotionInterpolator *) nil_chk(((ADXMotionInterpolator *) mInterpolator_))) getVelocity];
           mLastVelocity_ = lastVelocity;
           if (JavaLangMath_absWithFloat_(lastVelocity) * mTransitionDuration_ <= ADXMotionLayout_EPSILON && stopLogicDone == STOP_LOGIC_STOP) {
             mInTransition_ = false;
@@ -899,7 +912,7 @@ J2OBJC_IGNORE_DESIGNATED_END
         }
       }
       else {
-        jfloat p2 = position;
+        float p2 = position;
         position = [mInterpolator_ getInterpolationWithFloat:position];
         if ([mInterpolator_ isKindOfClass:[ADXMotionInterpolator class]]) {
           mLastVelocity_ = [((ADXMotionInterpolator *) nil_chk(((ADXMotionInterpolator *) mInterpolator_))) getVelocity];
@@ -926,23 +939,23 @@ J2OBJC_IGNORE_DESIGNATED_END
         [self setStateWithADXMotionLayout_TransitionState:JreLoadEnum(ADXMotionLayout_TransitionState, FINISHED)];
       }
     }
-    jint n = [self getChildCount];
+    int32_t n = [self getChildCount];
     mKeepAnimating_ = false;
-    jlong time = [self getNanoTime];
+    int64_t time = [self getNanoTime];
     mPostInterpolationPosition_ = position;
-    jfloat interPos = mProgressInterpolator_ == nil ? position : [mProgressInterpolator_ getInterpolationWithFloat:position];
+    float interPos = mProgressInterpolator_ == nil ? position : [mProgressInterpolator_ getInterpolationWithFloat:position];
     if (mProgressInterpolator_ != nil) {
       mLastVelocity_ = [mProgressInterpolator_ getInterpolationWithFloat:position + dir / mTransitionDuration_];
       JreMinusAssignFloatF(&mLastVelocity_, [((id<ADInterpolator>) nil_chk(mProgressInterpolator_)) getInterpolationWithFloat:position]);
     }
-    for (jint i = 0; i < n; i++) {
+    for (int32_t i = 0; i < n; i++) {
       ADView *child = [self getChildAtWithInt:i];
       ADXMotionController *frame = [((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:child];
       if (frame != nil) {
         mKeepAnimating_ |= [frame interpolateWithADView:child withFloat:interPos withLong:time withADXKeyCache:mKeyCache_];
       }
     }
-    jboolean end = ((dir > 0 && position >= mTransitionGoalPosition_) || (dir <= 0 && position <= mTransitionGoalPosition_));
+    bool end = ((dir > 0 && position >= mTransitionGoalPosition_) || (dir <= 0 && position <= mTransitionGoalPosition_));
     if (!mKeepAnimating_ && !mInTransition_ && end) {
       [self setStateWithADXMotionLayout_TransitionState:JreLoadEnum(ADXMotionLayout_TransitionState, FINISHED)];
     }
@@ -999,19 +1012,19 @@ J2OBJC_IGNORE_DESIGNATED_END
   mTransitionPosition_ = mTransitionLastPosition_;
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom {
   mInLayout_ = true;
   @try {
     if (mScene_ == nil) {
       [super onLayoutWithBoolean:changed withInt:left withInt:top withInt:right withInt:bottom];
       return;
     }
-    jint w = right - left;
-    jint h = bottom - top;
+    int32_t w = right - left;
+    int32_t h = bottom - top;
     if (mLastLayoutWidth_ != w || mLastLayoutHeight_ != h) {
       [self rebuildScene];
       [self evaluateWithBoolean:true];
@@ -1026,7 +1039,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)onTouchEventWithADMotionEvent:(ADMotionEvent *)event {
+- (bool)onTouchEventWithADMotionEvent:(ADMotionEvent *)event {
   if (mScene_ != nil && mInteractionEnabled_ && [mScene_ supportTouch]) {
     ADXMotionScene_Transition *currentTransition = JreRetainedLocalValue(mScene_->mCurrentTransition_);
     if (currentTransition != nil && ![currentTransition isEnabled]) {
@@ -1054,27 +1067,27 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getCurrentState {
+- (int32_t)getCurrentState {
   return mCurrentState_;
 }
 
-- (jfloat)getProgress {
+- (float)getProgress {
   return mTransitionLastPosition_;
 }
 
-- (void)getAnchorDpDtWithInt:(jint)mTouchAnchorId
-                   withFloat:(jfloat)pos
-                   withFloat:(jfloat)locationX
-                   withFloat:(jfloat)locationY
+- (void)getAnchorDpDtWithInt:(int32_t)mTouchAnchorId
+                   withFloat:(float)pos
+                   withFloat:(float)locationX
+                   withFloat:(float)locationY
               withFloatArray:(IOSFloatArray *)mAnchorDpDt {
   ADView *v;
   ADXMotionController *f = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mFrameArrayList_)) getWithId:v = [self getViewByIdWithInt:mTouchAnchorId]]);
   if (f != nil) {
     [f getDpDtWithFloat:pos withFloat:locationX withFloat:locationY withFloatArray:mAnchorDpDt];
-    jfloat y = [((ADView *) nil_chk(v)) getY];
-    jfloat deltaPos = pos - lastPos_;
-    jfloat deltaY = y - lastY_;
-    jfloat dydp = (deltaPos != 0.0f) ? deltaY / deltaPos : JavaLangFloat_NaN;
+    float y = [((ADView *) nil_chk(v)) getY];
+    float deltaPos = pos - lastPos_;
+    float deltaY = y - lastY_;
+    float dydp = (deltaPos != 0.0f) ? deltaY / deltaPos : JavaLangFloat_NaN;
     lastPos_ = pos;
     lastY_ = y;
   }
@@ -1084,9 +1097,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)fireTriggerWithInt:(jint)triggerId
-               withBoolean:(jboolean)positive
-                 withFloat:(jfloat)progress {
+- (void)fireTriggerWithInt:(int32_t)triggerId
+               withBoolean:(bool)positive
+                 withFloat:(float)progress {
   if (mTransitionListener_ != nil) {
     [mTransitionListener_ onTransitionTriggerWithADXMotionLayout:self withInt:triggerId withBoolean:positive withFloat:progress];
   }
@@ -1105,7 +1118,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (mTransitionListener_ != nil || (mTransitionListeners_ != nil && ![mTransitionListeners_ isEmpty])) {
     if (mListenerState_ == ADXConstraintSet_UNSET) {
       mListenerState_ = mCurrentState_;
-      jint lastState = ADXConstraintSet_UNSET;
+      int32_t lastState = ADXConstraintSet_UNSET;
       if (![((JavaUtilArrayList *) nil_chk(mTransitionCompleted_)) isEmpty]) {
         lastState = [((JavaLangInteger *) nil_chk([((JavaUtilArrayList *) nil_chk(mTransitionCompleted_)) getWithInt:[mTransitionCompleted_ size] - 1])) intValue];
       }
@@ -1168,20 +1181,20 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setOnShowWithFloat:(jfloat)progress {
+- (void)setOnShowWithFloat:(float)progress {
   if (mOnShowHelpers_ != nil) {
-    jint count = [mOnShowHelpers_ size];
-    for (jint i = 0; i < count; i++) {
+    int32_t count = [mOnShowHelpers_ size];
+    for (int32_t i = 0; i < count; i++) {
       ADXMotionHelper *helper = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mOnShowHelpers_)) getWithInt:i]);
       [((ADXMotionHelper *) nil_chk(helper)) setProgressWithFloat:progress];
     }
   }
 }
 
-- (void)setOnHideWithFloat:(jfloat)progress {
+- (void)setOnHideWithFloat:(float)progress {
   if (mOnHideHelpers_ != nil) {
-    jint count = [mOnHideHelpers_ size];
-    for (jint i = 0; i < count; i++) {
+    int32_t count = [mOnHideHelpers_ size];
+    for (int32_t i = 0; i < count; i++) {
       ADXMotionHelper *helper = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mOnHideHelpers_)) getWithInt:i]);
       [((ADXMotionHelper *) nil_chk(helper)) setProgressWithFloat:progress];
     }
@@ -1195,7 +1208,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [mScene_ getConstraintSetIds];
 }
 
-- (ADXConstraintSet *)getConstraintSetWithInt:(jint)id_ {
+- (ADXConstraintSet *)getConstraintSetWithInt:(int32_t)id_ {
   if (mScene_ == nil) {
     return nil;
   }
@@ -1207,7 +1220,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self invalidate];
 }
 
-- (void)updateStateWithInt:(jint)stateId
+- (void)updateStateWithInt:(int32_t)stateId
       withADXConstraintSet:(ADXConstraintSet *)set {
   if (mScene_ != nil) {
     [mScene_ setConstraintSetWithInt:stateId withADXConstraintSet:set];
@@ -1230,15 +1243,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [mScene_ getDefinedTransitions];
 }
 
-- (jint)getStartState {
+- (int32_t)getStartState {
   return mBeginState_;
 }
 
-- (jint)getEndState {
+- (int32_t)getEndState {
   return mEndState_;
 }
 
-- (void)setTransitionDurationWithInt:(jint)milliseconds {
+- (void)setTransitionDurationWithInt:(int32_t)milliseconds {
   if (mScene_ == nil) {
     ADLog_eWithNSString_withNSString_(ADXMotionLayout_TAG, @"MotionScene not defined");
     return;
@@ -1246,15 +1259,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   [mScene_ setDurationWithInt:milliseconds];
 }
 
-- (ADXMotionScene_Transition *)getTransitionWithInt:(jint)id_ {
+- (ADXMotionScene_Transition *)getTransitionWithInt:(int32_t)id_ {
   return [((ADXMotionScene *) nil_chk(mScene_)) getTransitionByIdWithInt:id_];
 }
 
-- (jboolean)isInteractionEnabled {
+- (bool)isInteractionEnabled {
   return mInteractionEnabled_;
 }
 
-- (void)viewTransitionWithInt:(jint)viewTransitionId
+- (void)viewTransitionWithInt:(int32_t)viewTransitionId
               withADViewArray:(IOSObjectArray *)view {
   if (mScene_ != nil) {
     [mScene_ viewTransitionWithInt:viewTransitionId withADViewArray:view];
@@ -1281,7 +1294,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return mScene_;
 }
 
-- (void)setReduceFlickerWithBoolean:(jboolean)reduceFlicker {
+- (void)setReduceFlickerWithBoolean:(bool)reduceFlicker {
   self->reduceFlicker_ = reduceFlicker;
 }
 
@@ -1649,19 +1662,19 @@ ADXMotionLayout *create_ADXMotionLayout_init() {
 }
 
 void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
-  jint n = [self getChildCount];
+  int32_t n = [self getChildCount];
   [((ADXMotionLayout_Model *) nil_chk(self->mModel_)) build];
   self->mInTransition_ = true;
   ADSparseArray *controllers = create_ADSparseArray_init();
-  for (jint i = 0; i < n; i++) {
+  for (int32_t i = 0; i < n; i++) {
     ADView *child = JreRetainedLocalValue([self getChildAtWithInt:i]);
     [controllers putWithInt:[((ADView *) nil_chk(child)) getId] withId:[((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:child]];
   }
-  jint layoutWidth = [self getWidth];
-  jint layoutHeight = [self getHeight];
-  jint arc = [((ADXMotionScene *) nil_chk(self->mScene_)) gatPathMotionArc];
+  int32_t layoutWidth = [self getWidth];
+  int32_t layoutHeight = [self getHeight];
+  int32_t arc = [((ADXMotionScene *) nil_chk(self->mScene_)) gatPathMotionArc];
   if (arc != ADXConstraintSet_UNSET) {
-    for (jint i = 0; i < n; i++) {
+    for (int32_t i = 0; i < n; i++) {
       ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
       if (motionController != nil) {
         [motionController setPathMotionArcWithInt:arc];
@@ -1670,8 +1683,8 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
   }
   ADSparseBooleanArray *sparseBooleanArray = create_ADSparseBooleanArray_init();
   IOSIntArray *depends = [IOSIntArray arrayWithLength:[((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) size]];
-  jint count = 0;
-  for (jint i = 0; i < n; i++) {
+  int32_t count = 0;
+  for (int32_t i = 0; i < n; i++) {
     ADView *view = JreRetainedLocalValue([self getChildAtWithInt:i]);
     ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:view]);
     if ([((ADXMotionController *) nil_chk(motionController)) getAnimateRelativeTo] != ADXConstraintSet_UNSET) {
@@ -1680,7 +1693,7 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
     }
   }
   if (self->mDecoratorsHelpers_ != nil) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self findViewByIdWithInt:IOSIntArray_Get(depends, i)]]);
       if (motionController == nil) {
         continue;
@@ -1690,7 +1703,7 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
     for (ADXMotionHelper * __strong mDecoratorsHelper in nil_chk(self->mDecoratorsHelpers_)) {
       [((ADXMotionHelper *) nil_chk(mDecoratorsHelper)) onPreSetupWithADXMotionLayout:self withJavaUtilHashMap:self->mFrameArrayList_];
     }
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self findViewByIdWithInt:IOSIntArray_Get(depends, i)]]);
       if (motionController == nil) {
         continue;
@@ -1699,7 +1712,7 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
     }
   }
   else {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self findViewByIdWithInt:IOSIntArray_Get(depends, i)]]);
       if (motionController == nil) {
         continue;
@@ -1708,7 +1721,7 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
       [motionController setupWithInt:layoutWidth withInt:layoutHeight withFloat:self->mTransitionDuration_ withLong:[self getNanoTime]];
     }
   }
-  for (jint i = 0; i < n; i++) {
+  for (int32_t i = 0; i < n; i++) {
     ADView *v = JreRetainedLocalValue([self getChildAtWithInt:i]);
     ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:v]);
     if ([sparseBooleanArray getWithInt:[((ADView *) nil_chk(v)) getId]]) {
@@ -1719,36 +1732,36 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
       [motionController setupWithInt:layoutWidth withInt:layoutHeight withFloat:self->mTransitionDuration_ withLong:[self getNanoTime]];
     }
   }
-  jfloat stagger = [((ADXMotionScene *) nil_chk(self->mScene_)) getStaggered];
+  float stagger = [((ADXMotionScene *) nil_chk(self->mScene_)) getStaggered];
   if (stagger != 0.0f) {
-    jboolean flip = stagger < 0.0;
-    jboolean useMotionStagger = false;
+    bool flip = stagger < 0.0;
+    bool useMotionStagger = false;
     stagger = JavaLangMath_absWithFloat_(stagger);
-    jfloat min = JavaLangFloat_MAX_VALUE;
-    jfloat max = -JavaLangFloat_MAX_VALUE;
-    for (jint i = 0; i < n; i++) {
+    float min = JavaLangFloat_MAX_VALUE;
+    float max = -JavaLangFloat_MAX_VALUE;
+    for (int32_t i = 0; i < n; i++) {
       ADXMotionController *f = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
       if (!JavaLangFloat_isNaNWithFloat_(((ADXMotionController *) nil_chk(f))->mMotionStagger_)) {
         useMotionStagger = true;
         break;
       }
-      jfloat x = [f getFinalX];
-      jfloat y = [f getFinalY];
-      jfloat mdist = (flip) ? (y - x) : (y + x);
+      float x = [f getFinalX];
+      float y = [f getFinalY];
+      float mdist = (flip) ? (y - x) : (y + x);
       min = JavaLangMath_minWithFloat_withFloat_(min, mdist);
       max = JavaLangMath_maxWithFloat_withFloat_(max, mdist);
     }
     if (useMotionStagger) {
       min = JavaLangFloat_MAX_VALUE;
       max = -JavaLangFloat_MAX_VALUE;
-      for (jint i = 0; i < n; i++) {
+      for (int32_t i = 0; i < n; i++) {
         ADXMotionController *f = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
         if (!JavaLangFloat_isNaNWithFloat_(((ADXMotionController *) nil_chk(f))->mMotionStagger_)) {
           min = JavaLangMath_minWithFloat_withFloat_(min, f->mMotionStagger_);
           max = JavaLangMath_maxWithFloat_withFloat_(max, f->mMotionStagger_);
         }
       }
-      for (jint i = 0; i < n; i++) {
+      for (int32_t i = 0; i < n; i++) {
         ADXMotionController *f = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
         if (!JavaLangFloat_isNaNWithFloat_(((ADXMotionController *) nil_chk(f))->mMotionStagger_)) {
           f->mStaggerScale_ = 1 / (1 - stagger);
@@ -1762,11 +1775,11 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
       }
     }
     else {
-      for (jint i = 0; i < n; i++) {
+      for (int32_t i = 0; i < n; i++) {
         ADXMotionController *f = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:[self getChildAtWithInt:i]]);
-        jfloat x = [((ADXMotionController *) nil_chk(f)) getFinalX];
-        jfloat y = [f getFinalY];
-        jfloat mdist = (flip) ? (y - x) : (y + x);
+        float x = [((ADXMotionController *) nil_chk(f)) getFinalX];
+        float y = [f getFinalY];
+        float mdist = (flip) ? (y - x) : (y + x);
         f->mStaggerScale_ = 1 / (1 - stagger);
         f->mStaggerOffset_ = stagger - stagger * (mdist - (min)) / (max - (min));
       }
@@ -1774,23 +1787,23 @@ void ADXMotionLayout_setupMotionViews(ADXMotionLayout *self) {
   }
 }
 
-jboolean ADXMotionLayout_willJumpWithFloat_withFloat_withFloat_(jfloat velocity, jfloat position, jfloat maxAcceleration) {
+bool ADXMotionLayout_willJumpWithFloat_withFloat_withFloat_(float velocity, float position, float maxAcceleration) {
   ADXMotionLayout_initialize();
   if (velocity > 0) {
-    jfloat time = velocity / maxAcceleration;
-    jfloat pos = velocity * time - (maxAcceleration * time * time) / 2;
+    float time = velocity / maxAcceleration;
+    float pos = velocity * time - (maxAcceleration * time * time) / 2;
     return (position + pos > 1);
   }
   else {
-    jfloat time = -velocity / maxAcceleration;
-    jfloat pos = velocity * time + (maxAcceleration * time * time) / 2;
+    float time = -velocity / maxAcceleration;
+    float pos = velocity * time + (maxAcceleration * time * time) / 2;
     return (position + pos < 0);
   }
 }
 
 void ADXMotionLayout_computeCurrentPositions(ADXMotionLayout *self) {
-  jint n = [self getChildCount];
-  for (jint i = 0; i < n; i++) {
+  int32_t n = [self getChildCount];
+  for (int32_t i = 0; i < n; i++) {
     ADView *v = JreRetainedLocalValue([self getChildAtWithInt:i]);
     ADXMotionController *frame = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:v]);
     if (frame == nil) {
@@ -1809,14 +1822,14 @@ ADRect *ADXMotionLayout_toRectWithADXConstraintWidget_(ADXMotionLayout *self, AD
 }
 
 void ADXMotionLayout_evaluateLayout(ADXMotionLayout *self) {
-  jfloat dir = JavaLangMath_signumWithFloat_(self->mTransitionGoalPosition_ - self->mTransitionLastPosition_);
-  jlong currentTime = [self getNanoTime];
-  jfloat deltaPos = 0.0f;
+  float dir = JavaLangMath_signumWithFloat_(self->mTransitionGoalPosition_ - self->mTransitionLastPosition_);
+  int64_t currentTime = [self getNanoTime];
+  float deltaPos = 0.0f;
   if (!([self->mInterpolator_ isKindOfClass:[ADXStopLogic class]])) {
     deltaPos = dir * (currentTime - self->mTransitionLastTime_) * 1E-9f / self->mTransitionDuration_;
   }
-  jfloat position = self->mTransitionLastPosition_ + deltaPos;
-  jboolean done = false;
+  float position = self->mTransitionLastPosition_ + deltaPos;
+  bool done = false;
   if (self->mTransitionInstantly_) {
     position = self->mTransitionGoalPosition_;
   }
@@ -1826,7 +1839,7 @@ void ADXMotionLayout_evaluateLayout(ADXMotionLayout *self) {
   }
   if (self->mInterpolator_ != nil && !done) {
     if (self->mTemporalInterpolator_) {
-      jfloat time = (currentTime - self->mAnimationStartTime_) * 1E-9f;
+      float time = (currentTime - self->mAnimationStartTime_) * 1E-9f;
       position = [self->mInterpolator_ getInterpolationWithFloat:time];
     }
     else {
@@ -1837,10 +1850,10 @@ void ADXMotionLayout_evaluateLayout(ADXMotionLayout *self) {
     position = self->mTransitionGoalPosition_;
   }
   self->mPostInterpolationPosition_ = position;
-  jint n = [self getChildCount];
-  jlong time = [self getNanoTime];
-  jfloat interPos = self->mProgressInterpolator_ == nil ? position : [self->mProgressInterpolator_ getInterpolationWithFloat:position];
-  for (jint i = 0; i < n; i++) {
+  int32_t n = [self getChildCount];
+  int64_t time = [self getNanoTime];
+  float interPos = self->mProgressInterpolator_ == nil ? position : [self->mProgressInterpolator_ getInterpolationWithFloat:position];
+  for (int32_t i = 0; i < n; i++) {
     ADView *child = [self getChildAtWithInt:i];
     ADXMotionController *frame = [((JavaUtilHashMap *) nil_chk(self->mFrameArrayList_)) getWithId:child];
     if (frame != nil) {
@@ -1913,6 +1926,8 @@ void ADXMotionLayout_run(ADXMotionLayout *self) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionLayout)
 
+J2OBJC_NAME_MAPPING(ADXMotionLayout, "androidx.constraintlayout.motion.widget", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXMotionLayout_TransitionState)
 
 ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_values_[4];
@@ -1929,6 +1944,24 @@ ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_values_[4];
 
 - (ADXMotionLayout_TransitionState_Enum)toNSEnum {
   return (ADXMotionLayout_TransitionState_Enum)[self ordinal];
+}
+
+- (ADXMotionLayout_TransitionState_Enum)enumValue {
+  return (ADXMotionLayout_TransitionState_Enum)[self ordinal];
+}
+
++ (ADXMotionLayout_TransitionState *)fromNSEnum:(ADXMotionLayout_TransitionState_Enum)nativeValue {
+  ADXMotionLayout_TransitionState *javaEnum = ADXMotionLayout_TransitionState_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXMotionLayout_TransitionState_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXMotionLayout_TransitionState_ORDINAL)ordinal {
+  return (ADXMotionLayout_TransitionState_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithTransitionState:(ADXMotionLayout_TransitionState_Enum)value {
+  return RETAIN_(ADXMotionLayout_TransitionState_fromOrdinal((ADXMotionLayout_TransitionState_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1959,7 +1992,7 @@ ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_values_[4];
     size_t allocSize = 4 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 4; i++) {
+    for (int32_t i = 0; i < 4; i++) {
       ((void)(ADXMotionLayout_TransitionState_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXMotionLayout_TransitionState_initWithNSString_withInt_(e, JreEnumConstantName(ADXMotionLayout_TransitionState_class_(), i), i);
     }
@@ -1969,7 +2002,7 @@ ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_values_[4];
 
 @end
 
-void ADXMotionLayout_TransitionState_initWithNSString_withInt_(ADXMotionLayout_TransitionState *self, NSString *__name, jint __ordinal) {
+void ADXMotionLayout_TransitionState_initWithNSString_withInt_(ADXMotionLayout_TransitionState *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -1987,12 +2020,11 @@ ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_valueOfWithNSSt
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_fromOrdinal(NSUInteger ordinal) {
+ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_fromOrdinal(ADXMotionLayout_TransitionState_ORDINAL ordinal) {
   ADXMotionLayout_TransitionState_initialize();
-  if (ordinal >= 4) {
+  if (ordinal < 0 || ordinal >= 4) {
     return nil;
   }
   return ADXMotionLayout_TransitionState_values_[ordinal];
@@ -2086,19 +2118,19 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXMotionLayout_MotionTracker)
   self->endState_ = [bundle getIntWithNSString:KeyEndState_];
 }
 
-- (void)setProgressWithFloat:(jfloat)progress {
+- (void)setProgressWithFloat:(float)progress {
   self->mProgress_ = progress;
 }
 
-- (void)setEndStateWithInt:(jint)endState {
+- (void)setEndStateWithInt:(int32_t)endState {
   self->endState_ = endState;
 }
 
-- (void)setVelocityWithFloat:(jfloat)mVelocity {
+- (void)setVelocityWithFloat:(float)mVelocity {
   self->mVelocity_ = mVelocity;
 }
 
-- (void)setStartStateWithInt:(jint)startState {
+- (void)setStartStateWithInt:(int32_t)startState {
   self->startState_ = startState;
 }
 
@@ -2191,21 +2223,21 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionLayout_StateCache)
   return self;
 }
 
-- (void)configWithFloat:(jfloat)velocity
-              withFloat:(jfloat)position
-              withFloat:(jfloat)maxAcceleration {
+- (void)configWithFloat:(float)velocity
+              withFloat:(float)position
+              withFloat:(float)maxAcceleration {
   initalV_ = velocity;
   currentP_ = position;
   maxA_ = maxAcceleration;
 }
 
-- (jfloat)getInterpolationWithFloat:(jfloat)time {
+- (float)getInterpolationWithFloat:(float)time {
   if (initalV_ > 0) {
     if (initalV_ / maxA_ < time) {
       time = initalV_ / maxA_;
     }
     this$0_->mLastVelocity_ = initalV_ - maxA_ * time;
-    jfloat pos = initalV_ * time - (maxA_ * time * time) / 2;
+    float pos = initalV_ * time - (maxA_ * time * time) / 2;
     return pos + currentP_;
   }
   else {
@@ -2213,12 +2245,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionLayout_StateCache)
       time = -initalV_ / maxA_;
     }
     this$0_->mLastVelocity_ = initalV_ + maxA_ * time;
-    jfloat pos = initalV_ * time + (maxA_ * time * time) / 2;
+    float pos = initalV_ * time + (maxA_ * time * time) / 2;
     return pos + currentP_;
   }
 }
 
-- (jfloat)getVelocity {
+- (float)getVelocity {
   return this$0_->mLastVelocity_;
 }
 
@@ -2360,14 +2392,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionLayout_DecelerateInterpolator)
 
 - (ADXConstraintWidget *)getWidgetWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
                                                         withADView:(ADView *)view {
-  if ([((ADXConstraintWidgetContainer *) nil_chk(container)) getCompanionWidget] == view) {
+  if (JreObjectEqualsEquals([((ADXConstraintWidgetContainer *) nil_chk(container)) getCompanionWidget], view)) {
     return container;
   }
   JavaUtilArrayList *children = JreRetainedLocalValue([container getChildren]);
-  jint count = [((JavaUtilArrayList *) nil_chk(children)) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(children)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([children getWithInt:i]);
-    if ([((ADXConstraintWidget *) nil_chk(widget)) getCompanionWidget] == view) {
+    if (JreObjectEqualsEquals([((ADXConstraintWidget *) nil_chk(widget)) getCompanionWidget], view)) {
       return widget;
     }
   }
@@ -2394,13 +2426,13 @@ withADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)c {
   ADXMotionLayout_setupMotionViews(this$0_);
 }
 
-- (void)measureWithInt:(jint)widthMeasureSpec
-               withInt:(jint)heightMeasureSpec {
-  jint widthMode = ADView_MeasureSpec_getModeWithInt_(widthMeasureSpec);
-  jint heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
+- (void)measureWithInt:(int32_t)widthMeasureSpec
+               withInt:(int32_t)heightMeasureSpec {
+  int32_t widthMode = ADView_MeasureSpec_getModeWithInt_(widthMeasureSpec);
+  int32_t heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
   this$0_->mWidthMeasureMode_ = widthMode;
   this$0_->mHeightMeasureMode_ = heightMode;
-  jint optimisationLevel = [this$0_ getOptimizationLevel];
+  int32_t optimisationLevel = [this$0_ getOptimizationLevel];
   if (this$0_->mCurrentState_ == [this$0_ getStartState]) {
     [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
     if (mStart_ != nil) {
@@ -2413,7 +2445,7 @@ withADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)c {
     }
     [this$0_ resolveSystemWithADXConstraintWidgetContainer:mLayoutEnd_ withInt:optimisationLevel withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? widthMeasureSpec : heightMeasureSpec withInt:(mEnd_ == nil || mEnd_->mRotate_ == 0) ? heightMeasureSpec : widthMeasureSpec];
   }
-  jboolean recompute_start_end_size = true;
+  bool recompute_start_end_size = true;
   if ([[this$0_ getParent] isKindOfClass:[ADXMotionLayout class]] && widthMode == ADView_MeasureSpec_EXACTLY && heightMode == ADView_MeasureSpec_EXACTLY) {
     recompute_start_end_size = false;
   }
@@ -2438,31 +2470,31 @@ withADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)c {
     this$0_->mEndWrapHeight_ = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutEnd_)) getHeight];
     this$0_->mMeasureDuringTransition_ = ((this$0_->mStartWrapWidth_ != this$0_->mEndWrapWidth_) || (this$0_->mStartWrapHeight_ != this$0_->mEndWrapHeight_));
   }
-  jint width = this$0_->mStartWrapWidth_;
-  jint height = this$0_->mStartWrapHeight_;
+  int32_t width = this$0_->mStartWrapWidth_;
+  int32_t height = this$0_->mStartWrapHeight_;
   if (this$0_->mWidthMeasureMode_ == ADView_MeasureSpec_AT_MOST || this$0_->mWidthMeasureMode_ == ADView_MeasureSpec_UNSPECIFIED) {
     width = JreFpToInt((this$0_->mStartWrapWidth_ + this$0_->mPostInterpolationPosition_ * (this$0_->mEndWrapWidth_ - this$0_->mStartWrapWidth_)));
   }
   if (this$0_->mHeightMeasureMode_ == ADView_MeasureSpec_AT_MOST || this$0_->mHeightMeasureMode_ == ADView_MeasureSpec_UNSPECIFIED) {
     height = JreFpToInt((this$0_->mStartWrapHeight_ + this$0_->mPostInterpolationPosition_ * (this$0_->mEndWrapHeight_ - this$0_->mStartWrapHeight_)));
   }
-  jboolean isWidthMeasuredTooSmall = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutStart_)) isWidthMeasuredTooSmall] || [((ADXConstraintWidgetContainer *) nil_chk(mLayoutEnd_)) isWidthMeasuredTooSmall];
-  jboolean isHeightMeasuredTooSmall = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutStart_)) isHeightMeasuredTooSmall] || [((ADXConstraintWidgetContainer *) nil_chk(mLayoutEnd_)) isHeightMeasuredTooSmall];
+  bool isWidthMeasuredTooSmall = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutStart_)) isWidthMeasuredTooSmall] || [((ADXConstraintWidgetContainer *) nil_chk(mLayoutEnd_)) isWidthMeasuredTooSmall];
+  bool isHeightMeasuredTooSmall = [((ADXConstraintWidgetContainer *) nil_chk(mLayoutStart_)) isHeightMeasuredTooSmall] || [((ADXConstraintWidgetContainer *) nil_chk(mLayoutEnd_)) isHeightMeasuredTooSmall];
   [this$0_ resolveMeasuredDimensionWithInt:widthMeasureSpec withInt:heightMeasureSpec withInt:width withInt:height withBoolean:isWidthMeasuredTooSmall withBoolean:isHeightMeasuredTooSmall];
 }
 
 - (void)build {
-  jint n = [this$0_ getChildCount];
+  int32_t n = [this$0_ getChildCount];
   [((JavaUtilHashMap *) nil_chk(this$0_->mFrameArrayList_)) clear];
   ADSparseArray *controllers = create_ADSparseArray_init();
   IOSIntArray *ids = [IOSIntArray arrayWithLength:n];
-  for (jint i = 0; i < n; i++) {
+  for (int32_t i = 0; i < n; i++) {
     ADView *v = JreRetainedLocalValue([this$0_ getChildAtWithInt:i]);
     ADXMotionController *motionController = create_ADXMotionController_initWithADView_(v);
     [controllers putWithInt:*IOSIntArray_GetRef(ids, i) = [((ADView *) nil_chk(v)) getId] withId:motionController];
     [((JavaUtilHashMap *) nil_chk(this$0_->mFrameArrayList_)) putWithId:v withId:motionController];
   }
-  for (jint i = 0; i < n; i++) {
+  for (int32_t i = 0; i < n; i++) {
     ADView *v = JreRetainedLocalValue([this$0_ getChildAtWithInt:i]);
     ADXMotionController *motionController = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(this$0_->mFrameArrayList_)) getWithId:v]);
     if (motionController == nil) {
@@ -2496,23 +2528,23 @@ withADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)c {
       }
     }
   }
-  for (jint i = 0; i < n; i++) {
+  for (int32_t i = 0; i < n; i++) {
     ADXMotionController *controller = JreRetainedLocalValue([controllers getWithInt:IOSIntArray_Get(ids, i)]);
-    jint relativeToId = [((ADXMotionController *) nil_chk(controller)) getAnimateRelativeTo];
+    int32_t relativeToId = [((ADXMotionController *) nil_chk(controller)) getAnimateRelativeTo];
     if (relativeToId != ADXConstraintSet_UNSET) {
       [controller setupRelativeWithADXMotionController:[controllers getWithInt:relativeToId]];
     }
   }
 }
 
-- (void)setMeasuredIdWithInt:(jint)startId
-                     withInt:(jint)endId {
+- (void)setMeasuredIdWithInt:(int32_t)startId
+                     withInt:(int32_t)endId {
   mStartId_ = startId;
   mEndId_ = endId;
 }
 
-- (jboolean)isNotConfiguredWithWithInt:(jint)startId
-                               withInt:(jint)endId {
+- (bool)isNotConfiguredWithWithInt:(int32_t)startId
+                           withInt:(int32_t)endId {
   return startId != mStartId_ || endId != mEndId_;
 }
 
@@ -2667,8 +2699,8 @@ void ADXMotionLayout_Model_debugLayoutWithNSString_withADXConstraintWidgetContai
   ADView *v = (ADView *) cast_chk([((ADXConstraintWidgetContainer *) nil_chk(c)) getCompanionWidget], [ADView class]);
   NSString *cName = JreStrcat("$C$", title, ' ', ADXCLDebug_getNameWithADView_(v));
   ADLog_vWithNSString_withNSString_(ADXMotionLayout_TAG, JreStrcat("$$@", cName, @"  ========= ", c));
-  jint count = [((JavaUtilArrayList *) nil_chk([c getChildren])) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk([c getChildren])) size];
+  for (int32_t i = 0; i < count; i++) {
     NSString *str = JreStrcat("$CI$", cName, '[', i, @"] ");
     ADXConstraintWidget *child = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk([c getChildren])) getWithInt:i]);
     NSString *a = @"";
@@ -2745,7 +2777,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXMotionLayout_TransitionListener)
     { "this$0_", "LADXMotionLayout;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXMotionLayout;", "postInit" };
-  static const J2ObjcClassInfo _ADXMotionLayout_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x8010, 2, 1, 0, -1, 1, -1, -1 };
+  static const J2ObjcClassInfo _ADXMotionLayout_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x8000, 2, 1, 0, -1, 1, -1, -1 };
   return &_ADXMotionLayout_1;
 }
 
@@ -2782,26 +2814,26 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)addMovementWithADMotionEvent:(ADMotionEvent *)event {
 }
 
-- (void)computeCurrentVelocityWithInt:(jint)units {
+- (void)computeCurrentVelocityWithInt:(int32_t)units {
 }
 
-- (void)computeCurrentVelocityWithInt:(jint)units
-                            withFloat:(jfloat)maxVelocity {
+- (void)computeCurrentVelocityWithInt:(int32_t)units
+                            withFloat:(float)maxVelocity {
 }
 
-- (jfloat)getXVelocity {
+- (float)getXVelocity {
   return 0;
 }
 
-- (jfloat)getYVelocity {
+- (float)getYVelocity {
   return 0;
 }
 
-- (jfloat)getXVelocityWithInt:(jint)id_ {
+- (float)getXVelocityWithInt:(int32_t)id_ {
   return 0;
 }
 
-- (jfloat)getYVelocityWithInt:(jint)id_ {
+- (float)getYVelocityWithInt:(int32_t)id_ {
   return 0;
 }
 

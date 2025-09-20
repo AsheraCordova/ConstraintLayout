@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreVirtualLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BasicMeasure.h"
 #include "ConstraintWidget.h"
 #include "ConstraintWidgetContainer.h"
@@ -11,22 +16,30 @@
 #include "HelperWidget.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/util/HashSet.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCoreVirtualLayout () {
  @public
-  jint mPaddingTop_;
-  jint mPaddingBottom_;
-  jint mPaddingLeft_;
-  jint mPaddingRight_;
-  jint mPaddingStart_;
-  jint mPaddingEnd_;
-  jint mResolvedPaddingLeft_;
-  jint mResolvedPaddingRight_;
-  jboolean mNeedsCallFromSolver_;
-  jint mMeasuredWidth_;
-  jint mMeasuredHeight_;
+  int32_t mPaddingTop_;
+  int32_t mPaddingBottom_;
+  int32_t mPaddingLeft_;
+  int32_t mPaddingRight_;
+  int32_t mPaddingStart_;
+  int32_t mPaddingEnd_;
+  int32_t mResolvedPaddingLeft_;
+  int32_t mResolvedPaddingRight_;
+  bool mNeedsCallFromSolver_;
+  int32_t mMeasuredWidth_;
+  int32_t mMeasuredHeight_;
 }
 
 @end
@@ -40,7 +53,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)setPaddingWithInt:(jint)value {
+- (void)setPaddingWithInt:(int32_t)value {
   mPaddingLeft_ = value;
   mPaddingTop_ = value;
   mPaddingRight_ = value;
@@ -49,22 +62,22 @@ J2OBJC_IGNORE_DESIGNATED_END
   mPaddingEnd_ = value;
 }
 
-- (void)setPaddingStartWithInt:(jint)value {
+- (void)setPaddingStartWithInt:(int32_t)value {
   mPaddingStart_ = value;
   mResolvedPaddingLeft_ = value;
   mResolvedPaddingRight_ = value;
 }
 
-- (void)setPaddingEndWithInt:(jint)value {
+- (void)setPaddingEndWithInt:(int32_t)value {
   mPaddingEnd_ = value;
 }
 
-- (void)setPaddingLeftWithInt:(jint)value {
+- (void)setPaddingLeftWithInt:(int32_t)value {
   mPaddingLeft_ = value;
   mResolvedPaddingLeft_ = value;
 }
 
-- (void)applyRtlWithBoolean:(jboolean)isRtl {
+- (void)applyRtlWithBoolean:(bool)isRtl {
   if (mPaddingStart_ > 0 || mPaddingEnd_ > 0) {
     if (isRtl) {
       mResolvedPaddingLeft_ = mPaddingEnd_;
@@ -77,47 +90,47 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setPaddingTopWithInt:(jint)value {
+- (void)setPaddingTopWithInt:(int32_t)value {
   mPaddingTop_ = value;
 }
 
-- (void)setPaddingRightWithInt:(jint)value {
+- (void)setPaddingRightWithInt:(int32_t)value {
   mPaddingRight_ = value;
   mResolvedPaddingRight_ = value;
 }
 
-- (void)setPaddingBottomWithInt:(jint)value {
+- (void)setPaddingBottomWithInt:(int32_t)value {
   mPaddingBottom_ = value;
 }
 
-- (jint)getPaddingTop {
+- (int32_t)getPaddingTop {
   return mPaddingTop_;
 }
 
-- (jint)getPaddingBottom {
+- (int32_t)getPaddingBottom {
   return mPaddingBottom_;
 }
 
-- (jint)getPaddingLeft {
+- (int32_t)getPaddingLeft {
   return mResolvedPaddingLeft_;
 }
 
-- (jint)getPaddingRight {
+- (int32_t)getPaddingRight {
   return mResolvedPaddingRight_;
 }
 
-- (void)needsCallbackFromSolverWithBoolean:(jboolean)value {
+- (void)needsCallbackFromSolverWithBoolean:(bool)value {
   mNeedsCallFromSolver_ = value;
 }
 
-- (jboolean)needSolverPass {
+- (bool)needSolverPass {
   return mNeedsCallFromSolver_;
 }
 
-- (void)measureWithInt:(jint)widthMode
-               withInt:(jint)widthSize
-               withInt:(jint)heightMode
-               withInt:(jint)heightSize {
+- (void)measureWithInt:(int32_t)widthMode
+               withInt:(int32_t)widthSize
+               withInt:(int32_t)heightMode
+               withInt:(int32_t)heightSize {
 }
 
 - (void)updateConstraintsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container {
@@ -125,7 +138,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)captureWidgets {
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (widget != nil) {
       [widget setInVirtualLayoutWithBoolean:true];
@@ -133,21 +146,21 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getMeasuredWidth {
+- (int32_t)getMeasuredWidth {
   return mMeasuredWidth_;
 }
 
-- (jint)getMeasuredHeight {
+- (int32_t)getMeasuredHeight {
   return mMeasuredHeight_;
 }
 
-- (void)setMeasureWithInt:(jint)width
-                  withInt:(jint)height {
+- (void)setMeasureWithInt:(int32_t)width
+                  withInt:(int32_t)height {
   mMeasuredWidth_ = width;
   mMeasuredHeight_ = height;
 }
 
-- (jboolean)measureChildren {
+- (bool)measureChildren {
   id<ADXBasicMeasure_Measurer> measurer = nil;
   if (mParent_ != nil) {
     measurer = [((ADXConstraintWidgetContainer *) cast_chk(mParent_, [ADXConstraintWidgetContainer class])) getMeasurer];
@@ -155,7 +168,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (measurer == nil) {
     return false;
   }
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (widget == nil) {
       continue;
@@ -165,7 +178,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
     ADXConstraintWidget_DimensionBehaviour *widthBehavior = JreRetainedLocalValue([widget getDimensionBehaviourWithInt:ADXConstraintWidget_HORIZONTAL]);
     ADXConstraintWidget_DimensionBehaviour *heightBehavior = JreRetainedLocalValue([widget getDimensionBehaviourWithInt:ADXConstraintWidget_VERTICAL]);
-    jboolean skip = widthBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && widget->mMatchConstraintDefaultWidth_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && heightBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && widget->mMatchConstraintDefaultHeight_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP;
+    bool skip = widthBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && widget->mMatchConstraintDefaultWidth_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && heightBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && widget->mMatchConstraintDefaultHeight_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP;
     if (skip) {
       continue;
     }
@@ -189,9 +202,9 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)measureWithADXConstraintWidget:(ADXConstraintWidget *)widget
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)horizontalBehavior
-                               withInt:(jint)horizontalDimension
+                               withInt:(int32_t)horizontalDimension
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)verticalBehavior
-                               withInt:(jint)verticalDimension {
+                               withInt:(int32_t)verticalDimension {
   while (mMeasurer_ == nil && [self getParent] != nil) {
     ADXConstraintWidgetContainer *parent = (ADXConstraintWidgetContainer *) cast_chk([self getParent], [ADXConstraintWidgetContainer class]);
     JreStrongAssign(&mMeasurer_, [((ADXConstraintWidgetContainer *) nil_chk(parent)) getMeasurer]);
@@ -207,8 +220,8 @@ withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehavio
   [widget setBaselineDistanceWithInt:((ADXBasicMeasure_Measure *) nil_chk(mMeasure_))->measuredBaseline_];
 }
 
-- (jboolean)containsWithJavaUtilHashSet:(JavaUtilHashSet *)widgets {
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+- (bool)containsWithJavaUtilHashSet:(JavaUtilHashSet *)widgets {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if ([((JavaUtilHashSet *) nil_chk(widgets)) containsWithId:widget]) {
       return true;
@@ -326,3 +339,5 @@ ADXCoreVirtualLayout *create_ADXCoreVirtualLayout_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCoreVirtualLayout)
+
+J2OBJC_NAME_MAPPING(ADXCoreVirtualLayout, "androidx.constraintlayout.core.widgets", "ADX")

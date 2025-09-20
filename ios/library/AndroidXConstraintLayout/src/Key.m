@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\Key.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AttributeSet.h"
 #include "Context.h"
 #include "J2ObjC_source.h"
@@ -14,7 +19,13 @@
 #include "java/util/HashSet.h"
 
 
-jint ADXKey_UNSET = -1;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
+int32_t ADXKey_UNSET = -1;
 NSString *ADXKey_ALPHA = @"alpha";
 NSString *ADXKey_ELEVATION = @"elevation";
 NSString *ADXKey_ROTATION = @"rotation";
@@ -59,7 +70,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jboolean)matchesWithNSString:(NSString *)constraintTag {
+- (bool)matchesWithNSString:(NSString *)constraintTag {
   if (mTargetString_ == nil || constraintTag == nil) return false;
   return [constraintTag java_matches:mTargetString_];
 }
@@ -75,15 +86,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jfloat)toFloatWithId:(id)value {
+- (float)toFloatWithId:(id)value {
   return ([value isKindOfClass:[JavaLangFloat class]]) ? [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk(value, [JavaLangFloat class]))) floatValue] : JavaLangFloat_parseFloatWithNSString_([nil_chk(value) description]);
 }
 
-- (jint)toIntWithId:(id)value {
+- (int32_t)toIntWithId:(id)value {
   return ([value isKindOfClass:[JavaLangInteger class]]) ? [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(value, [JavaLangInteger class]))) intValue] : JavaLangInteger_parseIntWithNSString_([nil_chk(value) description]);
 }
 
-- (jboolean)toBooleanWithId:(id)value {
+- (bool)toBooleanWithId:(id)value {
   return ([value isKindOfClass:[JavaLangBoolean class]]) ? [((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(value, [JavaLangBoolean class]))) booleanValue] : JavaLangBoolean_parseBooleanWithNSString_([nil_chk(value) description]);
 }
 
@@ -105,16 +116,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (ADXKey *)setViewIdWithInt:(jint)id_ {
+- (ADXKey *)setViewIdWithInt:(int32_t)id_ {
   mTargetId_ = id_;
   return self;
 }
 
-- (void)setFramePositionWithInt:(jint)pos {
+- (void)setFramePositionWithInt:(int32_t)pos {
   mFramePosition_ = pos;
 }
 
-- (jint)getFramePosition {
+- (int32_t)getFramePosition {
   return mFramePosition_;
 }
 
@@ -207,3 +218,5 @@ void ADXKey_init(ADXKey *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKey)
+
+J2OBJC_NAME_MAPPING(ADXKey, "androidx.constraintlayout.motion.widget", "ADX")

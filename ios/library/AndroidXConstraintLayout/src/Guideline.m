@@ -3,41 +3,54 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Guideline.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintLayout.h"
 #include "Context.h"
 #include "Guideline.h"
 #include "J2ObjC_source.h"
 #include "View.h"
 #include "ViewGroup.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 
-static void (*ADXGuideline_super$_setVisibilityWithInt_)(id, SEL, jint);
+static void (*ADXGuideline_super$_setVisibilityWithInt_)(id, SEL, int32_t);
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 J2OBJC_INITIALIZED_DEFN(ADXGuideline)
 
 @implementation ADXGuideline
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   [self setMeasuredDimensionWithInt:0 withInt:0];
 }
 
-- (void)setGuidelineBeginWithInt:(jint)margin {
+- (void)setGuidelineBeginWithInt:(int32_t)margin {
   ADXConstraintLayout_LayoutParams *params = (ADXConstraintLayout_LayoutParams *) cast_chk([self getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
   ((ADXConstraintLayout_LayoutParams *) nil_chk(params))->guideBegin_ = margin;
   [self setLayoutParamsWithADViewGroup_LayoutParams:params];
 }
 
-- (void)setGuidelineEndWithInt:(jint)margin {
+- (void)setGuidelineEndWithInt:(int32_t)margin {
   ADXConstraintLayout_LayoutParams *params = (ADXConstraintLayout_LayoutParams *) cast_chk([self getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
   ((ADXConstraintLayout_LayoutParams *) nil_chk(params))->guideEnd_ = margin;
   [self setLayoutParamsWithADViewGroup_LayoutParams:params];
 }
 
-- (void)setGuidelinePercentWithFloat:(jfloat)ratio {
+- (void)setGuidelinePercentWithFloat:(float)ratio {
   ADXConstraintLayout_LayoutParams *params = (ADXConstraintLayout_LayoutParams *) cast_chk([self getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
   ((ADXConstraintLayout_LayoutParams *) nil_chk(params))->guidePercent_ = ratio;
   [self setLayoutParamsWithADViewGroup_LayoutParams:params];
@@ -83,7 +96,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [ADXGuideline class]) {
-    ADXGuideline_super$_setVisibilityWithInt_ = (void (*)(id, SEL, jint))[ADView instanceMethodForSelector:@selector(setVisibilityWithInt:)];
+    ADXGuideline_super$_setVisibilityWithInt_ = (void (*)(id, SEL, int32_t))[ADView instanceMethodForSelector:@selector(setVisibilityWithInt:)];
     J2OBJC_SET_INITIALIZED(ADXGuideline)
   }
 }
@@ -117,3 +130,5 @@ ADXGuideline *create_ADXGuideline_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXGuideline)
+
+J2OBJC_NAME_MAPPING(ADXGuideline, "androidx.constraintlayout.widget", "ADX")

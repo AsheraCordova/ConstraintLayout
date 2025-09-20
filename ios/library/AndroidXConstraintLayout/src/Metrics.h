@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\Metrics.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Metrics")
@@ -16,55 +17,57 @@
 #if !defined (ADXMetrics_) && (INCLUDE_ALL_Metrics || defined(INCLUDE_ADXMetrics))
 #define ADXMetrics_
 
+@class JavaLangLong;
 @class JavaUtilArrayList;
+@class NSString;
 
 /*!
  */
 @interface ADXMetrics : NSObject {
  @public
-  jlong measuresWidgetsDuration_;
-  jlong measuresLayoutDuration_;
-  jlong measuredWidgets_;
-  jlong measuredMatchWidgets_;
-  jlong measures_;
-  jlong additionalMeasures_;
-  jlong resolutions_;
-  jlong tableSizeIncrease_;
-  jlong minimize_;
-  jlong constraints_;
-  jlong simpleconstraints_;
-  jlong optimize_;
-  jlong iterations_;
-  jlong pivots_;
-  jlong bfs_;
-  jlong variables_;
-  jlong errors_;
-  jlong slackvariables_;
-  jlong extravariables_;
-  jlong maxTableSize_;
-  jlong fullySolved_;
-  jlong graphOptimizer_;
-  jlong graphSolved_;
-  jlong linearSolved_;
-  jlong resolvedWidgets_;
-  jlong minimizeGoal_;
-  jlong maxVariables_;
-  jlong maxRows_;
-  jlong centerConnectionResolved_;
-  jlong matchConnectionResolved_;
-  jlong chainConnectionResolved_;
-  jlong barrierConnectionResolved_;
-  jlong oldresolvedWidgets_;
-  jlong nonresolvedWidgets_;
+  int64_t measuresWidgetsDuration_;
+  int64_t measuresLayoutDuration_;
+  int64_t measuredWidgets_;
+  int64_t measuredMatchWidgets_;
+  int64_t measures_;
+  int64_t additionalMeasures_;
+  int64_t resolutions_;
+  int64_t tableSizeIncrease_;
+  int64_t minimize_;
+  int64_t constraints_;
+  int64_t simpleconstraints_;
+  int64_t optimize_;
+  int64_t iterations_;
+  int64_t pivots_;
+  int64_t bfs_;
+  int64_t variables_;
+  int64_t errors_;
+  int64_t slackvariables_;
+  int64_t extravariables_;
+  int64_t maxTableSize_;
+  int64_t fullySolved_;
+  int64_t graphOptimizer_;
+  int64_t graphSolved_;
+  int64_t linearSolved_;
+  int64_t resolvedWidgets_;
+  int64_t minimizeGoal_;
+  int64_t maxVariables_;
+  int64_t maxRows_;
+  int64_t centerConnectionResolved_;
+  int64_t matchConnectionResolved_;
+  int64_t chainConnectionResolved_;
+  int64_t barrierConnectionResolved_;
+  int64_t oldresolvedWidgets_;
+  int64_t nonresolvedWidgets_;
   JavaUtilArrayList *problematicLayouts_;
-  jlong lastTableSize_;
-  jlong widgets_;
-  jlong measuresWrap_;
-  jlong measuresWrapInfeasible_;
-  jlong infeasibleDetermineGroups_;
-  jlong determineGroups_;
-  jlong layouts_;
-  jlong grouping_;
+  int64_t lastTableSize_;
+  int64_t widgets_;
+  int64_t measuresWrap_;
+  int64_t measuresWrapInfeasible_;
+  int64_t infeasibleDetermineGroups_;
+  int64_t determineGroups_;
+  int64_t layouts_;
+  int64_t grouping_;
 }
 
 #pragma mark Public
@@ -90,6 +93,7 @@ FOUNDATION_EXPORT ADXMetrics *create_ADXMetrics_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXMetrics)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMetrics ADXMetrics;
+
 
 #endif
 

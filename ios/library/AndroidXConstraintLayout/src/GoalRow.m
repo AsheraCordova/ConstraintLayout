@@ -3,11 +3,22 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\GoalRow.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "Cache.h"
 #include "GoalRow.h"
 #include "J2ObjC_source.h"
 #include "SolverVariable.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXGoalRow
@@ -53,3 +64,5 @@ ADXGoalRow *create_ADXGoalRow_initWithADXCache_(ADXCache *cache) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXGoalRow)
+
+J2OBJC_NAME_MAPPING(ADXGoalRow, "androidx.constraintlayout.core", "ADX")

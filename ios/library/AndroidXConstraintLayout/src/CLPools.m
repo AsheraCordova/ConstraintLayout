@@ -3,11 +3,24 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\CLPools.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLPools.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCLPools ()
@@ -16,9 +29,9 @@
 
 @end
 
-inline jboolean ADXCLPools_get_DEBUG(void);
+inline bool ADXCLPools_get_DEBUG(void);
 #define ADXCLPools_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCLPools, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCLPools, DEBUG, bool)
 
 __attribute__((unused)) static void ADXCLPools_initPackagePrivate(ADXCLPools *self);
 
@@ -33,16 +46,16 @@ __attribute__((unused)) static ADXCLPools *create_ADXCLPools_initPackagePrivate(
 @interface ADXCLPools_SimplePool () {
  @public
   IOSObjectArray *mPool_;
-  jint mPoolSize_;
+  int32_t mPoolSize_;
 }
 
-- (jboolean)isInPoolWithId:(id)instance;
+- (bool)isInPoolWithId:(id)instance;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXCLPools_SimplePool, mPool_, IOSObjectArray *)
 
-__attribute__((unused)) static jboolean ADXCLPools_SimplePool_isInPoolWithId_(ADXCLPools_SimplePool *self, id instance);
+__attribute__((unused)) static bool ADXCLPools_SimplePool_isInPoolWithId_(ADXCLPools_SimplePool *self, id instance);
 
 @implementation ADXCLPools
 
@@ -110,14 +123,14 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCLPools_Pool)
 
 @implementation ADXCLPools_SimplePool
 
-- (instancetype)initWithInt:(jint)maxPoolSize {
+- (instancetype)initWithInt:(int32_t)maxPoolSize {
   ADXCLPools_SimplePool_initWithInt_(self, maxPoolSize);
   return self;
 }
 
 - (id)acquire {
   if (mPoolSize_ > 0) {
-    jint lastPooledIndex = mPoolSize_ - 1;
+    int32_t lastPooledIndex = mPoolSize_ - 1;
     id instance = IOSObjectArray_Get(nil_chk(mPool_), lastPooledIndex);
     IOSObjectArray_Set(mPool_, lastPooledIndex, nil);
     mPoolSize_--;
@@ -126,7 +139,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCLPools_Pool)
   return nil;
 }
 
-- (jboolean)release__WithId:(id)instance {
+- (bool)release__WithId:(id)instance {
   if (mPoolSize_ < ((IOSObjectArray *) nil_chk(mPool_))->size_) {
     IOSObjectArray_Set(mPool_, mPoolSize_, instance);
     mPoolSize_++;
@@ -136,11 +149,11 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCLPools_Pool)
 }
 
 - (void)releaseAllWithNSObjectArray:(IOSObjectArray *)variables
-                            withInt:(jint)count {
+                            withInt:(int32_t)count {
   if (count > ((IOSObjectArray *) nil_chk(variables))->size_) {
     count = variables->size_;
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     id instance = IOSObjectArray_Get(variables, i);
     if (mPoolSize_ < ((IOSObjectArray *) nil_chk(mPool_))->size_) {
       IOSObjectArray_Set(mPool_, mPoolSize_, instance);
@@ -149,7 +162,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCLPools_Pool)
   }
 }
 
-- (jboolean)isInPoolWithId:(id)instance {
+- (bool)isInPoolWithId:(id)instance {
   return ADXCLPools_SimplePool_isInPoolWithId_(self, instance);
 }
 
@@ -186,7 +199,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCLPools_Pool)
 
 @end
 
-void ADXCLPools_SimplePool_initWithInt_(ADXCLPools_SimplePool *self, jint maxPoolSize) {
+void ADXCLPools_SimplePool_initWithInt_(ADXCLPools_SimplePool *self, int32_t maxPoolSize) {
   NSObject_init(self);
   if (maxPoolSize <= 0) {
     @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The max pool size must be > 0");
@@ -194,17 +207,17 @@ void ADXCLPools_SimplePool_initWithInt_(ADXCLPools_SimplePool *self, jint maxPoo
   JreStrongAssignAndConsume(&self->mPool_, [IOSObjectArray newArrayWithLength:maxPoolSize type:NSObject_class_()]);
 }
 
-ADXCLPools_SimplePool *new_ADXCLPools_SimplePool_initWithInt_(jint maxPoolSize) {
+ADXCLPools_SimplePool *new_ADXCLPools_SimplePool_initWithInt_(int32_t maxPoolSize) {
   J2OBJC_NEW_IMPL(ADXCLPools_SimplePool, initWithInt_, maxPoolSize)
 }
 
-ADXCLPools_SimplePool *create_ADXCLPools_SimplePool_initWithInt_(jint maxPoolSize) {
+ADXCLPools_SimplePool *create_ADXCLPools_SimplePool_initWithInt_(int32_t maxPoolSize) {
   J2OBJC_CREATE_IMPL(ADXCLPools_SimplePool, initWithInt_, maxPoolSize)
 }
 
-jboolean ADXCLPools_SimplePool_isInPoolWithId_(ADXCLPools_SimplePool *self, id instance) {
-  for (jint i = 0; i < self->mPoolSize_; i++) {
-    if (IOSObjectArray_Get(nil_chk(self->mPool_), i) == instance) {
+bool ADXCLPools_SimplePool_isInPoolWithId_(ADXCLPools_SimplePool *self, id instance) {
+  for (int32_t i = 0; i < self->mPoolSize_; i++) {
+    if (JreObjectEqualsEquals(IOSObjectArray_Get(nil_chk(self->mPool_), i), instance)) {
       return true;
     }
   }

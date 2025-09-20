@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLNumber.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLNumber")
@@ -21,32 +22,36 @@
 #include "CLElement.h"
 
 @class IOSCharArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXCLNumber : ADXCLElement {
  @public
-  jfloat value_;
+  float value_;
 }
 
 #pragma mark Public
 
 - (instancetype)initWithCharArray:(IOSCharArray *)content;
 
-- (instancetype)initWithFloat:(jfloat)value;
+- (instancetype)initWithFloat:(float)value;
 
 + (ADXCLElement *)allocateWithCharArray:(IOSCharArray *)content OBJC_METHOD_FAMILY_NONE;
 
-- (jfloat)getFloat;
+- (float)getFloat;
 
-- (jint)getInt;
+- (int32_t)getInt;
 
-- (jboolean)isInt;
+- (bool)isInt;
 
-- (void)putValueWithFloat:(jfloat)value;
+- (void)putValueWithFloat:(float)value;
 
 #pragma mark Protected
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent;
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent;
 
 - (NSString *)toJSON;
 
@@ -60,17 +65,18 @@ FOUNDATION_EXPORT ADXCLNumber *new_ADXCLNumber_initWithCharArray_(IOSCharArray *
 
 FOUNDATION_EXPORT ADXCLNumber *create_ADXCLNumber_initWithCharArray_(IOSCharArray *content);
 
-FOUNDATION_EXPORT void ADXCLNumber_initWithFloat_(ADXCLNumber *self, jfloat value);
+FOUNDATION_EXPORT void ADXCLNumber_initWithFloat_(ADXCLNumber *self, float value);
 
-FOUNDATION_EXPORT ADXCLNumber *new_ADXCLNumber_initWithFloat_(jfloat value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCLNumber *new_ADXCLNumber_initWithFloat_(float value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCLNumber *create_ADXCLNumber_initWithFloat_(jfloat value);
+FOUNDATION_EXPORT ADXCLNumber *create_ADXCLNumber_initWithFloat_(float value);
 
 FOUNDATION_EXPORT ADXCLElement *ADXCLNumber_allocateWithCharArray_(IOSCharArray *content);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLNumber)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLNumber ADXCLNumber;
+
 
 #endif
 

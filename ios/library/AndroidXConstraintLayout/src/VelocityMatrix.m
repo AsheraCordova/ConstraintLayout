@@ -3,12 +3,27 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\VelocityMatrix.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "KeyCycleOscillator.h"
 #include "SplineSet.h"
 #include "VelocityMatrix.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 inline NSString *ADXVelocityMatrix_get_TAG(void);
@@ -30,7 +45,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setRotationVelocityWithADXSplineSet:(ADXSplineSet *)rot
-                                  withFloat:(jfloat)position {
+                                  withFloat:(float)position {
   if (rot != nil) {
     mDRotate_ = [rot getSlopeWithFloat:position];
     mRotate_ = [rot getWithFloat:position];
@@ -39,7 +54,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setTranslationVelocityWithADXSplineSet:(ADXSplineSet *)trans_x
                               withADXSplineSet:(ADXSplineSet *)trans_y
-                                     withFloat:(jfloat)position {
+                                     withFloat:(float)position {
   if (trans_x != nil) {
     mDTranslateX_ = [trans_x getSlopeWithFloat:position];
   }
@@ -50,7 +65,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setScaleVelocityWithADXSplineSet:(ADXSplineSet *)scale_x
                         withADXSplineSet:(ADXSplineSet *)scale_y
-                               withFloat:(jfloat)position {
+                               withFloat:(float)position {
   if (scale_x != nil) {
     mDScaleX_ = [scale_x getSlopeWithFloat:position];
   }
@@ -60,7 +75,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setRotationVelocityWithADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_r
-                                           withFloat:(jfloat)position {
+                                           withFloat:(float)position {
   if (osc_r != nil) {
     mDRotate_ = [osc_r getSlopeWithFloat:position];
   }
@@ -68,7 +83,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setTranslationVelocityWithADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_x
                               withADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_y
-                                              withFloat:(jfloat)position {
+                                              withFloat:(float)position {
   if (osc_x != nil) {
     mDTranslateX_ = [osc_x getSlopeWithFloat:position];
   }
@@ -79,7 +94,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setScaleVelocityWithADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_sx
                         withADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_sy
-                                        withFloat:(jfloat)position {
+                                        withFloat:(float)position {
   if (osc_sx != nil) {
     mDScaleX_ = [osc_sx getSlopeWithFloat:position];
   }
@@ -88,23 +103,23 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)applyTransformWithFloat:(jfloat)locationX
-                      withFloat:(jfloat)locationY
-                        withInt:(jint)width
-                        withInt:(jint)height
+- (void)applyTransformWithFloat:(float)locationX
+                      withFloat:(float)locationY
+                        withInt:(int32_t)width
+                        withInt:(int32_t)height
                  withFloatArray:(IOSFloatArray *)mAnchorDpDt {
-  jfloat dx = IOSFloatArray_Get(nil_chk(mAnchorDpDt), 0);
-  jfloat dy = IOSFloatArray_Get(mAnchorDpDt, 1);
-  jfloat offx = 2 * (locationX - 0.5f);
-  jfloat offy = 2 * (locationY - 0.5f);
+  float dx = IOSFloatArray_Get(nil_chk(mAnchorDpDt), 0);
+  float dy = IOSFloatArray_Get(mAnchorDpDt, 1);
+  float offx = 2 * (locationX - 0.5f);
+  float offy = 2 * (locationY - 0.5f);
   JrePlusAssignFloatF(&dx, mDTranslateX_);
   JrePlusAssignFloatF(&dy, mDTranslateY_);
   JrePlusAssignFloatF(&dx, offx * mDScaleX_);
   JrePlusAssignFloatF(&dy, offy * mDScaleY_);
-  jfloat r = (jfloat) JavaLangMath_toRadiansWithDouble_(mRotate_);
-  jfloat dr = (jfloat) JavaLangMath_toRadiansWithDouble_(mDRotate_);
-  JrePlusAssignFloatF(&dx, dr * (jfloat) (-width * offx * JavaLangMath_sinWithDouble_(r) - height * offy * JavaLangMath_cosWithDouble_(r)));
-  JrePlusAssignFloatF(&dy, dr * (jfloat) (width * offx * JavaLangMath_cosWithDouble_(r) - height * offy * JavaLangMath_sinWithDouble_(r)));
+  float r = (float) JavaLangMath_toRadiansWithDouble_(mRotate_);
+  float dr = (float) JavaLangMath_toRadiansWithDouble_(mDRotate_);
+  JrePlusAssignFloatF(&dx, dr * (float) (-width * offx * JavaLangMath_sinWithDouble_(r) - height * offy * JavaLangMath_cosWithDouble_(r)));
+  JrePlusAssignFloatF(&dy, dr * (float) (width * offx * JavaLangMath_cosWithDouble_(r) - height * offy * JavaLangMath_sinWithDouble_(r)));
   *IOSFloatArray_GetRef(mAnchorDpDt, 0) = dx;
   *IOSFloatArray_GetRef(mAnchorDpDt, 1) = dy;
 }
@@ -163,3 +178,5 @@ ADXVelocityMatrix *create_ADXVelocityMatrix_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXVelocityMatrix)
+
+J2OBJC_NAME_MAPPING(ADXVelocityMatrix, "androidx.constraintlayout.core.motion.utils", "ADX")

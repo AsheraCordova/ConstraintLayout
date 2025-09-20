@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\helper\widget\Carousel.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Carousel")
@@ -21,12 +22,15 @@
 #include "MotionHelper.h"
 
 @class ADXMotionLayout;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @protocol ADXCarousel_Adapter;
 @protocol JavaLangRunnable;
 
 @interface ADXCarousel : ADXMotionHelper {
  @public
-  jint mLastStartId_;
+  int32_t mLastStartId_;
   id<JavaLangRunnable> mUpdateRunnable_;
 }
 
@@ -34,68 +38,68 @@
 
 - (instancetype)init;
 
-- (jint)getBackwardTransition;
+- (int32_t)getBackwardTransition;
 
-- (jint)getCount;
+- (int32_t)getCount;
 
-- (jint)getCurrentIndex;
+- (int32_t)getCurrentIndex;
 
-- (jfloat)getDampening;
+- (float)getDampening;
 
-- (jint)getEmptyViewBehavior;
+- (int32_t)getEmptyViewBehavior;
 
-- (jint)getFirstViewReference;
+- (int32_t)getFirstViewReference;
 
-- (jint)getForwardTransition;
+- (int32_t)getForwardTransition;
 
-- (jint)getNextState;
+- (int32_t)getNextState;
 
-- (jint)getPreviousState;
+- (int32_t)getPreviousState;
 
-- (jint)getTouchUpMode;
+- (int32_t)getTouchUpMode;
 
-- (jfloat)getVelocityThreshold;
+- (float)getVelocityThreshold;
 
-- (jboolean)isInfiniteCarousel;
+- (bool)isInfiniteCarousel;
 
-- (void)jumpToIndexWithInt:(jint)index;
+- (void)jumpToIndexWithInt:(int32_t)index;
 
 - (void)onAttachedToWindow;
 
 - (void)onTransitionChangeWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)startId
-                                      withInt:(jint)endId
-                                    withFloat:(jfloat)progress;
+                                      withInt:(int32_t)startId
+                                      withInt:(int32_t)endId
+                                    withFloat:(float)progress;
 
 - (void)onTransitionCompletedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                         withInt:(jint)currentId;
+                                         withInt:(int32_t)currentId;
 
 - (void)refresh;
 
 - (void)setAdapterWithADXCarousel_Adapter:(id<ADXCarousel_Adapter>)adapter;
 
-- (void)setBackwardTransitionWithInt:(jint)backwardTransition;
+- (void)setBackwardTransitionWithInt:(int32_t)backwardTransition;
 
-- (void)setDampeningWithFloat:(jfloat)dampening;
+- (void)setDampeningWithFloat:(float)dampening;
 
-- (void)setEmptyViewBehaviorWithInt:(jint)emptyViewBehavior;
+- (void)setEmptyViewBehaviorWithInt:(int32_t)emptyViewBehavior;
 
-- (void)setFirstViewReferenceWithInt:(jint)firstViewReference;
+- (void)setFirstViewReferenceWithInt:(int32_t)firstViewReference;
 
-- (void)setForwardTransitionWithInt:(jint)forwardTransition;
+- (void)setForwardTransitionWithInt:(int32_t)forwardTransition;
 
-- (void)setInfiniteCarouselWithBoolean:(jboolean)infiniteCarousel;
+- (void)setInfiniteCarouselWithBoolean:(bool)infiniteCarousel;
 
-- (void)setNextStateWithInt:(jint)nextState;
+- (void)setNextStateWithInt:(int32_t)nextState;
 
-- (void)setPreviousStateWithInt:(jint)previousState;
+- (void)setPreviousStateWithInt:(int32_t)previousState;
 
-- (void)setTouchUpModeWithInt:(jint)touchUpMode;
+- (void)setTouchUpModeWithInt:(int32_t)touchUpMode;
 
-- (void)setVelocityThresholdWithFloat:(jfloat)velocityThreshold;
+- (void)setVelocityThresholdWithFloat:(float)velocityThreshold;
 
-- (void)transitionToIndexWithInt:(jint)index
-                         withInt:(jint)delay;
+- (void)transitionToIndexWithInt:(int32_t)index
+                         withInt:(int32_t)delay;
 
 - (void)updateItems;
 
@@ -105,13 +109,13 @@ J2OBJC_EMPTY_STATIC_INIT(ADXCarousel)
 
 J2OBJC_FIELD_SETTER(ADXCarousel, mUpdateRunnable_, id<JavaLangRunnable>)
 
-inline jint ADXCarousel_get_TOUCH_UP_IMMEDIATE_STOP(void);
+inline int32_t ADXCarousel_get_TOUCH_UP_IMMEDIATE_STOP(void);
 #define ADXCarousel_TOUCH_UP_IMMEDIATE_STOP 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCarousel, TOUCH_UP_IMMEDIATE_STOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCarousel, TOUCH_UP_IMMEDIATE_STOP, int32_t)
 
-inline jint ADXCarousel_get_TOUCH_UP_CARRY_ON(void);
+inline int32_t ADXCarousel_get_TOUCH_UP_CARRY_ON(void);
 #define ADXCarousel_TOUCH_UP_CARRY_ON 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCarousel, TOUCH_UP_CARRY_ON, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCarousel, TOUCH_UP_CARRY_ON, int32_t)
 
 FOUNDATION_EXPORT void ADXCarousel_init(ADXCarousel *self);
 
@@ -123,27 +127,30 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCarousel)
 
 @compatibility_alias AndroidxConstraintlayoutHelperWidgetCarousel ADXCarousel;
 
+
 #endif
 
 #if !defined (ADXCarousel_Adapter_) && (INCLUDE_ALL_Carousel || defined(INCLUDE_ADXCarousel_Adapter))
 #define ADXCarousel_Adapter_
 
 @class ADView;
+@class JavaLangInteger;
 
 @protocol ADXCarousel_Adapter < JavaObject >
 
-- (jint)count;
+- (int32_t)count;
 
 - (void)populateWithADView:(ADView *)view
-                   withInt:(jint)index;
+                   withInt:(int32_t)index;
 
-- (void)onNewItemWithInt:(jint)index;
+- (void)onNewItemWithInt:(int32_t)index;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCarousel_Adapter)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCarousel_Adapter)
+
 
 #endif
 

@@ -3,12 +3,26 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\HyperSpline.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "HyperSpline.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXHyperSpline
@@ -28,85 +42,85 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setupWithDoubleArray2:(IOSObjectArray *)points {
   mDimensionality_ = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(points), 0)))->size_;
   mPoints_ = points->size_;
-  JreStrongAssignAndConsume(&mCtl_, [IOSDoubleArray newArrayWithDimensions:2 lengths:(jint[]){ mDimensionality_, mPoints_ }]);
+  JreStrongAssignAndConsume(&mCtl_, [IOSDoubleArray newArrayWithDimensions:2 lengths:(int32_t[]){ mDimensionality_, mPoints_ }]);
   JreStrongAssignAndConsume(&mCurve_, [IOSObjectArray newArrayWithLength:mDimensionality_ type:IOSClass_arrayType(ADXHyperSpline_Cubic_class_(), 1)]);
-  for (jint d = 0; d < mDimensionality_; d++) {
-    for (jint p = 0; p < mPoints_; p++) {
+  for (int32_t d = 0; d < mDimensionality_; d++) {
+    for (int32_t p = 0; p < mPoints_; p++) {
       *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(mCtl_, d)), p) = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(points, p)), d);
     }
   }
-  for (jint d = 0; d < mDimensionality_; d++) {
+  for (int32_t d = 0; d < mDimensionality_; d++) {
     IOSObjectArray_Set(nil_chk(mCurve_), d, ADXHyperSpline_calcNaturalCubicWithInt_withDoubleArray_(((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(mCtl_), d)))->size_, IOSObjectArray_Get(mCtl_, d)));
   }
   JreStrongAssignAndConsume(&mCurveLength_, [IOSDoubleArray newArrayWithLength:mPoints_ - 1]);
   mTotalLength_ = 0;
   IOSObjectArray *temp = [IOSObjectArray arrayWithLength:mDimensionality_ type:ADXHyperSpline_Cubic_class_()];
-  for (jint p = 0; p < ((IOSDoubleArray *) nil_chk(mCurveLength_))->size_; p++) {
-    for (jint d = 0; d < mDimensionality_; d++) {
+  for (int32_t p = 0; p < ((IOSDoubleArray *) nil_chk(mCurveLength_))->size_; p++) {
+    for (int32_t d = 0; d < mDimensionality_; d++) {
       IOSObjectArray_Set(temp, d, IOSObjectArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mCurve_), d)), p));
     }
     JrePlusAssignDoubleD(&mTotalLength_, *IOSDoubleArray_GetRef(mCurveLength_, p) = [self approxLengthWithADXHyperSpline_CubicArray:temp]);
   }
 }
 
-- (void)getVelocityWithDouble:(jdouble)p
+- (void)getVelocityWithDouble:(double)p
               withDoubleArray:(IOSDoubleArray *)v {
-  jdouble pos = p * mTotalLength_;
-  jdouble sum = 0;
-  jint k = 0;
+  double pos = p * mTotalLength_;
+  double sum = 0;
+  int32_t k = 0;
   for (; k < ((IOSDoubleArray *) nil_chk(mCurveLength_))->size_ - 1 && IOSDoubleArray_Get(mCurveLength_, k) < pos; k++) {
     JreMinusAssignDoubleD(&pos, IOSDoubleArray_Get(mCurveLength_, k));
   }
-  for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(v))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(v))->size_; i++) {
     *IOSDoubleArray_GetRef(v, i) = [((ADXHyperSpline_Cubic *) nil_chk(IOSObjectArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mCurve_), i)), k))) velWithDouble:pos / IOSDoubleArray_Get(nil_chk(mCurveLength_), k)];
   }
 }
 
-- (void)getPosWithDouble:(jdouble)p
+- (void)getPosWithDouble:(double)p
          withDoubleArray:(IOSDoubleArray *)x {
-  jdouble pos = p * mTotalLength_;
-  jdouble sum = 0;
-  jint k = 0;
+  double pos = p * mTotalLength_;
+  double sum = 0;
+  int32_t k = 0;
   for (; k < ((IOSDoubleArray *) nil_chk(mCurveLength_))->size_ - 1 && IOSDoubleArray_Get(mCurveLength_, k) < pos; k++) {
     JreMinusAssignDoubleD(&pos, IOSDoubleArray_Get(mCurveLength_, k));
   }
-  for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(x))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(x))->size_; i++) {
     *IOSDoubleArray_GetRef(x, i) = [((ADXHyperSpline_Cubic *) nil_chk(IOSObjectArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mCurve_), i)), k))) evalWithDouble:pos / IOSDoubleArray_Get(nil_chk(mCurveLength_), k)];
   }
 }
 
-- (void)getPosWithDouble:(jdouble)p
+- (void)getPosWithDouble:(double)p
           withFloatArray:(IOSFloatArray *)x {
-  jdouble pos = p * mTotalLength_;
-  jdouble sum = 0;
-  jint k = 0;
+  double pos = p * mTotalLength_;
+  double sum = 0;
+  int32_t k = 0;
   for (; k < ((IOSDoubleArray *) nil_chk(mCurveLength_))->size_ - 1 && IOSDoubleArray_Get(mCurveLength_, k) < pos; k++) {
     JreMinusAssignDoubleD(&pos, IOSDoubleArray_Get(mCurveLength_, k));
   }
-  for (jint i = 0; i < ((IOSFloatArray *) nil_chk(x))->size_; i++) {
-    *IOSFloatArray_GetRef(x, i) = (jfloat) [((ADXHyperSpline_Cubic *) nil_chk(IOSObjectArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mCurve_), i)), k))) evalWithDouble:pos / IOSDoubleArray_Get(nil_chk(mCurveLength_), k)];
+  for (int32_t i = 0; i < ((IOSFloatArray *) nil_chk(x))->size_; i++) {
+    *IOSFloatArray_GetRef(x, i) = (float) [((ADXHyperSpline_Cubic *) nil_chk(IOSObjectArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mCurve_), i)), k))) evalWithDouble:pos / IOSDoubleArray_Get(nil_chk(mCurveLength_), k)];
   }
 }
 
-- (jdouble)getPosWithDouble:(jdouble)p
-                    withInt:(jint)splineNumber {
-  jdouble pos = p * mTotalLength_;
-  jdouble sum = 0;
-  jint k = 0;
+- (double)getPosWithDouble:(double)p
+                   withInt:(int32_t)splineNumber {
+  double pos = p * mTotalLength_;
+  double sum = 0;
+  int32_t k = 0;
   for (; k < ((IOSDoubleArray *) nil_chk(mCurveLength_))->size_ - 1 && IOSDoubleArray_Get(mCurveLength_, k) < pos; k++) {
     JreMinusAssignDoubleD(&pos, IOSDoubleArray_Get(mCurveLength_, k));
   }
   return [((ADXHyperSpline_Cubic *) nil_chk(IOSObjectArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mCurve_), splineNumber)), k))) evalWithDouble:pos / IOSDoubleArray_Get(mCurveLength_, k)];
 }
 
-- (jdouble)approxLengthWithADXHyperSpline_CubicArray:(IOSObjectArray *)curve {
-  jdouble sum = 0;
-  jint N = ((IOSObjectArray *) nil_chk(curve))->size_;
+- (double)approxLengthWithADXHyperSpline_CubicArray:(IOSObjectArray *)curve {
+  double sum = 0;
+  int32_t N = ((IOSObjectArray *) nil_chk(curve))->size_;
   IOSDoubleArray *old = [IOSDoubleArray arrayWithLength:curve->size_];
-  for (jdouble i = 0; i < 1; JrePlusAssignDoubleD(&i, .1)) {
-    jdouble s = 0;
-    for (jint j = 0; j < curve->size_; j++) {
-      jdouble tmp = IOSDoubleArray_Get(old, j);
+  for (double i = 0; i < 1; JrePlusAssignDoubleD(&i, .1)) {
+    double s = 0;
+    for (int32_t j = 0; j < curve->size_; j++) {
+      double tmp = IOSDoubleArray_Get(old, j);
       JreMinusAssignDoubleD(&tmp, *IOSDoubleArray_GetRef(old, j) = [((ADXHyperSpline_Cubic *) nil_chk(IOSObjectArray_Get(curve, j))) evalWithDouble:i]);
       JrePlusAssignDoubleD(&s, tmp * tmp);
     }
@@ -114,9 +128,9 @@ J2OBJC_IGNORE_DESIGNATED_END
       JrePlusAssignDoubleD(&sum, JavaLangMath_sqrtWithDouble_(s));
     }
   }
-  jdouble s = 0;
-  for (jint j = 0; j < curve->size_; j++) {
-    jdouble tmp = IOSDoubleArray_Get(old, j);
+  double s = 0;
+  for (int32_t j = 0; j < curve->size_; j++) {
+    double tmp = IOSDoubleArray_Get(old, j);
     JreMinusAssignDoubleD(&tmp, *IOSDoubleArray_GetRef(old, j) = [((ADXHyperSpline_Cubic *) nil_chk(IOSObjectArray_Get(curve, j))) evalWithDouble:1]);
     JrePlusAssignDoubleD(&s, tmp * tmp);
   }
@@ -124,7 +138,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return sum;
 }
 
-+ (IOSObjectArray *)calcNaturalCubicWithInt:(jint)n
++ (IOSObjectArray *)calcNaturalCubicWithInt:(int32_t)n
                             withDoubleArray:(IOSDoubleArray *)x {
   return ADXHyperSpline_calcNaturalCubicWithInt_withDoubleArray_(n, x);
 }
@@ -201,50 +215,52 @@ ADXHyperSpline *create_ADXHyperSpline_init() {
   J2OBJC_CREATE_IMPL(ADXHyperSpline, init)
 }
 
-IOSObjectArray *ADXHyperSpline_calcNaturalCubicWithInt_withDoubleArray_(jint n, IOSDoubleArray *x) {
+IOSObjectArray *ADXHyperSpline_calcNaturalCubicWithInt_withDoubleArray_(int32_t n, IOSDoubleArray *x) {
   ADXHyperSpline_initialize();
   IOSDoubleArray *gamma = [IOSDoubleArray arrayWithLength:n];
   IOSDoubleArray *delta = [IOSDoubleArray arrayWithLength:n];
   IOSDoubleArray *D = [IOSDoubleArray arrayWithLength:n];
   n -= 1;
   *IOSDoubleArray_GetRef(gamma, 0) = 1.0f / 2.0f;
-  for (jint i = 1; i < n; i++) {
+  for (int32_t i = 1; i < n; i++) {
     *IOSDoubleArray_GetRef(gamma, i) = 1 / (4 - IOSDoubleArray_Get(gamma, i - 1));
   }
   *IOSDoubleArray_GetRef(gamma, n) = 1 / (2 - IOSDoubleArray_Get(gamma, n - 1));
   *IOSDoubleArray_GetRef(delta, 0) = 3 * (IOSDoubleArray_Get(nil_chk(x), 1) - IOSDoubleArray_Get(x, 0)) * IOSDoubleArray_Get(gamma, 0);
-  for (jint i = 1; i < n; i++) {
+  for (int32_t i = 1; i < n; i++) {
     *IOSDoubleArray_GetRef(delta, i) = (3 * (IOSDoubleArray_Get(x, i + 1) - IOSDoubleArray_Get(x, i - 1)) - IOSDoubleArray_Get(delta, i - 1)) * IOSDoubleArray_Get(gamma, i);
   }
   *IOSDoubleArray_GetRef(delta, n) = (3 * (IOSDoubleArray_Get(x, n) - IOSDoubleArray_Get(x, n - 1)) - IOSDoubleArray_Get(delta, n - 1)) * IOSDoubleArray_Get(gamma, n);
   *IOSDoubleArray_GetRef(D, n) = IOSDoubleArray_Get(delta, n);
-  for (jint i = n - 1; i >= 0; i--) {
+  for (int32_t i = n - 1; i >= 0; i--) {
     *IOSDoubleArray_GetRef(D, i) = IOSDoubleArray_Get(delta, i) - IOSDoubleArray_Get(gamma, i) * IOSDoubleArray_Get(D, i + 1);
   }
   IOSObjectArray *C = [IOSObjectArray arrayWithLength:n type:ADXHyperSpline_Cubic_class_()];
-  for (jint i = 0; i < n; i++) {
-    IOSObjectArray_SetAndConsume(C, i, new_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_((jfloat) IOSDoubleArray_Get(x, i), IOSDoubleArray_Get(D, i), 3 * (IOSDoubleArray_Get(x, i + 1) - IOSDoubleArray_Get(x, i)) - 2 * IOSDoubleArray_Get(D, i) - IOSDoubleArray_Get(D, i + 1), 2 * (IOSDoubleArray_Get(x, i) - IOSDoubleArray_Get(x, i + 1)) + IOSDoubleArray_Get(D, i) + IOSDoubleArray_Get(D, i + 1)));
+  for (int32_t i = 0; i < n; i++) {
+    IOSObjectArray_SetAndConsume(C, i, new_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_((float) IOSDoubleArray_Get(x, i), IOSDoubleArray_Get(D, i), 3 * (IOSDoubleArray_Get(x, i + 1) - IOSDoubleArray_Get(x, i)) - 2 * IOSDoubleArray_Get(D, i) - IOSDoubleArray_Get(D, i + 1), 2 * (IOSDoubleArray_Get(x, i) - IOSDoubleArray_Get(x, i + 1)) + IOSDoubleArray_Get(D, i) + IOSDoubleArray_Get(D, i + 1)));
   }
   return C;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXHyperSpline)
 
+J2OBJC_NAME_MAPPING(ADXHyperSpline, "androidx.constraintlayout.core.motion.utils", "ADX")
+
 @implementation ADXHyperSpline_Cubic
 
-- (instancetype)initWithDouble:(jdouble)a
-                    withDouble:(jdouble)b
-                    withDouble:(jdouble)c
-                    withDouble:(jdouble)d {
+- (instancetype)initWithDouble:(double)a
+                    withDouble:(double)b
+                    withDouble:(double)c
+                    withDouble:(double)d {
   ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(self, a, b, c, d);
   return self;
 }
 
-- (jdouble)evalWithDouble:(jdouble)u {
+- (double)evalWithDouble:(double)u {
   return (((mD_ * u) + mC_) * u + mB_) * u + mA_;
 }
 
-- (jdouble)velWithDouble:(jdouble)v {
+- (double)velWithDouble:(double)v {
   return (mD_ * ADXHyperSpline_Cubic_THIRD * v + mC_ * ADXHyperSpline_Cubic_HALF) * v + mB_;
 }
 
@@ -276,7 +292,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXHyperSpline)
 
 @end
 
-void ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(ADXHyperSpline_Cubic *self, jdouble a, jdouble b, jdouble c, jdouble d) {
+void ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(ADXHyperSpline_Cubic *self, double a, double b, double c, double d) {
   NSObject_init(self);
   self->mA_ = a;
   self->mB_ = b;
@@ -284,11 +300,11 @@ void ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(ADXHy
   self->mD_ = d;
 }
 
-ADXHyperSpline_Cubic *new_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(jdouble a, jdouble b, jdouble c, jdouble d) {
+ADXHyperSpline_Cubic *new_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(double a, double b, double c, double d) {
   J2OBJC_NEW_IMPL(ADXHyperSpline_Cubic, initWithDouble_withDouble_withDouble_withDouble_, a, b, c, d)
 }
 
-ADXHyperSpline_Cubic *create_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(jdouble a, jdouble b, jdouble c, jdouble d) {
+ADXHyperSpline_Cubic *create_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(double a, double b, double c, double d) {
   J2OBJC_CREATE_IMPL(ADXHyperSpline_Cubic, initWithDouble_withDouble_withDouble_withDouble_, a, b, c, d)
 }
 

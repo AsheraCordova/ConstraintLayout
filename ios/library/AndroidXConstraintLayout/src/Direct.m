@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\Direct.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BasicMeasure.h"
 #include "ChainHead.h"
 #include "ConstraintAnchor.h"
@@ -14,10 +19,20 @@
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/StringBuilder.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashSet.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXDirect ()
@@ -29,11 +44,11 @@
  @param measurer
  @param isRtl
  */
-+ (void)solveBarrierWithInt:(jint)level
++ (void)solveBarrierWithInt:(int32_t)level
          withADXCoreBarrier:(ADXCoreBarrier *)barrier
 withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
-                    withInt:(jint)orientation
-                withBoolean:(jboolean)isRtl;
+                    withInt:(int32_t)orientation
+                withBoolean:(bool)isRtl;
 
 /*!
  @brief Does an horizontal solving pass for the given widget.This will walk through the widget's
@@ -43,10 +58,10 @@ withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
  @param measurer the measurer object to measure the widgets.
  @param isRtl
  */
-+ (void)horizontalSolvingPassWithInt:(jint)level
++ (void)horizontalSolvingPassWithInt:(int32_t)level
              withADXConstraintWidget:(ADXConstraintWidget *)layout
         withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
-                         withBoolean:(jboolean)isRtl;
+                         withBoolean:(bool)isRtl;
 
 /*!
  @brief Does an vertical solving pass for the given widget.This will walk through the widget's
@@ -55,7 +70,7 @@ withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
  @param layout the widget we want to solve the dependencies
  @param measurer the measurer object to measure the widgets.
  */
-+ (void)verticalSolvingPassWithInt:(jint)level
++ (void)verticalSolvingPassWithInt:(int32_t)level
            withADXConstraintWidget:(ADXConstraintWidget *)layout
       withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer;
 
@@ -66,10 +81,10 @@ withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
  @param widget
  @param isRtl
  */
-+ (void)solveHorizontalCenterConstraintsWithInt:(jint)level
++ (void)solveHorizontalCenterConstraintsWithInt:(int32_t)level
                    withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                         withADXConstraintWidget:(ADXConstraintWidget *)widget
-                                    withBoolean:(jboolean)isRtl;
+                                    withBoolean:(bool)isRtl;
 
 /*!
  @brief Solve vertical centering constraints
@@ -77,7 +92,7 @@ withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
  @param measurer
  @param widget
  */
-+ (void)solveVerticalCenterConstraintsWithInt:(jint)level
++ (void)solveVerticalCenterConstraintsWithInt:(int32_t)level
                  withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                       withADXConstraintWidget:(ADXConstraintWidget *)widget;
 
@@ -88,11 +103,11 @@ withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
  @param widget
  @param isRtl
  */
-+ (void)solveHorizontalMatchConstraintWithInt:(jint)level
++ (void)solveHorizontalMatchConstraintWithInt:(int32_t)level
                       withADXConstraintWidget:(ADXConstraintWidget *)layout
                  withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                       withADXConstraintWidget:(ADXConstraintWidget *)widget
-                                  withBoolean:(jboolean)isRtl;
+                                  withBoolean:(bool)isRtl;
 
 /*!
  @brief Solve vertical match constraints
@@ -100,7 +115,7 @@ withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
  @param measurer
  @param widget
  */
-+ (void)solveVerticalMatchConstraintWithInt:(jint)level
++ (void)solveVerticalMatchConstraintWithInt:(int32_t)level
                     withADXConstraintWidget:(ADXConstraintWidget *)layout
                withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                     withADXConstraintWidget:(ADXConstraintWidget *)widget;
@@ -111,55 +126,55 @@ withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
  @param layout the widget to check
  @return true if both dimensions are knowable by a single measure pass
  */
-+ (jboolean)canMeasureWithInt:(jint)level
-      withADXConstraintWidget:(ADXConstraintWidget *)layout;
++ (bool)canMeasureWithInt:(int32_t)level
+  withADXConstraintWidget:(ADXConstraintWidget *)layout;
 
 @end
 
-inline jboolean ADXDirect_get_DEBUG(void);
+inline bool ADXDirect_get_DEBUG(void);
 #define ADXDirect_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXDirect, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXDirect, DEBUG, bool)
 
-inline jboolean ADXDirect_get_APPLY_MATCH_PARENT(void);
+inline bool ADXDirect_get_APPLY_MATCH_PARENT(void);
 #define ADXDirect_APPLY_MATCH_PARENT false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXDirect, APPLY_MATCH_PARENT, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXDirect, APPLY_MATCH_PARENT, bool)
 
 inline ADXBasicMeasure_Measure *ADXDirect_get_measure(void);
 inline ADXBasicMeasure_Measure *ADXDirect_set_measure(ADXBasicMeasure_Measure *value);
 static ADXBasicMeasure_Measure *ADXDirect_measure;
 J2OBJC_STATIC_FIELD_OBJ(ADXDirect, measure, ADXBasicMeasure_Measure *)
 
-inline jboolean ADXDirect_get_EARLY_TERMINATION(void);
+inline bool ADXDirect_get_EARLY_TERMINATION(void);
 #define ADXDirect_EARLY_TERMINATION true
-J2OBJC_STATIC_FIELD_CONSTANT(ADXDirect, EARLY_TERMINATION, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXDirect, EARLY_TERMINATION, bool)
 
-inline jint ADXDirect_get_hcount(void);
-inline jint ADXDirect_set_hcount(jint value);
-inline jint *ADXDirect_getRef_hcount(void);
-static jint ADXDirect_hcount = 0;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXDirect, hcount, jint)
+inline int32_t ADXDirect_get_hcount(void);
+inline int32_t ADXDirect_set_hcount(int32_t value);
+inline int32_t *ADXDirect_getRef_hcount(void);
+static int32_t ADXDirect_hcount = 0;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXDirect, hcount, int32_t)
 
-inline jint ADXDirect_get_vcount(void);
-inline jint ADXDirect_set_vcount(jint value);
-inline jint *ADXDirect_getRef_vcount(void);
-static jint ADXDirect_vcount = 0;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXDirect, vcount, jint)
+inline int32_t ADXDirect_get_vcount(void);
+inline int32_t ADXDirect_set_vcount(int32_t value);
+inline int32_t *ADXDirect_getRef_vcount(void);
+static int32_t ADXDirect_vcount = 0;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXDirect, vcount, int32_t)
 
-__attribute__((unused)) static void ADXDirect_solveBarrierWithInt_withADXCoreBarrier_withADXBasicMeasure_Measurer_withInt_withBoolean_(jint level, ADXCoreBarrier *barrier, id<ADXBasicMeasure_Measurer> measurer, jint orientation, jboolean isRtl);
+__attribute__((unused)) static void ADXDirect_solveBarrierWithInt_withADXCoreBarrier_withADXBasicMeasure_Measurer_withInt_withBoolean_(int32_t level, ADXCoreBarrier *barrier, id<ADXBasicMeasure_Measurer> measurer, int32_t orientation, bool isRtl);
 
-__attribute__((unused)) static void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, jboolean isRtl);
+__attribute__((unused)) static void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, bool isRtl);
 
-__attribute__((unused)) static void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer);
+__attribute__((unused)) static void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer);
 
-__attribute__((unused)) static void ADXDirect_solveHorizontalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(jint level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, jboolean isRtl);
+__attribute__((unused)) static void ADXDirect_solveHorizontalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(int32_t level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, bool isRtl);
 
-__attribute__((unused)) static void ADXDirect_solveVerticalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_(jint level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget);
+__attribute__((unused)) static void ADXDirect_solveVerticalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_(int32_t level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget);
 
-__attribute__((unused)) static void ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, jboolean isRtl);
+__attribute__((unused)) static void ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, bool isRtl);
 
-__attribute__((unused)) static void ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget);
+__attribute__((unused)) static void ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget);
 
-__attribute__((unused)) static jboolean ADXDirect_canMeasureWithInt_withADXConstraintWidget_(jint level, ADXConstraintWidget *layout);
+__attribute__((unused)) static bool ADXDirect_canMeasureWithInt_withADXConstraintWidget_(int32_t level, ADXConstraintWidget *layout);
 
 J2OBJC_INITIALIZED_DEFN(ADXDirect)
 
@@ -177,72 +192,72 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(layout, measurer);
 }
 
-+ (void)solveBarrierWithInt:(jint)level
++ (void)solveBarrierWithInt:(int32_t)level
          withADXCoreBarrier:(ADXCoreBarrier *)barrier
 withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
-                    withInt:(jint)orientation
-                withBoolean:(jboolean)isRtl {
+                    withInt:(int32_t)orientation
+                withBoolean:(bool)isRtl {
   ADXDirect_solveBarrierWithInt_withADXCoreBarrier_withADXBasicMeasure_Measurer_withInt_withBoolean_(level, barrier, measurer, orientation, isRtl);
 }
 
-+ (NSString *)lsWithInt:(jint)level {
++ (NSString *)lsWithInt:(int32_t)level {
   return ADXDirect_lsWithInt_(level);
 }
 
-+ (void)horizontalSolvingPassWithInt:(jint)level
++ (void)horizontalSolvingPassWithInt:(int32_t)level
              withADXConstraintWidget:(ADXConstraintWidget *)layout
         withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
-                         withBoolean:(jboolean)isRtl {
+                         withBoolean:(bool)isRtl {
   ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(level, layout, measurer, isRtl);
 }
 
-+ (void)verticalSolvingPassWithInt:(jint)level
++ (void)verticalSolvingPassWithInt:(int32_t)level
            withADXConstraintWidget:(ADXConstraintWidget *)layout
       withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer {
   ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(level, layout, measurer);
 }
 
-+ (void)solveHorizontalCenterConstraintsWithInt:(jint)level
++ (void)solveHorizontalCenterConstraintsWithInt:(int32_t)level
                    withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                         withADXConstraintWidget:(ADXConstraintWidget *)widget
-                                    withBoolean:(jboolean)isRtl {
+                                    withBoolean:(bool)isRtl {
   ADXDirect_solveHorizontalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(level, measurer, widget, isRtl);
 }
 
-+ (void)solveVerticalCenterConstraintsWithInt:(jint)level
++ (void)solveVerticalCenterConstraintsWithInt:(int32_t)level
                  withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                       withADXConstraintWidget:(ADXConstraintWidget *)widget {
   ADXDirect_solveVerticalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_(level, measurer, widget);
 }
 
-+ (void)solveHorizontalMatchConstraintWithInt:(jint)level
++ (void)solveHorizontalMatchConstraintWithInt:(int32_t)level
                       withADXConstraintWidget:(ADXConstraintWidget *)layout
                  withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                       withADXConstraintWidget:(ADXConstraintWidget *)widget
-                                  withBoolean:(jboolean)isRtl {
+                                  withBoolean:(bool)isRtl {
   ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(level, layout, measurer, widget, isRtl);
 }
 
-+ (void)solveVerticalMatchConstraintWithInt:(jint)level
++ (void)solveVerticalMatchConstraintWithInt:(int32_t)level
                     withADXConstraintWidget:(ADXConstraintWidget *)layout
                withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
                     withADXConstraintWidget:(ADXConstraintWidget *)widget {
   ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_(level, layout, measurer, widget);
 }
 
-+ (jboolean)canMeasureWithInt:(jint)level
-      withADXConstraintWidget:(ADXConstraintWidget *)layout {
++ (bool)canMeasureWithInt:(int32_t)level
+  withADXConstraintWidget:(ADXConstraintWidget *)layout {
   return ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level, layout);
 }
 
-+ (jboolean)solveChainWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
-                                   withADXLinearSystem:(ADXLinearSystem *)system
-                                               withInt:(jint)orientation
-                                               withInt:(jint)offset
-                                      withADXChainHead:(ADXChainHead *)chainHead
-                                           withBoolean:(jboolean)isChainSpread
-                                           withBoolean:(jboolean)isChainSpreadInside
-                                           withBoolean:(jboolean)isChainPacked {
++ (bool)solveChainWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
+                               withADXLinearSystem:(ADXLinearSystem *)system
+                                           withInt:(int32_t)orientation
+                                           withInt:(int32_t)offset
+                                  withADXChainHead:(ADXChainHead *)chainHead
+                                       withBoolean:(bool)isChainSpread
+                                       withBoolean:(bool)isChainSpreadInside
+                                       withBoolean:(bool)isChainPacked {
   return ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_withBoolean_withBoolean_withBoolean_(container, system, orientation, offset, chainHead, isChainSpread, isChainSpreadInside, isChainPacked);
 }
 
@@ -317,24 +332,24 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
   ADXConstraintWidget_DimensionBehaviour *vertical = JreRetainedLocalValue([layout getVerticalDimensionBehaviour]);
   ADXDirect_hcount = 0;
   ADXDirect_vcount = 0;
-  jlong time = 0;
+  int64_t time = 0;
   [layout resetFinalResolution];
   JavaUtilArrayList *children = JreRetainedLocalValue([layout getChildren]);
-  jint count = [((JavaUtilArrayList *) nil_chk(children)) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(children)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
     [((ADXConstraintWidget *) nil_chk(child)) resetFinalResolution];
   }
-  jboolean isRtl = [layout isRtl];
+  bool isRtl = [layout isRtl];
   if (horizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED)) {
     [layout setFinalHorizontalWithInt:0 withInt:[layout getWidth]];
   }
   else {
     [layout setFinalLeftWithInt:0];
   }
-  jboolean hasGuideline = false;
-  jboolean hasBarrier = false;
-  for (jint i = 0; i < count; i++) {
+  bool hasGuideline = false;
+  bool hasBarrier = false;
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
     if ([child isKindOfClass:[ADXCoreGuideline class]]) {
       ADXCoreGuideline *guideline = (ADXCoreGuideline *) child;
@@ -346,7 +361,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
           [guideline setFinalValueWithInt:[layout getWidth] - [guideline getRelativeEnd]];
         }
         else if ([layout isResolvedHorizontally]) {
-          jint position = JreFpToInt((0.5f + [guideline getRelativePercent] * [layout getWidth]));
+          int32_t position = JreFpToInt((0.5f + [guideline getRelativePercent] * [layout getWidth]));
           [guideline setFinalValueWithInt:position];
         }
         hasGuideline = true;
@@ -360,7 +375,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
     }
   }
   if (hasGuideline) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
       if ([child isKindOfClass:[ADXCoreGuideline class]]) {
         ADXCoreGuideline *guideline = (ADXCoreGuideline *) child;
@@ -372,7 +387,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
   }
   ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(0, layout, measurer, isRtl);
   if (hasBarrier) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
       if ([child isKindOfClass:[ADXCoreBarrier class]]) {
         ADXCoreBarrier *barrier = (ADXCoreBarrier *) child;
@@ -390,7 +405,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
   }
   hasGuideline = false;
   hasBarrier = false;
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
     if ([child isKindOfClass:[ADXCoreGuideline class]]) {
       ADXCoreGuideline *guideline = (ADXCoreGuideline *) child;
@@ -402,7 +417,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
           [guideline setFinalValueWithInt:[layout getHeight] - [guideline getRelativeEnd]];
         }
         else if ([layout isResolvedVertically]) {
-          jint position = JreFpToInt((0.5f + [guideline getRelativePercent] * [layout getHeight]));
+          int32_t position = JreFpToInt((0.5f + [guideline getRelativePercent] * [layout getHeight]));
           [guideline setFinalValueWithInt:position];
         }
         hasGuideline = true;
@@ -416,7 +431,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
     }
   }
   if (hasGuideline) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
       if ([child isKindOfClass:[ADXCoreGuideline class]]) {
         ADXCoreGuideline *guideline = (ADXCoreGuideline *) child;
@@ -428,7 +443,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
   }
   ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(0, layout, measurer);
   if (hasBarrier) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
       if ([child isKindOfClass:[ADXCoreBarrier class]]) {
         ADXCoreBarrier *barrier = (ADXCoreBarrier *) child;
@@ -438,7 +453,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
       }
     }
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
     if ([((ADXConstraintWidget *) nil_chk(child)) isMeasureRequested] && ADXDirect_canMeasureWithInt_withADXConstraintWidget_(0, child)) {
       ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(0, child, measurer, ADXDirect_measure, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
@@ -458,7 +473,7 @@ void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_M
   }
 }
 
-void ADXDirect_solveBarrierWithInt_withADXCoreBarrier_withADXBasicMeasure_Measurer_withInt_withBoolean_(jint level, ADXCoreBarrier *barrier, id<ADXBasicMeasure_Measurer> measurer, jint orientation, jboolean isRtl) {
+void ADXDirect_solveBarrierWithInt_withADXCoreBarrier_withADXBasicMeasure_Measurer_withInt_withBoolean_(int32_t level, ADXCoreBarrier *barrier, id<ADXBasicMeasure_Measurer> measurer, int32_t orientation, bool isRtl) {
   ADXDirect_initialize();
   if ([((ADXCoreBarrier *) nil_chk(barrier)) allSolved]) {
     if (orientation == ADXConstraintWidget_HORIZONTAL) {
@@ -470,17 +485,17 @@ void ADXDirect_solveBarrierWithInt_withADXCoreBarrier_withADXBasicMeasure_Measur
   }
 }
 
-NSString *ADXDirect_lsWithInt_(jint level) {
+NSString *ADXDirect_lsWithInt_(int32_t level) {
   ADXDirect_initialize();
   JavaLangStringBuilder *builder = create_JavaLangStringBuilder_init();
-  for (jint i = 0; i < level; i++) {
+  for (int32_t i = 0; i < level; i++) {
     [builder appendWithNSString:@"  "];
   }
   [builder appendWithNSString:JreStrcat("$I$", @"+-(", level, @") ")];
   return [builder description];
 }
 
-void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, jboolean isRtl) {
+void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, bool isRtl) {
   ADXDirect_initialize();
   if ([((ADXConstraintWidget *) nil_chk(layout)) isHorizontalSolvingPassDone]) {
     return;
@@ -492,14 +507,14 @@ void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasic
   }
   ADXConstraintAnchor *left = JreRetainedLocalValue([layout getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, LEFT)]);
   ADXConstraintAnchor *right = JreRetainedLocalValue([layout getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, RIGHT)]);
-  jint l = [((ADXConstraintAnchor *) nil_chk(left)) getFinalValue];
-  jint r = [((ADXConstraintAnchor *) nil_chk(right)) getFinalValue];
+  int32_t l = [((ADXConstraintAnchor *) nil_chk(left)) getFinalValue];
+  int32_t r = [((ADXConstraintAnchor *) nil_chk(right)) getFinalValue];
   if ([left getDependents] != nil && [left hasFinalValue]) {
     for (ADXConstraintAnchor * __strong first in nil_chk([left getDependents])) {
       ADXConstraintWidget *widget = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(first))->mOwner_);
-      jint x1 = 0;
-      jint x2 = 0;
-      jboolean canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
+      int32_t x1 = 0;
+      int32_t x2 = 0;
+      bool canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
       if ([((ADXConstraintWidget *) nil_chk(widget)) isMeasureRequested] && canMeasure) {
         ADXBasicMeasure_Measure *measure = create_ADXBasicMeasure_Measure_init();
         ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(level + 1, widget, measurer, measure, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
@@ -508,24 +523,24 @@ void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasic
         if ([widget isMeasureRequested]) {
           continue;
         }
-        if (first == widget->mLeft_ && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ == nil) {
+        if (JreObjectEqualsEquals(first, widget->mLeft_) && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ == nil) {
           x1 = l + [((ADXConstraintAnchor *) nil_chk(widget->mLeft_)) getMargin];
           x2 = x1 + [widget getWidth];
           [widget setFinalHorizontalWithInt:x1 withInt:x2];
           ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(level + 1, widget, measurer, isRtl);
         }
-        else if (first == widget->mRight_ && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ == nil) {
+        else if (JreObjectEqualsEquals(first, widget->mRight_) && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ == nil) {
           x2 = l - [((ADXConstraintAnchor *) nil_chk(widget->mRight_)) getMargin];
           x1 = x2 - [widget getWidth];
           [widget setFinalHorizontalWithInt:x1 withInt:x2];
           ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(level + 1, widget, measurer, isRtl);
         }
-        else if (first == widget->mLeft_ && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ != nil && [widget->mRight_->mTarget_ hasFinalValue] && ![widget isInHorizontalChain]) {
+        else if (JreObjectEqualsEquals(first, widget->mLeft_) && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ != nil && [widget->mRight_->mTarget_ hasFinalValue] && ![widget isInHorizontalChain]) {
           ADXDirect_solveHorizontalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(level + 1, measurer, widget, isRtl);
         }
       }
       else if ([widget getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && widget->mMatchConstraintMaxWidth_ >= 0 && widget->mMatchConstraintMinWidth_ >= 0 && ([widget getVisibility] == ADXConstraintWidget_GONE || ((widget->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD) && [widget getDimensionRatio] == 0)) && ![widget isInHorizontalChain] && ![widget isInVirtualLayout]) {
-        jboolean bothConnected = (first == widget->mLeft_ && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ != nil && [widget->mRight_->mTarget_ hasFinalValue]) || (first == widget->mRight_ && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ != nil && [widget->mLeft_->mTarget_ hasFinalValue]);
+        bool bothConnected = (JreObjectEqualsEquals(first, widget->mLeft_) && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ != nil && [widget->mRight_->mTarget_ hasFinalValue]) || (JreObjectEqualsEquals(first, widget->mRight_) && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ != nil && [widget->mLeft_->mTarget_ hasFinalValue]);
         if (bothConnected && ![widget isInHorizontalChain]) {
           ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(level + 1, layout, measurer, widget, isRtl);
         }
@@ -538,25 +553,25 @@ void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasic
   if ([right getDependents] != nil && [right hasFinalValue]) {
     for (ADXConstraintAnchor * __strong first in nil_chk([right getDependents])) {
       ADXConstraintWidget *widget = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(first))->mOwner_);
-      jboolean canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
+      bool canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
       if ([((ADXConstraintWidget *) nil_chk(widget)) isMeasureRequested] && canMeasure) {
         ADXBasicMeasure_Measure *measure = create_ADXBasicMeasure_Measure_init();
         ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(level + 1, widget, measurer, measure, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
       }
-      jint x1 = 0;
-      jint x2 = 0;
-      jboolean bothConnected = (first == widget->mLeft_ && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ != nil && [widget->mRight_->mTarget_ hasFinalValue]) || (first == widget->mRight_ && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ != nil && [widget->mLeft_->mTarget_ hasFinalValue]);
+      int32_t x1 = 0;
+      int32_t x2 = 0;
+      bool bothConnected = (JreObjectEqualsEquals(first, widget->mLeft_) && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ != nil && [widget->mRight_->mTarget_ hasFinalValue]) || (JreObjectEqualsEquals(first, widget->mRight_) && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ != nil && [widget->mLeft_->mTarget_ hasFinalValue]);
       if ([widget getHorizontalDimensionBehaviour] != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) || canMeasure) {
         if ([widget isMeasureRequested]) {
           continue;
         }
-        if (first == widget->mLeft_ && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ == nil) {
+        if (JreObjectEqualsEquals(first, widget->mLeft_) && ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_ == nil) {
           x1 = r + [((ADXConstraintAnchor *) nil_chk(widget->mLeft_)) getMargin];
           x2 = x1 + [widget getWidth];
           [widget setFinalHorizontalWithInt:x1 withInt:x2];
           ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(level + 1, widget, measurer, isRtl);
         }
-        else if (first == widget->mRight_ && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ == nil) {
+        else if (JreObjectEqualsEquals(first, widget->mRight_) && ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_ == nil) {
           x2 = r - [((ADXConstraintAnchor *) nil_chk(widget->mRight_)) getMargin];
           x1 = x2 - [widget getWidth];
           [widget setFinalHorizontalWithInt:x1 withInt:x2];
@@ -576,7 +591,7 @@ void ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasic
   [layout markHorizontalSolvingPassDone];
 }
 
-void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer) {
+void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer) {
   ADXDirect_initialize();
   if ([((ADXConstraintWidget *) nil_chk(layout)) isVerticalSolvingPassDone]) {
     return;
@@ -588,14 +603,14 @@ void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMe
   }
   ADXConstraintAnchor *top = JreRetainedLocalValue([layout getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, TOP)]);
   ADXConstraintAnchor *bottom = JreRetainedLocalValue([layout getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, BOTTOM)]);
-  jint t = [((ADXConstraintAnchor *) nil_chk(top)) getFinalValue];
-  jint b = [((ADXConstraintAnchor *) nil_chk(bottom)) getFinalValue];
+  int32_t t = [((ADXConstraintAnchor *) nil_chk(top)) getFinalValue];
+  int32_t b = [((ADXConstraintAnchor *) nil_chk(bottom)) getFinalValue];
   if ([top getDependents] != nil && [top hasFinalValue]) {
     for (ADXConstraintAnchor * __strong first in nil_chk([top getDependents])) {
       ADXConstraintWidget *widget = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(first))->mOwner_);
-      jint y1 = 0;
-      jint y2 = 0;
-      jboolean canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
+      int32_t y1 = 0;
+      int32_t y2 = 0;
+      bool canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
       if ([((ADXConstraintWidget *) nil_chk(widget)) isMeasureRequested] && canMeasure) {
         ADXBasicMeasure_Measure *measure = create_ADXBasicMeasure_Measure_init();
         ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(level + 1, widget, measurer, measure, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
@@ -604,24 +619,24 @@ void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMe
         if ([widget isMeasureRequested]) {
           continue;
         }
-        if (first == widget->mTop_ && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ == nil) {
+        if (JreObjectEqualsEquals(first, widget->mTop_) && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ == nil) {
           y1 = t + [((ADXConstraintAnchor *) nil_chk(widget->mTop_)) getMargin];
           y2 = y1 + [widget getHeight];
           [widget setFinalVerticalWithInt:y1 withInt:y2];
           ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(level + 1, widget, measurer);
         }
-        else if (first == widget->mBottom_ && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ == nil) {
+        else if (JreObjectEqualsEquals(first, widget->mBottom_) && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ == nil) {
           y2 = t - [((ADXConstraintAnchor *) nil_chk(widget->mBottom_)) getMargin];
           y1 = y2 - [widget getHeight];
           [widget setFinalVerticalWithInt:y1 withInt:y2];
           ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(level + 1, widget, measurer);
         }
-        else if (first == widget->mTop_ && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ != nil && [widget->mBottom_->mTarget_ hasFinalValue]) {
+        else if (JreObjectEqualsEquals(first, widget->mTop_) && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ != nil && [widget->mBottom_->mTarget_ hasFinalValue]) {
           ADXDirect_solveVerticalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_(level + 1, measurer, widget);
         }
       }
       else if ([widget getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && widget->mMatchConstraintMaxHeight_ >= 0 && widget->mMatchConstraintMinHeight_ >= 0 && ([widget getVisibility] == ADXConstraintWidget_GONE || ((widget->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD) && [widget getDimensionRatio] == 0)) && ![widget isInVerticalChain] && ![widget isInVirtualLayout]) {
-        jboolean bothConnected = (first == widget->mTop_ && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ != nil && [widget->mBottom_->mTarget_ hasFinalValue]) || (first == widget->mBottom_ && ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_ != nil && [widget->mTop_->mTarget_ hasFinalValue]);
+        bool bothConnected = (JreObjectEqualsEquals(first, widget->mTop_) && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ != nil && [widget->mBottom_->mTarget_ hasFinalValue]) || (JreObjectEqualsEquals(first, widget->mBottom_) && ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_ != nil && [widget->mTop_->mTarget_ hasFinalValue]);
         if (bothConnected && ![widget isInVerticalChain]) {
           ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_(level + 1, layout, measurer, widget);
         }
@@ -634,25 +649,25 @@ void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMe
   if ([bottom getDependents] != nil && [bottom hasFinalValue]) {
     for (ADXConstraintAnchor * __strong first in nil_chk([bottom getDependents])) {
       ADXConstraintWidget *widget = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(first))->mOwner_);
-      jboolean canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
+      bool canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
       if ([((ADXConstraintWidget *) nil_chk(widget)) isMeasureRequested] && canMeasure) {
         ADXBasicMeasure_Measure *measure = create_ADXBasicMeasure_Measure_init();
         ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(level + 1, widget, measurer, measure, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
       }
-      jint y1 = 0;
-      jint y2 = 0;
-      jboolean bothConnected = (first == widget->mTop_ && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ != nil && [widget->mBottom_->mTarget_ hasFinalValue]) || (first == widget->mBottom_ && ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_ != nil && [widget->mTop_->mTarget_ hasFinalValue]);
+      int32_t y1 = 0;
+      int32_t y2 = 0;
+      bool bothConnected = (JreObjectEqualsEquals(first, widget->mTop_) && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ != nil && [widget->mBottom_->mTarget_ hasFinalValue]) || (JreObjectEqualsEquals(first, widget->mBottom_) && ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_ != nil && [widget->mTop_->mTarget_ hasFinalValue]);
       if ([widget getVerticalDimensionBehaviour] != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) || canMeasure) {
         if ([widget isMeasureRequested]) {
           continue;
         }
-        if (first == widget->mTop_ && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ == nil) {
+        if (JreObjectEqualsEquals(first, widget->mTop_) && ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_ == nil) {
           y1 = b + [((ADXConstraintAnchor *) nil_chk(widget->mTop_)) getMargin];
           y2 = y1 + [widget getHeight];
           [widget setFinalVerticalWithInt:y1 withInt:y2];
           ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(level + 1, widget, measurer);
         }
-        else if (first == widget->mBottom_ && ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_ == nil) {
+        else if (JreObjectEqualsEquals(first, widget->mBottom_) && ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_ == nil) {
           y2 = b - [((ADXConstraintAnchor *) nil_chk(widget->mBottom_)) getMargin];
           y1 = y2 - [widget getHeight];
           [widget setFinalVerticalWithInt:y1 withInt:y2];
@@ -671,10 +686,10 @@ void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMe
   }
   ADXConstraintAnchor *baseline = JreRetainedLocalValue([layout getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, BASELINE)]);
   if ([((ADXConstraintAnchor *) nil_chk(baseline)) getDependents] != nil && [baseline hasFinalValue]) {
-    jint baselineValue = [baseline getFinalValue];
+    int32_t baselineValue = [baseline getFinalValue];
     for (ADXConstraintAnchor * __strong first in nil_chk([baseline getDependents])) {
       ADXConstraintWidget *widget = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(first))->mOwner_);
-      jboolean canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
+      bool canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
       if ([((ADXConstraintWidget *) nil_chk(widget)) isMeasureRequested] && canMeasure) {
         ADXBasicMeasure_Measure *measure = create_ADXBasicMeasure_Measure_init();
         ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(level + 1, widget, measurer, measure, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
@@ -683,7 +698,7 @@ void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMe
         if ([widget isMeasureRequested]) {
           continue;
         }
-        if (first == widget->mBaseline_) {
+        if (JreObjectEqualsEquals(first, widget->mBaseline_)) {
           [widget setFinalBaselineWithInt:baselineValue + [first getMargin]];
           ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(level + 1, widget, measurer);
         }
@@ -693,26 +708,26 @@ void ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMe
   [layout markVerticalSolvingPassDone];
 }
 
-void ADXDirect_solveHorizontalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(jint level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, jboolean isRtl) {
+void ADXDirect_solveHorizontalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(int32_t level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, bool isRtl) {
   ADXDirect_initialize();
-  jint x1;
-  jint x2;
-  jfloat bias = [((ADXConstraintWidget *) nil_chk(widget)) getHorizontalBiasPercent];
-  jint start = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_)) getFinalValue];
-  jint end = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_)) getFinalValue];
-  jint s1 = start + [((ADXConstraintAnchor *) nil_chk(widget->mLeft_)) getMargin];
-  jint s2 = end - [((ADXConstraintAnchor *) nil_chk(widget->mRight_)) getMargin];
+  int32_t x1;
+  int32_t x2;
+  float bias = [((ADXConstraintWidget *) nil_chk(widget)) getHorizontalBiasPercent];
+  int32_t start = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_)) getFinalValue];
+  int32_t end = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_)) getFinalValue];
+  int32_t s1 = start + [((ADXConstraintAnchor *) nil_chk(widget->mLeft_)) getMargin];
+  int32_t s2 = end - [((ADXConstraintAnchor *) nil_chk(widget->mRight_)) getMargin];
   if (start == end) {
     bias = 0.5f;
     s1 = start;
     s2 = end;
   }
-  jint width = [widget getWidth];
-  jint distance = s2 - s1 - width;
+  int32_t width = [widget getWidth];
+  int32_t distance = s2 - s1 - width;
   if (s1 > s2) {
     distance = s1 - s2 - width;
   }
-  jint d1;
+  int32_t d1;
   if (distance > 0) {
     d1 = JreFpToInt((0.5f + bias * distance));
   }
@@ -729,26 +744,26 @@ void ADXDirect_solveHorizontalCenterConstraintsWithInt_withADXBasicMeasure_Measu
   ADXDirect_horizontalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withBoolean_(level + 1, widget, measurer, isRtl);
 }
 
-void ADXDirect_solveVerticalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_(jint level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget) {
+void ADXDirect_solveVerticalCenterConstraintsWithInt_withADXBasicMeasure_Measurer_withADXConstraintWidget_(int32_t level, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget) {
   ADXDirect_initialize();
-  jint y1;
-  jint y2;
-  jfloat bias = [((ADXConstraintWidget *) nil_chk(widget)) getVerticalBiasPercent];
-  jint start = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_)) getFinalValue];
-  jint end = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_)) getFinalValue];
-  jint s1 = start + [((ADXConstraintAnchor *) nil_chk(widget->mTop_)) getMargin];
-  jint s2 = end - [((ADXConstraintAnchor *) nil_chk(widget->mBottom_)) getMargin];
+  int32_t y1;
+  int32_t y2;
+  float bias = [((ADXConstraintWidget *) nil_chk(widget)) getVerticalBiasPercent];
+  int32_t start = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_)) getFinalValue];
+  int32_t end = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_)) getFinalValue];
+  int32_t s1 = start + [((ADXConstraintAnchor *) nil_chk(widget->mTop_)) getMargin];
+  int32_t s2 = end - [((ADXConstraintAnchor *) nil_chk(widget->mBottom_)) getMargin];
   if (start == end) {
     bias = 0.5f;
     s1 = start;
     s2 = end;
   }
-  jint height = [widget getHeight];
-  jint distance = s2 - s1 - height;
+  int32_t height = [widget getHeight];
+  int32_t distance = s2 - s1 - height;
   if (s1 > s2) {
     distance = s1 - s2 - height;
   }
-  jint d1;
+  int32_t d1;
   if (distance > 0) {
     d1 = JreFpToInt((0.5f + bias * distance));
   }
@@ -765,18 +780,18 @@ void ADXDirect_solveVerticalCenterConstraintsWithInt_withADXBasicMeasure_Measure
   ADXDirect_verticalSolvingPassWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_(level + 1, widget, measurer);
 }
 
-void ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, jboolean isRtl) {
+void ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_withBoolean_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget, bool isRtl) {
   ADXDirect_initialize();
-  jint x1;
-  jint x2;
-  jfloat bias = [((ADXConstraintWidget *) nil_chk(widget)) getHorizontalBiasPercent];
-  jint s1 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_)) getFinalValue] + [((ADXConstraintAnchor *) nil_chk(widget->mLeft_)) getMargin];
-  jint s2 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_)) getFinalValue] - [((ADXConstraintAnchor *) nil_chk(widget->mRight_)) getMargin];
+  int32_t x1;
+  int32_t x2;
+  float bias = [((ADXConstraintWidget *) nil_chk(widget)) getHorizontalBiasPercent];
+  int32_t s1 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mTarget_)) getFinalValue] + [((ADXConstraintAnchor *) nil_chk(widget->mLeft_)) getMargin];
+  int32_t s2 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mTarget_)) getFinalValue] - [((ADXConstraintAnchor *) nil_chk(widget->mRight_)) getMargin];
   if (s2 >= s1) {
-    jint width = [widget getWidth];
+    int32_t width = [widget getWidth];
     if ([widget getVisibility] != ADXConstraintWidget_GONE) {
       if (widget->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT) {
-        jint parentWidth = 0;
+        int32_t parentWidth = 0;
         if ([layout isKindOfClass:[ADXConstraintWidgetContainer class]]) {
           parentWidth = [((ADXConstraintWidget *) nil_chk(layout)) getWidth];
         }
@@ -793,8 +808,8 @@ void ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_wit
         width = JavaLangMath_minWithInt_withInt_(widget->mMatchConstraintMaxWidth_, width);
       }
     }
-    jint distance = s2 - s1 - width;
-    jint d1 = JreFpToInt((0.5f + bias * distance));
+    int32_t distance = s2 - s1 - width;
+    int32_t d1 = JreFpToInt((0.5f + bias * distance));
     x1 = s1 + d1;
     x2 = x1 + width;
     [widget setFinalHorizontalWithInt:x1 withInt:x2];
@@ -802,18 +817,18 @@ void ADXDirect_solveHorizontalMatchConstraintWithInt_withADXConstraintWidget_wit
   }
 }
 
-void ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_(jint level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget) {
+void ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXConstraintWidget_(int32_t level, ADXConstraintWidget *layout, id<ADXBasicMeasure_Measurer> measurer, ADXConstraintWidget *widget) {
   ADXDirect_initialize();
-  jint y1;
-  jint y2;
-  jfloat bias = [((ADXConstraintWidget *) nil_chk(widget)) getVerticalBiasPercent];
-  jint s1 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_)) getFinalValue] + [((ADXConstraintAnchor *) nil_chk(widget->mTop_)) getMargin];
-  jint s2 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_)) getFinalValue] - [((ADXConstraintAnchor *) nil_chk(widget->mBottom_)) getMargin];
+  int32_t y1;
+  int32_t y2;
+  float bias = [((ADXConstraintWidget *) nil_chk(widget)) getVerticalBiasPercent];
+  int32_t s1 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mTarget_)) getFinalValue] + [((ADXConstraintAnchor *) nil_chk(widget->mTop_)) getMargin];
+  int32_t s2 = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mTarget_)) getFinalValue] - [((ADXConstraintAnchor *) nil_chk(widget->mBottom_)) getMargin];
   if (s2 >= s1) {
-    jint height = [widget getHeight];
+    int32_t height = [widget getHeight];
     if ([widget getVisibility] != ADXConstraintWidget_GONE) {
       if (widget->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT) {
-        jint parentHeight = 0;
+        int32_t parentHeight = 0;
         if ([layout isKindOfClass:[ADXConstraintWidgetContainer class]]) {
           parentHeight = [((ADXConstraintWidget *) nil_chk(layout)) getHeight];
         }
@@ -830,8 +845,8 @@ void ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withA
         height = JavaLangMath_minWithInt_withInt_(widget->mMatchConstraintMaxHeight_, height);
       }
     }
-    jint distance = s2 - s1 - height;
-    jint d1 = JreFpToInt((0.5f + bias * distance));
+    int32_t distance = s2 - s1 - height;
+    int32_t d1 = JreFpToInt((0.5f + bias * distance));
     y1 = s1 + d1;
     y2 = y1 + height;
     [widget setFinalVerticalWithInt:y1 withInt:y2];
@@ -839,22 +854,22 @@ void ADXDirect_solveVerticalMatchConstraintWithInt_withADXConstraintWidget_withA
   }
 }
 
-jboolean ADXDirect_canMeasureWithInt_withADXConstraintWidget_(jint level, ADXConstraintWidget *layout) {
+bool ADXDirect_canMeasureWithInt_withADXConstraintWidget_(int32_t level, ADXConstraintWidget *layout) {
   ADXDirect_initialize();
   ADXConstraintWidget_DimensionBehaviour *horizontalBehaviour = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk(layout)) getHorizontalDimensionBehaviour]);
   ADXConstraintWidget_DimensionBehaviour *verticalBehaviour = JreRetainedLocalValue([layout getVerticalDimensionBehaviour]);
   ADXConstraintWidgetContainer *parent = [layout getParent] != nil ? (ADXConstraintWidgetContainer *) cast_chk([layout getParent], [ADXConstraintWidgetContainer class]) : nil;
-  jboolean isParentHorizontalFixed = parent != nil && [parent getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
-  jboolean isParentVerticalFixed = parent != nil && [parent getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
-  jboolean isHorizontalFixed = horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || [layout isResolvedHorizontally] || horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD && layout->mDimensionRatio_ == 0 && [layout hasDanglingDimensionWithInt:ADXConstraintWidget_HORIZONTAL]) || (horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && [layout hasResolvedTargetsWithInt:ADXConstraintWidget_HORIZONTAL withInt:[layout getWidth]]);
-  jboolean isVerticalFixed = verticalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || [layout isResolvedVertically] || verticalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (verticalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD && layout->mDimensionRatio_ == 0 && [layout hasDanglingDimensionWithInt:ADXConstraintWidget_VERTICAL]) || (horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && [layout hasResolvedTargetsWithInt:ADXConstraintWidget_VERTICAL withInt:[layout getHeight]]);
+  bool isParentHorizontalFixed = parent != nil && [parent getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
+  bool isParentVerticalFixed = parent != nil && [parent getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
+  bool isHorizontalFixed = horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || [layout isResolvedHorizontally] || horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD && layout->mDimensionRatio_ == 0 && [layout hasDanglingDimensionWithInt:ADXConstraintWidget_HORIZONTAL]) || (horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && [layout hasResolvedTargetsWithInt:ADXConstraintWidget_HORIZONTAL withInt:[layout getWidth]]);
+  bool isVerticalFixed = verticalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || [layout isResolvedVertically] || verticalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (verticalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD && layout->mDimensionRatio_ == 0 && [layout hasDanglingDimensionWithInt:ADXConstraintWidget_VERTICAL]) || (horizontalBehaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && layout->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && [layout hasResolvedTargetsWithInt:ADXConstraintWidget_VERTICAL withInt:[layout getHeight]]);
   if (layout->mDimensionRatio_ > 0 && (isHorizontalFixed || isVerticalFixed)) {
     return true;
   }
   return isHorizontalFixed && isVerticalFixed;
 }
 
-jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_withBoolean_withBoolean_withBoolean_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, jint orientation, jint offset, ADXChainHead *chainHead, jboolean isChainSpread, jboolean isChainSpreadInside, jboolean isChainPacked) {
+bool ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_withBoolean_withBoolean_withBoolean_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, int32_t orientation, int32_t offset, ADXChainHead *chainHead, bool isChainSpread, bool isChainSpreadInside, bool isChainPacked) {
   ADXDirect_initialize();
   if (isChainPacked) {
     return false;
@@ -869,8 +884,8 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
       return false;
     }
   }
-  jint level = 0;
-  jboolean isRtl = [container isRtl];
+  int32_t level = 0;
+  bool isRtl = [container isRtl];
   ADXConstraintWidget *first = JreRetainedLocalValue([((ADXChainHead *) nil_chk(chainHead)) getFirst]);
   ADXConstraintWidget *last = JreRetainedLocalValue([chainHead getLast]);
   ADXConstraintWidget *firstVisibleWidget = JreRetainedLocalValue([chainHead getFirstVisibleWidget]);
@@ -878,7 +893,7 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
   ADXConstraintWidget *head = JreRetainedLocalValue([chainHead getHead]);
   ADXConstraintWidget *widget = JreRetainedLocalValue(first);
   ADXConstraintWidget *next;
-  jboolean done = false;
+  bool done = false;
   ADXConstraintAnchor *begin = IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(first))->mListAnchors_), offset);
   ADXConstraintAnchor *end = IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(last))->mListAnchors_, offset + 1);
   if (((ADXConstraintAnchor *) nil_chk(begin))->mTarget_ == nil || ((ADXConstraintAnchor *) nil_chk(end))->mTarget_ == nil) {
@@ -890,18 +905,18 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
   if (firstVisibleWidget == nil || lastVisibleWidget == nil) {
     return false;
   }
-  jint startPoint = [((ADXConstraintAnchor *) nil_chk(begin->mTarget_)) getFinalValue] + [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(firstVisibleWidget->mListAnchors_), offset))) getMargin];
-  jint endPoint = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(end))->mTarget_)) getFinalValue] - [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(lastVisibleWidget->mListAnchors_), offset + 1))) getMargin];
-  jint distance = endPoint - startPoint;
+  int32_t startPoint = [((ADXConstraintAnchor *) nil_chk(begin->mTarget_)) getFinalValue] + [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(firstVisibleWidget->mListAnchors_), offset))) getMargin];
+  int32_t endPoint = [((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(end))->mTarget_)) getFinalValue] - [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(lastVisibleWidget->mListAnchors_), offset + 1))) getMargin];
+  int32_t distance = endPoint - startPoint;
   if (distance <= 0) {
     return false;
   }
-  jint totalSize = 0;
+  int32_t totalSize = 0;
   ADXBasicMeasure_Measure *measure = create_ADXBasicMeasure_Measure_init();
-  jint numWidgets = 0;
-  jint numVisibleWidgets = 0;
+  int32_t numWidgets = 0;
+  int32_t numVisibleWidgets = 0;
   while (!done) {
-    jboolean canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
+    bool canMeasure = ADXDirect_canMeasureWithInt_withADXConstraintWidget_(level + 1, widget);
     if (!canMeasure) {
       return false;
     }
@@ -926,7 +941,7 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
     ADXConstraintAnchor *nextAnchor = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1)))->mTarget_);
     if (nextAnchor != nil) {
       next = nextAnchor->mOwner_;
-      if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_ != widget) {
+      if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || !JreObjectEqualsEquals(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_, widget)) {
         next = nil;
       }
     }
@@ -949,7 +964,7 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
   if (distance < totalSize) {
     return false;
   }
-  jint gap = distance - totalSize;
+  int32_t gap = distance - totalSize;
   if (isChainSpread) {
     gap = JreIntDiv(gap, (numVisibleWidgets + 1));
   }
@@ -959,14 +974,14 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
     }
   }
   if (numVisibleWidgets == 1) {
-    jfloat bias;
+    float bias;
     if (orientation == ADXConstraintWidget_HORIZONTAL) {
       bias = [((ADXConstraintWidget *) nil_chk(head)) getHorizontalBiasPercent];
     }
     else {
       bias = [((ADXConstraintWidget *) nil_chk(head)) getVerticalBiasPercent];
     }
-    jint p1 = JreFpToInt((0.5f + startPoint + gap * bias));
+    int32_t p1 = JreFpToInt((0.5f + startPoint + gap * bias));
     if (orientation == ADXConstraintWidget_HORIZONTAL) {
       [firstVisibleWidget setFinalHorizontalWithInt:p1 withInt:p1 + [firstVisibleWidget getWidth]];
     }
@@ -978,7 +993,7 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
   }
   if (isChainSpread) {
     done = false;
-    jint current = startPoint + gap;
+    int32_t current = startPoint + gap;
     widget = first;
     while (!done) {
       if ([widget getVisibility] == ADXConstraintWidget_GONE) {
@@ -1010,7 +1025,7 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
       ADXConstraintAnchor *nextAnchor = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1)))->mTarget_);
       if (nextAnchor != nil) {
         next = nextAnchor->mOwner_;
-        if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_ != widget) {
+        if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || !JreObjectEqualsEquals(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_, widget)) {
           next = nil;
         }
       }
@@ -1047,3 +1062,5 @@ jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSyste
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXDirect)
+
+J2OBJC_NAME_MAPPING(ADXDirect, "androidx.constraintlayout.core.widgets.analyzer", "ADX")

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\ViewTransition.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewTransition")
@@ -24,6 +25,9 @@
 @class ADXMotionLayout;
 @class ADXViewTransitionController;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADInterpolator;
 
 /*!
@@ -36,7 +40,7 @@
 @interface ADXViewTransition : NSObject {
  @public
   ADXConstraintSet *set_;
-  jint mViewTransitionMode_;
+  int32_t mViewTransitionMode_;
   ADXKeyFrames *mKeyFrames_;
   ADXConstraintSet_Constraint *mConstraintDelta_;
   ADContext *mContext_;
@@ -49,39 +53,39 @@
 /*!
  @brief Gets the SharedValue it will be listening for.
  */
-- (jint)getSharedValue;
+- (int32_t)getSharedValue;
 
-- (jint)getSharedValueCurrent;
+- (int32_t)getSharedValueCurrent;
 
 /*!
  @brief Gets the ID of the SharedValue it will be listening for.
  @return the id of the shared value
  */
-- (jint)getSharedValueID;
+- (int32_t)getSharedValueID;
 
 /*!
  @brief Gets the type of transition to listen to.
  @return ONSTATE_TRANSITION_*
  */
-- (jint)getStateTransition;
+- (int32_t)getStateTransition;
 
 /*!
  @brief sets the SharedValue it will be listening for.
  */
-- (void)setSharedValueWithInt:(jint)sharedValue;
+- (void)setSharedValueWithInt:(int32_t)sharedValue;
 
-- (void)setSharedValueCurrentWithInt:(jint)sharedValueCurrent;
+- (void)setSharedValueCurrentWithInt:(int32_t)sharedValueCurrent;
 
 /*!
  @brief sets the ID of the SharedValue it will be listening for.
  */
-- (void)setSharedValueIDWithInt:(jint)sharedValueID;
+- (void)setSharedValueIDWithInt:(int32_t)sharedValueID;
 
 /*!
  @brief Sets the type of transition to listen to.
  @param stateTransition
  */
-- (void)setStateTransitionWithInt:(jint)stateTransition;
+- (void)setStateTransitionWithInt:(int32_t)stateTransition;
 
 - (NSString *)description;
 
@@ -93,25 +97,25 @@
 
 - (void)applyTransitionWithADXViewTransitionController:(ADXViewTransitionController *)controller
                                    withADXMotionLayout:(ADXMotionLayout *)layout
-                                               withInt:(jint)fromId
+                                               withInt:(int32_t)fromId
                                   withADXConstraintSet:(ADXConstraintSet *)current
                                        withADViewArray:(IOSObjectArray *)views;
 
-- (jboolean)checkTagsWithADView:(ADView *)view;
+- (bool)checkTagsWithADView:(ADView *)view;
 
-- (jint)getId;
+- (int32_t)getId;
 
 - (id<ADInterpolator>)getInterpolatorWithADContext:(ADContext *)context;
 
-- (jboolean)isEnabled;
+- (bool)isEnabled;
 
-- (jboolean)matchesViewWithADView:(ADView *)view;
+- (bool)matchesViewWithADView:(ADView *)view;
 
-- (void)setEnabledWithBoolean:(jboolean)enable;
+- (void)setEnabledWithBoolean:(bool)enable;
 
-- (void)setIdWithInt:(jint)id_;
+- (void)setIdWithInt:(int32_t)id_;
 
-- (jboolean)supportsWithInt:(jint)action;
+- (bool)supportsWithInt:(int32_t)action;
 
 @end
 
@@ -147,65 +151,65 @@ inline NSString *ADXViewTransition_get_CUSTOM_METHOD(void);
 FOUNDATION_EXPORT NSString *ADXViewTransition_CUSTOM_METHOD;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXViewTransition, CUSTOM_METHOD, NSString *)
 
-inline jint ADXViewTransition_get_ONSTATE_ACTION_DOWN(void);
+inline int32_t ADXViewTransition_get_ONSTATE_ACTION_DOWN(void);
 #define ADXViewTransition_ONSTATE_ACTION_DOWN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_ACTION_DOWN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_ACTION_DOWN, int32_t)
 
-inline jint ADXViewTransition_get_ONSTATE_ACTION_UP(void);
+inline int32_t ADXViewTransition_get_ONSTATE_ACTION_UP(void);
 #define ADXViewTransition_ONSTATE_ACTION_UP 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_ACTION_UP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_ACTION_UP, int32_t)
 
-inline jint ADXViewTransition_get_ONSTATE_ACTION_DOWN_UP(void);
+inline int32_t ADXViewTransition_get_ONSTATE_ACTION_DOWN_UP(void);
 #define ADXViewTransition_ONSTATE_ACTION_DOWN_UP 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_ACTION_DOWN_UP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_ACTION_DOWN_UP, int32_t)
 
-inline jint ADXViewTransition_get_ONSTATE_SHARED_VALUE_SET(void);
+inline int32_t ADXViewTransition_get_ONSTATE_SHARED_VALUE_SET(void);
 #define ADXViewTransition_ONSTATE_SHARED_VALUE_SET 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_SHARED_VALUE_SET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_SHARED_VALUE_SET, int32_t)
 
-inline jint ADXViewTransition_get_ONSTATE_SHARED_VALUE_UNSET(void);
+inline int32_t ADXViewTransition_get_ONSTATE_SHARED_VALUE_UNSET(void);
 #define ADXViewTransition_ONSTATE_SHARED_VALUE_UNSET 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_SHARED_VALUE_UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ONSTATE_SHARED_VALUE_UNSET, int32_t)
 
-inline jint ADXViewTransition_get_VIEWTRANSITIONMODE_CURRENTSTATE(void);
+inline int32_t ADXViewTransition_get_VIEWTRANSITIONMODE_CURRENTSTATE(void);
 #define ADXViewTransition_VIEWTRANSITIONMODE_CURRENTSTATE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, VIEWTRANSITIONMODE_CURRENTSTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, VIEWTRANSITIONMODE_CURRENTSTATE, int32_t)
 
-inline jint ADXViewTransition_get_VIEWTRANSITIONMODE_ALLSTATES(void);
+inline int32_t ADXViewTransition_get_VIEWTRANSITIONMODE_ALLSTATES(void);
 #define ADXViewTransition_VIEWTRANSITIONMODE_ALLSTATES 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, VIEWTRANSITIONMODE_ALLSTATES, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, VIEWTRANSITIONMODE_ALLSTATES, int32_t)
 
-inline jint ADXViewTransition_get_VIEWTRANSITIONMODE_NOSTATE(void);
+inline int32_t ADXViewTransition_get_VIEWTRANSITIONMODE_NOSTATE(void);
 #define ADXViewTransition_VIEWTRANSITIONMODE_NOSTATE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, VIEWTRANSITIONMODE_NOSTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, VIEWTRANSITIONMODE_NOSTATE, int32_t)
 
-inline jint ADXViewTransition_get_EASE_IN_OUT(void);
+inline int32_t ADXViewTransition_get_EASE_IN_OUT(void);
 #define ADXViewTransition_EASE_IN_OUT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, EASE_IN_OUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, EASE_IN_OUT, int32_t)
 
-inline jint ADXViewTransition_get_EASE_IN(void);
+inline int32_t ADXViewTransition_get_EASE_IN(void);
 #define ADXViewTransition_EASE_IN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, EASE_IN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, EASE_IN, int32_t)
 
-inline jint ADXViewTransition_get_EASE_OUT(void);
+inline int32_t ADXViewTransition_get_EASE_OUT(void);
 #define ADXViewTransition_EASE_OUT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, EASE_OUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, EASE_OUT, int32_t)
 
-inline jint ADXViewTransition_get_LINEAR(void);
+inline int32_t ADXViewTransition_get_LINEAR(void);
 #define ADXViewTransition_LINEAR 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, LINEAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, LINEAR, int32_t)
 
-inline jint ADXViewTransition_get_BOUNCE(void);
+inline int32_t ADXViewTransition_get_BOUNCE(void);
 #define ADXViewTransition_BOUNCE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, BOUNCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, BOUNCE, int32_t)
 
-inline jint ADXViewTransition_get_OVERSHOOT(void);
+inline int32_t ADXViewTransition_get_OVERSHOOT(void);
 #define ADXViewTransition_OVERSHOOT 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, OVERSHOOT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, OVERSHOOT, int32_t)
 
-inline jint ADXViewTransition_get_ANTICIPATE(void);
+inline int32_t ADXViewTransition_get_ANTICIPATE(void);
 #define ADXViewTransition_ANTICIPATE 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ANTICIPATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, ANTICIPATE, int32_t)
 
 FOUNDATION_EXPORT void ADXViewTransition_init(ADXViewTransition *self);
 
@@ -217,6 +221,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTransition)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetViewTransition ADXViewTransition;
 
+
 #endif
 
 #if !defined (ADXViewTransition_Animate_) && (INCLUDE_ALL_ViewTransition || defined(INCLUDE_ADXViewTransition_Animate))
@@ -226,41 +231,45 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTransition)
 @class ADXKeyCache;
 @class ADXMotionController;
 @class ADXViewTransitionController;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
 @protocol ADInterpolator;
 
 @interface ADXViewTransition_Animate : NSObject {
  @public
-  jlong mStart_;
+  int64_t mStart_;
   ADXMotionController *mMC_;
-  jint mDuration_;
-  jint mUpDuration_;
+  int32_t mDuration_;
+  int32_t mUpDuration_;
   ADXKeyCache *mCache_;
   ADXViewTransitionController *mVtController_;
   id<ADInterpolator> mInterpolator_;
-  jboolean reverse_;
-  jfloat mPosition_;
-  jfloat mDpositionDt_;
-  jlong mLastRender_;
+  bool reverse_;
+  float mPosition_;
+  float mDpositionDt_;
+  int64_t mLastRender_;
   ADRect *mTempRec_;
-  jboolean hold_at_100_;
+  bool hold_at_100_;
 }
 
 #pragma mark Public
 
-- (void)reactToWithInt:(jint)action
-             withFloat:(jfloat)x
-             withFloat:(jfloat)y;
+- (void)reactToWithInt:(int32_t)action
+             withFloat:(float)x
+             withFloat:(float)y;
 
 #pragma mark Package-Private
 
 - (instancetype)initWithADXViewTransitionController:(ADXViewTransitionController *)controller
                             withADXMotionController:(ADXMotionController *)motionController
-                                            withInt:(jint)duration
-                                            withInt:(jint)upDuration
-                                            withInt:(jint)mode
+                                            withInt:(int32_t)duration
+                                            withInt:(int32_t)upDuration
+                                            withInt:(int32_t)mode
                                  withADInterpolator:(id<ADInterpolator>)interpolator
-                                            withInt:(jint)setTag
-                                            withInt:(jint)clearTag;
+                                            withInt:(int32_t)setTag
+                                            withInt:(int32_t)clearTag;
 
 - (void)mutate;
 
@@ -268,7 +277,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTransition)
 
 - (void)mutateReverse;
 
-- (void)reverseWithBoolean:(jboolean)dir;
+- (void)reverseWithBoolean:(bool)dir;
 
 // Disallowed inherited constructors, do not use.
 
@@ -284,13 +293,14 @@ J2OBJC_FIELD_SETTER(ADXViewTransition_Animate, mVtController_, ADXViewTransition
 J2OBJC_FIELD_SETTER(ADXViewTransition_Animate, mInterpolator_, id<ADInterpolator>)
 J2OBJC_FIELD_SETTER(ADXViewTransition_Animate, mTempRec_, ADRect *)
 
-FOUNDATION_EXPORT void ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransition_Animate *self, ADXViewTransitionController *controller, ADXMotionController *motionController, jint duration, jint upDuration, jint mode, id<ADInterpolator> interpolator, jint setTag, jint clearTag);
+FOUNDATION_EXPORT void ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransition_Animate *self, ADXViewTransitionController *controller, ADXMotionController *motionController, int32_t duration, int32_t upDuration, int32_t mode, id<ADInterpolator> interpolator, int32_t setTag, int32_t clearTag);
 
-FOUNDATION_EXPORT ADXViewTransition_Animate *new_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, jint duration, jint upDuration, jint mode, id<ADInterpolator> interpolator, jint setTag, jint clearTag) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXViewTransition_Animate *new_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, int32_t duration, int32_t upDuration, int32_t mode, id<ADInterpolator> interpolator, int32_t setTag, int32_t clearTag) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXViewTransition_Animate *create_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, jint duration, jint upDuration, jint mode, id<ADInterpolator> interpolator, jint setTag, jint clearTag);
+FOUNDATION_EXPORT ADXViewTransition_Animate *create_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, int32_t duration, int32_t upDuration, int32_t mode, id<ADInterpolator> interpolator, int32_t setTag, int32_t clearTag);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTransition_Animate)
+
 
 #endif
 

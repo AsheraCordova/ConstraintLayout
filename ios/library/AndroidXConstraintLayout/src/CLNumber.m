@@ -3,13 +3,25 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLNumber.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLElement.h"
 #include "CLNumber.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/StringBuilder.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCLNumber
@@ -19,7 +31,7 @@
   return self;
 }
 
-- (instancetype)initWithFloat:(jfloat)value {
+- (instancetype)initWithFloat:(float)value {
   ADXCLNumber_initWithFloat_(self, value);
   return self;
 }
@@ -29,21 +41,21 @@
 }
 
 - (NSString *)toJSON {
-  jfloat value = [self getFloat];
-  jint intValue = JreFpToInt(value);
-  if ((jfloat) intValue == value) {
+  float value = [self getFloat];
+  int32_t intValue = JreFpToInt(value);
+  if ((float) intValue == value) {
     return JreStrcat("I", intValue);
   }
   return JreStrcat("F", value);
 }
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent {
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent {
   JavaLangStringBuilder *json = create_JavaLangStringBuilder_init();
   [self addIndentWithJavaLangStringBuilder:json withInt:indent];
-  jfloat value = [self getFloat];
-  jint intValue = JreFpToInt(value);
-  if ((jfloat) intValue == value) {
+  float value = [self getFloat];
+  int32_t intValue = JreFpToInt(value);
+  if ((float) intValue == value) {
     [json appendWithInt:intValue];
   }
   else {
@@ -52,27 +64,27 @@
   return [json description];
 }
 
-- (jboolean)isInt {
-  jfloat value = [self getFloat];
-  jint intValue = JreFpToInt(value);
-  return (jfloat) intValue == value;
+- (bool)isInt {
+  float value = [self getFloat];
+  int32_t intValue = JreFpToInt(value);
+  return (float) intValue == value;
 }
 
-- (jint)getInt {
+- (int32_t)getInt {
   if (JavaLangFloat_isNaNWithFloat_(value_)) {
     value_ = JavaLangInteger_parseIntWithNSString_([self content]);
   }
   return JreFpToInt(value_);
 }
 
-- (jfloat)getFloat {
+- (float)getFloat {
   if (JavaLangFloat_isNaNWithFloat_(value_)) {
     value_ = JavaLangFloat_parseFloatWithNSString_([self content]);
   }
   return value_;
 }
 
-- (void)putValueWithFloat:(jfloat)value {
+- (void)putValueWithFloat:(float)value {
   self->value_ = value;
 }
 
@@ -124,17 +136,17 @@ ADXCLNumber *create_ADXCLNumber_initWithCharArray_(IOSCharArray *content) {
   J2OBJC_CREATE_IMPL(ADXCLNumber, initWithCharArray_, content)
 }
 
-void ADXCLNumber_initWithFloat_(ADXCLNumber *self, jfloat value) {
+void ADXCLNumber_initWithFloat_(ADXCLNumber *self, float value) {
   ADXCLElement_initWithCharArray_(self, nil);
   self->value_ = JavaLangFloat_NaN;
   self->value_ = value;
 }
 
-ADXCLNumber *new_ADXCLNumber_initWithFloat_(jfloat value) {
+ADXCLNumber *new_ADXCLNumber_initWithFloat_(float value) {
   J2OBJC_NEW_IMPL(ADXCLNumber, initWithFloat_, value)
 }
 
-ADXCLNumber *create_ADXCLNumber_initWithFloat_(jfloat value) {
+ADXCLNumber *create_ADXCLNumber_initWithFloat_(float value) {
   J2OBJC_CREATE_IMPL(ADXCLNumber, initWithFloat_, value)
 }
 
@@ -144,3 +156,5 @@ ADXCLElement *ADXCLNumber_allocateWithCharArray_(IOSCharArray *content) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLNumber)
+
+J2OBJC_NAME_MAPPING(ADXCLNumber, "androidx.constraintlayout.core.parser", "ADX")

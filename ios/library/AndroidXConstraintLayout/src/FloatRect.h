@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\FloatRect.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_FloatRect")
@@ -16,21 +17,23 @@
 #if !defined (ADXFloatRect_) && (INCLUDE_ALL_FloatRect || defined(INCLUDE_ADXFloatRect))
 #define ADXFloatRect_
 
+@class JavaLangFloat;
+
 @interface ADXFloatRect : NSObject {
  @public
-  jfloat bottom_;
-  jfloat left_;
-  jfloat right_;
-  jfloat top_;
+  float bottom_;
+  float left_;
+  float right_;
+  float top_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (jfloat)centerX;
+- (float)centerX;
 
-- (jfloat)centerY;
+- (float)centerY;
 
 @end
 
@@ -45,6 +48,7 @@ FOUNDATION_EXPORT ADXFloatRect *create_ADXFloatRect_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXFloatRect)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsFloatRect ADXFloatRect;
+
 
 #endif
 

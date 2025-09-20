@@ -3,11 +3,24 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLString.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLElement.h"
 #include "CLString.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Character.h"
+#include "java/lang/Integer.h"
 #include "java/lang/StringBuilder.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCLString
@@ -25,8 +38,8 @@
   return JreStrcat("C$C", '\'', [self content], '\'');
 }
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent {
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent {
   JavaLangStringBuilder *json = create_JavaLangStringBuilder_init();
   [self addIndentWithJavaLangStringBuilder:json withInt:indent];
   [json appendWithNSString:@"'"];
@@ -75,3 +88,5 @@ ADXCLElement *ADXCLString_allocateWithCharArray_(IOSCharArray *content) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLString)
+
+J2OBJC_NAME_MAPPING(ADXCLString, "androidx.constraintlayout.core.parser", "ADX")

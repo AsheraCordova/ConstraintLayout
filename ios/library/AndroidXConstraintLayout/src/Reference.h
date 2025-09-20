@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\Reference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Reference")
@@ -40,6 +41,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXReference)
 J2OBJC_TYPE_LITERAL_HEADER(ADXReference)
 
 #define AndroidxConstraintlayoutCoreStateReference ADXReference
+
 
 #endif
 

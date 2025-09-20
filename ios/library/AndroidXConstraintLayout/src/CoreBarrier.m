@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreBarrier.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -12,26 +17,34 @@
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
 #include "SolverVariable.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/HashMap.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXCoreBarrier () {
  @public
-  jint mBarrierType_;
-  jboolean mAllowsGoneWidget_;
-  jint mMargin_;
+  int32_t mBarrierType_;
+  bool mAllowsGoneWidget_;
+  int32_t mMargin_;
 }
 
 @end
 
-inline jboolean ADXCoreBarrier_get_USE_RESOLUTION(void);
+inline bool ADXCoreBarrier_get_USE_RESOLUTION(void);
 #define ADXCoreBarrier_USE_RESOLUTION true
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, USE_RESOLUTION, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, USE_RESOLUTION, bool)
 
-inline jboolean ADXCoreBarrier_get_USE_RELAX_GONE(void);
+inline bool ADXCoreBarrier_get_USE_RELAX_GONE(void);
 #define ADXCoreBarrier_USE_RELAX_GONE false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, USE_RELAX_GONE, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, USE_RELAX_GONE, bool)
 
 @implementation ADXCoreBarrier
 
@@ -47,35 +60,35 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (jboolean)allowedInBarrier {
+- (bool)allowedInBarrier {
   return true;
 }
 
-- (jint)getBarrierType {
+- (int32_t)getBarrierType {
   return mBarrierType_;
 }
 
-- (void)setBarrierTypeWithInt:(jint)barrierType {
+- (void)setBarrierTypeWithInt:(int32_t)barrierType {
   mBarrierType_ = barrierType;
 }
 
-- (void)setAllowsGoneWidgetWithBoolean:(jboolean)allowsGoneWidget {
+- (void)setAllowsGoneWidgetWithBoolean:(bool)allowsGoneWidget {
   mAllowsGoneWidget_ = allowsGoneWidget;
 }
 
-- (jboolean)allowsGoneWidget {
+- (bool)allowsGoneWidget {
   return mAllowsGoneWidget_;
 }
 
-- (jboolean)getAllowsGoneWidget {
+- (bool)getAllowsGoneWidget {
   return mAllowsGoneWidget_;
 }
 
-- (jboolean)isResolvedHorizontally {
+- (bool)isResolvedHorizontally {
   return resolved_;
 }
 
-- (jboolean)isResolvedVertically {
+- (bool)isResolvedVertically {
   return resolved_;
 }
 
@@ -90,7 +103,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)description {
   NSString *debug = JreStrcat("$$$", @"[Barrier] ", [self getDebugName], @" {");
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (i > 0) {
       JreStrAppend(&debug, "$", @", ");
@@ -102,7 +115,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)markWidgets {
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (!mAllowsGoneWidget_ && ![((ADXConstraintWidget *) nil_chk(widget)) allowedInBarrier]) {
       continue;
@@ -117,13 +130,13 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addToSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                           withBoolean:(jboolean)optimize {
+                           withBoolean:(bool)optimize {
   ADXConstraintAnchor *position;
   IOSObjectArray_Set(nil_chk(mListAnchors_), ADXCoreBarrier_LEFT, mLeft_);
   IOSObjectArray_Set(mListAnchors_, ADXCoreBarrier_TOP, mTop_);
   IOSObjectArray_Set(mListAnchors_, ADXCoreBarrier_RIGHT, mRight_);
   IOSObjectArray_Set(mListAnchors_, ADXCoreBarrier_BOTTOM, mBottom_);
-  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(mListAnchors_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSObjectArray *) nil_chk(mListAnchors_))->size_; i++) {
     JreStrongAssign(&((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(mListAnchors_, i)))->mSolverVariable_, [((ADXLinearSystem *) nil_chk(system)) createObjectVariableWithId:IOSObjectArray_Get(mListAnchors_, i)]);
   }
   if (mBarrierType_ >= 0 && mBarrierType_ < 4) {
@@ -149,8 +162,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       return;
     }
   }
-  jboolean hasMatchConstraintWidgets = false;
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  bool hasMatchConstraintWidgets = false;
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (!mAllowsGoneWidget_ && ![((ADXConstraintWidget *) nil_chk(widget)) allowedInBarrier]) {
       continue;
@@ -164,22 +177,22 @@ J2OBJC_IGNORE_DESIGNATED_END
       break;
     }
   }
-  jboolean mHasHorizontalCenteredDependents = [((ADXConstraintAnchor *) nil_chk(mLeft_)) hasCenteredDependents] || [((ADXConstraintAnchor *) nil_chk(mRight_)) hasCenteredDependents];
-  jboolean mHasVerticalCenteredDependents = [((ADXConstraintAnchor *) nil_chk(mTop_)) hasCenteredDependents] || [((ADXConstraintAnchor *) nil_chk(mBottom_)) hasCenteredDependents];
-  jboolean applyEqualityOnReferences = !hasMatchConstraintWidgets && ((mBarrierType_ == ADXCoreBarrier_LEFT && mHasHorizontalCenteredDependents) || (mBarrierType_ == ADXCoreBarrier_TOP && mHasVerticalCenteredDependents) || (mBarrierType_ == ADXCoreBarrier_RIGHT && mHasHorizontalCenteredDependents) || (mBarrierType_ == ADXCoreBarrier_BOTTOM && mHasVerticalCenteredDependents));
-  jint equalityOnReferencesStrength = ADXSolverVariable_STRENGTH_EQUALITY;
+  bool mHasHorizontalCenteredDependents = [((ADXConstraintAnchor *) nil_chk(mLeft_)) hasCenteredDependents] || [((ADXConstraintAnchor *) nil_chk(mRight_)) hasCenteredDependents];
+  bool mHasVerticalCenteredDependents = [((ADXConstraintAnchor *) nil_chk(mTop_)) hasCenteredDependents] || [((ADXConstraintAnchor *) nil_chk(mBottom_)) hasCenteredDependents];
+  bool applyEqualityOnReferences = !hasMatchConstraintWidgets && ((mBarrierType_ == ADXCoreBarrier_LEFT && mHasHorizontalCenteredDependents) || (mBarrierType_ == ADXCoreBarrier_TOP && mHasVerticalCenteredDependents) || (mBarrierType_ == ADXCoreBarrier_RIGHT && mHasHorizontalCenteredDependents) || (mBarrierType_ == ADXCoreBarrier_BOTTOM && mHasVerticalCenteredDependents));
+  int32_t equalityOnReferencesStrength = ADXSolverVariable_STRENGTH_EQUALITY;
   if (!applyEqualityOnReferences) {
     equalityOnReferencesStrength = ADXSolverVariable_STRENGTH_HIGHEST;
   }
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (!mAllowsGoneWidget_ && ![((ADXConstraintWidget *) nil_chk(widget)) allowedInBarrier]) {
       continue;
     }
     ADXSolverVariable *target = JreRetainedLocalValue([((ADXLinearSystem *) nil_chk(system)) createObjectVariableWithId:IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(widget))->mListAnchors_), mBarrierType_)]);
     JreStrongAssign(&((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), mBarrierType_)))->mSolverVariable_, target);
-    jint margin = 0;
-    if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(widget->mListAnchors_, mBarrierType_)))->mTarget_ != nil && ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(widget->mListAnchors_, mBarrierType_)))->mTarget_->mOwner_ == self) {
+    int32_t margin = 0;
+    if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(widget->mListAnchors_, mBarrierType_)))->mTarget_ != nil && JreObjectEqualsEquals(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(widget->mListAnchors_, mBarrierType_)))->mTarget_->mOwner_, self)) {
       margin += ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(widget->mListAnchors_, mBarrierType_)))->mMargin_;
     }
     if (mBarrierType_ == ADXCoreBarrier_LEFT || mBarrierType_ == ADXCoreBarrier_TOP) {
@@ -192,8 +205,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       [system addEqualityWithADXSolverVariable:position->mSolverVariable_ withADXSolverVariable:target withInt:mMargin_ + margin withInt:equalityOnReferencesStrength];
     }
   }
-  jint barrierParentStrength = ADXSolverVariable_STRENGTH_HIGHEST;
-  jint barrierParentStrengthOpposite = ADXSolverVariable_STRENGTH_NONE;
+  int32_t barrierParentStrength = ADXSolverVariable_STRENGTH_HIGHEST;
+  int32_t barrierParentStrengthOpposite = ADXSolverVariable_STRENGTH_NONE;
   if (mBarrierType_ == ADXCoreBarrier_LEFT) {
     [((ADXLinearSystem *) nil_chk(system)) addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(mRight_))->mSolverVariable_ withADXSolverVariable:((ADXConstraintAnchor *) nil_chk(mLeft_))->mSolverVariable_ withInt:0 withInt:ADXSolverVariable_STRENGTH_FIXED];
     [system addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(mLeft_))->mSolverVariable_ withADXSolverVariable:((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(mParent_))->mRight_))->mSolverVariable_ withInt:0 withInt:barrierParentStrength];
@@ -216,15 +229,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setMarginWithInt:(jint)margin {
+- (void)setMarginWithInt:(int32_t)margin {
   mMargin_ = margin;
 }
 
-- (jint)getMargin {
+- (int32_t)getMargin {
   return mMargin_;
 }
 
-- (jint)getOrientation {
+- (int32_t)getOrientation {
   switch (mBarrierType_) {
     case ADXCoreBarrier_LEFT:
     case ADXCoreBarrier_RIGHT:
@@ -236,9 +249,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXConstraintWidget_UNKNOWN;
 }
 
-- (jboolean)allSolved {
-  jboolean hasAllWidgetsResolved = true;
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+- (bool)allSolved {
+  bool hasAllWidgetsResolved = true;
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (!mAllowsGoneWidget_ && ![((ADXConstraintWidget *) nil_chk(widget)) allowedInBarrier]) {
       continue;
@@ -251,9 +264,9 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   if (hasAllWidgetsResolved && mWidgetsCount_ > 0) {
-    jint barrierPosition = 0;
-    jboolean initialized = false;
-    for (jint i = 0; i < mWidgetsCount_; i++) {
+    int32_t barrierPosition = 0;
+    bool initialized = false;
+    for (int32_t i = 0; i < mWidgetsCount_; i++) {
       ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
       if (!mAllowsGoneWidget_ && ![((ADXConstraintWidget *) nil_chk(widget)) allowedInBarrier]) {
         continue;
@@ -395,3 +408,5 @@ ADXCoreBarrier *create_ADXCoreBarrier_initWithNSString_(NSString *debugName) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCoreBarrier)
+
+J2OBJC_NAME_MAPPING(ADXCoreBarrier, "androidx.constraintlayout.core.widgets", "ADX")

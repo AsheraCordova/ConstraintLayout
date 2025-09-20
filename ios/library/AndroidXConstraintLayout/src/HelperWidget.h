@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\HelperWidget.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_HelperWidget")
@@ -27,8 +28,10 @@
 @class ADXConstraintWidgetContainer;
 @class ADXWidgetGroup;
 @class IOSObjectArray;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 @class JavaUtilHashMap;
+@class NSString;
 
 /*!
  @brief HelperWidget class
@@ -36,7 +39,7 @@
 @interface ADXHelperWidget : ADXConstraintWidget < ADXHelper > {
  @public
   IOSObjectArray *mWidgets_;
-  jint mWidgetsCount_;
+  int32_t mWidgetsCount_;
 }
 
 #pragma mark Public
@@ -50,13 +53,13 @@
 - (void)addWithADXConstraintWidget:(ADXConstraintWidget *)widget;
 
 - (void)addDependentsWithJavaUtilArrayList:(JavaUtilArrayList *)dependencyLists
-                                   withInt:(jint)orientation
+                                   withInt:(int32_t)orientation
                         withADXWidgetGroup:(ADXWidgetGroup *)group;
 
 - (void)copy__WithADXConstraintWidget:(ADXConstraintWidget *)src
                   withJavaUtilHashMap:(JavaUtilHashMap *)map OBJC_METHOD_FAMILY_NONE;
 
-- (jint)findGroupInDependentsWithInt:(jint)orientation;
+- (int32_t)findGroupInDependentsWithInt:(int32_t)orientation;
 
 /*!
  @brief Reset the widgets list contained by this helper
@@ -67,25 +70,25 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithInt:(jint)arg0
-                    withInt:(jint)arg1 NS_UNAVAILABLE;
+- (instancetype)initWithInt:(int32_t)arg0
+                    withInt:(int32_t)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithInt:(jint)arg0
-                    withInt:(jint)arg1
-                    withInt:(jint)arg2
-                    withInt:(jint)arg3 NS_UNAVAILABLE;
+- (instancetype)initWithInt:(int32_t)arg0
+                    withInt:(int32_t)arg1
+                    withInt:(int32_t)arg2
+                    withInt:(int32_t)arg3 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0
-                         withInt:(jint)arg1
-                         withInt:(jint)arg2 NS_UNAVAILABLE;
+                         withInt:(int32_t)arg1
+                         withInt:(int32_t)arg2 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0
-                         withInt:(jint)arg1
-                         withInt:(jint)arg2
-                         withInt:(jint)arg3
-                         withInt:(jint)arg4 NS_UNAVAILABLE;
+                         withInt:(int32_t)arg1
+                         withInt:(int32_t)arg2
+                         withInt:(int32_t)arg3
+                         withInt:(int32_t)arg4 NS_UNAVAILABLE;
 
 @end
 
@@ -102,6 +105,7 @@ FOUNDATION_EXPORT ADXHelperWidget *create_ADXHelperWidget_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXHelperWidget)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsHelperWidget ADXHelperWidget;
+
 
 #endif
 

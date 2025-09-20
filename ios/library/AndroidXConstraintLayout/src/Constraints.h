@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Constraints.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Constraints")
@@ -21,6 +22,8 @@
 #include "ViewGroup.h"
 
 @class ADXConstraintSet;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXConstraints : ADViewGroup {
  @public
@@ -35,11 +38,11 @@
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 @end
 
@@ -57,6 +60,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraints)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetConstraints ADXConstraints;
 
+
 #endif
 
 #if !defined (ADXConstraints_LayoutParams_) && (INCLUDE_ALL_Constraints || defined(INCLUDE_ADXConstraints_LayoutParams))
@@ -67,28 +71,31 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraints)
 #include "ConstraintLayout.h"
 
 @class ADViewGroup_LayoutParams;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXConstraints_LayoutParams : ADXConstraintLayout_LayoutParams {
  @public
-  jfloat alpha_;
-  jboolean applyElevation_;
-  jfloat elevation_;
-  jfloat rotation_;
-  jfloat rotationX_;
-  jfloat rotationY_;
-  jfloat scaleX_;
-  jfloat scaleY_;
-  jfloat transformPivotX_;
-  jfloat transformPivotY_;
-  jfloat translationX_;
-  jfloat translationY_;
-  jfloat translationZ_;
+  float alpha_;
+  bool applyElevation_;
+  float elevation_;
+  float rotation_;
+  float rotationX_;
+  float rotationY_;
+  float scaleX_;
+  float scaleY_;
+  float transformPivotX_;
+  float transformPivotY_;
+  float translationX_;
+  float translationY_;
+  float translationZ_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 - (instancetype)initWithADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)source;
 
@@ -102,11 +109,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraints)
 
 J2OBJC_EMPTY_STATIC_INIT(ADXConstraints_LayoutParams)
 
-FOUNDATION_EXPORT void ADXConstraints_LayoutParams_initWithInt_withInt_(ADXConstraints_LayoutParams *self, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraints_LayoutParams_initWithInt_withInt_(ADXConstraints_LayoutParams *self, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraints_LayoutParams *new_ADXConstraints_LayoutParams_initWithInt_withInt_(jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraints_LayoutParams *new_ADXConstraints_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraints_LayoutParams *create_ADXConstraints_LayoutParams_initWithInt_withInt_(jint width, jint height);
+FOUNDATION_EXPORT ADXConstraints_LayoutParams *create_ADXConstraints_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height);
 
 FOUNDATION_EXPORT void ADXConstraints_LayoutParams_initWithADXConstraints_LayoutParams_(ADXConstraints_LayoutParams *self, ADXConstraints_LayoutParams *source);
 
@@ -115,6 +122,7 @@ FOUNDATION_EXPORT ADXConstraints_LayoutParams *new_ADXConstraints_LayoutParams_i
 FOUNDATION_EXPORT ADXConstraints_LayoutParams *create_ADXConstraints_LayoutParams_initWithADXConstraints_LayoutParams_(ADXConstraints_LayoutParams *source);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraints_LayoutParams)
+
 
 #endif
 

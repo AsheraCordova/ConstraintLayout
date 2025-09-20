@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLToken.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLToken")
@@ -28,10 +29,15 @@
 
 @class ADXCLToken_Type;
 @class IOSCharArray;
+@class JavaLangBoolean;
+@class JavaLangCharacter;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 
 @interface ADXCLToken : ADXCLElement {
  @public
-  jint index_;
+  int32_t index_;
   ADXCLToken_Type *type_;
   IOSCharArray *tokenTrue_;
   IOSCharArray *tokenFalse_;
@@ -44,19 +50,19 @@
 
 + (ADXCLElement *)allocateWithCharArray:(IOSCharArray *)content OBJC_METHOD_FAMILY_NONE;
 
-- (jboolean)getBoolean;
+- (bool)getBoolean;
 
 - (ADXCLToken_Type *)getType;
 
-- (jboolean)isNull;
+- (bool)isNull;
 
-- (jboolean)validateWithChar:(jchar)c
-                    withLong:(jlong)position;
+- (bool)validateWithChar:(unichar)c
+                withLong:(int64_t)position;
 
 #pragma mark Protected
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent;
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent;
 
 - (NSString *)toJSON;
 
@@ -81,6 +87,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLToken)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLToken ADXCLToken;
 
+
 #endif
 
 #if !defined (ADXCLToken_Type_) && (INCLUDE_ALL_CLToken || defined(INCLUDE_ADXCLToken_Type))
@@ -91,13 +98,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLToken)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXCLToken_Type_Enum) {
-  ADXCLToken_Type_Enum_UNKNOWN = 0,
-  ADXCLToken_Type_Enum_TRUE = 1,
-  ADXCLToken_Type_Enum_FALSE = 2,
-  ADXCLToken_Type_Enum_NULL = 3,
+typedef NS_ENUM(int32_t, ADXCLToken_Type_Enum) {
+  ADXCLToken_Type_Enum_UNKNOWN NS_SWIFT_NAME(unknown) = 0,
+  ADXCLToken_Type_Enum_TRUE NS_SWIFT_NAME(true_) = 1,
+  ADXCLToken_Type_Enum_FALSE NS_SWIFT_NAME(false_) = 2,
+  ADXCLToken_Type_Enum_NULL NS_SWIFT_NAME(null) = 3,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXCLToken_Type_ORDINAL int32_t
+#else
+#define ADXCLToken_Type_ORDINAL ADXCLToken_Type_Enum
+#endif
+
 
 @interface ADXCLToken_Type : JavaLangEnum
 
@@ -110,6 +125,13 @@ typedef NS_ENUM(NSUInteger, ADXCLToken_Type_Enum) {
 #pragma mark Package-Private
 
 - (ADXCLToken_Type_Enum)toNSEnum;
+
+@property(readonly) ADXCLToken_Type_Enum enumValue;
++ (ADXCLToken_Type *)fromNSEnum:(ADXCLToken_Type_Enum)value;
+
+- (ADXCLToken_Type_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithType:(ADXCLToken_Type_Enum)value;
 
 @end
 
@@ -134,9 +156,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXCLToken_Type_values(void);
 
 FOUNDATION_EXPORT ADXCLToken_Type *ADXCLToken_Type_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXCLToken_Type *ADXCLToken_Type_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXCLToken_Type *ADXCLToken_Type_fromOrdinal(ADXCLToken_Type_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLToken_Type)
+
 
 #endif
 

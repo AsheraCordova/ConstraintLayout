@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\GroupImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_GroupImpl")
@@ -23,6 +24,8 @@
 @class ADXGroup;
 @class ASWidgetAttribute;
 @class IOSClass;
+@class JavaLangBoolean;
+@class NSString;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -48,7 +51,7 @@
 
 - (id)asWidget;
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v;
+- (bool)checkIosVersionWithNSString:(NSString *)v;
 
 - (void)createWithASIFragment:(id<ASIFragment>)fragment
               withJavaUtilMap:(id<JavaUtilMap>)params;
@@ -77,7 +80,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)setVisibleWithBoolean:(jboolean)b;
+- (void)setVisibleWithBoolean:(bool)b;
 
 @end
 
@@ -118,6 +121,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 @compatibility_alias ComAsheraConstraintlayoutGroupImpl ASGroupImpl;
 
+
 #endif
 
 #if !defined (ASGroupImpl_GroupExt_) && (INCLUDE_ALL_GroupImpl || defined(INCLUDE_ASGroupImpl_GroupExt))
@@ -141,6 +145,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 @class ASWidgetAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -159,9 +166,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 - (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
 
-- (jint)getMaxHeight;
+- (int32_t)getMaxHeight;
 
-- (jint)getMaxWidth;
+- (int32_t)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
 
@@ -175,12 +182,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 - (id<ASILifeCycleDecorator>)newInstanceWithASIWidget:(id<ASIWidget>)widget OBJC_METHOD_FAMILY_NONE;
 
-- (void)offsetLeftAndRightWithInt:(jint)offset;
+- (void)offsetLeftAndRightWithInt:(int32_t)offset;
 
-- (void)offsetTopAndBottomWithInt:(jint)offset;
+- (void)offsetTopAndBottomWithInt:(int32_t)offset;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)remeasure;
 
@@ -190,9 +197,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
 
-- (void)setMaxHeightWithInt:(jint)height;
+- (void)setMaxHeightWithInt:(int32_t)height;
 
-- (void)setMaxWidthWithInt:(jint)width;
+- (void)setMaxWidthWithInt:(int32_t)width;
 
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
@@ -207,7 +214,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 - (void)setState4WithId:(id)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)state0;
 
@@ -223,16 +230,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl)
 
 - (void)stateYes;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 // Disallowed inherited constructors, do not use.
 
@@ -249,6 +256,7 @@ FOUNDATION_EXPORT ASGroupImpl_GroupExt *new_ASGroupImpl_GroupExt_initWithASGroup
 FOUNDATION_EXPORT ASGroupImpl_GroupExt *create_ASGroupImpl_GroupExt_initWithASGroupImpl_(ASGroupImpl *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASGroupImpl_GroupExt)
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\RegistryCallback.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_RegistryCallback")
@@ -16,24 +17,29 @@
 #if !defined (ADXRegistryCallback_) && (INCLUDE_ALL_RegistryCallback || defined(INCLUDE_ADXRegistryCallback))
 #define ADXRegistryCallback_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
+
 @protocol ADXRegistryCallback < JavaObject >
 
 - (void)onNewMotionSceneWithNSString:(NSString *)content;
 
-- (void)onProgressWithFloat:(jfloat)progress;
+- (void)onProgressWithFloat:(float)progress;
 
-- (void)onDimensionsWithInt:(jint)width
-                    withInt:(jint)height;
+- (void)onDimensionsWithInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 - (NSString *)currentMotionScene;
 
-- (void)setDrawDebugWithInt:(jint)debugMode;
+- (void)setDrawDebugWithInt:(int32_t)debugMode;
 
 - (NSString *)currentLayoutInformation;
 
-- (void)setLayoutInformationModeWithInt:(jint)layoutInformationMode;
+- (void)setLayoutInformationModeWithInt:(int32_t)layoutInformationMode;
 
-- (jlong)getLastModified;
+- (int64_t)getLastModified;
 
 @end
 
@@ -42,6 +48,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXRegistryCallback)
 J2OBJC_TYPE_LITERAL_HEADER(ADXRegistryCallback)
 
 #define AndroidxConstraintlayoutCoreStateRegistryCallback ADXRegistryCallback
+
 
 #endif
 

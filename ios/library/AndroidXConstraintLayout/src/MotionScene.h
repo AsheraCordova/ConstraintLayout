@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionScene.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionScene")
@@ -26,7 +27,11 @@
 @class ADXViewTransitionController;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
+@class NSString;
 @protocol ADInterpolator;
 @protocol JavaUtilList;
 
@@ -34,11 +39,11 @@
  @public
   ADXCLStateSet *mStateSet_;
   ADXMotionScene_Transition *mCurrentTransition_;
-  jint mDefaultDuration_;
-  jint mLayoutDuringTransition_;
+  int32_t mDefaultDuration_;
+  int32_t mLayoutDuringTransition_;
   ADXViewTransitionController *mViewTransitionController_;
-  jfloat mLastTouchX_;
-  jfloat mLastTouchY_;
+  float mLastTouchX_;
+  float mLastTouchY_;
 }
 
 #pragma mark Public
@@ -46,20 +51,20 @@
 - (instancetype)initWithADXMotionLayout:(ADXMotionLayout *)layout;
 
 - (void)addOnClickListenersWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)currentState;
+                                       withInt:(int32_t)currentState;
 
 - (void)addTransitionWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition;
 
-- (ADXMotionScene_Transition *)bestTransitionForWithInt:(jint)currentState
-                                              withFloat:(jfloat)dx
-                                              withFloat:(jfloat)dy
+- (ADXMotionScene_Transition *)bestTransitionForWithInt:(int32_t)currentState
+                                              withFloat:(float)dx
+                                              withFloat:(float)dy
                                       withADMotionEvent:(ADMotionEvent *)lastTouchDown;
 
 - (void)copyDerivedContraintsWithADXConstraintSet:(ADXConstraintSet *)cs
-                                          withInt:(jint)key
+                                          withInt:(int32_t)key
                               withADXMotionLayout:(ADXMotionLayout *)motionLayout OBJC_METHOD_FAMILY_NONE;
 
-- (jint)gatPathMotionArc;
+- (int32_t)gatPathMotionArc;
 
 - (ADXConstraintSet *)getConstraintSetWithADContext:(ADContext *)context
                                        withNSString:(NSString *)id_;
@@ -68,78 +73,78 @@
 
 - (JavaUtilArrayList *)getDefinedTransitions;
 
-- (jint)getDuration;
+- (int32_t)getDuration;
 
 - (id<ADInterpolator>)getInterpolator;
 
 - (void)getKeyFramesWithADXMotionController:(ADXMotionController *)motionController;
 
-- (jfloat)getStaggered;
+- (float)getStaggered;
 
-- (ADXMotionScene_Transition *)getTransitionByIdWithInt:(jint)id_;
+- (ADXMotionScene_Transition *)getTransitionByIdWithInt:(int32_t)id_;
 
-- (id<JavaUtilList>)getTransitionsWithStateWithInt:(jint)stateId;
+- (id<JavaUtilList>)getTransitionsWithStateWithInt:(int32_t)stateId;
 
-- (void)putDerivedIdWithInt:(jint)id_
-                    withInt:(jint)derivedId;
+- (void)putDerivedIdWithInt:(int32_t)id_
+                    withInt:(int32_t)derivedId;
 
 - (void)removeTransitionWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition;
 
-- (void)setConstraintSetWithInt:(jint)id_
+- (void)setConstraintSetWithInt:(int32_t)id_
            withADXConstraintSet:(ADXConstraintSet *)set;
 
-- (void)setDurationWithInt:(jint)duration;
+- (void)setDurationWithInt:(int32_t)duration;
 
 - (void)setTransitionWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition;
 
-- (jboolean)validateLayoutWithADXMotionLayout:(ADXMotionLayout *)layout;
+- (bool)validateLayoutWithADXMotionLayout:(ADXMotionLayout *)layout;
 
-- (void)viewTransitionWithInt:(jint)id_
+- (void)viewTransitionWithInt:(int32_t)id_
               withADViewArray:(IOSObjectArray *)view;
 
 #pragma mark Package-Private
 
-- (jboolean)autoTransitionWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)currentState;
+- (bool)autoTransitionWithADXMotionLayout:(ADXMotionLayout *)motionLayout
+                                  withInt:(int32_t)currentState;
 
-- (jint)getAutoCompleteMode;
+- (int32_t)getAutoCompleteMode;
 
-- (ADXConstraintSet *)getConstraintSetWithInt:(jint)id_;
+- (ADXConstraintSet *)getConstraintSetWithInt:(int32_t)id_;
 
-- (ADXConstraintSet *)getConstraintSetWithInt:(jint)id_
-                                      withInt:(jint)width
-                                      withInt:(jint)height;
+- (ADXConstraintSet *)getConstraintSetWithInt:(int32_t)id_
+                                      withInt:(int32_t)width
+                                      withInt:(int32_t)height;
 
-- (jint)getEndId;
+- (int32_t)getEndId;
 
-- (jfloat)getMaxAcceleration;
+- (float)getMaxAcceleration;
 
-- (jfloat)getMaxVelocity;
+- (float)getMaxVelocity;
 
-- (jint)getSpringBoundary;
+- (int32_t)getSpringBoundary;
 
-- (jfloat)getSpringDamping;
+- (float)getSpringDamping;
 
-- (jfloat)getSpringMass;
+- (float)getSpringMass;
 
-- (jfloat)getSpringStiffiness;
+- (float)getSpringStiffiness;
 
-- (jfloat)getSpringStopThreshold;
+- (float)getSpringStopThreshold;
 
-- (jint)getStartId;
+- (int32_t)getStartId;
 
 - (void)processTouchEventWithADMotionEvent:(ADMotionEvent *)event
-                                   withInt:(jint)currentState
+                                   withInt:(int32_t)currentState
                        withADXMotionLayout:(ADXMotionLayout *)motionLayout;
 
 - (void)readFallbackWithADXMotionLayout:(ADXMotionLayout *)motionLayout;
 
-- (void)setTransitionWithInt:(jint)beginId
-                     withInt:(jint)endId;
+- (void)setTransitionWithInt:(int32_t)beginId
+                     withInt:(int32_t)endId;
 
 - (void)setupTouch;
 
-- (jboolean)supportTouch;
+- (bool)supportTouch;
 
 // Disallowed inherited constructors, do not use.
 
@@ -153,53 +158,53 @@ J2OBJC_FIELD_SETTER(ADXMotionScene, mStateSet_, ADXCLStateSet *)
 J2OBJC_FIELD_SETTER(ADXMotionScene, mCurrentTransition_, ADXMotionScene_Transition *)
 J2OBJC_FIELD_SETTER(ADXMotionScene, mViewTransitionController_, ADXViewTransitionController *)
 
-inline jint ADXMotionScene_get_TRANSITION_BACKWARD(void);
+inline int32_t ADXMotionScene_get_TRANSITION_BACKWARD(void);
 #define ADXMotionScene_TRANSITION_BACKWARD 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, TRANSITION_BACKWARD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, TRANSITION_BACKWARD, int32_t)
 
-inline jint ADXMotionScene_get_TRANSITION_FORWARD(void);
+inline int32_t ADXMotionScene_get_TRANSITION_FORWARD(void);
 #define ADXMotionScene_TRANSITION_FORWARD 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, TRANSITION_FORWARD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, TRANSITION_FORWARD, int32_t)
 
-inline jint ADXMotionScene_get_UNSET(void);
+inline int32_t ADXMotionScene_get_UNSET(void);
 #define ADXMotionScene_UNSET -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, UNSET, int32_t)
 
-inline jint ADXMotionScene_get_LAYOUT_IGNORE_REQUEST(void);
+inline int32_t ADXMotionScene_get_LAYOUT_IGNORE_REQUEST(void);
 #define ADXMotionScene_LAYOUT_IGNORE_REQUEST 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, LAYOUT_IGNORE_REQUEST, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, LAYOUT_IGNORE_REQUEST, int32_t)
 
-inline jint ADXMotionScene_get_LAYOUT_HONOR_REQUEST(void);
+inline int32_t ADXMotionScene_get_LAYOUT_HONOR_REQUEST(void);
 #define ADXMotionScene_LAYOUT_HONOR_REQUEST 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, LAYOUT_HONOR_REQUEST, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, LAYOUT_HONOR_REQUEST, int32_t)
 
-inline jint ADXMotionScene_get_EASE_IN_OUT(void);
+inline int32_t ADXMotionScene_get_EASE_IN_OUT(void);
 #define ADXMotionScene_EASE_IN_OUT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, EASE_IN_OUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, EASE_IN_OUT, int32_t)
 
-inline jint ADXMotionScene_get_EASE_IN(void);
+inline int32_t ADXMotionScene_get_EASE_IN(void);
 #define ADXMotionScene_EASE_IN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, EASE_IN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, EASE_IN, int32_t)
 
-inline jint ADXMotionScene_get_EASE_OUT(void);
+inline int32_t ADXMotionScene_get_EASE_OUT(void);
 #define ADXMotionScene_EASE_OUT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, EASE_OUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, EASE_OUT, int32_t)
 
-inline jint ADXMotionScene_get_LINEAR(void);
+inline int32_t ADXMotionScene_get_LINEAR(void);
 #define ADXMotionScene_LINEAR 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, LINEAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, LINEAR, int32_t)
 
-inline jint ADXMotionScene_get_BOUNCE(void);
+inline int32_t ADXMotionScene_get_BOUNCE(void);
 #define ADXMotionScene_BOUNCE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, BOUNCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, BOUNCE, int32_t)
 
-inline jint ADXMotionScene_get_OVERSHOOT(void);
+inline int32_t ADXMotionScene_get_OVERSHOOT(void);
 #define ADXMotionScene_OVERSHOOT 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, OVERSHOOT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, OVERSHOOT, int32_t)
 
-inline jint ADXMotionScene_get_ANTICIPATE(void);
+inline int32_t ADXMotionScene_get_ANTICIPATE(void);
 #define ADXMotionScene_ANTICIPATE 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, ANTICIPATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene, ANTICIPATE, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionScene_initWithADXMotionLayout_(ADXMotionScene *self, ADXMotionLayout *layout);
 
@@ -211,6 +216,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetMotionScene ADXMotionScene;
 
+
 #endif
 
 #if !defined (ADXMotionScene_Transition_) && (INCLUDE_ALL_MotionScene || defined(INCLUDE_ADXMotionScene_Transition))
@@ -221,88 +227,92 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene)
 @class ADXMotionScene;
 @class ADXOnSwipe;
 @class ADXTouchResponse;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 @protocol JavaUtilList;
 
 @interface ADXMotionScene_Transition : NSObject {
  @public
-  jint mId_;
-  jint mConstraintSetEnd_;
-  jint mConstraintSetStart_;
-  jint mDefaultInterpolator_;
-  jint mDefaultInterpolatorID_;
-  jint mDuration_;
-  jfloat mStagger_;
-  jint mAutoTransition_;
-  jint mPathMotionArc_;
-  jint mLayoutDuringTransition_;
-  jint mTransitionFlags_;
+  int32_t mId_;
+  int32_t mConstraintSetEnd_;
+  int32_t mConstraintSetStart_;
+  int32_t mDefaultInterpolator_;
+  int32_t mDefaultInterpolatorID_;
+  int32_t mDuration_;
+  float mStagger_;
+  int32_t mAutoTransition_;
+  int32_t mPathMotionArc_;
+  int32_t mLayoutDuringTransition_;
+  int32_t mTransitionFlags_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)id_
+- (instancetype)initWithInt:(int32_t)id_
          withADXMotionScene:(ADXMotionScene *)motionScene
-                    withInt:(jint)constraintSetStartId
-                    withInt:(jint)constraintSetEndId;
+                    withInt:(int32_t)constraintSetStartId
+                    withInt:(int32_t)constraintSetEndId;
 
 - (void)addKeyFrameWithADXKeyFrames:(ADXKeyFrames *)keyFrames;
 
-- (void)addOnClickWithInt:(jint)id_
-                  withInt:(jint)action;
+- (void)addOnClickWithInt:(int32_t)id_
+                  withInt:(int32_t)action;
 
 - (NSString *)debugStringWithADContext:(ADContext *)context;
 
-- (jint)getAutoTransition;
+- (int32_t)getAutoTransition;
 
-- (jint)getDuration;
+- (int32_t)getDuration;
 
-- (jint)getEndConstraintSetId;
+- (int32_t)getEndConstraintSetId;
 
-- (jint)getId;
+- (int32_t)getId;
 
 - (id<JavaUtilList>)getKeyFrameList;
 
-- (jint)getLayoutDuringTransition;
+- (int32_t)getLayoutDuringTransition;
 
 - (id<JavaUtilList>)getOnClickList;
 
-- (jint)getPathMotionArc;
+- (int32_t)getPathMotionArc;
 
-- (jfloat)getStagger;
+- (float)getStagger;
 
-- (jint)getStartConstraintSetId;
+- (int32_t)getStartConstraintSetId;
 
 - (ADXTouchResponse *)getTouchResponse;
 
-- (jboolean)isEnabled;
+- (bool)isEnabled;
 
-- (jboolean)isTransitionFlagWithInt:(jint)flag;
+- (bool)isTransitionFlagWithInt:(int32_t)flag;
 
-- (void)removeOnClickWithInt:(jint)id_;
+- (void)removeOnClickWithInt:(int32_t)id_;
 
-- (void)setAutoTransitionWithInt:(jint)type;
+- (void)setAutoTransitionWithInt:(int32_t)type;
 
-- (void)setDurationWithInt:(jint)duration;
+- (void)setDurationWithInt:(int32_t)duration;
 
-- (void)setEnableWithBoolean:(jboolean)enable;
+- (void)setEnableWithBoolean:(bool)enable;
 
-- (void)setEnabledWithBoolean:(jboolean)enable;
+- (void)setEnabledWithBoolean:(bool)enable;
 
-- (void)setInterpolatorInfoWithInt:(jint)interpolator
+- (void)setInterpolatorInfoWithInt:(int32_t)interpolator
                       withNSString:(NSString *)interpolatorString
-                           withInt:(jint)interpolatorID;
+                           withInt:(int32_t)interpolatorID;
 
-- (void)setLayoutDuringTransitionWithInt:(jint)mode;
+- (void)setLayoutDuringTransitionWithInt:(int32_t)mode;
 
 - (void)setOnSwipeWithADXOnSwipe:(ADXOnSwipe *)onSwipe;
 
-- (void)setOnTouchUpWithInt:(jint)touchUpMode;
+- (void)setOnTouchUpWithInt:(int32_t)touchUpMode;
 
-- (void)setPathMotionArcWithInt:(jint)arcMode;
+- (void)setPathMotionArcWithInt:(int32_t)arcMode;
 
-- (void)setStaggerWithFloat:(jfloat)stagger;
+- (void)setStaggerWithFloat:(float)stagger;
 
-- (void)setTransitionFlagWithInt:(jint)flag;
+- (void)setTransitionFlagWithInt:(int32_t)flag;
 
 #pragma mark Package-Private
 
@@ -317,33 +327,33 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene)
 
 J2OBJC_EMPTY_STATIC_INIT(ADXMotionScene_Transition)
 
-inline jint ADXMotionScene_Transition_get_AUTO_NONE(void);
+inline int32_t ADXMotionScene_Transition_get_AUTO_NONE(void);
 #define ADXMotionScene_Transition_AUTO_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_NONE, int32_t)
 
-inline jint ADXMotionScene_Transition_get_AUTO_JUMP_TO_START(void);
+inline int32_t ADXMotionScene_Transition_get_AUTO_JUMP_TO_START(void);
 #define ADXMotionScene_Transition_AUTO_JUMP_TO_START 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_JUMP_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_JUMP_TO_START, int32_t)
 
-inline jint ADXMotionScene_Transition_get_AUTO_JUMP_TO_END(void);
+inline int32_t ADXMotionScene_Transition_get_AUTO_JUMP_TO_END(void);
 #define ADXMotionScene_Transition_AUTO_JUMP_TO_END 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_JUMP_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_JUMP_TO_END, int32_t)
 
-inline jint ADXMotionScene_Transition_get_AUTO_ANIMATE_TO_START(void);
+inline int32_t ADXMotionScene_Transition_get_AUTO_ANIMATE_TO_START(void);
 #define ADXMotionScene_Transition_AUTO_ANIMATE_TO_START 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_ANIMATE_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_ANIMATE_TO_START, int32_t)
 
-inline jint ADXMotionScene_Transition_get_AUTO_ANIMATE_TO_END(void);
+inline int32_t ADXMotionScene_Transition_get_AUTO_ANIMATE_TO_END(void);
 #define ADXMotionScene_Transition_AUTO_ANIMATE_TO_END 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_ANIMATE_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, AUTO_ANIMATE_TO_END, int32_t)
 
-inline jint ADXMotionScene_Transition_get_TRANSITION_FLAG_FIRST_DRAW(void);
+inline int32_t ADXMotionScene_Transition_get_TRANSITION_FLAG_FIRST_DRAW(void);
 #define ADXMotionScene_Transition_TRANSITION_FLAG_FIRST_DRAW 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, TRANSITION_FLAG_FIRST_DRAW, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, TRANSITION_FLAG_FIRST_DRAW, int32_t)
 
-inline jint ADXMotionScene_Transition_get_TRANSITION_FLAG_INTRA_AUTO(void);
+inline int32_t ADXMotionScene_Transition_get_TRANSITION_FLAG_INTRA_AUTO(void);
 #define ADXMotionScene_Transition_TRANSITION_FLAG_INTRA_AUTO 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, TRANSITION_FLAG_INTRA_AUTO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition, TRANSITION_FLAG_INTRA_AUTO, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionScene_Transition_initWithADXMotionScene_withADXMotionScene_Transition_(ADXMotionScene_Transition *self, ADXMotionScene *motionScene, ADXMotionScene_Transition *global);
 
@@ -351,13 +361,14 @@ FOUNDATION_EXPORT ADXMotionScene_Transition *new_ADXMotionScene_Transition_initW
 
 FOUNDATION_EXPORT ADXMotionScene_Transition *create_ADXMotionScene_Transition_initWithADXMotionScene_withADXMotionScene_Transition_(ADXMotionScene *motionScene, ADXMotionScene_Transition *global);
 
-FOUNDATION_EXPORT void ADXMotionScene_Transition_initWithInt_withADXMotionScene_withInt_withInt_(ADXMotionScene_Transition *self, jint id_, ADXMotionScene *motionScene, jint constraintSetStartId, jint constraintSetEndId);
+FOUNDATION_EXPORT void ADXMotionScene_Transition_initWithInt_withADXMotionScene_withInt_withInt_(ADXMotionScene_Transition *self, int32_t id_, ADXMotionScene *motionScene, int32_t constraintSetStartId, int32_t constraintSetEndId);
 
-FOUNDATION_EXPORT ADXMotionScene_Transition *new_ADXMotionScene_Transition_initWithInt_withADXMotionScene_withInt_withInt_(jint id_, ADXMotionScene *motionScene, jint constraintSetStartId, jint constraintSetEndId) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXMotionScene_Transition *new_ADXMotionScene_Transition_initWithInt_withADXMotionScene_withInt_withInt_(int32_t id_, ADXMotionScene *motionScene, int32_t constraintSetStartId, int32_t constraintSetEndId) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXMotionScene_Transition *create_ADXMotionScene_Transition_initWithInt_withADXMotionScene_withInt_withInt_(jint id_, ADXMotionScene *motionScene, jint constraintSetStartId, jint constraintSetEndId);
+FOUNDATION_EXPORT ADXMotionScene_Transition *create_ADXMotionScene_Transition_initWithInt_withADXMotionScene_withInt_withInt_(int32_t id_, ADXMotionScene *motionScene, int32_t constraintSetStartId, int32_t constraintSetEndId);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene_Transition)
+
 
 #endif
 
@@ -371,21 +382,23 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene_Transition)
 @class ADView;
 @class ADXMotionLayout;
 @class ADXMotionScene_Transition;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXMotionScene_Transition_TransitionOnClick : NSObject < ADView_OnClickListener > {
  @public
-  jint mTargetId_;
-  jint mMode_;
+  int32_t mTargetId_;
+  int32_t mMode_;
 }
 
 #pragma mark Public
 
 - (instancetype)initWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
-                                          withInt:(jint)id_
-                                          withInt:(jint)action;
+                                          withInt:(int32_t)id_
+                                          withInt:(int32_t)action;
 
 - (void)addOnClickListenersWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)currentState
+                                       withInt:(int32_t)currentState
                  withADXMotionScene_Transition:(ADXMotionScene_Transition *)transition;
 
 - (void)onClickWithADView:(ADView *)view;
@@ -394,8 +407,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene_Transition)
 
 #pragma mark Package-Private
 
-- (jboolean)isTransitionViableWithADXMotionScene_Transition:(ADXMotionScene_Transition *)current
-                                        withADXMotionLayout:(ADXMotionLayout *)tl;
+- (bool)isTransitionViableWithADXMotionScene_Transition:(ADXMotionScene_Transition *)current
+                                    withADXMotionLayout:(ADXMotionLayout *)tl;
 
 // Disallowed inherited constructors, do not use.
 
@@ -405,33 +418,34 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene_Transition)
 
 J2OBJC_EMPTY_STATIC_INIT(ADXMotionScene_Transition_TransitionOnClick)
 
-inline jint ADXMotionScene_Transition_TransitionOnClick_get_ANIM_TO_END(void);
+inline int32_t ADXMotionScene_Transition_TransitionOnClick_get_ANIM_TO_END(void);
 #define ADXMotionScene_Transition_TransitionOnClick_ANIM_TO_END 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, ANIM_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, ANIM_TO_END, int32_t)
 
-inline jint ADXMotionScene_Transition_TransitionOnClick_get_ANIM_TOGGLE(void);
+inline int32_t ADXMotionScene_Transition_TransitionOnClick_get_ANIM_TOGGLE(void);
 #define ADXMotionScene_Transition_TransitionOnClick_ANIM_TOGGLE 17
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, ANIM_TOGGLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, ANIM_TOGGLE, int32_t)
 
-inline jint ADXMotionScene_Transition_TransitionOnClick_get_ANIM_TO_START(void);
+inline int32_t ADXMotionScene_Transition_TransitionOnClick_get_ANIM_TO_START(void);
 #define ADXMotionScene_Transition_TransitionOnClick_ANIM_TO_START 16
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, ANIM_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, ANIM_TO_START, int32_t)
 
-inline jint ADXMotionScene_Transition_TransitionOnClick_get_JUMP_TO_END(void);
+inline int32_t ADXMotionScene_Transition_TransitionOnClick_get_JUMP_TO_END(void);
 #define ADXMotionScene_Transition_TransitionOnClick_JUMP_TO_END 256
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, JUMP_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, JUMP_TO_END, int32_t)
 
-inline jint ADXMotionScene_Transition_TransitionOnClick_get_JUMP_TO_START(void);
+inline int32_t ADXMotionScene_Transition_TransitionOnClick_get_JUMP_TO_START(void);
 #define ADXMotionScene_Transition_TransitionOnClick_JUMP_TO_START 4096
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, JUMP_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionScene_Transition_TransitionOnClick, JUMP_TO_START, int32_t)
 
-FOUNDATION_EXPORT void ADXMotionScene_Transition_TransitionOnClick_initWithADXMotionScene_Transition_withInt_withInt_(ADXMotionScene_Transition_TransitionOnClick *self, ADXMotionScene_Transition *transition, jint id_, jint action);
+FOUNDATION_EXPORT void ADXMotionScene_Transition_TransitionOnClick_initWithADXMotionScene_Transition_withInt_withInt_(ADXMotionScene_Transition_TransitionOnClick *self, ADXMotionScene_Transition *transition, int32_t id_, int32_t action);
 
-FOUNDATION_EXPORT ADXMotionScene_Transition_TransitionOnClick *new_ADXMotionScene_Transition_TransitionOnClick_initWithADXMotionScene_Transition_withInt_withInt_(ADXMotionScene_Transition *transition, jint id_, jint action) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXMotionScene_Transition_TransitionOnClick *new_ADXMotionScene_Transition_TransitionOnClick_initWithADXMotionScene_Transition_withInt_withInt_(ADXMotionScene_Transition *transition, int32_t id_, int32_t action) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXMotionScene_Transition_TransitionOnClick *create_ADXMotionScene_Transition_TransitionOnClick_initWithADXMotionScene_Transition_withInt_withInt_(ADXMotionScene_Transition *transition, jint id_, jint action);
+FOUNDATION_EXPORT ADXMotionScene_Transition_TransitionOnClick *create_ADXMotionScene_Transition_TransitionOnClick_initWithADXMotionScene_Transition_withInt_withInt_(ADXMotionScene_Transition *transition, int32_t id_, int32_t action);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionScene_Transition_TransitionOnClick)
+
 
 #endif
 

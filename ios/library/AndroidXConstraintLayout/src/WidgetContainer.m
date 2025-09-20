@@ -3,13 +3,26 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\WidgetContainer.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Cache.h"
 #include "ConstraintWidget.h"
 #include "ConstraintWidgetContainer.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "WidgetContainer.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXWidgetContainer
@@ -21,16 +34,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (instancetype)initWithInt:(jint)x
-                    withInt:(jint)y
-                    withInt:(jint)width
-                    withInt:(jint)height {
+- (instancetype)initWithInt:(int32_t)x
+                    withInt:(int32_t)y
+                    withInt:(int32_t)width
+                    withInt:(int32_t)height {
   ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(self, x, y, width, height);
   return self;
 }
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height {
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height {
   ADXWidgetContainer_initWithInt_withInt_(self, width, height);
   return self;
 }
@@ -50,8 +63,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addWithADXConstraintWidgetArray:(IOSObjectArray *)widgets {
-  jint count = ((IOSObjectArray *) nil_chk(widgets))->size_;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = ((IOSObjectArray *) nil_chk(widgets))->size_;
+  for (int32_t i = 0; i < count; i++) {
     [self addWithADXConstraintWidget:IOSObjectArray_Get(widgets, i)];
   }
 }
@@ -82,11 +95,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return container;
 }
 
-- (void)setOffsetWithInt:(jint)x
-                 withInt:(jint)y {
+- (void)setOffsetWithInt:(int32_t)x
+                 withInt:(int32_t)y {
   [super setOffsetWithInt:x withInt:y];
-  jint count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     [((ADXConstraintWidget *) nil_chk(widget)) setOffsetWithInt:[self getRootX] withInt:[self getRootY]];
   }
@@ -96,8 +109,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (mChildren_ == nil) {
     return;
   }
-  jint count = [mChildren_ size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [mChildren_ size];
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     if ([widget isKindOfClass:[ADXWidgetContainer class]]) {
       [((ADXWidgetContainer *) nil_chk(((ADXWidgetContainer *) widget))) layout];
@@ -107,8 +120,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)resetSolverVariablesWithADXCache:(ADXCache *)cache {
   [super resetSolverVariablesWithADXCache:cache];
-  jint count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     [((ADXConstraintWidget *) nil_chk(widget)) resetSolverVariablesWithADXCache:cache];
   }
@@ -179,30 +192,32 @@ ADXWidgetContainer *create_ADXWidgetContainer_init() {
   J2OBJC_CREATE_IMPL(ADXWidgetContainer, init)
 }
 
-void ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXWidgetContainer *self, jint x, jint y, jint width, jint height) {
+void ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXWidgetContainer *self, int32_t x, int32_t y, int32_t width, int32_t height) {
   ADXConstraintWidget_initWithInt_withInt_withInt_withInt_(self, x, y, width, height);
   JreStrongAssignAndConsume(&self->mChildren_, new_JavaUtilArrayList_init());
 }
 
-ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height) {
+ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ADXWidgetContainer, initWithInt_withInt_withInt_withInt_, x, y, width, height)
 }
 
-ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height) {
+ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ADXWidgetContainer, initWithInt_withInt_withInt_withInt_, x, y, width, height)
 }
 
-void ADXWidgetContainer_initWithInt_withInt_(ADXWidgetContainer *self, jint width, jint height) {
+void ADXWidgetContainer_initWithInt_withInt_(ADXWidgetContainer *self, int32_t width, int32_t height) {
   ADXConstraintWidget_initWithInt_withInt_(self, width, height);
   JreStrongAssignAndConsume(&self->mChildren_, new_JavaUtilArrayList_init());
 }
 
-ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_(jint width, jint height) {
+ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ADXWidgetContainer, initWithInt_withInt_, width, height)
 }
 
-ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_(jint width, jint height) {
+ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ADXWidgetContainer, initWithInt_withInt_, width, height)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXWidgetContainer)
+
+J2OBJC_NAME_MAPPING(ADXWidgetContainer, "androidx.constraintlayout.core.widgets", "ADX")

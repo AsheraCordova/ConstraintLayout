@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Group.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Group")
@@ -21,6 +22,8 @@
 #include "ConstraintHelper.h"
 
 @class ADXConstraintLayout;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXGroup : ADXConstraintHelper
 
@@ -28,9 +31,9 @@
 
 - (instancetype)init;
 
-- (void)setElevationWithFloat:(jfloat)elevation;
+- (void)setElevationWithFloat:(float)elevation;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)updatePostLayoutWithADXConstraintLayout:(ADXConstraintLayout *)container;
 
@@ -51,6 +54,7 @@ FOUNDATION_EXPORT ADXGroup *create_ADXGroup_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXGroup)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetGroup ADXGroup;
+
 
 #endif
 

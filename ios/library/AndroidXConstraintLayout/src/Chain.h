@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\Chain.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Chain")
@@ -19,6 +20,8 @@
 @class ADXChainHead;
 @class ADXConstraintWidgetContainer;
 @class ADXLinearSystem;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 
 /*!
@@ -41,7 +44,7 @@
 + (void)applyChainConstraintsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)constraintWidgetContainer
                                           withADXLinearSystem:(ADXLinearSystem *)system
                                         withJavaUtilArrayList:(JavaUtilArrayList *)widgets
-                                                      withInt:(jint)orientation;
+                                                      withInt:(int32_t)orientation;
 
 #pragma mark Package-Private
 
@@ -56,17 +59,17 @@
  */
 + (void)applyChainConstraintsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
                                           withADXLinearSystem:(ADXLinearSystem *)system
-                                                      withInt:(jint)orientation
-                                                      withInt:(jint)offset
+                                                      withInt:(int32_t)orientation
+                                                      withInt:(int32_t)offset
                                              withADXChainHead:(ADXChainHead *)chainHead;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXChain)
 
-inline jboolean ADXChain_get_USE_CHAIN_OPTIMIZATION(void);
+inline bool ADXChain_get_USE_CHAIN_OPTIMIZATION(void);
 #define ADXChain_USE_CHAIN_OPTIMIZATION false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXChain, USE_CHAIN_OPTIMIZATION, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXChain, USE_CHAIN_OPTIMIZATION, bool)
 
 FOUNDATION_EXPORT void ADXChain_init(ADXChain *self);
 
@@ -74,13 +77,14 @@ FOUNDATION_EXPORT ADXChain *new_ADXChain_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ADXChain *create_ADXChain_init(void);
 
-FOUNDATION_EXPORT void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withJavaUtilArrayList_withInt_(ADXConstraintWidgetContainer *constraintWidgetContainer, ADXLinearSystem *system, JavaUtilArrayList *widgets, jint orientation);
+FOUNDATION_EXPORT void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withJavaUtilArrayList_withInt_(ADXConstraintWidgetContainer *constraintWidgetContainer, ADXLinearSystem *system, JavaUtilArrayList *widgets, int32_t orientation);
 
-FOUNDATION_EXPORT void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, jint orientation, jint offset, ADXChainHead *chainHead);
+FOUNDATION_EXPORT void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, int32_t orientation, int32_t offset, ADXChainHead *chainHead);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXChain)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsChain ADXChain;
+
 
 #endif
 

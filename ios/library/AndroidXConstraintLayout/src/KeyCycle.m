@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyCycle.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AttributeSet.h"
 #include "CLDebug.h"
 #include "ConstraintAttribute.h"
@@ -16,6 +21,8 @@
 #include "SplineSet.h"
 #include "ViewOscillator.h"
 #include "ViewSpline.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/HashMap.h"
@@ -23,23 +30,30 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXKeyCycle () {
  @public
   NSString *mTransitionEasing_;
-  jint mCurveFit_;
+  int32_t mCurveFit_;
   NSString *mCustomWaveShape_;
-  jfloat mProgress_;
-  jfloat mAlpha_;
-  jfloat mElevation_;
-  jfloat mRotation_;
-  jfloat mTransitionPathRotate_;
-  jfloat mRotationX_;
-  jfloat mRotationY_;
-  jfloat mScaleX_;
-  jfloat mScaleY_;
-  jfloat mTranslationX_;
-  jfloat mTranslationY_;
-  jfloat mTranslationZ_;
+  float mProgress_;
+  float mAlpha_;
+  float mElevation_;
+  float mRotation_;
+  float mTransitionPathRotate_;
+  float mRotationX_;
+  float mRotationY_;
+  float mScaleX_;
+  float mScaleY_;
+  float mTranslationX_;
+  float mTranslationY_;
+  float mTranslationZ_;
 }
 
 @end
@@ -66,6 +80,7 @@ __attribute__((unused)) static ADXKeyCycle_Loader *new_ADXKeyCycle_Loader_init(v
 __attribute__((unused)) static ADXKeyCycle_Loader *create_ADXKeyCycle_Loader_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycle_Loader)
+
 
 NSString *ADXKeyCycle_NAME = @"KeyCycle";
 NSString *ADXKeyCycle_WAVE_PERIOD = @"wavePeriod";
@@ -142,7 +157,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       [osc setPointWithInt:mFramePosition_ withInt:mWaveShape_ withNSString:mCustomWaveShape_ withInt:mWaveVariesBy_ withFloat:mWavePeriod_ withFloat:mWaveOffset_ withFloat:mWavePhase_ withFloat:[cValue getValueToInterpolate] withId:cValue];
       continue;
     }
-    jfloat value = [self getValueWithNSString:key];
+    float value = [self getValueWithNSString:key];
     if (JavaLangFloat_isNaNWithFloat_(value)) {
       continue;
     }
@@ -154,7 +169,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jfloat)getValueWithNSString:(NSString *)key {
+- (float)getValueWithNSString:(NSString *)key {
   switch (JreIndexOfStr(key, (id[]){ ADXKey_ALPHA, ADXKey_ELEVATION, ADXKey_ROTATION, ADXKey_ROTATION_X, ADXKey_ROTATION_Y, ADXKey_TRANSITION_PATH_ROTATE, ADXKey_SCALE_X, ADXKey_SCALE_Y, ADXKey_TRANSLATION_X, ADXKey_TRANSLATION_Y, ADXKey_TRANSLATION_Z, ADXKey_WAVE_OFFSET, ADXKey_WAVE_PHASE, ADXKey_PROGRESS }, 14)) {
     case 0:
     return mAlpha_;
@@ -457,6 +472,8 @@ ADXKeyCycle *create_ADXKeyCycle_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycle)
+
+J2OBJC_NAME_MAPPING(ADXKeyCycle, "androidx.constraintlayout.motion.widget", "ADX")
 
 @implementation ADXKeyCycle_Loader
 

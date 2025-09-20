@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\HelperReferences.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_HelperReferences")
@@ -21,6 +22,7 @@
 #include "WidgetRun.h"
 
 @class ADXConstraintWidget;
+@class JavaLangBoolean;
 @protocol ADXDependency;
 
 @interface ADXHelperReferences : ADXWidgetRun
@@ -41,7 +43,7 @@
 
 - (void)reset;
 
-- (jboolean)supportsWrapComputation;
+- (bool)supportsWrapComputation;
 
 // Disallowed inherited constructors, do not use.
 
@@ -60,6 +62,7 @@ FOUNDATION_EXPORT ADXHelperReferences *create_ADXHelperReferences_initPackagePri
 J2OBJC_TYPE_LITERAL_HEADER(ADXHelperReferences)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerHelperReferences ADXHelperReferences;
+
 
 #endif
 

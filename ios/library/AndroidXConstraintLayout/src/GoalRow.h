@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\GoalRow.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_GoalRow")
@@ -48,6 +49,7 @@ FOUNDATION_EXPORT ADXGoalRow *create_ADXGoalRow_initWithADXCache_(ADXCache *cach
 J2OBJC_TYPE_LITERAL_HEADER(ADXGoalRow)
 
 @compatibility_alias AndroidxConstraintlayoutCoreGoalRow ADXGoalRow;
+
 
 #endif
 

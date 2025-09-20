@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLObject.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLObject")
@@ -25,6 +26,8 @@
 #include "java/lang/Iterable.h"
 
 @class IOSCharArray;
+@class JavaLangInteger;
+@class NSString;
 @protocol JavaUtilFunctionConsumer;
 @protocol JavaUtilIterator;
 @protocol JavaUtilSpliterator;
@@ -41,8 +44,8 @@
 
 - (NSString *)toFormattedJSON;
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent;
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent;
 
 - (NSString *)toJSON;
 
@@ -63,6 +66,7 @@ FOUNDATION_EXPORT ADXCLObject *ADXCLObject_allocateWithCharArray_(IOSCharArray *
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLObject)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLObject ADXCLObject;
+
 
 #endif
 

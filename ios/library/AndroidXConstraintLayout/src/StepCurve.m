@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\StepCurve.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Easing.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
@@ -10,9 +15,19 @@
 #include "MonotonicCurveFit.h"
 #include "StepCurve.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Double.h"
+#include "java/lang/Integer.h"
 #include "java/lang/System.h"
 #include "java/util/Arrays.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXStepCurve ()
@@ -23,9 +38,9 @@
 
 @end
 
-inline jboolean ADXStepCurve_get_DEBUG(void);
+inline bool ADXStepCurve_get_DEBUG(void);
 #define ADXStepCurve_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXStepCurve, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXStepCurve, DEBUG, bool)
 
 __attribute__((unused)) static ADXMonotonicCurveFit *ADXStepCurve_genSplineWithNSString_(NSString *str);
 
@@ -46,11 +61,11 @@ __attribute__((unused)) static ADXMonotonicCurveFit *ADXStepCurve_genSplineWithD
   return ADXStepCurve_genSplineWithDoubleArray_(values);
 }
 
-- (jdouble)getDiffWithDouble:(jdouble)x {
+- (double)getDiffWithDouble:(double)x {
   return [((ADXMonotonicCurveFit *) nil_chk(mCurveFit_)) getSlopeWithDouble:x withInt:0];
 }
 
-- (jdouble)getWithDouble:(jdouble)x {
+- (double)getWithDouble:(double)x {
   return [((ADXMonotonicCurveFit *) nil_chk(mCurveFit_)) getPosWithDouble:x withInt:0];
 }
 
@@ -91,9 +106,9 @@ void ADXStepCurve_initWithNSString_(ADXStepCurve *self, NSString *configString) 
   ADXEasing_init(self);
   JreStrongAssign(&self->str_, configString);
   IOSDoubleArray *values = [IOSDoubleArray arrayWithLength:JreIntDiv([((NSString *) nil_chk(self->str_)) java_length], 2)];
-  jint start = [((NSString *) nil_chk(configString)) java_indexOf:'('] + 1;
-  jint off1 = [configString java_indexOf:',' fromIndex:start];
-  jint count = 0;
+  int32_t start = [((NSString *) nil_chk(configString)) java_indexOf:'('] + 1;
+  int32_t off1 = [configString java_indexOf:',' fromIndex:start];
+  int32_t count = 0;
   while (off1 != -1) {
     NSString *tmp = [((NSString *) nil_chk([configString java_substring:start endIndex:off1])) java_trim];
     *IOSDoubleArray_GetRef(values, count++) = JavaLangDouble_parseDoubleWithNSString_(tmp);
@@ -118,7 +133,7 @@ ADXMonotonicCurveFit *ADXStepCurve_genSplineWithNSString_(NSString *str) {
   NSString *wave = JreRetainedLocalValue(str);
   IOSObjectArray *sp = [((NSString *) nil_chk(wave)) java_split:@"\\s+"];
   IOSDoubleArray *values = [IOSDoubleArray arrayWithLength:((IOSObjectArray *) nil_chk(sp))->size_];
-  for (jint i = 0; i < values->size_; i++) {
+  for (int32_t i = 0; i < values->size_; i++) {
     *IOSDoubleArray_GetRef(values, i) = JavaLangDouble_parseDoubleWithNSString_(IOSObjectArray_Get(sp, i));
   }
   return ADXStepCurve_genSplineWithDoubleArray_(values);
@@ -126,13 +141,13 @@ ADXMonotonicCurveFit *ADXStepCurve_genSplineWithNSString_(NSString *str) {
 
 ADXMonotonicCurveFit *ADXStepCurve_genSplineWithDoubleArray_(IOSDoubleArray *values) {
   ADXStepCurve_initialize();
-  jint length = ((IOSDoubleArray *) nil_chk(values))->size_ * 3 - 2;
-  jint len = values->size_ - 1;
-  jdouble gap = 1.0 / len;
-  IOSObjectArray *points = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ length, 1 }];
+  int32_t length = ((IOSDoubleArray *) nil_chk(values))->size_ * 3 - 2;
+  int32_t len = values->size_ - 1;
+  double gap = 1.0 / len;
+  IOSObjectArray *points = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ length, 1 }];
   IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:length];
-  for (jint i = 0; i < values->size_; i++) {
-    jdouble v = IOSDoubleArray_Get(values, i);
+  for (int32_t i = 0; i < values->size_; i++) {
+    double v = IOSDoubleArray_Get(values, i);
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(points, i + len)), 0) = v;
     *IOSDoubleArray_GetRef(time, i + len) = i * gap;
     if (i > 0) {
@@ -144,8 +159,10 @@ ADXMonotonicCurveFit *ADXStepCurve_genSplineWithDoubleArray_(IOSDoubleArray *val
   }
   ADXMonotonicCurveFit *ms = create_ADXMonotonicCurveFit_initWithDoubleArray_withDoubleArray2_(time, points);
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$D", @" 0 ", [ms getPosWithDouble:0 withInt:0])];
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$D", @" 1 ", [ms getPosWithDouble:1 withInt:0])];
+  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$D", @" 1 ", [ms getPosWithDouble:1 withInt:0])];
   return ms;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXStepCurve)
+
+J2OBJC_NAME_MAPPING(ADXStepCurve, "androidx.constraintlayout.core.motion.utils", "ADX")

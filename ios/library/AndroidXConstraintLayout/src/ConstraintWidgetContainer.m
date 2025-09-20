@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\ConstraintWidgetContainer.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BasicMeasure.h"
 #include "Cache.h"
 #include "Chain.h"
@@ -27,7 +32,11 @@
 #include "WidgetContainer.h"
 #include "WidgetFrame.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Exception.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/System.h"
 #include "java/lang/ref/WeakReference.h"
@@ -36,16 +45,20 @@
 #include "java/util/HashSet.h"
 #include "java/util/List.h"
 
-@class JavaLangRefWeakReference;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXConstraintWidgetContainer () {
  @public
-  jint pass_;
-  jboolean mIsRtl_;
-  jint mOptimizationLevel_;
-  jboolean mWidthMeasuredTooSmall_;
-  jboolean mHeightMeasuredTooSmall_;
+  int32_t pass_;
+  bool mIsRtl_;
+  int32_t mOptimizationLevel_;
+  bool mWidthMeasuredTooSmall_;
+  bool mHeightMeasuredTooSmall_;
   JavaLangRefWeakReference *verticalWrapMin_;
   JavaLangRefWeakReference *horizontalWrapMin_;
   JavaLangRefWeakReference *verticalWrapMax_;
@@ -84,17 +97,17 @@ J2OBJC_FIELD_SETTER(ADXConstraintWidgetContainer, horizontalWrapMin_, JavaLangRe
 J2OBJC_FIELD_SETTER(ADXConstraintWidgetContainer, verticalWrapMax_, JavaLangRefWeakReference *)
 J2OBJC_FIELD_SETTER(ADXConstraintWidgetContainer, horizontalWrapMax_, JavaLangRefWeakReference *)
 
-inline jint ADXConstraintWidgetContainer_get_MAX_ITERATIONS(void);
+inline int32_t ADXConstraintWidgetContainer_get_MAX_ITERATIONS(void);
 #define ADXConstraintWidgetContainer_MAX_ITERATIONS 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, MAX_ITERATIONS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, MAX_ITERATIONS, int32_t)
 
-inline jboolean ADXConstraintWidgetContainer_get_DEBUG(void);
+inline bool ADXConstraintWidgetContainer_get_DEBUG(void);
 #define ADXConstraintWidgetContainer_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, DEBUG, bool)
 
-inline jboolean ADXConstraintWidgetContainer_get_DEBUG_LAYOUT(void);
+inline bool ADXConstraintWidgetContainer_get_DEBUG_LAYOUT(void);
 #define ADXConstraintWidgetContainer_DEBUG_LAYOUT false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, DEBUG_LAYOUT, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, DEBUG_LAYOUT, bool)
 
 __attribute__((unused)) static void ADXConstraintWidgetContainer_addMinWrapWithADXConstraintAnchor_withADXSolverVariable_(ADXConstraintWidgetContainer *self, ADXConstraintAnchor *constraintAnchor, ADXSolverVariable *parentMin);
 
@@ -106,7 +119,7 @@ __attribute__((unused)) static void ADXConstraintWidgetContainer_addHorizontalCh
 
 __attribute__((unused)) static void ADXConstraintWidgetContainer_addVerticalChainWithADXConstraintWidget_(ADXConstraintWidgetContainer *self, ADXConstraintWidget *widget);
 
-jint ADXConstraintWidgetContainer_myCounter = 0;
+int32_t ADXConstraintWidgetContainer_myCounter = 0;
 
 @implementation ADXConstraintWidgetContainer
 
@@ -118,16 +131,16 @@ jint ADXConstraintWidgetContainer_myCounter = 0;
   [((ADXDependencyGraph *) nil_chk(mDependencyGraph_)) invalidateMeasures];
 }
 
-- (jboolean)directMeasureWithBoolean:(jboolean)optimizeWrap {
+- (bool)directMeasureWithBoolean:(bool)optimizeWrap {
   return [((ADXDependencyGraph *) nil_chk(mDependencyGraph_)) directMeasureWithBoolean:optimizeWrap];
 }
 
-- (jboolean)directMeasureSetupWithBoolean:(jboolean)optimizeWrap {
+- (bool)directMeasureSetupWithBoolean:(bool)optimizeWrap {
   return [((ADXDependencyGraph *) nil_chk(mDependencyGraph_)) directMeasureSetupWithBoolean:optimizeWrap];
 }
 
-- (jboolean)directMeasureWithOrientationWithBoolean:(jboolean)optimizeWrap
-                                            withInt:(jint)orientation {
+- (bool)directMeasureWithOrientationWithBoolean:(bool)optimizeWrap
+                                        withInt:(int32_t)orientation {
   return [((ADXDependencyGraph *) nil_chk(mDependencyGraph_)) directMeasureWithOrientationWithBoolean:optimizeWrap withInt:orientation];
 }
 
@@ -135,15 +148,15 @@ jint ADXConstraintWidgetContainer_myCounter = 0;
   [((ADXDependencyGraph *) nil_chk(mDependencyGraph_)) defineTerminalWidgetsWithADXConstraintWidget_DimensionBehaviour:[self getHorizontalDimensionBehaviour] withADXConstraintWidget_DimensionBehaviour:[self getVerticalDimensionBehaviour]];
 }
 
-- (jlong)measureWithInt:(jint)optimizationLevel
-                withInt:(jint)widthMode
-                withInt:(jint)widthSize
-                withInt:(jint)heightMode
-                withInt:(jint)heightSize
-                withInt:(jint)lastMeasureWidth
-                withInt:(jint)lastMeasureHeight
-                withInt:(jint)paddingX
-                withInt:(jint)paddingY {
+- (int64_t)measureWithInt:(int32_t)optimizationLevel
+                  withInt:(int32_t)widthMode
+                  withInt:(int32_t)widthSize
+                  withInt:(int32_t)heightMode
+                  withInt:(int32_t)heightSize
+                  withInt:(int32_t)lastMeasureWidth
+                  withInt:(int32_t)lastMeasureHeight
+                  withInt:(int32_t)paddingX
+                  withInt:(int32_t)paddingY {
   mPaddingLeft_ = paddingX;
   mPaddingTop_ = paddingY;
   return [((ADXBasicMeasure *) nil_chk(mBasicMeasureSolver_)) solverMeasureWithADXConstraintWidgetContainer:self withInt:optimizationLevel withInt:paddingX withInt:paddingY withInt:widthMode withInt:widthSize withInt:heightMode withInt:heightSize withInt:lastMeasureWidth withInt:lastMeasureHeight];
@@ -174,37 +187,37 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (instancetype)initWithInt:(jint)x
-                    withInt:(jint)y
-                    withInt:(jint)width
-                    withInt:(jint)height {
+- (instancetype)initWithInt:(int32_t)x
+                    withInt:(int32_t)y
+                    withInt:(int32_t)width
+                    withInt:(int32_t)height {
   ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(self, x, y, width, height);
   return self;
 }
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height {
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height {
   ADXConstraintWidgetContainer_initWithInt_withInt_(self, width, height);
   return self;
 }
 
 - (instancetype)initWithNSString:(NSString *)debugName
-                         withInt:(jint)width
-                         withInt:(jint)height {
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height {
   ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(self, debugName, width, height);
   return self;
 }
 
-- (void)setOptimizationLevelWithInt:(jint)value {
+- (void)setOptimizationLevelWithInt:(int32_t)value {
   mOptimizationLevel_ = value;
   *JreLoadStaticRef(ADXLinearSystem, USE_DEPENDENCY_ORDERING) = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_DEPENDENCY_ORDERING];
 }
 
-- (jint)getOptimizationLevel {
+- (int32_t)getOptimizationLevel {
   return mOptimizationLevel_;
 }
 
-- (jboolean)optimizeForWithInt:(jint)feature {
+- (bool)optimizeForWithInt:(int32_t)feature {
   return (mOptimizationLevel_ & feature) == feature;
 }
 
@@ -222,11 +235,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   [super reset];
 }
 
-- (jboolean)isWidthMeasuredTooSmall {
+- (bool)isWidthMeasuredTooSmall {
   return mWidthMeasuredTooSmall_;
 }
 
-- (jboolean)isHeightMeasuredTooSmall {
+- (bool)isHeightMeasuredTooSmall {
   return mHeightMeasuredTooSmall_;
 }
 
@@ -264,12 +277,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXConstraintWidgetContainer_addMaxWrapWithADXConstraintAnchor_withADXSolverVariable_(self, constraintAnchor, parentMax);
 }
 
-- (jboolean)addChildrenToSolverWithADXLinearSystem:(ADXLinearSystem *)system {
-  jboolean optimize = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH];
+- (bool)addChildrenToSolverWithADXLinearSystem:(ADXLinearSystem *)system {
+  bool optimize = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH];
   [self addToSolverWithADXLinearSystem:system withBoolean:optimize];
-  jint count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
-  jboolean hasBarriers = false;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
+  bool hasBarriers = false;
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     [((ADXConstraintWidget *) nil_chk(widget)) setInBarrierWithInt:ADXConstraintWidget_HORIZONTAL withBoolean:false];
     [widget setInBarrierWithInt:ADXConstraintWidget_VERTICAL withBoolean:false];
@@ -278,7 +291,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   if (hasBarriers) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
       if ([widget isKindOfClass:[ADXCoreBarrier class]]) {
         [((ADXCoreBarrier *) nil_chk(((ADXCoreBarrier *) widget))) markWidgets];
@@ -286,7 +299,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   [((JavaUtilHashSet *) nil_chk(widgetsToAdd_)) clear];
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     if ([((ADXConstraintWidget *) nil_chk(widget)) addFirst]) {
       if ([widget isKindOfClass:[ADXCoreVirtualLayout class]]) {
@@ -298,7 +311,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   while ([((JavaUtilHashSet *) nil_chk(widgetsToAdd_)) size] > 0) {
-    jint numLayouts = [((JavaUtilHashSet *) nil_chk(widgetsToAdd_)) size];
+    int32_t numLayouts = [((JavaUtilHashSet *) nil_chk(widgetsToAdd_)) size];
     ADXCoreVirtualLayout *layout = nil;
     for (ADXConstraintWidget * __strong widget in nil_chk(widgetsToAdd_)) {
       layout = (ADXCoreVirtualLayout *) cast_chk(widget, [ADXCoreVirtualLayout class]);
@@ -317,13 +330,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   if (JreLoadStatic(ADXLinearSystem, USE_DEPENDENCY_ORDERING)) {
     JavaUtilHashSet *widgetsToAdd = create_JavaUtilHashSet_init();
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
       if (![((ADXConstraintWidget *) nil_chk(widget)) addFirst]) {
         [widgetsToAdd addWithId:widget];
       }
     }
-    jint orientation = ADXConstraintWidget_VERTICAL;
+    int32_t orientation = ADXConstraintWidget_VERTICAL;
     if ([self getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)) {
       orientation = ADXConstraintWidget_HORIZONTAL;
     }
@@ -334,7 +347,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   else {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
       if ([widget isKindOfClass:[ADXConstraintWidgetContainer class]]) {
         ADXConstraintWidget_DimensionBehaviour *horizontalBehaviour = IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(widget))->mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_HORIZONTAL);
@@ -370,14 +383,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)updateChildrenFromSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                                       withBooleanArray:(IOSBooleanArray *)flags {
+- (bool)updateChildrenFromSolverWithADXLinearSystem:(ADXLinearSystem *)system
+                                   withBooleanArray:(IOSBooleanArray *)flags {
   *IOSBooleanArray_GetRef(nil_chk(flags), ADXOptimizer_FLAG_RECOMPUTE_BOUNDS) = false;
-  jboolean optimize = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH];
+  bool optimize = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH];
   [self updateFromSolverWithADXLinearSystem:system withBoolean:optimize];
-  jint count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
-  jboolean hasOverride = false;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
+  bool hasOverride = false;
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     [((ADXConstraintWidget *) nil_chk(widget)) updateFromSolverWithADXLinearSystem:system withBoolean:optimize];
     if ([widget hasDimensionOverride]) {
@@ -387,39 +400,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   return hasOverride;
 }
 
-- (void)updateFromRunsWithBoolean:(jboolean)updateHorizontal
-                      withBoolean:(jboolean)updateVertical {
+- (void)updateFromRunsWithBoolean:(bool)updateHorizontal
+                      withBoolean:(bool)updateVertical {
   [super updateFromRunsWithBoolean:updateHorizontal withBoolean:updateVertical];
-  jint count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     [((ADXConstraintWidget *) nil_chk(widget)) updateFromRunsWithBoolean:updateHorizontal withBoolean:updateVertical];
   }
 }
 
-- (void)setPaddingWithInt:(jint)left
-                  withInt:(jint)top
-                  withInt:(jint)right
-                  withInt:(jint)bottom {
+- (void)setPaddingWithInt:(int32_t)left
+                  withInt:(int32_t)top
+                  withInt:(int32_t)right
+                  withInt:(int32_t)bottom {
   mPaddingLeft_ = left;
   mPaddingTop_ = top;
   mPaddingRight_ = right;
   mPaddingBottom_ = bottom;
 }
 
-- (void)setRtlWithBoolean:(jboolean)isRtl {
+- (void)setRtlWithBoolean:(bool)isRtl {
   mIsRtl_ = isRtl;
 }
 
-- (jboolean)isRtl {
+- (bool)isRtl {
   return mIsRtl_;
 }
 
-+ (jboolean)measureWithInt:(jint)level
-   withADXConstraintWidget:(ADXConstraintWidget *)widget
++ (bool)measureWithInt:(int32_t)level
+withADXConstraintWidget:(ADXConstraintWidget *)widget
 withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
 withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
-                   withInt:(jint)measureStrategy {
+               withInt:(int32_t)measureStrategy {
   return ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(level, widget, measurer, measure, measureStrategy);
 }
 
@@ -428,23 +441,23 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
   mY_ = 0;
   mWidthMeasuredTooSmall_ = false;
   mHeightMeasuredTooSmall_ = false;
-  jint count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
-  jint preW = JavaLangMath_maxWithInt_withInt_(0, [self getWidth]);
-  jint preH = JavaLangMath_maxWithInt_withInt_(0, [self getHeight]);
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mChildren_)) size];
+  int32_t preW = JavaLangMath_maxWithInt_withInt_(0, [self getWidth]);
+  int32_t preH = JavaLangMath_maxWithInt_withInt_(0, [self getHeight]);
   ADXConstraintWidget_DimensionBehaviour *originalVerticalDimensionBehaviour = IOSObjectArray_Get(nil_chk(mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_VERTICAL);
   ADXConstraintWidget_DimensionBehaviour *originalHorizontalDimensionBehaviour = IOSObjectArray_Get(mListDimensionBehaviors_, ADXConstraintWidget_DIMENSION_HORIZONTAL);
   if (mMetrics_ != nil) {
     mMetrics_->layouts_++;
   }
-  jboolean wrap_override = false;
+  bool wrap_override = false;
   if (pass_ == 0 && ADXOptimizer_enabledWithInt_withInt_(mOptimizationLevel_, ADXOptimizer_OPTIMIZATION_DIRECT)) {
     ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(self, [self getMeasurer]);
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *child = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
       if ([((ADXConstraintWidget *) nil_chk(child)) isMeasureRequested] && !([child isKindOfClass:[ADXCoreGuideline class]]) && !([child isKindOfClass:[ADXCoreBarrier class]]) && !([child isKindOfClass:[ADXCoreVirtualLayout class]]) && !([child isInVirtualLayout])) {
         ADXConstraintWidget_DimensionBehaviour *widthBehavior = JreRetainedLocalValue([child getDimensionBehaviourWithInt:ADXConstraintWidget_HORIZONTAL]);
         ADXConstraintWidget_DimensionBehaviour *heightBehavior = JreRetainedLocalValue([child getDimensionBehaviourWithInt:ADXConstraintWidget_VERTICAL]);
-        jboolean skip = widthBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && child->mMatchConstraintDefaultWidth_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && heightBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && child->mMatchConstraintDefaultHeight_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP;
+        bool skip = widthBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && child->mMatchConstraintDefaultWidth_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP && heightBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && child->mMatchConstraintDefaultHeight_ != ADXConstraintWidget_MATCH_CONSTRAINT_WRAP;
         if (!skip) {
           ADXBasicMeasure_Measure *measure = create_ADXBasicMeasure_Measure_init();
           ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(0, child, mMeasurer_, measure, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
@@ -477,25 +490,25 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
       wrap_override = true;
     }
   }
-  jboolean useGraphOptimizer = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH] || [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH_WRAP];
+  bool useGraphOptimizer = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH] || [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH_WRAP];
   ((ADXLinearSystem *) nil_chk(mSystem_))->graphOptimizer_ = false;
   mSystem_->newgraphOptimizer_ = false;
   if (mOptimizationLevel_ != ADXOptimizer_OPTIMIZATION_NONE && useGraphOptimizer) {
     mSystem_->newgraphOptimizer_ = true;
   }
-  jint countSolve = 0;
+  int32_t countSolve = 0;
   id<JavaUtilList> allChildren = mChildren_;
-  jboolean hasWrapContent = [self getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || [self getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT);
+  bool hasWrapContent = [self getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || [self getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT);
   ADXConstraintWidgetContainer_resetChains(self);
   countSolve = 0;
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
     if ([widget isKindOfClass:[ADXWidgetContainer class]]) {
       [((ADXWidgetContainer *) nil_chk(((ADXWidgetContainer *) widget))) layout];
     }
   }
-  jboolean optimize = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH];
-  jboolean needsSolving = true;
+  bool optimize = [self optimizeForWithInt:ADXOptimizer_OPTIMIZATION_GRAPH];
+  bool needsSolving = true;
   while (needsSolving) {
     countSolve++;
     @try {
@@ -503,7 +516,7 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
       ADXConstraintWidgetContainer_resetChains(self);
       {
         [self createObjectVariablesWithADXLinearSystem:mSystem_];
-        for (jint i = 0; i < count; i++) {
+        for (int32_t i = 0; i < count; i++) {
           ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
           [((ADXConstraintWidget *) nil_chk(widget)) createObjectVariablesWithADXLinearSystem:mSystem_];
         }
@@ -538,16 +551,16 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
     }
     else {
       [self updateFromSolverWithADXLinearSystem:mSystem_ withBoolean:optimize];
-      for (jint i = 0; i < count; i++) {
+      for (int32_t i = 0; i < count; i++) {
         ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
         [((ADXConstraintWidget *) nil_chk(widget)) updateFromSolverWithADXLinearSystem:mSystem_ withBoolean:optimize];
       }
       needsSolving = false;
     }
     if (hasWrapContent && countSolve < ADXConstraintWidgetContainer_MAX_ITERATIONS && IOSBooleanArray_Get(nil_chk(JreLoadStatic(ADXOptimizer, flags)), ADXOptimizer_FLAG_RECOMPUTE_BOUNDS)) {
-      jint maxX = 0;
-      jint maxY = 0;
-      for (jint i = 0; i < count; i++) {
+      int32_t maxX = 0;
+      int32_t maxY = 0;
+      for (int32_t i = 0; i < count; i++) {
         ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i]);
         maxX = JavaLangMath_maxWithInt_withInt_(maxX, ((ADXConstraintWidget *) nil_chk(widget))->mX_ + [widget getWidth]);
         maxY = JavaLangMath_maxWithInt_withInt_(maxY, widget->mY_ + [widget getHeight]);
@@ -572,14 +585,14 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
       }
     }
     {
-      jint width = JavaLangMath_maxWithInt_withInt_(mMinWidth_, [self getWidth]);
+      int32_t width = JavaLangMath_maxWithInt_withInt_(mMinWidth_, [self getWidth]);
       if (width > [self getWidth]) {
         [self setWidthWithInt:width];
         IOSObjectArray_Set(nil_chk(mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_HORIZONTAL, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
         wrap_override = true;
         needsSolving = true;
       }
-      jint height = JavaLangMath_maxWithInt_withInt_(mMinHeight_, [self getHeight]);
+      int32_t height = JavaLangMath_maxWithInt_withInt_(mMinHeight_, [self getHeight]);
       if (height > [self getHeight]) {
         [self setHeightWithInt:height];
         IOSObjectArray_Set(nil_chk(mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_VERTICAL, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
@@ -619,13 +632,13 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
   [self resetSolverVariablesWithADXCache:[((ADXLinearSystem *) nil_chk(mSystem_)) getCache]];
 }
 
-- (jboolean)handlesInternalConstraints {
+- (bool)handlesInternalConstraints {
   return false;
 }
 
 - (JavaUtilArrayList *)getVerticalGuidelines {
   JavaUtilArrayList *guidelines = create_JavaUtilArrayList_init();
-  for (jint i = 0, mChildrenSize = [((JavaUtilArrayList *) nil_chk(mChildren_)) size]; i < mChildrenSize; i++) {
+  for (int32_t i = 0, mChildrenSize = [((JavaUtilArrayList *) nil_chk(mChildren_)) size]; i < mChildrenSize; i++) {
     ADXConstraintWidget *widget = [((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i];
     if ([widget isKindOfClass:[ADXCoreGuideline class]]) {
       ADXCoreGuideline *guideline = (ADXCoreGuideline *) widget;
@@ -639,7 +652,7 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
 
 - (JavaUtilArrayList *)getHorizontalGuidelines {
   JavaUtilArrayList *guidelines = create_JavaUtilArrayList_init();
-  for (jint i = 0, mChildrenSize = [((JavaUtilArrayList *) nil_chk(mChildren_)) size]; i < mChildrenSize; i++) {
+  for (int32_t i = 0, mChildrenSize = [((JavaUtilArrayList *) nil_chk(mChildren_)) size]; i < mChildrenSize; i++) {
     ADXConstraintWidget *widget = [((JavaUtilArrayList *) nil_chk(mChildren_)) getWithInt:i];
     if ([widget isKindOfClass:[ADXCoreGuideline class]]) {
       ADXCoreGuideline *guideline = (ADXCoreGuideline *) widget;
@@ -660,7 +673,7 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
 }
 
 - (void)addChainWithADXConstraintWidget:(ADXConstraintWidget *)constraintWidget
-                                withInt:(jint)type {
+                                withInt:(int32_t)type {
   ADXConstraintWidget *widget = JreRetainedLocalValue(constraintWidget);
   if (type == ADXConstraintWidget_HORIZONTAL) {
     ADXConstraintWidgetContainer_addHorizontalChainWithADXConstraintWidget_(self, widget);
@@ -678,7 +691,7 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
   ADXConstraintWidgetContainer_addVerticalChainWithADXConstraintWidget_(self, widget);
 }
 
-- (void)setPassWithInt:(jint)pass {
+- (void)setPassWithInt:(int32_t)pass {
   self->pass_ = pass;
 }
 
@@ -901,7 +914,7 @@ ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_init() {
   J2OBJC_CREATE_IMPL(ADXConstraintWidgetContainer, init)
 }
 
-void ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXConstraintWidgetContainer *self, jint x, jint y, jint width, jint height) {
+void ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXConstraintWidgetContainer *self, int32_t x, int32_t y, int32_t width, int32_t height) {
   ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(self, x, y, width, height);
   JreStrongAssignAndConsume(&self->mBasicMeasureSolver_, new_ADXBasicMeasure_initWithADXConstraintWidgetContainer_(self));
   JreStrongAssignAndConsume(&self->mDependencyGraph_, new_ADXDependencyGraph_initWithADXConstraintWidgetContainer_(self));
@@ -930,15 +943,15 @@ void ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXConstr
   JreStrongAssignAndConsume(&self->mMeasure_, new_ADXBasicMeasure_Measure_init());
 }
 
-ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height) {
+ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ADXConstraintWidgetContainer, initWithInt_withInt_withInt_withInt_, x, y, width, height)
 }
 
-ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height) {
+ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ADXConstraintWidgetContainer, initWithInt_withInt_withInt_withInt_, x, y, width, height)
 }
 
-void ADXConstraintWidgetContainer_initWithInt_withInt_(ADXConstraintWidgetContainer *self, jint width, jint height) {
+void ADXConstraintWidgetContainer_initWithInt_withInt_(ADXConstraintWidgetContainer *self, int32_t width, int32_t height) {
   ADXWidgetContainer_initWithInt_withInt_(self, width, height);
   JreStrongAssignAndConsume(&self->mBasicMeasureSolver_, new_ADXBasicMeasure_initWithADXConstraintWidgetContainer_(self));
   JreStrongAssignAndConsume(&self->mDependencyGraph_, new_ADXDependencyGraph_initWithADXConstraintWidgetContainer_(self));
@@ -967,15 +980,15 @@ void ADXConstraintWidgetContainer_initWithInt_withInt_(ADXConstraintWidgetContai
   JreStrongAssignAndConsume(&self->mMeasure_, new_ADXBasicMeasure_Measure_init());
 }
 
-ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_(jint width, jint height) {
+ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ADXConstraintWidgetContainer, initWithInt_withInt_, width, height)
 }
 
-ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_(jint width, jint height) {
+ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ADXConstraintWidgetContainer, initWithInt_withInt_, width, height)
 }
 
-void ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(ADXConstraintWidgetContainer *self, NSString *debugName, jint width, jint height) {
+void ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(ADXConstraintWidgetContainer *self, NSString *debugName, int32_t width, int32_t height) {
   ADXWidgetContainer_initWithInt_withInt_(self, width, height);
   JreStrongAssignAndConsume(&self->mBasicMeasureSolver_, new_ADXBasicMeasure_initWithADXConstraintWidgetContainer_(self));
   JreStrongAssignAndConsume(&self->mDependencyGraph_, new_ADXDependencyGraph_initWithADXConstraintWidgetContainer_(self));
@@ -1005,27 +1018,27 @@ void ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(ADXConstrain
   [self setDebugNameWithNSString:debugName];
 }
 
-ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, jint width, jint height) {
+ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ADXConstraintWidgetContainer, initWithNSString_withInt_withInt_, debugName, width, height)
 }
 
-ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, jint width, jint height) {
+ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ADXConstraintWidgetContainer, initWithNSString_withInt_withInt_, debugName, width, height)
 }
 
 void ADXConstraintWidgetContainer_addMinWrapWithADXConstraintAnchor_withADXSolverVariable_(ADXConstraintWidgetContainer *self, ADXConstraintAnchor *constraintAnchor, ADXSolverVariable *parentMin) {
   ADXSolverVariable *variable = JreRetainedLocalValue([((ADXLinearSystem *) nil_chk(self->mSystem_)) createObjectVariableWithId:constraintAnchor]);
-  jint wrapStrength = ADXSolverVariable_STRENGTH_EQUALITY;
+  int32_t wrapStrength = ADXSolverVariable_STRENGTH_EQUALITY;
   [((ADXLinearSystem *) nil_chk(self->mSystem_)) addGreaterThanWithADXSolverVariable:variable withADXSolverVariable:parentMin withInt:0 withInt:wrapStrength];
 }
 
 void ADXConstraintWidgetContainer_addMaxWrapWithADXConstraintAnchor_withADXSolverVariable_(ADXConstraintWidgetContainer *self, ADXConstraintAnchor *constraintAnchor, ADXSolverVariable *parentMax) {
   ADXSolverVariable *variable = JreRetainedLocalValue([((ADXLinearSystem *) nil_chk(self->mSystem_)) createObjectVariableWithId:constraintAnchor]);
-  jint wrapStrength = ADXSolverVariable_STRENGTH_EQUALITY;
+  int32_t wrapStrength = ADXSolverVariable_STRENGTH_EQUALITY;
   [((ADXLinearSystem *) nil_chk(self->mSystem_)) addGreaterThanWithADXSolverVariable:parentMax withADXSolverVariable:variable withInt:0 withInt:wrapStrength];
 }
 
-jboolean ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(jint level, ADXConstraintWidget *widget, id<ADXBasicMeasure_Measurer> measurer, ADXBasicMeasure_Measure *measure, jint measureStrategy) {
+bool ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(int32_t level, ADXConstraintWidget *widget, id<ADXBasicMeasure_Measurer> measurer, ADXBasicMeasure_Measure *measure, int32_t measureStrategy) {
   ADXConstraintWidgetContainer_initialize();
   if (measurer == nil) {
     return false;
@@ -1041,10 +1054,10 @@ jboolean ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_wit
   measure->verticalDimension_ = [widget getHeight];
   measure->measuredNeedsSolverPass_ = false;
   measure->measureStrategy_ = measureStrategy;
-  jboolean horizontalMatchConstraints = measure->horizontalBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
-  jboolean verticalMatchConstraints = measure->verticalBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
-  jboolean horizontalUseRatio = horizontalMatchConstraints && widget->mDimensionRatio_ > 0;
-  jboolean verticalUseRatio = verticalMatchConstraints && widget->mDimensionRatio_ > 0;
+  bool horizontalMatchConstraints = measure->horizontalBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
+  bool verticalMatchConstraints = measure->verticalBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
+  bool horizontalUseRatio = horizontalMatchConstraints && widget->mDimensionRatio_ > 0;
+  bool verticalUseRatio = verticalMatchConstraints && widget->mDimensionRatio_ > 0;
   if (horizontalMatchConstraints && [widget hasDanglingDimensionWithInt:ADXConstraintWidget_HORIZONTAL] && widget->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD && !horizontalUseRatio) {
     horizontalMatchConstraints = false;
     JreStrongAssign(&measure->horizontalBehavior_, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT));
@@ -1072,7 +1085,7 @@ jboolean ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_wit
       JreStrongAssign(&measure->horizontalBehavior_, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
     }
     else if (!verticalMatchConstraints) {
-      jint measuredHeight;
+      int32_t measuredHeight;
       if (measure->verticalBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED)) {
         measuredHeight = measure->verticalDimension_;
       }
@@ -1090,7 +1103,7 @@ jboolean ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_wit
       JreStrongAssign(&measure->verticalBehavior_, JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
     }
     else if (!horizontalMatchConstraints) {
-      jint measuredWidth;
+      int32_t measuredWidth;
       if (measure->horizontalBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED)) {
         measuredWidth = measure->horizontalDimension_;
       }
@@ -1139,3 +1152,5 @@ void ADXConstraintWidgetContainer_addVerticalChainWithADXConstraintWidget_(ADXCo
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintWidgetContainer)
+
+J2OBJC_NAME_MAPPING(ADXConstraintWidgetContainer, "androidx.constraintlayout.core.widgets", "ADX")

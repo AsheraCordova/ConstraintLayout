@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\WidgetGroup.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Chain.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -10,61 +15,69 @@
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
 #include "WidgetGroup.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Exception.h"
+#include "java/lang/Integer.h"
 #include "java/lang/ref/WeakReference.h"
 #include "java/util/ArrayList.h"
 
-@class JavaUtilArrayList;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXWidgetGroup () {
  @public
-  jint moveTo_;
+  int32_t moveTo_;
 }
 
 - (NSString *)getOrientationString;
 
-- (jint)measureWrapWithInt:(jint)orientation
-   withADXConstraintWidget:(ADXConstraintWidget *)widget;
+- (int32_t)measureWrapWithInt:(int32_t)orientation
+      withADXConstraintWidget:(ADXConstraintWidget *)widget;
 
-- (jint)solverMeasureWithADXLinearSystem:(ADXLinearSystem *)system
-                   withJavaUtilArrayList:(JavaUtilArrayList *)widgets
-                                 withInt:(jint)orientation;
+- (int32_t)solverMeasureWithADXLinearSystem:(ADXLinearSystem *)system
+                      withJavaUtilArrayList:(JavaUtilArrayList *)widgets
+                                    withInt:(int32_t)orientation;
 
-- (jboolean)containsWithADXConstraintWidget:(ADXConstraintWidget *)widget;
+- (bool)containsWithADXConstraintWidget:(ADXConstraintWidget *)widget;
 
 @end
 
-inline jboolean ADXWidgetGroup_get_DEBUG(void);
+inline bool ADXWidgetGroup_get_DEBUG(void);
 #define ADXWidgetGroup_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXWidgetGroup, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXWidgetGroup, DEBUG, bool)
 
 __attribute__((unused)) static NSString *ADXWidgetGroup_getOrientationString(ADXWidgetGroup *self);
 
-__attribute__((unused)) static jint ADXWidgetGroup_measureWrapWithInt_withADXConstraintWidget_(ADXWidgetGroup *self, jint orientation, ADXConstraintWidget *widget);
+__attribute__((unused)) static int32_t ADXWidgetGroup_measureWrapWithInt_withADXConstraintWidget_(ADXWidgetGroup *self, int32_t orientation, ADXConstraintWidget *widget);
 
-__attribute__((unused)) static jint ADXWidgetGroup_solverMeasureWithADXLinearSystem_withJavaUtilArrayList_withInt_(ADXWidgetGroup *self, ADXLinearSystem *system, JavaUtilArrayList *widgets, jint orientation);
+__attribute__((unused)) static int32_t ADXWidgetGroup_solverMeasureWithADXLinearSystem_withJavaUtilArrayList_withInt_(ADXWidgetGroup *self, ADXLinearSystem *system, JavaUtilArrayList *widgets, int32_t orientation);
 
-__attribute__((unused)) static jboolean ADXWidgetGroup_containsWithADXConstraintWidget_(ADXWidgetGroup *self, ADXConstraintWidget *widget);
+__attribute__((unused)) static bool ADXWidgetGroup_containsWithADXConstraintWidget_(ADXWidgetGroup *self, ADXConstraintWidget *widget);
 
-jint ADXWidgetGroup_count = 0;
+int32_t ADXWidgetGroup_count = 0;
 
 @implementation ADXWidgetGroup
 
-- (instancetype)initWithInt:(jint)orientation {
+- (instancetype)initWithInt:(int32_t)orientation {
   ADXWidgetGroup_initWithInt_(self, orientation);
   return self;
 }
 
-- (jint)getOrientation {
+- (int32_t)getOrientation {
   return orientation_;
 }
 
-- (jint)getId {
+- (int32_t)getId {
   return id__;
 }
 
-- (jboolean)addWithADXConstraintWidget:(ADXConstraintWidget *)widget {
+- (bool)addWithADXConstraintWidget:(ADXConstraintWidget *)widget {
   if ([((JavaUtilArrayList *) nil_chk(widgets_)) containsWithId:widget]) {
     return false;
   }
@@ -72,11 +85,11 @@ jint ADXWidgetGroup_count = 0;
   return true;
 }
 
-- (void)setAuthoritativeWithBoolean:(jboolean)isAuthoritative {
+- (void)setAuthoritativeWithBoolean:(bool)isAuthoritative {
   authoritative_ = isAuthoritative;
 }
 
-- (jboolean)isAuthoritative {
+- (bool)isAuthoritative {
   return authoritative_;
 }
 
@@ -93,7 +106,7 @@ jint ADXWidgetGroup_count = 0;
   return ret;
 }
 
-- (void)moveToWithInt:(jint)orientation
+- (void)moveToWithInt:(int32_t)orientation
    withADXWidgetGroup:(ADXWidgetGroup *)widgetGroup {
   for (ADXConstraintWidget * __strong widget in nil_chk(widgets_)) {
     [((ADXWidgetGroup *) nil_chk(widgetGroup)) addWithADXConstraintWidget:widget];
@@ -111,27 +124,27 @@ jint ADXWidgetGroup_count = 0;
   [((JavaUtilArrayList *) nil_chk(widgets_)) clear];
 }
 
-- (jint)measureWrapWithInt:(jint)orientation
-   withADXConstraintWidget:(ADXConstraintWidget *)widget {
+- (int32_t)measureWrapWithInt:(int32_t)orientation
+      withADXConstraintWidget:(ADXConstraintWidget *)widget {
   return ADXWidgetGroup_measureWrapWithInt_withADXConstraintWidget_(self, orientation, widget);
 }
 
-- (jint)measureWrapWithADXLinearSystem:(ADXLinearSystem *)system
-                               withInt:(jint)orientation {
-  jint count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
+- (int32_t)measureWrapWithADXLinearSystem:(ADXLinearSystem *)system
+                                  withInt:(int32_t)orientation {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
   if (count == 0) {
     return 0;
   }
   return ADXWidgetGroup_solverMeasureWithADXLinearSystem_withJavaUtilArrayList_withInt_(self, system, widgets_, orientation);
 }
 
-- (jint)solverMeasureWithADXLinearSystem:(ADXLinearSystem *)system
-                   withJavaUtilArrayList:(JavaUtilArrayList *)widgets
-                                 withInt:(jint)orientation {
+- (int32_t)solverMeasureWithADXLinearSystem:(ADXLinearSystem *)system
+                      withJavaUtilArrayList:(JavaUtilArrayList *)widgets
+                                    withInt:(int32_t)orientation {
   return ADXWidgetGroup_solverMeasureWithADXLinearSystem_withJavaUtilArrayList_withInt_(self, system, widgets, orientation);
 }
 
-- (void)setOrientationWithInt:(jint)orientation {
+- (void)setOrientationWithInt:(int32_t)orientation {
   self->orientation_ = orientation;
 }
 
@@ -142,14 +155,14 @@ jint ADXWidgetGroup_count = 0;
   if (!authoritative_) {
     return;
   }
-  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(results_)) size]; i++) {
+  for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(results_)) size]; i++) {
     ADXWidgetGroup_MeasureResult *result = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(results_)) getWithInt:i]);
     [((ADXWidgetGroup_MeasureResult *) nil_chk(result)) apply];
   }
 }
 
-- (jboolean)intersectWithWithADXWidgetGroup:(ADXWidgetGroup *)group {
-  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(widgets_)) size]; i++) {
+- (bool)intersectWithWithADXWidgetGroup:(ADXWidgetGroup *)group {
+  for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(widgets_)) size]; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
     if (ADXWidgetGroup_containsWithADXConstraintWidget_(nil_chk(group), widget)) {
       return true;
@@ -158,18 +171,18 @@ jint ADXWidgetGroup_count = 0;
   return false;
 }
 
-- (jboolean)containsWithADXConstraintWidget:(ADXConstraintWidget *)widget {
+- (bool)containsWithADXConstraintWidget:(ADXConstraintWidget *)widget {
   return ADXWidgetGroup_containsWithADXConstraintWidget_(self, widget);
 }
 
-- (jint)size {
+- (int32_t)size {
   return [((JavaUtilArrayList *) nil_chk(widgets_)) size];
 }
 
 - (void)cleanupWithJavaUtilArrayList:(JavaUtilArrayList *)dependencyLists {
-  jint count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
+  int32_t count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
   if (moveTo_ != -1 && count > 0) {
-    for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(dependencyLists)) size]; i++) {
+    for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(dependencyLists)) size]; i++) {
       ADXWidgetGroup *group = JreRetainedLocalValue([dependencyLists getWithInt:i]);
       if (moveTo_ == ((ADXWidgetGroup *) nil_chk(group))->id__) {
         [self moveToWithInt:orientation_ withADXWidgetGroup:group];
@@ -250,7 +263,7 @@ jint ADXWidgetGroup_count = 0;
 
 @end
 
-void ADXWidgetGroup_initWithInt_(ADXWidgetGroup *self, jint orientation) {
+void ADXWidgetGroup_initWithInt_(ADXWidgetGroup *self, int32_t orientation) {
   NSObject_init(self);
   JreStrongAssignAndConsume(&self->widgets_, new_JavaUtilArrayList_init());
   self->id__ = -1;
@@ -262,11 +275,11 @@ void ADXWidgetGroup_initWithInt_(ADXWidgetGroup *self, jint orientation) {
   self->orientation_ = orientation;
 }
 
-ADXWidgetGroup *new_ADXWidgetGroup_initWithInt_(jint orientation) {
+ADXWidgetGroup *new_ADXWidgetGroup_initWithInt_(int32_t orientation) {
   J2OBJC_NEW_IMPL(ADXWidgetGroup, initWithInt_, orientation)
 }
 
-ADXWidgetGroup *create_ADXWidgetGroup_initWithInt_(jint orientation) {
+ADXWidgetGroup *create_ADXWidgetGroup_initWithInt_(int32_t orientation) {
   J2OBJC_CREATE_IMPL(ADXWidgetGroup, initWithInt_, orientation)
 }
 
@@ -283,10 +296,10 @@ NSString *ADXWidgetGroup_getOrientationString(ADXWidgetGroup *self) {
   return @"Unknown";
 }
 
-jint ADXWidgetGroup_measureWrapWithInt_withADXConstraintWidget_(ADXWidgetGroup *self, jint orientation, ADXConstraintWidget *widget) {
+int32_t ADXWidgetGroup_measureWrapWithInt_withADXConstraintWidget_(ADXWidgetGroup *self, int32_t orientation, ADXConstraintWidget *widget) {
   ADXConstraintWidget_DimensionBehaviour *behaviour = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk(widget)) getDimensionBehaviourWithInt:orientation]);
   if (behaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || behaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) || behaviour == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED)) {
-    jint dimension;
+    int32_t dimension;
     if (orientation == ADXConstraintWidget_HORIZONTAL) {
       dimension = [widget getWidth];
     }
@@ -298,12 +311,12 @@ jint ADXWidgetGroup_measureWrapWithInt_withADXConstraintWidget_(ADXWidgetGroup *
   return -1;
 }
 
-jint ADXWidgetGroup_solverMeasureWithADXLinearSystem_withJavaUtilArrayList_withInt_(ADXWidgetGroup *self, ADXLinearSystem *system, JavaUtilArrayList *widgets, jint orientation) {
+int32_t ADXWidgetGroup_solverMeasureWithADXLinearSystem_withJavaUtilArrayList_withInt_(ADXWidgetGroup *self, ADXLinearSystem *system, JavaUtilArrayList *widgets, int32_t orientation) {
   ADXConstraintWidgetContainer *container = (ADXConstraintWidgetContainer *) cast_chk([((ADXConstraintWidget *) nil_chk([((JavaUtilArrayList *) nil_chk(widgets)) getWithInt:0])) getParent], [ADXConstraintWidgetContainer class]);
   [((ADXLinearSystem *) nil_chk(system)) reset];
-  jboolean prevDebug = ADXLinearSystem_FULL_DEBUG;
+  bool prevDebug = ADXLinearSystem_FULL_DEBUG;
   [((ADXConstraintWidgetContainer *) nil_chk(container)) addToSolverWithADXLinearSystem:system withBoolean:false];
-  for (jint i = 0; i < [widgets size]; i++) {
+  for (int32_t i = 0; i < [widgets size]; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([widgets getWithInt:i]);
     [((ADXConstraintWidget *) nil_chk(widget)) addToSolverWithADXLinearSystem:system withBoolean:false];
   }
@@ -324,37 +337,39 @@ jint ADXWidgetGroup_solverMeasureWithADXLinearSystem_withJavaUtilArrayList_withI
     [e printStackTrace];
   }
   JreStrongAssignAndConsume(&self->results_, new_JavaUtilArrayList_init());
-  for (jint i = 0; i < [widgets size]; i++) {
+  for (int32_t i = 0; i < [widgets size]; i++) {
     ADXConstraintWidget *widget = JreRetainedLocalValue([widgets getWithInt:i]);
     ADXWidgetGroup_MeasureResult *result = create_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(self, widget, system, orientation);
     [((JavaUtilArrayList *) nil_chk(self->results_)) addWithId:result];
   }
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
-    jint left = [system getObjectVariableValueWithId:container->mLeft_];
-    jint right = [system getObjectVariableValueWithId:container->mRight_];
+    int32_t left = [system getObjectVariableValueWithId:container->mLeft_];
+    int32_t right = [system getObjectVariableValueWithId:container->mRight_];
     [system reset];
     return right - left;
   }
   else {
-    jint top = [system getObjectVariableValueWithId:container->mTop_];
-    jint bottom = [system getObjectVariableValueWithId:container->mBottom_];
+    int32_t top = [system getObjectVariableValueWithId:container->mTop_];
+    int32_t bottom = [system getObjectVariableValueWithId:container->mBottom_];
     [system reset];
     return bottom - top;
   }
 }
 
-jboolean ADXWidgetGroup_containsWithADXConstraintWidget_(ADXWidgetGroup *self, ADXConstraintWidget *widget) {
+bool ADXWidgetGroup_containsWithADXConstraintWidget_(ADXWidgetGroup *self, ADXConstraintWidget *widget) {
   return [((JavaUtilArrayList *) nil_chk(self->widgets_)) containsWithId:widget];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXWidgetGroup)
+
+J2OBJC_NAME_MAPPING(ADXWidgetGroup, "androidx.constraintlayout.core.widgets.analyzer", "ADX")
 
 @implementation ADXWidgetGroup_MeasureResult
 
 - (instancetype)initWithADXWidgetGroup:(ADXWidgetGroup *)outer$
                withADXConstraintWidget:(ADXConstraintWidget *)widget
                    withADXLinearSystem:(ADXLinearSystem *)system
-                               withInt:(jint)orientation {
+                               withInt:(int32_t)orientation {
   ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(self, outer$, widget, system, orientation);
   return self;
 }
@@ -398,7 +413,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXWidgetGroup)
 
 @end
 
-void ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup_MeasureResult *self, ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, jint orientation) {
+void ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup_MeasureResult *self, ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, int32_t orientation) {
   NSObject_init(self);
   JreStrongAssignAndConsume(&self->widgetRef_, new_JavaLangRefWeakReference_initWithId_(widget));
   self->left_ = [((ADXLinearSystem *) nil_chk(system)) getObjectVariableValueWithId:((ADXConstraintWidget *) nil_chk(widget))->mLeft_];
@@ -409,11 +424,11 @@ void ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget
   self->orientation_ = orientation;
 }
 
-ADXWidgetGroup_MeasureResult *new_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, jint orientation) {
+ADXWidgetGroup_MeasureResult *new_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, int32_t orientation) {
   J2OBJC_NEW_IMPL(ADXWidgetGroup_MeasureResult, initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_, outer$, widget, system, orientation)
 }
 
-ADXWidgetGroup_MeasureResult *create_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, jint orientation) {
+ADXWidgetGroup_MeasureResult *create_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, int32_t orientation) {
   J2OBJC_CREATE_IMPL(ADXWidgetGroup_MeasureResult, initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_, outer$, widget, system, orientation)
 }
 

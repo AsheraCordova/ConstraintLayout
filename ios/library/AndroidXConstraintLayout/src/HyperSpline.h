@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\HyperSpline.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_HyperSpline")
@@ -19,6 +20,8 @@
 @class IOSDoubleArray;
 @class IOSFloatArray;
 @class IOSObjectArray;
+@class JavaLangDouble;
+@class JavaLangInteger;
 
 /*!
  @brief Provides spline interpolation code.
@@ -27,11 +30,11 @@
  */
 @interface ADXHyperSpline : NSObject {
  @public
-  jint mPoints_;
+  int32_t mPoints_;
   IOSObjectArray *mCurve_;
-  jint mDimensionality_;
+  int32_t mDimensionality_;
   IOSDoubleArray *mCurveLength_;
-  jdouble mTotalLength_;
+  double mTotalLength_;
   IOSObjectArray *mCtl_;
 }
 
@@ -45,25 +48,25 @@
  */
 - (instancetype)initWithDoubleArray2:(IOSObjectArray *)points;
 
-- (jdouble)approxLengthWithADXHyperSpline_CubicArray:(IOSObjectArray *)curve;
+- (double)approxLengthWithADXHyperSpline_CubicArray:(IOSObjectArray *)curve;
 
-- (void)getPosWithDouble:(jdouble)p
+- (void)getPosWithDouble:(double)p
          withDoubleArray:(IOSDoubleArray *)x;
 
-- (void)getPosWithDouble:(jdouble)p
+- (void)getPosWithDouble:(double)p
           withFloatArray:(IOSFloatArray *)x;
 
-- (jdouble)getPosWithDouble:(jdouble)p
-                    withInt:(jint)splineNumber;
+- (double)getPosWithDouble:(double)p
+                   withInt:(int32_t)splineNumber;
 
-- (void)getVelocityWithDouble:(jdouble)p
+- (void)getVelocityWithDouble:(double)p
               withDoubleArray:(IOSDoubleArray *)v;
 
 - (void)setupWithDoubleArray2:(IOSObjectArray *)points;
 
 #pragma mark Package-Private
 
-+ (IOSObjectArray *)calcNaturalCubicWithInt:(jint)n
++ (IOSObjectArray *)calcNaturalCubicWithInt:(int32_t)n
                             withDoubleArray:(IOSDoubleArray *)x;
 
 @end
@@ -86,35 +89,38 @@ FOUNDATION_EXPORT ADXHyperSpline *new_ADXHyperSpline_init(void) NS_RETURNS_RETAI
 
 FOUNDATION_EXPORT ADXHyperSpline *create_ADXHyperSpline_init(void);
 
-FOUNDATION_EXPORT IOSObjectArray *ADXHyperSpline_calcNaturalCubicWithInt_withDoubleArray_(jint n, IOSDoubleArray *x);
+FOUNDATION_EXPORT IOSObjectArray *ADXHyperSpline_calcNaturalCubicWithInt_withDoubleArray_(int32_t n, IOSDoubleArray *x);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXHyperSpline)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsHyperSpline ADXHyperSpline;
+
 
 #endif
 
 #if !defined (ADXHyperSpline_Cubic_) && (INCLUDE_ALL_HyperSpline || defined(INCLUDE_ADXHyperSpline_Cubic))
 #define ADXHyperSpline_Cubic_
 
+@class JavaLangDouble;
+
 @interface ADXHyperSpline_Cubic : NSObject {
  @public
-  jdouble mA_;
-  jdouble mB_;
-  jdouble mC_;
-  jdouble mD_;
+  double mA_;
+  double mB_;
+  double mC_;
+  double mD_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithDouble:(jdouble)a
-                    withDouble:(jdouble)b
-                    withDouble:(jdouble)c
-                    withDouble:(jdouble)d;
+- (instancetype)initWithDouble:(double)a
+                    withDouble:(double)b
+                    withDouble:(double)c
+                    withDouble:(double)d;
 
-- (jdouble)evalWithDouble:(jdouble)u;
+- (double)evalWithDouble:(double)u;
 
-- (jdouble)velWithDouble:(jdouble)v;
+- (double)velWithDouble:(double)v;
 
 // Disallowed inherited constructors, do not use.
 
@@ -124,21 +130,22 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXHyperSpline)
 
 J2OBJC_EMPTY_STATIC_INIT(ADXHyperSpline_Cubic)
 
-inline jdouble ADXHyperSpline_Cubic_get_THIRD(void);
+inline double ADXHyperSpline_Cubic_get_THIRD(void);
 #define ADXHyperSpline_Cubic_THIRD 0.3333333333333333
-J2OBJC_STATIC_FIELD_CONSTANT(ADXHyperSpline_Cubic, THIRD, jdouble)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXHyperSpline_Cubic, THIRD, double)
 
-inline jdouble ADXHyperSpline_Cubic_get_HALF(void);
+inline double ADXHyperSpline_Cubic_get_HALF(void);
 #define ADXHyperSpline_Cubic_HALF 0.5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXHyperSpline_Cubic, HALF, jdouble)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXHyperSpline_Cubic, HALF, double)
 
-FOUNDATION_EXPORT void ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(ADXHyperSpline_Cubic *self, jdouble a, jdouble b, jdouble c, jdouble d);
+FOUNDATION_EXPORT void ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(ADXHyperSpline_Cubic *self, double a, double b, double c, double d);
 
-FOUNDATION_EXPORT ADXHyperSpline_Cubic *new_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(jdouble a, jdouble b, jdouble c, jdouble d) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXHyperSpline_Cubic *new_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(double a, double b, double c, double d) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXHyperSpline_Cubic *create_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(jdouble a, jdouble b, jdouble c, jdouble d);
+FOUNDATION_EXPORT ADXHyperSpline_Cubic *create_ADXHyperSpline_Cubic_initWithDouble_withDouble_withDouble_withDouble_(double a, double b, double c, double d);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXHyperSpline_Cubic)
+
 
 #endif
 

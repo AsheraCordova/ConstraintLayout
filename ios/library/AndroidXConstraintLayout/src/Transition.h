@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\Transition.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Transition")
@@ -24,7 +25,11 @@
 @class ADXWidgetFrame;
 @class IOSFloatArray;
 @class IOSIntArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
+@class NSString;
 
 @interface ADXTransition : NSObject {
  @public
@@ -36,15 +41,15 @@
 
 - (instancetype)init;
 
-- (void)addCustomColorWithInt:(jint)state
+- (void)addCustomColorWithInt:(int32_t)state
                  withNSString:(NSString *)widgetId
                  withNSString:(NSString *)property
-                      withInt:(jint)color;
+                      withInt:(int32_t)color;
 
-- (void)addCustomFloatWithInt:(jint)state
+- (void)addCustomFloatWithInt:(int32_t)state
                  withNSString:(NSString *)widgetId
                  withNSString:(NSString *)property
-                    withFloat:(jfloat)value;
+                    withFloat:(float)value;
 
 - (void)addKeyAttributeWithNSString:(NSString *)target
                  withADXTypedBundle:(ADXTypedBundle *)bundle;
@@ -53,17 +58,17 @@
              withADXTypedBundle:(ADXTypedBundle *)bundle;
 
 - (void)addKeyPositionWithNSString:(NSString *)target
-                           withInt:(jint)frame
-                           withInt:(jint)type
-                         withFloat:(jfloat)x
-                         withFloat:(jfloat)y;
+                           withInt:(int32_t)frame
+                           withInt:(int32_t)type
+                         withFloat:(float)x
+                         withFloat:(float)y;
 
 - (void)addKeyPositionWithNSString:(NSString *)target
                 withADXTypedBundle:(ADXTypedBundle *)bundle;
 
 - (void)clear;
 
-- (jboolean)containsWithNSString:(NSString *)key;
+- (bool)containsWithNSString:(NSString *)key;
 
 - (void)fillKeyPositionsWithADXWidgetFrame:(ADXWidgetFrame *)frame
                             withFloatArray:(IOSFloatArray *)x
@@ -71,10 +76,10 @@
                             withFloatArray:(IOSFloatArray *)pos;
 
 - (ADXTransition_KeyPosition *)findNextPositionWithNSString:(NSString *)target
-                                                    withInt:(jint)frameNumber;
+                                                    withInt:(int32_t)frameNumber;
 
 - (ADXTransition_KeyPosition *)findPreviousPositionWithNSString:(NSString *)target
-                                                        withInt:(jint)frameNumber;
+                                                        withInt:(int32_t)frameNumber;
 
 /*!
  @brief Used in debug draw
@@ -92,14 +97,14 @@
 
 - (ADXWidgetFrame *)getInterpolatedWithNSString:(NSString *)id_;
 
-- (jint)getKeyFramesWithNSString:(NSString *)id_
-                  withFloatArray:(IOSFloatArray *)rectangles
-                    withIntArray:(IOSIntArray *)pathMode
-                    withIntArray:(IOSIntArray *)position;
+- (int32_t)getKeyFramesWithNSString:(NSString *)id_
+                     withFloatArray:(IOSFloatArray *)rectangles
+                       withIntArray:(IOSIntArray *)pathMode
+                       withIntArray:(IOSIntArray *)position;
 
 - (ADXMotion *)getMotionWithNSString:(NSString *)id_;
 
-- (jint)getNumberKeyPositionsWithADXWidgetFrame:(ADXWidgetFrame *)frame;
+- (int32_t)getNumberKeyPositionsWithADXWidgetFrame:(ADXWidgetFrame *)frame;
 
 - (IOSFloatArray *)getPathWithNSString:(NSString *)id_;
 
@@ -111,18 +116,18 @@
 
 - (ADXWidgetFrame *)getStartWithNSString:(NSString *)id_;
 
-- (jboolean)hasPositionKeyframes;
+- (bool)hasPositionKeyframes;
 
-- (void)interpolateWithInt:(jint)parentWidth
-                   withInt:(jint)parentHeight
-                 withFloat:(jfloat)progress;
+- (void)interpolateWithInt:(int32_t)parentWidth
+                   withInt:(int32_t)parentHeight
+                 withFloat:(float)progress;
 
-- (jboolean)isEmpty;
+- (bool)isEmpty;
 
 - (void)setTransitionPropertiesWithADXTypedBundle:(ADXTypedBundle *)bundle;
 
 - (void)updateFromWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
-                                           withInt:(jint)state;
+                                           withInt:(int32_t)state;
 
 @end
 
@@ -131,17 +136,17 @@ J2OBJC_EMPTY_STATIC_INIT(ADXTransition)
 J2OBJC_FIELD_SETTER(ADXTransition, state_, JavaUtilHashMap *)
 J2OBJC_FIELD_SETTER(ADXTransition, keyPositions_, JavaUtilHashMap *)
 
-inline jint ADXTransition_get_START(void);
+inline int32_t ADXTransition_get_START(void);
 #define ADXTransition_START 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTransition, START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTransition, START, int32_t)
 
-inline jint ADXTransition_get_END(void);
+inline int32_t ADXTransition_get_END(void);
 #define ADXTransition_END 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTransition, END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTransition, END, int32_t)
 
-inline jint ADXTransition_get_INTERPOLATED(void);
+inline int32_t ADXTransition_get_INTERPOLATED(void);
 #define ADXTransition_INTERPOLATED 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTransition, INTERPOLATED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTransition, INTERPOLATED, int32_t)
 
 FOUNDATION_EXPORT void ADXTransition_init(ADXTransition *self);
 
@@ -152,6 +157,7 @@ FOUNDATION_EXPORT ADXTransition *create_ADXTransition_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXTransition)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateTransition ADXTransition;
+
 
 #endif
 
@@ -165,6 +171,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTransition)
 @class ADXTransition;
 @class ADXTypedBundle;
 @class ADXWidgetFrame;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXTransition_WidgetState : NSObject {
  @public
@@ -176,19 +184,19 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTransition)
   ADXMotionWidget *motionWidgetEnd_;
   ADXMotionWidget *motionWidgetInterpolated_;
   ADXKeyCache *myKeyCache_;
-  jint myParentHeight_;
-  jint myParentWidth_;
+  int32_t myParentHeight_;
+  int32_t myParentWidth_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (ADXWidgetFrame *)getFrameWithInt:(jint)type;
+- (ADXWidgetFrame *)getFrameWithInt:(int32_t)type;
 
-- (void)interpolateWithInt:(jint)parentWidth
-                   withInt:(jint)parentHeight
-                 withFloat:(jfloat)progress
+- (void)interpolateWithInt:(int32_t)parentWidth
+                   withInt:(int32_t)parentHeight
+                 withFloat:(float)progress
          withADXTransition:(ADXTransition *)transition;
 
 - (void)setKeyAttributeWithADXTypedBundle:(ADXTypedBundle *)prop;
@@ -198,7 +206,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTransition)
 - (void)setKeyPositionWithADXTypedBundle:(ADXTypedBundle *)prop;
 
 - (void)updateWithADXConstraintWidget:(ADXConstraintWidget *)child
-                              withInt:(jint)state;
+                              withInt:(int32_t)state;
 
 @end
 
@@ -221,27 +229,32 @@ FOUNDATION_EXPORT ADXTransition_WidgetState *create_ADXTransition_WidgetState_in
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTransition_WidgetState)
 
+
 #endif
 
 #if !defined (ADXTransition_KeyPosition_) && (INCLUDE_ALL_Transition || defined(INCLUDE_ADXTransition_KeyPosition))
 #define ADXTransition_KeyPosition_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
+
 @interface ADXTransition_KeyPosition : NSObject {
  @public
-  jint frame_;
+  int32_t frame_;
   NSString *target_;
-  jint type_;
-  jfloat x_;
-  jfloat y_;
+  int32_t type_;
+  float x_;
+  float y_;
 }
 
 #pragma mark Public
 
 - (instancetype)initWithNSString:(NSString *)target
-                         withInt:(jint)frame
-                         withInt:(jint)type
-                       withFloat:(jfloat)x
-                       withFloat:(jfloat)y;
+                         withInt:(int32_t)frame
+                         withInt:(int32_t)type
+                       withFloat:(float)x
+                       withFloat:(float)y;
 
 // Disallowed inherited constructors, do not use.
 
@@ -253,13 +266,14 @@ J2OBJC_EMPTY_STATIC_INIT(ADXTransition_KeyPosition)
 
 J2OBJC_FIELD_SETTER(ADXTransition_KeyPosition, target_, NSString *)
 
-FOUNDATION_EXPORT void ADXTransition_KeyPosition_initWithNSString_withInt_withInt_withFloat_withFloat_(ADXTransition_KeyPosition *self, NSString *target, jint frame, jint type, jfloat x, jfloat y);
+FOUNDATION_EXPORT void ADXTransition_KeyPosition_initWithNSString_withInt_withInt_withFloat_withFloat_(ADXTransition_KeyPosition *self, NSString *target, int32_t frame, int32_t type, float x, float y);
 
-FOUNDATION_EXPORT ADXTransition_KeyPosition *new_ADXTransition_KeyPosition_initWithNSString_withInt_withInt_withFloat_withFloat_(NSString *target, jint frame, jint type, jfloat x, jfloat y) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXTransition_KeyPosition *new_ADXTransition_KeyPosition_initWithNSString_withInt_withInt_withFloat_withFloat_(NSString *target, int32_t frame, int32_t type, float x, float y) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXTransition_KeyPosition *create_ADXTransition_KeyPosition_initWithNSString_withInt_withInt_withFloat_withFloat_(NSString *target, jint frame, jint type, jfloat x, jfloat y);
+FOUNDATION_EXPORT ADXTransition_KeyPosition *create_ADXTransition_KeyPosition_initWithNSString_withInt_withInt_withFloat_withFloat_(NSString *target, int32_t frame, int32_t type, float x, float y);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTransition_KeyPosition)
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreVirtualLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CoreVirtualLayout")
@@ -24,6 +25,8 @@
 @class ADXConstraintWidget;
 @class ADXConstraintWidgetContainer;
 @class ADXConstraintWidget_DimensionBehaviour;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilHashSet;
 @protocol ADXBasicMeasure_Measurer;
 
@@ -39,47 +42,47 @@
 
 - (instancetype)init;
 
-- (void)applyRtlWithBoolean:(jboolean)isRtl;
+- (void)applyRtlWithBoolean:(bool)isRtl;
 
 - (void)captureWidgets;
 
-- (jboolean)containsWithJavaUtilHashSet:(JavaUtilHashSet *)widgets;
+- (bool)containsWithJavaUtilHashSet:(JavaUtilHashSet *)widgets;
 
-- (jint)getMeasuredHeight;
+- (int32_t)getMeasuredHeight;
 
-- (jint)getMeasuredWidth;
+- (int32_t)getMeasuredWidth;
 
-- (jint)getPaddingBottom;
+- (int32_t)getPaddingBottom;
 
-- (jint)getPaddingLeft;
+- (int32_t)getPaddingLeft;
 
-- (jint)getPaddingRight;
+- (int32_t)getPaddingRight;
 
-- (jint)getPaddingTop;
+- (int32_t)getPaddingTop;
 
-- (void)measureWithInt:(jint)widthMode
-               withInt:(jint)widthSize
-               withInt:(jint)heightMode
-               withInt:(jint)heightSize;
+- (void)measureWithInt:(int32_t)widthMode
+               withInt:(int32_t)widthSize
+               withInt:(int32_t)heightMode
+               withInt:(int32_t)heightSize;
 
-- (jboolean)needSolverPass;
+- (bool)needSolverPass;
 
-- (void)setMeasureWithInt:(jint)width
-                  withInt:(jint)height;
+- (void)setMeasureWithInt:(int32_t)width
+                  withInt:(int32_t)height;
 
-- (void)setPaddingWithInt:(jint)value;
+- (void)setPaddingWithInt:(int32_t)value;
 
-- (void)setPaddingBottomWithInt:(jint)value;
+- (void)setPaddingBottomWithInt:(int32_t)value;
 
-- (void)setPaddingEndWithInt:(jint)value;
+- (void)setPaddingEndWithInt:(int32_t)value;
 
-- (void)setPaddingLeftWithInt:(jint)value;
+- (void)setPaddingLeftWithInt:(int32_t)value;
 
-- (void)setPaddingRightWithInt:(jint)value;
+- (void)setPaddingRightWithInt:(int32_t)value;
 
-- (void)setPaddingStartWithInt:(jint)value;
+- (void)setPaddingStartWithInt:(int32_t)value;
 
-- (void)setPaddingTopWithInt:(jint)value;
+- (void)setPaddingTopWithInt:(int32_t)value;
 
 - (void)updateConstraintsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container;
 
@@ -87,13 +90,13 @@
 
 - (void)measureWithADXConstraintWidget:(ADXConstraintWidget *)widget
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)horizontalBehavior
-                               withInt:(jint)horizontalDimension
+                               withInt:(int32_t)horizontalDimension
 withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)verticalBehavior
-                               withInt:(jint)verticalDimension;
+                               withInt:(int32_t)verticalDimension;
 
-- (jboolean)measureChildren;
+- (bool)measureChildren;
 
-- (void)needsCallbackFromSolverWithBoolean:(jboolean)value;
+- (void)needsCallbackFromSolverWithBoolean:(bool)value;
 
 @end
 
@@ -111,6 +114,7 @@ FOUNDATION_EXPORT ADXCoreVirtualLayout *create_ADXCoreVirtualLayout_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXCoreVirtualLayout)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsCoreVirtualLayout ADXCoreVirtualLayout;
+
 
 #endif
 

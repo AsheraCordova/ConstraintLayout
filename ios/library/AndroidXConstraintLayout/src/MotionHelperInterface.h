@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionHelperInterface.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionHelperInterface")
@@ -25,16 +26,17 @@
 #include "MotionLayout.h"
 
 @class ADXMotionLayout;
+@class JavaLangBoolean;
 @class JavaUtilHashMap;
 @protocol ADCanvas;
 
 @protocol ADXMotionHelperInterface < ADXAnimatable, ADXMotionLayout_TransitionListener, JavaObject >
 
-- (jboolean)isUsedOnShow;
+- (bool)isUsedOnShow;
 
-- (jboolean)isUseOnHide;
+- (bool)isUseOnHide;
 
-- (jboolean)isDecorator;
+- (bool)isDecorator;
 
 - (void)onPreDrawWithADCanvas:(id<ADCanvas>)canvas;
 
@@ -61,6 +63,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXMotionHelperInterface)
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionHelperInterface)
 
 #define AndroidxConstraintlayoutMotionWidgetMotionHelperInterface ADXMotionHelperInterface
+
 
 #endif
 

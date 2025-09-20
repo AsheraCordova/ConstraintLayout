@@ -3,13 +3,27 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionConstraintSet.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "MotionConstraintSet.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXMotionConstraintSet () {
  @public
-  jboolean mValidate_;
+  bool mValidate_;
 }
 
 @end
@@ -18,21 +32,21 @@ inline NSString *ADXMotionConstraintSet_get_ERROR_MESSAGE(void);
 static NSString *ADXMotionConstraintSet_ERROR_MESSAGE = @"XML parser error must be within a Constraint ";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionConstraintSet, ERROR_MESSAGE, NSString *)
 
-inline jint ADXMotionConstraintSet_get_INTERNAL_MATCH_PARENT(void);
+inline int32_t ADXMotionConstraintSet_get_INTERNAL_MATCH_PARENT(void);
 #define ADXMotionConstraintSet_INTERNAL_MATCH_PARENT -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_MATCH_PARENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_MATCH_PARENT, int32_t)
 
-inline jint ADXMotionConstraintSet_get_INTERNAL_WRAP_CONTENT(void);
+inline int32_t ADXMotionConstraintSet_get_INTERNAL_WRAP_CONTENT(void);
 #define ADXMotionConstraintSet_INTERNAL_WRAP_CONTENT -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_WRAP_CONTENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_WRAP_CONTENT, int32_t)
 
-inline jint ADXMotionConstraintSet_get_INTERNAL_MATCH_CONSTRAINT(void);
+inline int32_t ADXMotionConstraintSet_get_INTERNAL_MATCH_CONSTRAINT(void);
 #define ADXMotionConstraintSet_INTERNAL_MATCH_CONSTRAINT -3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_MATCH_CONSTRAINT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_MATCH_CONSTRAINT, int32_t)
 
-inline jint ADXMotionConstraintSet_get_INTERNAL_WRAP_CONTENT_CONSTRAINED(void);
+inline int32_t ADXMotionConstraintSet_get_INTERNAL_WRAP_CONTENT_CONSTRAINED(void);
 #define ADXMotionConstraintSet_INTERNAL_WRAP_CONTENT_CONSTRAINED -4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_WRAP_CONTENT_CONSTRAINED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, INTERNAL_WRAP_CONTENT_CONSTRAINED, int32_t)
 
 @implementation ADXMotionConstraintSet
 
@@ -93,3 +107,5 @@ ADXMotionConstraintSet *create_ADXMotionConstraintSet_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionConstraintSet)
+
+J2OBJC_NAME_MAPPING(ADXMotionConstraintSet, "androidx.constraintlayout.core.motion.key", "ADX")

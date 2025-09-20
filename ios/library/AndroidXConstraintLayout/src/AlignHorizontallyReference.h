@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\AlignHorizontallyReference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_AlignHorizontallyReference")
@@ -49,6 +50,7 @@ FOUNDATION_EXPORT ADXAlignHorizontallyReference *create_ADXAlignHorizontallyRefe
 J2OBJC_TYPE_LITERAL_HEADER(ADXAlignHorizontallyReference)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateHelpersAlignHorizontallyReference ADXAlignHorizontallyReference;
+
 
 #endif
 

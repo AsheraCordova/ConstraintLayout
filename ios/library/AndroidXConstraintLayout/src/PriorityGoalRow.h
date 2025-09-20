@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\PriorityGoalRow.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_PriorityGoalRow")
@@ -25,6 +26,9 @@
 @class ADXPriorityGoalRow_GoalVariableAccessor;
 @class ADXSolverVariable;
 @class IOSBooleanArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  @brief Implements a row containing goals taking in account priorities.
@@ -32,7 +36,7 @@
 @interface ADXPriorityGoalRow : ADXArrayRow {
  @public
   ADXPriorityGoalRow_GoalVariableAccessor *accessor_;
-  __unsafe_unretained ADXCache *mCache_;
+  WEAK_ ADXCache *mCache_;
 }
 
 #pragma mark Public
@@ -46,13 +50,13 @@
 - (ADXSolverVariable *)getPivotCandidateWithADXLinearSystem:(ADXLinearSystem *)system
                                            withBooleanArray:(IOSBooleanArray *)avoid;
 
-- (jboolean)isEmpty;
+- (bool)isEmpty;
 
 - (NSString *)description;
 
 - (void)updateFromRowWithADXLinearSystem:(ADXLinearSystem *)system
                          withADXArrayRow:(ADXArrayRow *)definition
-                             withBoolean:(jboolean)removeFromDefinition;
+                             withBoolean:(bool)removeFromDefinition;
 
 // Disallowed inherited constructors, do not use.
 
@@ -64,9 +68,9 @@ J2OBJC_EMPTY_STATIC_INIT(ADXPriorityGoalRow)
 
 J2OBJC_FIELD_SETTER(ADXPriorityGoalRow, accessor_, ADXPriorityGoalRow_GoalVariableAccessor *)
 
-inline jint ADXPriorityGoalRow_get_NOT_FOUND(void);
+inline int32_t ADXPriorityGoalRow_get_NOT_FOUND(void);
 #define ADXPriorityGoalRow_NOT_FOUND -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXPriorityGoalRow, NOT_FOUND, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXPriorityGoalRow, NOT_FOUND, int32_t)
 
 FOUNDATION_EXPORT void ADXPriorityGoalRow_initWithADXCache_(ADXPriorityGoalRow *self, ADXCache *cache);
 
@@ -78,6 +82,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXPriorityGoalRow)
 
 @compatibility_alias AndroidxConstraintlayoutCorePriorityGoalRow ADXPriorityGoalRow;
 
+
 #endif
 
 #if !defined (ADXPriorityGoalRow_GoalVariableAccessor_) && (INCLUDE_ALL_PriorityGoalRow || defined(INCLUDE_ADXPriorityGoalRow_GoalVariableAccessor))
@@ -85,11 +90,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXPriorityGoalRow)
 
 @class ADXPriorityGoalRow;
 @class ADXSolverVariable;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class NSString;
 
 @interface ADXPriorityGoalRow_GoalVariableAccessor : NSObject {
  @public
-  __unsafe_unretained ADXSolverVariable *variable_;
-  __unsafe_unretained ADXPriorityGoalRow *row_;
+  WEAK_ ADXSolverVariable *variable_;
+  WEAK_ ADXPriorityGoalRow *row_;
 }
 
 #pragma mark Public
@@ -99,16 +107,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXPriorityGoalRow)
 
 - (void)addWithADXSolverVariable:(ADXSolverVariable *)other;
 
-- (jboolean)addToGoalWithADXSolverVariable:(ADXSolverVariable *)other
-                                 withFloat:(jfloat)value;
+- (bool)addToGoalWithADXSolverVariable:(ADXSolverVariable *)other
+                             withFloat:(float)value;
 
 - (void)init__WithADXSolverVariable:(ADXSolverVariable *)variable OBJC_METHOD_FAMILY_NONE;
 
-- (jboolean)isNegative;
+- (bool)isNegative;
 
-- (jboolean)isNull;
+- (bool)isNull;
 
-- (jboolean)isSmallerThanWithADXSolverVariable:(ADXSolverVariable *)other;
+- (bool)isSmallerThanWithADXSolverVariable:(ADXSolverVariable *)other;
 
 - (void)reset;
 
@@ -129,6 +137,7 @@ FOUNDATION_EXPORT ADXPriorityGoalRow_GoalVariableAccessor *new_ADXPriorityGoalRo
 FOUNDATION_EXPORT ADXPriorityGoalRow_GoalVariableAccessor *create_ADXPriorityGoalRow_GoalVariableAccessor_initWithADXPriorityGoalRow_withADXPriorityGoalRow_(ADXPriorityGoalRow *outer$, ADXPriorityGoalRow *row);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXPriorityGoalRow_GoalVariableAccessor)
+
 
 #endif
 

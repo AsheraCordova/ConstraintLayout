@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\AlignVerticallyReference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_AlignVerticallyReference")
@@ -49,6 +50,7 @@ FOUNDATION_EXPORT ADXAlignVerticallyReference *create_ADXAlignVerticallyReferenc
 J2OBJC_TYPE_LITERAL_HEADER(ADXAlignVerticallyReference)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateHelpersAlignVerticallyReference ADXAlignVerticallyReference;
+
 
 #endif
 

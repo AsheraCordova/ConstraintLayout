@@ -3,14 +3,28 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\Dimension.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintWidget.h"
 #include "Dimension.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "State.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Enum.h"
+#include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXDimension ()
@@ -21,9 +35,9 @@
 
 @end
 
-inline jint ADXDimension_get_WRAP_CONTENT(void);
+inline int32_t ADXDimension_get_WRAP_CONTENT(void);
 #define ADXDimension_WRAP_CONTENT -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXDimension, WRAP_CONTENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXDimension, WRAP_CONTENT, int32_t)
 
 __attribute__((unused)) static void ADXDimension_init(ADXDimension *self);
 
@@ -37,7 +51,7 @@ __attribute__((unused)) static ADXDimension *new_ADXDimension_initWithId_(id typ
 
 __attribute__((unused)) static ADXDimension *create_ADXDimension_initWithId_(id type);
 
-__attribute__((unused)) static void ADXDimension_Type_initWithNSString_withInt_(ADXDimension_Type *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXDimension_Type_initWithNSString_withInt_(ADXDimension_Type *self, NSString *__name, int32_t __ordinal);
 
 J2OBJC_INITIALIZED_DEFN(ADXDimension)
 
@@ -50,7 +64,7 @@ id ADXDimension_RATIO_DIMENSION;
 
 @implementation ADXDimension
 
-- (jboolean)equalsFixedValueWithInt:(jint)value {
+- (bool)equalsFixedValueWithInt:(int32_t)value {
   if (mInitialValue_ == nil && mValue_ == value) {
     return true;
   }
@@ -69,7 +83,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-+ (ADXDimension *)SuggestedWithInt:(jint)value {
++ (ADXDimension *)SuggestedWithInt:(int32_t)value {
   return ADXDimension_SuggestedWithInt_(value);
 }
 
@@ -77,7 +91,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXDimension_SuggestedWithId_(startValue);
 }
 
-+ (ADXDimension *)FixedWithInt:(jint)value {
++ (ADXDimension *)FixedWithInt:(int32_t)value {
   return ADXDimension_FixedWithInt_(value);
 }
 
@@ -86,7 +100,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (ADXDimension *)PercentWithId:(id)key
-                      withFloat:(jfloat)value {
+                      withFloat:(float)value {
   return ADXDimension_PercentWithId_withFloat_(key, value);
 }
 
@@ -107,12 +121,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXDimension *)percentWithId:(id)key
-                      withFloat:(jfloat)value {
+                      withFloat:(float)value {
   mPercent_ = value;
   return self;
 }
 
-- (ADXDimension *)minWithInt:(jint)value {
+- (ADXDimension *)minWithInt:(int32_t)value {
   if (value >= 0) {
     mMin_ = value;
   }
@@ -120,13 +134,13 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXDimension *)minWithId:(id)value {
-  if (value == ADXDimension_WRAP_DIMENSION) {
+  if (JreObjectEqualsEquals(value, ADXDimension_WRAP_DIMENSION)) {
     mMin_ = ADXDimension_WRAP_CONTENT;
   }
   return self;
 }
 
-- (ADXDimension *)maxWithInt:(jint)value {
+- (ADXDimension *)maxWithInt:(int32_t)value {
   if (mMax_ >= 0) {
     mMax_ = value;
   }
@@ -134,14 +148,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXDimension *)maxWithId:(id)value {
-  if (value == ADXDimension_WRAP_DIMENSION && mIsSuggested_) {
+  if (JreObjectEqualsEquals(value, ADXDimension_WRAP_DIMENSION) && mIsSuggested_) {
     JreStrongAssign(&mInitialValue_, ADXDimension_WRAP_DIMENSION);
     mMax_ = JavaLangInteger_MAX_VALUE;
   }
   return self;
 }
 
-- (ADXDimension *)suggestedWithInt:(jint)value {
+- (ADXDimension *)suggestedWithInt:(int32_t)value {
   mIsSuggested_ = true;
   return self;
 }
@@ -161,7 +175,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (ADXDimension *)fixedWithInt:(jint)value {
+- (ADXDimension *)fixedWithInt:(int32_t)value {
   JreStrongAssign(&mInitialValue_, nil);
   mValue_ = value;
   return self;
@@ -172,30 +186,30 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (void)setValueWithInt:(jint)value {
+- (void)setValueWithInt:(int32_t)value {
   mIsSuggested_ = false;
   JreStrongAssign(&mInitialValue_, nil);
   mValue_ = value;
 }
 
-- (jint)getValue {
+- (int32_t)getValue {
   return mValue_;
 }
 
 - (void)applyWithADXState:(ADXState *)state
   withADXConstraintWidget:(ADXConstraintWidget *)constraintWidget
-                  withInt:(jint)orientation {
+                  withInt:(int32_t)orientation {
   if (mRatioString_ != nil) {
     [((ADXConstraintWidget *) nil_chk(constraintWidget)) setDimensionRatioWithNSString:mRatioString_];
   }
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
     if (mIsSuggested_) {
       [((ADXConstraintWidget *) nil_chk(constraintWidget)) setHorizontalDimensionBehaviourWithADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)];
-      jint type = ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
-      if (mInitialValue_ == ADXDimension_WRAP_DIMENSION) {
+      int32_t type = ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
+      if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_WRAP_DIMENSION)) {
         type = ADXConstraintWidget_MATCH_CONSTRAINT_WRAP;
       }
-      else if (mInitialValue_ == ADXDimension_PERCENT_DIMENSION) {
+      else if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_PERCENT_DIMENSION)) {
         type = ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT;
       }
       [constraintWidget setHorizontalMatchStyleWithInt:type withInt:mMin_ withInt:mMax_ withFloat:mPercent_];
@@ -207,10 +221,10 @@ J2OBJC_IGNORE_DESIGNATED_END
       if (mMax_ < JavaLangInteger_MAX_VALUE) {
         [((ADXConstraintWidget *) nil_chk(constraintWidget)) setMaxWidthWithInt:mMax_];
       }
-      if (mInitialValue_ == ADXDimension_WRAP_DIMENSION) {
+      if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_WRAP_DIMENSION)) {
         [((ADXConstraintWidget *) nil_chk(constraintWidget)) setHorizontalDimensionBehaviourWithADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)];
       }
-      else if (mInitialValue_ == ADXDimension_PARENT_DIMENSION) {
+      else if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_PARENT_DIMENSION)) {
         [((ADXConstraintWidget *) nil_chk(constraintWidget)) setHorizontalDimensionBehaviourWithADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)];
       }
       else if (mInitialValue_ == nil) {
@@ -222,11 +236,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   else {
     if (mIsSuggested_) {
       [((ADXConstraintWidget *) nil_chk(constraintWidget)) setVerticalDimensionBehaviourWithADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)];
-      jint type = ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
-      if (mInitialValue_ == ADXDimension_WRAP_DIMENSION) {
+      int32_t type = ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
+      if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_WRAP_DIMENSION)) {
         type = ADXConstraintWidget_MATCH_CONSTRAINT_WRAP;
       }
-      else if (mInitialValue_ == ADXDimension_PERCENT_DIMENSION) {
+      else if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_PERCENT_DIMENSION)) {
         type = ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT;
       }
       [constraintWidget setVerticalMatchStyleWithInt:type withInt:mMin_ withInt:mMax_ withFloat:mPercent_];
@@ -238,10 +252,10 @@ J2OBJC_IGNORE_DESIGNATED_END
       if (mMax_ < JavaLangInteger_MAX_VALUE) {
         [((ADXConstraintWidget *) nil_chk(constraintWidget)) setMaxHeightWithInt:mMax_];
       }
-      if (mInitialValue_ == ADXDimension_WRAP_DIMENSION) {
+      if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_WRAP_DIMENSION)) {
         [((ADXConstraintWidget *) nil_chk(constraintWidget)) setVerticalDimensionBehaviourWithADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)];
       }
-      else if (mInitialValue_ == ADXDimension_PARENT_DIMENSION) {
+      else if (JreObjectEqualsEquals(mInitialValue_, ADXDimension_PARENT_DIMENSION)) {
         [((ADXConstraintWidget *) nil_chk(constraintWidget)) setVerticalDimensionBehaviourWithADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)];
       }
       else if (mInitialValue_ == nil) {
@@ -389,7 +403,7 @@ ADXDimension *create_ADXDimension_initWithId_(id type) {
   J2OBJC_CREATE_IMPL(ADXDimension, initWithId_, type)
 }
 
-ADXDimension *ADXDimension_SuggestedWithInt_(jint value) {
+ADXDimension *ADXDimension_SuggestedWithInt_(int32_t value) {
   ADXDimension_initialize();
   ADXDimension *dimension = create_ADXDimension_init();
   [dimension suggestedWithInt:value];
@@ -403,7 +417,7 @@ ADXDimension *ADXDimension_SuggestedWithId_(id startValue) {
   return dimension;
 }
 
-ADXDimension *ADXDimension_FixedWithInt_(jint value) {
+ADXDimension *ADXDimension_FixedWithInt_(int32_t value) {
   ADXDimension_initialize();
   ADXDimension *dimension = create_ADXDimension_initWithId_(ADXDimension_FIXED_DIMENSION);
   [dimension fixedWithInt:value];
@@ -417,7 +431,7 @@ ADXDimension *ADXDimension_FixedWithId_(id value) {
   return dimension;
 }
 
-ADXDimension *ADXDimension_PercentWithId_withFloat_(id key, jfloat value) {
+ADXDimension *ADXDimension_PercentWithId_withFloat_(id key, float value) {
   ADXDimension_initialize();
   ADXDimension *dimension = create_ADXDimension_initWithId_(ADXDimension_PERCENT_DIMENSION);
   [dimension percentWithId:key withFloat:value];
@@ -448,6 +462,8 @@ ADXDimension *ADXDimension_RatioWithNSString_(NSString *ratio) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXDimension)
 
+J2OBJC_NAME_MAPPING(ADXDimension, "androidx.constraintlayout.core.state", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXDimension_Type)
 
 ADXDimension_Type *ADXDimension_Type_values_[4];
@@ -464,6 +480,24 @@ ADXDimension_Type *ADXDimension_Type_values_[4];
 
 - (ADXDimension_Type_Enum)toNSEnum {
   return (ADXDimension_Type_Enum)[self ordinal];
+}
+
+- (ADXDimension_Type_Enum)enumValue {
+  return (ADXDimension_Type_Enum)[self ordinal];
+}
+
++ (ADXDimension_Type *)fromNSEnum:(ADXDimension_Type_Enum)nativeValue {
+  ADXDimension_Type *javaEnum = ADXDimension_Type_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXDimension_Type_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXDimension_Type_ORDINAL)ordinal {
+  return (ADXDimension_Type_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithType:(ADXDimension_Type_Enum)value {
+  return RETAIN_(ADXDimension_Type_fromOrdinal((ADXDimension_Type_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -494,7 +528,7 @@ ADXDimension_Type *ADXDimension_Type_values_[4];
     size_t allocSize = 4 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 4; i++) {
+    for (int32_t i = 0; i < 4; i++) {
       ((void)(ADXDimension_Type_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXDimension_Type_initWithNSString_withInt_(e, JreEnumConstantName(ADXDimension_Type_class_(), i), i);
     }
@@ -504,7 +538,7 @@ ADXDimension_Type *ADXDimension_Type_values_[4];
 
 @end
 
-void ADXDimension_Type_initWithNSString_withInt_(ADXDimension_Type *self, NSString *__name, jint __ordinal) {
+void ADXDimension_Type_initWithNSString_withInt_(ADXDimension_Type *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -522,12 +556,11 @@ ADXDimension_Type *ADXDimension_Type_valueOfWithNSString_(NSString *name) {
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXDimension_Type *ADXDimension_Type_fromOrdinal(NSUInteger ordinal) {
+ADXDimension_Type *ADXDimension_Type_fromOrdinal(ADXDimension_Type_ORDINAL ordinal) {
   ADXDimension_Type_initialize();
-  if (ordinal >= 4) {
+  if (ordinal < 0 || ordinal >= 4) {
     return nil;
   }
   return ADXDimension_Type_values_[ordinal];

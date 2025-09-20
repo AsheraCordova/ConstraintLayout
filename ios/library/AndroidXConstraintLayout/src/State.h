@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\State.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_State")
@@ -35,9 +36,11 @@
 @class ADXState_Helper;
 @class ADXVerticalChainReference;
 @class IOSObjectArray;
+@class JavaLangBoolean;
 @class JavaLangInteger;
 @class JavaUtilArrayList;
 @class JavaUtilHashMap;
+@class NSString;
 @protocol ADXReference;
 
 /*!
@@ -72,7 +75,7 @@
   via an object, not directly an int.
  @param value the object to convert from
  */
-- (jint)convertDimensionWithId:(id)value;
+- (int32_t)convertDimensionWithId:(id)value;
 
 /*!
  @brief Create a new reference given a key.
@@ -85,7 +88,7 @@
 - (JavaUtilArrayList *)getIdsForTagWithNSString:(NSString *)tag;
 
 - (ADXGuidelineReferenceHelper *)guidelineWithId:(id)key
-                                         withInt:(jint)orientation;
+                                         withInt:(int32_t)orientation;
 
 - (ADXState *)heightWithADXDimension:(ADXDimension *)dimension;
 
@@ -103,9 +106,9 @@
 
 - (void)reset;
 
-- (jboolean)sameFixedHeightWithInt:(jint)height;
+- (bool)sameFixedHeightWithInt:(int32_t)height;
 
-- (jboolean)sameFixedWidthWithInt:(jint)width;
+- (bool)sameFixedWidthWithInt:(int32_t)width;
 
 - (ADXState *)setHeightWithADXDimension:(ADXDimension *)dimension;
 
@@ -135,21 +138,21 @@ J2OBJC_FIELD_SETTER(ADXState, mHelperReferences_, JavaUtilHashMap *)
 J2OBJC_FIELD_SETTER(ADXState, mTags_, JavaUtilHashMap *)
 J2OBJC_FIELD_SETTER(ADXState, mParent_, ADXConstraintReference *)
 
-inline jint ADXState_get_UNKNOWN(void);
+inline int32_t ADXState_get_UNKNOWN(void);
 #define ADXState_UNKNOWN -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXState, UNKNOWN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXState, UNKNOWN, int32_t)
 
-inline jint ADXState_get_CONSTRAINT_SPREAD(void);
+inline int32_t ADXState_get_CONSTRAINT_SPREAD(void);
 #define ADXState_CONSTRAINT_SPREAD 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXState, CONSTRAINT_SPREAD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXState, CONSTRAINT_SPREAD, int32_t)
 
-inline jint ADXState_get_CONSTRAINT_WRAP(void);
+inline int32_t ADXState_get_CONSTRAINT_WRAP(void);
 #define ADXState_CONSTRAINT_WRAP 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXState, CONSTRAINT_WRAP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXState, CONSTRAINT_WRAP, int32_t)
 
-inline jint ADXState_get_CONSTRAINT_RATIO(void);
+inline int32_t ADXState_get_CONSTRAINT_RATIO(void);
 #define ADXState_CONSTRAINT_RATIO 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXState, CONSTRAINT_RATIO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXState, CONSTRAINT_RATIO, int32_t)
 
 inline JavaLangInteger *ADXState_get_PARENT(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -166,6 +169,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXState)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateState ADXState;
 
+
 #endif
 
 #if !defined (ADXState_Constraint_) && (INCLUDE_ALL_State || defined(INCLUDE_ADXState_Constraint))
@@ -176,25 +180,33 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXState)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXState_Constraint_Enum) {
-  ADXState_Constraint_Enum_LEFT_TO_LEFT = 0,
-  ADXState_Constraint_Enum_LEFT_TO_RIGHT = 1,
-  ADXState_Constraint_Enum_RIGHT_TO_LEFT = 2,
-  ADXState_Constraint_Enum_RIGHT_TO_RIGHT = 3,
-  ADXState_Constraint_Enum_START_TO_START = 4,
-  ADXState_Constraint_Enum_START_TO_END = 5,
-  ADXState_Constraint_Enum_END_TO_START = 6,
-  ADXState_Constraint_Enum_END_TO_END = 7,
-  ADXState_Constraint_Enum_TOP_TO_TOP = 8,
-  ADXState_Constraint_Enum_TOP_TO_BOTTOM = 9,
-  ADXState_Constraint_Enum_BOTTOM_TO_TOP = 10,
-  ADXState_Constraint_Enum_BOTTOM_TO_BOTTOM = 11,
-  ADXState_Constraint_Enum_BASELINE_TO_BASELINE = 12,
-  ADXState_Constraint_Enum_CENTER_HORIZONTALLY = 13,
-  ADXState_Constraint_Enum_CENTER_VERTICALLY = 14,
-  ADXState_Constraint_Enum_CIRCULAR_CONSTRAINT = 15,
+typedef NS_ENUM(int32_t, ADXState_Constraint_Enum) {
+  ADXState_Constraint_Enum_LEFT_TO_LEFT NS_SWIFT_NAME(leftToLeft) = 0,
+  ADXState_Constraint_Enum_LEFT_TO_RIGHT NS_SWIFT_NAME(leftToRight) = 1,
+  ADXState_Constraint_Enum_RIGHT_TO_LEFT NS_SWIFT_NAME(rightToLeft) = 2,
+  ADXState_Constraint_Enum_RIGHT_TO_RIGHT NS_SWIFT_NAME(rightToRight) = 3,
+  ADXState_Constraint_Enum_START_TO_START NS_SWIFT_NAME(startToStart) = 4,
+  ADXState_Constraint_Enum_START_TO_END NS_SWIFT_NAME(startToEnd) = 5,
+  ADXState_Constraint_Enum_END_TO_START NS_SWIFT_NAME(endToStart) = 6,
+  ADXState_Constraint_Enum_END_TO_END NS_SWIFT_NAME(endToEnd) = 7,
+  ADXState_Constraint_Enum_TOP_TO_TOP NS_SWIFT_NAME(topToTop) = 8,
+  ADXState_Constraint_Enum_TOP_TO_BOTTOM NS_SWIFT_NAME(topToBottom) = 9,
+  ADXState_Constraint_Enum_BOTTOM_TO_TOP NS_SWIFT_NAME(bottomToTop) = 10,
+  ADXState_Constraint_Enum_BOTTOM_TO_BOTTOM NS_SWIFT_NAME(bottomToBottom) = 11,
+  ADXState_Constraint_Enum_BASELINE_TO_BASELINE NS_SWIFT_NAME(baselineToBaseline) = 12,
+  ADXState_Constraint_Enum_CENTER_HORIZONTALLY NS_SWIFT_NAME(centerHorizontally) = 13,
+  ADXState_Constraint_Enum_CENTER_VERTICALLY NS_SWIFT_NAME(centerVertically) = 14,
+  ADXState_Constraint_Enum_CIRCULAR_CONSTRAINT NS_SWIFT_NAME(circularConstraint) = 15,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXState_Constraint_ORDINAL int32_t
+#else
+#define ADXState_Constraint_ORDINAL ADXState_Constraint_Enum
+#endif
+
 
 @interface ADXState_Constraint : JavaLangEnum
 
@@ -207,6 +219,13 @@ typedef NS_ENUM(NSUInteger, ADXState_Constraint_Enum) {
 #pragma mark Package-Private
 
 - (ADXState_Constraint_Enum)toNSEnum;
+
+@property(readonly) ADXState_Constraint_Enum enumValue;
++ (ADXState_Constraint *)fromNSEnum:(ADXState_Constraint_Enum)value;
+
+- (ADXState_Constraint_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithConstraint:(ADXState_Constraint_Enum)value;
 
 @end
 
@@ -267,9 +286,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXState_Constraint_values(void);
 
 FOUNDATION_EXPORT ADXState_Constraint *ADXState_Constraint_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXState_Constraint *ADXState_Constraint_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXState_Constraint *ADXState_Constraint_fromOrdinal(ADXState_Constraint_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXState_Constraint)
+
 
 #endif
 
@@ -281,15 +301,23 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXState_Constraint)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXState_Direction_Enum) {
-  ADXState_Direction_Enum_LEFT = 0,
-  ADXState_Direction_Enum_RIGHT = 1,
-  ADXState_Direction_Enum_START = 2,
-  ADXState_Direction_Enum_END = 3,
-  ADXState_Direction_Enum_TOP = 4,
-  ADXState_Direction_Enum_BOTTOM = 5,
+typedef NS_ENUM(int32_t, ADXState_Direction_Enum) {
+  ADXState_Direction_Enum_LEFT NS_SWIFT_NAME(left) = 0,
+  ADXState_Direction_Enum_RIGHT NS_SWIFT_NAME(right) = 1,
+  ADXState_Direction_Enum_START NS_SWIFT_NAME(start) = 2,
+  ADXState_Direction_Enum_END NS_SWIFT_NAME(end) = 3,
+  ADXState_Direction_Enum_TOP NS_SWIFT_NAME(top) = 4,
+  ADXState_Direction_Enum_BOTTOM NS_SWIFT_NAME(bottom) = 5,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXState_Direction_ORDINAL int32_t
+#else
+#define ADXState_Direction_ORDINAL ADXState_Direction_Enum
+#endif
+
 
 @interface ADXState_Direction : JavaLangEnum
 
@@ -302,6 +330,13 @@ typedef NS_ENUM(NSUInteger, ADXState_Direction_Enum) {
 #pragma mark Package-Private
 
 - (ADXState_Direction_Enum)toNSEnum;
+
+@property(readonly) ADXState_Direction_Enum enumValue;
++ (ADXState_Direction *)fromNSEnum:(ADXState_Direction_Enum)value;
+
+- (ADXState_Direction_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithDirection:(ADXState_Direction_Enum)value;
 
 @end
 
@@ -332,9 +367,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXState_Direction_values(void);
 
 FOUNDATION_EXPORT ADXState_Direction *ADXState_Direction_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXState_Direction *ADXState_Direction_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXState_Direction *ADXState_Direction_fromOrdinal(ADXState_Direction_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXState_Direction)
+
 
 #endif
 
@@ -346,16 +382,24 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXState_Direction)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXState_Helper_Enum) {
-  ADXState_Helper_Enum_HORIZONTAL_CHAIN = 0,
-  ADXState_Helper_Enum_VERTICAL_CHAIN = 1,
-  ADXState_Helper_Enum_ALIGN_HORIZONTALLY = 2,
-  ADXState_Helper_Enum_ALIGN_VERTICALLY = 3,
-  ADXState_Helper_Enum_BARRIER = 4,
-  ADXState_Helper_Enum_LAYER = 5,
-  ADXState_Helper_Enum_FLOW = 6,
+typedef NS_ENUM(int32_t, ADXState_Helper_Enum) {
+  ADXState_Helper_Enum_HORIZONTAL_CHAIN NS_SWIFT_NAME(horizontalChain) = 0,
+  ADXState_Helper_Enum_VERTICAL_CHAIN NS_SWIFT_NAME(verticalChain) = 1,
+  ADXState_Helper_Enum_ALIGN_HORIZONTALLY NS_SWIFT_NAME(alignHorizontally) = 2,
+  ADXState_Helper_Enum_ALIGN_VERTICALLY NS_SWIFT_NAME(alignVertically) = 3,
+  ADXState_Helper_Enum_BARRIER NS_SWIFT_NAME(barrier) = 4,
+  ADXState_Helper_Enum_LAYER NS_SWIFT_NAME(layer) = 5,
+  ADXState_Helper_Enum_FLOW NS_SWIFT_NAME(flow) = 6,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXState_Helper_ORDINAL int32_t
+#else
+#define ADXState_Helper_ORDINAL ADXState_Helper_Enum
+#endif
+
 
 @interface ADXState_Helper : JavaLangEnum
 
@@ -368,6 +412,13 @@ typedef NS_ENUM(NSUInteger, ADXState_Helper_Enum) {
 #pragma mark Package-Private
 
 - (ADXState_Helper_Enum)toNSEnum;
+
+@property(readonly) ADXState_Helper_Enum enumValue;
++ (ADXState_Helper *)fromNSEnum:(ADXState_Helper_Enum)value;
+
+- (ADXState_Helper_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithHelper:(ADXState_Helper_Enum)value;
 
 @end
 
@@ -401,9 +452,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXState_Helper_values(void);
 
 FOUNDATION_EXPORT ADXState_Helper *ADXState_Helper_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXState_Helper *ADXState_Helper_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXState_Helper *ADXState_Helper_fromOrdinal(ADXState_Helper_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXState_Helper)
+
 
 #endif
 
@@ -415,12 +467,20 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXState_Helper)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXState_Chain_Enum) {
-  ADXState_Chain_Enum_SPREAD = 0,
-  ADXState_Chain_Enum_SPREAD_INSIDE = 1,
-  ADXState_Chain_Enum_PACKED = 2,
+typedef NS_ENUM(int32_t, ADXState_Chain_Enum) {
+  ADXState_Chain_Enum_SPREAD NS_SWIFT_NAME(spread) = 0,
+  ADXState_Chain_Enum_SPREAD_INSIDE NS_SWIFT_NAME(spreadInside) = 1,
+  ADXState_Chain_Enum_PACKED NS_SWIFT_NAME(packed) = 2,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXState_Chain_ORDINAL int32_t
+#else
+#define ADXState_Chain_ORDINAL ADXState_Chain_Enum
+#endif
+
 
 @interface ADXState_Chain : JavaLangEnum
 
@@ -433,6 +493,13 @@ typedef NS_ENUM(NSUInteger, ADXState_Chain_Enum) {
 #pragma mark Package-Private
 
 - (ADXState_Chain_Enum)toNSEnum;
+
+@property(readonly) ADXState_Chain_Enum enumValue;
++ (ADXState_Chain *)fromNSEnum:(ADXState_Chain_Enum)value;
+
+- (ADXState_Chain_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithChain:(ADXState_Chain_Enum)value;
 
 @end
 
@@ -454,9 +521,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXState_Chain_values(void);
 
 FOUNDATION_EXPORT ADXState_Chain *ADXState_Chain_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXState_Chain *ADXState_Chain_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXState_Chain *ADXState_Chain_fromOrdinal(ADXState_Chain_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXState_Chain)
+
 
 #endif
 

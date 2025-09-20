@@ -3,13 +3,27 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLArray.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLArray.h"
 #include "CLContainer.h"
 #include "CLElement.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Integer.h"
 #include "java/lang/StringBuilder.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCLArray
@@ -25,8 +39,8 @@
 
 - (NSString *)toJSON {
   JavaLangStringBuilder *content = create_JavaLangStringBuilder_initWithNSString_(JreStrcat("$C", [self getDebugName], '['));
-  jboolean first = true;
-  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(mElements_)) size]; i++) {
+  bool first = true;
+  for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(mElements_)) size]; i++) {
     if (!first) {
       [content appendWithNSString:@", "];
     }
@@ -38,8 +52,8 @@
   return JreStrcat("@C", content, ']');
 }
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent {
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent {
   JavaLangStringBuilder *json = create_JavaLangStringBuilder_init();
   NSString *val = JreRetainedLocalValue([self toJSON]);
   if (forceIndent <= 0 && [((NSString *) nil_chk(val)) java_length] + indent < JreLoadStatic(ADXCLElement, MAX_LINE)) {
@@ -47,7 +61,7 @@
   }
   else {
     [json appendWithNSString:@"[\n"];
-    jboolean first = true;
+    bool first = true;
     for (ADXCLElement * __strong element in nil_chk(mElements_)) {
       if (!first) {
         [json appendWithNSString:@",\n"];
@@ -105,3 +119,5 @@ ADXCLElement *ADXCLArray_allocateWithCharArray_(IOSCharArray *content) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLArray)
+
+J2OBJC_NAME_MAPPING(ADXCLArray, "androidx.constraintlayout.core.parser", "ADX")

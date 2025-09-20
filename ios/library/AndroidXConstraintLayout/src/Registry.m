@@ -3,14 +3,25 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\Registry.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "Registry.h"
 #include "RegistryCallback.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Long.h"
 #include "java/util/HashMap.h"
 #include "java/util/Set.h"
 
-@class JavaUtilHashMap;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXRegistry () {
@@ -60,7 +71,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)updateProgressWithNSString:(NSString *)name
-                         withFloat:(jfloat)progress {
+                         withFloat:(float)progress {
   id<ADXRegistryCallback> callback = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mCallbacks_)) getWithId:name]);
   if (callback != nil) {
     [callback onProgressWithFloat:progress];
@@ -84,7 +95,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setDrawDebugWithNSString:(NSString *)name
-                         withInt:(jint)debugMode {
+                         withInt:(int32_t)debugMode {
   id<ADXRegistryCallback> callback = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mCallbacks_)) getWithId:name]);
   if (callback != nil) {
     [callback setDrawDebugWithInt:debugMode];
@@ -92,7 +103,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setLayoutInformationModeWithNSString:(NSString *)name
-                                     withInt:(jint)mode {
+                                     withInt:(int32_t)mode {
   id<ADXRegistryCallback> callback = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mCallbacks_)) getWithId:name]);
   if (callback != nil) {
     [callback setLayoutInformationModeWithInt:mode];
@@ -103,7 +114,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [((JavaUtilHashMap *) nil_chk(mCallbacks_)) keySet];
 }
 
-- (jlong)getLastModifiedWithNSString:(NSString *)name {
+- (int64_t)getLastModifiedWithNSString:(NSString *)name {
   id<ADXRegistryCallback> callback = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mCallbacks_)) getWithId:name]);
   if (callback != nil) {
     return [callback getLastModified];
@@ -112,8 +123,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)updateDimensionsWithNSString:(NSString *)name
-                             withInt:(jint)width
-                             withInt:(jint)height {
+                             withInt:(int32_t)width
+                             withInt:(int32_t)height {
   id<ADXRegistryCallback> callback = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mCallbacks_)) getWithId:name]);
   if (callback != nil) {
     [callback onDimensionsWithInt:width withInt:height];
@@ -195,3 +206,5 @@ ADXRegistry *ADXRegistry_getInstance() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXRegistry)
+
+J2OBJC_NAME_MAPPING(ADXRegistry, "androidx.constraintlayout.core.state", "ADX")

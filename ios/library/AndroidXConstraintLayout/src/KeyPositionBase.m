@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyPositionBase.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
@@ -10,7 +15,16 @@
 #include "KeyPositionBase.h"
 #include "RectF.h"
 #include "View.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/HashSet.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXKeyPositionBase
@@ -20,23 +34,23 @@
   return self;
 }
 
-- (void)calcPositionWithInt:(jint)layoutWidth
-                    withInt:(jint)layoutHeight
-                  withFloat:(jfloat)start_x
-                  withFloat:(jfloat)start_y
-                  withFloat:(jfloat)end_x
-                  withFloat:(jfloat)end_y {
+- (void)calcPositionWithInt:(int32_t)layoutWidth
+                    withInt:(int32_t)layoutHeight
+                  withFloat:(float)start_x
+                  withFloat:(float)start_y
+                  withFloat:(float)end_x
+                  withFloat:(float)end_y {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jfloat)getPositionX {
+- (float)getPositionX {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
 }
 
-- (jfloat)getPositionY {
+- (float)getPositionY {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
@@ -48,20 +62,20 @@
 - (void)positionAttributesWithADView:(ADView *)view
                          withADRectF:(ADRectF *)start
                          withADRectF:(ADRectF *)end
-                           withFloat:(jfloat)x
-                           withFloat:(jfloat)y
+                           withFloat:(float)x
+                           withFloat:(float)y
                    withNSStringArray:(IOSObjectArray *)attribute
                       withFloatArray:(IOSFloatArray *)value {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jboolean)intersectsWithInt:(jint)layoutWidth
-                      withInt:(jint)layoutHeight
-                  withADRectF:(ADRectF *)start
-                  withADRectF:(ADRectF *)end
-                    withFloat:(jfloat)x
-                    withFloat:(jfloat)y {
+- (bool)intersectsWithInt:(int32_t)layoutWidth
+                  withInt:(int32_t)layoutHeight
+              withADRectF:(ADRectF *)start
+              withADRectF:(ADRectF *)end
+                withFloat:(float)x
+                withFloat:(float)y {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;

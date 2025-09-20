@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyTimeCycle.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CustomVariable.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
@@ -12,32 +17,42 @@
 #include "TimeCycleSplineSet.h"
 #include "TypedValues.h"
 #include "Utils.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/HashMap.h"
 #include "java/util/HashSet.h"
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXMotionKeyTimeCycle () {
  @public
   NSString *mTransitionEasing_;
-  jint mCurveFit_;
-  jfloat mAlpha_;
-  jfloat mElevation_;
-  jfloat mRotation_;
-  jfloat mRotationX_;
-  jfloat mRotationY_;
-  jfloat mTransitionPathRotate_;
-  jfloat mScaleX_;
-  jfloat mScaleY_;
-  jfloat mTranslationX_;
-  jfloat mTranslationY_;
-  jfloat mTranslationZ_;
-  jfloat mProgress_;
-  jint mWaveShape_;
+  int32_t mCurveFit_;
+  float mAlpha_;
+  float mElevation_;
+  float mRotation_;
+  float mRotationX_;
+  float mRotationY_;
+  float mTransitionPathRotate_;
+  float mScaleX_;
+  float mScaleY_;
+  float mTranslationX_;
+  float mTranslationY_;
+  float mTranslationZ_;
+  float mProgress_;
+  int32_t mWaveShape_;
   NSString *mCustomWaveShape_;
-  jfloat mWavePeriod_;
-  jfloat mWaveOffset_;
+  float mWavePeriod_;
+  float mWaveOffset_;
 }
 
 @end
@@ -144,8 +159,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)addValuesWithJavaUtilHashMap:(JavaUtilHashMap *)splines {
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value {
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value {
   switch (type) {
     case ADXTypedValues_TYPE_FRAME_POSITION:
     mFramePosition_ = value;
@@ -159,8 +174,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value {
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value {
   switch (type) {
     case ADXTypedValues_Cycle_TYPE_ALPHA:
     mAlpha_ = value;
@@ -213,8 +228,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value {
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value {
   switch (type) {
     case ADXTypedValues_Cycle_TYPE_WAVE_SHAPE:
     mWaveShape_ = ADXOscillator_CUSTOM;
@@ -229,8 +244,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                withBoolean:(jboolean)value {
+- (bool)setValueWithInt:(int32_t)type
+            withBoolean:(bool)value {
   return [super setValueWithInt:type withBoolean:value];
 }
 
@@ -302,7 +317,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [create_ADXMotionKeyTimeCycle_init() copy__WithADXMotionKey:self];
 }
 
-- (jint)getIdWithNSString:(NSString *)name {
+- (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Cycle_getIdWithNSString_(name);
 }
 
@@ -405,3 +420,5 @@ ADXMotionKeyTimeCycle *create_ADXMotionKeyTimeCycle_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionKeyTimeCycle)
+
+J2OBJC_NAME_MAPPING(ADXMotionKeyTimeCycle, "androidx.constraintlayout.core.motion.key", "ADX")

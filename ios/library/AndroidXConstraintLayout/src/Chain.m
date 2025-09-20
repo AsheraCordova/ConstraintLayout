@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\Chain.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "Chain.h"
 #include "ChainHead.h"
@@ -14,12 +19,21 @@
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
 #include "SolverVariable.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 
 
-inline jboolean ADXChain_get_DEBUG(void);
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
+inline bool ADXChain_get_DEBUG(void);
 #define ADXChain_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXChain, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXChain, DEBUG, bool)
 
 @implementation ADXChain
 
@@ -33,14 +47,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 + (void)applyChainConstraintsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)constraintWidgetContainer
                                           withADXLinearSystem:(ADXLinearSystem *)system
                                         withJavaUtilArrayList:(JavaUtilArrayList *)widgets
-                                                      withInt:(jint)orientation {
+                                                      withInt:(int32_t)orientation {
   ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withJavaUtilArrayList_withInt_(constraintWidgetContainer, system, widgets, orientation);
 }
 
 + (void)applyChainConstraintsWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
                                           withADXLinearSystem:(ADXLinearSystem *)system
-                                                      withInt:(jint)orientation
-                                                      withInt:(jint)offset
+                                                      withInt:(int32_t)orientation
+                                                      withInt:(int32_t)offset
                                              withADXChainHead:(ADXChainHead *)chainHead {
   ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_(container, system, orientation, offset, chainHead);
 }
@@ -81,10 +95,10 @@ ADXChain *create_ADXChain_init() {
   J2OBJC_CREATE_IMPL(ADXChain, init)
 }
 
-void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withJavaUtilArrayList_withInt_(ADXConstraintWidgetContainer *constraintWidgetContainer, ADXLinearSystem *system, JavaUtilArrayList *widgets, jint orientation) {
+void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withJavaUtilArrayList_withInt_(ADXConstraintWidgetContainer *constraintWidgetContainer, ADXLinearSystem *system, JavaUtilArrayList *widgets, int32_t orientation) {
   ADXChain_initialize();
-  jint offset = 0;
-  jint chainsSize = 0;
+  int32_t offset = 0;
+  int32_t chainsSize = 0;
   IOSObjectArray *chainsArray = nil;
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
     offset = 0;
@@ -96,7 +110,7 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
     chainsSize = ((ADXConstraintWidgetContainer *) nil_chk(constraintWidgetContainer))->mVerticalChainsSize_;
     chainsArray = constraintWidgetContainer->mVerticalChainsArray_;
   }
-  for (jint i = 0; i < chainsSize; i++) {
+  for (int32_t i = 0; i < chainsSize; i++) {
     ADXChainHead *first = IOSObjectArray_Get(nil_chk(chainsArray), i);
     [((ADXChainHead *) nil_chk(first)) define];
     if (widgets == nil || (widgets != nil && [widgets containsWithId:first->mFirst_])) {
@@ -105,7 +119,7 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
   }
 }
 
-void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, jint orientation, jint offset, ADXChainHead *chainHead) {
+void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, int32_t orientation, int32_t offset, ADXChainHead *chainHead) {
   ADXChain_initialize();
   ADXConstraintWidget *first = JreRetainedLocalValue(((ADXChainHead *) nil_chk(chainHead))->mFirst_);
   ADXConstraintWidget *last = JreRetainedLocalValue(chainHead->mLast_);
@@ -114,14 +128,14 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
   ADXConstraintWidget *head = JreRetainedLocalValue(chainHead->mHead_);
   ADXConstraintWidget *widget = JreRetainedLocalValue(first);
   ADXConstraintWidget *next = nil;
-  jboolean done = false;
-  jfloat totalWeights = chainHead->mTotalWeight_;
+  bool done = false;
+  float totalWeights = chainHead->mTotalWeight_;
   ADXConstraintWidget *firstMatchConstraintsWidget = JreRetainedLocalValue(chainHead->mFirstMatchConstraintWidget_);
   ADXConstraintWidget *previousMatchConstraintsWidget = JreRetainedLocalValue(chainHead->mLastMatchConstraintWidget_);
-  jboolean isWrapContent = IOSObjectArray_Get(nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container))->mListDimensionBehaviors_), orientation) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT);
-  jboolean isChainSpread = false;
-  jboolean isChainSpreadInside = false;
-  jboolean isChainPacked = false;
+  bool isWrapContent = IOSObjectArray_Get(nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container))->mListDimensionBehaviors_), orientation) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT);
+  bool isChainSpread = false;
+  bool isChainSpreadInside = false;
+  bool isChainPacked = false;
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
     isChainSpread = (((ADXConstraintWidget *) nil_chk(head))->mHorizontalChainStyle_ == ADXConstraintWidget_CHAIN_SPREAD);
     isChainSpreadInside = (head->mHorizontalChainStyle_ == ADXConstraintWidget_CHAIN_SPREAD_INSIDE);
@@ -134,20 +148,20 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
   }
   while (!done) {
     ADXConstraintAnchor *begin = IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(widget))->mListAnchors_), offset);
-    jint strength = ADXSolverVariable_STRENGTH_HIGHEST;
+    int32_t strength = ADXSolverVariable_STRENGTH_HIGHEST;
     if (isChainPacked) {
       strength = ADXSolverVariable_STRENGTH_LOW;
     }
-    jint margin = [((ADXConstraintAnchor *) nil_chk(begin)) getMargin];
-    jboolean isSpreadOnly = IOSObjectArray_Get(nil_chk(widget->mListDimensionBehaviors_), orientation) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && IOSIntArray_Get(nil_chk(widget->mResolvedMatchConstraintDefault_), orientation) == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
-    if (begin->mTarget_ != nil && widget != first) {
+    int32_t margin = [((ADXConstraintAnchor *) nil_chk(begin)) getMargin];
+    bool isSpreadOnly = IOSObjectArray_Get(nil_chk(widget->mListDimensionBehaviors_), orientation) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && IOSIntArray_Get(nil_chk(widget->mResolvedMatchConstraintDefault_), orientation) == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
+    if (begin->mTarget_ != nil && !JreObjectEqualsEquals(widget, first)) {
       margin += [begin->mTarget_ getMargin];
     }
-    if (isChainPacked && widget != first && widget != firstVisibleWidget) {
+    if (isChainPacked && !JreObjectEqualsEquals(widget, first) && !JreObjectEqualsEquals(widget, firstVisibleWidget)) {
       strength = ADXSolverVariable_STRENGTH_FIXED;
     }
     if (begin->mTarget_ != nil) {
-      if (widget == firstVisibleWidget) {
+      if (JreObjectEqualsEquals(widget, firstVisibleWidget)) {
         [((ADXLinearSystem *) nil_chk(system)) addGreaterThanWithADXSolverVariable:begin->mSolverVariable_ withADXSolverVariable:begin->mTarget_->mSolverVariable_ withInt:margin withInt:ADXSolverVariable_STRENGTH_BARRIER];
       }
       else {
@@ -156,7 +170,7 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
       if (isSpreadOnly && !isChainPacked) {
         strength = ADXSolverVariable_STRENGTH_EQUALITY;
       }
-      if (widget == firstVisibleWidget && isChainPacked && [widget isInBarrierWithInt:orientation]) {
+      if (JreObjectEqualsEquals(widget, firstVisibleWidget) && isChainPacked && [widget isInBarrierWithInt:orientation]) {
         strength = ADXSolverVariable_STRENGTH_EQUALITY;
       }
       [system addEqualityWithADXSolverVariable:begin->mSolverVariable_ withADXSolverVariable:((ADXConstraintAnchor *) nil_chk(begin->mTarget_))->mSolverVariable_ withInt:margin withInt:strength];
@@ -170,7 +184,7 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
     ADXConstraintAnchor *nextAnchor = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1)))->mTarget_);
     if (nextAnchor != nil) {
       next = nextAnchor->mOwner_;
-      if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_ != widget) {
+      if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || !JreObjectEqualsEquals(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_, widget)) {
         next = nil;
       }
     }
@@ -186,11 +200,11 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
   }
   if (lastVisibleWidget != nil && ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(last))->mListAnchors_), offset + 1)))->mTarget_ != nil) {
     ADXConstraintAnchor *end = IOSObjectArray_Get(nil_chk(lastVisibleWidget->mListAnchors_), offset + 1);
-    jboolean isSpreadOnly = IOSObjectArray_Get(nil_chk(lastVisibleWidget->mListDimensionBehaviors_), orientation) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && IOSIntArray_Get(nil_chk(lastVisibleWidget->mResolvedMatchConstraintDefault_), orientation) == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
-    if (isSpreadOnly && !isChainPacked && ((ADXConstraintAnchor *) nil_chk(end))->mTarget_->mOwner_ == container) {
+    bool isSpreadOnly = IOSObjectArray_Get(nil_chk(lastVisibleWidget->mListDimensionBehaviors_), orientation) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && IOSIntArray_Get(nil_chk(lastVisibleWidget->mResolvedMatchConstraintDefault_), orientation) == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD;
+    if (isSpreadOnly && !isChainPacked && JreObjectEqualsEquals(((ADXConstraintAnchor *) nil_chk(end))->mTarget_->mOwner_, container)) {
       [((ADXLinearSystem *) nil_chk(system)) addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(end))->mSolverVariable_ withADXSolverVariable:end->mTarget_->mSolverVariable_ withInt:-[end getMargin] withInt:ADXSolverVariable_STRENGTH_EQUALITY];
     }
-    else if (isChainPacked && ((ADXConstraintAnchor *) nil_chk(end))->mTarget_->mOwner_ == container) {
+    else if (isChainPacked && JreObjectEqualsEquals(((ADXConstraintAnchor *) nil_chk(end))->mTarget_->mOwner_, container)) {
       [((ADXLinearSystem *) nil_chk(system)) addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(end))->mSolverVariable_ withADXSolverVariable:end->mTarget_->mSolverVariable_ withInt:-[end getMargin] withInt:ADXSolverVariable_STRENGTH_HIGHEST];
     }
     [((ADXLinearSystem *) nil_chk(system)) addLowerThanWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(end))->mSolverVariable_ withADXSolverVariable:((ADXConstraintAnchor *) nil_chk(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(last))->mListAnchors_), offset + 1)))->mTarget_))->mSolverVariable_ withInt:-[end getMargin] withInt:ADXSolverVariable_STRENGTH_BARRIER];
@@ -200,16 +214,16 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
   }
   JavaUtilArrayList *listMatchConstraints = JreRetainedLocalValue(chainHead->mWeightedMatchConstraintsWidgets_);
   if (listMatchConstraints != nil) {
-    jint count = [listMatchConstraints size];
+    int32_t count = [listMatchConstraints size];
     if (count > 1) {
       ADXConstraintWidget *lastMatch = nil;
-      jfloat lastWeight = 0;
+      float lastWeight = 0;
       if (chainHead->mHasUndefinedWeights_ && !chainHead->mHasComplexMatchWeights_) {
         totalWeights = chainHead->mWidgetsMatchCount_;
       }
-      for (jint i = 0; i < count; i++) {
+      for (int32_t i = 0; i < count; i++) {
         ADXConstraintWidget *match = JreRetainedLocalValue([listMatchConstraints getWithInt:i]);
-        jfloat currentWeight = IOSFloatArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(match))->mWeight_), orientation);
+        float currentWeight = IOSFloatArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(match))->mWeight_), orientation);
         if (currentWeight < 0) {
           if (chainHead->mHasComplexMatchWeights_) {
             [((ADXLinearSystem *) nil_chk(system)) addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(match->mListAnchors_), offset + 1)))->mSolverVariable_ withADXSolverVariable:((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(match->mListAnchors_, offset)))->mSolverVariable_ withInt:0 withInt:ADXSolverVariable_STRENGTH_HIGHEST];
@@ -235,7 +249,7 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
       }
     }
   }
-  if (firstVisibleWidget != nil && (firstVisibleWidget == lastVisibleWidget || isChainPacked)) {
+  if (firstVisibleWidget != nil && (JreObjectEqualsEquals(firstVisibleWidget, lastVisibleWidget) || isChainPacked)) {
     ADXConstraintAnchor *begin = IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(first))->mListAnchors_), offset);
     ADXConstraintAnchor *end = IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(last))->mListAnchors_, offset + 1);
     ADXSolverVariable *beginTarget = ((ADXConstraintAnchor *) nil_chk(begin))->mTarget_ != nil ? begin->mTarget_->mSolverVariable_ : nil;
@@ -245,42 +259,42 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
       end = IOSObjectArray_Get(lastVisibleWidget->mListAnchors_, offset + 1);
     }
     if (beginTarget != nil && endTarget != nil) {
-      jfloat bias = 0.5f;
+      float bias = 0.5f;
       if (orientation == ADXConstraintWidget_HORIZONTAL) {
         bias = head->mHorizontalBiasPercent_;
       }
       else {
         bias = head->mVerticalBiasPercent_;
       }
-      jint beginMargin = [((ADXConstraintAnchor *) nil_chk(begin)) getMargin];
-      jint endMargin = [((ADXConstraintAnchor *) nil_chk(end)) getMargin];
+      int32_t beginMargin = [((ADXConstraintAnchor *) nil_chk(begin)) getMargin];
+      int32_t endMargin = [((ADXConstraintAnchor *) nil_chk(end)) getMargin];
       [((ADXLinearSystem *) nil_chk(system)) addCenteringWithADXSolverVariable:begin->mSolverVariable_ withADXSolverVariable:beginTarget withInt:beginMargin withFloat:bias withADXSolverVariable:endTarget withADXSolverVariable:end->mSolverVariable_ withInt:endMargin withInt:ADXSolverVariable_STRENGTH_CENTERING];
     }
   }
   else if (isChainSpread && firstVisibleWidget != nil) {
     widget = firstVisibleWidget;
     ADXConstraintWidget *previousVisibleWidget = JreRetainedLocalValue(firstVisibleWidget);
-    jboolean applyFixedEquality = chainHead->mWidgetsMatchCount_ > 0 && (chainHead->mWidgetsCount_ == chainHead->mWidgetsMatchCount_);
+    bool applyFixedEquality = chainHead->mWidgetsMatchCount_ > 0 && (chainHead->mWidgetsCount_ == chainHead->mWidgetsMatchCount_);
     while (widget != nil) {
       next = IOSObjectArray_Get(nil_chk(widget->mNextChainWidget_), orientation);
       while (next != nil && [next getVisibility] == ADXConstraintWidget_GONE) {
         next = IOSObjectArray_Get(nil_chk(next->mNextChainWidget_), orientation);
       }
-      if (next != nil || widget == lastVisibleWidget) {
+      if (next != nil || JreObjectEqualsEquals(widget, lastVisibleWidget)) {
         ADXConstraintAnchor *beginAnchor = IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset);
         ADXSolverVariable *begin = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(beginAnchor))->mSolverVariable_);
         ADXSolverVariable *beginTarget = beginAnchor->mTarget_ != nil ? beginAnchor->mTarget_->mSolverVariable_ : nil;
-        if (previousVisibleWidget != widget) {
+        if (!JreObjectEqualsEquals(previousVisibleWidget, widget)) {
           beginTarget = ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(previousVisibleWidget->mListAnchors_, offset + 1)))->mSolverVariable_;
         }
-        else if (widget == firstVisibleWidget) {
+        else if (JreObjectEqualsEquals(widget, firstVisibleWidget)) {
           beginTarget = ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(first))->mListAnchors_, offset)))->mTarget_ != nil ? ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(first->mListAnchors_, offset)))->mTarget_->mSolverVariable_ : nil;
         }
         ADXConstraintAnchor *beginNextAnchor = nil;
         ADXSolverVariable *beginNext = nil;
         ADXSolverVariable *beginNextTarget = nil;
-        jint beginMargin = [beginAnchor getMargin];
-        jint nextMargin = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1))) getMargin];
+        int32_t beginMargin = [beginAnchor getMargin];
+        int32_t nextMargin = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1))) getMargin];
         if (next != nil) {
           beginNextAnchor = IOSObjectArray_Get(nil_chk(next->mListAnchors_), offset);
           beginNext = ((ADXConstraintAnchor *) nil_chk(beginNextAnchor))->mSolverVariable_;
@@ -297,15 +311,15 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
         }
         beginMargin += [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(previousVisibleWidget->mListAnchors_), offset + 1))) getMargin];
         if (begin != nil && beginTarget != nil && beginNext != nil && beginNextTarget != nil) {
-          jint margin1 = beginMargin;
-          if (widget == firstVisibleWidget) {
+          int32_t margin1 = beginMargin;
+          if (JreObjectEqualsEquals(widget, firstVisibleWidget)) {
             margin1 = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(firstVisibleWidget->mListAnchors_), offset))) getMargin];
           }
-          jint margin2 = nextMargin;
-          if (widget == lastVisibleWidget) {
+          int32_t margin2 = nextMargin;
+          if (JreObjectEqualsEquals(widget, lastVisibleWidget)) {
             margin2 = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(lastVisibleWidget))->mListAnchors_), offset + 1))) getMargin];
           }
-          jint strength = ADXSolverVariable_STRENGTH_EQUALITY;
+          int32_t strength = ADXSolverVariable_STRENGTH_EQUALITY;
           if (applyFixedEquality) {
             strength = ADXSolverVariable_STRENGTH_FIXED;
           }
@@ -321,14 +335,14 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
   else if (isChainSpreadInside && firstVisibleWidget != nil) {
     widget = firstVisibleWidget;
     ADXConstraintWidget *previousVisibleWidget = JreRetainedLocalValue(firstVisibleWidget);
-    jboolean applyFixedEquality = chainHead->mWidgetsMatchCount_ > 0 && (chainHead->mWidgetsCount_ == chainHead->mWidgetsMatchCount_);
+    bool applyFixedEquality = chainHead->mWidgetsMatchCount_ > 0 && (chainHead->mWidgetsCount_ == chainHead->mWidgetsMatchCount_);
     while (widget != nil) {
       next = IOSObjectArray_Get(nil_chk(widget->mNextChainWidget_), orientation);
       while (next != nil && [next getVisibility] == ADXConstraintWidget_GONE) {
         next = IOSObjectArray_Get(nil_chk(next->mNextChainWidget_), orientation);
       }
-      if (widget != firstVisibleWidget && widget != lastVisibleWidget && next != nil) {
-        if (next == lastVisibleWidget) {
+      if (!JreObjectEqualsEquals(widget, firstVisibleWidget) && !JreObjectEqualsEquals(widget, lastVisibleWidget) && next != nil) {
+        if (JreObjectEqualsEquals(next, lastVisibleWidget)) {
           next = nil;
         }
         ADXConstraintAnchor *beginAnchor = IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset);
@@ -338,8 +352,8 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
         ADXConstraintAnchor *beginNextAnchor = nil;
         ADXSolverVariable *beginNext = nil;
         ADXSolverVariable *beginNextTarget = nil;
-        jint beginMargin = [beginAnchor getMargin];
-        jint nextMargin = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1))) getMargin];
+        int32_t beginMargin = [beginAnchor getMargin];
+        int32_t nextMargin = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1))) getMargin];
         if (next != nil) {
           beginNextAnchor = IOSObjectArray_Get(nil_chk(next->mListAnchors_), offset);
           beginNext = ((ADXConstraintAnchor *) nil_chk(beginNextAnchor))->mSolverVariable_;
@@ -356,7 +370,7 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
           nextMargin += [beginNextAnchor getMargin];
         }
         beginMargin += [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(previousVisibleWidget->mListAnchors_), offset + 1))) getMargin];
-        jint strength = ADXSolverVariable_STRENGTH_HIGHEST;
+        int32_t strength = ADXSolverVariable_STRENGTH_HIGHEST;
         if (applyFixedEquality) {
           strength = ADXSolverVariable_STRENGTH_FIXED;
         }
@@ -373,20 +387,20 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
     ADXConstraintAnchor *beginTarget = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(first))->mListAnchors_, offset)))->mTarget_);
     ADXConstraintAnchor *end = IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(lastVisibleWidget))->mListAnchors_, offset + 1);
     ADXConstraintAnchor *endTarget = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(last))->mListAnchors_, offset + 1)))->mTarget_);
-    jint endPointsStrength = ADXSolverVariable_STRENGTH_EQUALITY;
+    int32_t endPointsStrength = ADXSolverVariable_STRENGTH_EQUALITY;
     if (beginTarget != nil) {
-      if (firstVisibleWidget != lastVisibleWidget) {
+      if (!JreObjectEqualsEquals(firstVisibleWidget, lastVisibleWidget)) {
         [((ADXLinearSystem *) nil_chk(system)) addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(begin))->mSolverVariable_ withADXSolverVariable:beginTarget->mSolverVariable_ withInt:[begin getMargin] withInt:endPointsStrength];
       }
       else if (endTarget != nil) {
         [((ADXLinearSystem *) nil_chk(system)) addCenteringWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(begin))->mSolverVariable_ withADXSolverVariable:beginTarget->mSolverVariable_ withInt:[begin getMargin] withFloat:0.5f withADXSolverVariable:((ADXConstraintAnchor *) nil_chk(end))->mSolverVariable_ withADXSolverVariable:endTarget->mSolverVariable_ withInt:[end getMargin] withInt:endPointsStrength];
       }
     }
-    if (endTarget != nil && (firstVisibleWidget != lastVisibleWidget)) {
+    if (endTarget != nil && (!JreObjectEqualsEquals(firstVisibleWidget, lastVisibleWidget))) {
       [((ADXLinearSystem *) nil_chk(system)) addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(end))->mSolverVariable_ withADXSolverVariable:endTarget->mSolverVariable_ withInt:-[end getMargin] withInt:endPointsStrength];
     }
   }
-  if ((isChainSpread || isChainSpreadInside) && firstVisibleWidget != nil && firstVisibleWidget != lastVisibleWidget) {
+  if ((isChainSpread || isChainSpreadInside) && firstVisibleWidget != nil && !JreObjectEqualsEquals(firstVisibleWidget, lastVisibleWidget)) {
     ADXConstraintAnchor *begin = IOSObjectArray_Get(nil_chk(firstVisibleWidget->mListAnchors_), offset);
     if (lastVisibleWidget == nil) {
       lastVisibleWidget = firstVisibleWidget;
@@ -394,21 +408,23 @@ void ADXChain_applyChainConstraintsWithADXConstraintWidgetContainer_withADXLinea
     ADXConstraintAnchor *end = IOSObjectArray_Get(lastVisibleWidget->mListAnchors_, offset + 1);
     ADXSolverVariable *beginTarget = ((ADXConstraintAnchor *) nil_chk(begin))->mTarget_ != nil ? begin->mTarget_->mSolverVariable_ : nil;
     ADXSolverVariable *endTarget = ((ADXConstraintAnchor *) nil_chk(end))->mTarget_ != nil ? end->mTarget_->mSolverVariable_ : nil;
-    if (last != lastVisibleWidget) {
+    if (!JreObjectEqualsEquals(last, lastVisibleWidget)) {
       ADXConstraintAnchor *realEnd = IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(last))->mListAnchors_, offset + 1);
       endTarget = ((ADXConstraintAnchor *) nil_chk(realEnd))->mTarget_ != nil ? realEnd->mTarget_->mSolverVariable_ : nil;
     }
-    if (firstVisibleWidget == lastVisibleWidget) {
+    if (JreObjectEqualsEquals(firstVisibleWidget, lastVisibleWidget)) {
       begin = IOSObjectArray_Get(firstVisibleWidget->mListAnchors_, offset);
       end = IOSObjectArray_Get(firstVisibleWidget->mListAnchors_, offset + 1);
     }
     if (beginTarget != nil && endTarget != nil) {
-      jfloat bias = 0.5f;
-      jint beginMargin = [((ADXConstraintAnchor *) nil_chk(begin)) getMargin];
-      jint endMargin = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(lastVisibleWidget->mListAnchors_), offset + 1))) getMargin];
+      float bias = 0.5f;
+      int32_t beginMargin = [((ADXConstraintAnchor *) nil_chk(begin)) getMargin];
+      int32_t endMargin = [((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(lastVisibleWidget->mListAnchors_), offset + 1))) getMargin];
       [((ADXLinearSystem *) nil_chk(system)) addCenteringWithADXSolverVariable:begin->mSolverVariable_ withADXSolverVariable:beginTarget withInt:beginMargin withFloat:bias withADXSolverVariable:endTarget withADXSolverVariable:((ADXConstraintAnchor *) nil_chk(end))->mSolverVariable_ withInt:endMargin withInt:ADXSolverVariable_STRENGTH_EQUALITY];
     }
   }
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXChain)
+
+J2OBJC_NAME_MAPPING(ADXChain, "androidx.constraintlayout.core.widgets", "ADX")

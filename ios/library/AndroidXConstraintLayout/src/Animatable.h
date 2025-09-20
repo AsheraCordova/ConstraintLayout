@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\Animatable.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Animatable")
@@ -16,14 +17,16 @@
 #if !defined (ADXAnimatable_) && (INCLUDE_ALL_Animatable || defined(INCLUDE_ADXAnimatable))
 #define ADXAnimatable_
 
+@class JavaLangFloat;
+
 /*!
  @brief A helper interface allowing MotionLayout to directly drive custom views
  */
 @protocol ADXAnimatable < JavaObject >
 
-- (void)setProgressWithFloat:(jfloat)progress;
+- (void)setProgressWithFloat:(float)progress;
 
-- (jfloat)getProgress;
+- (float)getProgress;
 
 @end
 
@@ -32,6 +35,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXAnimatable)
 J2OBJC_TYPE_LITERAL_HEADER(ADXAnimatable)
 
 #define AndroidxConstraintlayoutMotionWidgetAnimatable ADXAnimatable
+
 
 #endif
 

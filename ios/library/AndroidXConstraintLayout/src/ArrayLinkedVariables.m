@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\ArrayLinkedVariables.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayLinkedVariables.h"
 #include "ArrayRow.h"
 #include "Cache.h"
@@ -11,21 +16,31 @@
 #include "J2ObjC_source.h"
 #include "SolverVariable.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/System.h"
 #include "java/util/Arrays.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXArrayLinkedVariables () {
  @public
-  __unsafe_unretained ADXArrayRow *mRow_;
-  jint ROW_SIZE_;
+  WEAK_ ADXArrayRow *mRow_;
+  int32_t ROW_SIZE_;
   ADXSolverVariable *candidate_;
   IOSIntArray *mArrayIndices_;
   IOSIntArray *mArrayNextIndices_;
   IOSFloatArray *mArrayValues_;
-  jint mHead_;
-  jint mLast_;
-  jboolean mDidFillOnce_;
+  int32_t mHead_;
+  int32_t mLast_;
+  bool mDidFillOnce_;
 }
 
 @end
@@ -35,23 +50,23 @@ J2OBJC_FIELD_SETTER(ADXArrayLinkedVariables, mArrayIndices_, IOSIntArray *)
 J2OBJC_FIELD_SETTER(ADXArrayLinkedVariables, mArrayNextIndices_, IOSIntArray *)
 J2OBJC_FIELD_SETTER(ADXArrayLinkedVariables, mArrayValues_, IOSFloatArray *)
 
-inline jboolean ADXArrayLinkedVariables_get_DEBUG(void);
+inline bool ADXArrayLinkedVariables_get_DEBUG(void);
 #define ADXArrayLinkedVariables_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayLinkedVariables, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayLinkedVariables, DEBUG, bool)
 
-inline jboolean ADXArrayLinkedVariables_get_FULL_NEW_CHECK(void);
+inline bool ADXArrayLinkedVariables_get_FULL_NEW_CHECK(void);
 #define ADXArrayLinkedVariables_FULL_NEW_CHECK false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayLinkedVariables, FULL_NEW_CHECK, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayLinkedVariables, FULL_NEW_CHECK, bool)
 
-inline jfloat ADXArrayLinkedVariables_get_epsilon(void);
-inline jfloat ADXArrayLinkedVariables_set_epsilon(jfloat value);
-inline jfloat *ADXArrayLinkedVariables_getRef_epsilon(void);
-static jfloat ADXArrayLinkedVariables_epsilon = 0.001f;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXArrayLinkedVariables, epsilon, jfloat)
+inline float ADXArrayLinkedVariables_get_epsilon(void);
+inline float ADXArrayLinkedVariables_set_epsilon(float value);
+inline float *ADXArrayLinkedVariables_getRef_epsilon(void);
+static float ADXArrayLinkedVariables_epsilon = 0.001f;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXArrayLinkedVariables, epsilon, float)
 
-__attribute__((unused)) static jfloat ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(ADXArrayLinkedVariables *self, ADXSolverVariable *variable, jboolean removeFromDefinition);
+__attribute__((unused)) static float ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(ADXArrayLinkedVariables *self, ADXSolverVariable *variable, bool removeFromDefinition);
 
-__attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVariable_(ADXArrayLinkedVariables *self, ADXSolverVariable *v);
+__attribute__((unused)) static float ADXArrayLinkedVariables_getWithADXSolverVariable_(ADXArrayLinkedVariables *self, ADXSolverVariable *v);
 
 @implementation ADXArrayLinkedVariables
 
@@ -62,7 +77,7 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
 }
 
 - (void)putWithADXSolverVariable:(ADXSolverVariable *)variable
-                       withFloat:(jfloat)value {
+                       withFloat:(float)value {
   if (value == 0) {
     ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(self, variable, true);
     return;
@@ -84,9 +99,9 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
     }
     return;
   }
-  jint current = mHead_;
-  jint previous = ADXArrayLinkedVariables_NONE;
-  jint counter = 0;
+  int32_t current = mHead_;
+  int32_t previous = ADXArrayLinkedVariables_NONE;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     if (IOSIntArray_Get(nil_chk(mArrayIndices_), current) == ((ADXSolverVariable *) nil_chk(variable))->id__) {
       *IOSFloatArray_GetRef(nil_chk(mArrayValues_), current) = value;
@@ -98,7 +113,7 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
     current = IOSIntArray_Get(nil_chk(mArrayNextIndices_), current);
     counter++;
   }
-  jint availableIndice = mLast_ + 1;
+  int32_t availableIndice = mLast_ + 1;
   if (mDidFillOnce_) {
     if (IOSIntArray_Get(nil_chk(mArrayIndices_), mLast_) == ADXArrayLinkedVariables_NONE) {
       availableIndice = mLast_;
@@ -109,7 +124,7 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   }
   if (availableIndice >= ((IOSIntArray *) nil_chk(mArrayIndices_))->size_) {
     if (currentSize_ < mArrayIndices_->size_) {
-      for (jint i = 0; i < mArrayIndices_->size_; i++) {
+      for (int32_t i = 0; i < mArrayIndices_->size_; i++) {
         if (IOSIntArray_Get(mArrayIndices_, i) == ADXArrayLinkedVariables_NONE) {
           availableIndice = i;
           break;
@@ -152,8 +167,8 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
 }
 
 - (void)addWithADXSolverVariable:(ADXSolverVariable *)variable
-                       withFloat:(jfloat)value
-                     withBoolean:(jboolean)removeFromDefinition {
+                       withFloat:(float)value
+                     withBoolean:(bool)removeFromDefinition {
   if (value > -ADXArrayLinkedVariables_epsilon && value < ADXArrayLinkedVariables_epsilon) {
     return;
   }
@@ -174,13 +189,13 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
     }
     return;
   }
-  jint current = mHead_;
-  jint previous = ADXArrayLinkedVariables_NONE;
-  jint counter = 0;
+  int32_t current = mHead_;
+  int32_t previous = ADXArrayLinkedVariables_NONE;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
-    jint idx = IOSIntArray_Get(nil_chk(mArrayIndices_), current);
+    int32_t idx = IOSIntArray_Get(nil_chk(mArrayIndices_), current);
     if (idx == ((ADXSolverVariable *) nil_chk(variable))->id__) {
-      jfloat v = IOSFloatArray_Get(nil_chk(mArrayValues_), current) + value;
+      float v = IOSFloatArray_Get(nil_chk(mArrayValues_), current) + value;
       if (v > -ADXArrayLinkedVariables_epsilon && v < ADXArrayLinkedVariables_epsilon) {
         v = 0;
       }
@@ -209,7 +224,7 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
     current = IOSIntArray_Get(nil_chk(mArrayNextIndices_), current);
     counter++;
   }
-  jint availableIndice = mLast_ + 1;
+  int32_t availableIndice = mLast_ + 1;
   if (mDidFillOnce_) {
     if (IOSIntArray_Get(nil_chk(mArrayIndices_), mLast_) == ADXArrayLinkedVariables_NONE) {
       availableIndice = mLast_;
@@ -220,7 +235,7 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   }
   if (availableIndice >= ((IOSIntArray *) nil_chk(mArrayIndices_))->size_) {
     if (currentSize_ < mArrayIndices_->size_) {
-      for (jint i = 0; i < mArrayIndices_->size_; i++) {
+      for (int32_t i = 0; i < mArrayIndices_->size_; i++) {
         if (IOSIntArray_Get(mArrayIndices_, i) == ADXArrayLinkedVariables_NONE) {
           availableIndice = i;
           break;
@@ -259,28 +274,28 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   }
 }
 
-- (jfloat)useWithADXArrayRow:(ADXArrayRow *)definition
-                 withBoolean:(jboolean)removeFromDefinition {
-  jfloat value = ADXArrayLinkedVariables_getWithADXSolverVariable_(self, ((ADXArrayRow *) nil_chk(definition))->variable_);
+- (float)useWithADXArrayRow:(ADXArrayRow *)definition
+                withBoolean:(bool)removeFromDefinition {
+  float value = ADXArrayLinkedVariables_getWithADXSolverVariable_(self, ((ADXArrayRow *) nil_chk(definition))->variable_);
   ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(self, definition->variable_, removeFromDefinition);
   id<ADXArrayRow_ArrayRowVariables> definitionVariables = JreRetainedLocalValue(definition->variables_);
-  jint definitionSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(definitionVariables)) getCurrentSize];
-  for (jint i = 0; i < definitionSize; i++) {
+  int32_t definitionSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(definitionVariables)) getCurrentSize];
+  for (int32_t i = 0; i < definitionSize; i++) {
     ADXSolverVariable *definitionVariable = JreRetainedLocalValue([definitionVariables getVariableWithInt:i]);
-    jfloat definitionValue = [definitionVariables getWithADXSolverVariable:definitionVariable];
+    float definitionValue = [definitionVariables getWithADXSolverVariable:definitionVariable];
     [self addWithADXSolverVariable:definitionVariable withFloat:definitionValue * value withBoolean:removeFromDefinition];
   }
   return value;
 }
 
-- (jfloat)removeWithADXSolverVariable:(ADXSolverVariable *)variable
-                          withBoolean:(jboolean)removeFromDefinition {
+- (float)removeWithADXSolverVariable:(ADXSolverVariable *)variable
+                         withBoolean:(bool)removeFromDefinition {
   return ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(self, variable, removeFromDefinition);
 }
 
 - (void)clear {
-  jint current = mHead_;
-  jint counter = 0;
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     ADXSolverVariable *variable = IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), IOSIntArray_Get(nil_chk(mArrayIndices_), current));
     if (variable != nil) {
@@ -295,12 +310,12 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   currentSize_ = 0;
 }
 
-- (jboolean)containsWithADXSolverVariable:(ADXSolverVariable *)variable {
+- (bool)containsWithADXSolverVariable:(ADXSolverVariable *)variable {
   if (mHead_ == ADXArrayLinkedVariables_NONE) {
     return false;
   }
-  jint current = mHead_;
-  jint counter = 0;
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     if (IOSIntArray_Get(nil_chk(mArrayIndices_), current) == ((ADXSolverVariable *) nil_chk(variable))->id__) {
       return true;
@@ -311,12 +326,12 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   return false;
 }
 
-- (jint)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable {
+- (int32_t)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable {
   if (mHead_ == ADXArrayLinkedVariables_NONE) {
     return -1;
   }
-  jint current = mHead_;
-  jint counter = 0;
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     if (IOSIntArray_Get(nil_chk(mArrayIndices_), current) == ((ADXSolverVariable *) nil_chk(variable))->id__) {
       return current;
@@ -327,9 +342,9 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   return -1;
 }
 
-- (jboolean)hasAtLeastOnePositiveVariable {
-  jint current = mHead_;
-  jint counter = 0;
+- (bool)hasAtLeastOnePositiveVariable {
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     if (IOSFloatArray_Get(nil_chk(mArrayValues_), current) > 0) {
       return true;
@@ -341,8 +356,8 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
 }
 
 - (void)invert {
-  jint current = mHead_;
-  jint counter = 0;
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     JreTimesAssignFloatF(IOSFloatArray_GetRef(nil_chk(mArrayValues_), current), -1);
     current = IOSIntArray_Get(nil_chk(mArrayNextIndices_), current);
@@ -350,9 +365,9 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   }
 }
 
-- (void)divideByAmountWithFloat:(jfloat)amount {
-  jint current = mHead_;
-  jint counter = 0;
+- (void)divideByAmountWithFloat:(float)amount {
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     JreDivideAssignFloatF(IOSFloatArray_GetRef(nil_chk(mArrayValues_), current), amount);
     current = IOSIntArray_Get(nil_chk(mArrayNextIndices_), current);
@@ -360,30 +375,30 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   }
 }
 
-- (jint)getHead {
+- (int32_t)getHead {
   return mHead_;
 }
 
-- (jint)getCurrentSize {
+- (int32_t)getCurrentSize {
   return currentSize_;
 }
 
-- (jint)getIdWithInt:(jint)index {
+- (int32_t)getIdWithInt:(int32_t)index {
   return IOSIntArray_Get(nil_chk(mArrayIndices_), index);
 }
 
-- (jfloat)getValueWithInt:(jint)index {
+- (float)getValueWithInt:(int32_t)index {
   return IOSFloatArray_Get(nil_chk(mArrayValues_), index);
 }
 
-- (jint)getNextIndiceWithInt:(jint)index {
+- (int32_t)getNextIndiceWithInt:(int32_t)index {
   return IOSIntArray_Get(nil_chk(mArrayNextIndices_), index);
 }
 
 - (ADXSolverVariable *)getPivotCandidate {
   if (candidate_ == nil) {
-    jint current = mHead_;
-    jint counter = 0;
+    int32_t current = mHead_;
+    int32_t counter = 0;
     ADXSolverVariable *pivot = nil;
     while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
       if (IOSFloatArray_Get(nil_chk(mArrayValues_), current) < 0) {
@@ -400,9 +415,9 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   return candidate_;
 }
 
-- (ADXSolverVariable *)getVariableWithInt:(jint)index {
-  jint current = mHead_;
-  jint counter = 0;
+- (ADXSolverVariable *)getVariableWithInt:(int32_t)index {
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     if (counter == index) {
       return IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), IOSIntArray_Get(nil_chk(mArrayIndices_), current));
@@ -413,9 +428,9 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   return nil;
 }
 
-- (jfloat)getVariableValueWithInt:(jint)index {
-  jint current = mHead_;
-  jint counter = 0;
+- (float)getVariableValueWithInt:(int32_t)index {
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     if (counter == index) {
       return IOSFloatArray_Get(nil_chk(mArrayValues_), current);
@@ -426,34 +441,34 @@ __attribute__((unused)) static jfloat ADXArrayLinkedVariables_getWithADXSolverVa
   return 0;
 }
 
-- (jfloat)getWithADXSolverVariable:(ADXSolverVariable *)v {
+- (float)getWithADXSolverVariable:(ADXSolverVariable *)v {
   return ADXArrayLinkedVariables_getWithADXSolverVariable_(self, v);
 }
 
-- (jint)sizeInBytes {
-  jint size = 0;
+- (int32_t)sizeInBytes {
+  int32_t size = 0;
   size += 3 * (((IOSIntArray *) nil_chk(mArrayIndices_))->size_ * 4);
   size += 9 * 4;
   return size;
 }
 
 - (void)display {
-  jint count = currentSize_;
+  int32_t count = currentSize_;
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"{ "];
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXSolverVariable *v = JreRetainedLocalValue([self getVariableWithInt:i]);
     if (v == nil) {
       continue;
     }
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:JreStrcat("@$FC", v, @" = ", [self getVariableValueWithInt:i], ' ')];
+    [JreLoadStatic(JavaLangSystem, out) printWithNSString:JreStrcat("@$FC", v, @" = ", [self getVariableValueWithInt:i], ' ')];
   }
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@" }"];
+  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:@" }"];
 }
 
 - (NSString *)description {
   NSString *result = @"";
-  jint current = mHead_;
-  jint counter = 0;
+  int32_t current = mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < currentSize_) {
     JreStrAppend(&result, "$", @" -> ");
     JreStrAppend(&result, "F$", IOSFloatArray_Get(nil_chk(mArrayValues_), current), @" : ");
@@ -578,18 +593,18 @@ ADXArrayLinkedVariables *create_ADXArrayLinkedVariables_initWithADXArrayRow_with
   J2OBJC_CREATE_IMPL(ADXArrayLinkedVariables, initWithADXArrayRow_withADXCache_, arrayRow, cache)
 }
 
-jfloat ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(ADXArrayLinkedVariables *self, ADXSolverVariable *variable, jboolean removeFromDefinition) {
-  if (self->candidate_ == variable) {
+float ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(ADXArrayLinkedVariables *self, ADXSolverVariable *variable, bool removeFromDefinition) {
+  if (JreObjectEqualsEquals(self->candidate_, variable)) {
     JreStrongAssign(&self->candidate_, nil);
   }
   if (self->mHead_ == ADXArrayLinkedVariables_NONE) {
     return 0;
   }
-  jint current = self->mHead_;
-  jint previous = ADXArrayLinkedVariables_NONE;
-  jint counter = 0;
+  int32_t current = self->mHead_;
+  int32_t previous = ADXArrayLinkedVariables_NONE;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < self->currentSize_) {
-    jint idx = IOSIntArray_Get(nil_chk(self->mArrayIndices_), current);
+    int32_t idx = IOSIntArray_Get(nil_chk(self->mArrayIndices_), current);
     if (idx == ((ADXSolverVariable *) nil_chk(variable))->id__) {
       if (current == self->mHead_) {
         self->mHead_ = IOSIntArray_Get(nil_chk(self->mArrayNextIndices_), current);
@@ -615,9 +630,9 @@ jfloat ADXArrayLinkedVariables_removeWithADXSolverVariable_withBoolean_(ADXArray
   return 0;
 }
 
-jfloat ADXArrayLinkedVariables_getWithADXSolverVariable_(ADXArrayLinkedVariables *self, ADXSolverVariable *v) {
-  jint current = self->mHead_;
-  jint counter = 0;
+float ADXArrayLinkedVariables_getWithADXSolverVariable_(ADXArrayLinkedVariables *self, ADXSolverVariable *v) {
+  int32_t current = self->mHead_;
+  int32_t counter = 0;
   while (current != ADXArrayLinkedVariables_NONE && counter < self->currentSize_) {
     if (IOSIntArray_Get(nil_chk(self->mArrayIndices_), current) == ((ADXSolverVariable *) nil_chk(v))->id__) {
       return IOSFloatArray_Get(nil_chk(self->mArrayValues_), current);
@@ -629,3 +644,5 @@ jfloat ADXArrayLinkedVariables_getWithADXSolverVariable_(ADXArrayLinkedVariables
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXArrayLinkedVariables)
+
+J2OBJC_NAME_MAPPING(ADXArrayLinkedVariables, "androidx.constraintlayout.core", "ADX")

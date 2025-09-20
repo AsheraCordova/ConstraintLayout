@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionLayout")
@@ -41,8 +42,13 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
 @class JavaUtilArrayList;
 @class JavaUtilHashMap;
+@class NSString;
 @protocol ADInterpolator;
 @protocol ADXMotionLayout_MotionTracker;
 @protocol JavaLangRunnable;
@@ -52,35 +58,35 @@
   ADXMotionScene *mScene_;
   id<ADInterpolator> mInterpolator_;
   id<ADInterpolator> mProgressInterpolator_;
-  jfloat mLastVelocity_;
-  jint mCurrentState_;
+  float mLastVelocity_;
+  int32_t mCurrentState_;
   JavaUtilHashMap *mFrameArrayList_;
-  jfloat mTransitionPosition_;
-  jfloat mTransitionLastPosition_;
-  jfloat mTransitionGoalPosition_;
-  jboolean mInTransition_;
-  jboolean mIndirectTransition_;
-  jint mDebugPath_;
-  jboolean firstDown_;
-  jint mOldWidth_;
-  jint mOldHeight_;
-  jint mLastLayoutWidth_;
-  jint mLastLayoutHeight_;
-  jboolean mUndergoingMotion_;
-  jfloat mScrollTargetDX_;
-  jfloat mScrollTargetDY_;
-  jfloat mScrollTargetDT_;
-  jboolean mIsAnimating_;
-  jboolean mMeasureDuringTransition_;
-  jint mStartWrapWidth_;
-  jint mStartWrapHeight_;
-  jint mEndWrapWidth_;
-  jint mEndWrapHeight_;
-  jint mWidthMeasureMode_;
-  jint mHeightMeasureMode_;
-  jfloat mPostInterpolationPosition_;
-  jint mScheduledTransitions_;
-  jint mRotatMode_;
+  float mTransitionPosition_;
+  float mTransitionLastPosition_;
+  float mTransitionGoalPosition_;
+  bool mInTransition_;
+  bool mIndirectTransition_;
+  int32_t mDebugPath_;
+  bool firstDown_;
+  int32_t mOldWidth_;
+  int32_t mOldHeight_;
+  int32_t mLastLayoutWidth_;
+  int32_t mLastLayoutHeight_;
+  bool mUndergoingMotion_;
+  float mScrollTargetDX_;
+  float mScrollTargetDY_;
+  float mScrollTargetDT_;
+  bool mIsAnimating_;
+  bool mMeasureDuringTransition_;
+  int32_t mStartWrapWidth_;
+  int32_t mStartWrapHeight_;
+  int32_t mEndWrapWidth_;
+  int32_t mEndWrapHeight_;
+  int32_t mWidthMeasureMode_;
+  int32_t mHeightMeasureMode_;
+  float mPostInterpolationPosition_;
+  int32_t mScheduledTransitions_;
+  int32_t mRotatMode_;
   JavaUtilHashMap *mPreRotate_;
   ADRect *mTempRect_;
   ADXMotionLayout_TransitionState *mTransitionState_;
@@ -92,37 +98,37 @@
 
 - (instancetype)init;
 
-- (void)fireTriggerWithInt:(jint)triggerId
-               withBoolean:(jboolean)positive
-                 withFloat:(jfloat)progress;
+- (void)fireTriggerWithInt:(int32_t)triggerId
+               withBoolean:(bool)positive
+                 withFloat:(float)progress;
 
-- (ADXConstraintSet *)getConstraintSetWithInt:(jint)id_;
+- (ADXConstraintSet *)getConstraintSetWithInt:(int32_t)id_;
 
 - (IOSIntArray *)getConstraintSetIds;
 
-- (jint)getCurrentState;
+- (int32_t)getCurrentState;
 
 - (JavaUtilArrayList *)getDefinedTransitions;
 
-- (jint)getEndState;
+- (int32_t)getEndState;
 
-- (jfloat)getProgress;
+- (float)getProgress;
 
 - (ADXMotionScene *)getScene;
 
-- (jint)getStartState;
+- (int32_t)getStartState;
 
-- (ADXMotionScene_Transition *)getTransitionWithInt:(jint)id_;
+- (ADXMotionScene_Transition *)getTransitionWithInt:(int32_t)id_;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
 - (void)invalidate;
 
-- (jboolean)isInteractionEnabled;
+- (bool)isInteractionEnabled;
 
 - (id<ADXMotionLayout_MotionTracker>)obtainVelocityTracker;
 
-- (jboolean)onTouchEventWithADMotionEvent:(ADMotionEvent *)event;
+- (bool)onTouchEventWithADMotionEvent:(ADMotionEvent *)event;
 
 - (void)onViewAddedWithADView:(ADView *)view;
 
@@ -134,33 +140,33 @@
 
 - (void)requestLayout;
 
-- (void)setOnHideWithFloat:(jfloat)progress;
+- (void)setOnHideWithFloat:(float)progress;
 
-- (void)setOnShowWithFloat:(jfloat)progress;
+- (void)setOnShowWithFloat:(float)progress;
 
-- (void)setProgressWithFloat:(jfloat)pos;
+- (void)setProgressWithFloat:(float)pos;
 
-- (void)setProgressWithFloat:(jfloat)pos
-                   withFloat:(jfloat)velocity;
+- (void)setProgressWithFloat:(float)pos
+                   withFloat:(float)velocity;
 
-- (void)setReduceFlickerWithBoolean:(jboolean)reduceFlicker;
+- (void)setReduceFlickerWithBoolean:(bool)reduceFlicker;
 
 - (void)setSceneWithADXMotionScene:(ADXMotionScene *)scene;
 
-- (void)setStateWithInt:(jint)id_
-                withInt:(jint)screenWidth
-                withInt:(jint)screenHeight;
+- (void)setStateWithInt:(int32_t)id_
+                withInt:(int32_t)screenWidth
+                withInt:(int32_t)screenHeight;
 
-- (void)setTransitionWithInt:(jint)transitionId;
+- (void)setTransitionWithInt:(int32_t)transitionId;
 
-- (void)setTransitionWithInt:(jint)beginId
-                     withInt:(jint)endId;
+- (void)setTransitionWithInt:(int32_t)beginId
+                     withInt:(int32_t)endId;
 
-- (void)setTransitionDurationWithInt:(jint)milliseconds;
+- (void)setTransitionDurationWithInt:(int32_t)milliseconds;
 
-- (void)touchAnimateToWithInt:(jint)touchUpMode
-                    withFloat:(jfloat)position
-                    withFloat:(jfloat)currentVelocity;
+- (void)touchAnimateToWithInt:(int32_t)touchUpMode
+                    withFloat:(float)position
+                    withFloat:(float)currentVelocity;
 
 - (void)transitionToEnd;
 
@@ -168,60 +174,60 @@
 
 - (void)transitionToStart;
 
-- (void)transitionToStateWithInt:(jint)id_;
+- (void)transitionToStateWithInt:(int32_t)id_;
 
-- (void)transitionToStateWithInt:(jint)id_
-                         withInt:(jint)duration;
+- (void)transitionToStateWithInt:(int32_t)id_
+                         withInt:(int32_t)duration;
 
-- (void)transitionToStateWithInt:(jint)id_
-                         withInt:(jint)screenWidth
-                         withInt:(jint)screenHeight;
+- (void)transitionToStateWithInt:(int32_t)id_
+                         withInt:(int32_t)screenWidth
+                         withInt:(int32_t)screenHeight;
 
-- (void)transitionToStateWithInt:(jint)id_
-                         withInt:(jint)screenWidth
-                         withInt:(jint)screenHeight
-                         withInt:(jint)duration;
+- (void)transitionToStateWithInt:(int32_t)id_
+                         withInt:(int32_t)screenWidth
+                         withInt:(int32_t)screenHeight
+                         withInt:(int32_t)duration;
 
 - (void)updateState;
 
-- (void)updateStateWithInt:(jint)stateId
+- (void)updateStateWithInt:(int32_t)stateId
       withADXConstraintSet:(ADXConstraintSet *)set;
 
-- (void)viewTransitionWithInt:(jint)viewTransitionId
+- (void)viewTransitionWithInt:(int32_t)viewTransitionId
               withADViewArray:(IOSObjectArray *)view;
 
 #pragma mark Protected
 
 - (void)fireTransitionCompleted;
 
-- (jlong)getNanoTime;
+- (int64_t)getNanoTime;
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)setTransitionWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition;
 
 #pragma mark Package-Private
 
-- (void)animateToWithFloat:(jfloat)position;
+- (void)animateToWithFloat:(float)position;
 
-- (void)endTriggerWithBoolean:(jboolean)start;
+- (void)endTriggerWithBoolean:(bool)start;
 
-- (void)evaluateWithBoolean:(jboolean)force;
+- (void)evaluateWithBoolean:(bool)force;
 
-- (void)getAnchorDpDtWithInt:(jint)mTouchAnchorId
-                   withFloat:(jfloat)pos
-                   withFloat:(jfloat)locationX
-                   withFloat:(jfloat)locationY
+- (void)getAnchorDpDtWithInt:(int32_t)mTouchAnchorId
+                   withFloat:(float)pos
+                   withFloat:(float)locationX
+                   withFloat:(float)locationY
               withFloatArray:(IOSFloatArray *)mAnchorDpDt;
 
-- (ADXMotionController *)getMotionControllerWithInt:(jint)mTouchAnchorId;
+- (ADXMotionController *)getMotionControllerWithInt:(int32_t)mTouchAnchorId;
 
 - (void)onNewStateAttachHandlers;
 
@@ -241,81 +247,81 @@ J2OBJC_FIELD_SETTER(ADXMotionLayout, mTransitionState_, ADXMotionLayout_Transiti
 J2OBJC_FIELD_SETTER(ADXMotionLayout, mModel_, ADXMotionLayout_Model *)
 J2OBJC_FIELD_SETTER(ADXMotionLayout, mTransitionCompleted_, JavaUtilArrayList *)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_COMPLETE(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_COMPLETE(void);
 #define ADXMotionLayout_TOUCH_UP_COMPLETE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_COMPLETE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_COMPLETE, int32_t)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_COMPLETE_TO_START(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_COMPLETE_TO_START(void);
 #define ADXMotionLayout_TOUCH_UP_COMPLETE_TO_START 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_COMPLETE_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_COMPLETE_TO_START, int32_t)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_COMPLETE_TO_END(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_COMPLETE_TO_END(void);
 #define ADXMotionLayout_TOUCH_UP_COMPLETE_TO_END 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_COMPLETE_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_COMPLETE_TO_END, int32_t)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_STOP(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_STOP(void);
 #define ADXMotionLayout_TOUCH_UP_STOP 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_STOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_STOP, int32_t)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_DECELERATE(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_DECELERATE(void);
 #define ADXMotionLayout_TOUCH_UP_DECELERATE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_DECELERATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_DECELERATE, int32_t)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_DECELERATE_AND_COMPLETE(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_DECELERATE_AND_COMPLETE(void);
 #define ADXMotionLayout_TOUCH_UP_DECELERATE_AND_COMPLETE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_DECELERATE_AND_COMPLETE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_DECELERATE_AND_COMPLETE, int32_t)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_NEVER_TO_START(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_NEVER_TO_START(void);
 #define ADXMotionLayout_TOUCH_UP_NEVER_TO_START 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_NEVER_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_NEVER_TO_START, int32_t)
 
-inline jint ADXMotionLayout_get_TOUCH_UP_NEVER_TO_END(void);
+inline int32_t ADXMotionLayout_get_TOUCH_UP_NEVER_TO_END(void);
 #define ADXMotionLayout_TOUCH_UP_NEVER_TO_END 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_NEVER_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, TOUCH_UP_NEVER_TO_END, int32_t)
 
 inline NSString *ADXMotionLayout_get_TAG(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT NSString *ADXMotionLayout_TAG;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionLayout, TAG, NSString *)
 
-inline jboolean ADXMotionLayout_get_IS_IN_EDIT_MODE(void);
-inline jboolean ADXMotionLayout_set_IS_IN_EDIT_MODE(jboolean value);
-inline jboolean *ADXMotionLayout_getRef_IS_IN_EDIT_MODE(void);
+inline bool ADXMotionLayout_get_IS_IN_EDIT_MODE(void);
+inline bool ADXMotionLayout_set_IS_IN_EDIT_MODE(bool value);
+inline bool *ADXMotionLayout_getRef_IS_IN_EDIT_MODE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXMotionLayout_IS_IN_EDIT_MODE;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXMotionLayout, IS_IN_EDIT_MODE, jboolean)
+FOUNDATION_EXPORT bool ADXMotionLayout_IS_IN_EDIT_MODE;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXMotionLayout, IS_IN_EDIT_MODE, bool)
 
-inline jint ADXMotionLayout_get_DEBUG_SHOW_NONE(void);
+inline int32_t ADXMotionLayout_get_DEBUG_SHOW_NONE(void);
 #define ADXMotionLayout_DEBUG_SHOW_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG_SHOW_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG_SHOW_NONE, int32_t)
 
-inline jint ADXMotionLayout_get_DEBUG_SHOW_PROGRESS(void);
+inline int32_t ADXMotionLayout_get_DEBUG_SHOW_PROGRESS(void);
 #define ADXMotionLayout_DEBUG_SHOW_PROGRESS 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG_SHOW_PROGRESS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG_SHOW_PROGRESS, int32_t)
 
-inline jint ADXMotionLayout_get_DEBUG_SHOW_PATH(void);
+inline int32_t ADXMotionLayout_get_DEBUG_SHOW_PATH(void);
 #define ADXMotionLayout_DEBUG_SHOW_PATH 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG_SHOW_PATH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, DEBUG_SHOW_PATH, int32_t)
 
-inline jint ADXMotionLayout_get_MAX_KEY_FRAMES(void);
+inline int32_t ADXMotionLayout_get_MAX_KEY_FRAMES(void);
 #define ADXMotionLayout_MAX_KEY_FRAMES 50
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, MAX_KEY_FRAMES, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, MAX_KEY_FRAMES, int32_t)
 
-inline jint ADXMotionLayout_get_VELOCITY_POST_LAYOUT(void);
+inline int32_t ADXMotionLayout_get_VELOCITY_POST_LAYOUT(void);
 #define ADXMotionLayout_VELOCITY_POST_LAYOUT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_POST_LAYOUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_POST_LAYOUT, int32_t)
 
-inline jint ADXMotionLayout_get_VELOCITY_LAYOUT(void);
+inline int32_t ADXMotionLayout_get_VELOCITY_LAYOUT(void);
 #define ADXMotionLayout_VELOCITY_LAYOUT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_LAYOUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_LAYOUT, int32_t)
 
-inline jint ADXMotionLayout_get_VELOCITY_STATIC_POST_LAYOUT(void);
+inline int32_t ADXMotionLayout_get_VELOCITY_STATIC_POST_LAYOUT(void);
 #define ADXMotionLayout_VELOCITY_STATIC_POST_LAYOUT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_STATIC_POST_LAYOUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_STATIC_POST_LAYOUT, int32_t)
 
-inline jint ADXMotionLayout_get_VELOCITY_STATIC_LAYOUT(void);
+inline int32_t ADXMotionLayout_get_VELOCITY_STATIC_LAYOUT(void);
 #define ADXMotionLayout_VELOCITY_STATIC_LAYOUT 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_STATIC_LAYOUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionLayout, VELOCITY_STATIC_LAYOUT, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionLayout_init(ADXMotionLayout *self);
 
@@ -327,6 +333,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetMotionLayout ADXMotionLayout;
 
+
 #endif
 
 #if !defined (ADXMotionLayout_TransitionState_) && (INCLUDE_ALL_MotionLayout || defined(INCLUDE_ADXMotionLayout_TransitionState))
@@ -337,13 +344,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXMotionLayout_TransitionState_Enum) {
-  ADXMotionLayout_TransitionState_Enum_UNDEFINED = 0,
-  ADXMotionLayout_TransitionState_Enum_SETUP = 1,
-  ADXMotionLayout_TransitionState_Enum_MOVING = 2,
-  ADXMotionLayout_TransitionState_Enum_FINISHED = 3,
+typedef NS_ENUM(int32_t, ADXMotionLayout_TransitionState_Enum) {
+  ADXMotionLayout_TransitionState_Enum_UNDEFINED NS_SWIFT_NAME(undefined) = 0,
+  ADXMotionLayout_TransitionState_Enum_SETUP NS_SWIFT_NAME(setup) = 1,
+  ADXMotionLayout_TransitionState_Enum_MOVING NS_SWIFT_NAME(moving) = 2,
+  ADXMotionLayout_TransitionState_Enum_FINISHED NS_SWIFT_NAME(finished) = 3,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXMotionLayout_TransitionState_ORDINAL int32_t
+#else
+#define ADXMotionLayout_TransitionState_ORDINAL ADXMotionLayout_TransitionState_Enum
+#endif
+
 
 @interface ADXMotionLayout_TransitionState : JavaLangEnum
 
@@ -356,6 +371,13 @@ typedef NS_ENUM(NSUInteger, ADXMotionLayout_TransitionState_Enum) {
 #pragma mark Package-Private
 
 - (ADXMotionLayout_TransitionState_Enum)toNSEnum;
+
+@property(readonly) ADXMotionLayout_TransitionState_Enum enumValue;
++ (ADXMotionLayout_TransitionState *)fromNSEnum:(ADXMotionLayout_TransitionState_Enum)value;
+
+- (ADXMotionLayout_TransitionState_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithTransitionState:(ADXMotionLayout_TransitionState_Enum)value;
 
 @end
 
@@ -380,9 +402,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXMotionLayout_TransitionState_values(void);
 
 FOUNDATION_EXPORT ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXMotionLayout_TransitionState *ADXMotionLayout_TransitionState_fromOrdinal(ADXMotionLayout_TransitionState_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_TransitionState)
+
 
 #endif
 
@@ -390,6 +413,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_TransitionState)
 #define ADXMotionLayout_MotionTracker_
 
 @class ADMotionEvent;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @protocol ADXMotionLayout_MotionTracker < JavaObject >
 
@@ -399,24 +424,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_TransitionState)
 
 - (void)addMovementWithADMotionEvent:(ADMotionEvent *)event;
 
-- (void)computeCurrentVelocityWithInt:(jint)units;
+- (void)computeCurrentVelocityWithInt:(int32_t)units;
 
-- (void)computeCurrentVelocityWithInt:(jint)units
-                            withFloat:(jfloat)maxVelocity;
+- (void)computeCurrentVelocityWithInt:(int32_t)units
+                            withFloat:(float)maxVelocity;
 
-- (jfloat)getXVelocity;
+- (float)getXVelocity;
 
-- (jfloat)getYVelocity;
+- (float)getYVelocity;
 
-- (jfloat)getXVelocityWithInt:(jint)id_;
+- (float)getXVelocityWithInt:(int32_t)id_;
 
-- (jfloat)getYVelocityWithInt:(jint)id_;
+- (float)getYVelocityWithInt:(int32_t)id_;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXMotionLayout_MotionTracker)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_MotionTracker)
+
 
 #endif
 
@@ -425,13 +451,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_MotionTracker)
 
 @class ADBundle;
 @class ADXMotionLayout;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXMotionLayout_StateCache : NSObject {
  @public
-  jfloat mProgress_;
-  jfloat mVelocity_;
-  jint startState_;
-  jint endState_;
+  float mProgress_;
+  float mVelocity_;
+  int32_t startState_;
+  int32_t endState_;
   NSString *KeyProgress_;
   NSString *KeyVelocity_;
   NSString *KeyStartState_;
@@ -444,15 +473,15 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_MotionTracker)
 
 - (void)recordState;
 
-- (void)setEndStateWithInt:(jint)endState;
+- (void)setEndStateWithInt:(int32_t)endState;
 
-- (void)setProgressWithFloat:(jfloat)progress;
+- (void)setProgressWithFloat:(float)progress;
 
-- (void)setStartStateWithInt:(jint)startState;
+- (void)setStartStateWithInt:(int32_t)startState;
 
 - (void)setTransitionStateWithADBundle:(ADBundle *)bundle;
 
-- (void)setVelocityWithFloat:(jfloat)mVelocity;
+- (void)setVelocityWithFloat:(float)mVelocity;
 
 #pragma mark Package-Private
 
@@ -481,6 +510,7 @@ FOUNDATION_EXPORT ADXMotionLayout_StateCache *create_ADXMotionLayout_StateCache_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_StateCache)
 
+
 #endif
 
 #if !defined (ADXMotionLayout_DecelerateInterpolator_) && (INCLUDE_ALL_MotionLayout || defined(INCLUDE_ADXMotionLayout_DecelerateInterpolator))
@@ -491,23 +521,24 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_StateCache)
 #include "MotionInterpolator.h"
 
 @class ADXMotionLayout;
+@class JavaLangFloat;
 
 @interface ADXMotionLayout_DecelerateInterpolator : ADXMotionInterpolator {
  @public
-  jfloat initalV_;
-  jfloat currentP_;
-  jfloat maxA_;
+  float initalV_;
+  float currentP_;
+  float maxA_;
 }
 
 #pragma mark Public
 
-- (void)configWithFloat:(jfloat)velocity
-              withFloat:(jfloat)position
-              withFloat:(jfloat)maxAcceleration;
+- (void)configWithFloat:(float)velocity
+              withFloat:(float)position
+              withFloat:(float)maxAcceleration;
 
-- (jfloat)getInterpolationWithFloat:(jfloat)time;
+- (float)getInterpolationWithFloat:(float)time;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
 #pragma mark Package-Private
 
@@ -529,6 +560,7 @@ FOUNDATION_EXPORT ADXMotionLayout_DecelerateInterpolator *create_ADXMotionLayout
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_DecelerateInterpolator)
 
+
 #endif
 
 #if !defined (ADXMotionLayout_Model_) && (INCLUDE_ALL_MotionLayout || defined(INCLUDE_ADXMotionLayout_Model))
@@ -539,6 +571,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_DecelerateInterpolator)
 @class ADXConstraintWidget;
 @class ADXConstraintWidgetContainer;
 @class ADXMotionLayout;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXMotionLayout_Model : NSObject {
  @public
@@ -546,24 +580,24 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_DecelerateInterpolator)
   ADXConstraintWidgetContainer *mLayoutEnd_;
   ADXConstraintSet *mStart_;
   ADXConstraintSet *mEnd_;
-  jint mStartId_;
-  jint mEndId_;
+  int32_t mStartId_;
+  int32_t mEndId_;
 }
 
 #pragma mark Public
 
 - (void)build;
 
-- (jboolean)isNotConfiguredWithWithInt:(jint)startId
-                               withInt:(jint)endId;
+- (bool)isNotConfiguredWithWithInt:(int32_t)startId
+                           withInt:(int32_t)endId;
 
-- (void)measureWithInt:(jint)widthMeasureSpec
-               withInt:(jint)heightMeasureSpec;
+- (void)measureWithInt:(int32_t)widthMeasureSpec
+               withInt:(int32_t)heightMeasureSpec;
 
 - (void)reEvaluateState;
 
-- (void)setMeasuredIdWithInt:(jint)startId
-                     withInt:(jint)endId;
+- (void)setMeasuredIdWithInt:(int32_t)startId
+                     withInt:(int32_t)endId;
 
 #pragma mark Package-Private
 
@@ -600,31 +634,35 @@ FOUNDATION_EXPORT ADXMotionLayout_Model *create_ADXMotionLayout_Model_initWithAD
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_Model)
 
+
 #endif
 
 #if !defined (ADXMotionLayout_TransitionListener_) && (INCLUDE_ALL_MotionLayout || defined(INCLUDE_ADXMotionLayout_TransitionListener))
 #define ADXMotionLayout_TransitionListener_
 
 @class ADXMotionLayout;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @protocol ADXMotionLayout_TransitionListener < JavaObject >
 
 - (void)onTransitionStartedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)startId
-                                       withInt:(jint)endId;
+                                       withInt:(int32_t)startId
+                                       withInt:(int32_t)endId;
 
 - (void)onTransitionChangeWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)startId
-                                      withInt:(jint)endId
-                                    withFloat:(jfloat)progress;
+                                      withInt:(int32_t)startId
+                                      withInt:(int32_t)endId
+                                    withFloat:(float)progress;
 
 - (void)onTransitionCompletedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                         withInt:(jint)currentId;
+                                         withInt:(int32_t)currentId;
 
 - (void)onTransitionTriggerWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)triggerId
-                                   withBoolean:(jboolean)positive
-                                     withFloat:(jfloat)progress;
+                                       withInt:(int32_t)triggerId
+                                   withBoolean:(bool)positive
+                                     withFloat:(float)progress;
 
 @end
 
@@ -632,12 +670,15 @@ J2OBJC_EMPTY_STATIC_INIT(ADXMotionLayout_TransitionListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_TransitionListener)
 
+
 #endif
 
 #if !defined (ADXMotionLayout_MyTracker_) && (INCLUDE_ALL_MotionLayout || defined(INCLUDE_ADXMotionLayout_MyTracker))
 #define ADXMotionLayout_MyTracker_
 
 @class ADMotionEvent;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXMotionLayout_MyTracker : NSObject < ADXMotionLayout_MotionTracker >
 
@@ -649,18 +690,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_TransitionListener)
 
 - (void)clear;
 
-- (void)computeCurrentVelocityWithInt:(jint)units;
+- (void)computeCurrentVelocityWithInt:(int32_t)units;
 
-- (void)computeCurrentVelocityWithInt:(jint)units
-                            withFloat:(jfloat)maxVelocity;
+- (void)computeCurrentVelocityWithInt:(int32_t)units
+                            withFloat:(float)maxVelocity;
 
-- (jfloat)getXVelocity;
+- (float)getXVelocity;
 
-- (jfloat)getXVelocityWithInt:(jint)id_;
+- (float)getXVelocityWithInt:(int32_t)id_;
 
-- (jfloat)getYVelocity;
+- (float)getYVelocity;
 
-- (jfloat)getYVelocityWithInt:(jint)id_;
+- (float)getYVelocityWithInt:(int32_t)id_;
 
 - (void)recycle;
 
@@ -675,6 +716,7 @@ FOUNDATION_EXPORT ADXMotionLayout_MyTracker *new_ADXMotionLayout_MyTracker_init(
 FOUNDATION_EXPORT ADXMotionLayout_MyTracker *create_ADXMotionLayout_MyTracker_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionLayout_MyTracker)
+
 
 #endif
 

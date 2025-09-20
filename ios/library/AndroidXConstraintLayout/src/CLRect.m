@@ -3,8 +3,20 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\CLRect.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLRect.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCLRect
@@ -16,11 +28,11 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jint)width {
+- (int32_t)width {
   return right_ - left_;
 }
 
-- (jint)height {
+- (int32_t)height {
   return bottom_ - top_;
 }
 
@@ -62,3 +74,5 @@ ADXCLRect *create_ADXCLRect_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLRect)
+
+J2OBJC_NAME_MAPPING(ADXCLRect, "androidx.constraintlayout.core.motion.utils", "ADX")

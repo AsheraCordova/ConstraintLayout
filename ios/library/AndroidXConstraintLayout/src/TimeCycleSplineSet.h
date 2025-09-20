@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\TimeCycleSplineSet.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_TimeCycleSplineSet")
@@ -26,6 +27,11 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 
 /*!
  @brief This engine allows manipulation of attributes by wave shapes oscillating in time
@@ -33,15 +39,15 @@
 @interface ADXTimeCycleSplineSet : NSObject {
  @public
   ADXCurveFit *mCurveFit_;
-  jint mWaveShape_;
+  int32_t mWaveShape_;
   IOSIntArray *mTimePoints_;
   IOSObjectArray *mValues_;
-  jint count_;
+  int32_t count_;
   NSString *mType_;
   IOSFloatArray *mCache_;
-  jboolean mContinue_;
-  jlong last_time_;
-  jfloat last_cycle_;
+  bool mContinue_;
+  int64_t last_time_;
+  float last_cycle_;
 }
 
 #pragma mark Public
@@ -50,15 +56,15 @@
 
 - (ADXCurveFit *)getCurveFit;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset;
 
 - (void)setTypeWithNSString:(NSString *)type;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 - (NSString *)description;
 
@@ -67,9 +73,9 @@
 /*!
  @param period cycles per second
  */
-- (jfloat)calcWaveWithFloat:(jfloat)period;
+- (float)calcWaveWithFloat:(float)period;
 
-- (void)setStartTimeWithLong:(jlong)currentTime;
+- (void)setStartTimeWithLong:(int64_t)currentTime;
 
 @end
 
@@ -81,30 +87,31 @@ J2OBJC_FIELD_SETTER(ADXTimeCycleSplineSet, mValues_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(ADXTimeCycleSplineSet, mType_, NSString *)
 J2OBJC_FIELD_SETTER(ADXTimeCycleSplineSet, mCache_, IOSFloatArray *)
 
-inline jint ADXTimeCycleSplineSet_get_CURVE_VALUE(void);
+inline int32_t ADXTimeCycleSplineSet_get_CURVE_VALUE(void);
 #define ADXTimeCycleSplineSet_CURVE_VALUE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTimeCycleSplineSet, CURVE_VALUE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTimeCycleSplineSet, CURVE_VALUE, int32_t)
 
-inline jint ADXTimeCycleSplineSet_get_CURVE_PERIOD(void);
+inline int32_t ADXTimeCycleSplineSet_get_CURVE_PERIOD(void);
 #define ADXTimeCycleSplineSet_CURVE_PERIOD 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTimeCycleSplineSet, CURVE_PERIOD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTimeCycleSplineSet, CURVE_PERIOD, int32_t)
 
-inline jint ADXTimeCycleSplineSet_get_CURVE_OFFSET(void);
+inline int32_t ADXTimeCycleSplineSet_get_CURVE_OFFSET(void);
 #define ADXTimeCycleSplineSet_CURVE_OFFSET 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTimeCycleSplineSet, CURVE_OFFSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTimeCycleSplineSet, CURVE_OFFSET, int32_t)
 
-inline jfloat ADXTimeCycleSplineSet_get_VAL_2PI(void);
-inline jfloat ADXTimeCycleSplineSet_set_VAL_2PI(jfloat value);
-inline jfloat *ADXTimeCycleSplineSet_getRef_VAL_2PI(void);
+inline float ADXTimeCycleSplineSet_get_VAL_2PI(void);
+inline float ADXTimeCycleSplineSet_set_VAL_2PI(float value);
+inline float *ADXTimeCycleSplineSet_getRef_VAL_2PI(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jfloat ADXTimeCycleSplineSet_VAL_2PI;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXTimeCycleSplineSet, VAL_2PI, jfloat)
+FOUNDATION_EXPORT float ADXTimeCycleSplineSet_VAL_2PI;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXTimeCycleSplineSet, VAL_2PI, float)
 
 FOUNDATION_EXPORT void ADXTimeCycleSplineSet_init(ADXTimeCycleSplineSet *self);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsTimeCycleSplineSet ADXTimeCycleSplineSet;
+
 
 #endif
 
@@ -117,6 +124,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet)
 @class ADXKeyFrameArray_FloatArray;
 @class ADXMotionWidget;
 @class IOSFloatArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 
 @interface ADXTimeCycleSplineSet_CustomSet : ADXTimeCycleSplineSet {
  @public
@@ -132,24 +144,24 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet)
 - (instancetype)initWithNSString:(NSString *)attribute
 withADXKeyFrameArray_CustomArray:(ADXKeyFrameArray_CustomArray *)attrList;
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
 withADXCLCustomAttribute:(ADXCLCustomAttribute *)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset;
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset;
 
-- (jboolean)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
-                                 withFloat:(jfloat)t
-                                  withLong:(jlong)time
-                           withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
+                             withFloat:(float)t
+                              withLong:(int64_t)time
+                       withADXKeyCache:(ADXKeyCache *)cache;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 // Disallowed inherited constructors, do not use.
 
@@ -173,6 +185,7 @@ FOUNDATION_EXPORT ADXTimeCycleSplineSet_CustomSet *create_ADXTimeCycleSplineSet_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet_CustomSet)
 
+
 #endif
 
 #if !defined (ADXTimeCycleSplineSet_Sort_) && (INCLUDE_ALL_TimeCycleSplineSet || defined(INCLUDE_ADXTimeCycleSplineSet_Sort))
@@ -180,6 +193,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet_CustomSet)
 
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangInteger;
 
 @interface ADXTimeCycleSplineSet_Sort : NSObject
 
@@ -191,8 +205,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet_CustomSet)
 
 + (void)doubleQuickSortWithIntArray:(IOSIntArray *)key
                     withFloatArray2:(IOSObjectArray *)value
-                            withInt:(jint)low
-                            withInt:(jint)hi;
+                            withInt:(int32_t)low
+                            withInt:(int32_t)hi;
 
 @end
 
@@ -204,9 +218,10 @@ FOUNDATION_EXPORT ADXTimeCycleSplineSet_Sort *new_ADXTimeCycleSplineSet_Sort_ini
 
 FOUNDATION_EXPORT ADXTimeCycleSplineSet_Sort *create_ADXTimeCycleSplineSet_Sort_init(void);
 
-FOUNDATION_EXPORT void ADXTimeCycleSplineSet_Sort_doubleQuickSortWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *key, IOSObjectArray *value, jint low, jint hi);
+FOUNDATION_EXPORT void ADXTimeCycleSplineSet_Sort_doubleQuickSortWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *key, IOSObjectArray *value, int32_t low, int32_t hi);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet_Sort)
+
 
 #endif
 
@@ -219,6 +234,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet_Sort)
 @class ADXKeyFrameArray_FloatArray;
 @class ADXMotionWidget;
 @class IOSFloatArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 
 @interface ADXTimeCycleSplineSet_CustomVarSet : ADXTimeCycleSplineSet {
  @public
@@ -234,24 +254,24 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet_Sort)
 - (instancetype)initWithNSString:(NSString *)attribute
   withADXKeyFrameArray_CustomVar:(ADXKeyFrameArray_CustomVar *)attrList;
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
   withADXCustomVariable:(ADXCustomVariable *)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset;
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset;
 
-- (jboolean)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
-                                 withFloat:(jfloat)t
-                                  withLong:(jlong)time
-                           withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
+                             withFloat:(float)t
+                              withLong:(int64_t)time
+                       withADXKeyCache:(ADXKeyCache *)cache;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 // Disallowed inherited constructors, do not use.
 
@@ -274,6 +294,7 @@ FOUNDATION_EXPORT ADXTimeCycleSplineSet_CustomVarSet *new_ADXTimeCycleSplineSet_
 FOUNDATION_EXPORT ADXTimeCycleSplineSet_CustomVarSet *create_ADXTimeCycleSplineSet_CustomVarSet_initWithNSString_withADXKeyFrameArray_CustomVar_(NSString *attribute, ADXKeyFrameArray_CustomVar *attrList);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTimeCycleSplineSet_CustomVarSet)
+
 
 #endif
 

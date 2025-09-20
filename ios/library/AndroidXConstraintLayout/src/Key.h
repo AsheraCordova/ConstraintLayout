@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\Key.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Key")
@@ -18,18 +19,22 @@
 
 @class ADAttributeSet;
 @class ADContext;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Base class in an element in a KeyFrame
  */
 @interface ADXKey : NSObject {
  @public
-  jint mFramePosition_;
-  jint mTargetId_;
+  int32_t mFramePosition_;
+  int32_t mTargetId_;
   NSString *mTargetString_;
-  jint mType_;
+  int32_t mType_;
   JavaUtilHashMap *mCustomConstraints_;
 }
 
@@ -51,13 +56,13 @@
 /*!
  @brief Gets the current frame position
  */
-- (jint)getFramePosition;
+- (int32_t)getFramePosition;
 
 /*!
  @brief sets the frame position
  @param pos
  */
-- (void)setFramePositionWithInt:(jint)pos;
+- (void)setFramePositionWithInt:(int32_t)pos;
 
 /*!
  @brief Key frame can specify the type of interpolation it wants on various attributes
@@ -74,7 +79,7 @@
 - (void)setValueWithNSString:(NSString *)tag
                       withId:(id)value;
 
-- (ADXKey *)setViewIdWithInt:(jint)id_;
+- (ADXKey *)setViewIdWithInt:(int32_t)id_;
 
 #pragma mark Package-Private
 
@@ -83,25 +88,25 @@
 - (void)load__WithADContext:(ADContext *)context
          withADAttributeSet:(ADAttributeSet *)attrs;
 
-- (jboolean)matchesWithNSString:(NSString *)constraintTag;
+- (bool)matchesWithNSString:(NSString *)constraintTag;
 
 /*!
  @brief Return the boolean version this object if the object is a Boolean it is casted.
  @param value
  */
-- (jboolean)toBooleanWithId:(id)value;
+- (bool)toBooleanWithId:(id)value;
 
 /*!
  @brief Return the float given a value.If the value is a "Float" object it is casted
  @param value
  */
-- (jfloat)toFloatWithId:(id)value;
+- (float)toFloatWithId:(id)value;
 
 /*!
  @brief Return the int version of an object if the value is an Integer object it is casted.
  @param value
  */
-- (jint)toIntWithId:(id)value;
+- (int32_t)toIntWithId:(id)value;
 
 @end
 
@@ -110,12 +115,12 @@ J2OBJC_EMPTY_STATIC_INIT(ADXKey)
 J2OBJC_FIELD_SETTER(ADXKey, mTargetString_, NSString *)
 J2OBJC_FIELD_SETTER(ADXKey, mCustomConstraints_, JavaUtilHashMap *)
 
-inline jint ADXKey_get_UNSET(void);
-inline jint ADXKey_set_UNSET(jint value);
-inline jint *ADXKey_getRef_UNSET(void);
+inline int32_t ADXKey_get_UNSET(void);
+inline int32_t ADXKey_set_UNSET(int32_t value);
+inline int32_t *ADXKey_getRef_UNSET(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXKey_UNSET;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXKey, UNSET, jint)
+FOUNDATION_EXPORT int32_t ADXKey_UNSET;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXKey, UNSET, int32_t)
 
 inline NSString *ADXKey_get_ALPHA(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -237,6 +242,7 @@ FOUNDATION_EXPORT void ADXKey_init(ADXKey *self);
 J2OBJC_TYPE_LITERAL_HEADER(ADXKey)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetKey ADXKey;
+
 
 #endif
 

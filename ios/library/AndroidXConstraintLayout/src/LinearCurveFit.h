@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\LinearCurveFit.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_LinearCurveFit")
@@ -23,6 +24,8 @@
 @class IOSDoubleArray;
 @class IOSFloatArray;
 @class IOSObjectArray;
+@class JavaLangDouble;
+@class JavaLangInteger;
 
 /*!
  @brief This performs a simple linear interpolation in multiple dimensions
@@ -37,20 +40,20 @@
 - (instancetype)initWithDoubleArray:(IOSDoubleArray *)time
                    withDoubleArray2:(IOSObjectArray *)y;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v;
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j;
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j;
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v;
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j;
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j;
 
 - (IOSDoubleArray *)getTimePoints;
 
@@ -73,6 +76,7 @@ FOUNDATION_EXPORT ADXLinearCurveFit *create_ADXLinearCurveFit_initWithDoubleArra
 J2OBJC_TYPE_LITERAL_HEADER(ADXLinearCurveFit)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsLinearCurveFit ADXLinearCurveFit;
+
 
 #endif
 

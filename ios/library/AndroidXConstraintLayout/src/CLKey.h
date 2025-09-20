@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLKey.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLKey")
@@ -22,6 +23,8 @@
 
 @class ADXCLElement;
 @class IOSCharArray;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXCLKey : ADXCLContainer
 
@@ -42,8 +45,8 @@
 
 #pragma mark Protected
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent;
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent;
 
 - (NSString *)toJSON;
 
@@ -64,6 +67,7 @@ FOUNDATION_EXPORT ADXCLElement *ADXCLKey_allocateWithNSString_withADXCLElement_(
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLKey)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLKey ADXCLKey;
+
 
 #endif
 

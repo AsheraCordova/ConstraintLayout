@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\SpringStopEngine.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_SpringStopEngine")
@@ -20,13 +21,19 @@
 #define INCLUDE_ADXStopEngine 1
 #include "StopEngine.h"
 
+@class JavaLangBoolean;
+@class JavaLangDouble;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
+
 /*!
  @brief This contains the class to provide the logic for an animation to come to a stop using a spring
   model.
  */
 @interface ADXSpringStopEngine : NSObject < ADXStopEngine > {
  @public
-  jdouble mDamping_;
+  double mDamping_;
 }
 
 #pragma mark Public
@@ -34,26 +41,26 @@
 - (instancetype)init;
 
 - (NSString *)debugWithNSString:(NSString *)desc
-                      withFloat:(jfloat)time;
+                      withFloat:(float)time;
 
-- (jfloat)getAcceleration;
+- (float)getAcceleration;
 
-- (jfloat)getInterpolationWithFloat:(jfloat)time;
+- (float)getInterpolationWithFloat:(float)time;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
-- (jfloat)getVelocityWithFloat:(jfloat)t;
+- (float)getVelocityWithFloat:(float)t;
 
-- (jboolean)isStopped;
+- (bool)isStopped;
 
-- (void)springConfigWithFloat:(jfloat)currentPos
-                    withFloat:(jfloat)target
-                    withFloat:(jfloat)currentVelocity
-                    withFloat:(jfloat)mass
-                    withFloat:(jfloat)stiffness
-                    withFloat:(jfloat)damping
-                    withFloat:(jfloat)stopThreshold
-                      withInt:(jint)boundaryMode;
+- (void)springConfigWithFloat:(float)currentPos
+                    withFloat:(float)target
+                    withFloat:(float)currentVelocity
+                    withFloat:(float)mass
+                    withFloat:(float)stiffness
+                    withFloat:(float)damping
+                    withFloat:(float)stopThreshold
+                      withInt:(int32_t)boundaryMode;
 
 #pragma mark Package-Private
 
@@ -72,6 +79,7 @@ FOUNDATION_EXPORT ADXSpringStopEngine *create_ADXSpringStopEngine_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXSpringStopEngine)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsSpringStopEngine ADXSpringStopEngine;
+
 
 #endif
 

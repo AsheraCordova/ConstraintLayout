@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\ConstraintReference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintReference")
@@ -24,6 +25,9 @@
 @class ADXDimension;
 @class ADXState;
 @class ADXState_Constraint;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADXFacade;
 
 @interface ADXConstraintReference : NSObject < ADXReference > {
@@ -31,34 +35,34 @@
   ADXState *mState_;
   NSString *mTag_;
   id<ADXFacade> mFacade_;
-  jint mHorizontalChainStyle_;
-  jint mVerticalChainStyle_;
-  jfloat mHorizontalBias_;
-  jfloat mVerticalBias_;
-  jint mMarginLeft_;
-  jint mMarginRight_;
-  jint mMarginStart_;
-  jint mMarginEnd_;
-  jint mMarginTop_;
-  jint mMarginBottom_;
-  jint mMarginLeftGone_;
-  jint mMarginRightGone_;
-  jint mMarginStartGone_;
-  jint mMarginEndGone_;
-  jint mMarginTopGone_;
-  jint mMarginBottomGone_;
-  jfloat mPivotX_;
-  jfloat mPivotY_;
-  jfloat mRotationX_;
-  jfloat mRotationY_;
-  jfloat mRotationZ_;
-  jfloat mTranslationX_;
-  jfloat mTranslationY_;
-  jfloat mTranslationZ_;
-  jfloat mAlpha_;
-  jfloat mScaleX_;
-  jfloat mScaleY_;
-  jint mVisibility_;
+  int32_t mHorizontalChainStyle_;
+  int32_t mVerticalChainStyle_;
+  float mHorizontalBias_;
+  float mVerticalBias_;
+  int32_t mMarginLeft_;
+  int32_t mMarginRight_;
+  int32_t mMarginStart_;
+  int32_t mMarginEnd_;
+  int32_t mMarginTop_;
+  int32_t mMarginBottom_;
+  int32_t mMarginLeftGone_;
+  int32_t mMarginRightGone_;
+  int32_t mMarginStartGone_;
+  int32_t mMarginEndGone_;
+  int32_t mMarginTopGone_;
+  int32_t mMarginBottomGone_;
+  float mPivotX_;
+  float mPivotY_;
+  float mRotationX_;
+  float mRotationY_;
+  float mRotationZ_;
+  float mTranslationX_;
+  float mTranslationY_;
+  float mTranslationZ_;
+  float mAlpha_;
+  float mScaleX_;
+  float mScaleY_;
+  int32_t mVisibility_;
   id mLeftToLeft_;
   id mLeftToRight_;
   id mRightToLeft_;
@@ -83,12 +87,12 @@
 - (instancetype)initWithADXState:(ADXState *)state;
 
 - (void)addCustomColorWithNSString:(NSString *)name
-                           withInt:(jint)color;
+                           withInt:(int32_t)color;
 
 - (void)addCustomFloatWithNSString:(NSString *)name
-                         withFloat:(jfloat)value;
+                         withFloat:(float)value;
 
-- (ADXConstraintReference *)alphaWithFloat:(jfloat)alpha;
+- (ADXConstraintReference *)alphaWithFloat:(float)alpha;
 
 - (void)apply;
 
@@ -96,7 +100,7 @@
 
 - (ADXConstraintReference *)baselineToBaselineWithId:(id)reference;
 
-- (ADXConstraintReference *)biasWithFloat:(jfloat)value;
+- (ADXConstraintReference *)biasWithFloat:(float)value;
 
 - (ADXConstraintReference *)bottom;
 
@@ -109,8 +113,8 @@
 - (ADXConstraintReference *)centerVerticallyWithId:(id)reference;
 
 - (ADXConstraintReference *)circularConstraintWithId:(id)reference
-                                           withFloat:(jfloat)angle
-                                           withFloat:(jfloat)distance;
+                                           withFloat:(float)angle
+                                           withFloat:(float)distance;
 
 - (ADXConstraintReference *)clear;
 
@@ -126,7 +130,7 @@
 
 - (ADXConstraintReference *)endToStartWithId:(id)reference;
 
-- (jfloat)getAlpha;
+- (float)getAlpha;
 
 - (ADXConstraintWidget *)getConstraintWidget;
 
@@ -134,33 +138,33 @@
 
 - (ADXDimension *)getHeight;
 
-- (jint)getHorizontalChainStyle;
+- (int32_t)getHorizontalChainStyle;
 
 - (id)getKey;
 
-- (jfloat)getPivotX;
+- (float)getPivotX;
 
-- (jfloat)getPivotY;
+- (float)getPivotY;
 
-- (jfloat)getRotationX;
+- (float)getRotationX;
 
-- (jfloat)getRotationY;
+- (float)getRotationY;
 
-- (jfloat)getRotationZ;
+- (float)getRotationZ;
 
-- (jfloat)getScaleX;
+- (float)getScaleX;
 
-- (jfloat)getScaleY;
+- (float)getScaleY;
 
 - (NSString *)getTag;
 
-- (jfloat)getTranslationX;
+- (float)getTranslationX;
 
-- (jfloat)getTranslationY;
+- (float)getTranslationY;
 
-- (jfloat)getTranslationZ;
+- (float)getTranslationZ;
 
-- (jint)getVerticalChainStyleWithInt:(jint)chainStyle;
+- (int32_t)getVerticalChainStyleWithInt:(int32_t)chainStyle;
 
 - (id)getView;
 
@@ -168,7 +172,7 @@
 
 - (ADXConstraintReference *)heightWithADXDimension:(ADXDimension *)dimension;
 
-- (ADXConstraintReference *)horizontalBiasWithFloat:(jfloat)value;
+- (ADXConstraintReference *)horizontalBiasWithFloat:(float)value;
 
 - (ADXConstraintReference *)left;
 
@@ -176,15 +180,15 @@
 
 - (ADXConstraintReference *)leftToRightWithId:(id)reference;
 
-- (ADXConstraintReference *)marginWithInt:(jint)value;
+- (ADXConstraintReference *)marginWithInt:(int32_t)value;
 
 - (ADXConstraintReference *)marginWithId:(id)marginValue;
 
-- (ADXConstraintReference *)marginGoneWithInt:(jint)value;
+- (ADXConstraintReference *)marginGoneWithInt:(int32_t)value;
 
-- (ADXConstraintReference *)pivotXWithFloat:(jfloat)x;
+- (ADXConstraintReference *)pivotXWithFloat:(float)x;
 
-- (ADXConstraintReference *)pivotYWithFloat:(jfloat)y;
+- (ADXConstraintReference *)pivotYWithFloat:(float)y;
 
 - (ADXConstraintReference *)right;
 
@@ -192,15 +196,15 @@
 
 - (ADXConstraintReference *)rightToRightWithId:(id)reference;
 
-- (ADXConstraintReference *)rotationXWithFloat:(jfloat)x;
+- (ADXConstraintReference *)rotationXWithFloat:(float)x;
 
-- (ADXConstraintReference *)rotationYWithFloat:(jfloat)y;
+- (ADXConstraintReference *)rotationYWithFloat:(float)y;
 
-- (ADXConstraintReference *)rotationZWithFloat:(jfloat)z;
+- (ADXConstraintReference *)rotationZWithFloat:(float)z;
 
-- (ADXConstraintReference *)scaleXWithFloat:(jfloat)x;
+- (ADXConstraintReference *)scaleXWithFloat:(float)x;
 
-- (ADXConstraintReference *)scaleYWithFloat:(jfloat)y;
+- (ADXConstraintReference *)scaleYWithFloat:(float)y;
 
 - (void)setConstraintWidgetWithADXConstraintWidget:(ADXConstraintWidget *)widget;
 
@@ -208,13 +212,13 @@
 
 - (ADXConstraintReference *)setHeightWithADXDimension:(ADXDimension *)dimension;
 
-- (void)setHorizontalChainStyleWithInt:(jint)chainStyle;
+- (void)setHorizontalChainStyleWithInt:(int32_t)chainStyle;
 
 - (void)setKeyWithId:(id)key;
 
 - (void)setTagWithNSString:(NSString *)tag;
 
-- (void)setVerticalChainStyleWithInt:(jint)chainStyle;
+- (void)setVerticalChainStyleWithInt:(int32_t)chainStyle;
 
 - (void)setViewWithId:(id)view;
 
@@ -232,20 +236,20 @@
 
 - (ADXConstraintReference *)topToTopWithId:(id)reference;
 
-- (ADXConstraintReference *)translationXWithFloat:(jfloat)x;
+- (ADXConstraintReference *)translationXWithFloat:(float)x;
 
-- (ADXConstraintReference *)translationYWithFloat:(jfloat)y;
+- (ADXConstraintReference *)translationYWithFloat:(float)y;
 
-- (ADXConstraintReference *)translationZWithFloat:(jfloat)z;
+- (ADXConstraintReference *)translationZWithFloat:(float)z;
 
 /*!
  @brief Validate the constraints
  */
 - (void)validate;
 
-- (ADXConstraintReference *)verticalBiasWithFloat:(jfloat)value;
+- (ADXConstraintReference *)verticalBiasWithFloat:(float)value;
 
-- (ADXConstraintReference *)visibilityWithInt:(jint)visibility;
+- (ADXConstraintReference *)visibilityWithInt:(int32_t)visibility;
 
 - (ADXConstraintReference *)widthWithADXDimension:(ADXDimension *)dimension;
 
@@ -288,6 +292,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintReference)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateConstraintReference ADXConstraintReference;
 
+
 #endif
 
 #if !defined (ADXConstraintReference_ConstraintReferenceFactory_) && (INCLUDE_ALL_ConstraintReference || defined(INCLUDE_ADXConstraintReference_ConstraintReferenceFactory))
@@ -306,6 +311,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXConstraintReference_ConstraintReferenceFactory)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintReference_ConstraintReferenceFactory)
 
+
 #endif
 
 #if !defined (ADXConstraintReference_IncorrectConstraintException_) && (INCLUDE_ALL_ConstraintReference || defined(INCLUDE_ADXConstraintReference_IncorrectConstraintException))
@@ -315,8 +321,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintReference_ConstraintReferenceFactory)
 #define INCLUDE_JavaLangException 1
 #include "java/lang/Exception.h"
 
+@class JavaLangBoolean;
 @class JavaLangThrowable;
 @class JavaUtilArrayList;
+@class NSString;
 
 @interface ADXConstraintReference_IncorrectConstraintException : JavaLangException
 
@@ -341,8 +349,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintReference_ConstraintReferenceFactory)
 
 - (instancetype)initWithNSString:(NSString *)arg0
            withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+                     withBoolean:(bool)arg2
+                     withBoolean:(bool)arg3 NS_UNAVAILABLE;
 
 @end
 
@@ -355,6 +363,7 @@ FOUNDATION_EXPORT ADXConstraintReference_IncorrectConstraintException *new_ADXCo
 FOUNDATION_EXPORT ADXConstraintReference_IncorrectConstraintException *create_ADXConstraintReference_IncorrectConstraintException_initWithJavaUtilArrayList_(JavaUtilArrayList *errors);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintReference_IncorrectConstraintException)
+
 
 #endif
 

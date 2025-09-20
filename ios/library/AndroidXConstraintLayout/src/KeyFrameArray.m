@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\KeyFrameArray.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLCustomAttribute.h"
 #include "CustomVariable.h"
 #include "IOSClass.h"
@@ -11,21 +16,29 @@
 #include "J2ObjC_source.h"
 #include "KeyFrameArray.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/System.h"
 #include "java/util/Arrays.h"
 
 
-inline jint ADXKeyFrameArray_CustomArray_get_EMPTY(void);
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
+inline int32_t ADXKeyFrameArray_CustomArray_get_EMPTY(void);
 #define ADXKeyFrameArray_CustomArray_EMPTY 999
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrameArray_CustomArray, EMPTY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrameArray_CustomArray, EMPTY, int32_t)
 
-inline jint ADXKeyFrameArray_CustomVar_get_EMPTY(void);
+inline int32_t ADXKeyFrameArray_CustomVar_get_EMPTY(void);
 #define ADXKeyFrameArray_CustomVar_EMPTY 999
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrameArray_CustomVar, EMPTY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrameArray_CustomVar, EMPTY, int32_t)
 
-inline jint ADXKeyFrameArray_FloatArray_get_EMPTY(void);
+inline int32_t ADXKeyFrameArray_FloatArray_get_EMPTY(void);
 #define ADXKeyFrameArray_FloatArray_EMPTY 999
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrameArray_FloatArray, EMPTY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrameArray_FloatArray, EMPTY, int32_t)
 
 @implementation ADXKeyFrameArray
 
@@ -66,6 +79,8 @@ ADXKeyFrameArray *create_ADXKeyFrameArray_init() {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyFrameArray)
 
+J2OBJC_NAME_MAPPING(ADXKeyFrameArray, "androidx.constraintlayout.core.motion.utils", "ADX")
+
 @implementation ADXKeyFrameArray_CustomArray
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -83,26 +98,26 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)dump {
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", @"V: ", JavaUtilArrays_toStringWithIntArray_(JavaUtilArrays_copyOfWithIntArray_withInt_(keys_, count_)))];
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"K: ["];
-  for (jint i = 0; i < count_; i++) {
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:JreStrcat("$@", ((i == 0 ? @"" : @", ")), [self valueAtWithInt:i])];
+  [JreLoadStatic(JavaLangSystem, out) printWithNSString:@"K: ["];
+  for (int32_t i = 0; i < count_; i++) {
+    [JreLoadStatic(JavaLangSystem, out) printWithNSString:JreStrcat("$@", ((i == 0 ? @"" : @", ")), [self valueAtWithInt:i])];
   }
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"]"];
+  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:@"]"];
 }
 
-- (jint)size {
+- (int32_t)size {
   return count_;
 }
 
-- (ADXCLCustomAttribute *)valueAtWithInt:(jint)i {
+- (ADXCLCustomAttribute *)valueAtWithInt:(int32_t)i {
   return IOSObjectArray_Get(nil_chk(values_), IOSIntArray_Get(nil_chk(keys_), i));
 }
 
-- (jint)keyAtWithInt:(jint)i {
+- (int32_t)keyAtWithInt:(int32_t)i {
   return IOSIntArray_Get(nil_chk(keys_), i);
 }
 
-- (void)appendWithInt:(jint)position
+- (void)appendWithInt:(int32_t)position
 withADXCLCustomAttribute:(ADXCLCustomAttribute *)value {
   if (IOSObjectArray_Get(nil_chk(values_), position) != nil) {
     [self removeWithInt:position];
@@ -112,9 +127,9 @@ withADXCLCustomAttribute:(ADXCLCustomAttribute *)value {
   JavaUtilArrays_sortWithIntArray_(keys_);
 }
 
-- (void)removeWithInt:(jint)position {
+- (void)removeWithInt:(int32_t)position {
   IOSObjectArray_Set(nil_chk(values_), position, nil);
-  for (jint j = 0, i = 0; i < count_; i++) {
+  for (int32_t j = 0, i = 0; i < count_; i++) {
     if (position == IOSIntArray_Get(nil_chk(keys_), i)) {
       *IOSIntArray_GetRef(keys_, i) = ADXKeyFrameArray_CustomArray_EMPTY;
       j++;
@@ -203,26 +218,26 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)dump {
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", @"V: ", JavaUtilArrays_toStringWithIntArray_(JavaUtilArrays_copyOfWithIntArray_withInt_(keys_, count_)))];
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"K: ["];
-  for (jint i = 0; i < count_; i++) {
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:JreStrcat("$@", ((i == 0 ? @"" : @", ")), [self valueAtWithInt:i])];
+  [JreLoadStatic(JavaLangSystem, out) printWithNSString:@"K: ["];
+  for (int32_t i = 0; i < count_; i++) {
+    [JreLoadStatic(JavaLangSystem, out) printWithNSString:JreStrcat("$@", ((i == 0 ? @"" : @", ")), [self valueAtWithInt:i])];
   }
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"]"];
+  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:@"]"];
 }
 
-- (jint)size {
+- (int32_t)size {
   return count_;
 }
 
-- (ADXCustomVariable *)valueAtWithInt:(jint)i {
+- (ADXCustomVariable *)valueAtWithInt:(int32_t)i {
   return IOSObjectArray_Get(nil_chk(values_), IOSIntArray_Get(nil_chk(keys_), i));
 }
 
-- (jint)keyAtWithInt:(jint)i {
+- (int32_t)keyAtWithInt:(int32_t)i {
   return IOSIntArray_Get(nil_chk(keys_), i);
 }
 
-- (void)appendWithInt:(jint)position
+- (void)appendWithInt:(int32_t)position
 withADXCustomVariable:(ADXCustomVariable *)value {
   if (IOSObjectArray_Get(nil_chk(values_), position) != nil) {
     [self removeWithInt:position];
@@ -232,9 +247,9 @@ withADXCustomVariable:(ADXCustomVariable *)value {
   JavaUtilArrays_sortWithIntArray_(keys_);
 }
 
-- (void)removeWithInt:(jint)position {
+- (void)removeWithInt:(int32_t)position {
   IOSObjectArray_Set(nil_chk(values_), position, nil);
-  for (jint j = 0, i = 0; i < count_; i++) {
+  for (int32_t j = 0, i = 0; i < count_; i++) {
     if (position == IOSIntArray_Get(nil_chk(keys_), i)) {
       *IOSIntArray_GetRef(keys_, i) = ADXKeyFrameArray_CustomVar_EMPTY;
       j++;
@@ -323,26 +338,26 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)dump {
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", @"V: ", JavaUtilArrays_toStringWithIntArray_(JavaUtilArrays_copyOfWithIntArray_withInt_(keys_, count_)))];
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"K: ["];
-  for (jint i = 0; i < count_; i++) {
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:JreStrcat("$$", ((i == 0 ? @"" : @", ")), JavaUtilArrays_toStringWithFloatArray_([self valueAtWithInt:i]))];
+  [JreLoadStatic(JavaLangSystem, out) printWithNSString:@"K: ["];
+  for (int32_t i = 0; i < count_; i++) {
+    [JreLoadStatic(JavaLangSystem, out) printWithNSString:JreStrcat("$$", ((i == 0 ? @"" : @", ")), JavaUtilArrays_toStringWithFloatArray_([self valueAtWithInt:i]))];
   }
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"]"];
+  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:@"]"];
 }
 
-- (jint)size {
+- (int32_t)size {
   return count_;
 }
 
-- (IOSFloatArray *)valueAtWithInt:(jint)i {
+- (IOSFloatArray *)valueAtWithInt:(int32_t)i {
   return IOSObjectArray_Get(nil_chk(values_), IOSIntArray_Get(nil_chk(keys_), i));
 }
 
-- (jint)keyAtWithInt:(jint)i {
+- (int32_t)keyAtWithInt:(int32_t)i {
   return IOSIntArray_Get(nil_chk(keys_), i);
 }
 
-- (void)appendWithInt:(jint)position
+- (void)appendWithInt:(int32_t)position
        withFloatArray:(IOSFloatArray *)value {
   if (IOSObjectArray_Get(nil_chk(values_), position) != nil) {
     [self removeWithInt:position];
@@ -352,9 +367,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   JavaUtilArrays_sortWithIntArray_(keys_);
 }
 
-- (void)removeWithInt:(jint)position {
+- (void)removeWithInt:(int32_t)position {
   IOSObjectArray_Set(nil_chk(values_), position, nil);
-  for (jint j = 0, i = 0; i < count_; i++) {
+  for (int32_t j = 0, i = 0; i < count_; i++) {
     if (position == IOSIntArray_Get(nil_chk(keys_), i)) {
       *IOSIntArray_GetRef(keys_, i) = ADXKeyFrameArray_FloatArray_EMPTY;
       j++;

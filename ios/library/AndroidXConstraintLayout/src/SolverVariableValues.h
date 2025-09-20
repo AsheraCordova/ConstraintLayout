@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\SolverVariableValues.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_SolverVariableValues")
@@ -25,6 +26,10 @@
 @class ADXSolverVariable;
 @class IOSFloatArray;
 @class IOSIntArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  @brief Store a set of variables and their values in an array-based linked list coupled
@@ -38,49 +43,49 @@
   IOSFloatArray *values_;
   IOSIntArray *previous_;
   IOSIntArray *next_;
-  jint mCount_;
-  jint head_;
-  __unsafe_unretained ADXCache *mCache_;
+  int32_t mCount_;
+  int32_t head_;
+  WEAK_ ADXCache *mCache_;
 }
 
 #pragma mark Public
 
 - (void)addWithADXSolverVariable:(ADXSolverVariable *)v
-                       withFloat:(jfloat)value
-                     withBoolean:(jboolean)removeFromDefinition;
+                       withFloat:(float)value
+                     withBoolean:(bool)removeFromDefinition;
 
 - (void)clear;
 
-- (jboolean)containsWithADXSolverVariable:(ADXSolverVariable *)variable;
+- (bool)containsWithADXSolverVariable:(ADXSolverVariable *)variable;
 
 - (void)display;
 
-- (void)divideByAmountWithFloat:(jfloat)amount;
+- (void)divideByAmountWithFloat:(float)amount;
 
-- (jfloat)getWithADXSolverVariable:(ADXSolverVariable *)variable;
+- (float)getWithADXSolverVariable:(ADXSolverVariable *)variable;
 
-- (jint)getCurrentSize;
+- (int32_t)getCurrentSize;
 
-- (ADXSolverVariable *)getVariableWithInt:(jint)index;
+- (ADXSolverVariable *)getVariableWithInt:(int32_t)index;
 
-- (jfloat)getVariableValueWithInt:(jint)index;
+- (float)getVariableValueWithInt:(int32_t)index;
 
-- (jint)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable;
+- (int32_t)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable;
 
 - (void)invert;
 
 - (void)putWithADXSolverVariable:(ADXSolverVariable *)variable
-                       withFloat:(jfloat)value;
+                       withFloat:(float)value;
 
-- (jfloat)removeWithADXSolverVariable:(ADXSolverVariable *)v
-                          withBoolean:(jboolean)removeFromDefinition;
+- (float)removeWithADXSolverVariable:(ADXSolverVariable *)v
+                         withBoolean:(bool)removeFromDefinition;
 
-- (jint)sizeInBytes;
+- (int32_t)sizeInBytes;
 
 - (NSString *)description;
 
-- (jfloat)useWithADXArrayRow:(ADXArrayRow *)def
-                 withBoolean:(jboolean)removeFromDefinition;
+- (float)useWithADXArrayRow:(ADXArrayRow *)def
+                withBoolean:(bool)removeFromDefinition;
 
 #pragma mark Package-Private
 
@@ -111,6 +116,7 @@ FOUNDATION_EXPORT ADXSolverVariableValues *create_ADXSolverVariableValues_initWi
 J2OBJC_TYPE_LITERAL_HEADER(ADXSolverVariableValues)
 
 @compatibility_alias AndroidxConstraintlayoutCoreSolverVariableValues ADXSolverVariableValues;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\TypedValues.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_TypedValues")
@@ -16,6 +17,11 @@
 #if !defined (ADXTypedValues_) && (INCLUDE_ALL_TypedValues || defined(INCLUDE_ADXTypedValues))
 #define ADXTypedValues_
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
+
 /*!
  @brief Provides an interface to values used in KeyFrames and in
   Starting and Ending Widgets
@@ -28,8 +34,8 @@
  @param value
  @return true if it accepted the value
  */
-- (jboolean)setValueWithInt:(jint)id_
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)id_
+                withInt:(int32_t)value;
 
 /*!
  @brief Used to set float values
@@ -37,8 +43,8 @@
  @param value
  @return true if it accepted the value
  */
-- (jboolean)setValueWithInt:(jint)id_
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)id_
+              withFloat:(float)value;
 
 /*!
  @brief Used to set String values
@@ -46,8 +52,8 @@
  @param value
  @return true if it accepted the value
  */
-- (jboolean)setValueWithInt:(jint)id_
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)id_
+           withNSString:(NSString *)value;
 
 /*!
  @brief Used to set boolean values
@@ -55,10 +61,10 @@
  @param value
  @return true if it accepted the value
  */
-- (jboolean)setValueWithInt:(jint)id_
-                withBoolean:(jboolean)value;
+- (bool)setValueWithInt:(int32_t)id_
+            withBoolean:(bool)value;
 
-- (jint)getIdWithNSString:(NSString *)name;
+- (int32_t)getIdWithNSString:(NSString *)name;
 
 @end
 
@@ -69,33 +75,34 @@ inline NSString *ADXTypedValues_get_S_CUSTOM(void);
 FOUNDATION_EXPORT NSString *ADXTypedValues_S_CUSTOM;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues, S_CUSTOM, NSString *)
 
-inline jint ADXTypedValues_get_BOOLEAN_MASK(void);
+inline int32_t ADXTypedValues_get_BOOLEAN_MASK(void);
 #define ADXTypedValues_BOOLEAN_MASK 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, BOOLEAN_MASK, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, BOOLEAN_MASK, int32_t)
 
-inline jint ADXTypedValues_get_INT_MASK(void);
+inline int32_t ADXTypedValues_get_INT_MASK(void);
 #define ADXTypedValues_INT_MASK 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, INT_MASK, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, INT_MASK, int32_t)
 
-inline jint ADXTypedValues_get_FLOAT_MASK(void);
+inline int32_t ADXTypedValues_get_FLOAT_MASK(void);
 #define ADXTypedValues_FLOAT_MASK 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, FLOAT_MASK, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, FLOAT_MASK, int32_t)
 
-inline jint ADXTypedValues_get_STRING_MASK(void);
+inline int32_t ADXTypedValues_get_STRING_MASK(void);
 #define ADXTypedValues_STRING_MASK 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, STRING_MASK, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, STRING_MASK, int32_t)
 
-inline jint ADXTypedValues_get_TYPE_FRAME_POSITION(void);
+inline int32_t ADXTypedValues_get_TYPE_FRAME_POSITION(void);
 #define ADXTypedValues_TYPE_FRAME_POSITION 100
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, TYPE_FRAME_POSITION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, TYPE_FRAME_POSITION, int32_t)
 
-inline jint ADXTypedValues_get_TYPE_TARGET(void);
+inline int32_t ADXTypedValues_get_TYPE_TARGET(void);
 #define ADXTypedValues_TYPE_TARGET 101
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, TYPE_TARGET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues, TYPE_TARGET, int32_t)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues)
 
 #define AndroidxConstraintlayoutCoreMotionUtilsTypedValues ADXTypedValues
+
 
 #endif
 
@@ -103,6 +110,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues)
 #define ADXTypedValues_Attributes_
 
 @class IOSObjectArray;
+@class JavaLangInteger;
+@class NSString;
 
 @protocol ADXTypedValues_Attributes < JavaObject >
 
@@ -116,85 +125,85 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues)
  @param name the name of the value
  @return the id of the vlalue or -1 if no value exist
  */
-+ (jint)getIdWithNSString:(NSString *)name;
++ (int32_t)getIdWithNSString:(NSString *)name;
 
-+ (jint)getTypeWithInt:(jint)name;
++ (int32_t)getTypeWithInt:(int32_t)name;
 
 @end
 
 J2OBJC_STATIC_INIT(ADXTypedValues_Attributes)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_CURVE_FIT(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_CURVE_FIT(void);
 #define ADXTypedValues_Attributes_TYPE_CURVE_FIT 301
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_CURVE_FIT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_CURVE_FIT, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_VISIBILITY(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_VISIBILITY(void);
 #define ADXTypedValues_Attributes_TYPE_VISIBILITY 302
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_VISIBILITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_VISIBILITY, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_ALPHA(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_ALPHA(void);
 #define ADXTypedValues_Attributes_TYPE_ALPHA 303
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ALPHA, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ALPHA, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_TRANSLATION_X(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_TRANSLATION_X(void);
 #define ADXTypedValues_Attributes_TYPE_TRANSLATION_X 304
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_TRANSLATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_TRANSLATION_X, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_TRANSLATION_Y(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_TRANSLATION_Y(void);
 #define ADXTypedValues_Attributes_TYPE_TRANSLATION_Y 305
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_TRANSLATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_TRANSLATION_Y, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_TRANSLATION_Z(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_TRANSLATION_Z(void);
 #define ADXTypedValues_Attributes_TYPE_TRANSLATION_Z 306
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_TRANSLATION_Z, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_TRANSLATION_Z, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_ELEVATION(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_ELEVATION(void);
 #define ADXTypedValues_Attributes_TYPE_ELEVATION 307
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ELEVATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ELEVATION, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_ROTATION_X(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_ROTATION_X(void);
 #define ADXTypedValues_Attributes_TYPE_ROTATION_X 308
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ROTATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ROTATION_X, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_ROTATION_Y(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_ROTATION_Y(void);
 #define ADXTypedValues_Attributes_TYPE_ROTATION_Y 309
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ROTATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ROTATION_Y, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_ROTATION_Z(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_ROTATION_Z(void);
 #define ADXTypedValues_Attributes_TYPE_ROTATION_Z 310
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ROTATION_Z, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_ROTATION_Z, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_SCALE_X(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_SCALE_X(void);
 #define ADXTypedValues_Attributes_TYPE_SCALE_X 311
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_SCALE_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_SCALE_X, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_SCALE_Y(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_SCALE_Y(void);
 #define ADXTypedValues_Attributes_TYPE_SCALE_Y 312
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_SCALE_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_SCALE_Y, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_PIVOT_X(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_PIVOT_X(void);
 #define ADXTypedValues_Attributes_TYPE_PIVOT_X 313
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PIVOT_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PIVOT_X, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_PIVOT_Y(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_PIVOT_Y(void);
 #define ADXTypedValues_Attributes_TYPE_PIVOT_Y 314
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PIVOT_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PIVOT_Y, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_PROGRESS(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_PROGRESS(void);
 #define ADXTypedValues_Attributes_TYPE_PROGRESS 315
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PROGRESS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PROGRESS, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_PATH_ROTATE(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_PATH_ROTATE(void);
 #define ADXTypedValues_Attributes_TYPE_PATH_ROTATE 316
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PATH_ROTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PATH_ROTATE, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_EASING(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_EASING(void);
 #define ADXTypedValues_Attributes_TYPE_EASING 317
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_EASING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_EASING, int32_t)
 
-inline jint ADXTypedValues_Attributes_get_TYPE_PIVOT_TARGET(void);
+inline int32_t ADXTypedValues_Attributes_get_TYPE_PIVOT_TARGET(void);
 #define ADXTypedValues_Attributes_TYPE_PIVOT_TARGET 318
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PIVOT_TARGET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Attributes, TYPE_PIVOT_TARGET, int32_t)
 
 inline NSString *ADXTypedValues_Attributes_get_S_CURVE_FIT(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -306,11 +315,12 @@ inline IOSObjectArray *ADXTypedValues_Attributes_get_KEY_WORDS(void);
 FOUNDATION_EXPORT IOSObjectArray *ADXTypedValues_Attributes_KEY_WORDS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues_Attributes, KEY_WORDS, IOSObjectArray *)
 
-FOUNDATION_EXPORT jint ADXTypedValues_Attributes_getIdWithNSString_(NSString *name);
+FOUNDATION_EXPORT int32_t ADXTypedValues_Attributes_getIdWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT jint ADXTypedValues_Attributes_getTypeWithInt_(jint name);
+FOUNDATION_EXPORT int32_t ADXTypedValues_Attributes_getTypeWithInt_(int32_t name);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Attributes)
+
 
 #endif
 
@@ -318,6 +328,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Attributes)
 #define ADXTypedValues_Cycle_
 
 @class IOSObjectArray;
+@class JavaLangInteger;
+@class NSString;
 
 @protocol ADXTypedValues_Cycle < JavaObject >
 
@@ -331,99 +343,99 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Attributes)
  @param name the name of the value
  @return the id of the vlalue or -1 if no value exist
  */
-+ (jint)getIdWithNSString:(NSString *)name;
++ (int32_t)getIdWithNSString:(NSString *)name;
 
 @end
 
 J2OBJC_STATIC_INIT(ADXTypedValues_Cycle)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_CURVE_FIT(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_CURVE_FIT(void);
 #define ADXTypedValues_Cycle_TYPE_CURVE_FIT 401
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_CURVE_FIT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_CURVE_FIT, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_VISIBILITY(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_VISIBILITY(void);
 #define ADXTypedValues_Cycle_TYPE_VISIBILITY 402
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_VISIBILITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_VISIBILITY, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_ALPHA(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_ALPHA(void);
 #define ADXTypedValues_Cycle_TYPE_ALPHA 403
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ALPHA, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ALPHA, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_TRANSLATION_X(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_TRANSLATION_X(void);
 #define ADXTypedValues_Cycle_TYPE_TRANSLATION_X 304
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_TRANSLATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_TRANSLATION_X, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_TRANSLATION_Y(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_TRANSLATION_Y(void);
 #define ADXTypedValues_Cycle_TYPE_TRANSLATION_Y 305
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_TRANSLATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_TRANSLATION_Y, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_TRANSLATION_Z(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_TRANSLATION_Z(void);
 #define ADXTypedValues_Cycle_TYPE_TRANSLATION_Z 306
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_TRANSLATION_Z, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_TRANSLATION_Z, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_ELEVATION(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_ELEVATION(void);
 #define ADXTypedValues_Cycle_TYPE_ELEVATION 307
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ELEVATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ELEVATION, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_ROTATION_X(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_ROTATION_X(void);
 #define ADXTypedValues_Cycle_TYPE_ROTATION_X 308
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ROTATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ROTATION_X, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_ROTATION_Y(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_ROTATION_Y(void);
 #define ADXTypedValues_Cycle_TYPE_ROTATION_Y 309
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ROTATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ROTATION_Y, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_ROTATION_Z(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_ROTATION_Z(void);
 #define ADXTypedValues_Cycle_TYPE_ROTATION_Z 310
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ROTATION_Z, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_ROTATION_Z, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_SCALE_X(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_SCALE_X(void);
 #define ADXTypedValues_Cycle_TYPE_SCALE_X 311
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_SCALE_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_SCALE_X, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_SCALE_Y(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_SCALE_Y(void);
 #define ADXTypedValues_Cycle_TYPE_SCALE_Y 312
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_SCALE_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_SCALE_Y, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_PIVOT_X(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_PIVOT_X(void);
 #define ADXTypedValues_Cycle_TYPE_PIVOT_X 313
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PIVOT_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PIVOT_X, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_PIVOT_Y(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_PIVOT_Y(void);
 #define ADXTypedValues_Cycle_TYPE_PIVOT_Y 314
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PIVOT_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PIVOT_Y, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_PROGRESS(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_PROGRESS(void);
 #define ADXTypedValues_Cycle_TYPE_PROGRESS 315
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PROGRESS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PROGRESS, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_PATH_ROTATE(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_PATH_ROTATE(void);
 #define ADXTypedValues_Cycle_TYPE_PATH_ROTATE 416
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PATH_ROTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_PATH_ROTATE, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_EASING(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_EASING(void);
 #define ADXTypedValues_Cycle_TYPE_EASING 420
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_EASING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_EASING, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_WAVE_SHAPE(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_WAVE_SHAPE(void);
 #define ADXTypedValues_Cycle_TYPE_WAVE_SHAPE 421
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_SHAPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_SHAPE, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_CUSTOM_WAVE_SHAPE(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_CUSTOM_WAVE_SHAPE(void);
 #define ADXTypedValues_Cycle_TYPE_CUSTOM_WAVE_SHAPE 422
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_CUSTOM_WAVE_SHAPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_CUSTOM_WAVE_SHAPE, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_WAVE_PERIOD(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_WAVE_PERIOD(void);
 #define ADXTypedValues_Cycle_TYPE_WAVE_PERIOD 423
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_PERIOD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_PERIOD, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_WAVE_OFFSET(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_WAVE_OFFSET(void);
 #define ADXTypedValues_Cycle_TYPE_WAVE_OFFSET 424
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_OFFSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_OFFSET, int32_t)
 
-inline jint ADXTypedValues_Cycle_get_TYPE_WAVE_PHASE(void);
+inline int32_t ADXTypedValues_Cycle_get_TYPE_WAVE_PHASE(void);
 #define ADXTypedValues_Cycle_TYPE_WAVE_PHASE 425
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_PHASE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Cycle, TYPE_WAVE_PHASE, int32_t)
 
 inline NSString *ADXTypedValues_Cycle_get_S_CURVE_FIT(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -540,9 +552,10 @@ inline IOSObjectArray *ADXTypedValues_Cycle_get_KEY_WORDS(void);
 FOUNDATION_EXPORT IOSObjectArray *ADXTypedValues_Cycle_KEY_WORDS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues_Cycle, KEY_WORDS, IOSObjectArray *)
 
-FOUNDATION_EXPORT jint ADXTypedValues_Cycle_getIdWithNSString_(NSString *name);
+FOUNDATION_EXPORT int32_t ADXTypedValues_Cycle_getIdWithNSString_(NSString *name);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Cycle)
+
 
 #endif
 
@@ -550,6 +563,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Cycle)
 #define ADXTypedValues_Trigger_
 
 @class IOSObjectArray;
+@class JavaLangInteger;
+@class NSString;
 
 @protocol ADXTypedValues_Trigger < JavaObject >
 
@@ -563,7 +578,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Cycle)
  @param name the name of the value
  @return the id of the vlalue or -1 if no value exist
  */
-+ (jint)getIdWithNSString:(NSString *)name;
++ (int32_t)getIdWithNSString:(NSString *)name;
 
 @end
 
@@ -634,57 +649,58 @@ inline IOSObjectArray *ADXTypedValues_Trigger_get_KEY_WORDS(void);
 FOUNDATION_EXPORT IOSObjectArray *ADXTypedValues_Trigger_KEY_WORDS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues_Trigger, KEY_WORDS, IOSObjectArray *)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_VIEW_TRANSITION_ON_CROSS(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_VIEW_TRANSITION_ON_CROSS(void);
 #define ADXTypedValues_Trigger_TYPE_VIEW_TRANSITION_ON_CROSS 301
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_VIEW_TRANSITION_ON_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_VIEW_TRANSITION_ON_CROSS, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS(void);
 #define ADXTypedValues_Trigger_TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS 302
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS(void);
 #define ADXTypedValues_Trigger_TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS 303
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_POST_LAYOUT(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_POST_LAYOUT(void);
 #define ADXTypedValues_Trigger_TYPE_POST_LAYOUT 304
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_POST_LAYOUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_POST_LAYOUT, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_TRIGGER_SLACK(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_TRIGGER_SLACK(void);
 #define ADXTypedValues_Trigger_TYPE_TRIGGER_SLACK 305
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_SLACK, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_SLACK, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_TRIGGER_COLLISION_VIEW(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_TRIGGER_COLLISION_VIEW(void);
 #define ADXTypedValues_Trigger_TYPE_TRIGGER_COLLISION_VIEW 306
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_COLLISION_VIEW, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_COLLISION_VIEW, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_TRIGGER_COLLISION_ID(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_TRIGGER_COLLISION_ID(void);
 #define ADXTypedValues_Trigger_TYPE_TRIGGER_COLLISION_ID 307
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_COLLISION_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_COLLISION_ID, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_TRIGGER_ID(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_TRIGGER_ID(void);
 #define ADXTypedValues_Trigger_TYPE_TRIGGER_ID 308
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_ID, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_POSITIVE_CROSS(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_POSITIVE_CROSS(void);
 #define ADXTypedValues_Trigger_TYPE_POSITIVE_CROSS 309
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_POSITIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_POSITIVE_CROSS, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_NEGATIVE_CROSS(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_NEGATIVE_CROSS(void);
 #define ADXTypedValues_Trigger_TYPE_NEGATIVE_CROSS 310
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_NEGATIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_NEGATIVE_CROSS, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_TRIGGER_RECEIVER(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_TRIGGER_RECEIVER(void);
 #define ADXTypedValues_Trigger_TYPE_TRIGGER_RECEIVER 311
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_RECEIVER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_TRIGGER_RECEIVER, int32_t)
 
-inline jint ADXTypedValues_Trigger_get_TYPE_CROSS(void);
+inline int32_t ADXTypedValues_Trigger_get_TYPE_CROSS(void);
 #define ADXTypedValues_Trigger_TYPE_CROSS 312
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Trigger, TYPE_CROSS, int32_t)
 
-FOUNDATION_EXPORT jint ADXTypedValues_Trigger_getIdWithNSString_(NSString *name);
+FOUNDATION_EXPORT int32_t ADXTypedValues_Trigger_getIdWithNSString_(NSString *name);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Trigger)
+
 
 #endif
 
@@ -692,6 +708,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Trigger)
 #define ADXTypedValues_Position_
 
 @class IOSObjectArray;
+@class JavaLangInteger;
+@class NSString;
 
 @protocol ADXTypedValues_Position < JavaObject >
 
@@ -705,7 +723,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Trigger)
  @param name the name of the value
  @return the id of the vlalue or -1 if no value exist
  */
-+ (jint)getIdWithNSString:(NSString *)name;
++ (int32_t)getIdWithNSString:(NSString *)name;
 
 @end
 
@@ -746,54 +764,55 @@ inline NSString *ADXTypedValues_Position_get_S_PERCENT_Y(void);
 FOUNDATION_EXPORT NSString *ADXTypedValues_Position_S_PERCENT_Y;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues_Position, S_PERCENT_Y, NSString *)
 
-inline jint ADXTypedValues_Position_get_TYPE_TRANSITION_EASING(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_TRANSITION_EASING(void);
 #define ADXTypedValues_Position_TYPE_TRANSITION_EASING 501
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_TRANSITION_EASING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_TRANSITION_EASING, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_DRAWPATH(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_DRAWPATH(void);
 #define ADXTypedValues_Position_TYPE_DRAWPATH 502
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_DRAWPATH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_DRAWPATH, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_PERCENT_WIDTH(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_PERCENT_WIDTH(void);
 #define ADXTypedValues_Position_TYPE_PERCENT_WIDTH 503
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_WIDTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_WIDTH, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_PERCENT_HEIGHT(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_PERCENT_HEIGHT(void);
 #define ADXTypedValues_Position_TYPE_PERCENT_HEIGHT 504
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_HEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_HEIGHT, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_SIZE_PERCENT(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_SIZE_PERCENT(void);
 #define ADXTypedValues_Position_TYPE_SIZE_PERCENT 505
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_SIZE_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_SIZE_PERCENT, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_PERCENT_X(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_PERCENT_X(void);
 #define ADXTypedValues_Position_TYPE_PERCENT_X 506
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_X, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_PERCENT_Y(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_PERCENT_Y(void);
 #define ADXTypedValues_Position_TYPE_PERCENT_Y 507
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PERCENT_Y, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_CURVE_FIT(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_CURVE_FIT(void);
 #define ADXTypedValues_Position_TYPE_CURVE_FIT 508
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_CURVE_FIT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_CURVE_FIT, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_PATH_MOTION_ARC(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_PATH_MOTION_ARC(void);
 #define ADXTypedValues_Position_TYPE_PATH_MOTION_ARC 509
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PATH_MOTION_ARC, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_PATH_MOTION_ARC, int32_t)
 
-inline jint ADXTypedValues_Position_get_TYPE_POSITION_TYPE(void);
+inline int32_t ADXTypedValues_Position_get_TYPE_POSITION_TYPE(void);
 #define ADXTypedValues_Position_TYPE_POSITION_TYPE 510
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_POSITION_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Position, TYPE_POSITION_TYPE, int32_t)
 
 inline IOSObjectArray *ADXTypedValues_Position_get_KEY_WORDS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
 FOUNDATION_EXPORT IOSObjectArray *ADXTypedValues_Position_KEY_WORDS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues_Position, KEY_WORDS, IOSObjectArray *)
 
-FOUNDATION_EXPORT jint ADXTypedValues_Position_getIdWithNSString_(NSString *name);
+FOUNDATION_EXPORT int32_t ADXTypedValues_Position_getIdWithNSString_(NSString *name);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Position)
+
 
 #endif
 
@@ -801,6 +820,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Position)
 #define ADXTypedValues_Motion_
 
 @class IOSObjectArray;
+@class JavaLangInteger;
+@class NSString;
 
 @protocol ADXTypedValues_Motion < JavaObject >
 
@@ -814,7 +835,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Position)
  @param name the name of the value
  @return the id of the vlalue or -1 if no value exist
  */
-+ (jint)getIdWithNSString:(NSString *)name;
++ (int32_t)getIdWithNSString:(NSString *)name;
 
 @end
 
@@ -890,61 +911,62 @@ inline IOSObjectArray *ADXTypedValues_Motion_get_KEY_WORDS(void);
 FOUNDATION_EXPORT IOSObjectArray *ADXTypedValues_Motion_KEY_WORDS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues_Motion, KEY_WORDS, IOSObjectArray *)
 
-inline jint ADXTypedValues_Motion_get_TYPE_STAGGER(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_STAGGER(void);
 #define ADXTypedValues_Motion_TYPE_STAGGER 600
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_STAGGER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_STAGGER, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_PATH_ROTATE(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_PATH_ROTATE(void);
 #define ADXTypedValues_Motion_TYPE_PATH_ROTATE 601
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_PATH_ROTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_PATH_ROTATE, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_QUANTIZE_MOTION_PHASE(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_QUANTIZE_MOTION_PHASE(void);
 #define ADXTypedValues_Motion_TYPE_QUANTIZE_MOTION_PHASE 602
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_MOTION_PHASE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_MOTION_PHASE, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_EASING(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_EASING(void);
 #define ADXTypedValues_Motion_TYPE_EASING 603
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_EASING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_EASING, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_QUANTIZE_INTERPOLATOR(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_QUANTIZE_INTERPOLATOR(void);
 #define ADXTypedValues_Motion_TYPE_QUANTIZE_INTERPOLATOR 604
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_INTERPOLATOR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_INTERPOLATOR, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_ANIMATE_RELATIVE_TO(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_ANIMATE_RELATIVE_TO(void);
 #define ADXTypedValues_Motion_TYPE_ANIMATE_RELATIVE_TO 605
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_ANIMATE_RELATIVE_TO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_ANIMATE_RELATIVE_TO, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_ANIMATE_CIRCLEANGLE_TO(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_ANIMATE_CIRCLEANGLE_TO(void);
 #define ADXTypedValues_Motion_TYPE_ANIMATE_CIRCLEANGLE_TO 606
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_ANIMATE_CIRCLEANGLE_TO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_ANIMATE_CIRCLEANGLE_TO, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_PATHMOTION_ARC(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_PATHMOTION_ARC(void);
 #define ADXTypedValues_Motion_TYPE_PATHMOTION_ARC 607
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_PATHMOTION_ARC, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_PATHMOTION_ARC, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_DRAW_PATH(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_DRAW_PATH(void);
 #define ADXTypedValues_Motion_TYPE_DRAW_PATH 608
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_DRAW_PATH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_DRAW_PATH, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_POLAR_RELATIVETO(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_POLAR_RELATIVETO(void);
 #define ADXTypedValues_Motion_TYPE_POLAR_RELATIVETO 609
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_POLAR_RELATIVETO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_POLAR_RELATIVETO, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_QUANTIZE_MOTIONSTEPS(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_QUANTIZE_MOTIONSTEPS(void);
 #define ADXTypedValues_Motion_TYPE_QUANTIZE_MOTIONSTEPS 610
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_MOTIONSTEPS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_MOTIONSTEPS, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_QUANTIZE_INTERPOLATOR_TYPE(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_QUANTIZE_INTERPOLATOR_TYPE(void);
 #define ADXTypedValues_Motion_TYPE_QUANTIZE_INTERPOLATOR_TYPE 611
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_INTERPOLATOR_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_INTERPOLATOR_TYPE, int32_t)
 
-inline jint ADXTypedValues_Motion_get_TYPE_QUANTIZE_INTERPOLATOR_ID(void);
+inline int32_t ADXTypedValues_Motion_get_TYPE_QUANTIZE_INTERPOLATOR_ID(void);
 #define ADXTypedValues_Motion_TYPE_QUANTIZE_INTERPOLATOR_ID 612
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_INTERPOLATOR_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Motion, TYPE_QUANTIZE_INTERPOLATOR_ID, int32_t)
 
-FOUNDATION_EXPORT jint ADXTypedValues_Motion_getIdWithNSString_(NSString *name);
+FOUNDATION_EXPORT int32_t ADXTypedValues_Motion_getIdWithNSString_(NSString *name);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Motion)
+
 
 #endif
 
@@ -952,6 +974,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Motion)
 #define ADXTypedValues_Custom_
 
 @class IOSObjectArray;
+@class JavaLangInteger;
+@class NSString;
 
 @protocol ADXTypedValues_Custom < JavaObject >
 
@@ -965,7 +989,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Motion)
  @param name the name of the value
  @return the id of the vlalue or -1 if no value exist
  */
-+ (jint)getIdWithNSString:(NSString *)name;
++ (int32_t)getIdWithNSString:(NSString *)name;
 
 @end
 
@@ -1011,37 +1035,38 @@ inline IOSObjectArray *ADXTypedValues_Custom_get_KEY_WORDS(void);
 FOUNDATION_EXPORT IOSObjectArray *ADXTypedValues_Custom_KEY_WORDS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTypedValues_Custom, KEY_WORDS, IOSObjectArray *)
 
-inline jint ADXTypedValues_Custom_get_TYPE_INT(void);
+inline int32_t ADXTypedValues_Custom_get_TYPE_INT(void);
 #define ADXTypedValues_Custom_TYPE_INT 900
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_INT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_INT, int32_t)
 
-inline jint ADXTypedValues_Custom_get_TYPE_FLOAT(void);
+inline int32_t ADXTypedValues_Custom_get_TYPE_FLOAT(void);
 #define ADXTypedValues_Custom_TYPE_FLOAT 901
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_FLOAT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_FLOAT, int32_t)
 
-inline jint ADXTypedValues_Custom_get_TYPE_COLOR(void);
+inline int32_t ADXTypedValues_Custom_get_TYPE_COLOR(void);
 #define ADXTypedValues_Custom_TYPE_COLOR 902
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_COLOR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_COLOR, int32_t)
 
-inline jint ADXTypedValues_Custom_get_TYPE_STRING(void);
+inline int32_t ADXTypedValues_Custom_get_TYPE_STRING(void);
 #define ADXTypedValues_Custom_TYPE_STRING 903
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_STRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_STRING, int32_t)
 
-inline jint ADXTypedValues_Custom_get_TYPE_BOOLEAN(void);
+inline int32_t ADXTypedValues_Custom_get_TYPE_BOOLEAN(void);
 #define ADXTypedValues_Custom_TYPE_BOOLEAN 904
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_BOOLEAN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_BOOLEAN, int32_t)
 
-inline jint ADXTypedValues_Custom_get_TYPE_DIMENSION(void);
+inline int32_t ADXTypedValues_Custom_get_TYPE_DIMENSION(void);
 #define ADXTypedValues_Custom_TYPE_DIMENSION 905
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_DIMENSION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_DIMENSION, int32_t)
 
-inline jint ADXTypedValues_Custom_get_TYPE_REFERENCE(void);
+inline int32_t ADXTypedValues_Custom_get_TYPE_REFERENCE(void);
 #define ADXTypedValues_Custom_TYPE_REFERENCE 906
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_REFERENCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedValues_Custom, TYPE_REFERENCE, int32_t)
 
-FOUNDATION_EXPORT jint ADXTypedValues_Custom_getIdWithNSString_(NSString *name);
+FOUNDATION_EXPORT int32_t ADXTypedValues_Custom_getIdWithNSString_(NSString *name);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedValues_Custom)
+
 
 #endif
 

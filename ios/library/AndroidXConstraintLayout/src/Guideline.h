@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Guideline.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Guideline")
@@ -21,6 +22,8 @@
 #include "View.h"
 
 @class ADContext;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXGuideline : ADView
 
@@ -30,18 +33,18 @@
 
 - (instancetype)initWithADContext:(ADContext *)context;
 
-- (void)setGuidelineBeginWithInt:(jint)margin;
+- (void)setGuidelineBeginWithInt:(int32_t)margin;
 
-- (void)setGuidelineEndWithInt:(jint)margin;
+- (void)setGuidelineEndWithInt:(int32_t)margin;
 
-- (void)setGuidelinePercentWithFloat:(jfloat)ratio;
+- (void)setGuidelinePercentWithFloat:(float)ratio;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 #pragma mark Protected
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 @end
 
@@ -62,6 +65,7 @@ FOUNDATION_EXPORT ADXGuideline *create_ADXGuideline_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXGuideline)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetGuideline ADXGuideline;
+
 
 #endif
 

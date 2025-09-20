@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintLayoutStates.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintLayoutStates")
@@ -20,14 +21,18 @@
 @class ADXConstraintLayout;
 @class ADXConstraintSet;
 @class ADXConstraintsChangedListener;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  */
 @interface ADXConstraintLayoutStates : NSObject {
  @public
   ADXConstraintSet *mDefaultConstraintSet_;
-  jint mCurrentStateId_;
-  jint mCurrentConstraintNumber_;
+  int32_t mCurrentStateId_;
+  int32_t mCurrentConstraintNumber_;
 }
 
 #pragma mark Public
@@ -38,9 +43,9 @@
  @param width
  @param height
  */
-- (jboolean)needsToChangeWithInt:(jint)id_
-                       withFloat:(jfloat)width
-                       withFloat:(jfloat)height;
+- (bool)needsToChangeWithInt:(int32_t)id_
+                   withFloat:(float)width
+                   withFloat:(float)height;
 
 - (void)setOnConstraintsChangedWithADXConstraintsChangedListener:(ADXConstraintsChangedListener *)constraintsChangedListener;
 
@@ -50,15 +55,15 @@
  @param width
  @param height
  */
-- (void)updateConstraintsWithInt:(jint)id_
-                       withFloat:(jfloat)width
-                       withFloat:(jfloat)height;
+- (void)updateConstraintsWithInt:(int32_t)id_
+                       withFloat:(float)width
+                       withFloat:(float)height;
 
 #pragma mark Package-Private
 
 - (instancetype)initWithADContext:(ADContext *)context
           withADXConstraintLayout:(ADXConstraintLayout *)layout
-                          withInt:(jint)resourceID;
+                          withInt:(int32_t)resourceID;
 
 // Disallowed inherited constructors, do not use.
 
@@ -75,15 +80,16 @@ inline NSString *ADXConstraintLayoutStates_get_TAG(void);
 FOUNDATION_EXPORT NSString *ADXConstraintLayoutStates_TAG;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintLayoutStates, TAG, NSString *)
 
-FOUNDATION_EXPORT void ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADXConstraintLayoutStates *self, ADContext *context, ADXConstraintLayout *layout, jint resourceID);
+FOUNDATION_EXPORT void ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADXConstraintLayoutStates *self, ADContext *context, ADXConstraintLayout *layout, int32_t resourceID);
 
-FOUNDATION_EXPORT ADXConstraintLayoutStates *new_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, jint resourceID) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintLayoutStates *new_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, int32_t resourceID) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintLayoutStates *create_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, jint resourceID);
+FOUNDATION_EXPORT ADXConstraintLayoutStates *create_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, int32_t resourceID);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayoutStates)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetConstraintLayoutStates ADXConstraintLayoutStates;
+
 
 #endif
 
@@ -92,20 +98,22 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayoutStates)
 
 @class ADXConstraintLayoutStates_Variant;
 @class ADXConstraintSet;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 
 @interface ADXConstraintLayoutStates_State : NSObject {
  @public
-  jint mId_;
+  int32_t mId_;
   JavaUtilArrayList *mVariants_;
-  jint mConstraintID_;
+  int32_t mConstraintID_;
   ADXConstraintSet *mConstraintSet_;
 }
 
 #pragma mark Public
 
-- (jint)findMatchWithFloat:(jfloat)width
-                 withFloat:(jfloat)height;
+- (int32_t)findMatchWithFloat:(float)width
+                    withFloat:(float)height;
 
 #pragma mark Package-Private
 
@@ -128,21 +136,25 @@ FOUNDATION_EXPORT ADXConstraintLayoutStates_State *create_ADXConstraintLayoutSta
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayoutStates_State)
 
+
 #endif
 
 #if !defined (ADXConstraintLayoutStates_Variant_) && (INCLUDE_ALL_ConstraintLayoutStates || defined(INCLUDE_ADXConstraintLayoutStates_Variant))
 #define ADXConstraintLayoutStates_Variant_
 
 @class ADXConstraintSet;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXConstraintLayoutStates_Variant : NSObject {
  @public
-  jint mId_;
-  jfloat mMinWidth_;
-  jfloat mMinHeight_;
-  jfloat mMaxWidth_;
-  jfloat mMaxHeight_;
-  jint mConstraintID_;
+  int32_t mId_;
+  float mMinWidth_;
+  float mMinHeight_;
+  float mMaxWidth_;
+  float mMaxHeight_;
+  int32_t mConstraintID_;
   ADXConstraintSet *mConstraintSet_;
 }
 
@@ -150,8 +162,8 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayoutStates_State)
 
 - (instancetype)init;
 
-- (jboolean)matchWithFloat:(jfloat)widthDp
-                 withFloat:(jfloat)heightDp;
+- (bool)matchWithFloat:(float)widthDp
+             withFloat:(float)heightDp;
 
 @end
 
@@ -166,6 +178,7 @@ FOUNDATION_EXPORT ADXConstraintLayoutStates_Variant *new_ADXConstraintLayoutStat
 FOUNDATION_EXPORT ADXConstraintLayoutStates_Variant *create_ADXConstraintLayoutStates_Variant_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayoutStates_Variant)
+
 
 #endif
 

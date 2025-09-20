@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\utils\ViewSpline.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewSpline")
@@ -67,6 +68,8 @@
 
 @class ADSparseArray;
 @class ADView;
+@class JavaLangFloat;
+@class NSString;
 
 @interface ADXViewSpline : ADXSplineSet
 
@@ -80,7 +83,7 @@
 + (ADXViewSpline *)makeSplineWithNSString:(NSString *)str;
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 @end
 
@@ -96,19 +99,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline)
 
 @compatibility_alias AndroidxConstraintlayoutMotionUtilsViewSpline ADXViewSpline;
 
+
 #endif
 
 #if !defined (ADXViewSpline_ElevationSet_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_ElevationSet))
 #define ADXViewSpline_ElevationSet_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_ElevationSet : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -126,19 +131,21 @@ FOUNDATION_EXPORT ADXViewSpline_ElevationSet *create_ADXViewSpline_ElevationSet_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_ElevationSet)
 
+
 #endif
 
 #if !defined (ADXViewSpline_AlphaSet_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_AlphaSet))
 #define ADXViewSpline_AlphaSet_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_AlphaSet : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -156,19 +163,21 @@ FOUNDATION_EXPORT ADXViewSpline_AlphaSet *create_ADXViewSpline_AlphaSet_init(voi
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_AlphaSet)
 
+
 #endif
 
 #if !defined (ADXViewSpline_RotationSet_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_RotationSet))
 #define ADXViewSpline_RotationSet_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_RotationSet : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -186,19 +195,21 @@ FOUNDATION_EXPORT ADXViewSpline_RotationSet *create_ADXViewSpline_RotationSet_in
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_RotationSet)
 
+
 #endif
 
 #if !defined (ADXViewSpline_RotationXset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_RotationXset))
 #define ADXViewSpline_RotationXset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_RotationXset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -216,19 +227,21 @@ FOUNDATION_EXPORT ADXViewSpline_RotationXset *create_ADXViewSpline_RotationXset_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_RotationXset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_RotationYset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_RotationYset))
 #define ADXViewSpline_RotationYset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_RotationYset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -246,19 +259,21 @@ FOUNDATION_EXPORT ADXViewSpline_RotationYset *create_ADXViewSpline_RotationYset_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_RotationYset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_PivotXset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_PivotXset))
 #define ADXViewSpline_PivotXset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_PivotXset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -276,19 +291,21 @@ FOUNDATION_EXPORT ADXViewSpline_PivotXset *create_ADXViewSpline_PivotXset_init(v
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_PivotXset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_PivotYset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_PivotYset))
 #define ADXViewSpline_PivotYset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_PivotYset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -306,12 +323,15 @@ FOUNDATION_EXPORT ADXViewSpline_PivotYset *create_ADXViewSpline_PivotYset_init(v
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_PivotYset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_PathRotate_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_PathRotate))
 #define ADXViewSpline_PathRotate_
 
 @class ADView;
+@class JavaLangDouble;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_PathRotate : ADXViewSpline
 
@@ -320,12 +340,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_PivotYset)
 - (instancetype)init;
 
 - (void)setPathRotateWithADView:(ADView *)view
-                      withFloat:(jfloat)t
-                     withDouble:(jdouble)dx
-                     withDouble:(jdouble)dy;
+                      withFloat:(float)t
+                     withDouble:(double)dx
+                     withDouble:(double)dy;
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 @end
 
@@ -339,19 +359,21 @@ FOUNDATION_EXPORT ADXViewSpline_PathRotate *create_ADXViewSpline_PathRotate_init
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_PathRotate)
 
+
 #endif
 
 #if !defined (ADXViewSpline_ScaleXset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_ScaleXset))
 #define ADXViewSpline_ScaleXset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_ScaleXset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -369,19 +391,21 @@ FOUNDATION_EXPORT ADXViewSpline_ScaleXset *create_ADXViewSpline_ScaleXset_init(v
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_ScaleXset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_ScaleYset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_ScaleYset))
 #define ADXViewSpline_ScaleYset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_ScaleYset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -399,19 +423,21 @@ FOUNDATION_EXPORT ADXViewSpline_ScaleYset *create_ADXViewSpline_ScaleYset_init(v
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_ScaleYset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_TranslationXset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_TranslationXset))
 #define ADXViewSpline_TranslationXset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_TranslationXset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -429,19 +455,21 @@ FOUNDATION_EXPORT ADXViewSpline_TranslationXset *create_ADXViewSpline_Translatio
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_TranslationXset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_TranslationYset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_TranslationYset))
 #define ADXViewSpline_TranslationYset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_TranslationYset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -459,19 +487,21 @@ FOUNDATION_EXPORT ADXViewSpline_TranslationYset *create_ADXViewSpline_Translatio
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_TranslationYset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_TranslationZset_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_TranslationZset))
 #define ADXViewSpline_TranslationZset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_TranslationZset : ADXViewSpline
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -489,6 +519,7 @@ FOUNDATION_EXPORT ADXViewSpline_TranslationZset *create_ADXViewSpline_Translatio
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_TranslationZset)
 
+
 #endif
 
 #if !defined (ADXViewSpline_CustomSet_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_CustomSet))
@@ -498,6 +529,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_TranslationZset)
 @class ADView;
 @class ADXConstraintAttribute;
 @class IOSFloatArray;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXViewSpline_CustomSet : ADXViewSpline {
  @public
@@ -511,16 +545,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_TranslationZset)
 - (instancetype)initWithNSString:(NSString *)attribute
                withADSparseArray:(ADSparseArray *)attrList;
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
 withADXConstraintAttribute:(ADXConstraintAttribute *)value;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value;
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 // Disallowed inherited constructors, do not use.
 
@@ -542,22 +576,25 @@ FOUNDATION_EXPORT ADXViewSpline_CustomSet *create_ADXViewSpline_CustomSet_initWi
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_CustomSet)
 
+
 #endif
 
 #if !defined (ADXViewSpline_ProgressSet_) && (INCLUDE_ALL_ViewSpline || defined(INCLUDE_ADXViewSpline_ProgressSet))
 #define ADXViewSpline_ProgressSet_
 
 @class ADView;
+@class JavaLangBoolean;
+@class JavaLangFloat;
 
 @interface ADXViewSpline_ProgressSet : ADXViewSpline {
  @public
-  jboolean mNoMethod_;
+  bool mNoMethod_;
 }
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -574,6 +611,7 @@ FOUNDATION_EXPORT ADXViewSpline_ProgressSet *new_ADXViewSpline_ProgressSet_init(
 FOUNDATION_EXPORT ADXViewSpline_ProgressSet *create_ADXViewSpline_ProgressSet_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewSpline_ProgressSet)
+
 
 #endif
 

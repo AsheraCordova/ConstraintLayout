@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyTrigger.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CustomVariable.h"
 #include "FloatRect.h"
 #include "IOSObjectArray.h"
@@ -11,6 +16,7 @@
 #include "MotionKeyTrigger.h"
 #include "MotionWidget.h"
 #include "TypedValues.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/HashMap.h"
@@ -19,21 +25,28 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXMotionKeyTrigger () {
  @public
-  jint mCurveFit_;
+  int32_t mCurveFit_;
   NSString *mCross_;
-  jint mTriggerReceiver_;
+  int32_t mTriggerReceiver_;
   NSString *mNegativeCross_;
   NSString *mPositiveCross_;
-  jint mTriggerID_;
-  jint mTriggerCollisionId_;
-  jboolean mFireCrossReset_;
-  jboolean mFireNegativeReset_;
-  jboolean mFirePositiveReset_;
-  jfloat mFireThreshold_;
-  jfloat mFireLastPos_;
-  jboolean mPostLayout_;
+  int32_t mTriggerID_;
+  int32_t mTriggerCollisionId_;
+  bool mFireCrossReset_;
+  bool mFireNegativeReset_;
+  bool mFirePositiveReset_;
+  float mFireThreshold_;
+  float mFireLastPos_;
+  bool mPostLayout_;
 }
 
 - (void)fireCustomWithNSString:(NSString *)str
@@ -79,7 +92,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)addValuesWithJavaUtilHashMap:(JavaUtilHashMap *)splines {
 }
 
-- (jint)getIdWithNSString:(NSString *)name {
+- (int32_t)getIdWithNSString:(NSString *)name {
   switch (JreIndexOfStr(name, (id[]){ ADXMotionKeyTrigger_VIEW_TRANSITION_ON_CROSS, ADXMotionKeyTrigger_VIEW_TRANSITION_ON_POSITIVE_CROSS, ADXMotionKeyTrigger_VIEW_TRANSITION_ON_NEGATIVE_CROSS, ADXMotionKeyTrigger_POST_LAYOUT, ADXMotionKeyTrigger_TRIGGER_SLACK, ADXMotionKeyTrigger_TRIGGER_COLLISION_VIEW, ADXMotionKeyTrigger_TRIGGER_COLLISION_ID, ADXMotionKeyTrigger_TRIGGER_ID, ADXMotionKeyTrigger_POSITIVE_CROSS, ADXMotionKeyTrigger_NEGATIVE_CROSS, ADXMotionKeyTrigger_TRIGGER_RECEIVER }, 11)) {
     case 0:
     return ADXMotionKeyTrigger_TYPE_VIEW_TRANSITION_ON_CROSS;
@@ -139,12 +152,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXMotionKeyTrigger_fireCustomWithNSString_withADXMotionWidget_(self, str, widget);
 }
 
-- (void)conditionallyFireWithFloat:(jfloat)position
+- (void)conditionallyFireWithFloat:(float)position
                withADXMotionWidget:(ADXMotionWidget *)child {
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value {
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value {
   switch (type) {
     case ADXTypedValues_Trigger_TYPE_TRIGGER_RECEIVER:
     mTriggerReceiver_ = value;
@@ -170,8 +183,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value {
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value {
   switch (type) {
     case ADXTypedValues_Trigger_TYPE_TRIGGER_SLACK:
     mTriggerSlack_ = value;
@@ -182,8 +195,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value {
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value {
   switch (type) {
     case ADXTypedValues_Trigger_TYPE_CROSS:
     JreStrongAssign(&mCross_, value);
@@ -200,8 +213,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                withBoolean:(jboolean)value {
+- (bool)setValueWithInt:(int32_t)type
+            withBoolean:(bool)value {
   switch (type) {
     case ADXTypedValues_Trigger_TYPE_POST_LAYOUT:
     mPostLayout_ = value;
@@ -344,7 +357,7 @@ ADXMotionKeyTrigger *create_ADXMotionKeyTrigger_init() {
 }
 
 void ADXMotionKeyTrigger_fireCustomWithNSString_withADXMotionWidget_(ADXMotionKeyTrigger *self, NSString *str, ADXMotionWidget *widget) {
-  jboolean callAll = [((NSString *) nil_chk(str)) java_length] == 1;
+  bool callAll = [((NSString *) nil_chk(str)) java_length] == 1;
   if (!callAll) {
     str = [((NSString *) nil_chk([str java_substring:1])) java_lowercaseStringWithJRELocale:JreLoadStatic(JavaUtilLocale, ROOT)];
   }
@@ -360,3 +373,5 @@ void ADXMotionKeyTrigger_fireCustomWithNSString_withADXMotionWidget_(ADXMotionKe
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionKeyTrigger)
+
+J2OBJC_NAME_MAPPING(ADXMotionKeyTrigger, "androidx.constraintlayout.core.motion.key", "ADX")

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\ArrayRow.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayLinkedVariables.h"
 #include "ArrayRow.h"
 #include "Cache.h"
@@ -11,7 +16,17 @@
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
 #include "SolverVariable.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXArrayRow ()
@@ -23,23 +38,23 @@
  @param variable the variable to check for
  @param system the linear system we check
  */
-- (jboolean)isNewWithADXSolverVariable:(ADXSolverVariable *)variable
-                   withADXLinearSystem:(ADXLinearSystem *)system;
+- (bool)isNewWithADXSolverVariable:(ADXSolverVariable *)variable
+               withADXLinearSystem:(ADXLinearSystem *)system;
 
 - (ADXSolverVariable *)pickPivotInVariablesWithBooleanArray:(IOSBooleanArray *)avoid
                                       withADXSolverVariable:(ADXSolverVariable *)exclude;
 
 @end
 
-inline jboolean ADXArrayRow_get_DEBUG(void);
+inline bool ADXArrayRow_get_DEBUG(void);
 #define ADXArrayRow_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayRow, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayRow, DEBUG, bool)
 
-inline jboolean ADXArrayRow_get_FULL_NEW_CHECK(void);
+inline bool ADXArrayRow_get_FULL_NEW_CHECK(void);
 #define ADXArrayRow_FULL_NEW_CHECK false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayRow, FULL_NEW_CHECK, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayRow, FULL_NEW_CHECK, bool)
 
-__attribute__((unused)) static jboolean ADXArrayRow_isNewWithADXSolverVariable_withADXLinearSystem_(ADXArrayRow *self, ADXSolverVariable *variable, ADXLinearSystem *system);
+__attribute__((unused)) static bool ADXArrayRow_isNewWithADXSolverVariable_withADXLinearSystem_(ADXArrayRow *self, ADXSolverVariable *variable, ADXLinearSystem *system);
 
 __attribute__((unused)) static ADXSolverVariable *ADXArrayRow_pickPivotInVariablesWithBooleanArray_withADXSolverVariable_(ADXArrayRow *self, IOSBooleanArray *avoid, ADXSolverVariable *exclude);
 
@@ -61,7 +76,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (jboolean)hasKeyVariable {
+- (bool)hasKeyVariable {
   return !((variable_ == nil) || (((ADXSolverVariable *) nil_chk(variable_))->mType_ != JreLoadEnum(ADXSolverVariable_Type, UNRESTRICTED) && constantValue_ < 0));
 }
 
@@ -78,18 +93,18 @@ J2OBJC_IGNORE_DESIGNATED_END
     JreStrAppend(&s, "@", variable_);
   }
   JreStrAppend(&s, "$", @" = ");
-  jboolean addedVariable = false;
+  bool addedVariable = false;
   if (constantValue_ != 0) {
     JreStrAppend(&s, "F", constantValue_);
     addedVariable = true;
   }
-  jint count = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getCurrentSize];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getCurrentSize];
+  for (int32_t i = 0; i < count; i++) {
     ADXSolverVariable *v = JreRetainedLocalValue([((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getVariableWithInt:i]);
     if (v == nil) {
       continue;
     }
-    jfloat amount = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getVariableValueWithInt:i];
+    float amount = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getVariableValueWithInt:i];
     if (amount == 0) {
       continue;
     }
@@ -130,12 +145,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   isSimpleDefinition_ = false;
 }
 
-- (jboolean)hasVariableWithADXSolverVariable:(ADXSolverVariable *)v {
+- (bool)hasVariableWithADXSolverVariable:(ADXSolverVariable *)v {
   return [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) containsWithADXSolverVariable:v];
 }
 
 - (ADXArrayRow *)createRowDefinitionWithADXSolverVariable:(ADXSolverVariable *)variable
-                                                  withInt:(jint)value {
+                                                  withInt:(int32_t)value {
   self->variable_ = variable;
   ((ADXSolverVariable *) nil_chk(variable))->computedValue_ = value;
   constantValue_ = value;
@@ -144,7 +159,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXArrayRow *)createRowEqualsWithADXSolverVariable:(ADXSolverVariable *)variable
-                                              withInt:(jint)value {
+                                              withInt:(int32_t)value {
   if (value < 0) {
     constantValue_ = -1 * value;
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variable withFloat:1];
@@ -158,10 +173,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ADXArrayRow *)createRowEqualsWithADXSolverVariable:(ADXSolverVariable *)variableA
                                 withADXSolverVariable:(ADXSolverVariable *)variableB
-                                              withInt:(jint)margin {
-  jboolean inverse = false;
+                                              withInt:(int32_t)margin {
+  bool inverse = false;
   if (margin != 0) {
-    jint m = margin;
+    int32_t m = margin;
     if (m < 0) {
       m = -1 * m;
       inverse = true;
@@ -180,18 +195,18 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXArrayRow *)addSingleErrorWithADXSolverVariable:(ADXSolverVariable *)error
-                                             withInt:(jint)sign {
-  [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:error withFloat:(jfloat) sign];
+                                             withInt:(int32_t)sign {
+  [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:error withFloat:(float) sign];
   return self;
 }
 
 - (ADXArrayRow *)createRowGreaterThanWithADXSolverVariable:(ADXSolverVariable *)variableA
                                      withADXSolverVariable:(ADXSolverVariable *)variableB
                                      withADXSolverVariable:(ADXSolverVariable *)slack
-                                                   withInt:(jint)margin {
-  jboolean inverse = false;
+                                                   withInt:(int32_t)margin {
+  bool inverse = false;
   if (margin != 0) {
-    jint m = margin;
+    int32_t m = margin;
     if (m < 0) {
       m = -1 * m;
       inverse = true;
@@ -212,7 +227,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXArrayRow *)createRowGreaterThanWithADXSolverVariable:(ADXSolverVariable *)a
-                                                   withInt:(jint)b
+                                                   withInt:(int32_t)b
                                      withADXSolverVariable:(ADXSolverVariable *)slack {
   constantValue_ = b;
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:a withFloat:-1];
@@ -222,10 +237,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (ADXArrayRow *)createRowLowerThanWithADXSolverVariable:(ADXSolverVariable *)variableA
                                    withADXSolverVariable:(ADXSolverVariable *)variableB
                                    withADXSolverVariable:(ADXSolverVariable *)slack
-                                                 withInt:(jint)margin {
-  jboolean inverse = false;
+                                                 withInt:(int32_t)margin {
+  bool inverse = false;
   if (margin != 0) {
-    jint m = margin;
+    int32_t m = margin;
     if (m < 0) {
       m = -1 * m;
       inverse = true;
@@ -245,9 +260,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (ADXArrayRow *)createRowEqualMatchDimensionsWithFloat:(jfloat)currentWeight
-                                              withFloat:(jfloat)totalWeights
-                                              withFloat:(jfloat)nextWeight
+- (ADXArrayRow *)createRowEqualMatchDimensionsWithFloat:(float)currentWeight
+                                              withFloat:(float)totalWeights
+                                              withFloat:(float)nextWeight
                                   withADXSolverVariable:(ADXSolverVariable *)variableStartA
                                   withADXSolverVariable:(ADXSolverVariable *)variableEndA
                                   withADXSolverVariable:(ADXSolverVariable *)variableStartB
@@ -269,9 +284,9 @@ J2OBJC_IGNORE_DESIGNATED_END
       [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableEndB withFloat:-1];
     }
     else {
-      jfloat cw = currentWeight / totalWeights;
-      jfloat nw = nextWeight / totalWeights;
-      jfloat w = cw / nw;
+      float cw = currentWeight / totalWeights;
+      float nw = nextWeight / totalWeights;
+      float w = cw / nw;
       [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableStartA withFloat:1];
       [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableEndA withFloat:-1];
       [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableEndB withFloat:w];
@@ -281,17 +296,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (ADXArrayRow *)createRowEqualDimensionWithFloat:(jfloat)currentWeight
-                                        withFloat:(jfloat)totalWeights
-                                        withFloat:(jfloat)nextWeight
+- (ADXArrayRow *)createRowEqualDimensionWithFloat:(float)currentWeight
+                                        withFloat:(float)totalWeights
+                                        withFloat:(float)nextWeight
                             withADXSolverVariable:(ADXSolverVariable *)variableStartA
-                                          withInt:(jint)marginStartA
+                                          withInt:(int32_t)marginStartA
                             withADXSolverVariable:(ADXSolverVariable *)variableEndA
-                                          withInt:(jint)marginEndA
+                                          withInt:(int32_t)marginEndA
                             withADXSolverVariable:(ADXSolverVariable *)variableStartB
-                                          withInt:(jint)marginStartB
+                                          withInt:(int32_t)marginStartB
                             withADXSolverVariable:(ADXSolverVariable *)variableEndB
-                                          withInt:(jint)marginEndB {
+                                          withInt:(int32_t)marginEndB {
   if (totalWeights == 0 || (currentWeight == nextWeight)) {
     constantValue_ = -marginStartA - marginEndA + marginStartB + marginEndB;
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableStartA withFloat:1];
@@ -300,9 +315,9 @@ J2OBJC_IGNORE_DESIGNATED_END
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableStartB withFloat:-1];
   }
   else {
-    jfloat cw = currentWeight / totalWeights;
-    jfloat nw = nextWeight / totalWeights;
-    jfloat w = cw / nw;
+    float cw = currentWeight / totalWeights;
+    float nw = nextWeight / totalWeights;
+    float w = cw / nw;
     constantValue_ = -marginStartA - marginEndA + w * marginStartB + w * marginEndB;
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableStartA withFloat:1];
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableEndA withFloat:-1];
@@ -314,12 +329,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ADXArrayRow *)createRowCenteringWithADXSolverVariable:(ADXSolverVariable *)variableA
                                    withADXSolverVariable:(ADXSolverVariable *)variableB
-                                                 withInt:(jint)marginA
-                                               withFloat:(jfloat)bias
+                                                 withInt:(int32_t)marginA
+                                               withFloat:(float)bias
                                    withADXSolverVariable:(ADXSolverVariable *)variableC
                                    withADXSolverVariable:(ADXSolverVariable *)variableD
-                                                 withInt:(jint)marginB {
-  if (variableB == variableC) {
+                                                 withInt:(int32_t)marginB {
+  if (JreObjectEqualsEquals(variableB, variableC)) {
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableA withFloat:1];
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableD withFloat:1];
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableB withFloat:-2];
@@ -357,7 +372,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXArrayRow *)addErrorWithADXLinearSystem:(ADXLinearSystem *)system
-                                     withInt:(jint)strength {
+                                     withInt:(int32_t)strength {
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:[((ADXLinearSystem *) nil_chk(system)) createErrorVariableWithInt:strength withNSString:@"ep"] withFloat:1];
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:[system createErrorVariableWithInt:strength withNSString:@"em"] withFloat:-1];
   return self;
@@ -365,7 +380,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ADXArrayRow *)createRowDimensionPercentWithADXSolverVariable:(ADXSolverVariable *)variableA
                                           withADXSolverVariable:(ADXSolverVariable *)variableC
-                                                      withFloat:(jfloat)percent {
+                                                      withFloat:(float)percent {
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableA withFloat:-1];
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableC withFloat:percent];
   return self;
@@ -375,7 +390,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                                         withADXSolverVariable:(ADXSolverVariable *)variableB
                                         withADXSolverVariable:(ADXSolverVariable *)variableC
                                         withADXSolverVariable:(ADXSolverVariable *)variableD
-                                                    withFloat:(jfloat)ratio {
+                                                    withFloat:(float)ratio {
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableA withFloat:-1];
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableB withFloat:1];
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:variableC withFloat:ratio];
@@ -387,7 +402,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                                    withADXSolverVariable:(ADXSolverVariable *)ab
                                    withADXSolverVariable:(ADXSolverVariable *)bt
                                    withADXSolverVariable:(ADXSolverVariable *)bb
-                                               withFloat:(jfloat)angleComponent {
+                                               withFloat:(float)angleComponent {
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:bt withFloat:0.5f];
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:bb withFloat:0.5f];
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) putWithADXSolverVariable:at withFloat:-0.5f];
@@ -396,8 +411,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (jint)sizeInBytes {
-  jint size = 0;
+- (int32_t)sizeInBytes {
+  int32_t size = 0;
   if (variable_ != nil) {
     size += 4;
   }
@@ -414,8 +429,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)chooseSubjectWithADXLinearSystem:(ADXLinearSystem *)system {
-  jboolean addedExtra = false;
+- (bool)chooseSubjectWithADXLinearSystem:(ADXLinearSystem *)system {
+  bool addedExtra = false;
   ADXSolverVariable *pivotCandidate = JreRetainedLocalValue([self chooseSubjectInVariablesWithADXLinearSystem:system]);
   if (pivotCandidate == nil) {
     addedExtra = true;
@@ -432,13 +447,13 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (ADXSolverVariable *)chooseSubjectInVariablesWithADXLinearSystem:(ADXLinearSystem *)system {
   ADXSolverVariable *restrictedCandidate = nil;
   ADXSolverVariable *unrestrictedCandidate = nil;
-  jfloat unrestrictedCandidateAmount = 0;
-  jfloat restrictedCandidateAmount = 0;
-  jboolean unrestrictedCandidateIsNew = false;
-  jboolean restrictedCandidateIsNew = false;
-  jint currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getCurrentSize];
-  for (jint i = 0; i < currentSize; i++) {
-    jfloat amount = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getVariableValueWithInt:i];
+  float unrestrictedCandidateAmount = 0;
+  float restrictedCandidateAmount = 0;
+  bool unrestrictedCandidateIsNew = false;
+  bool restrictedCandidateIsNew = false;
+  int32_t currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getCurrentSize];
+  for (int32_t i = 0; i < currentSize; i++) {
+    float amount = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getVariableValueWithInt:i];
     ADXSolverVariable *variable = JreRetainedLocalValue([((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getVariableWithInt:i]);
     if (((ADXSolverVariable *) nil_chk(variable))->mType_ == JreLoadEnum(ADXSolverVariable_Type, UNRESTRICTED)) {
       if (unrestrictedCandidate == nil) {
@@ -483,8 +498,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return restrictedCandidate;
 }
 
-- (jboolean)isNewWithADXSolverVariable:(ADXSolverVariable *)variable
-                   withADXLinearSystem:(ADXLinearSystem *)system {
+- (bool)isNewWithADXSolverVariable:(ADXSolverVariable *)variable
+               withADXLinearSystem:(ADXLinearSystem *)system {
   return ADXArrayRow_isNewWithADXSolverVariable_withADXLinearSystem_(self, variable, system);
 }
 
@@ -494,7 +509,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     ((ADXSolverVariable *) nil_chk(variable_))->definitionId_ = -1;
     variable_ = nil;
   }
-  jfloat amount = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) removeWithADXSolverVariable:v withBoolean:true] * -1;
+  float amount = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) removeWithADXSolverVariable:v withBoolean:true] * -1;
   variable_ = v;
   if (amount == 1) {
     return;
@@ -503,14 +518,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) divideByAmountWithFloat:amount];
 }
 
-- (jboolean)isEmpty {
+- (bool)isEmpty {
   return (variable_ == nil && constantValue_ == 0 && [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getCurrentSize] == 0);
 }
 
 - (void)updateFromRowWithADXLinearSystem:(ADXLinearSystem *)system
                          withADXArrayRow:(ADXArrayRow *)definition
-                             withBoolean:(jboolean)removeFromDefinition {
-  jfloat value = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) useWithADXArrayRow:definition withBoolean:removeFromDefinition];
+                             withBoolean:(bool)removeFromDefinition {
+  float value = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) useWithADXArrayRow:definition withBoolean:removeFromDefinition];
   JrePlusAssignFloatF(&constantValue_, ((ADXArrayRow *) nil_chk(definition))->constantValue_ * value);
   if (removeFromDefinition) {
     [((ADXSolverVariable *) nil_chk(definition->variable_)) removeFromRowWithADXArrayRow:self];
@@ -523,11 +538,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)updateFromFinalVariableWithADXLinearSystem:(ADXLinearSystem *)system
                              withADXSolverVariable:(ADXSolverVariable *)variable
-                                       withBoolean:(jboolean)removeFromDefinition {
+                                       withBoolean:(bool)removeFromDefinition {
   if (variable == nil || !variable->isFinalValue_) {
     return;
   }
-  jfloat value = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getWithADXSolverVariable:variable];
+  float value = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getWithADXSolverVariable:variable];
   JrePlusAssignFloatF(&constantValue_, variable->computedValue_ * value);
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) removeWithADXSolverVariable:variable withBoolean:removeFromDefinition];
   if (removeFromDefinition) {
@@ -541,11 +556,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)updateFromSynonymVariableWithADXLinearSystem:(ADXLinearSystem *)system
                                withADXSolverVariable:(ADXSolverVariable *)variable
-                                         withBoolean:(jboolean)removeFromDefinition {
+                                         withBoolean:(bool)removeFromDefinition {
   if (variable == nil || !variable->isSynonym_) {
     return;
   }
-  jfloat value = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getWithADXSolverVariable:variable];
+  float value = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getWithADXSolverVariable:variable];
   JrePlusAssignFloatF(&constantValue_, variable->synonymDelta_ * value);
   [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) removeWithADXSolverVariable:variable withBoolean:removeFromDefinition];
   if (removeFromDefinition) {
@@ -583,16 +598,16 @@ J2OBJC_IGNORE_DESIGNATED_END
     ADXArrayRow *copiedRow = (ADXArrayRow *) row;
     variable_ = nil;
     [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) clear];
-    for (jint i = 0; i < [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(((ADXArrayRow *) nil_chk(copiedRow))->variables_)) getCurrentSize]; i++) {
+    for (int32_t i = 0; i < [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(((ADXArrayRow *) nil_chk(copiedRow))->variables_)) getCurrentSize]; i++) {
       ADXSolverVariable *var = JreRetainedLocalValue([((id<ADXArrayRow_ArrayRowVariables>) nil_chk(copiedRow->variables_)) getVariableWithInt:i]);
-      jfloat val = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(copiedRow->variables_)) getVariableValueWithInt:i];
+      float val = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(copiedRow->variables_)) getVariableValueWithInt:i];
       [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) addWithADXSolverVariable:var withFloat:val withBoolean:true];
     }
   }
 }
 
 - (void)addErrorWithADXSolverVariable:(ADXSolverVariable *)error {
-  jfloat weight = 1;
+  float weight = 1;
   if (((ADXSolverVariable *) nil_chk(error))->strength_ == ADXSolverVariable_STRENGTH_LOW) {
     weight = 1.0f;
   }
@@ -619,18 +634,18 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (((IOSObjectArray *) nil_chk(((ADXLinearSystem *) nil_chk(system))->mRows_))->size_ == 0) {
     return;
   }
-  jboolean done = false;
+  bool done = false;
   while (!done) {
-    jint currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getCurrentSize];
-    for (jint i = 0; i < currentSize; i++) {
+    int32_t currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getCurrentSize];
+    for (int32_t i = 0; i < currentSize; i++) {
       ADXSolverVariable *variable = JreRetainedLocalValue([((id<ADXArrayRow_ArrayRowVariables>) nil_chk(variables_)) getVariableWithInt:i]);
       if (((ADXSolverVariable *) nil_chk(variable))->definitionId_ != -1 || variable->isFinalValue_ || variable->isSynonym_) {
         [((JavaUtilArrayList *) nil_chk(variablesToUpdate_)) addWithId:variable];
       }
     }
-    jint size = [((JavaUtilArrayList *) nil_chk(variablesToUpdate_)) size];
+    int32_t size = [((JavaUtilArrayList *) nil_chk(variablesToUpdate_)) size];
     if (size > 0) {
-      for (jint i = 0; i < size; i++) {
+      for (int32_t i = 0; i < size; i++) {
         ADXSolverVariable *variable = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(variablesToUpdate_)) getWithInt:i]);
         if (((ADXSolverVariable *) nil_chk(variable))->isFinalValue_) {
           [self updateFromFinalVariableWithADXLinearSystem:system withADXSolverVariable:variable withBoolean:true];
@@ -802,22 +817,22 @@ ADXArrayRow *create_ADXArrayRow_initWithADXCache_(ADXCache *cache) {
   J2OBJC_CREATE_IMPL(ADXArrayRow, initWithADXCache_, cache)
 }
 
-jboolean ADXArrayRow_isNewWithADXSolverVariable_withADXLinearSystem_(ADXArrayRow *self, ADXSolverVariable *variable, ADXLinearSystem *system) {
+bool ADXArrayRow_isNewWithADXSolverVariable_withADXLinearSystem_(ADXArrayRow *self, ADXSolverVariable *variable, ADXLinearSystem *system) {
   return ((ADXSolverVariable *) nil_chk(variable))->usageInRowCount_ <= 1;
 }
 
 ADXSolverVariable *ADXArrayRow_pickPivotInVariablesWithBooleanArray_withADXSolverVariable_(ADXArrayRow *self, IOSBooleanArray *avoid, ADXSolverVariable *exclude) {
-  jboolean all = true;
-  jfloat value = 0;
+  bool all = true;
+  float value = 0;
   ADXSolverVariable *pivot = nil;
   ADXSolverVariable *pivotSlack = nil;
-  jfloat valueSlack = 0;
-  jint currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(self->variables_)) getCurrentSize];
-  for (jint i = 0; i < currentSize; i++) {
-    jfloat currentValue = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(self->variables_)) getVariableValueWithInt:i];
+  float valueSlack = 0;
+  int32_t currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(self->variables_)) getCurrentSize];
+  for (int32_t i = 0; i < currentSize; i++) {
+    float currentValue = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(self->variables_)) getVariableValueWithInt:i];
     if (currentValue < 0) {
       ADXSolverVariable *v = JreRetainedLocalValue([((id<ADXArrayRow_ArrayRowVariables>) nil_chk(self->variables_)) getVariableWithInt:i]);
-      if (!((avoid != nil && IOSBooleanArray_Get(avoid, ((ADXSolverVariable *) nil_chk(v))->id__)) || (v == exclude))) {
+      if (!((avoid != nil && IOSBooleanArray_Get(avoid, ((ADXSolverVariable *) nil_chk(v))->id__)) || (JreObjectEqualsEquals(v, exclude)))) {
         if (all) {
           if (((ADXSolverVariable *) nil_chk(v))->mType_ == JreLoadEnum(ADXSolverVariable_Type, SLACK) || v->mType_ == JreLoadEnum(ADXSolverVariable_Type, ERROR)) {
             if (currentValue < value) {
@@ -850,6 +865,8 @@ ADXSolverVariable *ADXArrayRow_pickPivotInVariablesWithBooleanArray_withADXSolve
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXArrayRow)
+
+J2OBJC_NAME_MAPPING(ADXArrayRow, "androidx.constraintlayout.core", "ADX")
 
 @implementation ADXArrayRow_ArrayRowVariables
 

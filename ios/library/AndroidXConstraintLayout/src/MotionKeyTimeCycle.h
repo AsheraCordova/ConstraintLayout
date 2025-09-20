@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyTimeCycle.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionKeyTimeCycle")
@@ -20,8 +21,12 @@
 #define INCLUDE_ADXMotionKey 1
 #include "MotionKey.h"
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 @interface ADXMotionKeyTimeCycle : ADXMotionKey
 
@@ -39,19 +44,19 @@
 
 - (void)getAttributeNamesWithJavaUtilHashSet:(JavaUtilHashSet *)attributes;
 
-- (jint)getIdWithNSString:(NSString *)name;
+- (int32_t)getIdWithNSString:(NSString *)name;
 
-- (jboolean)setValueWithInt:(jint)type
-                withBoolean:(jboolean)value;
+- (bool)setValueWithInt:(int32_t)type
+            withBoolean:(bool)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value;
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value;
 
 @end
 
@@ -62,9 +67,9 @@ inline NSString *ADXMotionKeyTimeCycle_get_NAME(void);
 FOUNDATION_EXPORT NSString *ADXMotionKeyTimeCycle_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionKeyTimeCycle, NAME, NSString *)
 
-inline jint ADXMotionKeyTimeCycle_get_KEY_TYPE(void);
+inline int32_t ADXMotionKeyTimeCycle_get_KEY_TYPE(void);
 #define ADXMotionKeyTimeCycle_KEY_TYPE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTimeCycle, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTimeCycle, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionKeyTimeCycle_init(ADXMotionKeyTimeCycle *self);
 
@@ -75,6 +80,7 @@ FOUNDATION_EXPORT ADXMotionKeyTimeCycle *create_ADXMotionKeyTimeCycle_init(void)
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionKeyTimeCycle)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionKeyMotionKeyTimeCycle ADXMotionKeyTimeCycle;
+
 
 #endif
 

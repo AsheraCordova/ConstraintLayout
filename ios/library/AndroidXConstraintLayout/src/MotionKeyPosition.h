@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyPosition.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionKeyPosition")
@@ -24,22 +25,26 @@
 @class ADXMotionWidget;
 @class IOSFloatArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 @interface ADXMotionKeyPosition : ADXMotionKey {
  @public
-  jint mCurveFit_;
+  int32_t mCurveFit_;
   NSString *mTransitionEasing_;
-  jint mPathMotionArc_;
-  jint mDrawPath_;
-  jfloat mPercentWidth_;
-  jfloat mPercentHeight_;
-  jfloat mPercentX_;
-  jfloat mPercentY_;
-  jfloat mAltPercentX_;
-  jfloat mAltPercentY_;
-  jint mPositionType_;
+  int32_t mPathMotionArc_;
+  int32_t mDrawPath_;
+  float mPercentWidth_;
+  float mPercentHeight_;
+  float mPercentX_;
+  float mPercentY_;
+  float mAltPercentX_;
+  float mAltPercentY_;
+  int32_t mPositionType_;
 }
 
 #pragma mark Public
@@ -54,64 +59,64 @@
 
 - (void)getAttributeNamesWithJavaUtilHashSet:(JavaUtilHashSet *)attributes;
 
-- (jint)getIdWithNSString:(NSString *)name;
+- (int32_t)getIdWithNSString:(NSString *)name;
 
-- (jboolean)intersectsWithInt:(jint)layoutWidth
-                      withInt:(jint)layoutHeight
-             withADXFloatRect:(ADXFloatRect *)start
-             withADXFloatRect:(ADXFloatRect *)end
-                    withFloat:(jfloat)x
-                    withFloat:(jfloat)y;
+- (bool)intersectsWithInt:(int32_t)layoutWidth
+                  withInt:(int32_t)layoutHeight
+         withADXFloatRect:(ADXFloatRect *)start
+         withADXFloatRect:(ADXFloatRect *)end
+                withFloat:(float)x
+                withFloat:(float)y;
 
 - (void)positionAttributesWithADXMotionWidget:(ADXMotionWidget *)view
                              withADXFloatRect:(ADXFloatRect *)start
                              withADXFloatRect:(ADXFloatRect *)end
-                                    withFloat:(jfloat)x
-                                    withFloat:(jfloat)y
+                                    withFloat:(float)x
+                                    withFloat:(float)y
                             withNSStringArray:(IOSObjectArray *)attribute
                                withFloatArray:(IOSFloatArray *)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value;
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value;
 
 #pragma mark Package-Private
 
-- (void)calcPositionWithInt:(jint)layoutWidth
-                    withInt:(jint)layoutHeight
-                  withFloat:(jfloat)start_x
-                  withFloat:(jfloat)start_y
-                  withFloat:(jfloat)end_x
-                  withFloat:(jfloat)end_y;
+- (void)calcPositionWithInt:(int32_t)layoutWidth
+                    withInt:(int32_t)layoutHeight
+                  withFloat:(float)start_x
+                  withFloat:(float)start_y
+                  withFloat:(float)end_x
+                  withFloat:(float)end_y;
 
-- (jfloat)getPositionX;
+- (float)getPositionX;
 
-- (jfloat)getPositionY;
+- (float)getPositionY;
 
 - (void)positionCartAttributesWithADXFloatRect:(ADXFloatRect *)start
                               withADXFloatRect:(ADXFloatRect *)end
-                                     withFloat:(jfloat)x
-                                     withFloat:(jfloat)y
+                                     withFloat:(float)x
+                                     withFloat:(float)y
                              withNSStringArray:(IOSObjectArray *)attribute
                                 withFloatArray:(IOSFloatArray *)value;
 
 - (void)positionPathAttributesWithADXFloatRect:(ADXFloatRect *)start
                               withADXFloatRect:(ADXFloatRect *)end
-                                     withFloat:(jfloat)x
-                                     withFloat:(jfloat)y
+                                     withFloat:(float)x
+                                     withFloat:(float)y
                              withNSStringArray:(IOSObjectArray *)attribute
                                 withFloatArray:(IOSFloatArray *)value;
 
 - (void)positionScreenAttributesWithADXMotionWidget:(ADXMotionWidget *)view
                                    withADXFloatRect:(ADXFloatRect *)start
                                    withADXFloatRect:(ADXFloatRect *)end
-                                          withFloat:(jfloat)x
-                                          withFloat:(jfloat)y
+                                          withFloat:(float)x
+                                          withFloat:(float)y
                                   withNSStringArray:(IOSObjectArray *)attribute
                                      withFloatArray:(IOSFloatArray *)value;
 
@@ -126,25 +131,25 @@ inline NSString *ADXMotionKeyPosition_get_NAME(void);
 FOUNDATION_EXPORT NSString *ADXMotionKeyPosition_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionKeyPosition, NAME, NSString *)
 
-inline jfloat ADXMotionKeyPosition_get_SELECTION_SLOPE(void);
+inline float ADXMotionKeyPosition_get_SELECTION_SLOPE(void);
 #define ADXMotionKeyPosition_SELECTION_SLOPE 20.0f
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, SELECTION_SLOPE, jfloat)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, SELECTION_SLOPE, float)
 
-inline jint ADXMotionKeyPosition_get_TYPE_SCREEN(void);
+inline int32_t ADXMotionKeyPosition_get_TYPE_SCREEN(void);
 #define ADXMotionKeyPosition_TYPE_SCREEN 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, TYPE_SCREEN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, TYPE_SCREEN, int32_t)
 
-inline jint ADXMotionKeyPosition_get_TYPE_PATH(void);
+inline int32_t ADXMotionKeyPosition_get_TYPE_PATH(void);
 #define ADXMotionKeyPosition_TYPE_PATH 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, TYPE_PATH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, TYPE_PATH, int32_t)
 
-inline jint ADXMotionKeyPosition_get_TYPE_CARTESIAN(void);
+inline int32_t ADXMotionKeyPosition_get_TYPE_CARTESIAN(void);
 #define ADXMotionKeyPosition_TYPE_CARTESIAN 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, TYPE_CARTESIAN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, TYPE_CARTESIAN, int32_t)
 
-inline jint ADXMotionKeyPosition_get_KEY_TYPE(void);
+inline int32_t ADXMotionKeyPosition_get_KEY_TYPE(void);
 #define ADXMotionKeyPosition_KEY_TYPE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyPosition, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionKeyPosition_init(ADXMotionKeyPosition *self);
 
@@ -155,6 +160,7 @@ FOUNDATION_EXPORT ADXMotionKeyPosition *create_ADXMotionKeyPosition_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionKeyPosition)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionKeyMotionKeyPosition ADXMotionKeyPosition;
+
 
 #endif
 

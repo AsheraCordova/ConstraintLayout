@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyTimeCycle.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AttributeSet.h"
 #include "ConstraintAttribute.h"
 #include "Context.h"
@@ -13,6 +18,8 @@
 #include "Log.h"
 #include "Oscillator.h"
 #include "ViewTimeCycle.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
@@ -21,26 +28,33 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXKeyTimeCycle () {
  @public
   NSString *mTransitionEasing_;
-  jint mCurveFit_;
-  jfloat mAlpha_;
-  jfloat mElevation_;
-  jfloat mRotation_;
-  jfloat mRotationX_;
-  jfloat mRotationY_;
-  jfloat mTransitionPathRotate_;
-  jfloat mScaleX_;
-  jfloat mScaleY_;
-  jfloat mTranslationX_;
-  jfloat mTranslationY_;
-  jfloat mTranslationZ_;
-  jfloat mProgress_;
-  jint mWaveShape_;
+  int32_t mCurveFit_;
+  float mAlpha_;
+  float mElevation_;
+  float mRotation_;
+  float mRotationX_;
+  float mRotationY_;
+  float mTransitionPathRotate_;
+  float mScaleX_;
+  float mScaleY_;
+  float mTranslationX_;
+  float mTranslationY_;
+  float mTranslationZ_;
+  float mProgress_;
+  int32_t mWaveShape_;
   NSString *mCustomWaveShape_;
-  jfloat mWavePeriod_;
-  jfloat mWaveOffset_;
+  float mWavePeriod_;
+  float mWaveOffset_;
 }
 
 @end
@@ -67,6 +81,7 @@ __attribute__((unused)) static ADXKeyTimeCycle_Loader *new_ADXKeyTimeCycle_Loade
 __attribute__((unused)) static ADXKeyTimeCycle_Loader *create_ADXKeyTimeCycle_Loader_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyTimeCycle_Loader)
+
 
 NSString *ADXKeyTimeCycle_NAME = @"KeyTimeCycle";
 NSString *ADXKeyTimeCycle_WAVE_PERIOD = @"wavePeriod";
@@ -457,6 +472,8 @@ ADXKeyTimeCycle *create_ADXKeyTimeCycle_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyTimeCycle)
+
+J2OBJC_NAME_MAPPING(ADXKeyTimeCycle, "androidx.constraintlayout.motion.widget", "ADX")
 
 @implementation ADXKeyTimeCycle_Loader
 

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\TimeCycleSplineSet.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLCustomAttribute.h"
 #include "CurveFit.h"
 #include "CustomVariable.h"
@@ -15,11 +20,23 @@
 #include "Oscillator.h"
 #include "TimeCycleSplineSet.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/RuntimeException.h"
 #include "java/lang/System.h"
 #include "java/text/DecimalFormat.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 inline NSString *ADXTimeCycleSplineSet_get_TAG(void);
@@ -28,23 +45,23 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTimeCycleSplineSet, TAG, NSString *)
 
 @interface ADXTimeCycleSplineSet_Sort ()
 
-+ (jint)partitionWithIntArray:(IOSIntArray *)array
-              withFloatArray2:(IOSObjectArray *)value
-                      withInt:(jint)low
-                      withInt:(jint)hi;
++ (int32_t)partitionWithIntArray:(IOSIntArray *)array
+                 withFloatArray2:(IOSObjectArray *)value
+                         withInt:(int32_t)low
+                         withInt:(int32_t)hi;
 
 + (void)swapWithIntArray:(IOSIntArray *)array
          withFloatArray2:(IOSObjectArray *)value
-                 withInt:(jint)a
-                 withInt:(jint)b;
+                 withInt:(int32_t)a
+                 withInt:(int32_t)b;
 
 @end
 
-__attribute__((unused)) static jint ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, jint low, jint hi);
+__attribute__((unused)) static int32_t ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, int32_t low, int32_t hi);
 
-__attribute__((unused)) static void ADXTimeCycleSplineSet_Sort_swapWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, jint a, jint b);
+__attribute__((unused)) static void ADXTimeCycleSplineSet_Sort_swapWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, int32_t a, int32_t b);
 
-jfloat ADXTimeCycleSplineSet_VAL_2PI = 6.2831855f;
+float ADXTimeCycleSplineSet_VAL_2PI = 6.2831855f;
 
 @implementation ADXTimeCycleSplineSet
 
@@ -58,7 +75,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (NSString *)description {
   NSString *str = JreRetainedLocalValue(mType_);
   JavaTextDecimalFormat *df = create_JavaTextDecimalFormat_initWithNSString_(@"##.##");
-  for (jint i = 0; i < count_; i++) {
+  for (int32_t i = 0; i < count_; i++) {
     JreStrAppend(&str, "CI$$$", '[', IOSIntArray_Get(nil_chk(mTimePoints_), i), @" , ", [df formatWithId:IOSObjectArray_Get(nil_chk(mValues_), i)], @"] ");
   }
   return str;
@@ -68,16 +85,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&mType_, type);
 }
 
-- (jfloat)calcWaveWithFloat:(jfloat)period {
-  jfloat p = period;
+- (float)calcWaveWithFloat:(float)period {
+  float p = period;
   {
-    jfloat x;
+    float x;
     switch (mWaveShape_) {
       default:
       case ADXOscillator_SIN_WAVE:
-      return (jfloat) JavaLangMath_sinWithDouble_(p * ADXTimeCycleSplineSet_VAL_2PI);
+      return (float) JavaLangMath_sinWithDouble_(p * ADXTimeCycleSplineSet_VAL_2PI);
       case ADXOscillator_SQUARE_WAVE:
-      return (jfloat) JavaLangMath_signumWithFloat_(p * ADXTimeCycleSplineSet_VAL_2PI);
+      return (float) JavaLangMath_signumWithFloat_(p * ADXTimeCycleSplineSet_VAL_2PI);
       case ADXOscillator_TRIANGLE_WAVE:
       return 1 - JavaLangMath_absWithFloat_(p);
       case ADXOscillator_SAW_WAVE:
@@ -85,7 +102,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       case ADXOscillator_REVERSE_SAW_WAVE:
       return (1 - (fmodf((p * 2 + 1), 2)));
       case ADXOscillator_COS_WAVE:
-      return (jfloat) JavaLangMath_cosWithDouble_(p * ADXTimeCycleSplineSet_VAL_2PI);
+      return (float) JavaLangMath_cosWithDouble_(p * ADXTimeCycleSplineSet_VAL_2PI);
       case ADXOscillator_BOUNCE:
       x = 1 - JavaLangMath_absWithFloat_(fmodf((p * 4), 4) - 2);
       return 1 - x * x;
@@ -97,15 +114,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   return mCurveFit_;
 }
 
-- (void)setStartTimeWithLong:(jlong)currentTime {
+- (void)setStartTimeWithLong:(int64_t)currentTime {
   last_time_ = currentTime;
 }
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset {
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset {
   *IOSIntArray_GetRef(nil_chk(mTimePoints_), count_) = position;
   *IOSFloatArray_GetRef(nil_chk(IOSObjectArray_Get(nil_chk(mValues_), count_)), ADXTimeCycleSplineSet_CURVE_VALUE) = value;
   *IOSFloatArray_GetRef(nil_chk(IOSObjectArray_Get(mValues_, count_)), ADXTimeCycleSplineSet_CURVE_PERIOD) = period;
@@ -114,14 +131,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   count_++;
 }
 
-- (void)setupWithInt:(jint)curveType {
+- (void)setupWithInt:(int32_t)curveType {
   if (count_ == 0) {
     [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$", @"Error no points added to ", mType_)];
     return;
   }
   ADXTimeCycleSplineSet_Sort_doubleQuickSortWithIntArray_withFloatArray2_withInt_withInt_(mTimePoints_, mValues_, 0, count_ - 1);
-  jint unique = 0;
-  for (jint i = 1; i < ((IOSIntArray *) nil_chk(mTimePoints_))->size_; i++) {
+  int32_t unique = 0;
+  for (int32_t i = 1; i < ((IOSIntArray *) nil_chk(mTimePoints_))->size_; i++) {
     if (IOSIntArray_Get(mTimePoints_, i) != IOSIntArray_Get(mTimePoints_, i - 1)) {
       unique++;
     }
@@ -130,9 +147,9 @@ J2OBJC_IGNORE_DESIGNATED_END
     unique = 1;
   }
   IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:unique];
-  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ unique, 3 }];
-  jint k = 0;
-  for (jint i = 0; i < count_; i++) {
+  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ unique, 3 }];
+  int32_t k = 0;
+  for (int32_t i = 0; i < count_; i++) {
     if (i > 0 && IOSIntArray_Get(mTimePoints_, i) == IOSIntArray_Get(mTimePoints_, i - 1)) {
       continue;
     }
@@ -205,13 +222,15 @@ void ADXTimeCycleSplineSet_init(ADXTimeCycleSplineSet *self) {
   NSObject_init(self);
   self->mWaveShape_ = 0;
   JreStrongAssignAndConsume(&self->mTimePoints_, [IOSIntArray newArrayWithLength:10]);
-  JreStrongAssignAndConsume(&self->mValues_, [IOSFloatArray newArrayWithDimensions:2 lengths:(jint[]){ 10, 3 }]);
+  JreStrongAssignAndConsume(&self->mValues_, [IOSFloatArray newArrayWithDimensions:2 lengths:(int32_t[]){ 10, 3 }]);
   JreStrongAssignAndConsume(&self->mCache_, [IOSFloatArray newArrayWithLength:3]);
   self->mContinue_ = false;
   self->last_cycle_ = JavaLangFloat_NaN;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXTimeCycleSplineSet)
+
+J2OBJC_NAME_MAPPING(ADXTimeCycleSplineSet, "androidx.constraintlayout.core.motion.utils", "ADX")
 
 @implementation ADXTimeCycleSplineSet_CustomSet
 
@@ -221,20 +240,20 @@ withADXKeyFrameArray_CustomArray:(ADXKeyFrameArray_CustomArray *)attrList {
   return self;
 }
 
-- (void)setupWithInt:(jint)curveType {
-  jint size = [((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) size];
-  jint dimensionality = [((ADXCLCustomAttribute *) nil_chk([((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
+- (void)setupWithInt:(int32_t)curveType {
+  int32_t size = [((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) size];
+  int32_t dimensionality = [((ADXCLCustomAttribute *) nil_chk([((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
   IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:size];
   JreStrongAssignAndConsume(&mTempValues_, [IOSFloatArray newArrayWithLength:dimensionality + 2]);
   JreStrongAssignAndConsume(&mCache_CustomSet_, [IOSFloatArray newArrayWithLength:dimensionality]);
-  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ size, dimensionality + 2 }];
-  for (jint i = 0; i < size; i++) {
-    jint key = [((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
+  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ size, dimensionality + 2 }];
+  for (int32_t i = 0; i < size; i++) {
+    int32_t key = [((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
     ADXCLCustomAttribute *ca = JreRetainedLocalValue([((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:i]);
     IOSFloatArray *waveProp = [((ADXKeyFrameArray_FloatArray *) nil_chk(mWaveProperties_)) valueAtWithInt:i];
     *IOSDoubleArray_GetRef(time, i) = key * 1E-2;
     [((ADXCLCustomAttribute *) nil_chk(ca)) getValuesToInterpolateWithFloatArray:mTempValues_];
-    for (jint k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
+    for (int32_t k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
       *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), k) = IOSFloatArray_Get(mTempValues_, k);
     }
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), dimensionality) = IOSFloatArray_Get(nil_chk(waveProp), 0);
@@ -243,43 +262,43 @@ withADXKeyFrameArray_CustomArray:(ADXKeyFrameArray_CustomArray *)attrList {
   JreStrongAssign(&mCurveFit_, ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(curveType, time, values));
 }
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset {
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset {
   @throw create_JavaLangRuntimeException_initWithNSString_(@"don't call for custom attribute call setPoint(pos, ConstraintAttribute,...)");
 }
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
 withADXCLCustomAttribute:(ADXCLCustomAttribute *)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset {
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset {
   [((ADXKeyFrameArray_CustomArray *) nil_chk(mConstraintAttributeList_)) appendWithInt:position withADXCLCustomAttribute:value];
-  [((ADXKeyFrameArray_FloatArray *) nil_chk(mWaveProperties_)) appendWithInt:position withFloatArray:[IOSFloatArray arrayWithFloats:(jfloat[]){ period, offset } count:2]];
+  [((ADXKeyFrameArray_FloatArray *) nil_chk(mWaveProperties_)) appendWithInt:position withFloatArray:[IOSFloatArray arrayWithFloats:(float[]){ period, offset } count:2]];
   mWaveShape_ = JavaLangMath_maxWithInt_withInt_(mWaveShape_, shape);
 }
 
-- (jboolean)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
-                                 withFloat:(jfloat)t
-                                  withLong:(jlong)time
-                           withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
+                             withFloat:(float)t
+                              withLong:(int64_t)time
+                       withADXKeyCache:(ADXKeyCache *)cache {
   [((ADXCurveFit *) nil_chk(mCurveFit_)) getPosWithDouble:t withFloatArray:mTempValues_];
-  jfloat period = IOSFloatArray_Get(mTempValues_, ((IOSFloatArray *) nil_chk(mTempValues_))->size_ - 2);
-  jfloat offset = IOSFloatArray_Get(mTempValues_, mTempValues_->size_ - 1);
-  jlong delta_time = time - last_time_;
+  float period = IOSFloatArray_Get(mTempValues_, ((IOSFloatArray *) nil_chk(mTempValues_))->size_ - 2);
+  float offset = IOSFloatArray_Get(mTempValues_, mTempValues_->size_ - 1);
+  int64_t delta_time = time - last_time_;
   if (JavaLangFloat_isNaNWithFloat_(last_cycle_)) {
     last_cycle_ = [((ADXKeyCache *) nil_chk(cache)) getFloatValueWithId:view withNSString:mAttributeName_ withInt:0];
     if (JavaLangFloat_isNaNWithFloat_(last_cycle_)) {
       last_cycle_ = 0;
     }
   }
-  last_cycle_ = (jfloat) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
+  last_cycle_ = (float) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
   last_time_ = time;
-  jfloat wave = [self calcWaveWithFloat:last_cycle_];
+  float wave = [self calcWaveWithFloat:last_cycle_];
   mContinue_ = false;
-  for (jint i = 0; i < ((IOSFloatArray *) nil_chk(mCache_CustomSet_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSFloatArray *) nil_chk(mCache_CustomSet_))->size_; i++) {
     mContinue_ |= (IOSFloatArray_Get(nil_chk(mTempValues_), i) != 0.0);
     *IOSFloatArray_GetRef(mCache_CustomSet_, i) = IOSFloatArray_Get(mTempValues_, i) * wave + offset;
   }
@@ -358,22 +377,22 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)doubleQuickSortWithIntArray:(IOSIntArray *)key
                     withFloatArray2:(IOSObjectArray *)value
-                            withInt:(jint)low
-                            withInt:(jint)hi {
+                            withInt:(int32_t)low
+                            withInt:(int32_t)hi {
   ADXTimeCycleSplineSet_Sort_doubleQuickSortWithIntArray_withFloatArray2_withInt_withInt_(key, value, low, hi);
 }
 
-+ (jint)partitionWithIntArray:(IOSIntArray *)array
-              withFloatArray2:(IOSObjectArray *)value
-                      withInt:(jint)low
-                      withInt:(jint)hi {
++ (int32_t)partitionWithIntArray:(IOSIntArray *)array
+                 withFloatArray2:(IOSObjectArray *)value
+                         withInt:(int32_t)low
+                         withInt:(int32_t)hi {
   return ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_withInt_(array, value, low, hi);
 }
 
 + (void)swapWithIntArray:(IOSIntArray *)array
          withFloatArray2:(IOSObjectArray *)value
-                 withInt:(jint)a
-                 withInt:(jint)b {
+                 withInt:(int32_t)a
+                 withInt:(int32_t)b {
   ADXTimeCycleSplineSet_Sort_swapWithIntArray_withFloatArray2_withInt_withInt_(array, value, a, b);
 }
 
@@ -411,17 +430,17 @@ ADXTimeCycleSplineSet_Sort *create_ADXTimeCycleSplineSet_Sort_init() {
   J2OBJC_CREATE_IMPL(ADXTimeCycleSplineSet_Sort, init)
 }
 
-void ADXTimeCycleSplineSet_Sort_doubleQuickSortWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *key, IOSObjectArray *value, jint low, jint hi) {
+void ADXTimeCycleSplineSet_Sort_doubleQuickSortWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *key, IOSObjectArray *value, int32_t low, int32_t hi) {
   ADXTimeCycleSplineSet_Sort_initialize();
   IOSIntArray *stack = [IOSIntArray arrayWithLength:((IOSIntArray *) nil_chk(key))->size_ + 10];
-  jint count = 0;
+  int32_t count = 0;
   *IOSIntArray_GetRef(stack, count++) = hi;
   *IOSIntArray_GetRef(stack, count++) = low;
   while (count > 0) {
     low = IOSIntArray_Get(stack, --count);
     hi = IOSIntArray_Get(stack, --count);
     if (low < hi) {
-      jint p = ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_withInt_(key, value, low, hi);
+      int32_t p = ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_withInt_(key, value, low, hi);
       *IOSIntArray_GetRef(stack, count++) = p - 1;
       *IOSIntArray_GetRef(stack, count++) = low;
       *IOSIntArray_GetRef(stack, count++) = hi;
@@ -430,11 +449,11 @@ void ADXTimeCycleSplineSet_Sort_doubleQuickSortWithIntArray_withFloatArray2_with
   }
 }
 
-jint ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, jint low, jint hi) {
+int32_t ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, int32_t low, int32_t hi) {
   ADXTimeCycleSplineSet_Sort_initialize();
-  jint pivot = IOSIntArray_Get(nil_chk(array), hi);
-  jint i = low;
-  for (jint j = low; j < hi; j++) {
+  int32_t pivot = IOSIntArray_Get(nil_chk(array), hi);
+  int32_t i = low;
+  for (int32_t j = low; j < hi; j++) {
     if (IOSIntArray_Get(array, j) <= pivot) {
       ADXTimeCycleSplineSet_Sort_swapWithIntArray_withFloatArray2_withInt_withInt_(array, value, i, j);
       i++;
@@ -444,9 +463,9 @@ jint ADXTimeCycleSplineSet_Sort_partitionWithIntArray_withFloatArray2_withInt_wi
   return i;
 }
 
-void ADXTimeCycleSplineSet_Sort_swapWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, jint a, jint b) {
+void ADXTimeCycleSplineSet_Sort_swapWithIntArray_withFloatArray2_withInt_withInt_(IOSIntArray *array, IOSObjectArray *value, int32_t a, int32_t b) {
   ADXTimeCycleSplineSet_Sort_initialize();
-  jint tmp = IOSIntArray_Get(nil_chk(array), a);
+  int32_t tmp = IOSIntArray_Get(nil_chk(array), a);
   *IOSIntArray_GetRef(array, a) = IOSIntArray_Get(array, b);
   *IOSIntArray_GetRef(array, b) = tmp;
   IOSFloatArray *tmpv = IOSObjectArray_Get(nil_chk(value), a);
@@ -464,20 +483,20 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXTimeCycleSplineSet_Sort)
   return self;
 }
 
-- (void)setupWithInt:(jint)curveType {
-  jint size = [((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) size];
-  jint dimensionality = [((ADXCustomVariable *) nil_chk([((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
+- (void)setupWithInt:(int32_t)curveType {
+  int32_t size = [((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) size];
+  int32_t dimensionality = [((ADXCustomVariable *) nil_chk([((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
   IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:size];
   JreStrongAssignAndConsume(&mTempValues_, [IOSFloatArray newArrayWithLength:dimensionality + 2]);
   JreStrongAssignAndConsume(&mCache_CustomVarSet_, [IOSFloatArray newArrayWithLength:dimensionality]);
-  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ size, dimensionality + 2 }];
-  for (jint i = 0; i < size; i++) {
-    jint key = [((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
+  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ size, dimensionality + 2 }];
+  for (int32_t i = 0; i < size; i++) {
+    int32_t key = [((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
     ADXCustomVariable *ca = JreRetainedLocalValue([((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:i]);
     IOSFloatArray *waveProp = [((ADXKeyFrameArray_FloatArray *) nil_chk(mWaveProperties_)) valueAtWithInt:i];
     *IOSDoubleArray_GetRef(time, i) = key * 1E-2;
     [((ADXCustomVariable *) nil_chk(ca)) getValuesToInterpolateWithFloatArray:mTempValues_];
-    for (jint k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
+    for (int32_t k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
       *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), k) = IOSFloatArray_Get(mTempValues_, k);
     }
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), dimensionality) = IOSFloatArray_Get(nil_chk(waveProp), 0);
@@ -486,43 +505,43 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXTimeCycleSplineSet_Sort)
   JreStrongAssign(&mCurveFit_, ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(curveType, time, values));
 }
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset {
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset {
   @throw create_JavaLangRuntimeException_initWithNSString_(@"don't call for custom attribute call setPoint(pos, ConstraintAttribute,...)");
 }
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
   withADXCustomVariable:(ADXCustomVariable *)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset {
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset {
   [((ADXKeyFrameArray_CustomVar *) nil_chk(mConstraintAttributeList_)) appendWithInt:position withADXCustomVariable:value];
-  [((ADXKeyFrameArray_FloatArray *) nil_chk(mWaveProperties_)) appendWithInt:position withFloatArray:[IOSFloatArray arrayWithFloats:(jfloat[]){ period, offset } count:2]];
+  [((ADXKeyFrameArray_FloatArray *) nil_chk(mWaveProperties_)) appendWithInt:position withFloatArray:[IOSFloatArray arrayWithFloats:(float[]){ period, offset } count:2]];
   mWaveShape_ = JavaLangMath_maxWithInt_withInt_(mWaveShape_, shape);
 }
 
-- (jboolean)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
-                                 withFloat:(jfloat)t
-                                  withLong:(jlong)time
-                           withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
+                             withFloat:(float)t
+                              withLong:(int64_t)time
+                       withADXKeyCache:(ADXKeyCache *)cache {
   [((ADXCurveFit *) nil_chk(mCurveFit_)) getPosWithDouble:t withFloatArray:mTempValues_];
-  jfloat period = IOSFloatArray_Get(mTempValues_, ((IOSFloatArray *) nil_chk(mTempValues_))->size_ - 2);
-  jfloat offset = IOSFloatArray_Get(mTempValues_, mTempValues_->size_ - 1);
-  jlong delta_time = time - last_time_;
+  float period = IOSFloatArray_Get(mTempValues_, ((IOSFloatArray *) nil_chk(mTempValues_))->size_ - 2);
+  float offset = IOSFloatArray_Get(mTempValues_, mTempValues_->size_ - 1);
+  int64_t delta_time = time - last_time_;
   if (JavaLangFloat_isNaNWithFloat_(last_cycle_)) {
     last_cycle_ = [((ADXKeyCache *) nil_chk(cache)) getFloatValueWithId:view withNSString:mAttributeName_ withInt:0];
     if (JavaLangFloat_isNaNWithFloat_(last_cycle_)) {
       last_cycle_ = 0;
     }
   }
-  last_cycle_ = (jfloat) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
+  last_cycle_ = (float) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
   last_time_ = time;
-  jfloat wave = [self calcWaveWithFloat:last_cycle_];
+  float wave = [self calcWaveWithFloat:last_cycle_];
   mContinue_ = false;
-  for (jint i = 0; i < ((IOSFloatArray *) nil_chk(mCache_CustomVarSet_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSFloatArray *) nil_chk(mCache_CustomVarSet_))->size_; i++) {
     mContinue_ |= (IOSFloatArray_Get(nil_chk(mTempValues_), i) != 0.0);
     *IOSFloatArray_GetRef(mCache_CustomVarSet_, i) = IOSFloatArray_Get(mTempValues_, i) * wave + offset;
   }

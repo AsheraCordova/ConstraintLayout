@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreGuideline.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -12,16 +17,25 @@
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
 #include "SolverVariable.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashMap.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCoreGuideline () {
  @public
   ADXConstraintAnchor *mAnchor_;
-  jint mOrientation_;
-  jint mMinimumPosition_;
-  jboolean resolved_;
+  int32_t mOrientation_;
+  int32_t mMinimumPosition_;
+  bool resolved_;
 }
 
 @end
@@ -47,11 +61,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self setOrientationWithInt:srcGuideline->mOrientation_];
 }
 
-- (jboolean)allowedInBarrier {
+- (bool)allowedInBarrier {
   return true;
 }
 
-- (jint)getRelativeBehaviour {
+- (int32_t)getRelativeBehaviour {
   if (mRelativePercent_ != -1) {
     return ADXCoreGuideline_RELATIVE_PERCENT;
   }
@@ -64,7 +78,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXCoreGuideline_RELATIVE_UNKNOWN;
 }
 
-- (void)setOrientationWithInt:(jint)orientation {
+- (void)setOrientationWithInt:(int32_t)orientation {
   if (mOrientation_ == orientation) {
     return;
   }
@@ -77,8 +91,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     JreStrongAssign(&mAnchor_, mTop_);
   }
   [((JavaUtilArrayList *) nil_chk(mAnchors_)) addWithId:mAnchor_];
-  jint count = ((IOSObjectArray *) nil_chk(mListAnchors_))->size_;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = ((IOSObjectArray *) nil_chk(mListAnchors_))->size_;
+  for (int32_t i = 0; i < count; i++) {
     IOSObjectArray_Set(mListAnchors_, i, mAnchor_);
   }
 }
@@ -91,11 +105,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return @"Guideline";
 }
 
-- (jint)getOrientation {
+- (int32_t)getOrientation {
   return mOrientation_;
 }
 
-- (void)setMinimumPositionWithInt:(jint)minimum {
+- (void)setMinimumPositionWithInt:(int32_t)minimum {
   mMinimumPosition_ = minimum;
 }
 
@@ -127,11 +141,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return nil;
 }
 
-- (void)setGuidePercentWithInt:(jint)value {
+- (void)setGuidePercentWithInt:(int32_t)value {
   [self setGuidePercentWithFloat:value / 100.0f];
 }
 
-- (void)setGuidePercentWithFloat:(jfloat)value {
+- (void)setGuidePercentWithFloat:(float)value {
   if (value > -1) {
     mRelativePercent_ = value;
     mRelativeBegin_ = -1;
@@ -139,7 +153,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setGuideBeginWithInt:(jint)value {
+- (void)setGuideBeginWithInt:(int32_t)value {
   if (value > -1) {
     mRelativePercent_ = -1;
     mRelativeBegin_ = value;
@@ -147,7 +161,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setGuideEndWithInt:(jint)value {
+- (void)setGuideEndWithInt:(int32_t)value {
   if (value > -1) {
     mRelativePercent_ = -1;
     mRelativeBegin_ = -1;
@@ -155,40 +169,40 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jfloat)getRelativePercent {
+- (float)getRelativePercent {
   return mRelativePercent_;
 }
 
-- (jint)getRelativeBegin {
+- (int32_t)getRelativeBegin {
   return mRelativeBegin_;
 }
 
-- (jint)getRelativeEnd {
+- (int32_t)getRelativeEnd {
   return mRelativeEnd_;
 }
 
-- (void)setFinalValueWithInt:(jint)position {
+- (void)setFinalValueWithInt:(int32_t)position {
   [((ADXConstraintAnchor *) nil_chk(mAnchor_)) setFinalValueWithInt:position];
   resolved_ = true;
 }
 
-- (jboolean)isResolvedHorizontally {
+- (bool)isResolvedHorizontally {
   return resolved_;
 }
 
-- (jboolean)isResolvedVertically {
+- (bool)isResolvedVertically {
   return resolved_;
 }
 
 - (void)addToSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                           withBoolean:(jboolean)optimize {
+                           withBoolean:(bool)optimize {
   ADXConstraintWidgetContainer *parent = (ADXConstraintWidgetContainer *) cast_chk([self getParent], [ADXConstraintWidgetContainer class]);
   if (parent == nil) {
     return;
   }
   ADXConstraintAnchor *begin = JreRetainedLocalValue([parent getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, LEFT)]);
   ADXConstraintAnchor *end = JreRetainedLocalValue([parent getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, RIGHT)]);
-  jboolean parentWrapContent = mParent_ != nil ? IOSObjectArray_Get(nil_chk(mParent_->mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) : false;
+  bool parentWrapContent = mParent_ != nil ? IOSObjectArray_Get(nil_chk(mParent_->mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) : false;
   if (mOrientation_ == ADXCoreGuideline_HORIZONTAL) {
     begin = [parent getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, TOP)];
     end = [parent getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, BOTTOM)];
@@ -237,11 +251,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)updateFromSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                                withBoolean:(jboolean)optimize {
+                                withBoolean:(bool)optimize {
   if ([self getParent] == nil) {
     return;
   }
-  jint value = [((ADXLinearSystem *) nil_chk(system)) getObjectVariableValueWithId:mAnchor_];
+  int32_t value = [((ADXLinearSystem *) nil_chk(system)) getObjectVariableValueWithId:mAnchor_];
   if (mOrientation_ == ADXCoreGuideline_VERTICAL) {
     [self setXWithInt:value];
     [self setYWithInt:0];
@@ -257,15 +271,15 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)inferRelativePercentPosition {
-  jfloat percent = ([self getX] / (jfloat) [((ADXConstraintWidget *) nil_chk([self getParent])) getWidth]);
+  float percent = ([self getX] / (float) [((ADXConstraintWidget *) nil_chk([self getParent])) getWidth]);
   if (mOrientation_ == ADXCoreGuideline_HORIZONTAL) {
-    percent = ([self getY] / (jfloat) [((ADXConstraintWidget *) nil_chk([self getParent])) getHeight]);
+    percent = ([self getY] / (float) [((ADXConstraintWidget *) nil_chk([self getParent])) getHeight]);
   }
   [self setGuidePercentWithFloat:percent];
 }
 
 - (void)inferRelativeBeginPosition {
-  jint position = [self getX];
+  int32_t position = [self getX];
   if (mOrientation_ == ADXCoreGuideline_HORIZONTAL) {
     position = [self getY];
   }
@@ -273,7 +287,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)inferRelativeEndPosition {
-  jint position = [((ADXConstraintWidget *) nil_chk([self getParent])) getWidth] - [self getX];
+  int32_t position = [((ADXConstraintWidget *) nil_chk([self getParent])) getWidth] - [self getX];
   if (mOrientation_ == ADXCoreGuideline_HORIZONTAL) {
     position = [((ADXConstraintWidget *) nil_chk([self getParent])) getHeight] - [self getY];
   }
@@ -292,7 +306,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)isPercent {
+- (bool)isPercent {
   return mRelativePercent_ != -1 && mRelativeBegin_ == -1 && mRelativeEnd_ == -1;
 }
 
@@ -394,8 +408,8 @@ void ADXCoreGuideline_init(ADXCoreGuideline *self) {
   self->mMinimumPosition_ = 0;
   [((JavaUtilArrayList *) nil_chk(self->mAnchors_)) clear];
   [((JavaUtilArrayList *) nil_chk(self->mAnchors_)) addWithId:self->mAnchor_];
-  jint count = ((IOSObjectArray *) nil_chk(self->mListAnchors_))->size_;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = ((IOSObjectArray *) nil_chk(self->mListAnchors_))->size_;
+  for (int32_t i = 0; i < count; i++) {
     IOSObjectArray_Set(self->mListAnchors_, i, self->mAnchor_);
   }
 }
@@ -409,3 +423,5 @@ ADXCoreGuideline *create_ADXCoreGuideline_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCoreGuideline)
+
+J2OBJC_NAME_MAPPING(ADXCoreGuideline, "androidx.constraintlayout.core.widgets", "ADX")

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\HorizontalWidgetRun.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
 #include "Dependency.h"
@@ -16,19 +21,28 @@
 #include "RunGroup.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/List.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXHorizontalWidgetRun ()
 
 - (void)computeInsetRatioWithIntArray:(IOSIntArray *)dimensions
-                              withInt:(jint)x1
-                              withInt:(jint)x2
-                              withInt:(jint)y1
-                              withInt:(jint)y2
-                            withFloat:(jfloat)ratio
-                              withInt:(jint)side;
+                              withInt:(int32_t)x1
+                              withInt:(int32_t)x2
+                              withInt:(int32_t)y1
+                              withInt:(int32_t)y2
+                            withFloat:(float)ratio
+                              withInt:(int32_t)side;
 
 @end
 
@@ -37,7 +51,7 @@ inline IOSIntArray *ADXHorizontalWidgetRun_set_tempDimensions(IOSIntArray *value
 static IOSIntArray *ADXHorizontalWidgetRun_tempDimensions;
 J2OBJC_STATIC_FIELD_OBJ(ADXHorizontalWidgetRun, tempDimensions, IOSIntArray *)
 
-__attribute__((unused)) static void ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(ADXHorizontalWidgetRun *self, IOSIntArray *dimensions, jint x1, jint x2, jint y1, jint y2, jfloat ratio, jint side);
+__attribute__((unused)) static void ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(ADXHorizontalWidgetRun *self, IOSIntArray *dimensions, int32_t x1, int32_t x2, int32_t y1, int32_t y2, float ratio, int32_t side);
 
 J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
 
@@ -69,7 +83,7 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
   ((ADXDimensionDependency *) nil_chk(dimension_))->resolved_ = false;
 }
 
-- (jboolean)supportsWrapComputation {
+- (bool)supportsWrapComputation {
   if (dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
     if (((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD) {
       return true;
@@ -89,7 +103,7 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
       if (dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
         ADXConstraintWidget *parent = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk(widget_)) getParent]);
         if (parent != nil && ([parent getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || [parent getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT))) {
-          jint resolvedDimension = [parent getWidth] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mLeft_)) getMargin] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mRight_)) getMargin];
+          int32_t resolvedDimension = [parent getWidth] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mLeft_)) getMargin] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mRight_)) getMargin];
           [self addTargetWithADXDependencyNode:start_ withADXDependencyNode:((ADXHorizontalWidgetRun *) nil_chk(parent->horizontalRun_))->start_ withInt:[((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mLeft_)) getMargin]];
           [self addTargetWithADXDependencyNode:end_ withADXDependencyNode:((ADXHorizontalWidgetRun *) nil_chk(parent->horizontalRun_))->end_ withInt:-[((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mRight_)) getMargin]];
           [((ADXDimensionDependency *) nil_chk(dimension_)) resolveWithInt:resolvedDimension];
@@ -259,12 +273,12 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
 }
 
 - (void)computeInsetRatioWithIntArray:(IOSIntArray *)dimensions
-                              withInt:(jint)x1
-                              withInt:(jint)x2
-                              withInt:(jint)y1
-                              withInt:(jint)y2
-                            withFloat:(jfloat)ratio
-                              withInt:(jint)side {
+                              withInt:(int32_t)x1
+                              withInt:(int32_t)x2
+                              withInt:(int32_t)y1
+                              withInt:(int32_t)y2
+                            withFloat:(float)ratio
+                              withInt:(int32_t)side {
   ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(self, dimensions, x1, x2, y1, y2, ratio, side);
 }
 
@@ -296,21 +310,21 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
           if (widget_->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD || widget_->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_RATIO) {
             ADXDependencyNode *secondStart = JreRetainedLocalValue(((ADXVerticalWidgetRun *) nil_chk(widget_->verticalRun_))->start_);
             ADXDependencyNode *secondEnd = JreRetainedLocalValue(widget_->verticalRun_->end_);
-            jboolean s1 = ((ADXConstraintAnchor *) nil_chk(widget_->mLeft_))->mTarget_ != nil;
-            jboolean s2 = ((ADXConstraintAnchor *) nil_chk(widget_->mTop_))->mTarget_ != nil;
-            jboolean e1 = ((ADXConstraintAnchor *) nil_chk(widget_->mRight_))->mTarget_ != nil;
-            jboolean e2 = ((ADXConstraintAnchor *) nil_chk(widget_->mBottom_))->mTarget_ != nil;
-            jint definedSide = [widget_ getDimensionRatioSide];
+            bool s1 = ((ADXConstraintAnchor *) nil_chk(widget_->mLeft_))->mTarget_ != nil;
+            bool s2 = ((ADXConstraintAnchor *) nil_chk(widget_->mTop_))->mTarget_ != nil;
+            bool e1 = ((ADXConstraintAnchor *) nil_chk(widget_->mRight_))->mTarget_ != nil;
+            bool e2 = ((ADXConstraintAnchor *) nil_chk(widget_->mBottom_))->mTarget_ != nil;
+            int32_t definedSide = [widget_ getDimensionRatioSide];
             if (s1 && s2 && e1 && e2) {
-              jfloat ratio = [((ADXConstraintWidget *) nil_chk(widget_)) getDimensionRatio];
+              float ratio = [((ADXConstraintWidget *) nil_chk(widget_)) getDimensionRatio];
               if (((ADXDependencyNode *) nil_chk(secondStart))->resolved_ && ((ADXDependencyNode *) nil_chk(secondEnd))->resolved_) {
                 if (!(((ADXDependencyNode *) nil_chk(start_))->readyToSolve_ && ((ADXDependencyNode *) nil_chk(end_))->readyToSolve_)) {
                   return;
                 }
-                jint x1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(start_->targets_)) getWithInt:0]))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-                jint x2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]))->value_ - ((ADXDependencyNode *) nil_chk(end_))->margin_;
-                jint y1 = secondStart->value_ + secondStart->margin_;
-                jint y2 = ((ADXDependencyNode *) nil_chk(secondEnd))->value_ - secondEnd->margin_;
+                int32_t x1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(start_->targets_)) getWithInt:0]))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+                int32_t x2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]))->value_ - ((ADXDependencyNode *) nil_chk(end_))->margin_;
+                int32_t y1 = secondStart->value_ + secondStart->margin_;
+                int32_t y2 = ((ADXDependencyNode *) nil_chk(secondEnd))->value_ - secondEnd->margin_;
                 ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(self, ADXHorizontalWidgetRun_tempDimensions, x1, x2, y1, y2, ratio, definedSide);
                 [((ADXDimensionDependency *) nil_chk(dimension_)) resolveWithInt:IOSIntArray_Get(nil_chk(ADXHorizontalWidgetRun_tempDimensions), ADXConstraintWidget_HORIZONTAL)];
                 [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->verticalRun_))->dimension_)) resolveWithInt:IOSIntArray_Get(nil_chk(ADXHorizontalWidgetRun_tempDimensions), ADXConstraintWidget_VERTICAL)];
@@ -320,10 +334,10 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
                 if (!(secondStart->readyToSolve_ && ((ADXDependencyNode *) nil_chk(secondEnd))->readyToSolve_)) {
                   return;
                 }
-                jint x1 = start_->value_ + start_->margin_;
-                jint x2 = ((ADXDependencyNode *) nil_chk(end_))->value_ - end_->margin_;
-                jint y1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(secondStart->targets_)) getWithInt:0]))->value_ + secondStart->margin_;
-                jint y2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(secondEnd))->targets_)) getWithInt:0]))->value_ - secondEnd->margin_;
+                int32_t x1 = start_->value_ + start_->margin_;
+                int32_t x2 = ((ADXDependencyNode *) nil_chk(end_))->value_ - end_->margin_;
+                int32_t y1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(secondStart->targets_)) getWithInt:0]))->value_ + secondStart->margin_;
+                int32_t y2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(secondEnd))->targets_)) getWithInt:0]))->value_ - secondEnd->margin_;
                 ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(self, ADXHorizontalWidgetRun_tempDimensions, x1, x2, y1, y2, ratio, definedSide);
                 [((ADXDimensionDependency *) nil_chk(dimension_)) resolveWithInt:IOSIntArray_Get(nil_chk(ADXHorizontalWidgetRun_tempDimensions), ADXConstraintWidget_HORIZONTAL)];
                 [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->verticalRun_))->dimension_)) resolveWithInt:IOSIntArray_Get(nil_chk(ADXHorizontalWidgetRun_tempDimensions), ADXConstraintWidget_VERTICAL)];
@@ -331,10 +345,10 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
               if (!(((ADXDependencyNode *) nil_chk(start_))->readyToSolve_ && ((ADXDependencyNode *) nil_chk(end_))->readyToSolve_ && secondStart->readyToSolve_ && ((ADXDependencyNode *) nil_chk(secondEnd))->readyToSolve_)) {
                 return;
               }
-              jint x1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(start_->targets_)) getWithInt:0]))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-              jint x2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]))->value_ - ((ADXDependencyNode *) nil_chk(end_))->margin_;
-              jint y1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(secondStart->targets_)) getWithInt:0]))->value_ + secondStart->margin_;
-              jint y2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(secondEnd))->targets_)) getWithInt:0]))->value_ - secondEnd->margin_;
+              int32_t x1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(start_->targets_)) getWithInt:0]))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+              int32_t x2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]))->value_ - ((ADXDependencyNode *) nil_chk(end_))->margin_;
+              int32_t y1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(secondStart->targets_)) getWithInt:0]))->value_ + secondStart->margin_;
+              int32_t y2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(secondEnd))->targets_)) getWithInt:0]))->value_ - secondEnd->margin_;
               ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(self, ADXHorizontalWidgetRun_tempDimensions, x1, x2, y1, y2, ratio, definedSide);
               [((ADXDimensionDependency *) nil_chk(dimension_)) resolveWithInt:IOSIntArray_Get(nil_chk(ADXHorizontalWidgetRun_tempDimensions), ADXConstraintWidget_HORIZONTAL)];
               [((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->verticalRun_))->dimension_)) resolveWithInt:IOSIntArray_Get(nil_chk(ADXHorizontalWidgetRun_tempDimensions), ADXConstraintWidget_VERTICAL)];
@@ -343,17 +357,17 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
               if (!(((ADXDependencyNode *) nil_chk(start_))->readyToSolve_ && ((ADXDependencyNode *) nil_chk(end_))->readyToSolve_)) {
                 return;
               }
-              jfloat ratio = [((ADXConstraintWidget *) nil_chk(widget_)) getDimensionRatio];
-              jint x1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-              jint x2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]))->value_ - ((ADXDependencyNode *) nil_chk(end_))->margin_;
+              float ratio = [((ADXConstraintWidget *) nil_chk(widget_)) getDimensionRatio];
+              int32_t x1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+              int32_t x2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]))->value_ - ((ADXDependencyNode *) nil_chk(end_))->margin_;
               switch (definedSide) {
                 case ADXConstraintWidget_UNKNOWN:
                 case ADXConstraintWidget_HORIZONTAL:
                 {
-                  jint dx = x2 - x1;
-                  jint ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
-                  jint dy = JreFpToInt((0.5f + ldx * ratio));
-                  jint ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
+                  int32_t dx = x2 - x1;
+                  int32_t ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
+                  int32_t dy = JreFpToInt((0.5f + ldx * ratio));
+                  int32_t ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
                   if (dy != ldy) {
                     ldx = JreFpToInt((0.5f + ldy / ratio));
                   }
@@ -363,10 +377,10 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
                 break;
                 case ADXConstraintWidget_VERTICAL:
                 {
-                  jint dx = x2 - x1;
-                  jint ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
-                  jint dy = JreFpToInt((0.5f + ldx / ratio));
-                  jint ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
+                  int32_t dx = x2 - x1;
+                  int32_t ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
+                  int32_t dy = JreFpToInt((0.5f + ldx / ratio));
+                  int32_t ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
                   if (dy != ldy) {
                     ldx = JreFpToInt((0.5f + ldy * ratio));
                   }
@@ -382,17 +396,17 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
               if (!(((ADXDependencyNode *) nil_chk(secondStart))->readyToSolve_ && ((ADXDependencyNode *) nil_chk(secondEnd))->readyToSolve_)) {
                 return;
               }
-              jfloat ratio = [((ADXConstraintWidget *) nil_chk(widget_)) getDimensionRatio];
-              jint y1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(secondStart->targets_)) getWithInt:0]))->value_ + secondStart->margin_;
-              jint y2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(secondEnd))->targets_)) getWithInt:0]))->value_ - secondEnd->margin_;
+              float ratio = [((ADXConstraintWidget *) nil_chk(widget_)) getDimensionRatio];
+              int32_t y1 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(secondStart->targets_)) getWithInt:0]))->value_ + secondStart->margin_;
+              int32_t y2 = ((ADXDependencyNode *) nil_chk([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(secondEnd))->targets_)) getWithInt:0]))->value_ - secondEnd->margin_;
               switch (definedSide) {
                 case ADXConstraintWidget_UNKNOWN:
                 case ADXConstraintWidget_VERTICAL:
                 {
-                  jint dy = y2 - y1;
-                  jint ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
-                  jint dx = JreFpToInt((0.5f + ldy / ratio));
-                  jint ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
+                  int32_t dy = y2 - y1;
+                  int32_t ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
+                  int32_t dx = JreFpToInt((0.5f + ldy / ratio));
+                  int32_t ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
                   if (dx != ldx) {
                     ldy = JreFpToInt((0.5f + ldx * ratio));
                   }
@@ -402,10 +416,10 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
                 break;
                 case ADXConstraintWidget_HORIZONTAL:
                 {
-                  jint dy = y2 - y1;
-                  jint ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
-                  jint dx = JreFpToInt((0.5f + ldy * ratio));
-                  jint ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
+                  int32_t dy = y2 - y1;
+                  int32_t ldy = [self getLimitedDimensionWithInt:dy withInt:ADXConstraintWidget_VERTICAL];
+                  int32_t dx = JreFpToInt((0.5f + ldy * ratio));
+                  int32_t ldx = [self getLimitedDimensionWithInt:dx withInt:ADXConstraintWidget_HORIZONTAL];
                   if (dx != ldx) {
                     ldy = JreFpToInt((0.5f + ldx / ratio));
                   }
@@ -419,8 +433,8 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
             }
           }
           else {
-            jint size = 0;
-            jint ratioSide = [widget_ getDimensionRatioSide];
+            int32_t size = 0;
+            int32_t ratioSide = [widget_ getDimensionRatioSide];
             switch (ratioSide) {
               case ADXConstraintWidget_HORIZONTAL:
               {
@@ -449,9 +463,9 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
           ADXConstraintWidget *parent = JreRetainedLocalValue([widget_ getParent]);
           if (parent != nil) {
             if (((ADXDimensionDependency *) nil_chk(((ADXHorizontalWidgetRun *) nil_chk(parent->horizontalRun_))->dimension_))->resolved_) {
-              jfloat percent = ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintPercentWidth_;
-              jint targetDimensionValue = parent->horizontalRun_->dimension_->value_;
-              jint size = JreFpToInt((0.5f + targetDimensionValue * percent));
+              float percent = ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintPercentWidth_;
+              int32_t targetDimensionValue = parent->horizontalRun_->dimension_->value_;
+              int32_t size = JreFpToInt((0.5f + targetDimensionValue * percent));
               [dimension_ resolveWithInt:size];
             }
           }
@@ -471,9 +485,9 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
   if (!((ADXDimensionDependency *) nil_chk(dimension_))->resolved_ && dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD && ![widget_ isInHorizontalChain]) {
     ADXDependencyNode *startTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]);
     ADXDependencyNode *endTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]);
-    jint startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-    jint endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
-    jint distance = endPos - startPos;
+    int32_t startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+    int32_t endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
+    int32_t distance = endPos - startPos;
     [start_ resolveWithInt:startPos];
     [((ADXDependencyNode *) nil_chk(end_)) resolveWithInt:endPos];
     [((ADXDimensionDependency *) nil_chk(dimension_)) resolveWithInt:distance];
@@ -483,12 +497,12 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
     if ([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) size] > 0 && [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) size] > 0) {
       ADXDependencyNode *startTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]);
       ADXDependencyNode *endTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]);
-      jint startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-      jint endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
-      jint availableSpace = endPos - startPos;
-      jint value = JavaLangMath_minWithInt_withInt_(availableSpace, ((ADXDimensionDependency *) nil_chk(dimension_))->wrapValue_);
-      jint max = ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintMaxWidth_;
-      jint min = widget_->mMatchConstraintMinWidth_;
+      int32_t startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+      int32_t endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
+      int32_t availableSpace = endPos - startPos;
+      int32_t value = JavaLangMath_minWithInt_withInt_(availableSpace, ((ADXDimensionDependency *) nil_chk(dimension_))->wrapValue_);
+      int32_t max = ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintMaxWidth_;
+      int32_t min = widget_->mMatchConstraintMinWidth_;
       value = JavaLangMath_maxWithInt_withInt_(min, value);
       if (max > 0) {
         value = JavaLangMath_minWithInt_withInt_(max, value);
@@ -501,15 +515,15 @@ J2OBJC_INITIALIZED_DEFN(ADXHorizontalWidgetRun)
   }
   ADXDependencyNode *startTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]);
   ADXDependencyNode *endTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]);
-  jint startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-  jint endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
-  jfloat bias = [((ADXConstraintWidget *) nil_chk(widget_)) getHorizontalBiasPercent];
-  if (startTarget == endTarget) {
+  int32_t startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+  int32_t endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
+  float bias = [((ADXConstraintWidget *) nil_chk(widget_)) getHorizontalBiasPercent];
+  if (JreObjectEqualsEquals(startTarget, endTarget)) {
     startPos = startTarget->value_;
     endPos = endTarget->value_;
     bias = 0.5f;
   }
-  jint distance = (endPos - startPos - ((ADXDimensionDependency *) nil_chk(dimension_))->value_);
+  int32_t distance = (endPos - startPos - ((ADXDimensionDependency *) nil_chk(dimension_))->value_);
   [((ADXDependencyNode *) nil_chk(start_)) resolveWithInt:JreFpToInt((0.5f + startPos + distance * bias))];
   [((ADXDependencyNode *) nil_chk(end_)) resolveWithInt:((ADXDependencyNode *) nil_chk(start_))->value_ + ((ADXDimensionDependency *) nil_chk(dimension_))->value_];
 }
@@ -577,16 +591,16 @@ ADXHorizontalWidgetRun *create_ADXHorizontalWidgetRun_initWithADXConstraintWidge
   J2OBJC_CREATE_IMPL(ADXHorizontalWidgetRun, initWithADXConstraintWidget_, widget)
 }
 
-void ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(ADXHorizontalWidgetRun *self, IOSIntArray *dimensions, jint x1, jint x2, jint y1, jint y2, jfloat ratio, jint side) {
-  jint dx = x2 - x1;
-  jint dy = y2 - y1;
+void ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withInt_withInt_withFloat_withInt_(ADXHorizontalWidgetRun *self, IOSIntArray *dimensions, int32_t x1, int32_t x2, int32_t y1, int32_t y2, float ratio, int32_t side) {
+  int32_t dx = x2 - x1;
+  int32_t dy = y2 - y1;
   switch (side) {
     case ADXConstraintWidget_UNKNOWN:
     {
-      jint candidateX1 = JreFpToInt((0.5f + dy * ratio));
-      jint candidateY1 = dy;
-      jint candidateX2 = dx;
-      jint candidateY2 = JreFpToInt((0.5f + dx / ratio));
+      int32_t candidateX1 = JreFpToInt((0.5f + dy * ratio));
+      int32_t candidateY1 = dy;
+      int32_t candidateX2 = dx;
+      int32_t candidateY2 = JreFpToInt((0.5f + dx / ratio));
       if (candidateX1 <= dx && candidateY1 <= dy) {
         *IOSIntArray_GetRef(nil_chk(dimensions), ADXConstraintWidget_HORIZONTAL) = candidateX1;
         *IOSIntArray_GetRef(dimensions, ADXConstraintWidget_VERTICAL) = candidateY1;
@@ -599,14 +613,14 @@ void ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withIn
     break;
     case ADXConstraintWidget_HORIZONTAL:
     {
-      jint horizontalSide = JreFpToInt((0.5f + dy * ratio));
+      int32_t horizontalSide = JreFpToInt((0.5f + dy * ratio));
       *IOSIntArray_GetRef(nil_chk(dimensions), ADXConstraintWidget_HORIZONTAL) = horizontalSide;
       *IOSIntArray_GetRef(dimensions, ADXConstraintWidget_VERTICAL) = dy;
     }
     break;
     case ADXConstraintWidget_VERTICAL:
     {
-      jint verticalSide = JreFpToInt((0.5f + dx * ratio));
+      int32_t verticalSide = JreFpToInt((0.5f + dx * ratio));
       *IOSIntArray_GetRef(nil_chk(dimensions), ADXConstraintWidget_HORIZONTAL) = dx;
       *IOSIntArray_GetRef(dimensions, ADXConstraintWidget_VERTICAL) = verticalSide;
     }
@@ -617,3 +631,5 @@ void ADXHorizontalWidgetRun_computeInsetRatioWithIntArray_withInt_withInt_withIn
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXHorizontalWidgetRun)
+
+J2OBJC_NAME_MAPPING(ADXHorizontalWidgetRun, "androidx.constraintlayout.core.widgets.analyzer", "ADX")

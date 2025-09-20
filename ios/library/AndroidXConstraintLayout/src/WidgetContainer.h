@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\WidgetContainer.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_WidgetContainer")
@@ -23,7 +24,9 @@
 @class ADXCache;
 @class ADXConstraintWidgetContainer;
 @class IOSObjectArray;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
+@class NSString;
 
 /*!
  @brief A container of ConstraintWidget
@@ -45,8 +48,8 @@
  @param width width of the layout
  @param height height of the layout
  */
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 /*!
  @brief Constructor
@@ -55,10 +58,10 @@
  @param width width of the layout
  @param height height of the layout
  */
-- (instancetype)initWithInt:(jint)x
-                    withInt:(jint)y
-                    withInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)x
+                    withInt:(int32_t)y
+                    withInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 /*!
  @brief Add a child widget
@@ -107,22 +110,22 @@
  @param x horizontal offset
  @param y vertical offset
  */
-- (void)setOffsetWithInt:(jint)x
-                 withInt:(jint)y;
+- (void)setOffsetWithInt:(int32_t)x
+                 withInt:(int32_t)y;
 
 // Disallowed inherited constructors, do not use.
 
 - (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0
-                         withInt:(jint)arg1
-                         withInt:(jint)arg2 NS_UNAVAILABLE;
+                         withInt:(int32_t)arg1
+                         withInt:(int32_t)arg2 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0
-                         withInt:(jint)arg1
-                         withInt:(jint)arg2
-                         withInt:(jint)arg3
-                         withInt:(jint)arg4 NS_UNAVAILABLE;
+                         withInt:(int32_t)arg1
+                         withInt:(int32_t)arg2
+                         withInt:(int32_t)arg3
+                         withInt:(int32_t)arg4 NS_UNAVAILABLE;
 
 @end
 
@@ -136,21 +139,22 @@ FOUNDATION_EXPORT ADXWidgetContainer *new_ADXWidgetContainer_init(void) NS_RETUR
 
 FOUNDATION_EXPORT ADXWidgetContainer *create_ADXWidgetContainer_init(void);
 
-FOUNDATION_EXPORT void ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXWidgetContainer *self, jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT void ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXWidgetContainer *self, int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT void ADXWidgetContainer_initWithInt_withInt_(ADXWidgetContainer *self, jint width, jint height);
+FOUNDATION_EXPORT void ADXWidgetContainer_initWithInt_withInt_(ADXWidgetContainer *self, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_(jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXWidgetContainer *new_ADXWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_(jint width, jint height);
+FOUNDATION_EXPORT ADXWidgetContainer *create_ADXWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetContainer)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsWidgetContainer ADXWidgetContainer;
+
 
 #endif
 

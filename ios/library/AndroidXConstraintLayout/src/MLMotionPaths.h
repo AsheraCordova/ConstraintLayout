@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MLMotionPaths.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MLMotionPaths")
@@ -36,7 +37,12 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangDouble;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilLinkedHashMap;
+@class NSString;
 
 /*!
  @brief This is used to capture and play back path of the layout.
@@ -45,22 +51,22 @@
 @interface ADXMLMotionPaths : NSObject < JavaLangComparable > {
  @public
   ADXEasing *mKeyFrameEasing_;
-  jint mDrawPath_;
-  jfloat time_;
-  jfloat position_;
-  jfloat x_;
-  jfloat y_;
-  jfloat width_;
-  jfloat height_;
-  jfloat mPathRotate_;
-  jfloat mProgress_;
-  jint mPathMotionArc_;
-  jint mAnimateRelativeTo_;
-  jfloat mRelativeAngle_;
+  int32_t mDrawPath_;
+  float time_;
+  float position_;
+  float x_;
+  float y_;
+  float width_;
+  float height_;
+  float mPathRotate_;
+  float mProgress_;
+  int32_t mPathMotionArc_;
+  int32_t mAnimateRelativeTo_;
+  float mRelativeAngle_;
   ADXMotionController *mRelativeToController_;
   JavaUtilLinkedHashMap *attributes_;
-  jint mMode_;
-  jint mAnimateCircleAngleTo_;
+  int32_t mMode_;
+  int32_t mAnimateCircleAngleTo_;
   IOSDoubleArray *mTempValue_;
   IOSDoubleArray *mTempDelta_;
 }
@@ -75,15 +81,15 @@
  @param startTimePoint
  @param endTimePoint
  */
-- (instancetype)initPackagePrivateWithInt:(jint)parentWidth
-                                  withInt:(jint)parentHeight
+- (instancetype)initPackagePrivateWithInt:(int32_t)parentWidth
+                                  withInt:(int32_t)parentHeight
                        withADXKeyPosition:(ADXKeyPosition *)c
                      withADXMLMotionPaths:(ADXMLMotionPaths *)startTimePoint
                      withADXMLMotionPaths:(ADXMLMotionPaths *)endTimePoint;
 
 - (void)applyParametersWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c;
 
-- (jint)compareToWithId:(ADXMLMotionPaths *)o;
+- (int32_t)compareToWithId:(ADXMLMotionPaths *)o;
 
 - (void)configureRelativeToWithADXMotionController:(ADXMotionController *)toOrbit;
 
@@ -95,7 +101,7 @@
 - (void)differentWithADXMLMotionPaths:(ADXMLMotionPaths *)points
                      withBooleanArray:(IOSBooleanArray *)mask
                     withNSStringArray:(IOSObjectArray *)custom
-                          withBoolean:(jboolean)arcMode;
+                          withBoolean:(bool)arcMode;
 
 - (void)fillStandardWithDoubleArray:(IOSDoubleArray *)data
                        withIntArray:(IOSIntArray *)toUse;
@@ -103,39 +109,39 @@
 - (void)getBoundsWithIntArray:(IOSIntArray *)toUse
               withDoubleArray:(IOSDoubleArray *)data
                withFloatArray:(IOSFloatArray *)point
-                      withInt:(jint)offset;
+                      withInt:(int32_t)offset;
 
-- (void)getCenterWithDouble:(jdouble)p
+- (void)getCenterWithDouble:(double)p
                withIntArray:(IOSIntArray *)toUse
             withDoubleArray:(IOSDoubleArray *)data
              withFloatArray:(IOSFloatArray *)point
             withDoubleArray:(IOSDoubleArray *)vdata
              withFloatArray:(IOSFloatArray *)velocity;
 
-- (void)getCenterWithDouble:(jdouble)p
+- (void)getCenterWithDouble:(double)p
                withIntArray:(IOSIntArray *)toUse
             withDoubleArray:(IOSDoubleArray *)data
              withFloatArray:(IOSFloatArray *)point
-                    withInt:(jint)offset;
+                    withInt:(int32_t)offset;
 
-- (void)getCenterVelocityWithDouble:(jdouble)p
+- (void)getCenterVelocityWithDouble:(double)p
                        withIntArray:(IOSIntArray *)toUse
                     withDoubleArray:(IOSDoubleArray *)data
                      withFloatArray:(IOSFloatArray *)point
-                            withInt:(jint)offset;
+                            withInt:(int32_t)offset;
 
-- (jint)getCustomDataWithNSString:(NSString *)name
-                  withDoubleArray:(IOSDoubleArray *)value
-                          withInt:(jint)offset;
+- (int32_t)getCustomDataWithNSString:(NSString *)name
+                     withDoubleArray:(IOSDoubleArray *)value
+                             withInt:(int32_t)offset;
 
-- (jint)getCustomDataCountWithNSString:(NSString *)name;
+- (int32_t)getCustomDataCountWithNSString:(NSString *)name;
 
 - (void)getRectWithIntArray:(IOSIntArray *)toUse
             withDoubleArray:(IOSDoubleArray *)data
              withFloatArray:(IOSFloatArray *)path
-                    withInt:(jint)offset;
+                    withInt:(int32_t)offset;
 
-- (jboolean)hasCustomDataWithNSString:(NSString *)name;
+- (bool)hasCustomDataWithNSString:(NSString *)name;
 
 /*!
  @brief set up with Cartesian
@@ -151,22 +157,22 @@
               withADXMLMotionPaths:(ADXMLMotionPaths *)startTimePoint
               withADXMLMotionPaths:(ADXMLMotionPaths *)endTimePoint OBJC_METHOD_FAMILY_NONE;
 
-- (void)initPolarWithInt:(jint)parentWidth
-                 withInt:(jint)parentHeight
+- (void)initPolarWithInt:(int32_t)parentWidth
+                 withInt:(int32_t)parentHeight
       withADXKeyPosition:(ADXKeyPosition *)c
     withADXMLMotionPaths:(ADXMLMotionPaths *)s
     withADXMLMotionPaths:(ADXMLMotionPaths *)e OBJC_METHOD_FAMILY_NONE;
 
-- (void)initScreenWithInt:(jint)parentWidth
-                  withInt:(jint)parentHeight
+- (void)initScreenWithInt:(int32_t)parentWidth
+                  withInt:(int32_t)parentHeight
        withADXKeyPosition:(ADXKeyPosition *)c
      withADXMLMotionPaths:(ADXMLMotionPaths *)startTimePoint
      withADXMLMotionPaths:(ADXMLMotionPaths *)endTimePoint OBJC_METHOD_FAMILY_NONE;
 
-- (void)setBoundsWithFloat:(jfloat)x
-                 withFloat:(jfloat)y
-                 withFloat:(jfloat)w
-                 withFloat:(jfloat)h;
+- (void)setBoundsWithFloat:(float)x
+                 withFloat:(float)y
+                 withFloat:(float)w
+                 withFloat:(float)h;
 
 /*!
  @brief mAnchorDpDt
@@ -177,14 +183,14 @@
  @param deltaData
  @param data
  */
-- (void)setDpDtWithFloat:(jfloat)locationX
-               withFloat:(jfloat)locationY
+- (void)setDpDtWithFloat:(float)locationX
+               withFloat:(float)locationY
           withFloatArray:(IOSFloatArray *)mAnchorDpDt
             withIntArray:(IOSIntArray *)toUse
          withDoubleArray:(IOSDoubleArray *)deltaData
          withDoubleArray:(IOSDoubleArray *)data;
 
-- (void)setViewWithFloat:(jfloat)position
+- (void)setViewWithFloat:(float)position
               withADView:(ADView *)view
             withIntArray:(IOSIntArray *)toUse
          withDoubleArray:(IOSDoubleArray *)data
@@ -210,49 +216,49 @@ inline NSString *ADXMLMotionPaths_get_TAG(void);
 FOUNDATION_EXPORT NSString *ADXMLMotionPaths_TAG;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMLMotionPaths, TAG, NSString *)
 
-inline jboolean ADXMLMotionPaths_get_DEBUG(void);
+inline bool ADXMLMotionPaths_get_DEBUG(void);
 #define ADXMLMotionPaths_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, DEBUG, bool)
 
-inline jboolean ADXMLMotionPaths_get_OLD_WAY(void);
+inline bool ADXMLMotionPaths_get_OLD_WAY(void);
 #define ADXMLMotionPaths_OLD_WAY false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OLD_WAY, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OLD_WAY, bool)
 
-inline jint ADXMLMotionPaths_get_OFF_POSITION(void);
+inline int32_t ADXMLMotionPaths_get_OFF_POSITION(void);
 #define ADXMLMotionPaths_OFF_POSITION 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_POSITION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_POSITION, int32_t)
 
-inline jint ADXMLMotionPaths_get_OFF_X(void);
+inline int32_t ADXMLMotionPaths_get_OFF_X(void);
 #define ADXMLMotionPaths_OFF_X 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_X, int32_t)
 
-inline jint ADXMLMotionPaths_get_OFF_Y(void);
+inline int32_t ADXMLMotionPaths_get_OFF_Y(void);
 #define ADXMLMotionPaths_OFF_Y 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_Y, int32_t)
 
-inline jint ADXMLMotionPaths_get_OFF_WIDTH(void);
+inline int32_t ADXMLMotionPaths_get_OFF_WIDTH(void);
 #define ADXMLMotionPaths_OFF_WIDTH 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_WIDTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_WIDTH, int32_t)
 
-inline jint ADXMLMotionPaths_get_OFF_HEIGHT(void);
+inline int32_t ADXMLMotionPaths_get_OFF_HEIGHT(void);
 #define ADXMLMotionPaths_OFF_HEIGHT 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_HEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_HEIGHT, int32_t)
 
-inline jint ADXMLMotionPaths_get_OFF_PATH_ROTATE(void);
+inline int32_t ADXMLMotionPaths_get_OFF_PATH_ROTATE(void);
 #define ADXMLMotionPaths_OFF_PATH_ROTATE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_PATH_ROTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, OFF_PATH_ROTATE, int32_t)
 
-inline jint ADXMLMotionPaths_get_PERPENDICULAR(void);
+inline int32_t ADXMLMotionPaths_get_PERPENDICULAR(void);
 #define ADXMLMotionPaths_PERPENDICULAR 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, PERPENDICULAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, PERPENDICULAR, int32_t)
 
-inline jint ADXMLMotionPaths_get_CARTESIAN(void);
+inline int32_t ADXMLMotionPaths_get_CARTESIAN(void);
 #define ADXMLMotionPaths_CARTESIAN 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, CARTESIAN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, CARTESIAN, int32_t)
 
-inline jint ADXMLMotionPaths_get_SCREEN(void);
+inline int32_t ADXMLMotionPaths_get_SCREEN(void);
 #define ADXMLMotionPaths_SCREEN 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, SCREEN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionPaths, SCREEN, int32_t)
 
 inline IOSObjectArray *ADXMLMotionPaths_get_names(void);
 inline IOSObjectArray *ADXMLMotionPaths_set_names(IOSObjectArray *value);
@@ -266,15 +272,16 @@ FOUNDATION_EXPORT ADXMLMotionPaths *new_ADXMLMotionPaths_initPackagePrivate(void
 
 FOUNDATION_EXPORT ADXMLMotionPaths *create_ADXMLMotionPaths_initPackagePrivate(void);
 
-FOUNDATION_EXPORT void ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(ADXMLMotionPaths *self, jint parentWidth, jint parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint);
+FOUNDATION_EXPORT void ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(ADXMLMotionPaths *self, int32_t parentWidth, int32_t parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint);
 
-FOUNDATION_EXPORT ADXMLMotionPaths *new_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(jint parentWidth, jint parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXMLMotionPaths *new_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(int32_t parentWidth, int32_t parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXMLMotionPaths *create_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(jint parentWidth, jint parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint);
+FOUNDATION_EXPORT ADXMLMotionPaths *create_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(int32_t parentWidth, int32_t parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMLMotionPaths)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetMLMotionPaths ADXMLMotionPaths;
+
 
 #endif
 

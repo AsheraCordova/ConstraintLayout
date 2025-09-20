@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionInterpolator.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionInterpolator")
@@ -20,15 +21,17 @@
 #define INCLUDE_ADInterpolator 1
 #include "Interpolator.h"
 
+@class JavaLangFloat;
+
 @interface ADXMotionInterpolator : NSObject < ADInterpolator >
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v;
+- (float)getInterpolationWithFloat:(float)v;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
 @end
 
@@ -39,6 +42,7 @@ FOUNDATION_EXPORT void ADXMotionInterpolator_init(ADXMotionInterpolator *self);
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionInterpolator)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetMotionInterpolator ADXMotionInterpolator;
+
 
 #endif
 

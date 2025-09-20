@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\FlowImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_FlowImpl")
@@ -23,6 +24,8 @@
 @class ADXFlow;
 @class ASWidgetAttribute;
 @class IOSClass;
+@class JavaLangBoolean;
+@class NSString;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -48,7 +51,7 @@
 
 - (id)asWidget;
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v;
+- (bool)checkIosVersionWithNSString:(NSString *)v;
 
 - (void)createWithASIFragment:(id<ASIFragment>)fragment
               withJavaUtilMap:(id<JavaUtilMap>)params;
@@ -77,7 +80,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)setVisibleWithBoolean:(jboolean)b;
+- (void)setVisibleWithBoolean:(bool)b;
 
 @end
 
@@ -118,6 +121,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl)
 
 @compatibility_alias ComAsheraConstraintlayoutFlowImpl ASFlowImpl;
 
+
 #endif
 
 #if !defined (ASFlowImpl_Orientation_) && (INCLUDE_ALL_FlowImpl || defined(INCLUDE_ASFlowImpl_Orientation))
@@ -153,6 +157,7 @@ FOUNDATION_EXPORT ASFlowImpl_Orientation *new_ASFlowImpl_Orientation_init(void) 
 FOUNDATION_EXPORT ASFlowImpl_Orientation *create_ASFlowImpl_Orientation_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Orientation)
+
 
 #endif
 
@@ -190,6 +195,7 @@ FOUNDATION_EXPORT ASFlowImpl_Flow_horizontalStyle *create_ASFlowImpl_Flow_horizo
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_horizontalStyle)
 
+
 #endif
 
 #if !defined (ASFlowImpl_Flow_verticalStyle_) && (INCLUDE_ALL_FlowImpl || defined(INCLUDE_ASFlowImpl_Flow_verticalStyle))
@@ -225,6 +231,7 @@ FOUNDATION_EXPORT ASFlowImpl_Flow_verticalStyle *new_ASFlowImpl_Flow_verticalSty
 FOUNDATION_EXPORT ASFlowImpl_Flow_verticalStyle *create_ASFlowImpl_Flow_verticalStyle_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_verticalStyle)
+
 
 #endif
 
@@ -262,6 +269,7 @@ FOUNDATION_EXPORT ASFlowImpl_Flow_wrapMode *create_ASFlowImpl_Flow_wrapMode_init
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_wrapMode)
 
+
 #endif
 
 #if !defined (ASFlowImpl_Flow_verticalAlign_) && (INCLUDE_ALL_FlowImpl || defined(INCLUDE_ASFlowImpl_Flow_verticalAlign))
@@ -297,6 +305,7 @@ FOUNDATION_EXPORT ASFlowImpl_Flow_verticalAlign *new_ASFlowImpl_Flow_verticalAli
 FOUNDATION_EXPORT ASFlowImpl_Flow_verticalAlign *create_ASFlowImpl_Flow_verticalAlign_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_verticalAlign)
+
 
 #endif
 
@@ -334,6 +343,7 @@ FOUNDATION_EXPORT ASFlowImpl_Flow_horizontalAlign *create_ASFlowImpl_Flow_horizo
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_horizontalAlign)
 
+
 #endif
 
 #if !defined (ASFlowImpl_Flow_firstHorizontalStyle_) && (INCLUDE_ALL_FlowImpl || defined(INCLUDE_ASFlowImpl_Flow_firstHorizontalStyle))
@@ -369,6 +379,7 @@ FOUNDATION_EXPORT ASFlowImpl_Flow_firstHorizontalStyle *new_ASFlowImpl_Flow_firs
 FOUNDATION_EXPORT ASFlowImpl_Flow_firstHorizontalStyle *create_ASFlowImpl_Flow_firstHorizontalStyle_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstHorizontalStyle)
+
 
 #endif
 
@@ -406,6 +417,7 @@ FOUNDATION_EXPORT ASFlowImpl_Flow_firstVerticalStyle *create_ASFlowImpl_Flow_fir
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 
+
 #endif
 
 #if !defined (ASFlowImpl_FlowExt_) && (INCLUDE_ALL_FlowImpl || defined(INCLUDE_ASFlowImpl_FlowExt))
@@ -429,6 +441,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 @class ASWidgetAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -447,9 +462,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 
 - (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
 
-- (jint)getMaxHeight;
+- (int32_t)getMaxHeight;
 
-- (jint)getMaxWidth;
+- (int32_t)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
 
@@ -463,12 +478,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 
 - (id<ASILifeCycleDecorator>)newInstanceWithASIWidget:(id<ASIWidget>)widget OBJC_METHOD_FAMILY_NONE;
 
-- (void)offsetLeftAndRightWithInt:(jint)offset;
+- (void)offsetLeftAndRightWithInt:(int32_t)offset;
 
-- (void)offsetTopAndBottomWithInt:(jint)offset;
+- (void)offsetTopAndBottomWithInt:(int32_t)offset;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)remeasure;
 
@@ -478,9 +493,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
 
-- (void)setMaxHeightWithInt:(jint)height;
+- (void)setMaxHeightWithInt:(int32_t)height;
 
-- (void)setMaxWidthWithInt:(jint)width;
+- (void)setMaxWidthWithInt:(int32_t)width;
 
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
@@ -495,7 +510,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 
 - (void)setState4WithId:(id)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)state0;
 
@@ -511,16 +526,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_Flow_firstVerticalStyle)
 
 - (void)stateYes;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 // Disallowed inherited constructors, do not use.
 
@@ -537,6 +552,7 @@ FOUNDATION_EXPORT ASFlowImpl_FlowExt *new_ASFlowImpl_FlowExt_initWithASFlowImpl_
 FOUNDATION_EXPORT ASFlowImpl_FlowExt *create_ASFlowImpl_FlowExt_initWithASFlowImpl_(ASFlowImpl *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASFlowImpl_FlowExt)
+
 
 #endif
 

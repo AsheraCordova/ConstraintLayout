@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\CarouselImpl.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AbstractEnumToIntConverter.h"
 #include "BaseWidget.h"
 #include "Carousel.h"
@@ -53,8 +58,12 @@
 
 #include "ASUIView.h"
 
-@protocol JavaUtilList;
-@protocol JavaUtilMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASCarouselImpl () {
@@ -83,11 +92,11 @@
 
 - (void)setDataKeyWithId:(id)objValue;
 
-- (void)transitionToLastWithInt:(jint)delay;
+- (void)transitionToLastWithInt:(int32_t)delay;
 
-- (void)transitionToNextWithInt:(jint)delay;
+- (void)transitionToNextWithInt:(int32_t)delay;
 
-- (void)transitionToPreviousWithInt:(jint)delay;
+- (void)transitionToPreviousWithInt:(int32_t)delay;
 
 - (void)jumpToPrevious;
 
@@ -95,10 +104,10 @@
 
 - (void)jumpTolast;
 
-- (void)transitionToIndexWithInt:(jint)index
-                         withInt:(jint)delay;
+- (void)transitionToIndexWithInt:(int32_t)index
+                         withInt:(int32_t)delay;
 
-- (void)jumpToIndexWithInt:(jint)index;
+- (void)jumpToIndexWithInt:(int32_t)index;
 
 - (void)setEmptyViewsBehaviorWithId:(id)objValue;
 
@@ -168,11 +177,11 @@ __attribute__((unused)) static void ASCarouselImpl_setChildDataKeyWithId_(ASCaro
 
 __attribute__((unused)) static void ASCarouselImpl_setDataKeyWithId_(ASCarouselImpl *self, id objValue);
 
-__attribute__((unused)) static void ASCarouselImpl_transitionToLastWithInt_(ASCarouselImpl *self, jint delay);
+__attribute__((unused)) static void ASCarouselImpl_transitionToLastWithInt_(ASCarouselImpl *self, int32_t delay);
 
-__attribute__((unused)) static void ASCarouselImpl_transitionToNextWithInt_(ASCarouselImpl *self, jint delay);
+__attribute__((unused)) static void ASCarouselImpl_transitionToNextWithInt_(ASCarouselImpl *self, int32_t delay);
 
-__attribute__((unused)) static void ASCarouselImpl_transitionToPreviousWithInt_(ASCarouselImpl *self, jint delay);
+__attribute__((unused)) static void ASCarouselImpl_transitionToPreviousWithInt_(ASCarouselImpl *self, int32_t delay);
 
 __attribute__((unused)) static void ASCarouselImpl_jumpToPrevious(ASCarouselImpl *self);
 
@@ -180,9 +189,9 @@ __attribute__((unused)) static void ASCarouselImpl_jumpToNext(ASCarouselImpl *se
 
 __attribute__((unused)) static void ASCarouselImpl_jumpTolast(ASCarouselImpl *self);
 
-__attribute__((unused)) static void ASCarouselImpl_transitionToIndexWithInt_withInt_(ASCarouselImpl *self, jint index, jint delay);
+__attribute__((unused)) static void ASCarouselImpl_transitionToIndexWithInt_withInt_(ASCarouselImpl *self, int32_t index, int32_t delay);
 
-__attribute__((unused)) static void ASCarouselImpl_jumpToIndexWithInt_(ASCarouselImpl *self, jint index);
+__attribute__((unused)) static void ASCarouselImpl_jumpToIndexWithInt_(ASCarouselImpl *self, int32_t index);
 
 __attribute__((unused)) static void ASCarouselImpl_setEmptyViewsBehaviorWithId_(ASCarouselImpl *self, id objValue);
 
@@ -248,7 +257,7 @@ J2OBJC_FIELD_SETTER(ASCarouselImpl_Carousel_emptyViewsBehavior, mapping_, id<Jav
 
 @interface ASCarouselImpl_CarouselExt () {
  @public
-  __unsafe_unretained ASCarouselImpl *this$0_;
+  WEAK_ ASCarouselImpl *this$0_;
   ASMeasureEvent *measureFinished_;
   ASOnLayoutEvent *onLayoutEvent_;
   id<JavaUtilList> overlays_;
@@ -282,6 +291,7 @@ __attribute__((unused)) static ASCarouselImpl_1 *new_ASCarouselImpl_1_initWithAS
 
 __attribute__((unused)) static ASCarouselImpl_1 *create_ASCarouselImpl_1_initWithASCarouselImpl_withNSString_(ASCarouselImpl *outer$, NSString *type);
 
+
 @interface ASCarouselImpl_1_1 : NSObject < ADXCarousel_Adapter > {
  @public
   ASCarouselImpl_1 *this$0_;
@@ -289,12 +299,12 @@ __attribute__((unused)) static ASCarouselImpl_1 *create_ASCarouselImpl_1_initWit
 
 - (instancetype)initWithASCarouselImpl_1:(ASCarouselImpl_1 *)outer$;
 
-- (jint)count;
+- (int32_t)count;
 
 - (void)populateWithADView:(ADView *)view
-                   withInt:(jint)index;
+                   withInt:(int32_t)index;
 
-- (void)onNewItemWithInt:(jint)index;
+- (void)onNewItemWithInt:(int32_t)index;
 
 @end
 
@@ -305,6 +315,7 @@ __attribute__((unused)) static void ASCarouselImpl_1_1_initWithASCarouselImpl_1_
 __attribute__((unused)) static ASCarouselImpl_1_1 *new_ASCarouselImpl_1_1_initWithASCarouselImpl_1_(ASCarouselImpl_1 *outer$) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASCarouselImpl_1_1 *create_ASCarouselImpl_1_1_initWithASCarouselImpl_1_(ASCarouselImpl_1 *outer$);
+
 
 @interface ASCarouselImpl_CarouselListener_NewItemListener : NSObject
 
@@ -327,9 +338,9 @@ __attribute__((unused)) static ASCarouselImpl_1_1 *create_ASCarouselImpl_1_1_ini
                      withNSString:(NSString *)strValue
                      withNSString:(NSString *)action;
 
-- (void)onNewItemWithInt:(jint)index;
+- (void)onNewItemWithInt:(int32_t)index;
 
-- (id<JavaUtilMap>)getOnNewItemEventObjWithInt:(jint)index;
+- (id<JavaUtilMap>)getOnNewItemEventObjWithInt:(int32_t)index;
 
 @end
 
@@ -353,6 +364,7 @@ __attribute__((unused)) static ASCarouselImpl_NewItemListener *new_ASCarouselImp
 __attribute__((unused)) static ASCarouselImpl_NewItemListener *create_ASCarouselImpl_NewItemListener_initWithASIWidget_withNSString_withNSString_(id<ASIWidget> w, NSString *strValue, NSString *action);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_NewItemListener)
+
 
 NSString *ASCarouselImpl_LOCAL_NAME = @"androidx.constraintlayout.helper.widget.Carousel";
 NSString *ASCarouselImpl_GROUP_NAME = @"androidx.constraintlayout.helper.widget.Carousel";
@@ -666,15 +678,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASCarouselImpl_setDataKeyWithId_(self, objValue);
 }
 
-- (void)transitionToLastWithInt:(jint)delay {
+- (void)transitionToLastWithInt:(int32_t)delay {
   ASCarouselImpl_transitionToLastWithInt_(self, delay);
 }
 
-- (void)transitionToNextWithInt:(jint)delay {
+- (void)transitionToNextWithInt:(int32_t)delay {
   ASCarouselImpl_transitionToNextWithInt_(self, delay);
 }
 
-- (void)transitionToPreviousWithInt:(jint)delay {
+- (void)transitionToPreviousWithInt:(int32_t)delay {
   ASCarouselImpl_transitionToPreviousWithInt_(self, delay);
 }
 
@@ -690,12 +702,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASCarouselImpl_jumpTolast(self);
 }
 
-- (void)transitionToIndexWithInt:(jint)index
-                         withInt:(jint)delay {
+- (void)transitionToIndexWithInt:(int32_t)index
+                         withInt:(int32_t)delay {
   ASCarouselImpl_transitionToIndexWithInt_withInt_(self, index, delay);
 }
 
-- (void)jumpToIndexWithInt:(jint)index {
+- (void)jumpToIndexWithInt:(int32_t)index {
   ASCarouselImpl_jumpToIndexWithInt_(self, index);
 }
 
@@ -787,7 +799,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return uiView_;
 }
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v {
+- (bool)checkIosVersionWithNSString:(NSString *)v {
   return ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending);
 }
 
@@ -798,7 +810,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setVisibleWithBoolean:(jboolean)b {
+- (void)setVisibleWithBoolean:(bool)b {
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
@@ -1048,7 +1060,7 @@ void ASCarouselImpl_setDataKeyWithId_(ASCarouselImpl *self, id objValue) {
   self->dataKey_ = (NSString *) cast_chk(objValue, [NSString class]);
 }
 
-void ASCarouselImpl_transitionToLastWithInt_(ASCarouselImpl *self, jint delay) {
+void ASCarouselImpl_transitionToLastWithInt_(ASCarouselImpl *self, int32_t delay) {
   if ([((ADXCarousel *) nil_chk(self->carousel_)) getCount] > 0) {
     if ([((ADXCarousel *) nil_chk(self->carousel_)) getCount] - 1 != [((ADXCarousel *) nil_chk(self->carousel_)) getCurrentIndex]) {
       [((ADXCarousel *) nil_chk(self->carousel_)) transitionToIndexWithInt:[self->carousel_ getCount] - 1 withInt:delay];
@@ -1056,7 +1068,7 @@ void ASCarouselImpl_transitionToLastWithInt_(ASCarouselImpl *self, jint delay) {
   }
 }
 
-void ASCarouselImpl_transitionToNextWithInt_(ASCarouselImpl *self, jint delay) {
+void ASCarouselImpl_transitionToNextWithInt_(ASCarouselImpl *self, int32_t delay) {
   if ([((ADXCarousel *) nil_chk(self->carousel_)) getCount] > 0) {
     if (![((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(ASCarouselImpl_getInfinite(self), [JavaLangBoolean class]))) booleanValue]) {
       if ([((ADXCarousel *) nil_chk(self->carousel_)) getCurrentIndex] == [((ADXCarousel *) nil_chk(self->carousel_)) getCount] - 1) {
@@ -1070,7 +1082,7 @@ void ASCarouselImpl_transitionToNextWithInt_(ASCarouselImpl *self, jint delay) {
   }
 }
 
-void ASCarouselImpl_transitionToPreviousWithInt_(ASCarouselImpl *self, jint delay) {
+void ASCarouselImpl_transitionToPreviousWithInt_(ASCarouselImpl *self, int32_t delay) {
   if ([((ADXCarousel *) nil_chk(self->carousel_)) getCount] > 0) {
     if (![((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(ASCarouselImpl_getInfinite(self), [JavaLangBoolean class]))) booleanValue]) {
       if ([((ADXCarousel *) nil_chk(self->carousel_)) getCurrentIndex] == 0) {
@@ -1112,13 +1124,13 @@ void ASCarouselImpl_jumpTolast(ASCarouselImpl *self) {
   }
 }
 
-void ASCarouselImpl_transitionToIndexWithInt_withInt_(ASCarouselImpl *self, jint index, jint delay) {
+void ASCarouselImpl_transitionToIndexWithInt_withInt_(ASCarouselImpl *self, int32_t index, int32_t delay) {
   if ([((ADXCarousel *) nil_chk(self->carousel_)) getCount] > 0) {
     [((ADXCarousel *) nil_chk(self->carousel_)) transitionToIndexWithInt:index withInt:delay];
   }
 }
 
-void ASCarouselImpl_jumpToIndexWithInt_(ASCarouselImpl *self, jint index) {
+void ASCarouselImpl_jumpToIndexWithInt_(ASCarouselImpl *self, int32_t index) {
   if ([((ADXCarousel *) nil_chk(self->carousel_)) getCount] > 0) {
     [((ADXCarousel *) nil_chk(self->carousel_)) jumpToIndexWithInt:index];
   }
@@ -1215,6 +1227,8 @@ void ASCarouselImpl_nativeCreateWithJavaUtilMap_(ASCarouselImpl *self, id<JavaUt
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl)
 
+J2OBJC_NAME_MAPPING(ASCarouselImpl, "com.ashera.constraintlayout", "AS")
+
 @implementation ASCarouselImpl_Carousel_touchUpMode
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -1259,8 +1273,8 @@ void ASCarouselImpl_Carousel_touchUpMode_init(ASCarouselImpl_Carousel_touchUpMod
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"immediateStop" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"carryVelocity" withId:JavaLangInteger_valueOfWithInt_((jint) 0x2)];
+    (void) [self->mapping_ putWithId:@"immediateStop" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"carryVelocity" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x2)];
   }
 }
 
@@ -1318,8 +1332,8 @@ void ASCarouselImpl_Carousel_emptyViewsBehavior_init(ASCarouselImpl_Carousel_emp
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"invisible" withId:JavaLangInteger_valueOfWithInt_((jint) 0x4)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"gone" withId:JavaLangInteger_valueOfWithInt_((jint) 0x8)];
+    (void) [self->mapping_ putWithId:@"invisible" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x4)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"gone" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x8)];
   }
 }
 
@@ -1354,8 +1368,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
   return self;
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
   id<ASIWidgetLifeCycleListener> listener = [this$0_ getListener];
   if (listener != nil) {
@@ -1365,11 +1379,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
   }
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b {
   [super onLayoutWithBoolean:changed withInt:l withInt:t withInt:r withInt:b];
   ASViewImpl_setDrawableBoundsWithASIWidget_withInt_withInt_withInt_withInt_(this$0_, l, t, r, b);
   if (![self isOverlay]) {
@@ -1396,8 +1410,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
           withNSObjectArray:(IOSObjectArray *)canvas {
 }
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height {
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height {
   [self setMeasuredDimensionWithInt:width withInt:height];
 }
 
@@ -1465,12 +1479,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
   displayFrame->bottom_ = displayFrame->top_ + [self getHeight];
 }
 
-- (void)offsetTopAndBottomWithInt:(jint)offset {
+- (void)offsetTopAndBottomWithInt:(int32_t)offset {
   [super offsetTopAndBottomWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
 
-- (void)offsetLeftAndRightWithInt:(jint)offset {
+- (void)offsetLeftAndRightWithInt:(int32_t)offset {
   [super offsetLeftAndRightWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
@@ -1500,7 +1514,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_Carousel_emptyViewsBehavior)
   [this$0_ setAttributeWithNSString:name withId:value withBoolean:!([value isKindOfClass:[NSString class]])];
 }
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   [super setVisibilityWithInt:visibility];
   ASViewImpl_nativeSetVisibilityWithId_withBoolean_([this$0_ asNativeWidget], visibility != ADView_VISIBLE);
 }
@@ -1710,7 +1724,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCarouselImpl_CarouselExt)
     { "this$0_", "LASCarouselImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LASCarouselImpl;LNSString;", "doPerform", "LNSObject;", "LASCarouselImpl;", "initialized" };
-  static const J2ObjcClassInfo _ASCarouselImpl_1 = { "", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x8010, 2, 1, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _ASCarouselImpl_1 = { "", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x8000, 2, 1, 3, -1, 4, -1, -1 };
   return &_ASCarouselImpl_1;
 }
 
@@ -1736,7 +1750,7 @@ ASCarouselImpl_1 *create_ASCarouselImpl_1_initWithASCarouselImpl_withNSString_(A
   return self;
 }
 
-- (jint)count {
+- (int32_t)count {
   id<JavaUtilList> objects = ASPluginInvoker_getListWithId_([this$0_->this$0_ getModelFromScopeWithNSString:this$0_->this$0_->dataKey_ withASModelScope:this$0_->this$0_->dataScopeKey_]);
   if (objects == nil) {
     return 0;
@@ -1745,14 +1759,14 @@ ASCarouselImpl_1 *create_ASCarouselImpl_1_initWithASCarouselImpl_withNSString_(A
 }
 
 - (void)populateWithADView:(ADView *)view
-                   withInt:(jint)index {
+                   withInt:(int32_t)index {
   id<JavaUtilList> objects = ASPluginInvoker_getListWithId_([this$0_->this$0_ getModelFromScopeWithNSString:this$0_->this$0_->dataKey_ withASModelScope:this$0_->this$0_->dataScopeKey_]);
   if (objects != nil && [ASILifeCycleDecorator_class_() isInstance:view]) {
     ASCarouselImpl_updateModelRecurseWithASIWidget_withId_(this$0_->this$0_, [((id<ASILifeCycleDecorator>) nil_chk(((id<ASILifeCycleDecorator>) cast_check(view, ASILifeCycleDecorator_class_())))) getWidget], [objects getWithInt:index]);
   }
 }
 
-- (void)onNewItemWithInt:(jint)index {
+- (void)onNewItemWithInt:(int32_t)index {
   if (this$0_->this$0_->listener_CarouselImpl_ != nil) {
     [this$0_->this$0_->listener_CarouselImpl_ onNewItemWithInt:index];
   }
@@ -1777,7 +1791,7 @@ ASCarouselImpl_1 *create_ASCarouselImpl_1_initWithASCarouselImpl_withNSString_(A
     { "this$0_", "LASCarouselImpl_1;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LASCarouselImpl_1;", "populate", "LADView;I", "onNewItem", "I", "doPerformWithId:" };
-  static const J2ObjcClassInfo _ASCarouselImpl_1_1 = { "", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x8010, 4, 1, 0, -1, 5, -1, -1 };
+  static const J2ObjcClassInfo _ASCarouselImpl_1_1 = { "", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x8000, 4, 1, 0, -1, 5, -1, -1 };
   return &_ASCarouselImpl_1_1;
 }
 
@@ -1874,7 +1888,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASCarouselImpl_CarouselListener_NewItemList
   return self;
 }
 
-- (void)onNewItemWithInt:(jint)index {
+- (void)onNewItemWithInt:(int32_t)index {
   if (action_ == nil || [action_ isEqual:@"onNewItem"]) {
     [((id<ASIWidget>) nil_chk(w_)) syncModelFromUiToPojoWithNSString:@"onNewItem"];
     id<JavaUtilMap> obj = [self getOnNewItemEventObjWithInt:index];
@@ -1896,7 +1910,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASCarouselImpl_CarouselListener_NewItemList
     if ([((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds] != nil) {
       ASViewImpl_refreshUiFromModelWithASIWidget_withId_withBoolean_(w_, [((id<ASIWidget>) nil_chk(w_)) getModelUiToPojoEventIds], true);
     }
-    if (strValue_ != nil && ![strValue_ java_isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
+    if (strValue_ != nil && ![strValue_ isEmpty] && ![((NSString *) nil_chk([((NSString *) nil_chk(strValue_)) java_trim])) java_hasPrefix:@"+"]) {
       id<ASIActivity> activity = [((id<ASIFragment>) nil_chk([((id<ASIWidget>) nil_chk(w_)) getFragment])) getRootActivity];
       if (activity != nil) {
         [activity sendEventMessageWithJavaUtilMap:obj];
@@ -1906,7 +1920,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ASCarouselImpl_CarouselListener_NewItemList
   return;
 }
 
-- (id<JavaUtilMap>)getOnNewItemEventObjWithInt:(jint)index {
+- (id<JavaUtilMap>)getOnNewItemEventObjWithInt:(int32_t)index {
   id<JavaUtilMap> obj = ASPluginInvoker_getJSONCompatMap();
   (void) [((id<JavaUtilMap>) nil_chk(obj)) putWithId:@"action" withId:@"action"];
   (void) [obj putWithId:@"eventType" withId:@"newitem"];

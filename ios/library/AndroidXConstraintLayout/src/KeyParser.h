@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\parse\KeyParser.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyParser")
@@ -18,6 +19,7 @@
 
 @class ADXTypedBundle;
 @class IOSObjectArray;
+@class NSString;
 
 @interface ADXKeyParser : NSObject
 
@@ -46,6 +48,7 @@ FOUNDATION_EXPORT void ADXKeyParser_mainWithNSStringArray_(IOSObjectArray *args)
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyParser)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionParseKeyParser ADXKeyParser;
+
 
 #endif
 

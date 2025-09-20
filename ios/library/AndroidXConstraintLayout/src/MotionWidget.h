@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\MotionWidget.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionWidget")
@@ -24,6 +25,10 @@
 @class ADXMotionWidget_Motion;
 @class ADXMotionWidget_PropertySet;
 @class ADXWidgetFrame;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 @protocol JavaUtilSet;
 
 @interface ADXMotionWidget : NSObject < ADXTypedValues > {
@@ -31,7 +36,7 @@
   ADXWidgetFrame *widgetFrame_;
   ADXMotionWidget_Motion *motion_;
   ADXMotionWidget_PropertySet *propertySet_;
-  jfloat mTransitionPathRotate_;
+  float mTransitionPathRotate_;
 }
 
 #pragma mark Public
@@ -40,142 +45,142 @@
 
 - (instancetype)initWithADXWidgetFrame:(ADXWidgetFrame *)f;
 
-- (ADXMotionWidget *)findViewByIdWithInt:(jint)mTransformPivotTarget;
+- (ADXMotionWidget *)findViewByIdWithInt:(int32_t)mTransformPivotTarget;
 
-- (jfloat)getAlpha;
+- (float)getAlpha;
 
-- (jint)getBottom;
+- (int32_t)getBottom;
 
 - (ADXCustomVariable *)getCustomAttributeWithNSString:(NSString *)name;
 
 - (id<JavaUtilSet>)getCustomAttributeNames;
 
-- (jint)getHeight;
+- (int32_t)getHeight;
 
-- (jint)getIdWithNSString:(NSString *)name;
+- (int32_t)getIdWithNSString:(NSString *)name;
 
-- (jint)getLeft;
+- (int32_t)getLeft;
 
 - (NSString *)getName;
 
 - (ADXMotionWidget *)getParent;
 
-- (jfloat)getPivotX;
+- (float)getPivotX;
 
-- (jfloat)getPivotY;
+- (float)getPivotY;
 
-- (jint)getRight;
+- (int32_t)getRight;
 
-- (jfloat)getRotationX;
+- (float)getRotationX;
 
-- (jfloat)getRotationY;
+- (float)getRotationY;
 
-- (jfloat)getRotationZ;
+- (float)getRotationZ;
 
-- (jfloat)getScaleX;
+- (float)getScaleX;
 
-- (jfloat)getScaleY;
+- (float)getScaleY;
 
-- (jint)getTop;
+- (int32_t)getTop;
 
-- (jfloat)getTranslationX;
+- (float)getTranslationX;
 
-- (jfloat)getTranslationY;
+- (float)getTranslationY;
 
-- (jfloat)getTranslationZ;
+- (float)getTranslationZ;
 
 /*!
  @brief Sets the attributes
  @param id_
  */
-- (jfloat)getValueAttributesWithInt:(jint)id_;
+- (float)getValueAttributesWithInt:(int32_t)id_;
 
-- (jint)getVisibility;
+- (int32_t)getVisibility;
 
 - (ADXWidgetFrame *)getWidgetFrame;
 
-- (jint)getWidth;
+- (int32_t)getWidth;
 
-- (jint)getX;
+- (int32_t)getX;
 
-- (jint)getY;
+- (int32_t)getY;
 
-- (void)layoutWithInt:(jint)l
-              withInt:(jint)t
-              withInt:(jint)r
-              withInt:(jint)b;
+- (void)layoutWithInt:(int32_t)l
+              withInt:(int32_t)t
+              withInt:(int32_t)r
+              withInt:(int32_t)b;
 
-- (void)setBoundsWithInt:(jint)left
-                 withInt:(jint)top
-                 withInt:(jint)right
-                 withInt:(jint)bottom;
-
-- (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                           withBoolean:(jboolean)value;
+- (void)setBoundsWithInt:(int32_t)left
+                 withInt:(int32_t)top
+                 withInt:(int32_t)right
+                 withInt:(int32_t)bottom;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                             withFloat:(jfloat)value;
+                               withInt:(int32_t)type
+                           withBoolean:(bool)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                               withInt:(jint)value;
+                               withInt:(int32_t)type
+                             withFloat:(float)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
+                               withInt:(int32_t)type
+                               withInt:(int32_t)value;
+
+- (void)setCustomAttributeWithNSString:(NSString *)name
+                               withInt:(int32_t)type
                           withNSString:(NSString *)value;
 
-- (void)setPivotXWithFloat:(jfloat)px;
+- (void)setPivotXWithFloat:(float)px;
 
-- (void)setPivotYWithFloat:(jfloat)py;
+- (void)setPivotYWithFloat:(float)py;
 
-- (void)setRotationXWithFloat:(jfloat)rotationX;
+- (void)setRotationXWithFloat:(float)rotationX;
 
-- (void)setRotationYWithFloat:(jfloat)rotationY;
+- (void)setRotationYWithFloat:(float)rotationY;
 
-- (void)setRotationZWithFloat:(jfloat)rotationZ;
+- (void)setRotationZWithFloat:(float)rotationZ;
 
-- (void)setScaleXWithFloat:(jfloat)scaleX;
+- (void)setScaleXWithFloat:(float)scaleX;
 
-- (void)setScaleYWithFloat:(jfloat)scaleY;
+- (void)setScaleYWithFloat:(float)scaleY;
 
-- (void)setTranslationXWithFloat:(jfloat)translationX;
+- (void)setTranslationXWithFloat:(float)translationX;
 
-- (void)setTranslationYWithFloat:(jfloat)translationY;
+- (void)setTranslationYWithFloat:(float)translationY;
 
-- (void)setTranslationZWithFloat:(jfloat)tz;
+- (void)setTranslationZWithFloat:(float)tz;
 
-- (jboolean)setValueWithInt:(jint)id_
-                withBoolean:(jboolean)value;
+- (bool)setValueWithInt:(int32_t)id_
+            withBoolean:(bool)value;
 
-- (jboolean)setValueWithInt:(jint)id_
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)id_
+              withFloat:(float)value;
 
-- (jboolean)setValueWithInt:(jint)id_
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)id_
+                withInt:(int32_t)value;
 
-- (jboolean)setValueWithInt:(jint)id_
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)id_
+           withNSString:(NSString *)value;
 
 /*!
  @brief Sets the attributes
  @param id_
  @param value
  */
-- (jboolean)setValueAttributesWithInt:(jint)id_
-                            withFloat:(jfloat)value;
+- (bool)setValueAttributesWithInt:(int32_t)id_
+                        withFloat:(float)value;
 
-- (jboolean)setValueMotionWithInt:(jint)id_
-                        withFloat:(jfloat)value;
+- (bool)setValueMotionWithInt:(int32_t)id_
+                    withFloat:(float)value;
 
-- (jboolean)setValueMotionWithInt:(jint)id_
-                          withInt:(jint)value;
+- (bool)setValueMotionWithInt:(int32_t)id_
+                      withInt:(int32_t)value;
 
-- (jboolean)setValueMotionWithInt:(jint)id_
-                     withNSString:(NSString *)value;
+- (bool)setValueMotionWithInt:(int32_t)id_
+                 withNSString:(NSString *)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (NSString *)description;
 
@@ -187,73 +192,73 @@ J2OBJC_FIELD_SETTER(ADXMotionWidget, widgetFrame_, ADXWidgetFrame *)
 J2OBJC_FIELD_SETTER(ADXMotionWidget, motion_, ADXMotionWidget_Motion *)
 J2OBJC_FIELD_SETTER(ADXMotionWidget, propertySet_, ADXMotionWidget_PropertySet *)
 
-inline jint ADXMotionWidget_get_VISIBILITY_MODE_NORMAL(void);
+inline int32_t ADXMotionWidget_get_VISIBILITY_MODE_NORMAL(void);
 #define ADXMotionWidget_VISIBILITY_MODE_NORMAL 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, VISIBILITY_MODE_NORMAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, VISIBILITY_MODE_NORMAL, int32_t)
 
-inline jint ADXMotionWidget_get_VISIBILITY_MODE_IGNORE(void);
+inline int32_t ADXMotionWidget_get_VISIBILITY_MODE_IGNORE(void);
 #define ADXMotionWidget_VISIBILITY_MODE_IGNORE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, VISIBILITY_MODE_IGNORE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, VISIBILITY_MODE_IGNORE, int32_t)
 
-inline jint ADXMotionWidget_get_INVISIBLE(void);
+inline int32_t ADXMotionWidget_get_INVISIBLE(void);
 #define ADXMotionWidget_INVISIBLE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INVISIBLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INVISIBLE, int32_t)
 
-inline jint ADXMotionWidget_get_VISIBLE(void);
+inline int32_t ADXMotionWidget_get_VISIBLE(void);
 #define ADXMotionWidget_VISIBLE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, VISIBLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, VISIBLE, int32_t)
 
-inline jint ADXMotionWidget_get_ROTATE_NONE(void);
+inline int32_t ADXMotionWidget_get_ROTATE_NONE(void);
 #define ADXMotionWidget_ROTATE_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_NONE, int32_t)
 
-inline jint ADXMotionWidget_get_ROTATE_PORTRATE_OF_RIGHT(void);
+inline int32_t ADXMotionWidget_get_ROTATE_PORTRATE_OF_RIGHT(void);
 #define ADXMotionWidget_ROTATE_PORTRATE_OF_RIGHT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_PORTRATE_OF_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_PORTRATE_OF_RIGHT, int32_t)
 
-inline jint ADXMotionWidget_get_ROTATE_PORTRATE_OF_LEFT(void);
+inline int32_t ADXMotionWidget_get_ROTATE_PORTRATE_OF_LEFT(void);
 #define ADXMotionWidget_ROTATE_PORTRATE_OF_LEFT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_PORTRATE_OF_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_PORTRATE_OF_LEFT, int32_t)
 
-inline jint ADXMotionWidget_get_ROTATE_RIGHT_OF_PORTRATE(void);
+inline int32_t ADXMotionWidget_get_ROTATE_RIGHT_OF_PORTRATE(void);
 #define ADXMotionWidget_ROTATE_RIGHT_OF_PORTRATE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_RIGHT_OF_PORTRATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_RIGHT_OF_PORTRATE, int32_t)
 
-inline jint ADXMotionWidget_get_ROTATE_LEFT_OF_PORTRATE(void);
+inline int32_t ADXMotionWidget_get_ROTATE_LEFT_OF_PORTRATE(void);
 #define ADXMotionWidget_ROTATE_LEFT_OF_PORTRATE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_LEFT_OF_PORTRATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, ROTATE_LEFT_OF_PORTRATE, int32_t)
 
-inline jint ADXMotionWidget_get_UNSET(void);
+inline int32_t ADXMotionWidget_get_UNSET(void);
 #define ADXMotionWidget_UNSET -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, UNSET, int32_t)
 
-inline jint ADXMotionWidget_get_MATCH_CONSTRAINT(void);
+inline int32_t ADXMotionWidget_get_MATCH_CONSTRAINT(void);
 #define ADXMotionWidget_MATCH_CONSTRAINT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, MATCH_CONSTRAINT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, MATCH_CONSTRAINT, int32_t)
 
-inline jint ADXMotionWidget_get_PARENT_ID(void);
+inline int32_t ADXMotionWidget_get_PARENT_ID(void);
 #define ADXMotionWidget_PARENT_ID 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, PARENT_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, PARENT_ID, int32_t)
 
-inline jint ADXMotionWidget_get_FILL_PARENT(void);
+inline int32_t ADXMotionWidget_get_FILL_PARENT(void);
 #define ADXMotionWidget_FILL_PARENT -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, FILL_PARENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, FILL_PARENT, int32_t)
 
-inline jint ADXMotionWidget_get_MATCH_PARENT(void);
+inline int32_t ADXMotionWidget_get_MATCH_PARENT(void);
 #define ADXMotionWidget_MATCH_PARENT -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, MATCH_PARENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, MATCH_PARENT, int32_t)
 
-inline jint ADXMotionWidget_get_WRAP_CONTENT(void);
+inline int32_t ADXMotionWidget_get_WRAP_CONTENT(void);
 #define ADXMotionWidget_WRAP_CONTENT -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, WRAP_CONTENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, WRAP_CONTENT, int32_t)
 
-inline jint ADXMotionWidget_get_GONE_UNSET(void);
-#define ADXMotionWidget_GONE_UNSET ((jint) 0x80000000)
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, GONE_UNSET, jint)
+inline int32_t ADXMotionWidget_get_GONE_UNSET(void);
+#define ADXMotionWidget_GONE_UNSET ((int32_t) 0x80000000)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, GONE_UNSET, int32_t)
 
-inline jint ADXMotionWidget_get_MATCH_CONSTRAINT_WRAP(void);
+inline int32_t ADXMotionWidget_get_MATCH_CONSTRAINT_WRAP(void);
 #define ADXMotionWidget_MATCH_CONSTRAINT_WRAP 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, MATCH_CONSTRAINT_WRAP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, MATCH_CONSTRAINT_WRAP, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionWidget_init(ADXMotionWidget *self);
 
@@ -271,28 +276,33 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXMotionWidget)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionMotionWidget ADXMotionWidget;
 
+
 #endif
 
 #if !defined (ADXMotionWidget_Motion_) && (INCLUDE_ALL_MotionWidget || defined(INCLUDE_ADXMotionWidget_Motion))
 #define ADXMotionWidget_Motion_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
+
 /*!
  */
 @interface ADXMotionWidget_Motion : NSObject {
  @public
-  jint mAnimateRelativeTo_;
-  jint mAnimateCircleAngleTo_;
+  int32_t mAnimateRelativeTo_;
+  int32_t mAnimateCircleAngleTo_;
   NSString *mTransitionEasing_;
-  jint mPathMotionArc_;
-  jint mDrawPath_;
-  jfloat mMotionStagger_;
-  jint mPolarRelativeTo_;
-  jfloat mPathRotate_;
-  jfloat mQuantizeMotionPhase_;
-  jint mQuantizeMotionSteps_;
+  int32_t mPathMotionArc_;
+  int32_t mDrawPath_;
+  float mMotionStagger_;
+  int32_t mPolarRelativeTo_;
+  float mPathRotate_;
+  float mQuantizeMotionPhase_;
+  int32_t mQuantizeMotionSteps_;
   NSString *mQuantizeInterpolatorString_;
-  jint mQuantizeInterpolatorType_;
-  jint mQuantizeInterpolatorID_;
+  int32_t mQuantizeInterpolatorType_;
+  int32_t mQuantizeInterpolatorID_;
 }
 
 #pragma mark Public
@@ -314,17 +324,21 @@ FOUNDATION_EXPORT ADXMotionWidget_Motion *create_ADXMotionWidget_Motion_init(voi
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionWidget_Motion)
 
+
 #endif
 
 #if !defined (ADXMotionWidget_PropertySet_) && (INCLUDE_ALL_MotionWidget || defined(INCLUDE_ADXMotionWidget_PropertySet))
 #define ADXMotionWidget_PropertySet_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+
 @interface ADXMotionWidget_PropertySet : NSObject {
  @public
-  jint visibility_;
-  jint mVisibilityMode_;
-  jfloat alpha_;
-  jfloat mProgress_;
+  int32_t visibility_;
+  int32_t mVisibilityMode_;
+  float alpha_;
+  float mProgress_;
 }
 
 #pragma mark Public
@@ -342,6 +356,7 @@ FOUNDATION_EXPORT ADXMotionWidget_PropertySet *new_ADXMotionWidget_PropertySet_i
 FOUNDATION_EXPORT ADXMotionWidget_PropertySet *create_ADXMotionWidget_PropertySet_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionWidget_PropertySet)
+
 
 #endif
 

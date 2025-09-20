@@ -3,21 +3,34 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\GuidelineReferenceHelper.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintWidget.h"
 #include "CoreGuideline.h"
 #include "Facade.h"
 #include "GuidelineReferenceHelper.h"
 #include "J2ObjC_source.h"
 #include "State.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXGuidelineReferenceHelper () {
  @public
-  jint mOrientation_;
+  int32_t mOrientation_;
   ADXCoreGuideline *mGuidelineWidget_;
-  jint mStart_;
-  jint mEnd_;
-  jfloat mPercent_;
+  int32_t mStart_;
+  int32_t mEnd_;
+  float mPercent_;
   id key_;
 }
 
@@ -55,18 +68,18 @@ J2OBJC_FIELD_SETTER(ADXGuidelineReferenceHelper, key_, id)
   return self;
 }
 
-- (ADXGuidelineReferenceHelper *)percentWithFloat:(jfloat)percent {
+- (ADXGuidelineReferenceHelper *)percentWithFloat:(float)percent {
   mStart_ = -1;
   mEnd_ = -1;
   mPercent_ = percent;
   return self;
 }
 
-- (void)setOrientationWithInt:(jint)orientation {
+- (void)setOrientationWithInt:(int32_t)orientation {
   mOrientation_ = orientation;
 }
 
-- (jint)getOrientation {
+- (int32_t)getOrientation {
   return mOrientation_;
 }
 
@@ -174,3 +187,5 @@ ADXGuidelineReferenceHelper *create_ADXGuidelineReferenceHelper_initWithADXState
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXGuidelineReferenceHelper)
+
+J2OBJC_NAME_MAPPING(ADXGuidelineReferenceHelper, "androidx.constraintlayout.core.state.helpers", "ADX")

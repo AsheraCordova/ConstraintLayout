@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\VirtualLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_VirtualLayout")
@@ -22,6 +23,8 @@
 
 @class ADXConstraintLayout;
 @class ADXCoreVirtualLayout;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXVirtualLayout : ADXConstraintHelper
 
@@ -30,12 +33,12 @@
 - (instancetype)init;
 
 - (void)onMeasureWithADXCoreVirtualLayout:(ADXCoreVirtualLayout *)layout
-                                  withInt:(jint)widthMeasureSpec
-                                  withInt:(jint)heightMeasureSpec;
+                                  withInt:(int32_t)widthMeasureSpec
+                                  withInt:(int32_t)heightMeasureSpec;
 
-- (void)setElevationWithFloat:(jfloat)elevation;
+- (void)setElevationWithFloat:(float)elevation;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 #pragma mark Protected
 
@@ -50,6 +53,7 @@ FOUNDATION_EXPORT void ADXVirtualLayout_init(ADXVirtualLayout *self);
 J2OBJC_TYPE_LITERAL_HEADER(ADXVirtualLayout)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetVirtualLayout ADXVirtualLayout;
+
 
 #endif
 

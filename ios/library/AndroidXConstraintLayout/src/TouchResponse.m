@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\TouchResponse.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLDebug.h"
 #include "Context.h"
 #include "IOSClass.h"
@@ -20,41 +25,51 @@
 #include "TouchResponse.h"
 #include "View.h"
 #include "ViewGroup.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXTouchResponse () {
  @public
-  jint mTouchAnchorSide_;
-  jint mTouchSide_;
-  jint mOnTouchUp_;
-  jint mTouchAnchorId_;
-  jint mTouchRegionId_;
-  jint mLimitBoundsTo_;
-  jfloat mTouchAnchorY_;
-  jfloat mTouchAnchorX_;
-  jint mRotationCenterId_;
-  jfloat mTouchDirectionX_;
-  jfloat mTouchDirectionY_;
-  jboolean mDragStarted_;
+  int32_t mTouchAnchorSide_;
+  int32_t mTouchSide_;
+  int32_t mOnTouchUp_;
+  int32_t mTouchAnchorId_;
+  int32_t mTouchRegionId_;
+  int32_t mLimitBoundsTo_;
+  float mTouchAnchorY_;
+  float mTouchAnchorX_;
+  int32_t mRotationCenterId_;
+  float mTouchDirectionX_;
+  float mTouchDirectionY_;
+  bool mDragStarted_;
   IOSFloatArray *mAnchorDpDt_;
   IOSIntArray *mTempLoc_;
-  jfloat mLastTouchX_;
-  jfloat mLastTouchY_;
+  float mLastTouchX_;
+  float mLastTouchY_;
   ADXMotionLayout *mMotionLayout_;
-  jfloat mMaxVelocity_;
-  jfloat mMaxAcceleration_;
-  jboolean mMoveWhenScrollAtTop_;
-  jfloat mDragScale_;
-  jint mFlags_;
-  jfloat mDragThreshold_;
-  jfloat mSpringDamping_;
-  jfloat mSpringMass_;
-  jfloat mSpringStiffness_;
-  jfloat mSpringStopThreshold_;
-  jint mSpringBoundary_;
-  jint mAutoCompleteMode_;
+  float mMaxVelocity_;
+  float mMaxAcceleration_;
+  bool mMoveWhenScrollAtTop_;
+  float mDragScale_;
+  int32_t mFlags_;
+  float mDragThreshold_;
+  float mSpringDamping_;
+  float mSpringMass_;
+  float mSpringStiffness_;
+  float mSpringStopThreshold_;
+  int32_t mSpringBoundary_;
+  int32_t mAutoCompleteMode_;
 }
 
 @end
@@ -67,17 +82,17 @@ inline NSString *ADXTouchResponse_get_TAG(void);
 static NSString *ADXTouchResponse_TAG = @"TouchResponse";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTouchResponse, TAG, NSString *)
 
-inline jboolean ADXTouchResponse_get_DEBUG(void);
+inline bool ADXTouchResponse_get_DEBUG(void);
 #define ADXTouchResponse_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, DEBUG, bool)
 
-inline jint ADXTouchResponse_get_SEC_TO_MILLISECONDS(void);
+inline int32_t ADXTouchResponse_get_SEC_TO_MILLISECONDS(void);
 #define ADXTouchResponse_SEC_TO_MILLISECONDS 1000
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SEC_TO_MILLISECONDS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SEC_TO_MILLISECONDS, int32_t)
 
-inline jfloat ADXTouchResponse_get_EPSILON(void);
+inline float ADXTouchResponse_get_EPSILON(void);
 #define ADXTouchResponse_EPSILON 1.0E-7f
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, EPSILON, jfloat)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, EPSILON, float)
 
 inline IOSObjectArray *ADXTouchResponse_get_TOUCH_SIDES(void);
 static IOSObjectArray *ADXTouchResponse_TOUCH_SIDES;
@@ -87,64 +102,64 @@ inline IOSObjectArray *ADXTouchResponse_get_TOUCH_DIRECTION(void);
 static IOSObjectArray *ADXTouchResponse_TOUCH_DIRECTION;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXTouchResponse, TOUCH_DIRECTION, IOSObjectArray *)
 
-inline jint ADXTouchResponse_get_TOUCH_UP(void);
+inline int32_t ADXTouchResponse_get_TOUCH_UP(void);
 #define ADXTouchResponse_TOUCH_UP 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_UP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_UP, int32_t)
 
-inline jint ADXTouchResponse_get_TOUCH_DOWN(void);
+inline int32_t ADXTouchResponse_get_TOUCH_DOWN(void);
 #define ADXTouchResponse_TOUCH_DOWN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_DOWN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_DOWN, int32_t)
 
-inline jint ADXTouchResponse_get_TOUCH_LEFT(void);
+inline int32_t ADXTouchResponse_get_TOUCH_LEFT(void);
 #define ADXTouchResponse_TOUCH_LEFT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_LEFT, int32_t)
 
-inline jint ADXTouchResponse_get_TOUCH_RIGHT(void);
+inline int32_t ADXTouchResponse_get_TOUCH_RIGHT(void);
 #define ADXTouchResponse_TOUCH_RIGHT 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_RIGHT, int32_t)
 
-inline jint ADXTouchResponse_get_TOUCH_START(void);
+inline int32_t ADXTouchResponse_get_TOUCH_START(void);
 #define ADXTouchResponse_TOUCH_START 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_START, int32_t)
 
-inline jint ADXTouchResponse_get_TOUCH_END(void);
+inline int32_t ADXTouchResponse_get_TOUCH_END(void);
 #define ADXTouchResponse_TOUCH_END 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, TOUCH_END, int32_t)
 
-inline jint ADXTouchResponse_get_SIDE_TOP(void);
+inline int32_t ADXTouchResponse_get_SIDE_TOP(void);
 #define ADXTouchResponse_SIDE_TOP 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_TOP, int32_t)
 
-inline jint ADXTouchResponse_get_SIDE_LEFT(void);
+inline int32_t ADXTouchResponse_get_SIDE_LEFT(void);
 #define ADXTouchResponse_SIDE_LEFT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_LEFT, int32_t)
 
-inline jint ADXTouchResponse_get_SIDE_RIGHT(void);
+inline int32_t ADXTouchResponse_get_SIDE_RIGHT(void);
 #define ADXTouchResponse_SIDE_RIGHT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_RIGHT, int32_t)
 
-inline jint ADXTouchResponse_get_SIDE_BOTTOM(void);
+inline int32_t ADXTouchResponse_get_SIDE_BOTTOM(void);
 #define ADXTouchResponse_SIDE_BOTTOM 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_BOTTOM, int32_t)
 
-inline jint ADXTouchResponse_get_SIDE_MIDDLE(void);
+inline int32_t ADXTouchResponse_get_SIDE_MIDDLE(void);
 #define ADXTouchResponse_SIDE_MIDDLE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_MIDDLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_MIDDLE, int32_t)
 
-inline jint ADXTouchResponse_get_SIDE_START(void);
+inline int32_t ADXTouchResponse_get_SIDE_START(void);
 #define ADXTouchResponse_SIDE_START 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_START, int32_t)
 
-inline jint ADXTouchResponse_get_SIDE_END(void);
+inline int32_t ADXTouchResponse_get_SIDE_END(void);
 #define ADXTouchResponse_SIDE_END 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, SIDE_END, int32_t)
 
 @interface ADXTouchResponse_1 : NSObject < ADView_OnTouchListener >
 
 - (instancetype)init;
 
-- (jboolean)onTouchWithADView:(ADView *)view
-            withADMotionEvent:(ADMotionEvent *)motionEvent;
+- (bool)onTouchWithADView:(ADView *)view
+        withADMotionEvent:(ADMotionEvent *)motionEvent;
 
 @end
 
@@ -156,15 +171,16 @@ __attribute__((unused)) static ADXTouchResponse_1 *new_ADXTouchResponse_1_init(v
 
 __attribute__((unused)) static ADXTouchResponse_1 *create_ADXTouchResponse_1_init(void);
 
+
 @interface ADXTouchResponse_2 : NSObject < ADXNestedScrollView_OnScrollChangeListener >
 
 - (instancetype)init;
 
 - (void)onScrollChangeWithADXNestedScrollView:(ADXNestedScrollView *)v
-                                      withInt:(jint)scrollX
-                                      withInt:(jint)scrollY
-                                      withInt:(jint)oldScrollX
-                                      withInt:(jint)oldScrollY;
+                                      withInt:(int32_t)scrollX
+                                      withInt:(int32_t)scrollY
+                                      withInt:(int32_t)oldScrollX
+                                      withInt:(int32_t)oldScrollY;
 
 @end
 
@@ -176,6 +192,7 @@ __attribute__((unused)) static ADXTouchResponse_2 *new_ADXTouchResponse_2_init(v
 
 __attribute__((unused)) static ADXTouchResponse_2 *create_ADXTouchResponse_2_init(void);
 
+
 J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
 
 @implementation ADXTouchResponse
@@ -186,7 +203,7 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   return self;
 }
 
-- (void)setRTLWithBoolean:(jboolean)rtl {
+- (void)setRTLWithBoolean:(bool)rtl {
   if (rtl) {
     IOSObjectArray_Set(nil_chk(ADXTouchResponse_TOUCH_DIRECTION), ADXTouchResponse_TOUCH_START, IOSObjectArray_Get(ADXTouchResponse_TOUCH_DIRECTION, ADXTouchResponse_TOUCH_RIGHT));
     IOSObjectArray_Set(ADXTouchResponse_TOUCH_DIRECTION, ADXTouchResponse_TOUCH_END, IOSObjectArray_Get(ADXTouchResponse_TOUCH_DIRECTION, ADXTouchResponse_TOUCH_LEFT));
@@ -208,8 +225,8 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   mTouchDirectionY_ = IOSFloatArray_Get(nil_chk(IOSObjectArray_Get(ADXTouchResponse_TOUCH_DIRECTION, mTouchSide_)), 1);
 }
 
-- (void)setUpTouchEventWithFloat:(jfloat)lastTouchX
-                       withFloat:(jfloat)lastTouchY {
+- (void)setUpTouchEventWithFloat:(float)lastTouchX
+                       withFloat:(float)lastTouchY {
   mLastTouchX_ = lastTouchX;
   mLastTouchY_ = lastTouchY;
   mDragStarted_ = false;
@@ -217,25 +234,25 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
 
 - (void)processTouchRotateEventWithADMotionEvent:(ADMotionEvent *)event
                withADXMotionLayout_MotionTracker:(id<ADXMotionLayout_MotionTracker>)velocityTracker
-                                         withInt:(jint)currentState
+                                         withInt:(int32_t)currentState
                               withADXMotionScene:(ADXMotionScene *)motionScene {
   [((id<ADXMotionLayout_MotionTracker>) nil_chk(velocityTracker)) addMovementWithADMotionEvent:event];
   {
-    jfloat dy;
-    jfloat dx;
-    jfloat drag;
-    jfloat rcx;
-    jfloat rcy;
-    jfloat relativePosX;
-    jfloat relativePosY;
-    jdouble angle1;
-    jdouble angle2;
-    jfloat tvx;
-    jfloat tvy;
-    jfloat currentPos;
-    jfloat pos;
-    jfloat velocity_tweek;
-    jfloat angularVelocity;
+    float dy;
+    float dx;
+    float drag;
+    float rcx;
+    float rcy;
+    float relativePosX;
+    float relativePosY;
+    double angle1;
+    double angle2;
+    float tvx;
+    float tvy;
+    float currentPos;
+    float pos;
+    float velocity_tweek;
+    float angularVelocity;
     switch ([((ADMotionEvent *) nil_chk(event)) getAction]) {
       case ADMotionEvent_ACTION_DOWN:
       mLastTouchX_ = [event getRawX];
@@ -269,7 +286,7 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
       relativePosY = [event getRawY] - rcy;
       angle1 = JavaLangMath_atan2WithDouble_withDouble_([event getRawY] - rcy, [event getRawX] - rcx);
       angle2 = JavaLangMath_atan2WithDouble_withDouble_(mLastTouchY_ - rcy, mLastTouchX_ - rcx);
-      drag = (jfloat) ((angle1 - angle2) * 180.0f / JavaLangMath_PI);
+      drag = (float) ((angle1 - angle2) * 180.0f / JavaLangMath_PI);
       if (drag > 330) {
         JreMinusAssignFloatF(&drag, 360);
       }
@@ -277,31 +294,31 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
         JrePlusAssignFloatF(&drag, 360);
       }
       if (JavaLangMath_absWithFloat_(drag) > 0.01 || mDragStarted_) {
-        jfloat pos = [mMotionLayout_ getProgress];
+        float pos = [mMotionLayout_ getProgress];
         if (!mDragStarted_) {
           mDragStarted_ = true;
           [mMotionLayout_ setProgressWithFloat:pos];
         }
         if (mTouchAnchorId_ != ADXMotionScene_UNSET) {
           [mMotionLayout_ getAnchorDpDtWithInt:mTouchAnchorId_ withFloat:pos withFloat:mTouchAnchorX_ withFloat:mTouchAnchorY_ withFloatArray:mAnchorDpDt_];
-          *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = (jfloat) JavaLangMath_toDegreesWithDouble_(IOSFloatArray_Get(mAnchorDpDt_, 1));
+          *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = (float) JavaLangMath_toDegreesWithDouble_(IOSFloatArray_Get(mAnchorDpDt_, 1));
         }
         else {
           *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = 360;
         }
-        jfloat change = drag * mDragScale_ / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 1);
+        float change = drag * mDragScale_ / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 1);
         pos = JavaLangMath_maxWithFloat_withFloat_(JavaLangMath_minWithFloat_withFloat_(pos + change, 1), 0);
-        jfloat current = [mMotionLayout_ getProgress];
+        float current = [mMotionLayout_ getProgress];
         if (pos != current) {
           if (current == 0.0f || current == 1.0f) {
             [mMotionLayout_ endTriggerWithBoolean:current == 0.0f];
           }
           [mMotionLayout_ setProgressWithFloat:pos];
           [velocityTracker computeCurrentVelocityWithInt:ADXTouchResponse_SEC_TO_MILLISECONDS];
-          jfloat tvx = [velocityTracker getXVelocity];
-          jfloat tvy = [velocityTracker getYVelocity];
-          jfloat angularVelocity = (jfloat) (JavaLangMath_hypotWithDouble_withDouble_(tvy, tvx) * JavaLangMath_sinWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(tvy, tvx) - angle1) / JavaLangMath_hypotWithDouble_withDouble_(relativePosX, relativePosY));
-          mMotionLayout_->mLastVelocity_ = (jfloat) JavaLangMath_toDegreesWithDouble_(angularVelocity);
+          float tvx = [velocityTracker getXVelocity];
+          float tvy = [velocityTracker getYVelocity];
+          float angularVelocity = (float) (JavaLangMath_hypotWithDouble_withDouble_(tvy, tvx) * JavaLangMath_sinWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(tvy, tvx) - angle1) / JavaLangMath_hypotWithDouble_withDouble_(relativePosX, relativePosY));
+          mMotionLayout_->mLastVelocity_ = (float) JavaLangMath_toDegreesWithDouble_(angularVelocity);
         }
         else {
           mMotionLayout_->mLastVelocity_ = 0;
@@ -337,21 +354,21 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
       angle1 = JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(relativePosY, relativePosX));
       if (mTouchAnchorId_ != ADXMotionScene_UNSET) {
         [mMotionLayout_ getAnchorDpDtWithInt:mTouchAnchorId_ withFloat:pos withFloat:mTouchAnchorX_ withFloat:mTouchAnchorY_ withFloatArray:mAnchorDpDt_];
-        *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = (jfloat) JavaLangMath_toDegreesWithDouble_(IOSFloatArray_Get(mAnchorDpDt_, 1));
+        *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = (float) JavaLangMath_toDegreesWithDouble_(IOSFloatArray_Get(mAnchorDpDt_, 1));
       }
       else {
         *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = 360;
       }
       angle2 = JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(tvy + relativePosY, tvx + relativePosX));
-      drag = (jfloat) ((angle2 - angle1));
+      drag = (float) ((angle2 - angle1));
       velocity_tweek = ADXTouchResponse_SEC_TO_MILLISECONDS / 16.0f;
       angularVelocity = drag * velocity_tweek;
       if (!JavaLangFloat_isNaNWithFloat_(angularVelocity)) {
         JrePlusAssignFloatF(&pos, 3 * angularVelocity * mDragScale_ / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 1));
       }
       if (pos != 0.0f && pos != 1.0f && mOnTouchUp_ != ADXMotionLayout_TOUCH_UP_STOP) {
-        angularVelocity = (jfloat) angularVelocity * mDragScale_ / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 1);
-        jfloat target = (pos < 0.5) ? 0.0f : 1.0f;
+        angularVelocity = (float) angularVelocity * mDragScale_ / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 1);
+        float target = (pos < 0.5) ? 0.0f : 1.0f;
         if (mOnTouchUp_ == ADXMotionLayout_TOUCH_UP_NEVER_TO_START) {
           if (currentPos + angularVelocity < 0) {
             angularVelocity = JavaLangMath_absWithFloat_(angularVelocity);
@@ -379,7 +396,7 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
 
 - (void)processTouchEventWithADMotionEvent:(ADMotionEvent *)event
          withADXMotionLayout_MotionTracker:(id<ADXMotionLayout_MotionTracker>)velocityTracker
-                                   withInt:(jint)currentState
+                                   withInt:(int32_t)currentState
                         withADXMotionScene:(ADXMotionScene *)motionScene {
   if (mIsRotateMode_) {
     [self processTouchRotateEventWithADMotionEvent:event withADXMotionLayout_MotionTracker:velocityTracker withInt:currentState withADXMotionScene:motionScene];
@@ -387,15 +404,15 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   }
   [((id<ADXMotionLayout_MotionTracker>) nil_chk(velocityTracker)) addMovementWithADMotionEvent:event];
   {
-    jfloat dy;
-    jfloat dx;
-    jfloat drag;
-    jfloat tvx;
-    jfloat tvy;
-    jfloat currentPos;
-    jfloat pos;
-    jfloat movmentInDir;
-    jfloat velocity;
+    float dy;
+    float dx;
+    float drag;
+    float tvx;
+    float tvy;
+    float currentPos;
+    float pos;
+    float movmentInDir;
+    float velocity;
     switch ([((ADMotionEvent *) nil_chk(event)) getAction]) {
       case ADMotionEvent_ACTION_DOWN:
       mLastTouchX_ = [event getRawX];
@@ -407,7 +424,7 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
       dx = [event getRawX] - mLastTouchX_;
       drag = dx * mTouchDirectionX_ + dy * mTouchDirectionY_;
       if (JavaLangMath_absWithFloat_(drag) > mDragThreshold_ || mDragStarted_) {
-        jfloat pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
+        float pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
         if (!mDragStarted_) {
           mDragStarted_ = true;
           [mMotionLayout_ setProgressWithFloat:pos];
@@ -416,17 +433,17 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
           [mMotionLayout_ getAnchorDpDtWithInt:mTouchAnchorId_ withFloat:pos withFloat:mTouchAnchorX_ withFloat:mTouchAnchorY_ withFloatArray:mAnchorDpDt_];
         }
         else {
-          jfloat minSize = JavaLangMath_minWithInt_withInt_([mMotionLayout_ getWidth], [mMotionLayout_ getHeight]);
+          float minSize = JavaLangMath_minWithInt_withInt_([mMotionLayout_ getWidth], [mMotionLayout_ getHeight]);
           *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = minSize * mTouchDirectionY_;
           *IOSFloatArray_GetRef(mAnchorDpDt_, 0) = minSize * mTouchDirectionX_;
         }
-        jfloat movmentInDir = mTouchDirectionX_ * IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) + mTouchDirectionY_ * IOSFloatArray_Get(mAnchorDpDt_, 1);
+        float movmentInDir = mTouchDirectionX_ * IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) + mTouchDirectionY_ * IOSFloatArray_Get(mAnchorDpDt_, 1);
         JreTimesAssignFloatF(&movmentInDir, mDragScale_);
         if (JavaLangMath_absWithFloat_(movmentInDir) < 0.01) {
           *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 0) = .01f;
           *IOSFloatArray_GetRef(mAnchorDpDt_, 1) = .01f;
         }
-        jfloat change;
+        float change;
         if (mTouchDirectionX_ != 0) {
           change = dx / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0);
         }
@@ -440,16 +457,16 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
         if (mOnTouchUp_ == ADXMotionLayout_TOUCH_UP_NEVER_TO_END) {
           pos = JavaLangMath_minWithFloat_withFloat_(pos, 0.99f);
         }
-        jfloat current = [mMotionLayout_ getProgress];
+        float current = [mMotionLayout_ getProgress];
         if (pos != current) {
           if (current == 0.0f || current == 1.0f) {
             [mMotionLayout_ endTriggerWithBoolean:current == 0.0f];
           }
           [mMotionLayout_ setProgressWithFloat:pos];
           [velocityTracker computeCurrentVelocityWithInt:ADXTouchResponse_SEC_TO_MILLISECONDS];
-          jfloat tvx = [velocityTracker getXVelocity];
-          jfloat tvy = [velocityTracker getYVelocity];
-          jfloat velocity = (mTouchDirectionX_ != 0) ? tvx / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) : tvy / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 1);
+          float tvx = [velocityTracker getXVelocity];
+          float tvy = [velocityTracker getYVelocity];
+          float velocity = (mTouchDirectionX_ != 0) ? tvx / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) : tvy / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 1);
           mMotionLayout_->mLastVelocity_ = velocity;
         }
         else {
@@ -470,7 +487,7 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
         [mMotionLayout_ getAnchorDpDtWithInt:mTouchAnchorId_ withFloat:pos withFloat:mTouchAnchorX_ withFloat:mTouchAnchorY_ withFloatArray:mAnchorDpDt_];
       }
       else {
-        jfloat minSize = JavaLangMath_minWithInt_withInt_([mMotionLayout_ getWidth], [mMotionLayout_ getHeight]);
+        float minSize = JavaLangMath_minWithInt_withInt_([mMotionLayout_ getWidth], [mMotionLayout_ getHeight]);
         *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 1) = minSize * mTouchDirectionY_;
         *IOSFloatArray_GetRef(mAnchorDpDt_, 0) = minSize * mTouchDirectionX_;
       }
@@ -485,7 +502,7 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
         JrePlusAssignFloatF(&pos, velocity / 3);
       }
       if (pos != 0.0f && pos != 1.0f && mOnTouchUp_ != ADXMotionLayout_TOUCH_UP_STOP) {
-        jfloat target = (pos < 0.5) ? 0.0f : 1.0f;
+        float target = (pos < 0.5) ? 0.0f : 1.0f;
         if (mOnTouchUp_ == ADXMotionLayout_TOUCH_UP_NEVER_TO_START) {
           if (currentPos + velocity < 0) {
             velocity = JavaLangMath_absWithFloat_(velocity);
@@ -511,17 +528,17 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   }
 }
 
-- (void)setDownWithFloat:(jfloat)lastTouchX
-               withFloat:(jfloat)lastTouchY {
+- (void)setDownWithFloat:(float)lastTouchX
+               withFloat:(float)lastTouchY {
   mLastTouchX_ = lastTouchX;
   mLastTouchY_ = lastTouchY;
 }
 
-- (jfloat)getProgressDirectionWithFloat:(jfloat)dx
-                              withFloat:(jfloat)dy {
-  jfloat pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
+- (float)getProgressDirectionWithFloat:(float)dx
+                             withFloat:(float)dy {
+  float pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
   [mMotionLayout_ getAnchorDpDtWithInt:mTouchAnchorId_ withFloat:pos withFloat:mTouchAnchorX_ withFloat:mTouchAnchorY_ withFloatArray:mAnchorDpDt_];
-  jfloat velocity;
+  float velocity;
   if (mTouchDirectionX_ != 0) {
     if (IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) == 0) {
       *IOSFloatArray_GetRef(mAnchorDpDt_, 0) = ADXTouchResponse_EPSILON;
@@ -537,13 +554,13 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   return velocity;
 }
 
-- (void)scrollUpWithFloat:(jfloat)dx
-                withFloat:(jfloat)dy {
+- (void)scrollUpWithFloat:(float)dx
+                withFloat:(float)dy {
   mDragStarted_ = false;
-  jfloat pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
+  float pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
   [mMotionLayout_ getAnchorDpDtWithInt:mTouchAnchorId_ withFloat:pos withFloat:mTouchAnchorX_ withFloat:mTouchAnchorY_ withFloatArray:mAnchorDpDt_];
-  jfloat movmentInDir = mTouchDirectionX_ * IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) + mTouchDirectionY_ * IOSFloatArray_Get(mAnchorDpDt_, 1);
-  jfloat velocity;
+  float movmentInDir = mTouchDirectionX_ * IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) + mTouchDirectionY_ * IOSFloatArray_Get(mAnchorDpDt_, 1);
+  float velocity;
   if (mTouchDirectionX_ != 0) {
     velocity = dx * mTouchDirectionX_ / IOSFloatArray_Get(mAnchorDpDt_, 0);
   }
@@ -558,22 +575,22 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   }
 }
 
-- (void)scrollMoveWithFloat:(jfloat)dx
-                  withFloat:(jfloat)dy {
-  jfloat drag = dx * mTouchDirectionX_ + dy * mTouchDirectionY_;
+- (void)scrollMoveWithFloat:(float)dx
+                  withFloat:(float)dy {
+  float drag = dx * mTouchDirectionX_ + dy * mTouchDirectionY_;
   {
-    jfloat pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
+    float pos = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getProgress];
     if (!mDragStarted_) {
       mDragStarted_ = true;
       [mMotionLayout_ setProgressWithFloat:pos];
     }
     [mMotionLayout_ getAnchorDpDtWithInt:mTouchAnchorId_ withFloat:pos withFloat:mTouchAnchorX_ withFloat:mTouchAnchorY_ withFloatArray:mAnchorDpDt_];
-    jfloat movmentInDir = mTouchDirectionX_ * IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) + mTouchDirectionY_ * IOSFloatArray_Get(mAnchorDpDt_, 1);
+    float movmentInDir = mTouchDirectionX_ * IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0) + mTouchDirectionY_ * IOSFloatArray_Get(mAnchorDpDt_, 1);
     if (JavaLangMath_absWithFloat_(movmentInDir) < 0.01) {
       *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt_), 0) = .01f;
       *IOSFloatArray_GetRef(mAnchorDpDt_, 1) = .01f;
     }
-    jfloat change;
+    float change;
     if (mTouchDirectionX_ != 0) {
       change = dx * mTouchDirectionX_ / IOSFloatArray_Get(nil_chk(mAnchorDpDt_), 0);
     }
@@ -602,45 +619,45 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   }
 }
 
-- (void)setAnchorIdWithInt:(jint)id_ {
+- (void)setAnchorIdWithInt:(int32_t)id_ {
   mTouchAnchorId_ = id_;
 }
 
-- (jint)getAnchorId {
+- (int32_t)getAnchorId {
   return mTouchAnchorId_;
 }
 
-- (void)setTouchAnchorLocationWithFloat:(jfloat)x
-                              withFloat:(jfloat)y {
+- (void)setTouchAnchorLocationWithFloat:(float)x
+                              withFloat:(float)y {
   mTouchAnchorX_ = x;
   mTouchAnchorY_ = y;
 }
 
-- (void)setMaxVelocityWithFloat:(jfloat)velocity {
+- (void)setMaxVelocityWithFloat:(float)velocity {
   mMaxVelocity_ = velocity;
 }
 
-- (void)setMaxAccelerationWithFloat:(jfloat)acceleration {
+- (void)setMaxAccelerationWithFloat:(float)acceleration {
   mMaxAcceleration_ = acceleration;
 }
 
-- (jfloat)getMaxAcceleration {
+- (float)getMaxAcceleration {
   return mMaxAcceleration_;
 }
 
-- (jfloat)getMaxVelocity {
+- (float)getMaxVelocity {
   return mMaxVelocity_;
 }
 
-- (jboolean)getMoveWhenScrollAtTop {
+- (bool)getMoveWhenScrollAtTop {
   return mMoveWhenScrollAtTop_;
 }
 
-- (jint)getAutoCompleteMode {
+- (int32_t)getAutoCompleteMode {
   return mAutoCompleteMode_;
 }
 
-- (void)setAutoCompleteModeWithInt:(jint)autoCompleteMode {
+- (void)setAutoCompleteModeWithInt:(int32_t)autoCompleteMode {
   mAutoCompleteMode_ = autoCompleteMode;
 }
 
@@ -657,7 +674,7 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   return rect;
 }
 
-- (jint)getTouchRegionId {
+- (int32_t)getTouchRegionId {
   return mTouchRegionId_;
 }
 
@@ -674,12 +691,12 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   return rect;
 }
 
-- (jint)getLimitBoundsToId {
+- (int32_t)getLimitBoundsToId {
   return mLimitBoundsTo_;
 }
 
-- (jfloat)dotWithFloat:(jfloat)dx
-             withFloat:(jfloat)dy {
+- (float)dotWithFloat:(float)dx
+            withFloat:(float)dy {
   return dx * mTouchDirectionX_ + dy * mTouchDirectionY_;
 }
 
@@ -687,31 +704,31 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
   return (JavaLangFloat_isNaNWithFloat_(mTouchDirectionX_)) ? @"rotation" : (JreStrcat("F$F", mTouchDirectionX_, @" , ", mTouchDirectionY_));
 }
 
-- (jint)getFlags {
+- (int32_t)getFlags {
   return mFlags_;
 }
 
-- (void)setTouchUpModeWithInt:(jint)touchUpMode {
+- (void)setTouchUpModeWithInt:(int32_t)touchUpMode {
   mOnTouchUp_ = touchUpMode;
 }
 
-- (jfloat)getSpringStiffness {
+- (float)getSpringStiffness {
   return mSpringStiffness_;
 }
 
-- (jfloat)getSpringMass {
+- (float)getSpringMass {
   return mSpringMass_;
 }
 
-- (jfloat)getSpringDamping {
+- (float)getSpringDamping {
   return mSpringDamping_;
 }
 
-- (jfloat)getSpringStopThreshold {
+- (float)getSpringStopThreshold {
   return mSpringStopThreshold_;
 }
 
-- (jint)getSpringBoundary {
+- (int32_t)getSpringBoundary {
   return mSpringBoundary_;
 }
 
@@ -860,8 +877,8 @@ J2OBJC_INITIALIZED_DEFN(ADXTouchResponse)
 
 + (void)initialize {
   if (self == [ADXTouchResponse class]) {
-    JreStrongAssignAndConsume(&ADXTouchResponse_TOUCH_SIDES, [IOSObjectArray newArrayWithObjects:(id[]){ [IOSFloatArray arrayWithFloats:(jfloat[]){ 0.5f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 0.0f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 1.0f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 0.5f, 1.0f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 0.5f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 0.0f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 1.0f, 0.5f } count:2] } count:7 type:IOSClass_floatArray(1)]);
-    JreStrongAssignAndConsume(&ADXTouchResponse_TOUCH_DIRECTION, [IOSObjectArray newArrayWithObjects:(id[]){ [IOSFloatArray arrayWithFloats:(jfloat[]){ 0.0f, -1.0f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 0.0f, 1.0f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ -1.0f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 1.0f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ -1.0f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(jfloat[]){ 1.0f, 0.0f } count:2] } count:6 type:IOSClass_floatArray(1)]);
+    JreStrongAssignAndConsume(&ADXTouchResponse_TOUCH_SIDES, [IOSObjectArray newArrayWithObjects:(id[]){ [IOSFloatArray arrayWithFloats:(float[]){ 0.5f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 0.0f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 1.0f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 0.5f, 1.0f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 0.5f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 0.0f, 0.5f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 1.0f, 0.5f } count:2] } count:7 type:IOSClass_floatArray(1)]);
+    JreStrongAssignAndConsume(&ADXTouchResponse_TOUCH_DIRECTION, [IOSObjectArray newArrayWithObjects:(id[]){ [IOSFloatArray arrayWithFloats:(float[]){ 0.0f, -1.0f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 0.0f, 1.0f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ -1.0f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 1.0f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ -1.0f, 0.0f } count:2], [IOSFloatArray arrayWithFloats:(float[]){ 1.0f, 0.0f } count:2] } count:6 type:IOSClass_floatArray(1)]);
     J2OBJC_SET_INITIALIZED(ADXTouchResponse)
   }
 }
@@ -952,8 +969,8 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)onTouchWithADView:(ADView *)view
-            withADMotionEvent:(ADMotionEvent *)motionEvent {
+- (bool)onTouchWithADView:(ADView *)view
+        withADMotionEvent:(ADMotionEvent *)motionEvent {
   return false;
 }
 
@@ -969,7 +986,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(onTouchWithADView:withADMotionEvent:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "onTouch", "LADView;LADMotionEvent;", "LADXTouchResponse;", "setupTouch" };
-  static const J2ObjcClassInfo _ADXTouchResponse_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, NULL, 7, 0x8010, 2, 0, 2, -1, 3, -1, -1 };
+  static const J2ObjcClassInfo _ADXTouchResponse_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, NULL, 7, 0x8000, 2, 0, 2, -1, 3, -1, -1 };
   return &_ADXTouchResponse_1;
 }
 
@@ -997,10 +1014,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)onScrollChangeWithADXNestedScrollView:(ADXNestedScrollView *)v
-                                      withInt:(jint)scrollX
-                                      withInt:(jint)scrollY
-                                      withInt:(jint)oldScrollX
-                                      withInt:(jint)oldScrollY {
+                                      withInt:(int32_t)scrollX
+                                      withInt:(int32_t)scrollY
+                                      withInt:(int32_t)oldScrollX
+                                      withInt:(int32_t)oldScrollY {
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -1015,7 +1032,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(onScrollChangeWithADXNestedScrollView:withInt:withInt:withInt:withInt:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "onScrollChange", "LADXNestedScrollView;IIII", "LADXTouchResponse;", "setupTouch" };
-  static const J2ObjcClassInfo _ADXTouchResponse_2 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, NULL, 7, 0x8010, 2, 0, 2, -1, 3, -1, -1 };
+  static const J2ObjcClassInfo _ADXTouchResponse_2 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, NULL, 7, 0x8000, 2, 0, 2, -1, 3, -1, -1 };
   return &_ADXTouchResponse_2;
 }
 

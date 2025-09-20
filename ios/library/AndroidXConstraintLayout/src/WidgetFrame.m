@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\WidgetFrame.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLElement.h"
 #include "CLKey.h"
 #include "CLNumber.h"
@@ -15,6 +20,8 @@
 #include "TypedValues.h"
 #include "WidgetFrame.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Math.h"
@@ -26,45 +33,50 @@
 #include "java/util/HashMap.h"
 #include "java/util/Set.h"
 
-@class JavaLangStringBuilder;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXWidgetFrame ()
 
-+ (jfloat)interpolateWithFloat:(jfloat)start
-                     withFloat:(jfloat)end
-                     withFloat:(jfloat)defaultValue
-                     withFloat:(jfloat)progress;
++ (float)interpolateWithFloat:(float)start
+                    withFloat:(float)end
+                    withFloat:(float)defaultValue
+                    withFloat:(float)progress;
 
 + (void)addWithJavaLangStringBuilder:(JavaLangStringBuilder *)s
                         withNSString:(NSString *)title
-                             withInt:(jint)value;
+                             withInt:(int32_t)value;
 
 + (void)addWithJavaLangStringBuilder:(JavaLangStringBuilder *)s
                         withNSString:(NSString *)title
-                           withFloat:(jfloat)value;
+                           withFloat:(float)value;
 
 @end
 
-inline jboolean ADXWidgetFrame_get_OLD_SYSTEM(void);
+inline bool ADXWidgetFrame_get_OLD_SYSTEM(void);
 #define ADXWidgetFrame_OLD_SYSTEM true
-J2OBJC_STATIC_FIELD_CONSTANT(ADXWidgetFrame, OLD_SYSTEM, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXWidgetFrame, OLD_SYSTEM, bool)
 
-__attribute__((unused)) static jfloat ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(jfloat start, jfloat end, jfloat defaultValue, jfloat progress);
+__attribute__((unused)) static float ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(float start, float end, float defaultValue, float progress);
 
-__attribute__((unused)) static void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withInt_(JavaLangStringBuilder *s, NSString *title, jint value);
+__attribute__((unused)) static void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withInt_(JavaLangStringBuilder *s, NSString *title, int32_t value);
 
-__attribute__((unused)) static void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withFloat_(JavaLangStringBuilder *s, NSString *title, jfloat value);
+__attribute__((unused)) static void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withFloat_(JavaLangStringBuilder *s, NSString *title, float value);
 
-jfloat ADXWidgetFrame_phone_orientation = NAN;
+float ADXWidgetFrame_phone_orientation = NAN;
 
 @implementation ADXWidgetFrame
 
-- (jint)width {
+- (int32_t)width {
   return JavaLangMath_maxWithInt_withInt_(0, right_ - left_);
 }
 
-- (jint)height {
+- (int32_t)height {
   return JavaLangMath_maxWithInt_withInt_(0, bottom_ - top_);
 }
 
@@ -106,32 +118,32 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)isDefaultTransform {
+- (bool)isDefaultTransform {
   return JavaLangFloat_isNaNWithFloat_(rotationX_) && JavaLangFloat_isNaNWithFloat_(rotationY_) && JavaLangFloat_isNaNWithFloat_(rotationZ_) && JavaLangFloat_isNaNWithFloat_(translationX_) && JavaLangFloat_isNaNWithFloat_(translationY_) && JavaLangFloat_isNaNWithFloat_(translationZ_) && JavaLangFloat_isNaNWithFloat_(scaleX_) && JavaLangFloat_isNaNWithFloat_(scaleY_) && JavaLangFloat_isNaNWithFloat_(alpha_);
 }
 
-+ (void)interpolateWithInt:(jint)parentWidth
-                   withInt:(jint)parentHeight
++ (void)interpolateWithInt:(int32_t)parentWidth
+                   withInt:(int32_t)parentHeight
         withADXWidgetFrame:(ADXWidgetFrame *)frame
         withADXWidgetFrame:(ADXWidgetFrame *)start
         withADXWidgetFrame:(ADXWidgetFrame *)end
          withADXTransition:(ADXTransition *)transition
-                 withFloat:(jfloat)progress {
+                 withFloat:(float)progress {
   ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetFrame_withADXWidgetFrame_withADXTransition_withFloat_(parentWidth, parentHeight, frame, start, end, transition, progress);
 }
 
-+ (jfloat)interpolateWithFloat:(jfloat)start
-                     withFloat:(jfloat)end
-                     withFloat:(jfloat)defaultValue
-                     withFloat:(jfloat)progress {
++ (float)interpolateWithFloat:(float)start
+                    withFloat:(float)end
+                    withFloat:(float)defaultValue
+                    withFloat:(float)progress {
   return ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(start, end, defaultValue, progress);
 }
 
-- (jfloat)centerX {
+- (float)centerX {
   return left_ + (right_ - left_) / 2.0f;
 }
 
-- (jfloat)centerY {
+- (float)centerY {
   return top_ + (bottom_ - top_) / 2.0f;
 }
 
@@ -157,24 +169,24 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addCustomColorWithNSString:(NSString *)name
-                           withInt:(jint)color {
+                           withInt:(int32_t)color {
   [self setCustomAttributeWithNSString:name withInt:ADXTypedValues_Custom_TYPE_COLOR withInt:color];
 }
 
-- (jint)getCustomColorWithNSString:(NSString *)name {
+- (int32_t)getCustomColorWithNSString:(NSString *)name {
   if ([((JavaUtilHashMap *) nil_chk(mCustom_)) containsKeyWithId:name]) {
-    jint color = [((ADXCustomVariable *) nil_chk([mCustom_ getWithId:name])) getColorValue];
+    int32_t color = [((ADXCustomVariable *) nil_chk([mCustom_ getWithId:name])) getColorValue];
     return color;
   }
-  return (jint) 0xFFFFAA88;
+  return (int32_t) 0xFFFFAA88;
 }
 
 - (void)addCustomFloatWithNSString:(NSString *)name
-                         withFloat:(jfloat)value {
+                         withFloat:(float)value {
   [self setCustomAttributeWithNSString:name withInt:ADXTypedValues_Custom_TYPE_FLOAT withFloat:value];
 }
 
-- (jfloat)getCustomFloatWithNSString:(NSString *)name {
+- (float)getCustomFloatWithNSString:(NSString *)name {
   if ([((JavaUtilHashMap *) nil_chk(mCustom_)) containsKeyWithId:name]) {
     return [((ADXCustomVariable *) nil_chk([mCustom_ getWithId:name])) getFloatValue];
   }
@@ -182,8 +194,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                             withFloat:(jfloat)value {
+                               withInt:(int32_t)type
+                             withFloat:(float)value {
   if ([((JavaUtilHashMap *) nil_chk(mCustom_)) containsKeyWithId:name]) {
     [((ADXCustomVariable *) nil_chk([mCustom_ getWithId:name])) setFloatValueWithFloat:value];
   }
@@ -193,8 +205,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                               withInt:(jint)value {
+                               withInt:(int32_t)type
+                               withInt:(int32_t)value {
   if ([((JavaUtilHashMap *) nil_chk(mCustom_)) containsKeyWithId:name]) {
     [((ADXCustomVariable *) nil_chk([mCustom_ getWithId:name])) setIntValueWithInt:value];
   }
@@ -204,8 +216,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                           withBoolean:(jboolean)value {
+                               withInt:(int32_t)type
+                           withBoolean:(bool)value {
   if ([((JavaUtilHashMap *) nil_chk(mCustom_)) containsKeyWithId:name]) {
     [((ADXCustomVariable *) nil_chk([mCustom_ getWithId:name])) setBooleanValueWithBoolean:value];
   }
@@ -215,7 +227,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
+                               withInt:(int32_t)type
                           withNSString:(NSString *)value {
   if ([((JavaUtilHashMap *) nil_chk(mCustom_)) containsKeyWithId:name]) {
     [((ADXCustomVariable *) nil_chk([mCustom_ getWithId:name])) setStringValueWithNSString:value];
@@ -233,8 +245,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [((JavaUtilHashMap *) nil_chk(mCustom_)) keySet];
 }
 
-- (jboolean)setValueWithNSString:(NSString *)key
-                withADXCLElement:(ADXCLElement *)value {
+- (bool)setValueWithNSString:(NSString *)key
+            withADXCLElement:(ADXCLElement *)value {
   switch (JreIndexOfStr(key, (id[]){ @"pivotX", @"pivotY", @"rotationX", @"rotationY", @"rotationZ", @"translationX", @"translationY", @"translationZ", @"scaleX", @"scaleY", @"alpha", @"interpolatedPos", @"phone_orientation", @"top", @"left", @"right", @"bottom", @"custom" }, 18)) {
     case 0:
     pivotX_ = [((ADXCLElement *) nil_chk(value)) getFloat];
@@ -298,15 +310,15 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)parseCustomWithADXCLElement:(ADXCLElement *)custom {
   ADXCLObject *obj = ((ADXCLObject *) cast_chk(custom, [ADXCLObject class]));
-  jint n = [((ADXCLObject *) nil_chk(obj)) size];
-  for (jint i = 0; i < n; i++) {
+  int32_t n = [((ADXCLObject *) nil_chk(obj)) size];
+  for (int32_t i = 0; i < n; i++) {
     ADXCLElement *tmp = JreRetainedLocalValue([obj getWithInt:i]);
     ADXCLKey *k = ((ADXCLKey *) cast_chk(tmp, [ADXCLKey class]));
     NSString *name = JreRetainedLocalValue([((ADXCLKey *) nil_chk(k)) content]);
     ADXCLElement *v = JreRetainedLocalValue([k getValue]);
     NSString *vStr = JreRetainedLocalValue([((ADXCLElement *) nil_chk(v)) content]);
     if ([((NSString *) nil_chk(vStr)) java_matches:@"#[0-9a-fA-F]+"]) {
-      jint color = JavaLangInteger_parseIntWithNSString_withInt_([vStr java_substring:1], 16);
+      int32_t color = JavaLangInteger_parseIntWithNSString_withInt_([vStr java_substring:1], 16);
       [self setCustomAttributeWithNSString:[k content] withInt:ADXTypedValues_Custom_TYPE_COLOR withInt:color];
     }
     else if ([v isKindOfClass:[ADXCLNumber class]]) {
@@ -323,7 +335,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (JavaLangStringBuilder *)serializeWithJavaLangStringBuilder:(JavaLangStringBuilder *)ret
-                                                  withBoolean:(jboolean)sendPhoneOrientation {
+                                                  withBoolean:(bool)sendPhoneOrientation {
   ADXWidgetFrame *frame = self;
   [((JavaLangStringBuilder *) nil_chk(ret)) appendWithNSString:@"{\n"];
   ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withInt_(ret, @"left", frame->left_);
@@ -390,22 +402,22 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)addWithJavaLangStringBuilder:(JavaLangStringBuilder *)s
                         withNSString:(NSString *)title
-                             withInt:(jint)value {
+                             withInt:(int32_t)value {
   ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withInt_(s, title, value);
 }
 
 + (void)addWithJavaLangStringBuilder:(JavaLangStringBuilder *)s
                         withNSString:(NSString *)title
-                           withFloat:(jfloat)value {
+                           withFloat:(float)value {
   ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withFloat_(s, title, value);
 }
 
 - (void)printCustomAttributes {
   JavaLangStackTraceElement *s = IOSObjectArray_Get(nil_chk([create_JavaLangThrowable_init() getStackTrace]), 1);
   NSString *ss = JreStrcat("$$CI$$", @".(", [((JavaLangStackTraceElement *) nil_chk(s)) getFileName], ':', [s getLineNumber], @") ", [s getMethodName]);
-  JreStrAppend(&ss, "CI", ' ', (JreIntMod(((jint) [self hash]), 1000)));
+  JreStrAppend(&ss, "CI", ' ', (JreIntMod(((int32_t) [self hash]), 1000)));
   if (widget_ != nil) {
-    JreStrAppend(&ss, "CIC", '/', (JreIntMod(((jint) [widget_ hash]), 1000)), ' ');
+    JreStrAppend(&ss, "CIC", '/', (JreIntMod(((int32_t) [widget_ hash]), 1000)), ' ');
   }
   else {
     JreStrAppend(&ss, "$", @"/NULL ");
@@ -418,9 +430,9 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)logvWithNSString:(NSString *)str {
   JavaLangStackTraceElement *s = IOSObjectArray_Get(nil_chk([create_JavaLangThrowable_init() getStackTrace]), 1);
   NSString *ss = JreStrcat("$$CI$$", @".(", [((JavaLangStackTraceElement *) nil_chk(s)) getFileName], ':', [s getLineNumber], @") ", [s getMethodName]);
-  JreStrAppend(&ss, "CI", ' ', (JreIntMod(((jint) [self hash]), 1000)));
+  JreStrAppend(&ss, "CI", ' ', (JreIntMod(((int32_t) [self hash]), 1000)));
   if (widget_ != nil) {
-    JreStrAppend(&ss, "CI", '/', (JreIntMod(((jint) [widget_ hash]), 1000)));
+    JreStrAppend(&ss, "CI", '/', (JreIntMod(((int32_t) [widget_ hash]), 1000)));
   }
   else {
     JreStrAppend(&ss, "$", @"/NULL");
@@ -642,20 +654,20 @@ ADXWidgetFrame *create_ADXWidgetFrame_initWithADXWidgetFrame_(ADXWidgetFrame *fr
   J2OBJC_CREATE_IMPL(ADXWidgetFrame, initWithADXWidgetFrame_, frame)
 }
 
-void ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetFrame_withADXWidgetFrame_withADXTransition_withFloat_(jint parentWidth, jint parentHeight, ADXWidgetFrame *frame, ADXWidgetFrame *start, ADXWidgetFrame *end, ADXTransition *transition, jfloat progress) {
+void ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetFrame_withADXWidgetFrame_withADXTransition_withFloat_(int32_t parentWidth, int32_t parentHeight, ADXWidgetFrame *frame, ADXWidgetFrame *start, ADXWidgetFrame *end, ADXTransition *transition, float progress) {
   ADXWidgetFrame_initialize();
-  jint frameNumber = JreFpToInt((progress * 100));
-  jint startX = ((ADXWidgetFrame *) nil_chk(start))->left_;
-  jint startY = start->top_;
-  jint endX = ((ADXWidgetFrame *) nil_chk(end))->left_;
-  jint endY = end->top_;
-  jint startWidth = start->right_ - start->left_;
-  jint startHeight = start->bottom_ - start->top_;
-  jint endWidth = end->right_ - end->left_;
-  jint endHeight = end->bottom_ - end->top_;
-  jfloat progressPosition = progress;
-  jfloat startAlpha = start->alpha_;
-  jfloat endAlpha = end->alpha_;
+  int32_t frameNumber = JreFpToInt((progress * 100));
+  int32_t startX = ((ADXWidgetFrame *) nil_chk(start))->left_;
+  int32_t startY = start->top_;
+  int32_t endX = ((ADXWidgetFrame *) nil_chk(end))->left_;
+  int32_t endY = end->top_;
+  int32_t startWidth = start->right_ - start->left_;
+  int32_t startHeight = start->bottom_ - start->top_;
+  int32_t endWidth = end->right_ - end->left_;
+  int32_t endHeight = end->bottom_ - end->top_;
+  float progressPosition = progress;
+  float startAlpha = start->alpha_;
+  float endAlpha = end->alpha_;
   if (start->visibility_ == ADXConstraintWidget_GONE) {
     JreMinusAssignIntF(&startX, endWidth / 2.0f);
     JreMinusAssignIntF(&startY, endHeight / 2.0f);
@@ -683,11 +695,11 @@ void ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetF
   if (((ADXWidgetFrame *) nil_chk(frame))->widget_ != nil && [((ADXTransition *) nil_chk(transition)) hasPositionKeyframes]) {
     ADXTransition_KeyPosition *firstPosition = JreRetainedLocalValue([((ADXTransition *) nil_chk(transition)) findPreviousPositionWithNSString:frame->widget_->stringId_ withInt:frameNumber]);
     ADXTransition_KeyPosition *lastPosition = JreRetainedLocalValue([transition findNextPositionWithNSString:((ADXConstraintWidget *) nil_chk(frame->widget_))->stringId_ withInt:frameNumber]);
-    if (firstPosition == lastPosition) {
+    if (JreObjectEqualsEquals(firstPosition, lastPosition)) {
       lastPosition = nil;
     }
-    jint interpolateStartFrame = 0;
-    jint interpolateEndFrame = 100;
+    int32_t interpolateStartFrame = 0;
+    int32_t interpolateEndFrame = 100;
     if (firstPosition != nil) {
       startX = JreFpToInt((firstPosition->x_ * parentWidth));
       startY = JreFpToInt((firstPosition->y_ * parentHeight));
@@ -698,13 +710,13 @@ void ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetF
       endY = JreFpToInt((lastPosition->y_ * parentHeight));
       interpolateEndFrame = lastPosition->frame_;
     }
-    progressPosition = (progress * 100.0f - interpolateStartFrame) / (jfloat) (interpolateEndFrame - interpolateStartFrame);
+    progressPosition = (progress * 100.0f - interpolateStartFrame) / (float) (interpolateEndFrame - interpolateStartFrame);
   }
   frame->widget_ = start->widget_;
   frame->left_ = JreFpToInt((startX + progressPosition * (endX - startX)));
   frame->top_ = JreFpToInt((startY + progressPosition * (endY - startY)));
-  jint width = JreFpToInt(((1 - progress) * startWidth + (progress * endWidth)));
-  jint height = JreFpToInt(((1 - progress) * startHeight + (progress * endHeight)));
+  int32_t width = JreFpToInt(((1 - progress) * startWidth + (progress * endWidth)));
+  int32_t height = JreFpToInt(((1 - progress) * startHeight + (progress * endHeight)));
   frame->right_ = frame->left_ + width;
   frame->bottom_ = frame->top_ + height;
   frame->pivotX_ = ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(start->pivotX_, end->pivotX_, 0.5f, progress);
@@ -720,10 +732,10 @@ void ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetF
   frame->alpha_ = ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(startAlpha, endAlpha, 1.0f, progress);
 }
 
-jfloat ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(jfloat start, jfloat end, jfloat defaultValue, jfloat progress) {
+float ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(float start, float end, float defaultValue, float progress) {
   ADXWidgetFrame_initialize();
-  jboolean isStartUnset = JavaLangFloat_isNaNWithFloat_(start);
-  jboolean isEndUnset = JavaLangFloat_isNaNWithFloat_(end);
+  bool isStartUnset = JavaLangFloat_isNaNWithFloat_(start);
+  bool isEndUnset = JavaLangFloat_isNaNWithFloat_(end);
   if (isStartUnset && isEndUnset) {
     return JavaLangFloat_NaN;
   }
@@ -736,7 +748,7 @@ jfloat ADXWidgetFrame_interpolateWithFloat_withFloat_withFloat_withFloat_(jfloat
   return (start + progress * (end - start));
 }
 
-void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withInt_(JavaLangStringBuilder *s, NSString *title, jint value) {
+void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withInt_(JavaLangStringBuilder *s, NSString *title, int32_t value) {
   ADXWidgetFrame_initialize();
   [((JavaLangStringBuilder *) nil_chk(s)) appendWithNSString:title];
   [s appendWithNSString:@": "];
@@ -744,7 +756,7 @@ void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withInt_(JavaLangS
   [s appendWithNSString:@",\n"];
 }
 
-void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withFloat_(JavaLangStringBuilder *s, NSString *title, jfloat value) {
+void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withFloat_(JavaLangStringBuilder *s, NSString *title, float value) {
   ADXWidgetFrame_initialize();
   if (JavaLangFloat_isNaNWithFloat_(value)) {
     return;
@@ -756,3 +768,5 @@ void ADXWidgetFrame_addWithJavaLangStringBuilder_withNSString_withFloat_(JavaLan
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXWidgetFrame)
+
+J2OBJC_NAME_MAPPING(ADXWidgetFrame, "androidx.constraintlayout.core.state", "ADX")

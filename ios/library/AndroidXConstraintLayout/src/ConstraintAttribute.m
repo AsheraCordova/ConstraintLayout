@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintAttribute.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Color.h"
 #include "ColorDrawable.h"
 #include "ConstraintAttribute.h"
@@ -14,6 +19,7 @@
 #include "PluginInvoker.h"
 #include "View.h"
 #include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Enum.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalAccessException.h"
@@ -28,17 +34,24 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXConstraintAttribute () {
  @public
-  jboolean mMethod_;
+  bool mMethod_;
   ADXConstraintAttribute_AttributeType *mType_;
-  jint mIntegerValue_;
-  jfloat mFloatValue_;
+  int32_t mIntegerValue_;
+  float mFloatValue_;
   NSString *mStringValue_;
-  jint mColorValue_;
+  int32_t mColorValue_;
 }
 
-+ (jint)clampWithInt:(jint)c;
++ (int32_t)clampWithInt:(int32_t)c;
 
 @end
 
@@ -49,9 +62,9 @@ inline NSString *ADXConstraintAttribute_get_TAG(void);
 static NSString *ADXConstraintAttribute_TAG = @"TransitionLayout";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintAttribute, TAG, NSString *)
 
-__attribute__((unused)) static jint ADXConstraintAttribute_clampWithInt_(jint c);
+__attribute__((unused)) static int32_t ADXConstraintAttribute_clampWithInt_(int32_t c);
 
-__attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWithNSString_withInt_(ADXConstraintAttribute_AttributeType *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWithNSString_withInt_(ADXConstraintAttribute_AttributeType *self, NSString *__name, int32_t __ordinal);
 
 @implementation ADXConstraintAttribute
 
@@ -59,7 +72,7 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
   return mType_;
 }
 
-- (jboolean)isContinuous {
+- (bool)isContinuous {
   switch ([mType_ ordinal]) {
     case ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE:
     case ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE:
@@ -70,7 +83,7 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
   }
 }
 
-- (jint)numberOfInterpolatedValues {
+- (int32_t)numberOfInterpolatedValues {
   switch ([mType_ ordinal]) {
     case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
     case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
@@ -80,7 +93,7 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
   }
 }
 
-- (jfloat)getValueToInterpolate {
+- (float)getValueToInterpolate {
   switch ([mType_ ordinal]) {
     case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
     return mIntegerValue_;
@@ -101,13 +114,13 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
 
 - (void)getValuesToInterpolateWithFloatArray:(IOSFloatArray *)ret {
   {
-    jint a;
-    jint r;
-    jint g;
-    jint b;
-    jfloat f_r;
-    jfloat f_g;
-    jfloat f_b;
+    int32_t a;
+    int32_t r;
+    int32_t g;
+    int32_t b;
+    float f_r;
+    float f_g;
+    float f_b;
     switch ([mType_ ordinal]) {
       case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
       *IOSFloatArray_GetRef(nil_chk(ret), 0) = mIntegerValue_;
@@ -117,13 +130,13 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
       break;
       case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
       case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
-      a = (jint) 0xFF & (JreRShift32(mColorValue_, 24));
-      r = (jint) 0xFF & (JreRShift32(mColorValue_, 16));
-      g = (jint) 0xFF & (JreRShift32(mColorValue_, 8));
-      b = (jint) 0xFF & (mColorValue_);
-      f_r = (jfloat) JavaLangMath_powWithDouble_withDouble_(r / 255.0f, 2.2);
-      f_g = (jfloat) JavaLangMath_powWithDouble_withDouble_(g / 255.0f, 2.2);
-      f_b = (jfloat) JavaLangMath_powWithDouble_withDouble_(b / 255.0f, 2.2);
+      a = (int32_t) 0xFF & (JreRShift32(mColorValue_, 24));
+      r = (int32_t) 0xFF & (JreRShift32(mColorValue_, 16));
+      g = (int32_t) 0xFF & (JreRShift32(mColorValue_, 8));
+      b = (int32_t) 0xFF & (mColorValue_);
+      f_r = (float) JavaLangMath_powWithDouble_withDouble_(r / 255.0f, 2.2);
+      f_g = (float) JavaLangMath_powWithDouble_withDouble_(g / 255.0f, 2.2);
+      f_b = (float) JavaLangMath_powWithDouble_withDouble_(b / 255.0f, 2.2);
       *IOSFloatArray_GetRef(nil_chk(ret), 0) = f_r;
       *IOSFloatArray_GetRef(ret, 1) = f_g;
       *IOSFloatArray_GetRef(ret, 2) = f_b;
@@ -153,7 +166,7 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
     case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
     case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
     mColorValue_ = ADColor_HSVToColorWithFloatArray_(value);
-    mColorValue_ = (mColorValue_ & (jint) 0xFFFFFF) | (JreLShift32(ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jint) 0xFF * IOSFloatArray_Get(nil_chk(value), 3)))), 24));
+    mColorValue_ = (mColorValue_ & (int32_t) 0xFFFFFF) | (JreLShift32(ADXConstraintAttribute_clampWithInt_(JreFpToInt(((int32_t) 0xFF * IOSFloatArray_Get(nil_chk(value), 3)))), 24));
     break;
     case ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE:
     @throw create_JavaLangRuntimeException_initWithNSString_(@"Color does not have a single color to interpolate");
@@ -168,7 +181,7 @@ __attribute__((unused)) static void ADXConstraintAttribute_AttributeType_initWit
 - (instancetype)initWithNSString:(NSString *)name
 withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *)attributeType
                           withId:(id)value
-                     withBoolean:(jboolean)method {
+                     withBoolean:(bool)method {
   ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(self, name, attributeType, value, method);
   return self;
 }
@@ -209,7 +222,7 @@ withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *
   return ADXConstraintAttribute_extractAttributesWithJavaUtilHashMap_withADView_(base, view);
 }
 
-+ (jint)clampWithInt:(jint)c {
++ (int32_t)clampWithInt:(int32_t)c {
   return ADXConstraintAttribute_clampWithInt_(c);
 }
 
@@ -221,11 +234,11 @@ withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *
 - (void)setInterpolatedValueWithADView:(ADView *)view
                         withFloatArray:(IOSFloatArray *)value {
   {
-    jint r;
-    jint g;
-    jint b;
-    jint a;
-    jint color;
+    int32_t r;
+    int32_t g;
+    int32_t b;
+    int32_t a;
+    int32_t color;
     switch ([mType_ ordinal]) {
       case ADXConstraintAttribute_AttributeType_Enum_INT_TYPE:
       case ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE:
@@ -234,20 +247,20 @@ withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *
       break;
       case ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
       {
-        jint r = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
-        jint g = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
-        jint b = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
-        jint a = ADXConstraintAttribute_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
-        jint color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
+        int32_t r = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+        int32_t g = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+        int32_t b = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+        int32_t a = ADXConstraintAttribute_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
+        int32_t color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
         ADColorDrawable *drawable = create_ADColorDrawable_init();
         [drawable setColorWithInt:color];
         [((ADView *) nil_chk(view)) setMyAttributeWithNSString:mName_ withId:drawable];
       }
       break;
       case ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE:
-      r = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
-      g = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
-      b = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+      r = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+      g = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+      b = ADXConstraintAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
       a = ADXConstraintAttribute_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
       color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
       [((ADView *) nil_chk(view)) setMyAttributeWithNSString:mName_ withId:ASPluginInvoker_getColorWithNSString_(ADColor_formatColorWithInt_(color))];
@@ -354,7 +367,7 @@ withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *
 
 @end
 
-void ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(ADXConstraintAttribute *self, NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) {
+void ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(ADXConstraintAttribute *self, NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, bool method) {
   NSObject_init(self);
   self->mMethod_ = false;
   JreStrongAssign(&self->mName_, name);
@@ -363,11 +376,11 @@ void ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_Attribut
   [self setValueWithId:value];
 }
 
-ADXConstraintAttribute *new_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) {
+ADXConstraintAttribute *new_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, bool method) {
   J2OBJC_NEW_IMPL(ADXConstraintAttribute, initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_, name, attributeType, value, method)
 }
 
-ADXConstraintAttribute *create_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) {
+ADXConstraintAttribute *create_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, bool method) {
   J2OBJC_CREATE_IMPL(ADXConstraintAttribute, initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_, name, attributeType, value, method)
 }
 
@@ -418,9 +431,9 @@ JavaUtilHashMap *ADXConstraintAttribute_extractAttributesWithJavaUtilHashMap_wit
   return ret;
 }
 
-jint ADXConstraintAttribute_clampWithInt_(jint c) {
+int32_t ADXConstraintAttribute_clampWithInt_(int32_t c) {
   ADXConstraintAttribute_initialize();
-  jint N = 255;
+  int32_t N = 255;
   c &= ~(JreRShift32(c, 31));
   c -= N;
   c &= (JreRShift32(c, 31));
@@ -467,6 +480,8 @@ void ADXConstraintAttribute_setAttributesWithADView_withJavaUtilHashMap_(ADView 
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintAttribute)
 
+J2OBJC_NAME_MAPPING(ADXConstraintAttribute, "androidx.constraintlayout.widget", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXConstraintAttribute_AttributeType)
 
 ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_values_[8];
@@ -483,6 +498,24 @@ ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_value
 
 - (ADXConstraintAttribute_AttributeType_Enum)toNSEnum {
   return (ADXConstraintAttribute_AttributeType_Enum)[self ordinal];
+}
+
+- (ADXConstraintAttribute_AttributeType_Enum)enumValue {
+  return (ADXConstraintAttribute_AttributeType_Enum)[self ordinal];
+}
+
++ (ADXConstraintAttribute_AttributeType *)fromNSEnum:(ADXConstraintAttribute_AttributeType_Enum)nativeValue {
+  ADXConstraintAttribute_AttributeType *javaEnum = ADXConstraintAttribute_AttributeType_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXConstraintAttribute_AttributeType_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXConstraintAttribute_AttributeType_ORDINAL)ordinal {
+  return (ADXConstraintAttribute_AttributeType_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithAttributeType:(ADXConstraintAttribute_AttributeType_Enum)value {
+  return RETAIN_(ADXConstraintAttribute_AttributeType_fromOrdinal((ADXConstraintAttribute_AttributeType_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -517,7 +550,7 @@ ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_value
     size_t allocSize = 8 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 8; i++) {
+    for (int32_t i = 0; i < 8; i++) {
       ((void)(ADXConstraintAttribute_AttributeType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXConstraintAttribute_AttributeType_initWithNSString_withInt_(e, JreEnumConstantName(ADXConstraintAttribute_AttributeType_class_(), i), i);
     }
@@ -527,7 +560,7 @@ ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_value
 
 @end
 
-void ADXConstraintAttribute_AttributeType_initWithNSString_withInt_(ADXConstraintAttribute_AttributeType *self, NSString *__name, jint __ordinal) {
+void ADXConstraintAttribute_AttributeType_initWithNSString_withInt_(ADXConstraintAttribute_AttributeType *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -545,12 +578,11 @@ ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_value
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_fromOrdinal(NSUInteger ordinal) {
+ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_fromOrdinal(ADXConstraintAttribute_AttributeType_ORDINAL ordinal) {
   ADXConstraintAttribute_AttributeType_initialize();
-  if (ordinal >= 8) {
+  if (ordinal < 0 || ordinal >= 8) {
     return nil;
   }
   return ADXConstraintAttribute_AttributeType_values_[ordinal];

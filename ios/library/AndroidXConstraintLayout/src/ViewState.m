@@ -3,9 +3,22 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\ViewState.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "MotionWidget.h"
 #include "ViewState.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXViewState
@@ -18,18 +31,18 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)getStateWithADXMotionWidget:(ADXMotionWidget *)v {
-  left_ = (jint) [((ADXMotionWidget *) nil_chk(v)) getLeft];
-  top_ = (jint) [v getTop];
-  right_ = (jint) [v getRight];
-  bottom_ = (jint) [v getBottom];
+  left_ = (int32_t) [((ADXMotionWidget *) nil_chk(v)) getLeft];
+  top_ = (int32_t) [v getTop];
+  right_ = (int32_t) [v getRight];
+  bottom_ = (int32_t) [v getBottom];
   rotation_ = JreFpToInt([v getRotationZ]);
 }
 
-- (jint)width {
+- (int32_t)width {
   return right_ - left_;
 }
 
-- (jint)height {
+- (int32_t)height {
   return bottom_ - top_;
 }
 
@@ -75,3 +88,5 @@ ADXViewState *create_ADXViewState_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewState)
+
+J2OBJC_NAME_MAPPING(ADXViewState, "androidx.constraintlayout.core.motion.utils", "ADX")

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\Grouping.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BasicMeasure.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -16,28 +21,34 @@
 #include "LinearSystem.h"
 #include "Metrics.h"
 #include "WidgetGroup.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashSet.h"
 
-@class JavaUtilArrayList;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXGrouping ()
 
 + (ADXWidgetGroup *)findGroupWithJavaUtilArrayList:(JavaUtilArrayList *)horizontalDependencyLists
-                                           withInt:(jint)groupId;
+                                           withInt:(int32_t)groupId;
 
 @end
 
-inline jboolean ADXGrouping_get_DEBUG(void);
+inline bool ADXGrouping_get_DEBUG(void);
 #define ADXGrouping_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXGrouping, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXGrouping, DEBUG, bool)
 
-inline jboolean ADXGrouping_get_DEBUG_GROUPING(void);
+inline bool ADXGrouping_get_DEBUG_GROUPING(void);
 #define ADXGrouping_DEBUG_GROUPING false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXGrouping, DEBUG_GROUPING, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXGrouping, DEBUG_GROUPING, bool)
 
-__attribute__((unused)) static ADXWidgetGroup *ADXGrouping_findGroupWithJavaUtilArrayList_withInt_(JavaUtilArrayList *horizontalDependencyLists, jint groupId);
+__attribute__((unused)) static ADXWidgetGroup *ADXGrouping_findGroupWithJavaUtilArrayList_withInt_(JavaUtilArrayList *horizontalDependencyLists, int32_t groupId);
 
 @implementation ADXGrouping
 
@@ -48,25 +59,25 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-+ (jboolean)validInGroupWithADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutHorizontal
-                        withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutVertical
-                        withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetHorizontal
-                        withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetVertical {
++ (bool)validInGroupWithADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutHorizontal
+                    withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutVertical
+                    withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetHorizontal
+                    withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetVertical {
   return ADXGrouping_validInGroupWithADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_(layoutHorizontal, layoutVertical, widgetHorizontal, widgetVertical);
 }
 
-+ (jboolean)simpleSolvingPassWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
-                                 withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer {
++ (bool)simpleSolvingPassWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
+                             withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer {
   return ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(layout, measurer);
 }
 
 + (ADXWidgetGroup *)findGroupWithJavaUtilArrayList:(JavaUtilArrayList *)horizontalDependencyLists
-                                           withInt:(jint)groupId {
+                                           withInt:(int32_t)groupId {
   return ADXGrouping_findGroupWithJavaUtilArrayList_withInt_(horizontalDependencyLists, groupId);
 }
 
 + (ADXWidgetGroup *)findDependentsWithADXConstraintWidget:(ADXConstraintWidget *)constraintWidget
-                                                  withInt:(jint)orientation
+                                                  withInt:(int32_t)orientation
                                     withJavaUtilArrayList:(JavaUtilArrayList *)list
                                        withADXWidgetGroup:(ADXWidgetGroup *)group {
   return ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJavaUtilArrayList_withADXWidgetGroup_(constraintWidget, orientation, list, group);
@@ -112,27 +123,27 @@ ADXGrouping *create_ADXGrouping_init() {
   J2OBJC_CREATE_IMPL(ADXGrouping, init)
 }
 
-jboolean ADXGrouping_validInGroupWithADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_(ADXConstraintWidget_DimensionBehaviour *layoutHorizontal, ADXConstraintWidget_DimensionBehaviour *layoutVertical, ADXConstraintWidget_DimensionBehaviour *widgetHorizontal, ADXConstraintWidget_DimensionBehaviour *widgetVertical) {
+bool ADXGrouping_validInGroupWithADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_(ADXConstraintWidget_DimensionBehaviour *layoutHorizontal, ADXConstraintWidget_DimensionBehaviour *layoutVertical, ADXConstraintWidget_DimensionBehaviour *widgetHorizontal, ADXConstraintWidget_DimensionBehaviour *widgetVertical) {
   ADXGrouping_initialize();
-  jboolean fixedHorizontal = widgetHorizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || widgetHorizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (widgetHorizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) && layoutHorizontal != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT));
-  jboolean fixedVertical = widgetVertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || widgetVertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (widgetVertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) && layoutVertical != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT));
+  bool fixedHorizontal = widgetHorizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || widgetHorizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (widgetHorizontal == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) && layoutHorizontal != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT));
+  bool fixedVertical = widgetVertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) || widgetVertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || (widgetVertical == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) && layoutVertical != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT));
   if (fixedHorizontal || fixedVertical) {
     return true;
   }
   return false;
 }
 
-jboolean ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(ADXConstraintWidgetContainer *layout, id<ADXBasicMeasure_Measurer> measurer) {
+bool ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(ADXConstraintWidgetContainer *layout, id<ADXBasicMeasure_Measurer> measurer) {
   ADXGrouping_initialize();
   JavaUtilArrayList *children = JreRetainedLocalValue([((ADXConstraintWidgetContainer *) nil_chk(layout)) getChildren]);
-  jint count = [((JavaUtilArrayList *) nil_chk(children)) size];
+  int32_t count = [((JavaUtilArrayList *) nil_chk(children)) size];
   JavaUtilArrayList *verticalGuidelines = nil;
   JavaUtilArrayList *horizontalGuidelines = nil;
   JavaUtilArrayList *horizontalBarriers = nil;
   JavaUtilArrayList *verticalBarriers = nil;
   JavaUtilArrayList *isolatedHorizontalChildren = nil;
   JavaUtilArrayList *isolatedVerticalChildren = nil;
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
     if (!ADXGrouping_validInGroupWithADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_([layout getHorizontalDimensionBehaviour], [layout getVerticalDimensionBehaviour], [((ADXConstraintWidget *) nil_chk(child)) getHorizontalDimensionBehaviour], [child getVerticalDimensionBehaviour])) {
       return false;
@@ -144,7 +155,7 @@ jboolean ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBa
   if (layout->mMetrics_ != nil) {
     layout->mMetrics_->grouping_++;
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
     if (!ADXGrouping_validInGroupWithADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_([layout getHorizontalDimensionBehaviour], [layout getVerticalDimensionBehaviour], [((ADXConstraintWidget *) nil_chk(child)) getHorizontalDimensionBehaviour], [child getVerticalDimensionBehaviour])) {
       ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(0, child, measurer, layout->mMeasure_, JreLoadStatic(ADXBasicMeasure_Measure, SELF_DIMENSIONS));
@@ -288,7 +299,7 @@ jboolean ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBa
       }
     }
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *child = JreRetainedLocalValue([children getWithInt:i]);
     if ([((ADXConstraintWidget *) nil_chk(child)) oppositeDimensionsTied]) {
       ADXWidgetGroup *horizontalGroup = ADXGrouping_findGroupWithJavaUtilArrayList_withInt_(allDependencyLists, child->horizontalGroup_);
@@ -306,14 +317,14 @@ jboolean ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBa
   ADXWidgetGroup *horizontalPick = nil;
   ADXWidgetGroup *verticalPick = nil;
   if ([layout getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)) {
-    jint maxWrap = 0;
+    int32_t maxWrap = 0;
     ADXWidgetGroup *picked = nil;
     for (ADXWidgetGroup * __strong list in allDependencyLists) {
       if ([((ADXWidgetGroup *) nil_chk(list)) getOrientation] == ADXConstraintWidget_VERTICAL) {
         continue;
       }
       [list setAuthoritativeWithBoolean:false];
-      jint wrap = [list measureWrapWithADXLinearSystem:[layout getSystem] withInt:ADXConstraintWidget_HORIZONTAL];
+      int32_t wrap = [list measureWrapWithADXLinearSystem:[layout getSystem] withInt:ADXConstraintWidget_HORIZONTAL];
       if (wrap > maxWrap) {
         picked = list;
         maxWrap = wrap;
@@ -327,14 +338,14 @@ jboolean ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBa
     }
   }
   if ([layout getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT)) {
-    jint maxWrap = 0;
+    int32_t maxWrap = 0;
     ADXWidgetGroup *picked = nil;
     for (ADXWidgetGroup * __strong list in allDependencyLists) {
       if ([((ADXWidgetGroup *) nil_chk(list)) getOrientation] == ADXConstraintWidget_HORIZONTAL) {
         continue;
       }
       [list setAuthoritativeWithBoolean:false];
-      jint wrap = [list measureWrapWithADXLinearSystem:[layout getSystem] withInt:ADXConstraintWidget_VERTICAL];
+      int32_t wrap = [list measureWrapWithADXLinearSystem:[layout getSystem] withInt:ADXConstraintWidget_VERTICAL];
       if (wrap > maxWrap) {
         picked = list;
         maxWrap = wrap;
@@ -350,10 +361,10 @@ jboolean ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBa
   return horizontalPick != nil || verticalPick != nil;
 }
 
-ADXWidgetGroup *ADXGrouping_findGroupWithJavaUtilArrayList_withInt_(JavaUtilArrayList *horizontalDependencyLists, jint groupId) {
+ADXWidgetGroup *ADXGrouping_findGroupWithJavaUtilArrayList_withInt_(JavaUtilArrayList *horizontalDependencyLists, int32_t groupId) {
   ADXGrouping_initialize();
-  jint count = [((JavaUtilArrayList *) nil_chk(horizontalDependencyLists)) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(horizontalDependencyLists)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXWidgetGroup *group = JreRetainedLocalValue([horizontalDependencyLists getWithInt:i]);
     if (groupId == ((ADXWidgetGroup *) nil_chk(group))->id__) {
       return group;
@@ -362,9 +373,9 @@ ADXWidgetGroup *ADXGrouping_findGroupWithJavaUtilArrayList_withInt_(JavaUtilArra
   return nil;
 }
 
-ADXWidgetGroup *ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJavaUtilArrayList_withADXWidgetGroup_(ADXConstraintWidget *constraintWidget, jint orientation, JavaUtilArrayList *list, ADXWidgetGroup *group) {
+ADXWidgetGroup *ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJavaUtilArrayList_withADXWidgetGroup_(ADXConstraintWidget *constraintWidget, int32_t orientation, JavaUtilArrayList *list, ADXWidgetGroup *group) {
   ADXGrouping_initialize();
-  jint groupId = -1;
+  int32_t groupId = -1;
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
     groupId = ((ADXConstraintWidget *) nil_chk(constraintWidget))->horizontalGroup_;
   }
@@ -372,7 +383,7 @@ ADXWidgetGroup *ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJa
     groupId = ((ADXConstraintWidget *) nil_chk(constraintWidget))->verticalGroup_;
   }
   if (groupId != -1 && (group == nil || (groupId != group->id__))) {
-    for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(list)) size]; i++) {
+    for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(list)) size]; i++) {
       ADXWidgetGroup *widgetGroup = JreRetainedLocalValue([list getWithInt:i]);
       if ([((ADXWidgetGroup *) nil_chk(widgetGroup)) getId] == groupId) {
         if (group != nil) {
@@ -392,7 +403,7 @@ ADXWidgetGroup *ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJa
       ADXHelperWidget *helper = (ADXHelperWidget *) constraintWidget;
       groupId = [helper findGroupInDependentsWithInt:orientation];
       if (groupId != -1) {
-        for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(list)) size]; i++) {
+        for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(list)) size]; i++) {
           ADXWidgetGroup *widgetGroup = JreRetainedLocalValue([list getWithInt:i]);
           if ([((ADXWidgetGroup *) nil_chk(widgetGroup)) getId] == groupId) {
             group = widgetGroup;
@@ -428,3 +439,5 @@ ADXWidgetGroup *ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJa
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXGrouping)
+
+J2OBJC_NAME_MAPPING(ADXGrouping, "androidx.constraintlayout.core.widgets.analyzer", "ADX")

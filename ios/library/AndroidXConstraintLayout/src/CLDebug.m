@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\CLDebug.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLDebug.h"
 #include "Context.h"
 #include "IOSPrimitiveArray.h"
@@ -10,6 +15,13 @@
 #include "MotionEvent.h"
 #include "MotionLayout.h"
 #include "View.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCLDebug
@@ -31,12 +43,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)logStackWithNSString:(NSString *)tag
                 withNSString:(NSString *)string
-                     withInt:(jint)i {
+                     withInt:(int32_t)i {
   ADXCLDebug_logStackWithNSString_withNSString_withInt_(tag, string, i);
 }
 
-+ (jint)getNameWithADContext:(ADContext *)context
-                     withInt:(jint)mCurrentState {
++ (int32_t)getNameWithADContext:(ADContext *)context
+                        withInt:(int32_t)mCurrentState {
   return ADXCLDebug_getNameWithADContext_withInt_(context, mCurrentState);
 }
 
@@ -50,7 +62,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (NSString *)getStateWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                  withInt:(jint)currentState {
+                                  withInt:(int32_t)currentState {
   return ADXCLDebug_getStateWithADXMotionLayout_withInt_(motionLayout, currentState);
 }
 
@@ -112,11 +124,11 @@ NSString *ADXCLDebug_getLocation() {
   return @"";
 }
 
-void ADXCLDebug_logStackWithNSString_withNSString_withInt_(NSString *tag, NSString *string, jint i) {
+void ADXCLDebug_logStackWithNSString_withNSString_withInt_(NSString *tag, NSString *string, int32_t i) {
   ADXCLDebug_initialize();
 }
 
-jint ADXCLDebug_getNameWithADContext_withInt_(ADContext *context, jint mCurrentState) {
+int32_t ADXCLDebug_getNameWithADContext_withInt_(ADContext *context, int32_t mCurrentState) {
   ADXCLDebug_initialize();
   return 0;
 }
@@ -131,7 +143,7 @@ NSString *ADXCLDebug_getNameWithADContext_withIntArray_(ADContext *context, IOSI
   return nil;
 }
 
-NSString *ADXCLDebug_getStateWithADXMotionLayout_withInt_(ADXMotionLayout *motionLayout, jint currentState) {
+NSString *ADXCLDebug_getStateWithADXMotionLayout_withInt_(ADXMotionLayout *motionLayout, int32_t currentState) {
   ADXCLDebug_initialize();
   return nil;
 }
@@ -142,3 +154,5 @@ NSString *ADXCLDebug_getActionTypeWithADMotionEvent_(ADMotionEvent *event) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLDebug)
+
+J2OBJC_NAME_MAPPING(ADXCLDebug, "androidx.constraintlayout.motion.widget", "ADX")

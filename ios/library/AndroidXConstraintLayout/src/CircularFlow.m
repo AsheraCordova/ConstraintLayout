@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\helper\widget\CircularFlow.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CircularFlow.h"
 #include "ConstraintLayout.h"
 #include "ConstraintSet.h"
@@ -16,21 +21,27 @@
 #include "ViewGroup.h"
 #include "ViewParent.h"
 #include "VirtualLayout.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashMap.h"
 
-@class JavaLangFloat;
-@class JavaLangInteger;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCircularFlow () {
  @public
   IOSFloatArray *mAngles_;
   IOSIntArray *mRadius_;
-  jint mCountRadius_;
-  jint mCountAngle_;
+  int32_t mCountRadius_;
+  int32_t mCountAngle_;
   NSString *mReferenceAngles_;
   NSString *mReferenceRadius_;
   JavaLangFloat *mReferenceDefaultAngle_;
@@ -40,10 +51,10 @@
 - (void)anchorReferences;
 
 - (IOSFloatArray *)removeAngleWithFloatArray:(IOSFloatArray *)angles
-                                     withInt:(jint)index;
+                                     withInt:(int32_t)index;
 
 - (IOSIntArray *)removeRadiusWithIntArray:(IOSIntArray *)radius
-                                  withInt:(jint)index;
+                                  withInt:(int32_t)index;
 
 - (void)setAnglesWithNSString:(NSString *)idList;
 
@@ -66,23 +77,23 @@ inline NSString *ADXCircularFlow_get_TAG(void);
 static NSString *ADXCircularFlow_TAG = @"CircularFlow";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXCircularFlow, TAG, NSString *)
 
-inline jint ADXCircularFlow_get_DEFAULT_RADIUS(void);
-inline jint ADXCircularFlow_set_DEFAULT_RADIUS(jint value);
-inline jint *ADXCircularFlow_getRef_DEFAULT_RADIUS(void);
-static jint ADXCircularFlow_DEFAULT_RADIUS = 0;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCircularFlow, DEFAULT_RADIUS, jint)
+inline int32_t ADXCircularFlow_get_DEFAULT_RADIUS(void);
+inline int32_t ADXCircularFlow_set_DEFAULT_RADIUS(int32_t value);
+inline int32_t *ADXCircularFlow_getRef_DEFAULT_RADIUS(void);
+static int32_t ADXCircularFlow_DEFAULT_RADIUS = 0;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCircularFlow, DEFAULT_RADIUS, int32_t)
 
-inline jfloat ADXCircularFlow_get_DEFAULT_ANGLE(void);
-inline jfloat ADXCircularFlow_set_DEFAULT_ANGLE(jfloat value);
-inline jfloat *ADXCircularFlow_getRef_DEFAULT_ANGLE(void);
-static jfloat ADXCircularFlow_DEFAULT_ANGLE = 0.0f;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCircularFlow, DEFAULT_ANGLE, jfloat)
+inline float ADXCircularFlow_get_DEFAULT_ANGLE(void);
+inline float ADXCircularFlow_set_DEFAULT_ANGLE(float value);
+inline float *ADXCircularFlow_getRef_DEFAULT_ANGLE(void);
+static float ADXCircularFlow_DEFAULT_ANGLE = 0.0f;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCircularFlow, DEFAULT_ANGLE, float)
 
 __attribute__((unused)) static void ADXCircularFlow_anchorReferences(ADXCircularFlow *self);
 
-__attribute__((unused)) static IOSFloatArray *ADXCircularFlow_removeAngleWithFloatArray_withInt_(ADXCircularFlow *self, IOSFloatArray *angles, jint index);
+__attribute__((unused)) static IOSFloatArray *ADXCircularFlow_removeAngleWithFloatArray_withInt_(ADXCircularFlow *self, IOSFloatArray *angles, int32_t index);
 
-__attribute__((unused)) static IOSIntArray *ADXCircularFlow_removeRadiusWithIntArray_withInt_(ADXCircularFlow *self, IOSIntArray *radius, jint index);
+__attribute__((unused)) static IOSIntArray *ADXCircularFlow_removeRadiusWithIntArray_withInt_(ADXCircularFlow *self, IOSIntArray *radius, int32_t index);
 
 __attribute__((unused)) static void ADXCircularFlow_setAnglesWithNSString_(ADXCircularFlow *self, NSString *idList);
 
@@ -126,8 +137,8 @@ __attribute__((unused)) static void ADXCircularFlow_addRadiusWithNSString_(ADXCi
 }
 
 - (void)addViewToCircularFlowWithADView:(ADView *)view
-                                withInt:(jint)radius
-                              withFloat:(jfloat)angle {
+                                withInt:(int32_t)radius
+                              withFloat:(float)angle {
   if ([self containsIdWithInt:[((ADView *) nil_chk(view)) getId]]) {
     return;
   }
@@ -142,12 +153,12 @@ __attribute__((unused)) static void ADXCircularFlow_addRadiusWithNSString_(ADXCi
 }
 
 - (void)updateRadiusWithADView:(ADView *)view
-                       withInt:(jint)radius {
+                       withInt:(int32_t)radius {
   if (![self isUpdatableWithADView:view]) {
     ADLog_eWithNSString_withNSString_(@"CircularFlow", JreStrcat("$I", @"It was not possible to update radius to view with id: ", [((ADView *) nil_chk(view)) getId]));
     return;
   }
-  jint indexView = [self indexFromIdWithInt:[((ADView *) nil_chk(view)) getId]];
+  int32_t indexView = [self indexFromIdWithInt:[((ADView *) nil_chk(view)) getId]];
   if (indexView > ((IOSIntArray *) nil_chk(mRadius_))->size_) {
     return;
   }
@@ -157,12 +168,12 @@ __attribute__((unused)) static void ADXCircularFlow_addRadiusWithNSString_(ADXCi
 }
 
 - (void)updateAngleWithADView:(ADView *)view
-                    withFloat:(jfloat)angle {
+                    withFloat:(float)angle {
   if (![self isUpdatableWithADView:view]) {
     ADLog_eWithNSString_withNSString_(@"CircularFlow", JreStrcat("$I", @"It was not possible to update angle to view with id: ", [((ADView *) nil_chk(view)) getId]));
     return;
   }
-  jint indexView = [self indexFromIdWithInt:[((ADView *) nil_chk(view)) getId]];
+  int32_t indexView = [self indexFromIdWithInt:[((ADView *) nil_chk(view)) getId]];
   if (indexView > ((IOSFloatArray *) nil_chk(mAngles_))->size_) {
     return;
   }
@@ -172,13 +183,13 @@ __attribute__((unused)) static void ADXCircularFlow_addRadiusWithNSString_(ADXCi
 }
 
 - (void)updateReferenceWithADView:(ADView *)view
-                          withInt:(jint)radius
-                        withFloat:(jfloat)angle {
+                          withInt:(int32_t)radius
+                        withFloat:(float)angle {
   if (![self isUpdatableWithADView:view]) {
     ADLog_eWithNSString_withNSString_(@"CircularFlow", JreStrcat("$I", @"It was not possible to update radius and angle to view with id: ", [((ADView *) nil_chk(view)) getId]));
     return;
   }
-  jint indexView = [self indexFromIdWithInt:[((ADView *) nil_chk(view)) getId]];
+  int32_t indexView = [self indexFromIdWithInt:[((ADView *) nil_chk(view)) getId]];
   if (((IOSFloatArray *) nil_chk([self getAngles]))->size_ > indexView) {
     JreStrongAssign(&mAngles_, [self getAngles]);
     *IOSFloatArray_GetRef(nil_chk(mAngles_), indexView) = angle;
@@ -190,16 +201,16 @@ __attribute__((unused)) static void ADXCircularFlow_addRadiusWithNSString_(ADXCi
   ADXCircularFlow_anchorReferences(self);
 }
 
-- (void)setDefaultAngleWithFloat:(jfloat)angle {
+- (void)setDefaultAngleWithFloat:(float)angle {
   ADXCircularFlow_DEFAULT_ANGLE = angle;
 }
 
-- (void)setDefaultRadiusWithInt:(jint)radius {
+- (void)setDefaultRadiusWithInt:(int32_t)radius {
   ADXCircularFlow_DEFAULT_RADIUS = radius;
 }
 
-- (jint)removeViewWithADView:(ADView *)view {
-  jint index = [super removeViewWithADView:view];
+- (int32_t)removeViewWithADView:(ADView *)view {
+  int32_t index = [super removeViewWithADView:view];
   if (index == -1) {
     return index;
   }
@@ -220,12 +231,12 @@ __attribute__((unused)) static void ADXCircularFlow_addRadiusWithNSString_(ADXCi
 }
 
 - (IOSFloatArray *)removeAngleWithFloatArray:(IOSFloatArray *)angles
-                                     withInt:(jint)index {
+                                     withInt:(int32_t)index {
   return ADXCircularFlow_removeAngleWithFloatArray_withInt_(self, angles, index);
 }
 
 - (IOSIntArray *)removeRadiusWithIntArray:(IOSIntArray *)radius
-                                  withInt:(jint)index {
+                                  withInt:(int32_t)index {
   return ADXCircularFlow_removeRadiusWithIntArray_withInt_(self, radius, index);
 }
 
@@ -246,20 +257,20 @@ __attribute__((unused)) static void ADXCircularFlow_addRadiusWithNSString_(ADXCi
 }
 
 + (IOSIntArray *)removeElementFromArrayWithIntArray:(IOSIntArray *)array
-                                            withInt:(jint)index {
+                                            withInt:(int32_t)index {
   return ADXCircularFlow_removeElementFromArrayWithIntArray_withInt_(array, index);
 }
 
 + (IOSFloatArray *)removeElementFromArrayWithFloatArray:(IOSFloatArray *)array
-                                                withInt:(jint)index {
+                                                withInt:(int32_t)index {
   return ADXCircularFlow_removeElementFromArrayWithFloatArray_withInt_(array, index);
 }
 
-- (jboolean)isUpdatableWithADView:(ADView *)view {
+- (bool)isUpdatableWithADView:(ADView *)view {
   if (![self containsIdWithInt:[((ADView *) nil_chk(view)) getId]]) {
     return false;
   }
-  jint indexView = [self indexFromIdWithInt:[view getId]];
+  int32_t indexView = [self indexFromIdWithInt:[view getId]];
   return indexView != -1;
 }
 
@@ -270,7 +281,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)setViewCenterWithInt:(jint)mViewCenter {
+- (void)setViewCenterWithInt:(int32_t)mViewCenter {
   self->mViewCenter_ = mViewCenter;
 }
 
@@ -394,13 +405,13 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 void ADXCircularFlow_anchorReferences(ADXCircularFlow *self) {
   self->mContainer_ = (ADXConstraintLayout *) cast_chk([self getParent], [ADXConstraintLayout class]);
-  for (jint i = 0; i < self->mCount_; i++) {
+  for (int32_t i = 0; i < self->mCount_; i++) {
     ADView *view = JreRetainedLocalValue([((ADXConstraintLayout *) nil_chk(self->mContainer_)) getViewByIdWithInt:IOSIntArray_Get(nil_chk(self->mIds_), i)]);
     if (view == nil) {
       continue;
     }
-    jint radius = ADXCircularFlow_DEFAULT_RADIUS;
-    jfloat angle = ADXCircularFlow_DEFAULT_ANGLE;
+    int32_t radius = ADXCircularFlow_DEFAULT_RADIUS;
+    float angle = ADXCircularFlow_DEFAULT_ANGLE;
     if (self->mRadius_ != nil && i < self->mRadius_->size_) {
       radius = IOSIntArray_Get(self->mRadius_, i);
     }
@@ -438,14 +449,14 @@ void ADXCircularFlow_anchorReferences(ADXCircularFlow *self) {
   [self applyLayoutFeatures];
 }
 
-IOSFloatArray *ADXCircularFlow_removeAngleWithFloatArray_withInt_(ADXCircularFlow *self, IOSFloatArray *angles, jint index) {
+IOSFloatArray *ADXCircularFlow_removeAngleWithFloatArray_withInt_(ADXCircularFlow *self, IOSFloatArray *angles, int32_t index) {
   if (angles == nil || index < 0 || index >= self->mCountAngle_) {
     return angles;
   }
   return ADXCircularFlow_removeElementFromArrayWithFloatArray_withInt_(angles, index);
 }
 
-IOSIntArray *ADXCircularFlow_removeRadiusWithIntArray_withInt_(ADXCircularFlow *self, IOSIntArray *radius, jint index) {
+IOSIntArray *ADXCircularFlow_removeRadiusWithIntArray_withInt_(ADXCircularFlow *self, IOSIntArray *radius, int32_t index) {
   if (radius == nil || index < 0 || index >= self->mCountRadius_) {
     return radius;
   }
@@ -456,10 +467,10 @@ void ADXCircularFlow_setAnglesWithNSString_(ADXCircularFlow *self, NSString *idL
   if (idList == nil) {
     return;
   }
-  jint begin = 0;
+  int32_t begin = 0;
   self->mCountAngle_ = 0;
   while (true) {
-    jint end = [idList java_indexOf:',' fromIndex:begin];
+    int32_t end = [idList java_indexOf:',' fromIndex:begin];
     if (end == -1) {
       ADXCircularFlow_addAngleWithNSString_(self, [((NSString *) nil_chk([idList java_substring:begin])) java_trim]);
       break;
@@ -473,10 +484,10 @@ void ADXCircularFlow_setRadiusWithNSString_(ADXCircularFlow *self, NSString *idL
   if (idList == nil) {
     return;
   }
-  jint begin = 0;
+  int32_t begin = 0;
   self->mCountRadius_ = 0;
   while (true) {
-    jint end = [idList java_indexOf:',' fromIndex:begin];
+    int32_t end = [idList java_indexOf:',' fromIndex:begin];
     if (end == -1) {
       ADXCircularFlow_addRadiusWithNSString_(self, [((NSString *) nil_chk([idList java_substring:begin])) java_trim]);
       break;
@@ -520,10 +531,10 @@ void ADXCircularFlow_addRadiusWithNSString_(ADXCircularFlow *self, NSString *rad
   self->mCountRadius_++;
 }
 
-IOSIntArray *ADXCircularFlow_removeElementFromArrayWithIntArray_withInt_(IOSIntArray *array, jint index) {
+IOSIntArray *ADXCircularFlow_removeElementFromArrayWithIntArray_withInt_(IOSIntArray *array, int32_t index) {
   ADXCircularFlow_initialize();
   IOSIntArray *newArray = [IOSIntArray arrayWithLength:((IOSIntArray *) nil_chk(array))->size_ - 1];
-  for (jint i = 0, k = 0; i < array->size_; i++) {
+  for (int32_t i = 0, k = 0; i < array->size_; i++) {
     if (i == index) {
       continue;
     }
@@ -532,10 +543,10 @@ IOSIntArray *ADXCircularFlow_removeElementFromArrayWithIntArray_withInt_(IOSIntA
   return newArray;
 }
 
-IOSFloatArray *ADXCircularFlow_removeElementFromArrayWithFloatArray_withInt_(IOSFloatArray *array, jint index) {
+IOSFloatArray *ADXCircularFlow_removeElementFromArrayWithFloatArray_withInt_(IOSFloatArray *array, int32_t index) {
   ADXCircularFlow_initialize();
   IOSFloatArray *newArray = [IOSFloatArray arrayWithLength:((IOSFloatArray *) nil_chk(array))->size_ - 1];
-  for (jint i = 0, k = 0; i < array->size_; i++) {
+  for (int32_t i = 0, k = 0; i < array->size_; i++) {
     if (i == index) {
       continue;
     }
@@ -558,3 +569,5 @@ ADXCircularFlow *create_ADXCircularFlow_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCircularFlow)
+
+J2OBJC_NAME_MAPPING(ADXCircularFlow, "androidx.constraintlayout.helper.widget", "ADX")

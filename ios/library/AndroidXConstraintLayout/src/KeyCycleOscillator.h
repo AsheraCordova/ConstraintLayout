@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\KeyCycleOscillator.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyCycleOscillator")
@@ -21,7 +22,11 @@
 
 @class ADXCurveFit;
 @class ADXMotionWidget;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
+@class NSString;
 
 /*!
  @brief Provide the engine for executing cycles.
@@ -29,7 +34,7 @@
  */
 @interface ADXKeyCycleOscillator : NSObject {
  @public
-  jint mVariesBy_;
+  int32_t mVariesBy_;
   JavaUtilArrayList *mWavePoints_;
 }
 
@@ -37,11 +42,11 @@
 
 - (instancetype)init;
 
-- (jfloat)getWithFloat:(jfloat)t;
+- (float)getWithFloat:(float)t;
 
 - (ADXCurveFit *)getCurveFit;
 
-- (jfloat)getSlopeWithFloat:(jfloat)position;
+- (float)getSlopeWithFloat:(float)position;
 
 + (ADXKeyCycleOscillator *)makeWidgetCycleWithNSString:(NSString *)attribute;
 
@@ -53,14 +58,14 @@
  @param offset the offset value
  @param value the adder
  */
-- (void)setPointWithInt:(jint)framePosition
-                withInt:(jint)shape
+- (void)setPointWithInt:(int32_t)framePosition
+                withInt:(int32_t)shape
            withNSString:(NSString *)waveString
-                withInt:(jint)variesBy
-              withFloat:(jfloat)period
-              withFloat:(jfloat)offset
-              withFloat:(jfloat)phase
-              withFloat:(jfloat)value;
+                withInt:(int32_t)variesBy
+              withFloat:(float)period
+              withFloat:(float)offset
+              withFloat:(float)phase
+              withFloat:(float)value;
 
 /*!
  @brief sets a oscillator wave point
@@ -71,26 +76,26 @@
  @param value the adder
  @param custom The ConstraintAttribute used to set the value
  */
-- (void)setPointWithInt:(jint)framePosition
-                withInt:(jint)shape
+- (void)setPointWithInt:(int32_t)framePosition
+                withInt:(int32_t)shape
            withNSString:(NSString *)waveString
-                withInt:(jint)variesBy
-              withFloat:(jfloat)period
-              withFloat:(jfloat)offset
-              withFloat:(jfloat)phase
-              withFloat:(jfloat)value
+                withInt:(int32_t)variesBy
+              withFloat:(float)period
+              withFloat:(float)offset
+              withFloat:(float)phase
+              withFloat:(float)value
                  withId:(id)custom;
 
 - (void)setPropertyWithADXMotionWidget:(ADXMotionWidget *)widget
-                             withFloat:(jfloat)t;
+                             withFloat:(float)t;
 
 - (void)setTypeWithNSString:(NSString *)type;
 
-- (void)setupWithFloat:(jfloat)pathLength;
+- (void)setupWithFloat:(float)pathLength;
 
 - (NSString *)description;
 
-- (jboolean)variesByPath;
+- (bool)variesByPath;
 
 #pragma mark Protected
 
@@ -110,17 +115,22 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsKeyCycleOscillator ADXKeyCycleOscillator;
 
+
 #endif
 
 #if !defined (ADXKeyCycleOscillator_PathRotateSet_) && (INCLUDE_ALL_KeyCycleOscillator || defined(INCLUDE_ADXKeyCycleOscillator_PathRotateSet))
 #define ADXKeyCycleOscillator_PathRotateSet_
 
 @class ADXMotionWidget;
+@class JavaLangDouble;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXKeyCycleOscillator_PathRotateSet : ADXKeyCycleOscillator {
  @public
   NSString *type_;
-  jint typeId_;
+  int32_t typeId_;
 }
 
 #pragma mark Public
@@ -128,12 +138,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator)
 - (instancetype)initWithNSString:(NSString *)str;
 
 - (void)setPathRotateWithADXMotionWidget:(ADXMotionWidget *)view
-                               withFloat:(jfloat)t
-                              withDouble:(jdouble)dx
-                              withDouble:(jdouble)dy;
+                               withFloat:(float)t
+                              withDouble:(double)dx
+                              withDouble:(double)dy;
 
 - (void)setPropertyWithADXMotionWidget:(ADXMotionWidget *)widget
-                             withFloat:(jfloat)t;
+                             withFloat:(float)t;
 
 // Disallowed inherited constructors, do not use.
 
@@ -153,27 +163,31 @@ FOUNDATION_EXPORT ADXKeyCycleOscillator_PathRotateSet *create_ADXKeyCycleOscilla
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_PathRotateSet)
 
+
 #endif
 
 #if !defined (ADXKeyCycleOscillator_WavePoint_) && (INCLUDE_ALL_KeyCycleOscillator || defined(INCLUDE_ADXKeyCycleOscillator_WavePoint))
 #define ADXKeyCycleOscillator_WavePoint_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+
 @interface ADXKeyCycleOscillator_WavePoint : NSObject {
  @public
-  jint mPosition_;
-  jfloat mValue_;
-  jfloat mOffset_;
-  jfloat mPeriod_;
-  jfloat mPhase_;
+  int32_t mPosition_;
+  float mValue_;
+  float mOffset_;
+  float mPeriod_;
+  float mPhase_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)position
-                  withFloat:(jfloat)period
-                  withFloat:(jfloat)offset
-                  withFloat:(jfloat)phase
-                  withFloat:(jfloat)value;
+- (instancetype)initWithInt:(int32_t)position
+                  withFloat:(float)period
+                  withFloat:(float)offset
+                  withFloat:(float)phase
+                  withFloat:(float)value;
 
 // Disallowed inherited constructors, do not use.
 
@@ -183,13 +197,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_PathRotateSet)
 
 J2OBJC_EMPTY_STATIC_INIT(ADXKeyCycleOscillator_WavePoint)
 
-FOUNDATION_EXPORT void ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(ADXKeyCycleOscillator_WavePoint *self, jint position, jfloat period, jfloat offset, jfloat phase, jfloat value);
+FOUNDATION_EXPORT void ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(ADXKeyCycleOscillator_WavePoint *self, int32_t position, float period, float offset, float phase, float value);
 
-FOUNDATION_EXPORT ADXKeyCycleOscillator_WavePoint *new_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(jint position, jfloat period, jfloat offset, jfloat phase, jfloat value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXKeyCycleOscillator_WavePoint *new_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(int32_t position, float period, float offset, float phase, float value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXKeyCycleOscillator_WavePoint *create_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(jint position, jfloat period, jfloat offset, jfloat phase, jfloat value);
+FOUNDATION_EXPORT ADXKeyCycleOscillator_WavePoint *create_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(int32_t position, float period, float offset, float phase, float value);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_WavePoint)
+
 
 #endif
 
@@ -200,6 +215,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_WavePoint)
 @class ADXOscillator;
 @class IOSDoubleArray;
 @class IOSFloatArray;
+@class JavaLangDouble;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXKeyCycleOscillator_CycleOscillator : NSObject {
  @public
@@ -210,20 +229,20 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_WavePoint)
   IOSFloatArray *mOffset_;
   IOSFloatArray *mPhase_;
   IOSFloatArray *mScale_;
-  jint mWaveShape_;
+  int32_t mWaveShape_;
   ADXCurveFit *mCurveFit_;
   IOSDoubleArray *mSplineValueCache_;
   IOSDoubleArray *mSplineSlopeCache_;
-  jfloat mPathLength_;
+  float mPathLength_;
 }
 
 #pragma mark Public
 
-- (jdouble)getLastPhase;
+- (double)getLastPhase;
 
-- (jdouble)getSlopeWithFloat:(jfloat)time;
+- (double)getSlopeWithFloat:(float)time;
 
-- (jdouble)getValuesWithFloat:(jfloat)time;
+- (double)getValuesWithFloat:(float)time;
 
 /*!
  @param index
@@ -232,21 +251,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_WavePoint)
  @param offset
  @param values
  */
-- (void)setPointWithInt:(jint)index
-                withInt:(jint)framePosition
-              withFloat:(jfloat)wavePeriod
-              withFloat:(jfloat)offset
-              withFloat:(jfloat)phase
-              withFloat:(jfloat)values;
+- (void)setPointWithInt:(int32_t)index
+                withInt:(int32_t)framePosition
+              withFloat:(float)wavePeriod
+              withFloat:(float)offset
+              withFloat:(float)phase
+              withFloat:(float)values;
 
-- (void)setupWithFloat:(jfloat)pathLength;
+- (void)setupWithFloat:(float)pathLength;
 
 #pragma mark Package-Private
 
-- (instancetype)initWithInt:(jint)waveShape
+- (instancetype)initWithInt:(int32_t)waveShape
                withNSString:(NSString *)customShape
-                    withInt:(jint)variesBy
-                    withInt:(jint)steps;
+                    withInt:(int32_t)variesBy
+                    withInt:(int32_t)steps;
 
 // Disallowed inherited constructors, do not use.
 
@@ -267,17 +286,18 @@ J2OBJC_FIELD_SETTER(ADXKeyCycleOscillator_CycleOscillator, mCurveFit_, ADXCurveF
 J2OBJC_FIELD_SETTER(ADXKeyCycleOscillator_CycleOscillator, mSplineValueCache_, IOSDoubleArray *)
 J2OBJC_FIELD_SETTER(ADXKeyCycleOscillator_CycleOscillator, mSplineSlopeCache_, IOSDoubleArray *)
 
-inline jint ADXKeyCycleOscillator_CycleOscillator_get_UNSET(void);
+inline int32_t ADXKeyCycleOscillator_CycleOscillator_get_UNSET(void);
 #define ADXKeyCycleOscillator_CycleOscillator_UNSET -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, UNSET, int32_t)
 
-FOUNDATION_EXPORT void ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(ADXKeyCycleOscillator_CycleOscillator *self, jint waveShape, NSString *customShape, jint variesBy, jint steps);
+FOUNDATION_EXPORT void ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(ADXKeyCycleOscillator_CycleOscillator *self, int32_t waveShape, NSString *customShape, int32_t variesBy, int32_t steps);
 
-FOUNDATION_EXPORT ADXKeyCycleOscillator_CycleOscillator *new_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(jint waveShape, NSString *customShape, jint variesBy, jint steps) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXKeyCycleOscillator_CycleOscillator *new_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(int32_t waveShape, NSString *customShape, int32_t variesBy, int32_t steps) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXKeyCycleOscillator_CycleOscillator *create_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(jint waveShape, NSString *customShape, jint variesBy, jint steps);
+FOUNDATION_EXPORT ADXKeyCycleOscillator_CycleOscillator *create_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(int32_t waveShape, NSString *customShape, int32_t variesBy, int32_t steps);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_CycleOscillator)
+
 
 #endif
 

@@ -3,8 +3,20 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\FloatRect.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "FloatRect.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Float.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXFloatRect
@@ -16,11 +28,11 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jfloat)centerX {
+- (float)centerX {
   return (left_ + right_) * 0.5f;
 }
 
-- (jfloat)centerY {
+- (float)centerY {
   return (top_ + bottom_) * 0.5f;
 }
 
@@ -62,3 +74,5 @@ ADXFloatRect *create_ADXFloatRect_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXFloatRect)
+
+J2OBJC_NAME_MAPPING(ADXFloatRect, "androidx.constraintlayout.core.motion.utils", "ADX")

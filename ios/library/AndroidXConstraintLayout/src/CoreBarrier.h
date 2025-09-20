@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreBarrier.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CoreBarrier")
@@ -22,14 +23,17 @@
 
 @class ADXConstraintWidget;
 @class ADXLinearSystem;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
+@class NSString;
 
 /*!
  @brief A Barrier takes multiple widgets
  */
 @interface ADXCoreBarrier : ADXHelperWidget {
  @public
-  jboolean resolved_;
+  bool resolved_;
 }
 
 #pragma mark Public
@@ -44,17 +48,17 @@
  @param optimize true if <code>Optimizer.OPTIMIZATION_GRAPH</code>  is on
  */
 - (void)addToSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                           withBoolean:(jboolean)optimize;
+                           withBoolean:(bool)optimize;
 
-- (jboolean)allowedInBarrier;
+- (bool)allowedInBarrier;
 
 /*!
  @brief Find if this barrier supports gone widgets.
  @return true if this barrier supports gone widgets, otherwise false
  */
-- (jboolean)allowsGoneWidget;
+- (bool)allowsGoneWidget;
 
-- (jboolean)allSolved;
+- (bool)allSolved;
 
 - (void)copy__WithADXConstraintWidget:(ADXConstraintWidget *)src
                   withJavaUtilHashMap:(JavaUtilHashMap *)map OBJC_METHOD_FAMILY_NONE;
@@ -63,23 +67,23 @@
  @brief Find if this barrier supports gone widgets.
  @return true if this barrier supports gone widgets, otherwise false
  */
-- (jboolean)getAllowsGoneWidget;
+- (bool)getAllowsGoneWidget;
 
-- (jint)getBarrierType;
+- (int32_t)getBarrierType;
 
-- (jint)getMargin;
+- (int32_t)getMargin;
 
-- (jint)getOrientation;
+- (int32_t)getOrientation;
 
-- (jboolean)isResolvedHorizontally;
+- (bool)isResolvedHorizontally;
 
-- (jboolean)isResolvedVertically;
+- (bool)isResolvedVertically;
 
-- (void)setAllowsGoneWidgetWithBoolean:(jboolean)allowsGoneWidget;
+- (void)setAllowsGoneWidgetWithBoolean:(bool)allowsGoneWidget;
 
-- (void)setBarrierTypeWithInt:(jint)barrierType;
+- (void)setBarrierTypeWithInt:(int32_t)barrierType;
 
-- (void)setMarginWithInt:(jint)margin;
+- (void)setMarginWithInt:(int32_t)margin;
 
 - (NSString *)description;
 
@@ -91,21 +95,21 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCoreBarrier)
 
-inline jint ADXCoreBarrier_get_LEFT(void);
+inline int32_t ADXCoreBarrier_get_LEFT(void);
 #define ADXCoreBarrier_LEFT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, LEFT, int32_t)
 
-inline jint ADXCoreBarrier_get_RIGHT(void);
+inline int32_t ADXCoreBarrier_get_RIGHT(void);
 #define ADXCoreBarrier_RIGHT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, RIGHT, int32_t)
 
-inline jint ADXCoreBarrier_get_TOP(void);
+inline int32_t ADXCoreBarrier_get_TOP(void);
 #define ADXCoreBarrier_TOP 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, TOP, int32_t)
 
-inline jint ADXCoreBarrier_get_BOTTOM(void);
+inline int32_t ADXCoreBarrier_get_BOTTOM(void);
 #define ADXCoreBarrier_BOTTOM 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreBarrier, BOTTOM, int32_t)
 
 FOUNDATION_EXPORT void ADXCoreBarrier_init(ADXCoreBarrier *self);
 
@@ -122,6 +126,7 @@ FOUNDATION_EXPORT ADXCoreBarrier *create_ADXCoreBarrier_initWithNSString_(NSStri
 J2OBJC_TYPE_LITERAL_HEADER(ADXCoreBarrier)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsCoreBarrier ADXCoreBarrier;
+
 
 #endif
 

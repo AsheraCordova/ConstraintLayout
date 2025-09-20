@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\DifferentialInterpolator.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_DifferentialInterpolator")
@@ -16,11 +17,13 @@
 #if !defined (ADXDifferentialInterpolator_) && (INCLUDE_ALL_DifferentialInterpolator || defined(INCLUDE_ADXDifferentialInterpolator))
 #define ADXDifferentialInterpolator_
 
+@class JavaLangFloat;
+
 @protocol ADXDifferentialInterpolator < JavaObject >
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v;
+- (float)getInterpolationWithFloat:(float)v;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
 @end
 
@@ -29,6 +32,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXDifferentialInterpolator)
 J2OBJC_TYPE_LITERAL_HEADER(ADXDifferentialInterpolator)
 
 #define AndroidxConstraintlayoutCoreMotionUtilsDifferentialInterpolator ADXDifferentialInterpolator
+
 
 #endif
 

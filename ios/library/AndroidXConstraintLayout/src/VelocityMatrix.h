@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\VelocityMatrix.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_VelocityMatrix")
@@ -19,18 +20,20 @@
 @class ADXKeyCycleOscillator;
 @class ADXSplineSet;
 @class IOSFloatArray;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 /*!
  @brief This is used to calculate the related velocity matrix for a post layout matrix
  */
 @interface ADXVelocityMatrix : NSObject {
  @public
-  jfloat mDScaleX_;
-  jfloat mDScaleY_;
-  jfloat mDTranslateX_;
-  jfloat mDTranslateY_;
-  jfloat mDRotate_;
-  jfloat mRotate_;
+  float mDScaleX_;
+  float mDScaleY_;
+  float mDTranslateX_;
+  float mDTranslateY_;
+  float mDRotate_;
+  float mRotate_;
 }
 
 #pragma mark Public
@@ -45,35 +48,35 @@
  @param height
  @param mAnchorDpDt
  */
-- (void)applyTransformWithFloat:(jfloat)locationX
-                      withFloat:(jfloat)locationY
-                        withInt:(jint)width
-                        withInt:(jint)height
+- (void)applyTransformWithFloat:(float)locationX
+                      withFloat:(float)locationY
+                        withInt:(int32_t)width
+                        withInt:(int32_t)height
                  withFloatArray:(IOSFloatArray *)mAnchorDpDt;
 
 - (void)clear;
 
 - (void)setRotationVelocityWithADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_r
-                                           withFloat:(jfloat)position;
+                                           withFloat:(float)position;
 
 - (void)setRotationVelocityWithADXSplineSet:(ADXSplineSet *)rot
-                                  withFloat:(jfloat)position;
+                                  withFloat:(float)position;
 
 - (void)setScaleVelocityWithADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_sx
                         withADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_sy
-                                        withFloat:(jfloat)position;
+                                        withFloat:(float)position;
 
 - (void)setScaleVelocityWithADXSplineSet:(ADXSplineSet *)scale_x
                         withADXSplineSet:(ADXSplineSet *)scale_y
-                               withFloat:(jfloat)position;
+                               withFloat:(float)position;
 
 - (void)setTranslationVelocityWithADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_x
                               withADXKeyCycleOscillator:(ADXKeyCycleOscillator *)osc_y
-                                              withFloat:(jfloat)position;
+                                              withFloat:(float)position;
 
 - (void)setTranslationVelocityWithADXSplineSet:(ADXSplineSet *)trans_x
                               withADXSplineSet:(ADXSplineSet *)trans_y
-                                     withFloat:(jfloat)position;
+                                     withFloat:(float)position;
 
 @end
 
@@ -88,6 +91,7 @@ FOUNDATION_EXPORT ADXVelocityMatrix *create_ADXVelocityMatrix_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXVelocityMatrix)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsVelocityMatrix ADXVelocityMatrix;
+
 
 #endif
 

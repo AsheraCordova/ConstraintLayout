@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintLayout")
@@ -29,17 +30,20 @@
 @class ADXConstraintWidget;
 @class ADXConstraintWidgetContainer;
 @class ADXSharedValues;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXConstraintLayout : ADViewGroup {
  @public
   ADSparseArray *mChildrenByIds_;
   ADXConstraintWidgetContainer *mLayoutWidget_;
-  jboolean mDirtyHierarchy_;
+  bool mDirtyHierarchy_;
   ADXConstraintLayoutStates *mConstraintLayoutSpec_;
-  jint mLastMeasureWidthSize_;
-  jint mLastMeasureHeightSize_;
-  jint mLastMeasureWidthMode_;
-  jint mLastMeasureHeightMode_;
+  int32_t mLastMeasureWidthSize_;
+  int32_t mLastMeasureHeightSize_;
+  int32_t mLastMeasureWidthMode_;
+  int32_t mLastMeasureHeightMode_;
   ADXConstraintLayout_Measurer *mMeasurer_;
 }
 
@@ -47,22 +51,22 @@
 
 - (instancetype)init;
 
-- (id)getDesignInformationWithInt:(jint)type
+- (id)getDesignInformationWithInt:(int32_t)type
                            withId:(id)value;
 
-- (jint)getMaxHeight;
+- (int32_t)getMaxHeight;
 
-- (jint)getMaxWidth;
+- (int32_t)getMaxWidth;
 
-- (jint)getMinHeight;
+- (int32_t)getMinHeight;
 
-- (jint)getMinWidth;
+- (int32_t)getMinWidth;
 
-- (jint)getOptimizationLevel;
+- (int32_t)getOptimizationLevel;
 
 + (ADXSharedValues *)getSharedValues;
 
-- (ADView *)getViewByIdWithInt:(jint)id_;
+- (ADView *)getViewByIdWithInt:(int32_t)id_;
 
 - (ADXConstraintWidget *)getViewWidgetWithADView:(ADView *)view;
 
@@ -76,23 +80,23 @@
 
 - (void)setConstraintSetWithADXConstraintSet:(ADXConstraintSet *)set;
 
-- (void)setDesignInformationWithInt:(jint)type
+- (void)setDesignInformationWithInt:(int32_t)type
                              withId:(id)value1
                              withId:(id)value2;
 
-- (void)setMaxHeightWithInt:(jint)value;
+- (void)setMaxHeightWithInt:(int32_t)value;
 
-- (void)setMaxWidthWithInt:(jint)value;
+- (void)setMaxWidthWithInt:(int32_t)value;
 
-- (void)setMinHeightWithInt:(jint)value;
+- (void)setMinHeightWithInt:(int32_t)value;
 
-- (void)setMinWidthWithInt:(jint)value;
+- (void)setMinWidthWithInt:(int32_t)value;
 
-- (void)setOptimizationLevelWithInt:(jint)level;
+- (void)setOptimizationLevelWithInt:(int32_t)level;
 
 #pragma mark Protected
 
-- (void)applyConstraintsFromLayoutParamsWithBoolean:(jboolean)isInEditMode
+- (void)applyConstraintsFromLayoutParamsWithBoolean:(bool)isInEditMode
                                          withADView:(ADView *)child
                             withADXConstraintWidget:(ADXConstraintWidget *)widget
                withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
@@ -100,34 +104,34 @@
 
 - (ADXConstraintLayout_LayoutParams *)generateDefaultLayoutParams;
 
-- (jboolean)isRtl;
+- (bool)isRtl;
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
-- (void)resolveMeasuredDimensionWithInt:(jint)widthMeasureSpec
-                                withInt:(jint)heightMeasureSpec
-                                withInt:(jint)measuredWidth
-                                withInt:(jint)measuredHeight
-                            withBoolean:(jboolean)isWidthMeasuredTooSmall
-                            withBoolean:(jboolean)isHeightMeasuredTooSmall;
+- (void)resolveMeasuredDimensionWithInt:(int32_t)widthMeasureSpec
+                                withInt:(int32_t)heightMeasureSpec
+                                withInt:(int32_t)measuredWidth
+                                withInt:(int32_t)measuredHeight
+                            withBoolean:(bool)isWidthMeasuredTooSmall
+                            withBoolean:(bool)isHeightMeasuredTooSmall;
 
 - (void)resolveSystemWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
-                                              withInt:(jint)optimizationLevel
-                                              withInt:(jint)widthMeasureSpec
-                                              withInt:(jint)heightMeasureSpec;
+                                              withInt:(int32_t)optimizationLevel
+                                              withInt:(int32_t)widthMeasureSpec
+                                              withInt:(int32_t)heightMeasureSpec;
 
 - (void)setSelfDimensionBehaviourWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
-                                                          withInt:(jint)widthMode
-                                                          withInt:(jint)widthSize
-                                                          withInt:(jint)heightMode
-                                                          withInt:(jint)heightSize;
+                                                          withInt:(int32_t)widthMode
+                                                          withInt:(int32_t)widthSize
+                                                          withInt:(int32_t)heightMode
+                                                          withInt:(int32_t)heightSize;
 
 @end
 
@@ -143,9 +147,9 @@ inline NSString *ADXConstraintLayout_get_VERSION(void);
 FOUNDATION_EXPORT NSString *ADXConstraintLayout_VERSION;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintLayout, VERSION, NSString *)
 
-inline jint ADXConstraintLayout_get_DESIGN_INFO_ID(void);
+inline int32_t ADXConstraintLayout_get_DESIGN_INFO_ID(void);
 #define ADXConstraintLayout_DESIGN_INFO_ID 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, DESIGN_INFO_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, DESIGN_INFO_ID, int32_t)
 
 FOUNDATION_EXPORT ADXSharedValues *ADXConstraintLayout_getSharedValues(void);
 
@@ -159,6 +163,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetConstraintLayout ADXConstraintLayout;
 
+
 #endif
 
 #if !defined (ADXConstraintLayout_Measurer_) && (INCLUDE_ALL_ConstraintLayout || defined(INCLUDE_ADXConstraintLayout_Measurer))
@@ -171,16 +176,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout)
 @class ADXBasicMeasure_Measure;
 @class ADXConstraintLayout;
 @class ADXConstraintWidget;
+@class JavaLangInteger;
 
 @interface ADXConstraintLayout_Measurer : NSObject < ADXBasicMeasure_Measurer > {
  @public
-  __unsafe_unretained ADXConstraintLayout *layout_;
-  jint paddingTop_;
-  jint paddingBottom_;
-  jint paddingWidth_;
-  jint paddingHeight_;
-  jint layoutWidthSpec_;
-  jint layoutHeightSpec_;
+  WEAK_ ADXConstraintLayout *layout_;
+  int32_t paddingTop_;
+  int32_t paddingBottom_;
+  int32_t paddingWidth_;
+  int32_t paddingHeight_;
+  int32_t layoutWidthSpec_;
+  int32_t layoutHeightSpec_;
 }
 
 #pragma mark Public
@@ -188,12 +194,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout)
 - (instancetype)initWithADXConstraintLayout:(ADXConstraintLayout *)outer$
                     withADXConstraintLayout:(ADXConstraintLayout *)l;
 
-- (void)captureLayoutInfoWithInt:(jint)widthSpec
-                         withInt:(jint)heightSpec
-                         withInt:(jint)top
-                         withInt:(jint)bottom
-                         withInt:(jint)width
-                         withInt:(jint)height;
+- (void)captureLayoutInfoWithInt:(int32_t)widthSpec
+                         withInt:(int32_t)heightSpec
+                         withInt:(int32_t)top
+                         withInt:(int32_t)bottom
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height;
 
 - (void)didMeasures;
 
@@ -216,6 +222,7 @@ FOUNDATION_EXPORT ADXConstraintLayout_Measurer *create_ADXConstraintLayout_Measu
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout_Measurer)
 
+
 #endif
 
 #if !defined (ADXConstraintLayout_LayoutParams_) && (INCLUDE_ALL_ConstraintLayout || defined(INCLUDE_ADXConstraintLayout_LayoutParams))
@@ -227,89 +234,93 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout_Measurer)
 
 @class ADViewGroup_LayoutParams;
 @class ADXConstraintWidget;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXConstraintLayout_LayoutParams : ADViewGroup_MarginLayoutParams {
  @public
-  jint guideBegin_;
-  jint guideEnd_;
-  jfloat guidePercent_;
-  jint leftToLeft_;
-  jint leftToRight_;
-  jint rightToLeft_;
-  jint rightToRight_;
-  jint topToTop_;
-  jint topToBottom_;
-  jint bottomToTop_;
-  jint bottomToBottom_;
-  jint baselineToBaseline_;
-  jint baselineToTop_;
-  jint baselineToBottom_;
-  jint circleConstraint_;
-  jint circleRadius_;
-  jfloat circleAngle_;
-  jint startToEnd_;
-  jint startToStart_;
-  jint endToStart_;
-  jint endToEnd_;
-  jint goneLeftMargin_;
-  jint goneTopMargin_;
-  jint goneRightMargin_;
-  jint goneBottomMargin_;
-  jint goneStartMargin_;
-  jint goneEndMargin_;
-  jint goneBaselineMargin_;
-  jint baselineMargin_;
-  jboolean widthSet_;
-  jboolean heightSet_;
-  jfloat horizontalBias_;
-  jfloat verticalBias_;
+  int32_t guideBegin_;
+  int32_t guideEnd_;
+  float guidePercent_;
+  int32_t leftToLeft_;
+  int32_t leftToRight_;
+  int32_t rightToLeft_;
+  int32_t rightToRight_;
+  int32_t topToTop_;
+  int32_t topToBottom_;
+  int32_t bottomToTop_;
+  int32_t bottomToBottom_;
+  int32_t baselineToBaseline_;
+  int32_t baselineToTop_;
+  int32_t baselineToBottom_;
+  int32_t circleConstraint_;
+  int32_t circleRadius_;
+  float circleAngle_;
+  int32_t startToEnd_;
+  int32_t startToStart_;
+  int32_t endToStart_;
+  int32_t endToEnd_;
+  int32_t goneLeftMargin_;
+  int32_t goneTopMargin_;
+  int32_t goneRightMargin_;
+  int32_t goneBottomMargin_;
+  int32_t goneStartMargin_;
+  int32_t goneEndMargin_;
+  int32_t goneBaselineMargin_;
+  int32_t baselineMargin_;
+  bool widthSet_;
+  bool heightSet_;
+  float horizontalBias_;
+  float verticalBias_;
   NSString *dimensionRatio_;
-  jfloat dimensionRatioValue_;
-  jint dimensionRatioSide_;
-  jfloat horizontalWeight_;
-  jfloat verticalWeight_;
-  jint horizontalChainStyle_;
-  jint verticalChainStyle_;
-  jint matchConstraintDefaultWidth_;
-  jint matchConstraintDefaultHeight_;
-  jint matchConstraintMinWidth_;
-  jint matchConstraintMinHeight_;
-  jint matchConstraintMaxWidth_;
-  jint matchConstraintMaxHeight_;
-  jfloat matchConstraintPercentWidth_;
-  jfloat matchConstraintPercentHeight_;
-  jint editorAbsoluteX_;
-  jint editorAbsoluteY_;
-  jint orientation_;
-  jboolean constrainedWidth_;
-  jboolean constrainedHeight_;
+  float dimensionRatioValue_;
+  int32_t dimensionRatioSide_;
+  float horizontalWeight_;
+  float verticalWeight_;
+  int32_t horizontalChainStyle_;
+  int32_t verticalChainStyle_;
+  int32_t matchConstraintDefaultWidth_;
+  int32_t matchConstraintDefaultHeight_;
+  int32_t matchConstraintMinWidth_;
+  int32_t matchConstraintMinHeight_;
+  int32_t matchConstraintMaxWidth_;
+  int32_t matchConstraintMaxHeight_;
+  float matchConstraintPercentWidth_;
+  float matchConstraintPercentHeight_;
+  int32_t editorAbsoluteX_;
+  int32_t editorAbsoluteY_;
+  int32_t orientation_;
+  bool constrainedWidth_;
+  bool constrainedHeight_;
   NSString *constraintTag_;
-  jint wrapBehaviorInParent_;
-  jboolean horizontalDimensionFixed_;
-  jboolean verticalDimensionFixed_;
-  jboolean needsBaseline_;
-  jboolean isGuideline_;
-  jboolean isHelper_;
-  jboolean isInPlaceholder_;
-  jboolean isVirtualGroup_;
-  jint resolvedLeftToLeft_;
-  jint resolvedLeftToRight_;
-  jint resolvedRightToLeft_;
-  jint resolvedRightToRight_;
-  jint resolveGoneLeftMargin_;
-  jint resolveGoneRightMargin_;
-  jfloat resolvedHorizontalBias_;
-  jint resolvedGuideBegin_;
-  jint resolvedGuideEnd_;
-  jfloat resolvedGuidePercent_;
+  int32_t wrapBehaviorInParent_;
+  bool horizontalDimensionFixed_;
+  bool verticalDimensionFixed_;
+  bool needsBaseline_;
+  bool isGuideline_;
+  bool isHelper_;
+  bool isInPlaceholder_;
+  bool isVirtualGroup_;
+  int32_t resolvedLeftToLeft_;
+  int32_t resolvedLeftToRight_;
+  int32_t resolvedRightToLeft_;
+  int32_t resolvedRightToRight_;
+  int32_t resolveGoneLeftMargin_;
+  int32_t resolveGoneRightMargin_;
+  float resolvedHorizontalBias_;
+  int32_t resolvedGuideBegin_;
+  int32_t resolvedGuideEnd_;
+  float resolvedGuidePercent_;
   ADXConstraintWidget *widget_;
-  jboolean helped_;
+  bool helped_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 - (instancetype)initWithADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)source;
 
@@ -317,7 +328,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout_Measurer)
 
 - (NSString *)getConstraintTag;
 
-- (void)resolveLayoutDirectionWithInt:(jint)layoutDirection;
+- (void)resolveLayoutDirectionWithInt:(int32_t)layoutDirection;
 
 - (void)validate;
 
@@ -333,101 +344,101 @@ J2OBJC_FIELD_SETTER(ADXConstraintLayout_LayoutParams, dimensionRatio_, NSString 
 J2OBJC_FIELD_SETTER(ADXConstraintLayout_LayoutParams, constraintTag_, NSString *)
 J2OBJC_FIELD_SETTER(ADXConstraintLayout_LayoutParams, widget_, ADXConstraintWidget *)
 
-inline jint ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT(void);
 #define ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_PARENT_ID(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_PARENT_ID(void);
 #define ADXConstraintLayout_LayoutParams_PARENT_ID 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, PARENT_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, PARENT_ID, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_UNSET(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_UNSET(void);
 #define ADXConstraintLayout_LayoutParams_UNSET -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, UNSET, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_GONE_UNSET(void);
-#define ADXConstraintLayout_LayoutParams_GONE_UNSET ((jint) 0x80000000)
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, GONE_UNSET, jint)
+inline int32_t ADXConstraintLayout_LayoutParams_get_GONE_UNSET(void);
+#define ADXConstraintLayout_LayoutParams_GONE_UNSET ((int32_t) 0x80000000)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, GONE_UNSET, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_HORIZONTAL(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_HORIZONTAL(void);
 #define ADXConstraintLayout_LayoutParams_HORIZONTAL 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, HORIZONTAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, HORIZONTAL, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_VERTICAL(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_VERTICAL(void);
 #define ADXConstraintLayout_LayoutParams_VERTICAL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, VERTICAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, VERTICAL, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_LEFT(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_LEFT(void);
 #define ADXConstraintLayout_LayoutParams_LEFT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, LEFT, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_RIGHT(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_RIGHT(void);
 #define ADXConstraintLayout_LayoutParams_RIGHT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, RIGHT, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_TOP(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_TOP(void);
 #define ADXConstraintLayout_LayoutParams_TOP 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, TOP, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_BOTTOM(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_BOTTOM(void);
 #define ADXConstraintLayout_LayoutParams_BOTTOM 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, BOTTOM, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_BASELINE(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_BASELINE(void);
 #define ADXConstraintLayout_LayoutParams_BASELINE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, BASELINE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, BASELINE, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_START(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_START(void);
 #define ADXConstraintLayout_LayoutParams_START 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, START, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_END(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_END(void);
 #define ADXConstraintLayout_LayoutParams_END 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, END, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_CIRCLE(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_CIRCLE(void);
 #define ADXConstraintLayout_LayoutParams_CIRCLE 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CIRCLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CIRCLE, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT_WRAP(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT_WRAP(void);
 #define ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_WRAP 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT_WRAP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT_WRAP, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT_SPREAD(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT_SPREAD(void);
 #define ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_SPREAD 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT_SPREAD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT_SPREAD, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT_PERCENT(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_MATCH_CONSTRAINT_PERCENT(void);
 #define ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_PERCENT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, MATCH_CONSTRAINT_PERCENT, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_CHAIN_SPREAD(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_CHAIN_SPREAD(void);
 #define ADXConstraintLayout_LayoutParams_CHAIN_SPREAD 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CHAIN_SPREAD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CHAIN_SPREAD, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_CHAIN_SPREAD_INSIDE(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_CHAIN_SPREAD_INSIDE(void);
 #define ADXConstraintLayout_LayoutParams_CHAIN_SPREAD_INSIDE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CHAIN_SPREAD_INSIDE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CHAIN_SPREAD_INSIDE, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_CHAIN_PACKED(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_CHAIN_PACKED(void);
 #define ADXConstraintLayout_LayoutParams_CHAIN_PACKED 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CHAIN_PACKED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, CHAIN_PACKED, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_INCLUDED(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_INCLUDED(void);
 #define ADXConstraintLayout_LayoutParams_WRAP_BEHAVIOR_INCLUDED 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_INCLUDED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_INCLUDED, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_HORIZONTAL_ONLY(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_HORIZONTAL_ONLY(void);
 #define ADXConstraintLayout_LayoutParams_WRAP_BEHAVIOR_HORIZONTAL_ONLY 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_HORIZONTAL_ONLY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_HORIZONTAL_ONLY, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_VERTICAL_ONLY(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_VERTICAL_ONLY(void);
 #define ADXConstraintLayout_LayoutParams_WRAP_BEHAVIOR_VERTICAL_ONLY 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_VERTICAL_ONLY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_VERTICAL_ONLY, int32_t)
 
-inline jint ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_SKIPPED(void);
+inline int32_t ADXConstraintLayout_LayoutParams_get_WRAP_BEHAVIOR_SKIPPED(void);
 #define ADXConstraintLayout_LayoutParams_WRAP_BEHAVIOR_SKIPPED 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_SKIPPED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout_LayoutParams, WRAP_BEHAVIOR_SKIPPED, int32_t)
 
 FOUNDATION_EXPORT void ADXConstraintLayout_LayoutParams_initWithADXConstraintLayout_LayoutParams_(ADXConstraintLayout_LayoutParams *self, ADXConstraintLayout_LayoutParams *source);
 
@@ -435,11 +446,11 @@ FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *new_ADXConstraintLayout_Layo
 
 FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *create_ADXConstraintLayout_LayoutParams_initWithADXConstraintLayout_LayoutParams_(ADXConstraintLayout_LayoutParams *source);
 
-FOUNDATION_EXPORT void ADXConstraintLayout_LayoutParams_initWithInt_withInt_(ADXConstraintLayout_LayoutParams *self, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintLayout_LayoutParams_initWithInt_withInt_(ADXConstraintLayout_LayoutParams *self, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *new_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *new_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *create_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *create_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height);
 
 FOUNDATION_EXPORT void ADXConstraintLayout_LayoutParams_initWithADViewGroup_LayoutParams_(ADXConstraintLayout_LayoutParams *self, ADViewGroup_LayoutParams *source);
 
@@ -448,6 +459,7 @@ FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *new_ADXConstraintLayout_Layo
 FOUNDATION_EXPORT ADXConstraintLayout_LayoutParams *create_ADXConstraintLayout_LayoutParams_initWithADViewGroup_LayoutParams_(ADViewGroup_LayoutParams *source);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintLayout_LayoutParams)
+
 
 #endif
 

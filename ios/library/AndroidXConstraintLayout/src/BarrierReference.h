@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\BarrierReference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BarrierReference")
@@ -25,6 +26,7 @@
 @class ADXState;
 @class ADXState_Direction;
 @class ADXState_Helper;
+@class JavaLangInteger;
 
 @interface ADXBarrierReference : ADXHelperReference
 
@@ -36,7 +38,7 @@
 
 - (ADXHelperWidget *)getHelperWidget;
 
-- (ADXConstraintReference *)marginWithInt:(jint)value;
+- (ADXConstraintReference *)marginWithInt:(int32_t)value;
 
 - (ADXConstraintReference *)marginWithId:(id)value;
 
@@ -60,6 +62,7 @@ FOUNDATION_EXPORT ADXBarrierReference *create_ADXBarrierReference_initWithADXSta
 J2OBJC_TYPE_LITERAL_HEADER(ADXBarrierReference)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateHelpersBarrierReference ADXBarrierReference;
+
 
 #endif
 

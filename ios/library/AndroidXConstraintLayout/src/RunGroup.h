@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\RunGroup.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_RunGroup")
@@ -18,31 +19,34 @@
 
 @class ADXConstraintWidgetContainer;
 @class ADXWidgetRun;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class JavaLangLong;
 @class JavaUtilArrayList;
 
 @interface ADXRunGroup : NSObject {
  @public
-  jint position_;
-  jboolean dual_;
+  int32_t position_;
+  bool dual_;
   ADXWidgetRun *firstRun_;
   ADXWidgetRun *lastRun_;
   JavaUtilArrayList *runs_;
-  jint groupIndex_;
-  jint direction_;
+  int32_t groupIndex_;
+  int32_t direction_;
 }
 
 #pragma mark Public
 
 - (instancetype)initPackagePrivateWithADXWidgetRun:(ADXWidgetRun *)run
-                                           withInt:(jint)dir;
+                                           withInt:(int32_t)dir;
 
 - (void)addWithADXWidgetRun:(ADXWidgetRun *)run;
 
-- (jlong)computeWrapSizeWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
-                                                 withInt:(jint)orientation;
+- (int64_t)computeWrapSizeWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
+                                                   withInt:(int32_t)orientation;
 
-- (void)defineTerminalWidgetsWithBoolean:(jboolean)horizontalCheck
-                             withBoolean:(jboolean)verticalCheck;
+- (void)defineTerminalWidgetsWithBoolean:(bool)horizontalCheck
+                             withBoolean:(bool)verticalCheck;
 
 // Disallowed inherited constructors, do not use.
 
@@ -56,34 +60,35 @@ J2OBJC_FIELD_SETTER(ADXRunGroup, firstRun_, ADXWidgetRun *)
 J2OBJC_FIELD_SETTER(ADXRunGroup, lastRun_, ADXWidgetRun *)
 J2OBJC_FIELD_SETTER(ADXRunGroup, runs_, JavaUtilArrayList *)
 
-inline jint ADXRunGroup_get_START(void);
+inline int32_t ADXRunGroup_get_START(void);
 #define ADXRunGroup_START 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXRunGroup, START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXRunGroup, START, int32_t)
 
-inline jint ADXRunGroup_get_END(void);
+inline int32_t ADXRunGroup_get_END(void);
 #define ADXRunGroup_END 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXRunGroup, END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXRunGroup, END, int32_t)
 
-inline jint ADXRunGroup_get_BASELINE(void);
+inline int32_t ADXRunGroup_get_BASELINE(void);
 #define ADXRunGroup_BASELINE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXRunGroup, BASELINE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXRunGroup, BASELINE, int32_t)
 
-inline jint ADXRunGroup_get_index(void);
-inline jint ADXRunGroup_set_index(jint value);
-inline jint *ADXRunGroup_getRef_index(void);
+inline int32_t ADXRunGroup_get_index(void);
+inline int32_t ADXRunGroup_set_index(int32_t value);
+inline int32_t *ADXRunGroup_getRef_index(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXRunGroup_index;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXRunGroup, index, jint)
+FOUNDATION_EXPORT int32_t ADXRunGroup_index;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXRunGroup, index, int32_t)
 
-FOUNDATION_EXPORT void ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, jint dir);
+FOUNDATION_EXPORT void ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, int32_t dir);
 
-FOUNDATION_EXPORT ADXRunGroup *new_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, jint dir) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXRunGroup *new_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, int32_t dir) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXRunGroup *create_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, jint dir);
+FOUNDATION_EXPORT ADXRunGroup *create_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, int32_t dir);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXRunGroup)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerRunGroup ADXRunGroup;
+
 
 #endif
 

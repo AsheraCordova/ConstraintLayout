@@ -3,33 +3,46 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\OnSwipe.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "MotionScene.h"
 #include "OnSwipe.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXOnSwipe () {
  @public
-  jint mDragDirection_;
-  jint mTouchAnchorSide_;
-  jint mTouchAnchorId_;
-  jint mTouchRegionId_;
-  jint mLimitBoundsTo_;
-  jint mOnTouchUp_;
-  jint mRotationCenterId_;
-  jfloat mMaxVelocity_;
-  jfloat mMaxAcceleration_;
-  jboolean mMoveWhenScrollAtTop_;
-  jfloat mDragScale_;
-  jint mFlags_;
-  jfloat mDragThreshold_;
-  jfloat mSpringDamping_;
-  jfloat mSpringMass_;
-  jfloat mSpringStiffness_;
-  jfloat mSpringStopThreshold_;
-  jint mSpringBoundary_;
-  jint mAutoCompleteMode_;
+  int32_t mDragDirection_;
+  int32_t mTouchAnchorSide_;
+  int32_t mTouchAnchorId_;
+  int32_t mTouchRegionId_;
+  int32_t mLimitBoundsTo_;
+  int32_t mOnTouchUp_;
+  int32_t mRotationCenterId_;
+  float mMaxVelocity_;
+  float mMaxAcceleration_;
+  bool mMoveWhenScrollAtTop_;
+  float mDragScale_;
+  int32_t mFlags_;
+  float mDragThreshold_;
+  float mSpringDamping_;
+  float mSpringMass_;
+  float mSpringStiffness_;
+  float mSpringStopThreshold_;
+  int32_t mSpringBoundary_;
+  int32_t mAutoCompleteMode_;
 }
 
 @end
@@ -43,173 +56,173 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (ADXOnSwipe *)setTouchAnchorIdWithInt:(jint)side {
+- (ADXOnSwipe *)setTouchAnchorIdWithInt:(int32_t)side {
   mTouchAnchorId_ = side;
   return self;
 }
 
-- (jint)getTouchAnchorId {
+- (int32_t)getTouchAnchorId {
   return mTouchAnchorId_;
 }
 
-- (ADXOnSwipe *)setTouchAnchorSideWithInt:(jint)side {
+- (ADXOnSwipe *)setTouchAnchorSideWithInt:(int32_t)side {
   mTouchAnchorSide_ = side;
   return self;
 }
 
-- (jint)getTouchAnchorSide {
+- (int32_t)getTouchAnchorSide {
   return mTouchAnchorSide_;
 }
 
-- (ADXOnSwipe *)setDragDirectionWithInt:(jint)dragDirection {
+- (ADXOnSwipe *)setDragDirectionWithInt:(int32_t)dragDirection {
   mDragDirection_ = dragDirection;
   return self;
 }
 
-- (jint)getDragDirection {
+- (int32_t)getDragDirection {
   return mDragDirection_;
 }
 
-- (ADXOnSwipe *)setMaxVelocityWithInt:(jint)maxVelocity {
+- (ADXOnSwipe *)setMaxVelocityWithInt:(int32_t)maxVelocity {
   mMaxVelocity_ = maxVelocity;
   return self;
 }
 
-- (jfloat)getMaxVelocity {
+- (float)getMaxVelocity {
   return mMaxVelocity_;
 }
 
-- (ADXOnSwipe *)setMaxAccelerationWithInt:(jint)maxAcceleration {
+- (ADXOnSwipe *)setMaxAccelerationWithInt:(int32_t)maxAcceleration {
   mMaxAcceleration_ = maxAcceleration;
   return self;
 }
 
-- (jfloat)getMaxAcceleration {
+- (float)getMaxAcceleration {
   return mMaxAcceleration_;
 }
 
-- (ADXOnSwipe *)setMoveWhenScrollAtTopWithBoolean:(jboolean)moveWhenScrollAtTop {
+- (ADXOnSwipe *)setMoveWhenScrollAtTopWithBoolean:(bool)moveWhenScrollAtTop {
   mMoveWhenScrollAtTop_ = moveWhenScrollAtTop;
   return self;
 }
 
-- (jboolean)getMoveWhenScrollAtTop {
+- (bool)getMoveWhenScrollAtTop {
   return mMoveWhenScrollAtTop_;
 }
 
-- (ADXOnSwipe *)setDragScaleWithInt:(jint)dragScale {
+- (ADXOnSwipe *)setDragScaleWithInt:(int32_t)dragScale {
   mDragScale_ = dragScale;
   return self;
 }
 
-- (jfloat)getDragScale {
+- (float)getDragScale {
   return mDragScale_;
 }
 
-- (ADXOnSwipe *)setDragThresholdWithInt:(jint)dragThreshold {
+- (ADXOnSwipe *)setDragThresholdWithInt:(int32_t)dragThreshold {
   mDragThreshold_ = dragThreshold;
   return self;
 }
 
-- (jfloat)getDragThreshold {
+- (float)getDragThreshold {
   return mDragThreshold_;
 }
 
-- (ADXOnSwipe *)setTouchRegionIdWithInt:(jint)side {
+- (ADXOnSwipe *)setTouchRegionIdWithInt:(int32_t)side {
   mTouchRegionId_ = side;
   return self;
 }
 
-- (jint)getTouchRegionId {
+- (int32_t)getTouchRegionId {
   return mTouchRegionId_;
 }
 
-- (ADXOnSwipe *)setOnTouchUpWithInt:(jint)mode {
+- (ADXOnSwipe *)setOnTouchUpWithInt:(int32_t)mode {
   mOnTouchUp_ = mode;
   return self;
 }
 
-- (jint)getOnTouchUp {
+- (int32_t)getOnTouchUp {
   return mOnTouchUp_;
 }
 
-- (ADXOnSwipe *)setNestedScrollFlagsWithInt:(jint)flags {
+- (ADXOnSwipe *)setNestedScrollFlagsWithInt:(int32_t)flags {
   mFlags_ = flags;
   return self;
 }
 
-- (jint)getNestedScrollFlags {
+- (int32_t)getNestedScrollFlags {
   return mFlags_;
 }
 
-- (ADXOnSwipe *)setLimitBoundsToWithInt:(jint)id_ {
+- (ADXOnSwipe *)setLimitBoundsToWithInt:(int32_t)id_ {
   mLimitBoundsTo_ = id_;
   return self;
 }
 
-- (jint)getLimitBoundsTo {
+- (int32_t)getLimitBoundsTo {
   return mLimitBoundsTo_;
 }
 
-- (ADXOnSwipe *)setRotateCenterWithInt:(jint)rotationCenterId {
+- (ADXOnSwipe *)setRotateCenterWithInt:(int32_t)rotationCenterId {
   mRotationCenterId_ = rotationCenterId;
   return self;
 }
 
-- (jint)getRotationCenterId {
+- (int32_t)getRotationCenterId {
   return mRotationCenterId_;
 }
 
-- (jfloat)getSpringDamping {
+- (float)getSpringDamping {
   return mSpringDamping_;
 }
 
-- (ADXOnSwipe *)setSpringDampingWithFloat:(jfloat)springDamping {
+- (ADXOnSwipe *)setSpringDampingWithFloat:(float)springDamping {
   mSpringDamping_ = springDamping;
   return self;
 }
 
-- (jfloat)getSpringMass {
+- (float)getSpringMass {
   return mSpringMass_;
 }
 
-- (ADXOnSwipe *)setSpringMassWithFloat:(jfloat)springMass {
+- (ADXOnSwipe *)setSpringMassWithFloat:(float)springMass {
   mSpringMass_ = springMass;
   return self;
 }
 
-- (jfloat)getSpringStiffness {
+- (float)getSpringStiffness {
   return mSpringStiffness_;
 }
 
-- (ADXOnSwipe *)setSpringStiffnessWithFloat:(jfloat)springStiffness {
+- (ADXOnSwipe *)setSpringStiffnessWithFloat:(float)springStiffness {
   mSpringStiffness_ = springStiffness;
   return self;
 }
 
-- (jfloat)getSpringStopThreshold {
+- (float)getSpringStopThreshold {
   return mSpringStopThreshold_;
 }
 
-- (ADXOnSwipe *)setSpringStopThresholdWithFloat:(jfloat)springStopThreshold {
+- (ADXOnSwipe *)setSpringStopThresholdWithFloat:(float)springStopThreshold {
   mSpringStopThreshold_ = springStopThreshold;
   return self;
 }
 
-- (jint)getSpringBoundary {
+- (int32_t)getSpringBoundary {
   return mSpringBoundary_;
 }
 
-- (ADXOnSwipe *)setSpringBoundaryWithInt:(jint)springBoundary {
+- (ADXOnSwipe *)setSpringBoundaryWithInt:(int32_t)springBoundary {
   mSpringBoundary_ = springBoundary;
   return self;
 }
 
-- (jint)getAutoCompleteMode {
+- (int32_t)getAutoCompleteMode {
   return mAutoCompleteMode_;
 }
 
-- (void)setAutoCompleteModeWithInt:(jint)autoCompleteMode {
+- (void)setAutoCompleteModeWithInt:(int32_t)autoCompleteMode {
   mAutoCompleteMode_ = autoCompleteMode;
 }
 
@@ -389,3 +402,5 @@ ADXOnSwipe *create_ADXOnSwipe_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXOnSwipe)
+
+J2OBJC_NAME_MAPPING(ADXOnSwipe, "androidx.constraintlayout.motion.widget", "ADX")

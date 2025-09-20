@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyAttributes.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CustomVariable.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
@@ -12,6 +17,8 @@
 #include "SplineSet.h"
 #include "TypedValues.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/System.h"
@@ -20,28 +27,35 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXMotionKeyAttributes () {
  @public
   NSString *mTransitionEasing_;
-  jint mCurveFit_;
-  jint mVisibility_;
-  jfloat mAlpha_;
-  jfloat mElevation_;
-  jfloat mRotation_;
-  jfloat mRotationX_;
-  jfloat mRotationY_;
-  jfloat mPivotX_;
-  jfloat mPivotY_;
-  jfloat mTransitionPathRotate_;
-  jfloat mScaleX_;
-  jfloat mScaleY_;
-  jfloat mTranslationX_;
-  jfloat mTranslationY_;
-  jfloat mTranslationZ_;
-  jfloat mProgress_;
+  int32_t mCurveFit_;
+  int32_t mVisibility_;
+  float mAlpha_;
+  float mElevation_;
+  float mRotation_;
+  float mRotationX_;
+  float mRotationY_;
+  float mPivotX_;
+  float mPivotY_;
+  float mTransitionPathRotate_;
+  float mScaleX_;
+  float mScaleY_;
+  float mTranslationX_;
+  float mTranslationY_;
+  float mTranslationZ_;
+  float mProgress_;
 }
 
-- (jfloat)getFloatValueWithInt:(jint)id_;
+- (float)getFloatValueWithInt:(int32_t)id_;
 
 @end
 
@@ -51,11 +65,11 @@ inline NSString *ADXMotionKeyAttributes_get_TAG(void);
 static NSString *ADXMotionKeyAttributes_TAG = @"KeyAttributes";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionKeyAttributes, TAG, NSString *)
 
-inline jboolean ADXMotionKeyAttributes_get_DEBUG(void);
+inline bool ADXMotionKeyAttributes_get_DEBUG(void);
 #define ADXMotionKeyAttributes_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyAttributes, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyAttributes, DEBUG, bool)
 
-__attribute__((unused)) static jfloat ADXMotionKeyAttributes_getFloatValueWithInt_(ADXMotionKeyAttributes *self, jint id_);
+__attribute__((unused)) static float ADXMotionKeyAttributes_getFloatValueWithInt_(ADXMotionKeyAttributes *self, int32_t id_);
 
 NSString *ADXMotionKeyAttributes_NAME = @"KeyAttribute";
 
@@ -213,8 +227,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return nil;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value {
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value {
   switch (type) {
     case ADXTypedValues_Attributes_TYPE_VISIBILITY:
     mVisibility_ = value;
@@ -233,8 +247,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value {
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value {
   switch (type) {
     case ADXTypedValues_Attributes_TYPE_ALPHA:
     mAlpha_ = value;
@@ -337,8 +351,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value {
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value {
   switch (type) {
     case ADXTypedValues_Attributes_TYPE_EASING:
     JreStrongAssign(&mTransitionEasing_, value);
@@ -352,11 +366,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jint)getIdWithNSString:(NSString *)name {
+- (int32_t)getIdWithNSString:(NSString *)name {
   return ADXTypedValues_Attributes_getIdWithNSString_(name);
 }
 
-- (jint)getCurveFit {
+- (int32_t)getCurveFit {
   return mCurveFit_;
 }
 
@@ -365,13 +379,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self getAttributeNamesWithJavaUtilHashSet:nameSet];
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$I$", @" ------------- ", mFramePosition_, @" -------------")];
   IOSObjectArray *names = [nameSet toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:0 type:NSString_class_()]];
-  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(names))->size_; i++) {
-    jint id_ = ADXTypedValues_Attributes_getIdWithNSString_(IOSObjectArray_Get(names, i));
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$CF", IOSObjectArray_Get(names, i), ':', ADXMotionKeyAttributes_getFloatValueWithInt_(self, id_))];
+  for (int32_t i = 0; i < ((IOSObjectArray *) nil_chk(names))->size_; i++) {
+    int32_t id_ = ADXTypedValues_Attributes_getIdWithNSString_(IOSObjectArray_Get(names, i));
+    [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$CF", IOSObjectArray_Get(names, i), ':', ADXMotionKeyAttributes_getFloatValueWithInt_(self, id_))];
   }
 }
 
-- (jfloat)getFloatValueWithInt:(jint)id_ {
+- (float)getFloatValueWithInt:(int32_t)id_ {
   return ADXMotionKeyAttributes_getFloatValueWithInt_(self, id_);
 }
 
@@ -473,7 +487,7 @@ ADXMotionKeyAttributes *create_ADXMotionKeyAttributes_init() {
   J2OBJC_CREATE_IMPL(ADXMotionKeyAttributes, init)
 }
 
-jfloat ADXMotionKeyAttributes_getFloatValueWithInt_(ADXMotionKeyAttributes *self, jint id_) {
+float ADXMotionKeyAttributes_getFloatValueWithInt_(ADXMotionKeyAttributes *self, int32_t id_) {
   switch (id_) {
     case ADXTypedValues_Attributes_TYPE_ALPHA:
     return self->mAlpha_;
@@ -511,3 +525,5 @@ jfloat ADXMotionKeyAttributes_getFloatValueWithInt_(ADXMotionKeyAttributes *self
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionKeyAttributes)
+
+J2OBJC_NAME_MAPPING(ADXMotionKeyAttributes, "androidx.constraintlayout.core.motion.key", "ADX")

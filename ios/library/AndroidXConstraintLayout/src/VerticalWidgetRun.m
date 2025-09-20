@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\VerticalWidgetRun.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BaselineDimensionDependency.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -16,7 +21,16 @@
 #include "RunGroup.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/List.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXVerticalWidgetRun
@@ -50,7 +64,7 @@
   ((ADXDimensionDependency *) nil_chk(dimension_))->resolved_ = false;
 }
 
-- (jboolean)supportsWrapComputation {
+- (bool)supportsWrapComputation {
   if (dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
     if (((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD) {
       return true;
@@ -87,8 +101,8 @@
           case ADXConstraintWidget_MATCH_CONSTRAINT_RATIO:
           {
             if (((ADXHorizontalWidgetRun *) nil_chk(widget_->horizontalRun_))->dimension_->resolved_) {
-              jint size = 0;
-              jint ratioSide = [widget_ getDimensionRatioSide];
+              int32_t size = 0;
+              int32_t ratioSide = [widget_ getDimensionRatioSide];
               switch (ratioSide) {
                 case ADXConstraintWidget_HORIZONTAL:
                 {
@@ -117,9 +131,9 @@
             ADXConstraintWidget *parent = JreRetainedLocalValue([widget_ getParent]);
             if (parent != nil) {
               if (((ADXDimensionDependency *) nil_chk(((ADXVerticalWidgetRun *) nil_chk(parent->verticalRun_))->dimension_))->resolved_) {
-                jfloat percent = ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintPercentHeight_;
-                jint targetDimensionValue = parent->verticalRun_->dimension_->value_;
-                jint size = JreFpToInt((0.5f + targetDimensionValue * percent));
+                float percent = ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintPercentHeight_;
+                int32_t targetDimensionValue = parent->verticalRun_->dimension_->value_;
+                int32_t size = JreFpToInt((0.5f + targetDimensionValue * percent));
                 [dimension_ resolveWithInt:size];
               }
             }
@@ -140,9 +154,9 @@
   if (!((ADXDimensionDependency *) nil_chk(dimension_))->resolved_ && dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && ((ADXConstraintWidget *) nil_chk(widget_))->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD && ![widget_ isInVerticalChain]) {
     ADXDependencyNode *startTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]);
     ADXDependencyNode *endTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]);
-    jint startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-    jint endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
-    jint distance = endPos - startPos;
+    int32_t startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+    int32_t endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
+    int32_t distance = endPos - startPos;
     [start_ resolveWithInt:startPos];
     [((ADXDependencyNode *) nil_chk(end_)) resolveWithInt:endPos];
     [((ADXDimensionDependency *) nil_chk(dimension_)) resolveWithInt:distance];
@@ -152,9 +166,9 @@
     if ([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) size] > 0 && [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) size] > 0) {
       ADXDependencyNode *startTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]);
       ADXDependencyNode *endTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]);
-      jint startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-      jint endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
-      jint availableSpace = endPos - startPos;
+      int32_t startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+      int32_t endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
+      int32_t availableSpace = endPos - startPos;
       if (availableSpace < ((ADXDimensionDependency *) nil_chk(dimension_))->wrapValue_) {
         [dimension_ resolveWithInt:availableSpace];
       }
@@ -169,15 +183,15 @@
   if ([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) size] > 0 && [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) size] > 0) {
     ADXDependencyNode *startTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:0]);
     ADXDependencyNode *endTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:0]);
-    jint startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
-    jint endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
-    jfloat bias = [((ADXConstraintWidget *) nil_chk(widget_)) getVerticalBiasPercent];
-    if (startTarget == endTarget) {
+    int32_t startPos = ((ADXDependencyNode *) nil_chk(startTarget))->value_ + ((ADXDependencyNode *) nil_chk(start_))->margin_;
+    int32_t endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ + ((ADXDependencyNode *) nil_chk(end_))->margin_;
+    float bias = [((ADXConstraintWidget *) nil_chk(widget_)) getVerticalBiasPercent];
+    if (JreObjectEqualsEquals(startTarget, endTarget)) {
       startPos = startTarget->value_;
       endPos = endTarget->value_;
       bias = 0.5f;
     }
-    jint distance = (endPos - startPos - ((ADXDimensionDependency *) nil_chk(dimension_))->value_);
+    int32_t distance = (endPos - startPos - ((ADXDimensionDependency *) nil_chk(dimension_))->value_);
     [((ADXDependencyNode *) nil_chk(start_)) resolveWithInt:JreFpToInt((0.5f + startPos + distance * bias))];
     [((ADXDependencyNode *) nil_chk(end_)) resolveWithInt:((ADXDependencyNode *) nil_chk(start_))->value_ + ((ADXDimensionDependency *) nil_chk(dimension_))->value_];
   }
@@ -196,7 +210,7 @@
       if (dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
         ADXConstraintWidget *parent = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk(widget_)) getParent]);
         if (parent != nil && [parent getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED)) {
-          jint resolvedDimension = [parent getHeight] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mTop_)) getMargin] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mBottom_)) getMargin];
+          int32_t resolvedDimension = [parent getHeight] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mTop_)) getMargin] - [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mBottom_)) getMargin];
           [self addTargetWithADXDependencyNode:start_ withADXDependencyNode:((ADXVerticalWidgetRun *) nil_chk(parent->verticalRun_))->start_ withInt:[((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mTop_)) getMargin]];
           [self addTargetWithADXDependencyNode:end_ withADXDependencyNode:((ADXVerticalWidgetRun *) nil_chk(parent->verticalRun_))->end_ withInt:-[((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mBottom_)) getMargin]];
           [((ADXDimensionDependency *) nil_chk(dimension_)) resolveWithInt:resolvedDimension];
@@ -471,3 +485,5 @@ ADXVerticalWidgetRun *create_ADXVerticalWidgetRun_initWithADXConstraintWidget_(A
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXVerticalWidgetRun)
+
+J2OBJC_NAME_MAPPING(ADXVerticalWidgetRun, "androidx.constraintlayout.core.widgets.analyzer", "ADX")

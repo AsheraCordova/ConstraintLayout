@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLParser.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLParser")
@@ -23,6 +24,8 @@
 #define ADXCLParser_
 
 @class ADXCLObject;
+@class JavaLangBoolean;
+@class NSString;
 
 @interface ADXCLParser : NSObject
 
@@ -42,12 +45,12 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCLParser)
 
-inline jboolean ADXCLParser_get_DEBUG(void);
-inline jboolean ADXCLParser_set_DEBUG(jboolean value);
-inline jboolean *ADXCLParser_getRef_DEBUG(void);
+inline bool ADXCLParser_get_DEBUG(void);
+inline bool ADXCLParser_set_DEBUG(bool value);
+inline bool *ADXCLParser_getRef_DEBUG(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXCLParser_DEBUG;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCLParser, DEBUG, jboolean)
+FOUNDATION_EXPORT bool ADXCLParser_DEBUG;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCLParser, DEBUG, bool)
 
 FOUNDATION_EXPORT ADXCLObject *ADXCLParser_parseWithNSString_(NSString *string);
 
@@ -61,6 +64,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLParser)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLParser ADXCLParser;
 
+
 #endif
 
 #if !defined (ADXCLParser_TYPE_) && (INCLUDE_ALL_CLParser || defined(INCLUDE_ADXCLParser_TYPE))
@@ -71,16 +75,24 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLParser)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXCLParser_TYPE_Enum) {
-  ADXCLParser_TYPE_Enum_UNKNOWN = 0,
-  ADXCLParser_TYPE_Enum_OBJECT = 1,
-  ADXCLParser_TYPE_Enum_ARRAY = 2,
-  ADXCLParser_TYPE_Enum_NUMBER = 3,
-  ADXCLParser_TYPE_Enum_STRING = 4,
-  ADXCLParser_TYPE_Enum_KEY = 5,
-  ADXCLParser_TYPE_Enum_TOKEN = 6,
+typedef NS_ENUM(int32_t, ADXCLParser_TYPE_Enum) {
+  ADXCLParser_TYPE_Enum_UNKNOWN NS_SWIFT_NAME(unknown) = 0,
+  ADXCLParser_TYPE_Enum_OBJECT NS_SWIFT_NAME(object) = 1,
+  ADXCLParser_TYPE_Enum_ARRAY NS_SWIFT_NAME(array) = 2,
+  ADXCLParser_TYPE_Enum_NUMBER NS_SWIFT_NAME(number) = 3,
+  ADXCLParser_TYPE_Enum_STRING NS_SWIFT_NAME(string) = 4,
+  ADXCLParser_TYPE_Enum_KEY NS_SWIFT_NAME(key) = 5,
+  ADXCLParser_TYPE_Enum_TOKEN NS_SWIFT_NAME(token) = 6,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXCLParser_TYPE_ORDINAL int32_t
+#else
+#define ADXCLParser_TYPE_ORDINAL ADXCLParser_TYPE_Enum
+#endif
+
 
 @interface ADXCLParser_TYPE : JavaLangEnum
 
@@ -93,6 +105,13 @@ typedef NS_ENUM(NSUInteger, ADXCLParser_TYPE_Enum) {
 #pragma mark Package-Private
 
 - (ADXCLParser_TYPE_Enum)toNSEnum;
+
+@property(readonly) ADXCLParser_TYPE_Enum enumValue;
++ (ADXCLParser_TYPE *)fromNSEnum:(ADXCLParser_TYPE_Enum)value;
+
+- (ADXCLParser_TYPE_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithTYPE:(ADXCLParser_TYPE_Enum)value;
 
 @end
 
@@ -126,9 +145,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXCLParser_TYPE_values(void);
 
 FOUNDATION_EXPORT ADXCLParser_TYPE *ADXCLParser_TYPE_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXCLParser_TYPE *ADXCLParser_TYPE_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXCLParser_TYPE *ADXCLParser_TYPE_fromOrdinal(ADXCLParser_TYPE_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLParser_TYPE)
+
 
 #endif
 

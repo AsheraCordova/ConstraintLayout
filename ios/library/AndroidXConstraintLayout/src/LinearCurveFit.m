@@ -3,21 +3,36 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\LinearCurveFit.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CurveFit.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "LinearCurveFit.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXLinearCurveFit () {
  @public
   IOSDoubleArray *mT_;
   IOSObjectArray *mY_;
-  jdouble mTotalLength_;
-  jboolean mExtrapolate_;
+  double mTotalLength_;
+  bool mExtrapolate_;
 }
 
 /*!
@@ -25,7 +40,7 @@
  (Added for future work)
  @param t the point to calculate the length to
  */
-- (jdouble)getLength2DWithDouble:(jdouble)t;
+- (double)getLength2DWithDouble:(double)t;
 
 @end
 
@@ -36,7 +51,7 @@ inline NSString *ADXLinearCurveFit_get_TAG(void);
 static NSString *ADXLinearCurveFit_TAG = @"LinearCurveFit";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXLinearCurveFit, TAG, NSString *)
 
-__attribute__((unused)) static jdouble ADXLinearCurveFit_getLength2DWithDouble_(ADXLinearCurveFit *self, jdouble t);
+__attribute__((unused)) static double ADXLinearCurveFit_getLength2DWithDouble_(ADXLinearCurveFit *self, double t);
 
 @implementation ADXLinearCurveFit
 
@@ -46,25 +61,25 @@ __attribute__((unused)) static jdouble ADXLinearCurveFit_getLength2DWithDouble_(
   return self;
 }
 
-- (jdouble)getLength2DWithDouble:(jdouble)t {
+- (double)getLength2DWithDouble:(double)t {
   return ADXLinearCurveFit_getLength2DWithDouble_(self, t);
 }
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v {
-  jint n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
-  jint dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)))->size_;
+  int32_t n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
+  int32_t dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)))->size_;
   if (mExtrapolate_) {
     if (t <= IOSDoubleArray_Get(mT_, 0)) {
       [self getSlopeWithDouble:IOSDoubleArray_Get(mT_, 0) withDoubleArray:mSlopeTemp_];
-      for (jint j = 0; j < dim; j++) {
+      for (int32_t j = 0; j < dim; j++) {
         *IOSDoubleArray_GetRef(nil_chk(v), j) = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)), j) + (t - IOSDoubleArray_Get(nil_chk(mT_), 0)) * IOSDoubleArray_Get(nil_chk(mSlopeTemp_), j);
       }
       return;
     }
     if (t >= IOSDoubleArray_Get(mT_, n - 1)) {
       [self getSlopeWithDouble:IOSDoubleArray_Get(mT_, n - 1) withDoubleArray:mSlopeTemp_];
-      for (jint j = 0; j < dim; j++) {
+      for (int32_t j = 0; j < dim; j++) {
         *IOSDoubleArray_GetRef(nil_chk(v), j) = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), n - 1)), j) + (t - IOSDoubleArray_Get(nil_chk(mT_), n - 1)) * IOSDoubleArray_Get(nil_chk(mSlopeTemp_), j);
       }
       return;
@@ -72,30 +87,30 @@ __attribute__((unused)) static jdouble ADXLinearCurveFit_getLength2DWithDouble_(
   }
   else {
     if (t <= IOSDoubleArray_Get(mT_, 0)) {
-      for (jint j = 0; j < dim; j++) {
+      for (int32_t j = 0; j < dim; j++) {
         *IOSDoubleArray_GetRef(nil_chk(v), j) = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, 0)), j);
       }
       return;
     }
     if (t >= IOSDoubleArray_Get(mT_, n - 1)) {
-      for (jint j = 0; j < dim; j++) {
+      for (int32_t j = 0; j < dim; j++) {
         *IOSDoubleArray_GetRef(nil_chk(v), j) = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, n - 1)), j);
       }
       return;
     }
   }
-  for (jint i = 0; i < n - 1; i++) {
+  for (int32_t i = 0; i < n - 1; i++) {
     if (t == IOSDoubleArray_Get(mT_, i)) {
-      for (jint j = 0; j < dim; j++) {
+      for (int32_t j = 0; j < dim; j++) {
         *IOSDoubleArray_GetRef(nil_chk(v), j) = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
       }
     }
     if (t < IOSDoubleArray_Get(mT_, i + 1)) {
-      jdouble h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
-      jdouble x = (t - IOSDoubleArray_Get(mT_, i)) / h;
-      for (jint j = 0; j < dim; j++) {
-        jdouble y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
-        jdouble y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
+      double h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
+      double x = (t - IOSDoubleArray_Get(mT_, i)) / h;
+      for (int32_t j = 0; j < dim; j++) {
+        double y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
+        double y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
         *IOSDoubleArray_GetRef(nil_chk(v), j) = y1 * (1 - x) + y2 * x;
       }
       return;
@@ -103,62 +118,62 @@ __attribute__((unused)) static jdouble ADXLinearCurveFit_getLength2DWithDouble_(
   }
 }
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v {
-  jint n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
-  jint dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)))->size_;
+  int32_t n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
+  int32_t dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)))->size_;
   if (mExtrapolate_) {
     if (t <= IOSDoubleArray_Get(mT_, 0)) {
       [self getSlopeWithDouble:IOSDoubleArray_Get(mT_, 0) withDoubleArray:mSlopeTemp_];
-      for (jint j = 0; j < dim; j++) {
-        *IOSFloatArray_GetRef(nil_chk(v), j) = (jfloat) (IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)), j) + (t - IOSDoubleArray_Get(nil_chk(mT_), 0)) * IOSDoubleArray_Get(nil_chk(mSlopeTemp_), j));
+      for (int32_t j = 0; j < dim; j++) {
+        *IOSFloatArray_GetRef(nil_chk(v), j) = (float) (IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)), j) + (t - IOSDoubleArray_Get(nil_chk(mT_), 0)) * IOSDoubleArray_Get(nil_chk(mSlopeTemp_), j));
       }
       return;
     }
     if (t >= IOSDoubleArray_Get(mT_, n - 1)) {
       [self getSlopeWithDouble:IOSDoubleArray_Get(mT_, n - 1) withDoubleArray:mSlopeTemp_];
-      for (jint j = 0; j < dim; j++) {
-        *IOSFloatArray_GetRef(nil_chk(v), j) = (jfloat) (IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), n - 1)), j) + (t - IOSDoubleArray_Get(nil_chk(mT_), n - 1)) * IOSDoubleArray_Get(nil_chk(mSlopeTemp_), j));
+      for (int32_t j = 0; j < dim; j++) {
+        *IOSFloatArray_GetRef(nil_chk(v), j) = (float) (IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), n - 1)), j) + (t - IOSDoubleArray_Get(nil_chk(mT_), n - 1)) * IOSDoubleArray_Get(nil_chk(mSlopeTemp_), j));
       }
       return;
     }
   }
   else {
     if (t <= IOSDoubleArray_Get(mT_, 0)) {
-      for (jint j = 0; j < dim; j++) {
-        *IOSFloatArray_GetRef(nil_chk(v), j) = (jfloat) IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, 0)), j);
+      for (int32_t j = 0; j < dim; j++) {
+        *IOSFloatArray_GetRef(nil_chk(v), j) = (float) IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, 0)), j);
       }
       return;
     }
     if (t >= IOSDoubleArray_Get(mT_, n - 1)) {
-      for (jint j = 0; j < dim; j++) {
-        *IOSFloatArray_GetRef(nil_chk(v), j) = (jfloat) IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, n - 1)), j);
+      for (int32_t j = 0; j < dim; j++) {
+        *IOSFloatArray_GetRef(nil_chk(v), j) = (float) IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, n - 1)), j);
       }
       return;
     }
   }
-  for (jint i = 0; i < n - 1; i++) {
+  for (int32_t i = 0; i < n - 1; i++) {
     if (t == IOSDoubleArray_Get(mT_, i)) {
-      for (jint j = 0; j < dim; j++) {
-        *IOSFloatArray_GetRef(nil_chk(v), j) = (jfloat) IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
+      for (int32_t j = 0; j < dim; j++) {
+        *IOSFloatArray_GetRef(nil_chk(v), j) = (float) IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
       }
     }
     if (t < IOSDoubleArray_Get(mT_, i + 1)) {
-      jdouble h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
-      jdouble x = (t - IOSDoubleArray_Get(mT_, i)) / h;
-      for (jint j = 0; j < dim; j++) {
-        jdouble y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
-        jdouble y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
-        *IOSFloatArray_GetRef(nil_chk(v), j) = (jfloat) (y1 * (1 - x) + y2 * x);
+      double h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
+      double x = (t - IOSDoubleArray_Get(mT_, i)) / h;
+      for (int32_t j = 0; j < dim; j++) {
+        double y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
+        double y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
+        *IOSFloatArray_GetRef(nil_chk(v), j) = (float) (y1 * (1 - x) + y2 * x);
       }
       return;
     }
   }
 }
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j {
-  jint n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j {
+  int32_t n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
   if (mExtrapolate_) {
     if (t <= IOSDoubleArray_Get(mT_, 0)) {
       return IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)), j) + (t - IOSDoubleArray_Get(mT_, 0)) * [self getSlopeWithDouble:IOSDoubleArray_Get(mT_, 0) withInt:j];
@@ -175,38 +190,38 @@ __attribute__((unused)) static jdouble ADXLinearCurveFit_getLength2DWithDouble_(
       return IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), n - 1)), j);
     }
   }
-  for (jint i = 0; i < n - 1; i++) {
+  for (int32_t i = 0; i < n - 1; i++) {
     if (t == IOSDoubleArray_Get(mT_, i)) {
       return IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), i)), j);
     }
     if (t < IOSDoubleArray_Get(mT_, i + 1)) {
-      jdouble h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
-      jdouble x = (t - IOSDoubleArray_Get(mT_, i)) / h;
-      jdouble y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), i)), j);
-      jdouble y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
+      double h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
+      double x = (t - IOSDoubleArray_Get(mT_, i)) / h;
+      double y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), i)), j);
+      double y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
       return (y1 * (1 - x) + y2 * x);
     }
   }
   return 0;
 }
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v {
-  jint n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
-  jint dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)))->size_;
+  int32_t n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
+  int32_t dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(mY_), 0)))->size_;
   if (t <= IOSDoubleArray_Get(mT_, 0)) {
     t = IOSDoubleArray_Get(mT_, 0);
   }
   else if (t >= IOSDoubleArray_Get(mT_, n - 1)) {
     t = IOSDoubleArray_Get(mT_, n - 1);
   }
-  for (jint i = 0; i < n - 1; i++) {
+  for (int32_t i = 0; i < n - 1; i++) {
     if (t <= IOSDoubleArray_Get(mT_, i + 1)) {
-      jdouble h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
-      jdouble x = (t - IOSDoubleArray_Get(mT_, i)) / h;
-      for (jint j = 0; j < dim; j++) {
-        jdouble y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
-        jdouble y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
+      double h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
+      double x = (t - IOSDoubleArray_Get(mT_, i)) / h;
+      for (int32_t j = 0; j < dim; j++) {
+        double y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i)), j);
+        double y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
         *IOSDoubleArray_GetRef(nil_chk(v), j) = (y2 - y1) / h;
       }
       break;
@@ -215,21 +230,21 @@ __attribute__((unused)) static jdouble ADXLinearCurveFit_getLength2DWithDouble_(
   return;
 }
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j {
-  jint n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j {
+  int32_t n = ((IOSDoubleArray *) nil_chk(mT_))->size_;
   if (t < IOSDoubleArray_Get(mT_, 0)) {
     t = IOSDoubleArray_Get(mT_, 0);
   }
   else if (t >= IOSDoubleArray_Get(mT_, n - 1)) {
     t = IOSDoubleArray_Get(mT_, n - 1);
   }
-  for (jint i = 0; i < n - 1; i++) {
+  for (int32_t i = 0; i < n - 1; i++) {
     if (t <= IOSDoubleArray_Get(mT_, i + 1)) {
-      jdouble h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
-      jdouble x = (t - IOSDoubleArray_Get(mT_, i)) / h;
-      jdouble y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), i)), j);
-      jdouble y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
+      double h = IOSDoubleArray_Get(mT_, i + 1) - IOSDoubleArray_Get(mT_, i);
+      double x = (t - IOSDoubleArray_Get(mT_, i)) / h;
+      double y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(mY_), i)), j);
+      double y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(mY_, i + 1)), j);
       return (y2 - y1) / h;
     }
   }
@@ -289,18 +304,18 @@ void ADXLinearCurveFit_initWithDoubleArray_withDoubleArray2_(ADXLinearCurveFit *
   ADXCurveFit_init(self);
   self->mTotalLength_ = JavaLangDouble_NaN;
   self->mExtrapolate_ = true;
-  jint N = ((IOSDoubleArray *) nil_chk(time))->size_;
-  jint dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(y), 0)))->size_;
+  int32_t N = ((IOSDoubleArray *) nil_chk(time))->size_;
+  int32_t dim = ((IOSDoubleArray *) nil_chk(IOSObjectArray_Get(nil_chk(y), 0)))->size_;
   JreStrongAssignAndConsume(&self->mSlopeTemp_, [IOSDoubleArray newArrayWithLength:dim]);
   JreStrongAssign(&self->mT_, time);
   JreStrongAssign(&self->mY_, y);
   if (dim > 2) {
-    jdouble sum = 0;
-    jdouble lastx = 0;
-    jdouble lasty = 0;
-    for (jint i = 0; i < time->size_; i++) {
-      jdouble px = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(y, i)), 0);
-      jdouble py = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(y, i)), 0);
+    double sum = 0;
+    double lastx = 0;
+    double lasty = 0;
+    for (int32_t i = 0; i < time->size_; i++) {
+      double px = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(y, i)), 0);
+      double py = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(y, i)), 0);
       if (i > 0) {
         JrePlusAssignDoubleD(&sum, JavaLangMath_hypotWithDouble_withDouble_(px - lastx, py - lasty));
       }
@@ -319,23 +334,23 @@ ADXLinearCurveFit *create_ADXLinearCurveFit_initWithDoubleArray_withDoubleArray2
   J2OBJC_CREATE_IMPL(ADXLinearCurveFit, initWithDoubleArray_withDoubleArray2_, time, y)
 }
 
-jdouble ADXLinearCurveFit_getLength2DWithDouble_(ADXLinearCurveFit *self, jdouble t) {
+double ADXLinearCurveFit_getLength2DWithDouble_(ADXLinearCurveFit *self, double t) {
   if (JavaLangDouble_isNaNWithDouble_(self->mTotalLength_)) {
     return 0;
   }
-  jint n = ((IOSDoubleArray *) nil_chk(self->mT_))->size_;
+  int32_t n = ((IOSDoubleArray *) nil_chk(self->mT_))->size_;
   if (t <= IOSDoubleArray_Get(self->mT_, 0)) {
     return 0;
   }
   if (t >= IOSDoubleArray_Get(self->mT_, n - 1)) {
     return self->mTotalLength_;
   }
-  jdouble sum = 0;
-  jdouble last_x = 0;
-  jdouble last_y = 0;
-  for (jint i = 0; i < n - 1; i++) {
-    jdouble px = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(self->mY_), i)), 0);
-    jdouble py = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i)), 1);
+  double sum = 0;
+  double last_x = 0;
+  double last_y = 0;
+  for (int32_t i = 0; i < n - 1; i++) {
+    double px = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(self->mY_), i)), 0);
+    double py = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i)), 1);
     if (i > 0) {
       JrePlusAssignDoubleD(&sum, JavaLangMath_hypotWithDouble_withDouble_(px - last_x, py - last_y));
     }
@@ -345,12 +360,12 @@ jdouble ADXLinearCurveFit_getLength2DWithDouble_(ADXLinearCurveFit *self, jdoubl
       return sum;
     }
     if (t < IOSDoubleArray_Get(self->mT_, i + 1)) {
-      jdouble h = IOSDoubleArray_Get(self->mT_, i + 1) - IOSDoubleArray_Get(self->mT_, i);
-      jdouble x = (t - IOSDoubleArray_Get(self->mT_, i)) / h;
-      jdouble x1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(self->mY_), i)), 0);
-      jdouble x2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i + 1)), 0);
-      jdouble y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i)), 1);
-      jdouble y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i + 1)), 1);
+      double h = IOSDoubleArray_Get(self->mT_, i + 1) - IOSDoubleArray_Get(self->mT_, i);
+      double x = (t - IOSDoubleArray_Get(self->mT_, i)) / h;
+      double x1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(nil_chk(self->mY_), i)), 0);
+      double x2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i + 1)), 0);
+      double y1 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i)), 1);
+      double y2 = IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(self->mY_, i + 1)), 1);
       JreMinusAssignDoubleD(&py, y1 * (1 - x) + y2 * x);
       JreMinusAssignDoubleD(&px, x1 * (1 - x) + x2 * x);
       JrePlusAssignDoubleD(&sum, JavaLangMath_hypotWithDouble_withDouble_(py, px));
@@ -361,3 +376,5 @@ jdouble ADXLinearCurveFit_getLength2DWithDouble_(ADXLinearCurveFit *self, jdoubl
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXLinearCurveFit)
+
+J2OBJC_NAME_MAPPING(ADXLinearCurveFit, "androidx.constraintlayout.core.motion.utils", "ADX")

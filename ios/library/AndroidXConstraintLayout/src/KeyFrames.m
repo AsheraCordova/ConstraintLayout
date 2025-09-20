@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyFrames.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintLayout.h"
 #include "Context.h"
 #include "J2ObjC_source.h"
@@ -13,13 +18,19 @@
 #include "Resources.h"
 #include "View.h"
 #include "ViewGroup.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Exception.h"
 #include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashMap.h"
 #include "java/util/Set.h"
 
-@class JavaUtilHashMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXKeyFrames () {
@@ -87,7 +98,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-+ (NSString *)nameWithInt:(jint)viewId
++ (NSString *)nameWithInt:(int32_t)viewId
             withADContext:(ADContext *)context {
   return ADXKeyFrames_nameWithInt_withADContext_(viewId, context);
 }
@@ -96,7 +107,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [((JavaUtilHashMap *) nil_chk(mFramesMap_)) keySet];
 }
 
-- (JavaUtilArrayList *)getKeyFramesForViewWithInt:(jint)id_ {
+- (JavaUtilArrayList *)getKeyFramesForViewWithInt:(int32_t)id_ {
   return [((JavaUtilHashMap *) nil_chk(mFramesMap_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)];
 }
 
@@ -166,9 +177,11 @@ ADXKeyFrames *create_ADXKeyFrames_init() {
   J2OBJC_CREATE_IMPL(ADXKeyFrames, init)
 }
 
-NSString *ADXKeyFrames_nameWithInt_withADContext_(jint viewId, ADContext *context) {
+NSString *ADXKeyFrames_nameWithInt_withADContext_(int32_t viewId, ADContext *context) {
   ADXKeyFrames_initialize();
   return [((ADResources *) nil_chk([((ADContext *) nil_chk(context)) getResources])) getResourceEntryNameWithInt:viewId];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyFrames)
+
+J2OBJC_NAME_MAPPING(ADXKeyFrames, "androidx.constraintlayout.motion.widget", "ADX")

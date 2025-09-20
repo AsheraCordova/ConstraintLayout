@@ -3,39 +3,55 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\SpringStopEngine.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "SpringStopEngine.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/StackTraceElement.h"
 #include "java/lang/System.h"
 #include "java/lang/Throwable.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXSpringStopEngine () {
  @public
-  jboolean mInitialized_;
-  jdouble mStiffness_;
-  jdouble mTargetPos_;
-  jdouble mLastVelocity_;
-  jfloat mLastTime_;
-  jfloat mPos_;
-  jfloat mV_;
-  jfloat mMass_;
-  jfloat mStopThreshold_;
-  jint mBoundaryMode_;
+  bool mInitialized_;
+  double mStiffness_;
+  double mTargetPos_;
+  double mLastVelocity_;
+  float mLastTime_;
+  float mPos_;
+  float mV_;
+  float mMass_;
+  float mStopThreshold_;
+  int32_t mBoundaryMode_;
 }
 
-- (void)computeWithDouble:(jdouble)dt;
+- (void)computeWithDouble:(double)dt;
 
 @end
 
-inline jdouble ADXSpringStopEngine_get_UNSET(void);
+inline double ADXSpringStopEngine_get_UNSET(void);
 #define ADXSpringStopEngine_UNSET __DBL_MAX__
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSpringStopEngine, UNSET, jdouble)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSpringStopEngine, UNSET, double)
 
-__attribute__((unused)) static void ADXSpringStopEngine_computeWithDouble_(ADXSpringStopEngine *self, jdouble dt);
+__attribute__((unused)) static void ADXSpringStopEngine_computeWithDouble_(ADXSpringStopEngine *self, double dt);
 
 @implementation ADXSpringStopEngine
 
@@ -47,7 +63,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)debugWithNSString:(NSString *)desc
-                      withFloat:(jfloat)time {
+                      withFloat:(float)time {
   return nil;
 }
 
@@ -57,14 +73,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", line, str)];
 }
 
-- (void)springConfigWithFloat:(jfloat)currentPos
-                    withFloat:(jfloat)target
-                    withFloat:(jfloat)currentVelocity
-                    withFloat:(jfloat)mass
-                    withFloat:(jfloat)stiffness
-                    withFloat:(jfloat)damping
-                    withFloat:(jfloat)stopThreshold
-                      withInt:(jint)boundaryMode {
+- (void)springConfigWithFloat:(float)currentPos
+                    withFloat:(float)target
+                    withFloat:(float)currentVelocity
+                    withFloat:(float)mass
+                    withFloat:(float)stiffness
+                    withFloat:(float)damping
+                    withFloat:(float)stopThreshold
+                      withInt:(int32_t)boundaryMode {
   mTargetPos_ = target;
   mDamping_ = damping;
   mInitialized_ = false;
@@ -77,38 +93,38 @@ J2OBJC_IGNORE_DESIGNATED_END
   mLastTime_ = 0;
 }
 
-- (jfloat)getVelocityWithFloat:(jfloat)t {
-  return (jfloat) mV_;
+- (float)getVelocityWithFloat:(float)t {
+  return (float) mV_;
 }
 
-- (jfloat)getInterpolationWithFloat:(jfloat)time {
+- (float)getInterpolationWithFloat:(float)time {
   ADXSpringStopEngine_computeWithDouble_(self, time - mLastTime_);
   mLastTime_ = time;
-  return (jfloat) (mPos_);
+  return (float) (mPos_);
 }
 
-- (jfloat)getAcceleration {
-  jdouble k = mStiffness_;
-  jdouble c = mDamping_;
-  jdouble x = (mPos_ - mTargetPos_);
-  return (jfloat) (-k * x - c * mV_) / mMass_;
+- (float)getAcceleration {
+  double k = mStiffness_;
+  double c = mDamping_;
+  double x = (mPos_ - mTargetPos_);
+  return (float) (-k * x - c * mV_) / mMass_;
 }
 
-- (jfloat)getVelocity {
+- (float)getVelocity {
   return 0;
 }
 
-- (jboolean)isStopped {
-  jdouble x = (mPos_ - mTargetPos_);
-  jdouble k = mStiffness_;
-  jdouble v = mV_;
-  jdouble m = mMass_;
-  jdouble energy = v * v * m + k * x * x;
-  jdouble max_def = JavaLangMath_sqrtWithDouble_(energy / k);
+- (bool)isStopped {
+  double x = (mPos_ - mTargetPos_);
+  double k = mStiffness_;
+  double v = mV_;
+  double m = mMass_;
+  double energy = v * v * m + k * x * x;
+  double max_def = JavaLangMath_sqrtWithDouble_(energy / k);
   return max_def <= mStopThreshold_;
 }
 
-- (void)computeWithDouble:(jdouble)dt {
+- (void)computeWithDouble:(double)dt {
   ADXSpringStopEngine_computeWithDouble_(self, dt);
 }
 
@@ -175,18 +191,18 @@ ADXSpringStopEngine *create_ADXSpringStopEngine_init() {
   J2OBJC_CREATE_IMPL(ADXSpringStopEngine, init)
 }
 
-void ADXSpringStopEngine_computeWithDouble_(ADXSpringStopEngine *self, jdouble dt) {
-  jdouble k = self->mStiffness_;
-  jdouble c = self->mDamping_;
-  jint overSample = JreFpToInt((1 + 9 / (JavaLangMath_sqrtWithDouble_(self->mStiffness_ / self->mMass_) * dt * 4)));
+void ADXSpringStopEngine_computeWithDouble_(ADXSpringStopEngine *self, double dt) {
+  double k = self->mStiffness_;
+  double c = self->mDamping_;
+  int32_t overSample = JreFpToInt((1 + 9 / (JavaLangMath_sqrtWithDouble_(self->mStiffness_ / self->mMass_) * dt * 4)));
   JreDivideAssignDoubleD(&dt, overSample);
-  for (jint i = 0; i < overSample; i++) {
-    jdouble x = (self->mPos_ - self->mTargetPos_);
-    jdouble a = (-k * x - c * self->mV_) / self->mMass_;
-    jdouble avgV = self->mV_ + a * dt / 2;
-    jdouble avgX = self->mPos_ + dt * (avgV) / 2 - self->mTargetPos_;
+  for (int32_t i = 0; i < overSample; i++) {
+    double x = (self->mPos_ - self->mTargetPos_);
+    double a = (-k * x - c * self->mV_) / self->mMass_;
+    double avgV = self->mV_ + a * dt / 2;
+    double avgX = self->mPos_ + dt * (avgV) / 2 - self->mTargetPos_;
     a = (-avgX * k - avgV * c) / self->mMass_;
-    jdouble dv = a * dt;
+    double dv = a * dt;
     avgV = self->mV_ + dv / 2;
     JrePlusAssignFloatD(&self->mV_, dv);
     JrePlusAssignFloatD(&self->mPos_, avgV * dt);
@@ -204,3 +220,5 @@ void ADXSpringStopEngine_computeWithDouble_(ADXSpringStopEngine *self, jdouble d
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXSpringStopEngine)
+
+J2OBJC_NAME_MAPPING(ADXSpringStopEngine, "androidx.constraintlayout.core.motion.utils", "ADX")

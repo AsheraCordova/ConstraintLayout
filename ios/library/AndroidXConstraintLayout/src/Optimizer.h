@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\Optimizer.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Optimizer")
@@ -20,6 +21,8 @@
 @class ADXConstraintWidgetContainer;
 @class ADXLinearSystem;
 @class IOSBooleanArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 /*!
  @brief Implements direct resolution without using the solver
@@ -30,8 +33,8 @@
 
 - (instancetype)init;
 
-+ (jboolean)enabledWithInt:(jint)optimizationLevel
-                   withInt:(jint)optimization;
++ (bool)enabledWithInt:(int32_t)optimizationLevel
+               withInt:(int32_t)optimization;
 
 #pragma mark Package-Private
 
@@ -49,57 +52,57 @@
 
 J2OBJC_STATIC_INIT(ADXOptimizer)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_NONE(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_NONE(void);
 #define ADXOptimizer_OPTIMIZATION_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_NONE, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_DIRECT(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_DIRECT(void);
 #define ADXOptimizer_OPTIMIZATION_DIRECT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_DIRECT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_DIRECT, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_BARRIER(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_BARRIER(void);
 #define ADXOptimizer_OPTIMIZATION_BARRIER 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_BARRIER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_BARRIER, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_CHAIN(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_CHAIN(void);
 #define ADXOptimizer_OPTIMIZATION_CHAIN 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_CHAIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_CHAIN, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_DIMENSIONS(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_DIMENSIONS(void);
 #define ADXOptimizer_OPTIMIZATION_DIMENSIONS 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_DIMENSIONS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_DIMENSIONS, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_RATIO(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_RATIO(void);
 #define ADXOptimizer_OPTIMIZATION_RATIO 16
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_RATIO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_RATIO, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_GROUPS(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_GROUPS(void);
 #define ADXOptimizer_OPTIMIZATION_GROUPS 32
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GROUPS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GROUPS, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_GRAPH(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_GRAPH(void);
 #define ADXOptimizer_OPTIMIZATION_GRAPH 64
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GRAPH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GRAPH, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_GRAPH_WRAP(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_GRAPH_WRAP(void);
 #define ADXOptimizer_OPTIMIZATION_GRAPH_WRAP 128
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GRAPH_WRAP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GRAPH_WRAP, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_CACHE_MEASURES(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_CACHE_MEASURES(void);
 #define ADXOptimizer_OPTIMIZATION_CACHE_MEASURES 256
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_CACHE_MEASURES, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_CACHE_MEASURES, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_DEPENDENCY_ORDERING(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_DEPENDENCY_ORDERING(void);
 #define ADXOptimizer_OPTIMIZATION_DEPENDENCY_ORDERING 512
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_DEPENDENCY_ORDERING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_DEPENDENCY_ORDERING, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_GROUPING(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_GROUPING(void);
 #define ADXOptimizer_OPTIMIZATION_GROUPING 1024
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GROUPING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_GROUPING, int32_t)
 
-inline jint ADXOptimizer_get_OPTIMIZATION_STANDARD(void);
+inline int32_t ADXOptimizer_get_OPTIMIZATION_STANDARD(void);
 #define ADXOptimizer_OPTIMIZATION_STANDARD 257
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_STANDARD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, OPTIMIZATION_STANDARD, int32_t)
 
 inline IOSBooleanArray *ADXOptimizer_get_flags(void);
 inline IOSBooleanArray *ADXOptimizer_set_flags(IOSBooleanArray *value);
@@ -107,17 +110,17 @@ inline IOSBooleanArray *ADXOptimizer_set_flags(IOSBooleanArray *value);
 FOUNDATION_EXPORT IOSBooleanArray *ADXOptimizer_flags;
 J2OBJC_STATIC_FIELD_OBJ(ADXOptimizer, flags, IOSBooleanArray *)
 
-inline jint ADXOptimizer_get_FLAG_USE_OPTIMIZE(void);
+inline int32_t ADXOptimizer_get_FLAG_USE_OPTIMIZE(void);
 #define ADXOptimizer_FLAG_USE_OPTIMIZE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, FLAG_USE_OPTIMIZE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, FLAG_USE_OPTIMIZE, int32_t)
 
-inline jint ADXOptimizer_get_FLAG_CHAIN_DANGLING(void);
+inline int32_t ADXOptimizer_get_FLAG_CHAIN_DANGLING(void);
 #define ADXOptimizer_FLAG_CHAIN_DANGLING 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, FLAG_CHAIN_DANGLING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, FLAG_CHAIN_DANGLING, int32_t)
 
-inline jint ADXOptimizer_get_FLAG_RECOMPUTE_BOUNDS(void);
+inline int32_t ADXOptimizer_get_FLAG_RECOMPUTE_BOUNDS(void);
 #define ADXOptimizer_FLAG_RECOMPUTE_BOUNDS 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, FLAG_RECOMPUTE_BOUNDS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOptimizer, FLAG_RECOMPUTE_BOUNDS, int32_t)
 
 FOUNDATION_EXPORT void ADXOptimizer_init(ADXOptimizer *self);
 
@@ -127,11 +130,12 @@ FOUNDATION_EXPORT ADXOptimizer *create_ADXOptimizer_init(void);
 
 FOUNDATION_EXPORT void ADXOptimizer_checkMatchParentWithADXConstraintWidgetContainer_withADXLinearSystem_withADXConstraintWidget_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, ADXConstraintWidget *widget);
 
-FOUNDATION_EXPORT jboolean ADXOptimizer_enabledWithInt_withInt_(jint optimizationLevel, jint optimization);
+FOUNDATION_EXPORT bool ADXOptimizer_enabledWithInt_withInt_(int32_t optimizationLevel, int32_t optimization);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXOptimizer)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsOptimizer ADXOptimizer;
+
 
 #endif
 

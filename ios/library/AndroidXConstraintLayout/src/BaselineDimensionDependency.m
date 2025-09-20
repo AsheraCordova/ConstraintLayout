@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\BaselineDimensionDependency.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BaselineDimensionDependency.h"
 #include "ConstraintWidget.h"
 #include "DependencyNode.h"
@@ -10,6 +15,14 @@
 #include "J2ObjC_source.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXBaselineDimensionDependency

@@ -3,11 +3,25 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Constraints.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintLayout.h"
 #include "ConstraintSet.h"
 #include "Constraints.h"
 #include "J2ObjC_source.h"
 #include "ViewGroup.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXConstraints
@@ -27,11 +41,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return myConstraintSet_;
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b {
 }
 
 - (void)dealloc {
@@ -76,10 +90,12 @@ ADXConstraints *create_ADXConstraints_init() {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraints)
 
+J2OBJC_NAME_MAPPING(ADXConstraints, "androidx.constraintlayout.widget", "ADX")
+
 @implementation ADXConstraints_LayoutParams
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height {
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height {
   ADXConstraints_LayoutParams_initWithInt_withInt_(self, width, height);
   return self;
 }
@@ -122,7 +138,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraints)
 
 @end
 
-void ADXConstraints_LayoutParams_initWithInt_withInt_(ADXConstraints_LayoutParams *self, jint width, jint height) {
+void ADXConstraints_LayoutParams_initWithInt_withInt_(ADXConstraints_LayoutParams *self, int32_t width, int32_t height) {
   ADXConstraintLayout_LayoutParams_initWithInt_withInt_(self, width, height);
   self->alpha_ = 1;
   self->applyElevation_ = false;
@@ -139,11 +155,11 @@ void ADXConstraints_LayoutParams_initWithInt_withInt_(ADXConstraints_LayoutParam
   self->translationZ_ = 0;
 }
 
-ADXConstraints_LayoutParams *new_ADXConstraints_LayoutParams_initWithInt_withInt_(jint width, jint height) {
+ADXConstraints_LayoutParams *new_ADXConstraints_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ADXConstraints_LayoutParams, initWithInt_withInt_, width, height)
 }
 
-ADXConstraints_LayoutParams *create_ADXConstraints_LayoutParams_initWithInt_withInt_(jint width, jint height) {
+ADXConstraints_LayoutParams *create_ADXConstraints_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ADXConstraints_LayoutParams, initWithInt_withInt_, width, height)
 }
 

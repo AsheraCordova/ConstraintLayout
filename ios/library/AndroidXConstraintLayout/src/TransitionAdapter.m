@@ -3,9 +3,23 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\TransitionAdapter.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "MotionLayout.h"
 #include "TransitionAdapter.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXTransitionAdapter
@@ -18,24 +32,24 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)onTransitionStartedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)startId
-                                       withInt:(jint)endId {
+                                       withInt:(int32_t)startId
+                                       withInt:(int32_t)endId {
 }
 
 - (void)onTransitionChangeWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)startId
-                                      withInt:(jint)endId
-                                    withFloat:(jfloat)progress {
+                                      withInt:(int32_t)startId
+                                      withInt:(int32_t)endId
+                                    withFloat:(float)progress {
 }
 
 - (void)onTransitionCompletedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                         withInt:(jint)currentId {
+                                         withInt:(int32_t)currentId {
 }
 
 - (void)onTransitionTriggerWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)triggerId
-                                   withBoolean:(jboolean)positive
-                                     withFloat:(jfloat)progress {
+                                       withInt:(int32_t)triggerId
+                                   withBoolean:(bool)positive
+                                     withFloat:(float)progress {
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -67,3 +81,5 @@ void ADXTransitionAdapter_init(ADXTransitionAdapter *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXTransitionAdapter)
+
+J2OBJC_NAME_MAPPING(ADXTransitionAdapter, "androidx.constraintlayout.motion.widget", "ADX")

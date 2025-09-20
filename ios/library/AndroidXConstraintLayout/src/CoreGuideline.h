@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreGuideline.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CoreGuideline")
@@ -23,16 +24,20 @@
 @class ADXConstraintAnchor;
 @class ADXConstraintAnchor_Type;
 @class ADXLinearSystem;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
+@class NSString;
 
 /*!
  @brief Guideline
  */
 @interface ADXCoreGuideline : ADXConstraintWidget {
  @public
-  jfloat mRelativePercent_;
-  jint mRelativeBegin_;
-  jint mRelativeEnd_;
+  float mRelativePercent_;
+  int32_t mRelativeBegin_;
+  int32_t mRelativeEnd_;
 }
 
 #pragma mark Public
@@ -40,9 +45,9 @@
 - (instancetype)init;
 
 - (void)addToSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                           withBoolean:(jboolean)optimize;
+                           withBoolean:(bool)optimize;
 
-- (jboolean)allowedInBarrier;
+- (bool)allowedInBarrier;
 
 - (void)copy__WithADXConstraintWidget:(ADXConstraintWidget *)src
                   withJavaUtilHashMap:(JavaUtilHashMap *)map OBJC_METHOD_FAMILY_NONE;
@@ -53,43 +58,43 @@
 
 - (ADXConstraintAnchor *)getAnchorWithADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)anchorType;
 
-- (jint)getOrientation;
+- (int32_t)getOrientation;
 
-- (jint)getRelativeBegin;
+- (int32_t)getRelativeBegin;
 
-- (jint)getRelativeBehaviour;
+- (int32_t)getRelativeBehaviour;
 
-- (jint)getRelativeEnd;
+- (int32_t)getRelativeEnd;
 
-- (jfloat)getRelativePercent;
+- (float)getRelativePercent;
 
 /*!
  @brief Specify the xml type for the container
  */
 - (NSString *)getType;
 
-- (jboolean)isPercent;
+- (bool)isPercent;
 
-- (jboolean)isResolvedHorizontally;
+- (bool)isResolvedHorizontally;
 
-- (jboolean)isResolvedVertically;
+- (bool)isResolvedVertically;
 
-- (void)setFinalValueWithInt:(jint)position;
+- (void)setFinalValueWithInt:(int32_t)position;
 
-- (void)setGuideBeginWithInt:(jint)value;
+- (void)setGuideBeginWithInt:(int32_t)value;
 
-- (void)setGuideEndWithInt:(jint)value;
+- (void)setGuideEndWithInt:(int32_t)value;
 
-- (void)setGuidePercentWithFloat:(jfloat)value;
+- (void)setGuidePercentWithFloat:(float)value;
 
-- (void)setGuidePercentWithInt:(jint)value;
+- (void)setGuidePercentWithInt:(int32_t)value;
 
-- (void)setMinimumPositionWithInt:(jint)minimum;
+- (void)setMinimumPositionWithInt:(int32_t)minimum;
 
-- (void)setOrientationWithInt:(jint)orientation;
+- (void)setOrientationWithInt:(int32_t)orientation;
 
 - (void)updateFromSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                                withBoolean:(jboolean)optimize;
+                                withBoolean:(bool)optimize;
 
 #pragma mark Package-Private
 
@@ -101,53 +106,53 @@
 
 // Disallowed inherited constructors, do not use.
 
-- (instancetype)initWithInt:(jint)arg0
-                    withInt:(jint)arg1 NS_UNAVAILABLE;
+- (instancetype)initWithInt:(int32_t)arg0
+                    withInt:(int32_t)arg1 NS_UNAVAILABLE;
 
-- (instancetype)initWithInt:(jint)arg0
-                    withInt:(jint)arg1
-                    withInt:(jint)arg2
-                    withInt:(jint)arg3 NS_UNAVAILABLE;
+- (instancetype)initWithInt:(int32_t)arg0
+                    withInt:(int32_t)arg1
+                    withInt:(int32_t)arg2
+                    withInt:(int32_t)arg3 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0
-                         withInt:(jint)arg1
-                         withInt:(jint)arg2 NS_UNAVAILABLE;
+                         withInt:(int32_t)arg1
+                         withInt:(int32_t)arg2 NS_UNAVAILABLE;
 
 - (instancetype)initWithNSString:(NSString *)arg0
-                         withInt:(jint)arg1
-                         withInt:(jint)arg2
-                         withInt:(jint)arg3
-                         withInt:(jint)arg4 NS_UNAVAILABLE;
+                         withInt:(int32_t)arg1
+                         withInt:(int32_t)arg2
+                         withInt:(int32_t)arg3
+                         withInt:(int32_t)arg4 NS_UNAVAILABLE;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCoreGuideline)
 
-inline jint ADXCoreGuideline_get_HORIZONTAL(void);
+inline int32_t ADXCoreGuideline_get_HORIZONTAL(void);
 #define ADXCoreGuideline_HORIZONTAL 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, HORIZONTAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, HORIZONTAL, int32_t)
 
-inline jint ADXCoreGuideline_get_VERTICAL(void);
+inline int32_t ADXCoreGuideline_get_VERTICAL(void);
 #define ADXCoreGuideline_VERTICAL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, VERTICAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, VERTICAL, int32_t)
 
-inline jint ADXCoreGuideline_get_RELATIVE_PERCENT(void);
+inline int32_t ADXCoreGuideline_get_RELATIVE_PERCENT(void);
 #define ADXCoreGuideline_RELATIVE_PERCENT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_PERCENT, int32_t)
 
-inline jint ADXCoreGuideline_get_RELATIVE_BEGIN(void);
+inline int32_t ADXCoreGuideline_get_RELATIVE_BEGIN(void);
 #define ADXCoreGuideline_RELATIVE_BEGIN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_BEGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_BEGIN, int32_t)
 
-inline jint ADXCoreGuideline_get_RELATIVE_END(void);
+inline int32_t ADXCoreGuideline_get_RELATIVE_END(void);
 #define ADXCoreGuideline_RELATIVE_END 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_END, int32_t)
 
-inline jint ADXCoreGuideline_get_RELATIVE_UNKNOWN(void);
+inline int32_t ADXCoreGuideline_get_RELATIVE_UNKNOWN(void);
 #define ADXCoreGuideline_RELATIVE_UNKNOWN -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_UNKNOWN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreGuideline, RELATIVE_UNKNOWN, int32_t)
 
 FOUNDATION_EXPORT void ADXCoreGuideline_init(ADXCoreGuideline *self);
 
@@ -158,6 +163,7 @@ FOUNDATION_EXPORT ADXCoreGuideline *create_ADXCoreGuideline_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXCoreGuideline)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsCoreGuideline ADXCoreGuideline;
+
 
 #endif
 

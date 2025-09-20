@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\CLPools.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLPools")
@@ -54,12 +55,15 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools)
 
 @compatibility_alias AndroidxConstraintlayoutCoreCLPools ADXCLPools;
 
+
 #endif
 
 #if !defined (ADXCLPools_Pool_) && (INCLUDE_ALL_CLPools || defined(INCLUDE_ADXCLPools_Pool))
 #define ADXCLPools_Pool_
 
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 /*!
  @brief Interface for managing a pool of objects.
@@ -77,7 +81,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools)
  @return Whether the instance was put in the pool.
  @throw IllegalStateExceptionIf the instance is already in the pool.
  */
-- (jboolean)release__WithId:(id)instance;
+- (bool)release__WithId:(id)instance;
 
 /*!
  @brief Try releasing all instances at the same time
@@ -85,7 +89,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools)
  @param count the number of variables to release
  */
 - (void)releaseAllWithNSObjectArray:(IOSObjectArray *)variables
-                            withInt:(jint)count;
+                            withInt:(int32_t)count;
 
 @end
 
@@ -93,12 +97,15 @@ J2OBJC_EMPTY_STATIC_INIT(ADXCLPools_Pool)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools_Pool)
 
+
 #endif
 
 #if !defined (ADXCLPools_SimplePool_) && (INCLUDE_ALL_CLPools || defined(INCLUDE_ADXCLPools_SimplePool))
 #define ADXCLPools_SimplePool_
 
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 /*!
  @brief Simple (non-synchronized) pool of objects.
@@ -109,10 +116,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools_Pool)
 
 - (id)acquire;
 
-- (jboolean)release__WithId:(id)instance;
+- (bool)release__WithId:(id)instance;
 
 - (void)releaseAllWithNSObjectArray:(IOSObjectArray *)variables
-                            withInt:(jint)count;
+                            withInt:(int32_t)count;
 
 #pragma mark Package-Private
 
@@ -121,7 +128,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools_Pool)
  @param maxPoolSize The max pool size.
  @throw IllegalArgumentExceptionIf the max pool size is less than zero.
  */
-- (instancetype)initWithInt:(jint)maxPoolSize;
+- (instancetype)initWithInt:(int32_t)maxPoolSize;
 
 // Disallowed inherited constructors, do not use.
 
@@ -131,13 +138,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools_Pool)
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCLPools_SimplePool)
 
-FOUNDATION_EXPORT void ADXCLPools_SimplePool_initWithInt_(ADXCLPools_SimplePool *self, jint maxPoolSize);
+FOUNDATION_EXPORT void ADXCLPools_SimplePool_initWithInt_(ADXCLPools_SimplePool *self, int32_t maxPoolSize);
 
-FOUNDATION_EXPORT ADXCLPools_SimplePool *new_ADXCLPools_SimplePool_initWithInt_(jint maxPoolSize) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCLPools_SimplePool *new_ADXCLPools_SimplePool_initWithInt_(int32_t maxPoolSize) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCLPools_SimplePool *create_ADXCLPools_SimplePool_initWithInt_(jint maxPoolSize);
+FOUNDATION_EXPORT ADXCLPools_SimplePool *create_ADXCLPools_SimplePool_initWithInt_(int32_t maxPoolSize);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLPools_SimplePool)
+
 
 #endif
 

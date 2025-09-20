@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\Dependency.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Dependency")
@@ -27,6 +28,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXDependency)
 J2OBJC_TYPE_LITERAL_HEADER(ADXDependency)
 
 #define AndroidxConstraintlayoutCoreWidgetsAnalyzerDependency ADXDependency
+
 
 #endif
 

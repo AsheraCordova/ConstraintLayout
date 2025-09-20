@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyPosition.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AttributeSet.h"
 #include "Context.h"
 #include "IOSObjectArray.h"
@@ -16,30 +21,40 @@
 #include "ViewGroup.h"
 #include "ViewParent.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/System.h"
 #include "java/util/HashMap.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXKeyPosition () {
  @public
-  jfloat mCalculatedPositionX_;
-  jfloat mCalculatedPositionY_;
+  float mCalculatedPositionX_;
+  float mCalculatedPositionY_;
 }
 
-- (void)calcScreenPositionWithInt:(jint)layoutWidth
-                          withInt:(jint)layoutHeight;
+- (void)calcScreenPositionWithInt:(int32_t)layoutWidth
+                          withInt:(int32_t)layoutHeight;
 
-- (void)calcPathPositionWithFloat:(jfloat)start_x
-                        withFloat:(jfloat)start_y
-                        withFloat:(jfloat)end_x
-                        withFloat:(jfloat)end_y;
+- (void)calcPathPositionWithFloat:(float)start_x
+                        withFloat:(float)start_y
+                        withFloat:(float)end_x
+                        withFloat:(float)end_y;
 
-- (void)calcCartesianPositionWithFloat:(jfloat)start_x
-                             withFloat:(jfloat)start_y
-                             withFloat:(jfloat)end_x
-                             withFloat:(jfloat)end_y;
+- (void)calcCartesianPositionWithFloat:(float)start_x
+                             withFloat:(float)start_y
+                             withFloat:(float)end_x
+                             withFloat:(float)end_y;
 
 @end
 
@@ -47,11 +62,11 @@ inline NSString *ADXKeyPosition_get_TAG(void);
 static NSString *ADXKeyPosition_TAG = @"KeyPosition";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyPosition, TAG, NSString *)
 
-__attribute__((unused)) static void ADXKeyPosition_calcScreenPositionWithInt_withInt_(ADXKeyPosition *self, jint layoutWidth, jint layoutHeight);
+__attribute__((unused)) static void ADXKeyPosition_calcScreenPositionWithInt_withInt_(ADXKeyPosition *self, int32_t layoutWidth, int32_t layoutHeight);
 
-__attribute__((unused)) static void ADXKeyPosition_calcPathPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, jfloat start_x, jfloat start_y, jfloat end_x, jfloat end_y);
+__attribute__((unused)) static void ADXKeyPosition_calcPathPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, float start_x, float start_y, float end_x, float end_y);
 
-__attribute__((unused)) static void ADXKeyPosition_calcCartesianPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, jfloat start_x, jfloat start_y, jfloat end_x, jfloat end_y);
+__attribute__((unused)) static void ADXKeyPosition_calcCartesianPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, float start_x, float start_y, float end_x, float end_y);
 
 @interface ADXKeyPosition_Loader : NSObject
 
@@ -68,6 +83,7 @@ __attribute__((unused)) static ADXKeyPosition_Loader *new_ADXKeyPosition_Loader_
 __attribute__((unused)) static ADXKeyPosition_Loader *create_ADXKeyPosition_Loader_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyPosition_Loader)
+
 
 NSString *ADXKeyPosition_NAME = @"KeyPosition";
 NSString *ADXKeyPosition_TRANSITION_EASING = @"transitionEasing";
@@ -94,16 +110,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)addValuesWithJavaUtilHashMap:(JavaUtilHashMap *)splines {
 }
 
-- (void)setTypeWithInt:(jint)type {
+- (void)setTypeWithInt:(int32_t)type {
   mPositionType_ = type;
 }
 
-- (void)calcPositionWithInt:(jint)layoutWidth
-                    withInt:(jint)layoutHeight
-                  withFloat:(jfloat)start_x
-                  withFloat:(jfloat)start_y
-                  withFloat:(jfloat)end_x
-                  withFloat:(jfloat)end_y {
+- (void)calcPositionWithInt:(int32_t)layoutWidth
+                    withInt:(int32_t)layoutHeight
+                  withFloat:(float)start_x
+                  withFloat:(float)start_y
+                  withFloat:(float)end_x
+                  withFloat:(float)end_y {
   switch (mPositionType_) {
     case ADXKeyPosition_TYPE_SCREEN:
     ADXKeyPosition_calcScreenPositionWithInt_withInt_(self, layoutWidth, layoutHeight);
@@ -118,38 +134,38 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)calcScreenPositionWithInt:(jint)layoutWidth
-                          withInt:(jint)layoutHeight {
+- (void)calcScreenPositionWithInt:(int32_t)layoutWidth
+                          withInt:(int32_t)layoutHeight {
   ADXKeyPosition_calcScreenPositionWithInt_withInt_(self, layoutWidth, layoutHeight);
 }
 
-- (void)calcPathPositionWithFloat:(jfloat)start_x
-                        withFloat:(jfloat)start_y
-                        withFloat:(jfloat)end_x
-                        withFloat:(jfloat)end_y {
+- (void)calcPathPositionWithFloat:(float)start_x
+                        withFloat:(float)start_y
+                        withFloat:(float)end_x
+                        withFloat:(float)end_y {
   ADXKeyPosition_calcPathPositionWithFloat_withFloat_withFloat_withFloat_(self, start_x, start_y, end_x, end_y);
 }
 
-- (void)calcCartesianPositionWithFloat:(jfloat)start_x
-                             withFloat:(jfloat)start_y
-                             withFloat:(jfloat)end_x
-                             withFloat:(jfloat)end_y {
+- (void)calcCartesianPositionWithFloat:(float)start_x
+                             withFloat:(float)start_y
+                             withFloat:(float)end_x
+                             withFloat:(float)end_y {
   ADXKeyPosition_calcCartesianPositionWithFloat_withFloat_withFloat_withFloat_(self, start_x, start_y, end_x, end_y);
 }
 
-- (jfloat)getPositionX {
+- (float)getPositionX {
   return mCalculatedPositionX_;
 }
 
-- (jfloat)getPositionY {
+- (float)getPositionY {
   return mCalculatedPositionY_;
 }
 
 - (void)positionAttributesWithADView:(ADView *)view
                          withADRectF:(ADRectF *)start
                          withADRectF:(ADRectF *)end
-                           withFloat:(jfloat)x
-                           withFloat:(jfloat)y
+                           withFloat:(float)x
+                           withFloat:(float)y
                    withNSStringArray:(IOSObjectArray *)attribute
                       withFloatArray:(IOSFloatArray *)value {
   switch (mPositionType_) {
@@ -168,27 +184,27 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)positionPathAttributesWithADRectF:(ADRectF *)start
                               withADRectF:(ADRectF *)end
-                                withFloat:(jfloat)x
-                                withFloat:(jfloat)y
+                                withFloat:(float)x
+                                withFloat:(float)y
                         withNSStringArray:(IOSObjectArray *)attribute
                            withFloatArray:(IOSFloatArray *)value {
-  jfloat startCenterX = [((ADRectF *) nil_chk(start)) centerX];
-  jfloat startCenterY = [start centerY];
-  jfloat endCenterX = [((ADRectF *) nil_chk(end)) centerX];
-  jfloat endCenterY = [end centerY];
-  jfloat pathVectorX = endCenterX - startCenterX;
-  jfloat pathVectorY = endCenterY - startCenterY;
-  jfloat distance = (jfloat) JavaLangMath_hypotWithDouble_withDouble_(pathVectorX, pathVectorY);
+  float startCenterX = [((ADRectF *) nil_chk(start)) centerX];
+  float startCenterY = [start centerY];
+  float endCenterX = [((ADRectF *) nil_chk(end)) centerX];
+  float endCenterY = [end centerY];
+  float pathVectorX = endCenterX - startCenterX;
+  float pathVectorY = endCenterY - startCenterY;
+  float distance = (float) JavaLangMath_hypotWithDouble_withDouble_(pathVectorX, pathVectorY);
   if (distance < 0.0001) {
     [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"distance ~ 0"];
     *IOSFloatArray_GetRef(nil_chk(value), 0) = 0;
     *IOSFloatArray_GetRef(value, 1) = 0;
     return;
   }
-  jfloat dx = pathVectorX / distance;
-  jfloat dy = pathVectorY / distance;
-  jfloat perpendicular = (dx * (y - startCenterY) - (x - startCenterX) * dy) / distance;
-  jfloat dist = (dx * (x - startCenterX) + dy * (y - startCenterY)) / distance;
+  float dx = pathVectorX / distance;
+  float dy = pathVectorY / distance;
+  float perpendicular = (dx * (y - startCenterY) - (x - startCenterX) * dy) / distance;
+  float dist = (dx * (x - startCenterX) + dy * (y - startCenterY)) / distance;
   if (IOSObjectArray_Get(nil_chk(attribute), 0) != nil) {
     if ([((NSString *) nil_chk(ADXKeyPosition_PERCENT_X)) isEqual:IOSObjectArray_Get(attribute, 0)]) {
       *IOSFloatArray_GetRef(nil_chk(value), 0) = dist;
@@ -206,19 +222,19 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)positionScreenAttributesWithADView:(ADView *)view
                                withADRectF:(ADRectF *)start
                                withADRectF:(ADRectF *)end
-                                 withFloat:(jfloat)x
-                                 withFloat:(jfloat)y
+                                 withFloat:(float)x
+                                 withFloat:(float)y
                          withNSStringArray:(IOSObjectArray *)attribute
                             withFloatArray:(IOSFloatArray *)value {
-  jfloat startCenterX = [((ADRectF *) nil_chk(start)) centerX];
-  jfloat startCenterY = [start centerY];
-  jfloat endCenterX = [((ADRectF *) nil_chk(end)) centerX];
-  jfloat endCenterY = [end centerY];
-  jfloat pathVectorX = endCenterX - startCenterX;
-  jfloat pathVectorY = endCenterY - startCenterY;
+  float startCenterX = [((ADRectF *) nil_chk(start)) centerX];
+  float startCenterY = [start centerY];
+  float endCenterX = [((ADRectF *) nil_chk(end)) centerX];
+  float endCenterY = [end centerY];
+  float pathVectorX = endCenterX - startCenterX;
+  float pathVectorY = endCenterY - startCenterY;
   ADViewGroup *viewGroup = ((ADViewGroup *) cast_chk([((ADView *) nil_chk(view)) getParent], [ADViewGroup class]));
-  jint width = [((ADViewGroup *) nil_chk(viewGroup)) getWidth];
-  jint height = [viewGroup getHeight];
+  int32_t width = [((ADViewGroup *) nil_chk(viewGroup)) getWidth];
+  int32_t height = [viewGroup getHeight];
   if (IOSObjectArray_Get(nil_chk(attribute), 0) != nil) {
     if ([((NSString *) nil_chk(ADXKeyPosition_PERCENT_X)) isEqual:IOSObjectArray_Get(attribute, 0)]) {
       *IOSFloatArray_GetRef(nil_chk(value), 0) = x / width;
@@ -239,16 +255,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)positionCartAttributesWithADRectF:(ADRectF *)start
                               withADRectF:(ADRectF *)end
-                                withFloat:(jfloat)x
-                                withFloat:(jfloat)y
+                                withFloat:(float)x
+                                withFloat:(float)y
                         withNSStringArray:(IOSObjectArray *)attribute
                            withFloatArray:(IOSFloatArray *)value {
-  jfloat startCenterX = [((ADRectF *) nil_chk(start)) centerX];
-  jfloat startCenterY = [start centerY];
-  jfloat endCenterX = [((ADRectF *) nil_chk(end)) centerX];
-  jfloat endCenterY = [end centerY];
-  jfloat pathVectorX = endCenterX - startCenterX;
-  jfloat pathVectorY = endCenterY - startCenterY;
+  float startCenterX = [((ADRectF *) nil_chk(start)) centerX];
+  float startCenterY = [start centerY];
+  float endCenterX = [((ADRectF *) nil_chk(end)) centerX];
+  float endCenterY = [end centerY];
+  float pathVectorX = endCenterX - startCenterX;
+  float pathVectorY = endCenterY - startCenterY;
   if (IOSObjectArray_Get(nil_chk(attribute), 0) != nil) {
     if ([((NSString *) nil_chk(ADXKeyPosition_PERCENT_X)) isEqual:IOSObjectArray_Get(attribute, 0)]) {
       *IOSFloatArray_GetRef(nil_chk(value), 0) = (x - startCenterX) / pathVectorX;
@@ -267,12 +283,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)intersectsWithInt:(jint)layoutWidth
-                      withInt:(jint)layoutHeight
-                  withADRectF:(ADRectF *)start
-                  withADRectF:(ADRectF *)end
-                    withFloat:(jfloat)x
-                    withFloat:(jfloat)y {
+- (bool)intersectsWithInt:(int32_t)layoutWidth
+                  withInt:(int32_t)layoutHeight
+              withADRectF:(ADRectF *)start
+              withADRectF:(ADRectF *)end
+                withFloat:(float)x
+                withFloat:(float)y {
   [self calcPositionWithInt:layoutWidth withInt:layoutHeight withFloat:[((ADRectF *) nil_chk(start)) centerX] withFloat:[start centerY] withFloat:[((ADRectF *) nil_chk(end)) centerX] withFloat:[end centerY]];
   if ((JavaLangMath_absWithFloat_(x - mCalculatedPositionX_) < ADXKeyPositionBase_SELECTION_SLOPE) && (JavaLangMath_absWithFloat_(y - mCalculatedPositionY_) < ADXKeyPositionBase_SELECTION_SLOPE)) {
     return true;
@@ -437,34 +453,36 @@ ADXKeyPosition *create_ADXKeyPosition_init() {
   J2OBJC_CREATE_IMPL(ADXKeyPosition, init)
 }
 
-void ADXKeyPosition_calcScreenPositionWithInt_withInt_(ADXKeyPosition *self, jint layoutWidth, jint layoutHeight) {
-  jint viewWidth = 0;
-  jint viewHeight = 0;
+void ADXKeyPosition_calcScreenPositionWithInt_withInt_(ADXKeyPosition *self, int32_t layoutWidth, int32_t layoutHeight) {
+  int32_t viewWidth = 0;
+  int32_t viewHeight = 0;
   self->mCalculatedPositionX_ = (layoutWidth - viewWidth) * self->mPercentX_ + JreIntDiv(viewWidth, 2);
   self->mCalculatedPositionY_ = (layoutHeight - viewHeight) * self->mPercentX_ + JreIntDiv(viewHeight, 2);
 }
 
-void ADXKeyPosition_calcPathPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, jfloat start_x, jfloat start_y, jfloat end_x, jfloat end_y) {
-  jfloat pathVectorX = end_x - start_x;
-  jfloat pathVectorY = end_y - start_y;
-  jfloat perpendicularX = -pathVectorY;
-  jfloat perpendicularY = pathVectorX;
+void ADXKeyPosition_calcPathPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, float start_x, float start_y, float end_x, float end_y) {
+  float pathVectorX = end_x - start_x;
+  float pathVectorY = end_y - start_y;
+  float perpendicularX = -pathVectorY;
+  float perpendicularY = pathVectorX;
   self->mCalculatedPositionX_ = start_x + pathVectorX * self->mPercentX_ + perpendicularX * self->mPercentY_;
   self->mCalculatedPositionY_ = start_y + pathVectorY * self->mPercentX_ + perpendicularY * self->mPercentY_;
 }
 
-void ADXKeyPosition_calcCartesianPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, jfloat start_x, jfloat start_y, jfloat end_x, jfloat end_y) {
-  jfloat pathVectorX = end_x - start_x;
-  jfloat pathVectorY = end_y - start_y;
-  jfloat dxdx = (JavaLangFloat_isNaNWithFloat_(self->mPercentX_)) ? 0 : self->mPercentX_;
-  jfloat dydx = (JavaLangFloat_isNaNWithFloat_(self->mAltPercentY_)) ? 0 : self->mAltPercentY_;
-  jfloat dydy = (JavaLangFloat_isNaNWithFloat_(self->mPercentY_)) ? 0 : self->mPercentY_;
-  jfloat dxdy = (JavaLangFloat_isNaNWithFloat_(self->mAltPercentX_)) ? 0 : self->mAltPercentX_;
+void ADXKeyPosition_calcCartesianPositionWithFloat_withFloat_withFloat_withFloat_(ADXKeyPosition *self, float start_x, float start_y, float end_x, float end_y) {
+  float pathVectorX = end_x - start_x;
+  float pathVectorY = end_y - start_y;
+  float dxdx = (JavaLangFloat_isNaNWithFloat_(self->mPercentX_)) ? 0 : self->mPercentX_;
+  float dydx = (JavaLangFloat_isNaNWithFloat_(self->mAltPercentY_)) ? 0 : self->mAltPercentY_;
+  float dydy = (JavaLangFloat_isNaNWithFloat_(self->mPercentY_)) ? 0 : self->mPercentY_;
+  float dxdy = (JavaLangFloat_isNaNWithFloat_(self->mAltPercentX_)) ? 0 : self->mAltPercentX_;
   self->mCalculatedPositionX_ = JreFpToInt((start_x + pathVectorX * dxdx + pathVectorY * dxdy));
   self->mCalculatedPositionY_ = JreFpToInt((start_y + pathVectorX * dydx + pathVectorY * dydy));
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyPosition)
+
+J2OBJC_NAME_MAPPING(ADXKeyPosition, "androidx.constraintlayout.motion.widget", "ADX")
 
 @implementation ADXKeyPosition_Loader
 

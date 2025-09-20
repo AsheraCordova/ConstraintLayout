@@ -3,50 +3,63 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\MotionWidget.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CustomVariable.h"
 #include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "MotionWidget.h"
 #include "TypedValues.h"
 #include "WidgetFrame.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/Set.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXMotionWidget () {
  @public
-  jfloat mProgress_;
+  float mProgress_;
 }
 
 @end
 
-inline jint ADXMotionWidget_get_INTERNAL_MATCH_PARENT(void);
+inline int32_t ADXMotionWidget_get_INTERNAL_MATCH_PARENT(void);
 #define ADXMotionWidget_INTERNAL_MATCH_PARENT -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_MATCH_PARENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_MATCH_PARENT, int32_t)
 
-inline jint ADXMotionWidget_get_INTERNAL_WRAP_CONTENT(void);
+inline int32_t ADXMotionWidget_get_INTERNAL_WRAP_CONTENT(void);
 #define ADXMotionWidget_INTERNAL_WRAP_CONTENT -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_WRAP_CONTENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_WRAP_CONTENT, int32_t)
 
-inline jint ADXMotionWidget_get_INTERNAL_MATCH_CONSTRAINT(void);
+inline int32_t ADXMotionWidget_get_INTERNAL_MATCH_CONSTRAINT(void);
 #define ADXMotionWidget_INTERNAL_MATCH_CONSTRAINT -3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_MATCH_CONSTRAINT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_MATCH_CONSTRAINT, int32_t)
 
-inline jint ADXMotionWidget_get_INTERNAL_WRAP_CONTENT_CONSTRAINED(void);
+inline int32_t ADXMotionWidget_get_INTERNAL_WRAP_CONTENT_CONSTRAINED(void);
 #define ADXMotionWidget_INTERNAL_WRAP_CONTENT_CONSTRAINED -4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_WRAP_CONTENT_CONSTRAINED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget, INTERNAL_WRAP_CONTENT_CONSTRAINED, int32_t)
 
-inline jint ADXMotionWidget_Motion_get_INTERPOLATOR_REFERENCE_ID(void);
+inline int32_t ADXMotionWidget_Motion_get_INTERPOLATOR_REFERENCE_ID(void);
 #define ADXMotionWidget_Motion_INTERPOLATOR_REFERENCE_ID -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget_Motion, INTERPOLATOR_REFERENCE_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget_Motion, INTERPOLATOR_REFERENCE_ID, int32_t)
 
-inline jint ADXMotionWidget_Motion_get_SPLINE_STRING(void);
+inline int32_t ADXMotionWidget_Motion_get_SPLINE_STRING(void);
 #define ADXMotionWidget_Motion_SPLINE_STRING -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget_Motion, SPLINE_STRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget_Motion, SPLINE_STRING, int32_t)
 
-inline jint ADXMotionWidget_Motion_get_INTERPOLATOR_UNDEFINED(void);
+inline int32_t ADXMotionWidget_Motion_get_INTERPOLATOR_UNDEFINED(void);
 #define ADXMotionWidget_Motion_INTERPOLATOR_UNDEFINED -3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget_Motion, INTERPOLATOR_UNDEFINED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionWidget_Motion, INTERPOLATOR_UNDEFINED, int32_t)
 
 @implementation ADXMotionWidget
 
@@ -61,11 +74,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return nil;
 }
 
-- (ADXMotionWidget *)findViewByIdWithInt:(jint)mTransformPivotTarget {
+- (ADXMotionWidget *)findViewByIdWithInt:(int32_t)mTransformPivotTarget {
   return nil;
 }
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   ((ADXMotionWidget_PropertySet *) nil_chk(propertySet_))->visibility_ = visibility;
 }
 
@@ -73,10 +86,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [[self java_getClass] getSimpleName];
 }
 
-- (void)layoutWithInt:(jint)l
-              withInt:(jint)t
-              withInt:(jint)r
-              withInt:(jint)b {
+- (void)layoutWithInt:(int32_t)l
+              withInt:(int32_t)t
+              withInt:(int32_t)r
+              withInt:(int32_t)b {
   [self setBoundsWithInt:l withInt:t withInt:r withInt:b];
 }
 
@@ -84,10 +97,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   return JreStrcat("I$I$I$I", ((ADXWidgetFrame *) nil_chk(widgetFrame_))->left_, @", ", widgetFrame_->top_, @", ", widgetFrame_->right_, @", ", widgetFrame_->bottom_);
 }
 
-- (void)setBoundsWithInt:(jint)left
-                 withInt:(jint)top
-                 withInt:(jint)right
-                 withInt:(jint)bottom {
+- (void)setBoundsWithInt:(int32_t)left
+                 withInt:(int32_t)top
+                 withInt:(int32_t)right
+                 withInt:(int32_t)bottom {
   if (widgetFrame_ == nil) {
     JreStrongAssignAndConsume(&widgetFrame_, new_ADXWidgetFrame_initWithADXConstraintWidget_(nil));
   }
@@ -102,32 +115,32 @@ J2OBJC_IGNORE_DESIGNATED_END
   return self;
 }
 
-- (jboolean)setValueWithInt:(jint)id_
-                    withInt:(jint)value {
+- (bool)setValueWithInt:(int32_t)id_
+                withInt:(int32_t)value {
   return [self setValueAttributesWithInt:id_ withFloat:value];
 }
 
-- (jboolean)setValueWithInt:(jint)id_
-                  withFloat:(jfloat)value {
-  jboolean set = [self setValueAttributesWithInt:id_ withFloat:value];
+- (bool)setValueWithInt:(int32_t)id_
+              withFloat:(float)value {
+  bool set = [self setValueAttributesWithInt:id_ withFloat:value];
   if (set) {
     return true;
   }
   return [self setValueMotionWithInt:id_ withFloat:value];
 }
 
-- (jboolean)setValueWithInt:(jint)id_
-               withNSString:(NSString *)value {
+- (bool)setValueWithInt:(int32_t)id_
+           withNSString:(NSString *)value {
   return [self setValueMotionWithInt:id_ withNSString:value];
 }
 
-- (jboolean)setValueWithInt:(jint)id_
-                withBoolean:(jboolean)value {
+- (bool)setValueWithInt:(int32_t)id_
+            withBoolean:(bool)value {
   return false;
 }
 
-- (jboolean)setValueMotionWithInt:(jint)id_
-                          withInt:(jint)value {
+- (bool)setValueMotionWithInt:(int32_t)id_
+                      withInt:(int32_t)value {
   switch (id_) {
     case ADXTypedValues_Motion_TYPE_ANIMATE_RELATIVE_TO:
     ((ADXMotionWidget_Motion *) nil_chk(motion_))->mAnimateRelativeTo_ = value;
@@ -159,8 +172,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueMotionWithInt:(jint)id_
-                     withNSString:(NSString *)value {
+- (bool)setValueMotionWithInt:(int32_t)id_
+                 withNSString:(NSString *)value {
   switch (id_) {
     case ADXTypedValues_Motion_TYPE_EASING:
     JreStrongAssign(&((ADXMotionWidget_Motion *) nil_chk(motion_))->mTransitionEasing_, value);
@@ -174,8 +187,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueMotionWithInt:(jint)id_
-                        withFloat:(jfloat)value {
+- (bool)setValueMotionWithInt:(int32_t)id_
+                    withFloat:(float)value {
   switch (id_) {
     case ADXTypedValues_Motion_TYPE_STAGGER:
     ((ADXMotionWidget_Motion *) nil_chk(motion_))->mMotionStagger_ = value;
@@ -192,8 +205,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jboolean)setValueAttributesWithInt:(jint)id_
-                            withFloat:(jfloat)value {
+- (bool)setValueAttributesWithInt:(int32_t)id_
+                        withFloat:(float)value {
   switch (id_) {
     case ADXTypedValues_Attributes_TYPE_ALPHA:
     ((ADXWidgetFrame *) nil_chk(widgetFrame_))->alpha_ = value;
@@ -240,7 +253,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return true;
 }
 
-- (jfloat)getValueAttributesWithInt:(jint)id_ {
+- (float)getValueAttributesWithInt:(int32_t)id_ {
   switch (id_) {
     case ADXTypedValues_Attributes_TYPE_ALPHA:
     return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->alpha_;
@@ -273,131 +286,131 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getIdWithNSString:(NSString *)name {
-  jint ret = ADXTypedValues_Attributes_getIdWithNSString_(name);
+- (int32_t)getIdWithNSString:(NSString *)name {
+  int32_t ret = ADXTypedValues_Attributes_getIdWithNSString_(name);
   if (ret != -1) {
     return ret;
   }
   return ADXTypedValues_Motion_getIdWithNSString_(name);
 }
 
-- (jint)getTop {
+- (int32_t)getTop {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->top_;
 }
 
-- (jint)getLeft {
+- (int32_t)getLeft {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->left_;
 }
 
-- (jint)getBottom {
+- (int32_t)getBottom {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->bottom_;
 }
 
-- (jint)getRight {
+- (int32_t)getRight {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->right_;
 }
 
-- (void)setPivotXWithFloat:(jfloat)px {
+- (void)setPivotXWithFloat:(float)px {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->pivotX_ = px;
 }
 
-- (void)setPivotYWithFloat:(jfloat)py {
+- (void)setPivotYWithFloat:(float)py {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->pivotY_ = py;
 }
 
-- (jfloat)getRotationX {
+- (float)getRotationX {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->rotationX_;
 }
 
-- (void)setRotationXWithFloat:(jfloat)rotationX {
+- (void)setRotationXWithFloat:(float)rotationX {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->rotationX_ = rotationX;
 }
 
-- (jfloat)getRotationY {
+- (float)getRotationY {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->rotationY_;
 }
 
-- (void)setRotationYWithFloat:(jfloat)rotationY {
+- (void)setRotationYWithFloat:(float)rotationY {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->rotationY_ = rotationY;
 }
 
-- (jfloat)getRotationZ {
+- (float)getRotationZ {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->rotationZ_;
 }
 
-- (void)setRotationZWithFloat:(jfloat)rotationZ {
+- (void)setRotationZWithFloat:(float)rotationZ {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->rotationZ_ = rotationZ;
 }
 
-- (jfloat)getTranslationX {
+- (float)getTranslationX {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->translationX_;
 }
 
-- (void)setTranslationXWithFloat:(jfloat)translationX {
+- (void)setTranslationXWithFloat:(float)translationX {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->translationX_ = translationX;
 }
 
-- (jfloat)getTranslationY {
+- (float)getTranslationY {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->translationY_;
 }
 
-- (void)setTranslationYWithFloat:(jfloat)translationY {
+- (void)setTranslationYWithFloat:(float)translationY {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->translationY_ = translationY;
 }
 
-- (void)setTranslationZWithFloat:(jfloat)tz {
+- (void)setTranslationZWithFloat:(float)tz {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->translationZ_ = tz;
 }
 
-- (jfloat)getTranslationZ {
+- (float)getTranslationZ {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->translationZ_;
 }
 
-- (jfloat)getScaleX {
+- (float)getScaleX {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->scaleX_;
 }
 
-- (void)setScaleXWithFloat:(jfloat)scaleX {
+- (void)setScaleXWithFloat:(float)scaleX {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->scaleX_ = scaleX;
 }
 
-- (jfloat)getScaleY {
+- (float)getScaleY {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->scaleY_;
 }
 
-- (void)setScaleYWithFloat:(jfloat)scaleY {
+- (void)setScaleYWithFloat:(float)scaleY {
   ((ADXWidgetFrame *) nil_chk(widgetFrame_))->scaleY_ = scaleY;
 }
 
-- (jint)getVisibility {
+- (int32_t)getVisibility {
   return ((ADXMotionWidget_PropertySet *) nil_chk(propertySet_))->visibility_;
 }
 
-- (jfloat)getPivotX {
+- (float)getPivotX {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->pivotX_;
 }
 
-- (jfloat)getPivotY {
+- (float)getPivotY {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->pivotY_;
 }
 
-- (jfloat)getAlpha {
+- (float)getAlpha {
   return ((ADXMotionWidget_PropertySet *) nil_chk(propertySet_))->alpha_;
 }
 
-- (jint)getX {
+- (int32_t)getX {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->left_;
 }
 
-- (jint)getY {
+- (int32_t)getY {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->top_;
 }
 
-- (jint)getWidth {
+- (int32_t)getWidth {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->right_ - widgetFrame_->left_;
 }
 
-- (jint)getHeight {
+- (int32_t)getHeight {
   return ((ADXWidgetFrame *) nil_chk(widgetFrame_))->bottom_ - widgetFrame_->top_;
 }
 
@@ -410,25 +423,25 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                             withFloat:(jfloat)value {
+                               withInt:(int32_t)type
+                             withFloat:(float)value {
   [((ADXWidgetFrame *) nil_chk(widgetFrame_)) setCustomAttributeWithNSString:name withInt:type withFloat:value];
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                               withInt:(jint)value {
+                               withInt:(int32_t)type
+                               withInt:(int32_t)value {
   [((ADXWidgetFrame *) nil_chk(widgetFrame_)) setCustomAttributeWithNSString:name withInt:type withInt:value];
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                           withBoolean:(jboolean)value {
+                               withInt:(int32_t)type
+                           withBoolean:(bool)value {
   [((ADXWidgetFrame *) nil_chk(widgetFrame_)) setCustomAttributeWithNSString:name withInt:type withBoolean:value];
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
+                               withInt:(int32_t)type
                           withNSString:(NSString *)value {
   [((ADXWidgetFrame *) nil_chk(widgetFrame_)) setCustomAttributeWithNSString:name withInt:type withNSString:value];
 }
@@ -630,6 +643,8 @@ ADXMotionWidget *create_ADXMotionWidget_initWithADXWidgetFrame_(ADXWidgetFrame *
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionWidget)
+
+J2OBJC_NAME_MAPPING(ADXMotionWidget, "androidx.constraintlayout.core.motion", "ADX")
 
 @implementation ADXMotionWidget_Motion
 

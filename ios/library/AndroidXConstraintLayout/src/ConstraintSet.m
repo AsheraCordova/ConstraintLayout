@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintSet.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Barrier.h"
 #include "Build.h"
 #include "CLDebug.h"
@@ -26,6 +31,7 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Exception.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -37,44 +43,49 @@
 #include "java/util/HashSet.h"
 #include "java/util/Set.h"
 
-@class JavaUtilHashMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXConstraintSet () {
  @public
-  jboolean mValidate_;
+  bool mValidate_;
   JavaUtilHashMap *mSavedAttributes_;
-  jboolean mForceId_;
+  bool mForceId_;
   JavaUtilHashMap *mConstraints_;
 }
 
-- (void)createHorizontalChainWithInt:(jint)leftId
-                             withInt:(jint)leftSide
-                             withInt:(jint)rightId
-                             withInt:(jint)rightSide
+- (void)createHorizontalChainWithInt:(int32_t)leftId
+                             withInt:(int32_t)leftSide
+                             withInt:(int32_t)rightId
+                             withInt:(int32_t)rightSide
                         withIntArray:(IOSIntArray *)chainIds
                       withFloatArray:(IOSFloatArray *)weights
-                             withInt:(jint)style
-                             withInt:(jint)left
-                             withInt:(jint)right;
+                             withInt:(int32_t)style
+                             withInt:(int32_t)left
+                             withInt:(int32_t)right;
 
-- (NSString *)sideToStringWithInt:(jint)side;
-
-+ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
-                                           withFloat:(jfloat)value;
+- (NSString *)sideToStringWithInt:(int32_t)side;
 
 + (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
-                                             withInt:(jint)value;
+                                             withInt:(int32_t)type
+                                           withFloat:(float)value;
 
 + (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
+                                             withInt:(int32_t)type
+                                             withInt:(int32_t)value;
+
++ (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
+                                             withInt:(int32_t)type
                                         withNSString:(NSString *)value;
 
 + (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
-                                         withBoolean:(jboolean)value;
+                                             withInt:(int32_t)type
+                                         withBoolean:(bool)value;
 
 - (IOSIntArray *)convertReferenceStringWithADView:(ADView *)view
                                      withNSString:(NSString *)referenceIdString;
@@ -92,421 +103,421 @@ inline NSString *ADXConstraintSet_get_ERROR_MESSAGE(void);
 static NSString *ADXConstraintSet_ERROR_MESSAGE = @"XML parser error must be within a Constraint ";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintSet, ERROR_MESSAGE, NSString *)
 
-inline jint ADXConstraintSet_get_INTERNAL_MATCH_PARENT(void);
+inline int32_t ADXConstraintSet_get_INTERNAL_MATCH_PARENT(void);
 #define ADXConstraintSet_INTERNAL_MATCH_PARENT -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_MATCH_PARENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_MATCH_PARENT, int32_t)
 
-inline jint ADXConstraintSet_get_INTERNAL_WRAP_CONTENT(void);
+inline int32_t ADXConstraintSet_get_INTERNAL_WRAP_CONTENT(void);
 #define ADXConstraintSet_INTERNAL_WRAP_CONTENT -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_WRAP_CONTENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_WRAP_CONTENT, int32_t)
 
-inline jint ADXConstraintSet_get_INTERNAL_MATCH_CONSTRAINT(void);
+inline int32_t ADXConstraintSet_get_INTERNAL_MATCH_CONSTRAINT(void);
 #define ADXConstraintSet_INTERNAL_MATCH_CONSTRAINT -3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_MATCH_CONSTRAINT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_MATCH_CONSTRAINT, int32_t)
 
-inline jint ADXConstraintSet_get_INTERNAL_WRAP_CONTENT_CONSTRAINED(void);
+inline int32_t ADXConstraintSet_get_INTERNAL_WRAP_CONTENT_CONSTRAINED(void);
 #define ADXConstraintSet_INTERNAL_WRAP_CONTENT_CONSTRAINED -4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_WRAP_CONTENT_CONSTRAINED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, INTERNAL_WRAP_CONTENT_CONSTRAINED, int32_t)
 
-inline jboolean ADXConstraintSet_get_DEBUG(void);
+inline bool ADXConstraintSet_get_DEBUG(void);
 #define ADXConstraintSet_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, DEBUG, bool)
 
-inline jint ADXConstraintSet_get_BARRIER_TYPE(void);
+inline int32_t ADXConstraintSet_get_BARRIER_TYPE(void);
 #define ADXConstraintSet_BARRIER_TYPE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_TYPE, int32_t)
 
-inline jint ADXConstraintSet_get_BASELINE_TO_BASELINE(void);
+inline int32_t ADXConstraintSet_get_BASELINE_TO_BASELINE(void);
 #define ADXConstraintSet_BASELINE_TO_BASELINE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_TO_BASELINE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_TO_BASELINE, int32_t)
 
-inline jint ADXConstraintSet_get_BOTTOM_MARGIN(void);
+inline int32_t ADXConstraintSet_get_BOTTOM_MARGIN(void);
 #define ADXConstraintSet_BOTTOM_MARGIN 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BOTTOM_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BOTTOM_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_BOTTOM_TO_BOTTOM(void);
+inline int32_t ADXConstraintSet_get_BOTTOM_TO_BOTTOM(void);
 #define ADXConstraintSet_BOTTOM_TO_BOTTOM 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BOTTOM_TO_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BOTTOM_TO_BOTTOM, int32_t)
 
-inline jint ADXConstraintSet_get_BOTTOM_TO_TOP(void);
+inline int32_t ADXConstraintSet_get_BOTTOM_TO_TOP(void);
 #define ADXConstraintSet_BOTTOM_TO_TOP 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BOTTOM_TO_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BOTTOM_TO_TOP, int32_t)
 
-inline jint ADXConstraintSet_get_DIMENSION_RATIO(void);
+inline int32_t ADXConstraintSet_get_DIMENSION_RATIO(void);
 #define ADXConstraintSet_DIMENSION_RATIO 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, DIMENSION_RATIO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, DIMENSION_RATIO, int32_t)
 
-inline jint ADXConstraintSet_get_EDITOR_ABSOLUTE_X(void);
+inline int32_t ADXConstraintSet_get_EDITOR_ABSOLUTE_X(void);
 #define ADXConstraintSet_EDITOR_ABSOLUTE_X 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, EDITOR_ABSOLUTE_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, EDITOR_ABSOLUTE_X, int32_t)
 
-inline jint ADXConstraintSet_get_EDITOR_ABSOLUTE_Y(void);
+inline int32_t ADXConstraintSet_get_EDITOR_ABSOLUTE_Y(void);
 #define ADXConstraintSet_EDITOR_ABSOLUTE_Y 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, EDITOR_ABSOLUTE_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, EDITOR_ABSOLUTE_Y, int32_t)
 
-inline jint ADXConstraintSet_get_END_MARGIN(void);
+inline int32_t ADXConstraintSet_get_END_MARGIN(void);
 #define ADXConstraintSet_END_MARGIN 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, END_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, END_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_END_TO_END(void);
+inline int32_t ADXConstraintSet_get_END_TO_END(void);
 #define ADXConstraintSet_END_TO_END 9
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, END_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, END_TO_END, int32_t)
 
-inline jint ADXConstraintSet_get_END_TO_START(void);
+inline int32_t ADXConstraintSet_get_END_TO_START(void);
 #define ADXConstraintSet_END_TO_START 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, END_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, END_TO_START, int32_t)
 
-inline jint ADXConstraintSet_get_GONE_BOTTOM_MARGIN(void);
+inline int32_t ADXConstraintSet_get_GONE_BOTTOM_MARGIN(void);
 #define ADXConstraintSet_GONE_BOTTOM_MARGIN 11
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_BOTTOM_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_BOTTOM_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GONE_END_MARGIN(void);
+inline int32_t ADXConstraintSet_get_GONE_END_MARGIN(void);
 #define ADXConstraintSet_GONE_END_MARGIN 12
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_END_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_END_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GONE_LEFT_MARGIN(void);
+inline int32_t ADXConstraintSet_get_GONE_LEFT_MARGIN(void);
 #define ADXConstraintSet_GONE_LEFT_MARGIN 13
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_LEFT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_LEFT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GONE_RIGHT_MARGIN(void);
+inline int32_t ADXConstraintSet_get_GONE_RIGHT_MARGIN(void);
 #define ADXConstraintSet_GONE_RIGHT_MARGIN 14
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_RIGHT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_RIGHT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GONE_START_MARGIN(void);
+inline int32_t ADXConstraintSet_get_GONE_START_MARGIN(void);
 #define ADXConstraintSet_GONE_START_MARGIN 15
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_START_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_START_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GONE_TOP_MARGIN(void);
+inline int32_t ADXConstraintSet_get_GONE_TOP_MARGIN(void);
 #define ADXConstraintSet_GONE_TOP_MARGIN 16
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_TOP_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_TOP_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GUIDE_BEGIN(void);
+inline int32_t ADXConstraintSet_get_GUIDE_BEGIN(void);
 #define ADXConstraintSet_GUIDE_BEGIN 17
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GUIDE_BEGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GUIDE_BEGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GUIDE_END(void);
+inline int32_t ADXConstraintSet_get_GUIDE_END(void);
 #define ADXConstraintSet_GUIDE_END 18
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GUIDE_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GUIDE_END, int32_t)
 
-inline jint ADXConstraintSet_get_GUIDE_PERCENT(void);
+inline int32_t ADXConstraintSet_get_GUIDE_PERCENT(void);
 #define ADXConstraintSet_GUIDE_PERCENT 19
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GUIDE_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GUIDE_PERCENT, int32_t)
 
-inline jint ADXConstraintSet_get_HORIZONTAL_BIAS(void);
+inline int32_t ADXConstraintSet_get_HORIZONTAL_BIAS(void);
 #define ADXConstraintSet_HORIZONTAL_BIAS 20
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HORIZONTAL_BIAS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HORIZONTAL_BIAS, int32_t)
 
-inline jint ADXConstraintSet_get_LAYOUT_HEIGHT(void);
+inline int32_t ADXConstraintSet_get_LAYOUT_HEIGHT(void);
 #define ADXConstraintSet_LAYOUT_HEIGHT 21
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_HEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_HEIGHT, int32_t)
 
-inline jint ADXConstraintSet_get_LAYOUT_VISIBILITY(void);
+inline int32_t ADXConstraintSet_get_LAYOUT_VISIBILITY(void);
 #define ADXConstraintSet_LAYOUT_VISIBILITY 22
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_VISIBILITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_VISIBILITY, int32_t)
 
-inline jint ADXConstraintSet_get_LAYOUT_WIDTH(void);
+inline int32_t ADXConstraintSet_get_LAYOUT_WIDTH(void);
 #define ADXConstraintSet_LAYOUT_WIDTH 23
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_WIDTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_WIDTH, int32_t)
 
-inline jint ADXConstraintSet_get_LEFT_MARGIN(void);
+inline int32_t ADXConstraintSet_get_LEFT_MARGIN(void);
 #define ADXConstraintSet_LEFT_MARGIN 24
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LEFT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LEFT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_LEFT_TO_LEFT(void);
+inline int32_t ADXConstraintSet_get_LEFT_TO_LEFT(void);
 #define ADXConstraintSet_LEFT_TO_LEFT 25
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LEFT_TO_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LEFT_TO_LEFT, int32_t)
 
-inline jint ADXConstraintSet_get_LEFT_TO_RIGHT(void);
+inline int32_t ADXConstraintSet_get_LEFT_TO_RIGHT(void);
 #define ADXConstraintSet_LEFT_TO_RIGHT 26
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LEFT_TO_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LEFT_TO_RIGHT, int32_t)
 
-inline jint ADXConstraintSet_get_ORIENTATION(void);
+inline int32_t ADXConstraintSet_get_ORIENTATION(void);
 #define ADXConstraintSet_ORIENTATION 27
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ORIENTATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ORIENTATION, int32_t)
 
-inline jint ADXConstraintSet_get_RIGHT_MARGIN(void);
+inline int32_t ADXConstraintSet_get_RIGHT_MARGIN(void);
 #define ADXConstraintSet_RIGHT_MARGIN 28
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, RIGHT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, RIGHT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_RIGHT_TO_LEFT(void);
+inline int32_t ADXConstraintSet_get_RIGHT_TO_LEFT(void);
 #define ADXConstraintSet_RIGHT_TO_LEFT 29
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, RIGHT_TO_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, RIGHT_TO_LEFT, int32_t)
 
-inline jint ADXConstraintSet_get_RIGHT_TO_RIGHT(void);
+inline int32_t ADXConstraintSet_get_RIGHT_TO_RIGHT(void);
 #define ADXConstraintSet_RIGHT_TO_RIGHT 30
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, RIGHT_TO_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, RIGHT_TO_RIGHT, int32_t)
 
-inline jint ADXConstraintSet_get_START_MARGIN(void);
+inline int32_t ADXConstraintSet_get_START_MARGIN(void);
 #define ADXConstraintSet_START_MARGIN 31
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, START_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, START_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_START_TO_END(void);
+inline int32_t ADXConstraintSet_get_START_TO_END(void);
 #define ADXConstraintSet_START_TO_END 32
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, START_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, START_TO_END, int32_t)
 
-inline jint ADXConstraintSet_get_START_TO_START(void);
+inline int32_t ADXConstraintSet_get_START_TO_START(void);
 #define ADXConstraintSet_START_TO_START 33
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, START_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, START_TO_START, int32_t)
 
-inline jint ADXConstraintSet_get_TOP_MARGIN(void);
+inline int32_t ADXConstraintSet_get_TOP_MARGIN(void);
 #define ADXConstraintSet_TOP_MARGIN 34
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TOP_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TOP_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_TOP_TO_BOTTOM(void);
+inline int32_t ADXConstraintSet_get_TOP_TO_BOTTOM(void);
 #define ADXConstraintSet_TOP_TO_BOTTOM 35
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TOP_TO_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TOP_TO_BOTTOM, int32_t)
 
-inline jint ADXConstraintSet_get_TOP_TO_TOP(void);
+inline int32_t ADXConstraintSet_get_TOP_TO_TOP(void);
 #define ADXConstraintSet_TOP_TO_TOP 36
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TOP_TO_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TOP_TO_TOP, int32_t)
 
-inline jint ADXConstraintSet_get_VERTICAL_BIAS(void);
+inline int32_t ADXConstraintSet_get_VERTICAL_BIAS(void);
 #define ADXConstraintSet_VERTICAL_BIAS 37
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VERTICAL_BIAS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VERTICAL_BIAS, int32_t)
 
-inline jint ADXConstraintSet_get_VIEW_ID(void);
+inline int32_t ADXConstraintSet_get_VIEW_ID(void);
 #define ADXConstraintSet_VIEW_ID 38
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VIEW_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VIEW_ID, int32_t)
 
-inline jint ADXConstraintSet_get_HORIZONTAL_WEIGHT(void);
+inline int32_t ADXConstraintSet_get_HORIZONTAL_WEIGHT(void);
 #define ADXConstraintSet_HORIZONTAL_WEIGHT 39
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HORIZONTAL_WEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HORIZONTAL_WEIGHT, int32_t)
 
-inline jint ADXConstraintSet_get_VERTICAL_WEIGHT(void);
+inline int32_t ADXConstraintSet_get_VERTICAL_WEIGHT(void);
 #define ADXConstraintSet_VERTICAL_WEIGHT 40
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VERTICAL_WEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VERTICAL_WEIGHT, int32_t)
 
-inline jint ADXConstraintSet_get_HORIZONTAL_STYLE(void);
+inline int32_t ADXConstraintSet_get_HORIZONTAL_STYLE(void);
 #define ADXConstraintSet_HORIZONTAL_STYLE 41
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HORIZONTAL_STYLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HORIZONTAL_STYLE, int32_t)
 
-inline jint ADXConstraintSet_get_VERTICAL_STYLE(void);
+inline int32_t ADXConstraintSet_get_VERTICAL_STYLE(void);
 #define ADXConstraintSet_VERTICAL_STYLE 42
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VERTICAL_STYLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VERTICAL_STYLE, int32_t)
 
-inline jint ADXConstraintSet_get_ALPHA(void);
+inline int32_t ADXConstraintSet_get_ALPHA(void);
 #define ADXConstraintSet_ALPHA 43
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ALPHA, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ALPHA, int32_t)
 
-inline jint ADXConstraintSet_get_ELEVATION(void);
+inline int32_t ADXConstraintSet_get_ELEVATION(void);
 #define ADXConstraintSet_ELEVATION 44
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ELEVATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ELEVATION, int32_t)
 
-inline jint ADXConstraintSet_get_ROTATION_X(void);
+inline int32_t ADXConstraintSet_get_ROTATION_X(void);
 #define ADXConstraintSet_ROTATION_X 45
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ROTATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ROTATION_X, int32_t)
 
-inline jint ADXConstraintSet_get_ROTATION_Y(void);
+inline int32_t ADXConstraintSet_get_ROTATION_Y(void);
 #define ADXConstraintSet_ROTATION_Y 46
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ROTATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ROTATION_Y, int32_t)
 
-inline jint ADXConstraintSet_get_SCALE_X(void);
+inline int32_t ADXConstraintSet_get_SCALE_X(void);
 #define ADXConstraintSet_SCALE_X 47
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, SCALE_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, SCALE_X, int32_t)
 
-inline jint ADXConstraintSet_get_SCALE_Y(void);
+inline int32_t ADXConstraintSet_get_SCALE_Y(void);
 #define ADXConstraintSet_SCALE_Y 48
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, SCALE_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, SCALE_Y, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSFORM_PIVOT_X(void);
+inline int32_t ADXConstraintSet_get_TRANSFORM_PIVOT_X(void);
 #define ADXConstraintSet_TRANSFORM_PIVOT_X 49
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSFORM_PIVOT_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSFORM_PIVOT_X, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSFORM_PIVOT_Y(void);
+inline int32_t ADXConstraintSet_get_TRANSFORM_PIVOT_Y(void);
 #define ADXConstraintSet_TRANSFORM_PIVOT_Y 50
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSFORM_PIVOT_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSFORM_PIVOT_Y, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSLATION_X(void);
+inline int32_t ADXConstraintSet_get_TRANSLATION_X(void);
 #define ADXConstraintSet_TRANSLATION_X 51
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSLATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSLATION_X, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSLATION_Y(void);
+inline int32_t ADXConstraintSet_get_TRANSLATION_Y(void);
 #define ADXConstraintSet_TRANSLATION_Y 52
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSLATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSLATION_Y, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSLATION_Z(void);
+inline int32_t ADXConstraintSet_get_TRANSLATION_Z(void);
 #define ADXConstraintSet_TRANSLATION_Z 53
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSLATION_Z, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSLATION_Z, int32_t)
 
-inline jint ADXConstraintSet_get_WIDTH_DEFAULT(void);
+inline int32_t ADXConstraintSet_get_WIDTH_DEFAULT(void);
 #define ADXConstraintSet_WIDTH_DEFAULT 54
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_DEFAULT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_DEFAULT, int32_t)
 
-inline jint ADXConstraintSet_get_HEIGHT_DEFAULT(void);
+inline int32_t ADXConstraintSet_get_HEIGHT_DEFAULT(void);
 #define ADXConstraintSet_HEIGHT_DEFAULT 55
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_DEFAULT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_DEFAULT, int32_t)
 
-inline jint ADXConstraintSet_get_WIDTH_MAX(void);
+inline int32_t ADXConstraintSet_get_WIDTH_MAX(void);
 #define ADXConstraintSet_WIDTH_MAX 56
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_MAX, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_MAX, int32_t)
 
-inline jint ADXConstraintSet_get_HEIGHT_MAX(void);
+inline int32_t ADXConstraintSet_get_HEIGHT_MAX(void);
 #define ADXConstraintSet_HEIGHT_MAX 57
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_MAX, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_MAX, int32_t)
 
-inline jint ADXConstraintSet_get_WIDTH_MIN(void);
+inline int32_t ADXConstraintSet_get_WIDTH_MIN(void);
 #define ADXConstraintSet_WIDTH_MIN 58
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_MIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_MIN, int32_t)
 
-inline jint ADXConstraintSet_get_HEIGHT_MIN(void);
+inline int32_t ADXConstraintSet_get_HEIGHT_MIN(void);
 #define ADXConstraintSet_HEIGHT_MIN 59
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_MIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_MIN, int32_t)
 
-inline jint ADXConstraintSet_get_ROTATION(void);
+inline int32_t ADXConstraintSet_get_ROTATION(void);
 #define ADXConstraintSet_ROTATION 60
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ROTATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ROTATION, int32_t)
 
-inline jint ADXConstraintSet_get_CIRCLE(void);
+inline int32_t ADXConstraintSet_get_CIRCLE(void);
 #define ADXConstraintSet_CIRCLE 61
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CIRCLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CIRCLE, int32_t)
 
-inline jint ADXConstraintSet_get_CIRCLE_RADIUS(void);
+inline int32_t ADXConstraintSet_get_CIRCLE_RADIUS(void);
 #define ADXConstraintSet_CIRCLE_RADIUS 62
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CIRCLE_RADIUS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CIRCLE_RADIUS, int32_t)
 
-inline jint ADXConstraintSet_get_CIRCLE_ANGLE(void);
+inline int32_t ADXConstraintSet_get_CIRCLE_ANGLE(void);
 #define ADXConstraintSet_CIRCLE_ANGLE 63
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CIRCLE_ANGLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CIRCLE_ANGLE, int32_t)
 
-inline jint ADXConstraintSet_get_ANIMATE_RELATIVE_TO(void);
+inline int32_t ADXConstraintSet_get_ANIMATE_RELATIVE_TO(void);
 #define ADXConstraintSet_ANIMATE_RELATIVE_TO 64
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ANIMATE_RELATIVE_TO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ANIMATE_RELATIVE_TO, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSITION_EASING(void);
+inline int32_t ADXConstraintSet_get_TRANSITION_EASING(void);
 #define ADXConstraintSet_TRANSITION_EASING 65
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSITION_EASING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSITION_EASING, int32_t)
 
-inline jint ADXConstraintSet_get_DRAW_PATH(void);
+inline int32_t ADXConstraintSet_get_DRAW_PATH(void);
 #define ADXConstraintSet_DRAW_PATH 66
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, DRAW_PATH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, DRAW_PATH, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSITION_PATH_ROTATE(void);
+inline int32_t ADXConstraintSet_get_TRANSITION_PATH_ROTATE(void);
 #define ADXConstraintSet_TRANSITION_PATH_ROTATE 67
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSITION_PATH_ROTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSITION_PATH_ROTATE, int32_t)
 
-inline jint ADXConstraintSet_get_PROGRESS(void);
+inline int32_t ADXConstraintSet_get_PROGRESS(void);
 #define ADXConstraintSet_PROGRESS 68
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, PROGRESS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, PROGRESS, int32_t)
 
-inline jint ADXConstraintSet_get_WIDTH_PERCENT(void);
+inline int32_t ADXConstraintSet_get_WIDTH_PERCENT(void);
 #define ADXConstraintSet_WIDTH_PERCENT 69
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, WIDTH_PERCENT, int32_t)
 
-inline jint ADXConstraintSet_get_HEIGHT_PERCENT(void);
+inline int32_t ADXConstraintSet_get_HEIGHT_PERCENT(void);
 #define ADXConstraintSet_HEIGHT_PERCENT 70
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, HEIGHT_PERCENT, int32_t)
 
-inline jint ADXConstraintSet_get_CHAIN_USE_RTL(void);
+inline int32_t ADXConstraintSet_get_CHAIN_USE_RTL(void);
 #define ADXConstraintSet_CHAIN_USE_RTL 71
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CHAIN_USE_RTL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CHAIN_USE_RTL, int32_t)
 
-inline jint ADXConstraintSet_get_BARRIER_DIRECTION(void);
+inline int32_t ADXConstraintSet_get_BARRIER_DIRECTION(void);
 #define ADXConstraintSet_BARRIER_DIRECTION 72
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_DIRECTION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_DIRECTION, int32_t)
 
-inline jint ADXConstraintSet_get_BARRIER_MARGIN(void);
+inline int32_t ADXConstraintSet_get_BARRIER_MARGIN(void);
 #define ADXConstraintSet_BARRIER_MARGIN 73
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_CONSTRAINT_REFERENCED_IDS(void);
+inline int32_t ADXConstraintSet_get_CONSTRAINT_REFERENCED_IDS(void);
 #define ADXConstraintSet_CONSTRAINT_REFERENCED_IDS 74
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINT_REFERENCED_IDS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINT_REFERENCED_IDS, int32_t)
 
-inline jint ADXConstraintSet_get_BARRIER_ALLOWS_GONE_WIDGETS(void);
+inline int32_t ADXConstraintSet_get_BARRIER_ALLOWS_GONE_WIDGETS(void);
 #define ADXConstraintSet_BARRIER_ALLOWS_GONE_WIDGETS 75
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_ALLOWS_GONE_WIDGETS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BARRIER_ALLOWS_GONE_WIDGETS, int32_t)
 
-inline jint ADXConstraintSet_get_PATH_MOTION_ARC(void);
+inline int32_t ADXConstraintSet_get_PATH_MOTION_ARC(void);
 #define ADXConstraintSet_PATH_MOTION_ARC 76
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, PATH_MOTION_ARC, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, PATH_MOTION_ARC, int32_t)
 
-inline jint ADXConstraintSet_get_CONSTRAINT_TAG(void);
+inline int32_t ADXConstraintSet_get_CONSTRAINT_TAG(void);
 #define ADXConstraintSet_CONSTRAINT_TAG 77
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINT_TAG, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINT_TAG, int32_t)
 
-inline jint ADXConstraintSet_get_VISIBILITY_MODE(void);
+inline int32_t ADXConstraintSet_get_VISIBILITY_MODE(void);
 #define ADXConstraintSet_VISIBILITY_MODE 78
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VISIBILITY_MODE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, VISIBILITY_MODE, int32_t)
 
-inline jint ADXConstraintSet_get_MOTION_STAGGER(void);
+inline int32_t ADXConstraintSet_get_MOTION_STAGGER(void);
 #define ADXConstraintSet_MOTION_STAGGER 79
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, MOTION_STAGGER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, MOTION_STAGGER, int32_t)
 
-inline jint ADXConstraintSet_get_CONSTRAINED_WIDTH(void);
+inline int32_t ADXConstraintSet_get_CONSTRAINED_WIDTH(void);
 #define ADXConstraintSet_CONSTRAINED_WIDTH 80
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINED_WIDTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINED_WIDTH, int32_t)
 
-inline jint ADXConstraintSet_get_CONSTRAINED_HEIGHT(void);
+inline int32_t ADXConstraintSet_get_CONSTRAINED_HEIGHT(void);
 #define ADXConstraintSet_CONSTRAINED_HEIGHT 81
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINED_HEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, CONSTRAINED_HEIGHT, int32_t)
 
-inline jint ADXConstraintSet_get_ANIMATE_CIRCLE_ANGLE_TO(void);
+inline int32_t ADXConstraintSet_get_ANIMATE_CIRCLE_ANGLE_TO(void);
 #define ADXConstraintSet_ANIMATE_CIRCLE_ANGLE_TO 82
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ANIMATE_CIRCLE_ANGLE_TO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, ANIMATE_CIRCLE_ANGLE_TO, int32_t)
 
-inline jint ADXConstraintSet_get_TRANSFORM_PIVOT_TARGET(void);
+inline int32_t ADXConstraintSet_get_TRANSFORM_PIVOT_TARGET(void);
 #define ADXConstraintSet_TRANSFORM_PIVOT_TARGET 83
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSFORM_PIVOT_TARGET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, TRANSFORM_PIVOT_TARGET, int32_t)
 
-inline jint ADXConstraintSet_get_QUANTIZE_MOTION_STEPS(void);
+inline int32_t ADXConstraintSet_get_QUANTIZE_MOTION_STEPS(void);
 #define ADXConstraintSet_QUANTIZE_MOTION_STEPS 84
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_STEPS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_STEPS, int32_t)
 
-inline jint ADXConstraintSet_get_QUANTIZE_MOTION_PHASE(void);
+inline int32_t ADXConstraintSet_get_QUANTIZE_MOTION_PHASE(void);
 #define ADXConstraintSet_QUANTIZE_MOTION_PHASE 85
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_PHASE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_PHASE, int32_t)
 
-inline jint ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR(void);
+inline int32_t ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR(void);
 #define ADXConstraintSet_QUANTIZE_MOTION_INTERPOLATOR 86
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR, int32_t)
 
-inline jint ADXConstraintSet_get_UNUSED(void);
+inline int32_t ADXConstraintSet_get_UNUSED(void);
 #define ADXConstraintSet_UNUSED 87
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, UNUSED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, UNUSED, int32_t)
 
-inline jint ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR_TYPE(void);
+inline int32_t ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR_TYPE(void);
 #define ADXConstraintSet_QUANTIZE_MOTION_INTERPOLATOR_TYPE 88
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR_TYPE, int32_t)
 
-inline jint ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR_ID(void);
+inline int32_t ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR_ID(void);
 #define ADXConstraintSet_QUANTIZE_MOTION_INTERPOLATOR_ID 89
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR_ID, int32_t)
 
-inline jint ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR_STR(void);
+inline int32_t ADXConstraintSet_get_QUANTIZE_MOTION_INTERPOLATOR_STR(void);
 #define ADXConstraintSet_QUANTIZE_MOTION_INTERPOLATOR_STR 90
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR_STR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, QUANTIZE_MOTION_INTERPOLATOR_STR, int32_t)
 
-inline jint ADXConstraintSet_get_BASELINE_TO_TOP(void);
+inline int32_t ADXConstraintSet_get_BASELINE_TO_TOP(void);
 #define ADXConstraintSet_BASELINE_TO_TOP 91
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_TO_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_TO_TOP, int32_t)
 
-inline jint ADXConstraintSet_get_BASELINE_TO_BOTTOM(void);
+inline int32_t ADXConstraintSet_get_BASELINE_TO_BOTTOM(void);
 #define ADXConstraintSet_BASELINE_TO_BOTTOM 92
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_TO_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_TO_BOTTOM, int32_t)
 
-inline jint ADXConstraintSet_get_BASELINE_MARGIN(void);
+inline int32_t ADXConstraintSet_get_BASELINE_MARGIN(void);
 #define ADXConstraintSet_BASELINE_MARGIN 93
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, BASELINE_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_GONE_BASELINE_MARGIN(void);
+inline int32_t ADXConstraintSet_get_GONE_BASELINE_MARGIN(void);
 #define ADXConstraintSet_GONE_BASELINE_MARGIN 94
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_BASELINE_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, GONE_BASELINE_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_get_LAYOUT_CONSTRAINT_WIDTH(void);
+inline int32_t ADXConstraintSet_get_LAYOUT_CONSTRAINT_WIDTH(void);
 #define ADXConstraintSet_LAYOUT_CONSTRAINT_WIDTH 95
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_CONSTRAINT_WIDTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_CONSTRAINT_WIDTH, int32_t)
 
-inline jint ADXConstraintSet_get_LAYOUT_CONSTRAINT_HEIGHT(void);
+inline int32_t ADXConstraintSet_get_LAYOUT_CONSTRAINT_HEIGHT(void);
 #define ADXConstraintSet_LAYOUT_CONSTRAINT_HEIGHT 96
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_CONSTRAINT_HEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_CONSTRAINT_HEIGHT, int32_t)
 
-inline jint ADXConstraintSet_get_LAYOUT_WRAP_BEHAVIOR(void);
+inline int32_t ADXConstraintSet_get_LAYOUT_WRAP_BEHAVIOR(void);
 #define ADXConstraintSet_LAYOUT_WRAP_BEHAVIOR 97
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_WRAP_BEHAVIOR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, LAYOUT_WRAP_BEHAVIOR, int32_t)
 
-inline jint ADXConstraintSet_get_MOTION_TARGET(void);
+inline int32_t ADXConstraintSet_get_MOTION_TARGET(void);
 #define ADXConstraintSet_MOTION_TARGET 98
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, MOTION_TARGET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet, MOTION_TARGET, int32_t)
 
 inline NSString *ADXConstraintSet_get_KEY_WEIGHT(void);
 static NSString *ADXConstraintSet_KEY_WEIGHT = @"weight";
@@ -520,356 +531,356 @@ inline NSString *ADXConstraintSet_get_KEY_PERCENT_PARENT(void);
 static NSString *ADXConstraintSet_KEY_PERCENT_PARENT = @"parent";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintSet, KEY_PERCENT_PARENT, NSString *)
 
-__attribute__((unused)) static void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(ADXConstraintSet *self, jint leftId, jint leftSide, jint rightId, jint rightSide, IOSIntArray *chainIds, IOSFloatArray *weights, jint style, jint left, jint right);
+__attribute__((unused)) static void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(ADXConstraintSet *self, int32_t leftId, int32_t leftSide, int32_t rightId, int32_t rightSide, IOSIntArray *chainIds, IOSFloatArray *weights, int32_t style, int32_t left, int32_t right);
 
-__attribute__((unused)) static NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, jint side);
+__attribute__((unused)) static NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, int32_t side);
 
-__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(ADXConstraintSet_Constraint *c, jint type, jfloat value);
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(ADXConstraintSet_Constraint *c, int32_t type, float value);
 
-__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(ADXConstraintSet_Constraint *c, jint type, jint value);
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(ADXConstraintSet_Constraint *c, int32_t type, int32_t value);
 
-__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(ADXConstraintSet_Constraint *c, jint type, NSString *value);
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(ADXConstraintSet_Constraint *c, int32_t type, NSString *value);
 
-__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(ADXConstraintSet_Constraint *c, jint type, jboolean value);
+__attribute__((unused)) static void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(ADXConstraintSet_Constraint *c, int32_t type, bool value);
 
 __attribute__((unused)) static IOSIntArray *ADXConstraintSet_convertReferenceStringWithADView_withNSString_(ADXConstraintSet *self, ADView *view, NSString *referenceIdString);
 
-inline jint ADXConstraintSet_Layout_get_BASELINE_TO_BASELINE(void);
+inline int32_t ADXConstraintSet_Layout_get_BASELINE_TO_BASELINE(void);
 #define ADXConstraintSet_Layout_BASELINE_TO_BASELINE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BASELINE_TO_BASELINE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BASELINE_TO_BASELINE, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_BOTTOM_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_BOTTOM_MARGIN(void);
 #define ADXConstraintSet_Layout_BOTTOM_MARGIN 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BOTTOM_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BOTTOM_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_BOTTOM_TO_BOTTOM(void);
+inline int32_t ADXConstraintSet_Layout_get_BOTTOM_TO_BOTTOM(void);
 #define ADXConstraintSet_Layout_BOTTOM_TO_BOTTOM 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BOTTOM_TO_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BOTTOM_TO_BOTTOM, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_BOTTOM_TO_TOP(void);
+inline int32_t ADXConstraintSet_Layout_get_BOTTOM_TO_TOP(void);
 #define ADXConstraintSet_Layout_BOTTOM_TO_TOP 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BOTTOM_TO_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BOTTOM_TO_TOP, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_DIMENSION_RATIO(void);
+inline int32_t ADXConstraintSet_Layout_get_DIMENSION_RATIO(void);
 #define ADXConstraintSet_Layout_DIMENSION_RATIO 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, DIMENSION_RATIO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, DIMENSION_RATIO, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_EDITOR_ABSOLUTE_X(void);
+inline int32_t ADXConstraintSet_Layout_get_EDITOR_ABSOLUTE_X(void);
 #define ADXConstraintSet_Layout_EDITOR_ABSOLUTE_X 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, EDITOR_ABSOLUTE_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, EDITOR_ABSOLUTE_X, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_EDITOR_ABSOLUTE_Y(void);
+inline int32_t ADXConstraintSet_Layout_get_EDITOR_ABSOLUTE_Y(void);
 #define ADXConstraintSet_Layout_EDITOR_ABSOLUTE_Y 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, EDITOR_ABSOLUTE_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, EDITOR_ABSOLUTE_Y, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_END_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_END_MARGIN(void);
 #define ADXConstraintSet_Layout_END_MARGIN 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, END_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, END_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_END_TO_END(void);
+inline int32_t ADXConstraintSet_Layout_get_END_TO_END(void);
 #define ADXConstraintSet_Layout_END_TO_END 9
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, END_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, END_TO_END, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_END_TO_START(void);
+inline int32_t ADXConstraintSet_Layout_get_END_TO_START(void);
 #define ADXConstraintSet_Layout_END_TO_START 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, END_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, END_TO_START, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GONE_BOTTOM_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_GONE_BOTTOM_MARGIN(void);
 #define ADXConstraintSet_Layout_GONE_BOTTOM_MARGIN 11
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_BOTTOM_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_BOTTOM_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GONE_END_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_GONE_END_MARGIN(void);
 #define ADXConstraintSet_Layout_GONE_END_MARGIN 12
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_END_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_END_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GONE_LEFT_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_GONE_LEFT_MARGIN(void);
 #define ADXConstraintSet_Layout_GONE_LEFT_MARGIN 13
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_LEFT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_LEFT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GONE_RIGHT_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_GONE_RIGHT_MARGIN(void);
 #define ADXConstraintSet_Layout_GONE_RIGHT_MARGIN 14
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_RIGHT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_RIGHT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GONE_START_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_GONE_START_MARGIN(void);
 #define ADXConstraintSet_Layout_GONE_START_MARGIN 15
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_START_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_START_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GONE_TOP_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_GONE_TOP_MARGIN(void);
 #define ADXConstraintSet_Layout_GONE_TOP_MARGIN 16
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_TOP_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GONE_TOP_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GUIDE_BEGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_GUIDE_BEGIN(void);
 #define ADXConstraintSet_Layout_GUIDE_BEGIN 17
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GUIDE_BEGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GUIDE_BEGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GUIDE_END(void);
+inline int32_t ADXConstraintSet_Layout_get_GUIDE_END(void);
 #define ADXConstraintSet_Layout_GUIDE_END 18
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GUIDE_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GUIDE_END, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_GUIDE_PERCENT(void);
+inline int32_t ADXConstraintSet_Layout_get_GUIDE_PERCENT(void);
 #define ADXConstraintSet_Layout_GUIDE_PERCENT 19
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GUIDE_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, GUIDE_PERCENT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_HORIZONTAL_BIAS(void);
+inline int32_t ADXConstraintSet_Layout_get_HORIZONTAL_BIAS(void);
 #define ADXConstraintSet_Layout_HORIZONTAL_BIAS 20
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HORIZONTAL_BIAS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HORIZONTAL_BIAS, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_LAYOUT_HEIGHT(void);
+inline int32_t ADXConstraintSet_Layout_get_LAYOUT_HEIGHT(void);
 #define ADXConstraintSet_Layout_LAYOUT_HEIGHT 21
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_HEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_HEIGHT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_LAYOUT_WIDTH(void);
+inline int32_t ADXConstraintSet_Layout_get_LAYOUT_WIDTH(void);
 #define ADXConstraintSet_Layout_LAYOUT_WIDTH 22
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_WIDTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_WIDTH, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_LEFT_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_LEFT_MARGIN(void);
 #define ADXConstraintSet_Layout_LEFT_MARGIN 23
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LEFT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LEFT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_LEFT_TO_LEFT(void);
+inline int32_t ADXConstraintSet_Layout_get_LEFT_TO_LEFT(void);
 #define ADXConstraintSet_Layout_LEFT_TO_LEFT 24
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LEFT_TO_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LEFT_TO_LEFT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_LEFT_TO_RIGHT(void);
+inline int32_t ADXConstraintSet_Layout_get_LEFT_TO_RIGHT(void);
 #define ADXConstraintSet_Layout_LEFT_TO_RIGHT 25
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LEFT_TO_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LEFT_TO_RIGHT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_ORIENTATION(void);
+inline int32_t ADXConstraintSet_Layout_get_ORIENTATION(void);
 #define ADXConstraintSet_Layout_ORIENTATION 26
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, ORIENTATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, ORIENTATION, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_RIGHT_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_RIGHT_MARGIN(void);
 #define ADXConstraintSet_Layout_RIGHT_MARGIN 27
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, RIGHT_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, RIGHT_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_RIGHT_TO_LEFT(void);
+inline int32_t ADXConstraintSet_Layout_get_RIGHT_TO_LEFT(void);
 #define ADXConstraintSet_Layout_RIGHT_TO_LEFT 28
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, RIGHT_TO_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, RIGHT_TO_LEFT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_RIGHT_TO_RIGHT(void);
+inline int32_t ADXConstraintSet_Layout_get_RIGHT_TO_RIGHT(void);
 #define ADXConstraintSet_Layout_RIGHT_TO_RIGHT 29
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, RIGHT_TO_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, RIGHT_TO_RIGHT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_START_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_START_MARGIN(void);
 #define ADXConstraintSet_Layout_START_MARGIN 30
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, START_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, START_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_START_TO_END(void);
+inline int32_t ADXConstraintSet_Layout_get_START_TO_END(void);
 #define ADXConstraintSet_Layout_START_TO_END 31
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, START_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, START_TO_END, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_START_TO_START(void);
+inline int32_t ADXConstraintSet_Layout_get_START_TO_START(void);
 #define ADXConstraintSet_Layout_START_TO_START 32
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, START_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, START_TO_START, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_TOP_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_TOP_MARGIN(void);
 #define ADXConstraintSet_Layout_TOP_MARGIN 33
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, TOP_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, TOP_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_TOP_TO_BOTTOM(void);
+inline int32_t ADXConstraintSet_Layout_get_TOP_TO_BOTTOM(void);
 #define ADXConstraintSet_Layout_TOP_TO_BOTTOM 34
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, TOP_TO_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, TOP_TO_BOTTOM, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_TOP_TO_TOP(void);
+inline int32_t ADXConstraintSet_Layout_get_TOP_TO_TOP(void);
 #define ADXConstraintSet_Layout_TOP_TO_TOP 35
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, TOP_TO_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, TOP_TO_TOP, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_VERTICAL_BIAS(void);
+inline int32_t ADXConstraintSet_Layout_get_VERTICAL_BIAS(void);
 #define ADXConstraintSet_Layout_VERTICAL_BIAS 36
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, VERTICAL_BIAS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, VERTICAL_BIAS, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_HORIZONTAL_WEIGHT(void);
+inline int32_t ADXConstraintSet_Layout_get_HORIZONTAL_WEIGHT(void);
 #define ADXConstraintSet_Layout_HORIZONTAL_WEIGHT 37
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HORIZONTAL_WEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HORIZONTAL_WEIGHT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_VERTICAL_WEIGHT(void);
+inline int32_t ADXConstraintSet_Layout_get_VERTICAL_WEIGHT(void);
 #define ADXConstraintSet_Layout_VERTICAL_WEIGHT 38
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, VERTICAL_WEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, VERTICAL_WEIGHT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_HORIZONTAL_STYLE(void);
+inline int32_t ADXConstraintSet_Layout_get_HORIZONTAL_STYLE(void);
 #define ADXConstraintSet_Layout_HORIZONTAL_STYLE 39
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HORIZONTAL_STYLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HORIZONTAL_STYLE, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_VERTICAL_STYLE(void);
+inline int32_t ADXConstraintSet_Layout_get_VERTICAL_STYLE(void);
 #define ADXConstraintSet_Layout_VERTICAL_STYLE 40
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, VERTICAL_STYLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, VERTICAL_STYLE, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_LAYOUT_CONSTRAINT_WIDTH(void);
+inline int32_t ADXConstraintSet_Layout_get_LAYOUT_CONSTRAINT_WIDTH(void);
 #define ADXConstraintSet_Layout_LAYOUT_CONSTRAINT_WIDTH 41
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_CONSTRAINT_WIDTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_CONSTRAINT_WIDTH, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_LAYOUT_CONSTRAINT_HEIGHT(void);
+inline int32_t ADXConstraintSet_Layout_get_LAYOUT_CONSTRAINT_HEIGHT(void);
 #define ADXConstraintSet_Layout_LAYOUT_CONSTRAINT_HEIGHT 42
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_CONSTRAINT_HEIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, LAYOUT_CONSTRAINT_HEIGHT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_CIRCLE(void);
+inline int32_t ADXConstraintSet_Layout_get_CIRCLE(void);
 #define ADXConstraintSet_Layout_CIRCLE 61
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CIRCLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CIRCLE, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_CIRCLE_RADIUS(void);
+inline int32_t ADXConstraintSet_Layout_get_CIRCLE_RADIUS(void);
 #define ADXConstraintSet_Layout_CIRCLE_RADIUS 62
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CIRCLE_RADIUS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CIRCLE_RADIUS, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_CIRCLE_ANGLE(void);
+inline int32_t ADXConstraintSet_Layout_get_CIRCLE_ANGLE(void);
 #define ADXConstraintSet_Layout_CIRCLE_ANGLE 63
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CIRCLE_ANGLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CIRCLE_ANGLE, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_WIDTH_PERCENT(void);
+inline int32_t ADXConstraintSet_Layout_get_WIDTH_PERCENT(void);
 #define ADXConstraintSet_Layout_WIDTH_PERCENT 69
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, WIDTH_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, WIDTH_PERCENT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_HEIGHT_PERCENT(void);
+inline int32_t ADXConstraintSet_Layout_get_HEIGHT_PERCENT(void);
 #define ADXConstraintSet_Layout_HEIGHT_PERCENT 70
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HEIGHT_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, HEIGHT_PERCENT, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_CHAIN_USE_RTL(void);
+inline int32_t ADXConstraintSet_Layout_get_CHAIN_USE_RTL(void);
 #define ADXConstraintSet_Layout_CHAIN_USE_RTL 71
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CHAIN_USE_RTL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CHAIN_USE_RTL, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_BARRIER_DIRECTION(void);
+inline int32_t ADXConstraintSet_Layout_get_BARRIER_DIRECTION(void);
 #define ADXConstraintSet_Layout_BARRIER_DIRECTION 72
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BARRIER_DIRECTION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BARRIER_DIRECTION, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_BARRIER_MARGIN(void);
+inline int32_t ADXConstraintSet_Layout_get_BARRIER_MARGIN(void);
 #define ADXConstraintSet_Layout_BARRIER_MARGIN 73
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BARRIER_MARGIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BARRIER_MARGIN, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_CONSTRAINT_REFERENCED_IDS(void);
+inline int32_t ADXConstraintSet_Layout_get_CONSTRAINT_REFERENCED_IDS(void);
 #define ADXConstraintSet_Layout_CONSTRAINT_REFERENCED_IDS 74
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CONSTRAINT_REFERENCED_IDS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, CONSTRAINT_REFERENCED_IDS, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_BARRIER_ALLOWS_GONE_WIDGETS(void);
+inline int32_t ADXConstraintSet_Layout_get_BARRIER_ALLOWS_GONE_WIDGETS(void);
 #define ADXConstraintSet_Layout_BARRIER_ALLOWS_GONE_WIDGETS 75
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BARRIER_ALLOWS_GONE_WIDGETS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, BARRIER_ALLOWS_GONE_WIDGETS, int32_t)
 
-inline jint ADXConstraintSet_Layout_get_UNUSED(void);
+inline int32_t ADXConstraintSet_Layout_get_UNUSED(void);
 #define ADXConstraintSet_Layout_UNUSED 76
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, UNUSED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Layout, UNUSED, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_ROTATION(void);
+inline int32_t ADXConstraintSet_Transform_get_ROTATION(void);
 #define ADXConstraintSet_Transform_ROTATION 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ROTATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ROTATION, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_ROTATION_X(void);
+inline int32_t ADXConstraintSet_Transform_get_ROTATION_X(void);
 #define ADXConstraintSet_Transform_ROTATION_X 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ROTATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ROTATION_X, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_ROTATION_Y(void);
+inline int32_t ADXConstraintSet_Transform_get_ROTATION_Y(void);
 #define ADXConstraintSet_Transform_ROTATION_Y 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ROTATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ROTATION_Y, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_SCALE_X(void);
+inline int32_t ADXConstraintSet_Transform_get_SCALE_X(void);
 #define ADXConstraintSet_Transform_SCALE_X 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, SCALE_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, SCALE_X, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_SCALE_Y(void);
+inline int32_t ADXConstraintSet_Transform_get_SCALE_Y(void);
 #define ADXConstraintSet_Transform_SCALE_Y 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, SCALE_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, SCALE_Y, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_TRANSFORM_PIVOT_X(void);
+inline int32_t ADXConstraintSet_Transform_get_TRANSFORM_PIVOT_X(void);
 #define ADXConstraintSet_Transform_TRANSFORM_PIVOT_X 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSFORM_PIVOT_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSFORM_PIVOT_X, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_TRANSFORM_PIVOT_Y(void);
+inline int32_t ADXConstraintSet_Transform_get_TRANSFORM_PIVOT_Y(void);
 #define ADXConstraintSet_Transform_TRANSFORM_PIVOT_Y 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSFORM_PIVOT_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSFORM_PIVOT_Y, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_TRANSLATION_X(void);
+inline int32_t ADXConstraintSet_Transform_get_TRANSLATION_X(void);
 #define ADXConstraintSet_Transform_TRANSLATION_X 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSLATION_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSLATION_X, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_TRANSLATION_Y(void);
+inline int32_t ADXConstraintSet_Transform_get_TRANSLATION_Y(void);
 #define ADXConstraintSet_Transform_TRANSLATION_Y 9
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSLATION_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSLATION_Y, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_TRANSLATION_Z(void);
+inline int32_t ADXConstraintSet_Transform_get_TRANSLATION_Z(void);
 #define ADXConstraintSet_Transform_TRANSLATION_Z 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSLATION_Z, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSLATION_Z, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_ELEVATION(void);
+inline int32_t ADXConstraintSet_Transform_get_ELEVATION(void);
 #define ADXConstraintSet_Transform_ELEVATION 11
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ELEVATION, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, ELEVATION, int32_t)
 
-inline jint ADXConstraintSet_Transform_get_TRANSFORM_PIVOT_TARGET(void);
+inline int32_t ADXConstraintSet_Transform_get_TRANSFORM_PIVOT_TARGET(void);
 #define ADXConstraintSet_Transform_TRANSFORM_PIVOT_TARGET 12
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSFORM_PIVOT_TARGET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Transform, TRANSFORM_PIVOT_TARGET, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_INTERPOLATOR_REFERENCE_ID(void);
+inline int32_t ADXConstraintSet_Motion_get_INTERPOLATOR_REFERENCE_ID(void);
 #define ADXConstraintSet_Motion_INTERPOLATOR_REFERENCE_ID -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, INTERPOLATOR_REFERENCE_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, INTERPOLATOR_REFERENCE_ID, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_SPLINE_STRING(void);
+inline int32_t ADXConstraintSet_Motion_get_SPLINE_STRING(void);
 #define ADXConstraintSet_Motion_SPLINE_STRING -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, SPLINE_STRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, SPLINE_STRING, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_INTERPOLATOR_UNDEFINED(void);
+inline int32_t ADXConstraintSet_Motion_get_INTERPOLATOR_UNDEFINED(void);
 #define ADXConstraintSet_Motion_INTERPOLATOR_UNDEFINED -3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, INTERPOLATOR_UNDEFINED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, INTERPOLATOR_UNDEFINED, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_TRANSITION_PATH_ROTATE(void);
+inline int32_t ADXConstraintSet_Motion_get_TRANSITION_PATH_ROTATE(void);
 #define ADXConstraintSet_Motion_TRANSITION_PATH_ROTATE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, TRANSITION_PATH_ROTATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, TRANSITION_PATH_ROTATE, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_PATH_MOTION_ARC(void);
+inline int32_t ADXConstraintSet_Motion_get_PATH_MOTION_ARC(void);
 #define ADXConstraintSet_Motion_PATH_MOTION_ARC 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, PATH_MOTION_ARC, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, PATH_MOTION_ARC, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_TRANSITION_EASING(void);
+inline int32_t ADXConstraintSet_Motion_get_TRANSITION_EASING(void);
 #define ADXConstraintSet_Motion_TRANSITION_EASING 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, TRANSITION_EASING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, TRANSITION_EASING, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_MOTION_DRAW_PATH(void);
+inline int32_t ADXConstraintSet_Motion_get_MOTION_DRAW_PATH(void);
 #define ADXConstraintSet_Motion_MOTION_DRAW_PATH 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, MOTION_DRAW_PATH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, MOTION_DRAW_PATH, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_ANIMATE_RELATIVE_TO(void);
+inline int32_t ADXConstraintSet_Motion_get_ANIMATE_RELATIVE_TO(void);
 #define ADXConstraintSet_Motion_ANIMATE_RELATIVE_TO 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, ANIMATE_RELATIVE_TO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, ANIMATE_RELATIVE_TO, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_ANIMATE_CIRCLE_ANGLE_TO(void);
+inline int32_t ADXConstraintSet_Motion_get_ANIMATE_CIRCLE_ANGLE_TO(void);
 #define ADXConstraintSet_Motion_ANIMATE_CIRCLE_ANGLE_TO 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, ANIMATE_CIRCLE_ANGLE_TO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, ANIMATE_CIRCLE_ANGLE_TO, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_MOTION_STAGGER(void);
+inline int32_t ADXConstraintSet_Motion_get_MOTION_STAGGER(void);
 #define ADXConstraintSet_Motion_MOTION_STAGGER 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, MOTION_STAGGER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, MOTION_STAGGER, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_QUANTIZE_MOTION_STEPS(void);
+inline int32_t ADXConstraintSet_Motion_get_QUANTIZE_MOTION_STEPS(void);
 #define ADXConstraintSet_Motion_QUANTIZE_MOTION_STEPS 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, QUANTIZE_MOTION_STEPS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, QUANTIZE_MOTION_STEPS, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_QUANTIZE_MOTION_PHASE(void);
+inline int32_t ADXConstraintSet_Motion_get_QUANTIZE_MOTION_PHASE(void);
 #define ADXConstraintSet_Motion_QUANTIZE_MOTION_PHASE 9
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, QUANTIZE_MOTION_PHASE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, QUANTIZE_MOTION_PHASE, int32_t)
 
-inline jint ADXConstraintSet_Motion_get_QUANTIZE_MOTION_INTERPOLATOR(void);
+inline int32_t ADXConstraintSet_Motion_get_QUANTIZE_MOTION_INTERPOLATOR(void);
 #define ADXConstraintSet_Motion_QUANTIZE_MOTION_INTERPOLATOR 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, QUANTIZE_MOTION_INTERPOLATOR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Motion, QUANTIZE_MOTION_INTERPOLATOR, int32_t)
 
 @interface ADXConstraintSet_Constraint ()
 
-- (void)fillFromWithInt:(jint)viewId
+- (void)fillFromWithInt:(int32_t)viewId
 withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)param;
 
 @end
 
-__attribute__((unused)) static void ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(ADXConstraintSet_Constraint *self, jint viewId, ADXConstraintLayout_LayoutParams *param);
+__attribute__((unused)) static void ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(ADXConstraintSet_Constraint *self, int32_t viewId, ADXConstraintLayout_LayoutParams *param);
 
-inline jint ADXConstraintSet_Constraint_Delta_get_INITIAL_BOOLEAN(void);
+inline int32_t ADXConstraintSet_Constraint_Delta_get_INITIAL_BOOLEAN(void);
 #define ADXConstraintSet_Constraint_Delta_INITIAL_BOOLEAN 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_BOOLEAN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_BOOLEAN, int32_t)
 
-inline jint ADXConstraintSet_Constraint_Delta_get_INITIAL_INT(void);
+inline int32_t ADXConstraintSet_Constraint_Delta_get_INITIAL_INT(void);
 #define ADXConstraintSet_Constraint_Delta_INITIAL_INT 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_INT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_INT, int32_t)
 
-inline jint ADXConstraintSet_Constraint_Delta_get_INITIAL_FLOAT(void);
+inline int32_t ADXConstraintSet_Constraint_Delta_get_INITIAL_FLOAT(void);
 #define ADXConstraintSet_Constraint_Delta_INITIAL_FLOAT 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_FLOAT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_FLOAT, int32_t)
 
-inline jint ADXConstraintSet_Constraint_Delta_get_INITIAL_STRING(void);
+inline int32_t ADXConstraintSet_Constraint_Delta_get_INITIAL_STRING(void);
 #define ADXConstraintSet_Constraint_Delta_INITIAL_STRING 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_STRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintSet_Constraint_Delta, INITIAL_STRING, int32_t)
 
 @implementation ADXConstraintSet
 
@@ -880,13 +891,13 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (ADXConstraintSet_Constraint *)getParametersWithInt:(jint)mId {
+- (ADXConstraintSet_Constraint *)getParametersWithInt:(int32_t)mId {
   return [self getWithInt:mId];
 }
 
 - (void)readFallbackWithADXConstraintSet:(ADXConstraintSet *)set {
   for (JavaLangInteger * __strong key in nil_chk([((JavaUtilHashMap *) nil_chk(((ADXConstraintSet *) nil_chk(set))->mConstraints_)) keySet])) {
-    jint id_ = [((JavaLangInteger *) nil_chk(key)) intValue];
+    int32_t id_ = [((JavaLangInteger *) nil_chk(key)) intValue];
     ADXConstraintSet_Constraint *parent = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(set->mConstraints_)) getWithId:key]);
     if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
       [((JavaUtilHashMap *) nil_chk(mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(id_) withId:create_ADXConstraintSet_Constraint_init()];
@@ -916,11 +927,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)readFallbackWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout {
-  jint count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
+  for (int32_t i = 0; i < count; i++) {
     ADView *view = JreRetainedLocalValue([constraintLayout getChildAtWithInt:i]);
     ADXConstraintLayout_LayoutParams *param = (ADXConstraintLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(view)) getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
-    jint id_ = [view getId];
+    int32_t id_ = [view getId];
     if (mForceId_ && id_ == -1) {
       @throw create_JavaLangRuntimeException_initWithNSString_(@"All children of ConstraintLayout must have ids to use ConstraintSet");
     }
@@ -957,8 +968,8 @@ J2OBJC_IGNORE_DESIGNATED_END
         constraint->transform_->rotationY_ = [view getRotationY];
         constraint->transform_->scaleX_ = [view getScaleX];
         constraint->transform_->scaleY_ = [view getScaleY];
-        jfloat pivotX = [view getPivotX];
-        jfloat pivotY = [view getPivotY];
+        float pivotX = [view getPivotX];
+        float pivotY = [view getPivotY];
         if (pivotX != 0.0 || pivotY != 0.0) {
           constraint->transform_->transformPivotX_ = pivotX;
           constraint->transform_->transformPivotY_ = pivotY;
@@ -980,9 +991,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   for (ADXConstraintSet_Constraint * __strong from in nil_chk([((JavaUtilHashMap *) nil_chk(((ADXConstraintSet *) nil_chk(cs))->mConstraints_)) values])) {
     if (((ADXConstraintSet_Constraint *) nil_chk(from))->mDelta_ != nil) {
       if (from->mTargetString_ != nil) {
-        jint count = 0;
+        int32_t count = 0;
         for (JavaLangInteger *boxed__ in nil_chk([((JavaUtilHashMap *) nil_chk(mConstraints_)) keySet])) {
-          jint key = [((JavaLangInteger *) nil_chk(boxed__)) intValue];
+          int32_t key = [((JavaLangInteger *) nil_chk(boxed__)) intValue];
           ADXConstraintSet_Constraint *potential = JreRetainedLocalValue([self getConstraintWithInt:key]);
           if (((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(potential))->layout_))->mConstraintTag_ != nil) {
             if ([((NSString *) nil_chk(from->mTargetString_)) java_matches:potential->layout_->mConstraintTag_]) {
@@ -1012,12 +1023,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)cloneWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout {
-  jint count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
+  int32_t count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
   [((JavaUtilHashMap *) nil_chk(mConstraints_)) clear];
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADView *view = JreRetainedLocalValue([constraintLayout getChildAtWithInt:i]);
     ADXConstraintLayout_LayoutParams *param = (ADXConstraintLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(view)) getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
-    jint id_ = [view getId];
+    int32_t id_ = [view getId];
     if (mForceId_ && id_ == -1) {
       @throw create_JavaLangRuntimeException_initWithNSString_(@"All children of ConstraintLayout must have ids to use ConstraintSet");
     }
@@ -1038,8 +1049,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       constraint->transform_->rotationY_ = [view getRotationY];
       constraint->transform_->scaleX_ = [view getScaleX];
       constraint->transform_->scaleY_ = [view getScaleY];
-      jfloat pivotX = [view getPivotX];
-      jfloat pivotY = [view getPivotY];
+      float pivotX = [view getPivotX];
+      float pivotY = [view getPivotY];
       if (pivotX != 0.0 || pivotY != 0.0) {
         constraint->transform_->transformPivotX_ = pivotX;
         constraint->transform_->transformPivotY_ = pivotY;
@@ -1064,12 +1075,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)cloneWithADXConstraints:(ADXConstraints *)constraints {
-  jint count = [((ADXConstraints *) nil_chk(constraints)) getChildCount];
+  int32_t count = [((ADXConstraints *) nil_chk(constraints)) getChildCount];
   [((JavaUtilHashMap *) nil_chk(mConstraints_)) clear];
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADView *view = JreRetainedLocalValue([constraints getChildAtWithInt:i]);
     ADXConstraints_LayoutParams *param = (ADXConstraints_LayoutParams *) cast_chk([((ADView *) nil_chk(view)) getLayoutParams], [ADXConstraints_LayoutParams class]);
-    jint id_ = [view getId];
+    int32_t id_ = [view getId];
     if (mForceId_ && id_ == -1) {
       @throw create_JavaLangRuntimeException_initWithNSString_(@"All children of ConstraintLayout must have ids to use ConstraintSet");
     }
@@ -1095,10 +1106,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)applyCustomAttributesWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout {
-  jint count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
+  for (int32_t i = 0; i < count; i++) {
     ADView *view = JreRetainedLocalValue([constraintLayout getChildAtWithInt:i]);
-    jint id_ = [((ADView *) nil_chk(view)) getId];
+    int32_t id_ = [((ADView *) nil_chk(view)) getId];
     if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
       ADLog_wWithNSString_withNSString_(ADXConstraintSet_TAG, JreStrcat("$$", @"id unknown ", ADXCLDebug_getNameWithADView_(view)));
       continue;
@@ -1120,7 +1131,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                      withADXConstraintWidget:(ADXConstraintWidget *)child
         withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
                            withADSparseArray:(ADSparseArray *)mapIdToWidget {
-  jint id_ = [((ADXConstraintHelper *) nil_chk(helper)) getId];
+  int32_t id_ = [((ADXConstraintHelper *) nil_chk(helper)) getId];
   if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
     ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
     if (constraint != nil && [child isKindOfClass:[ADXHelperWidget class]]) {
@@ -1130,7 +1141,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)applyToLayoutParamsWithInt:(jint)id_
+- (void)applyToLayoutParamsWithInt:(int32_t)id_
 withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams {
   if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
     ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
@@ -1141,12 +1152,12 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
 }
 
 - (void)applyToInternalWithADXConstraintLayout:(ADXConstraintLayout *)constraintLayout
-                                   withBoolean:(jboolean)applyPostLayout {
-  jint count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
+                                   withBoolean:(bool)applyPostLayout {
+  int32_t count = [((ADXConstraintLayout *) nil_chk(constraintLayout)) getChildCount];
   JavaUtilHashSet *used = create_JavaUtilHashSet_initWithJavaUtilCollection_([((JavaUtilHashMap *) nil_chk(mConstraints_)) keySet]);
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADView *view = JreRetainedLocalValue([constraintLayout getChildAtWithInt:i]);
-    jint id_ = [((ADView *) nil_chk(view)) getId];
+    int32_t id_ = [((ADView *) nil_chk(view)) getId];
     if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
       ADLog_wWithNSString_withNSString_(ADXConstraintSet_TAG, JreStrcat("$$", @"id unknown ", ADXCLDebug_getNameWithADView_(view)));
       continue;
@@ -1199,11 +1210,11 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
           ADView *layout = (ADView *) cast_chk([view getParent], [ADView class]);
           ADView *center = JreRetainedLocalValue([((ADView *) nil_chk(layout)) findViewByIdWithInt:constraint->transform_->transformPivotTarget_]);
           if (center != nil) {
-            jfloat cy = ([center getTop] + [center getBottom]) / 2.0f;
-            jfloat cx = ([center getLeft] + [center getRight]) / 2.0f;
+            float cy = ([center getTop] + [center getBottom]) / 2.0f;
+            float cx = ([center getLeft] + [center getRight]) / 2.0f;
             if ([view getRight] - [view getLeft] > 0 && [view getBottom] - [view getTop] > 0) {
-              jfloat px = (cx - [view getLeft]);
-              jfloat py = (cy - [view getTop]);
+              float px = (cx - [view getLeft]);
+              float py = (cy - [view getTop]);
               [view setPivotXWithFloat:px];
               [view setPivotYWithFloat:py];
             }
@@ -1261,7 +1272,7 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
       [constraintLayout addViewWithADView:g withADViewGroup_LayoutParams:param];
     }
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADView *view = JreRetainedLocalValue([constraintLayout getChildAtWithInt:i]);
     if ([view isKindOfClass:[ADXConstraintHelper class]]) {
       ADXConstraintHelper *constraintHelper = (ADXConstraintHelper *) view;
@@ -1270,14 +1281,14 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)centerWithInt:(jint)centerID
-              withInt:(jint)firstID
-              withInt:(jint)firstSide
-              withInt:(jint)firstMargin
-              withInt:(jint)secondId
-              withInt:(jint)secondSide
-              withInt:(jint)secondMargin
-            withFloat:(jfloat)bias {
+- (void)centerWithInt:(int32_t)centerID
+              withInt:(int32_t)firstID
+              withInt:(int32_t)firstSide
+              withInt:(int32_t)firstMargin
+              withInt:(int32_t)secondId
+              withInt:(int32_t)secondSide
+              withInt:(int32_t)secondMargin
+            withFloat:(float)bias {
   if (firstMargin < 0) {
     @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"margin must be > 0");
   }
@@ -1313,14 +1324,14 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)centerHorizontallyWithInt:(jint)centerID
-                          withInt:(jint)leftId
-                          withInt:(jint)leftSide
-                          withInt:(jint)leftMargin
-                          withInt:(jint)rightId
-                          withInt:(jint)rightSide
-                          withInt:(jint)rightMargin
-                        withFloat:(jfloat)bias {
+- (void)centerHorizontallyWithInt:(int32_t)centerID
+                          withInt:(int32_t)leftId
+                          withInt:(int32_t)leftSide
+                          withInt:(int32_t)leftMargin
+                          withInt:(int32_t)rightId
+                          withInt:(int32_t)rightSide
+                          withInt:(int32_t)rightMargin
+                        withFloat:(float)bias {
   [self connectWithInt:centerID withInt:ADXConstraintSet_LEFT withInt:leftId withInt:leftSide withInt:leftMargin];
   [self connectWithInt:centerID withInt:ADXConstraintSet_RIGHT withInt:rightId withInt:rightSide withInt:rightMargin];
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(centerID)]);
@@ -1329,14 +1340,14 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)centerHorizontallyRtlWithInt:(jint)centerID
-                             withInt:(jint)startId
-                             withInt:(jint)startSide
-                             withInt:(jint)startMargin
-                             withInt:(jint)endId
-                             withInt:(jint)endSide
-                             withInt:(jint)endMargin
-                           withFloat:(jfloat)bias {
+- (void)centerHorizontallyRtlWithInt:(int32_t)centerID
+                             withInt:(int32_t)startId
+                             withInt:(int32_t)startSide
+                             withInt:(int32_t)startMargin
+                             withInt:(int32_t)endId
+                             withInt:(int32_t)endSide
+                             withInt:(int32_t)endMargin
+                           withFloat:(float)bias {
   [self connectWithInt:centerID withInt:ADXConstraintSet_START withInt:startId withInt:startSide withInt:startMargin];
   [self connectWithInt:centerID withInt:ADXConstraintSet_END withInt:endId withInt:endSide withInt:endMargin];
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(centerID)]);
@@ -1345,14 +1356,14 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)centerVerticallyWithInt:(jint)centerID
-                        withInt:(jint)topId
-                        withInt:(jint)topSide
-                        withInt:(jint)topMargin
-                        withInt:(jint)bottomId
-                        withInt:(jint)bottomSide
-                        withInt:(jint)bottomMargin
-                      withFloat:(jfloat)bias {
+- (void)centerVerticallyWithInt:(int32_t)centerID
+                        withInt:(int32_t)topId
+                        withInt:(int32_t)topSide
+                        withInt:(int32_t)topMargin
+                        withInt:(int32_t)bottomId
+                        withInt:(int32_t)bottomSide
+                        withInt:(int32_t)bottomMargin
+                      withFloat:(float)bias {
   [self connectWithInt:centerID withInt:ADXConstraintSet_TOP withInt:topId withInt:topSide withInt:topMargin];
   [self connectWithInt:centerID withInt:ADXConstraintSet_BOTTOM withInt:bottomId withInt:bottomSide withInt:bottomMargin];
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(centerID)]);
@@ -1361,13 +1372,13 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)createVerticalChainWithInt:(jint)topId
-                           withInt:(jint)topSide
-                           withInt:(jint)bottomId
-                           withInt:(jint)bottomSide
+- (void)createVerticalChainWithInt:(int32_t)topId
+                           withInt:(int32_t)topSide
+                           withInt:(int32_t)bottomId
+                           withInt:(int32_t)bottomSide
                       withIntArray:(IOSIntArray *)chainIds
                     withFloatArray:(IOSFloatArray *)weights
-                           withInt:(jint)style {
+                           withInt:(int32_t)style {
   if (((IOSIntArray *) nil_chk(chainIds))->size_ < 2) {
     @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"must have 2 or more widgets in a chain");
   }
@@ -1379,8 +1390,8 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, 0)]))->layout_))->verticalChainStyle_ = style;
   [self connectWithInt:IOSIntArray_Get(chainIds, 0) withInt:ADXConstraintSet_TOP withInt:topId withInt:topSide withInt:0];
-  for (jint i = 1; i < chainIds->size_; i++) {
-    jint chainId = IOSIntArray_Get(chainIds, i);
+  for (int32_t i = 1; i < chainIds->size_; i++) {
+    int32_t chainId = IOSIntArray_Get(chainIds, i);
     [self connectWithInt:IOSIntArray_Get(chainIds, i) withInt:ADXConstraintSet_TOP withInt:IOSIntArray_Get(chainIds, i - 1) withInt:ADXConstraintSet_BOTTOM withInt:0];
     [self connectWithInt:IOSIntArray_Get(chainIds, i - 1) withInt:ADXConstraintSet_BOTTOM withInt:IOSIntArray_Get(chainIds, i) withInt:ADXConstraintSet_TOP withInt:0];
     if (weights != nil) {
@@ -1390,43 +1401,43 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   [self connectWithInt:IOSIntArray_Get(chainIds, chainIds->size_ - 1) withInt:ADXConstraintSet_BOTTOM withInt:bottomId withInt:bottomSide withInt:0];
 }
 
-- (void)createHorizontalChainWithInt:(jint)leftId
-                             withInt:(jint)leftSide
-                             withInt:(jint)rightId
-                             withInt:(jint)rightSide
+- (void)createHorizontalChainWithInt:(int32_t)leftId
+                             withInt:(int32_t)leftSide
+                             withInt:(int32_t)rightId
+                             withInt:(int32_t)rightSide
                         withIntArray:(IOSIntArray *)chainIds
                       withFloatArray:(IOSFloatArray *)weights
-                             withInt:(jint)style {
+                             withInt:(int32_t)style {
   ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(self, leftId, leftSide, rightId, rightSide, chainIds, weights, style, ADXConstraintSet_LEFT, ADXConstraintSet_RIGHT);
 }
 
-- (void)createHorizontalChainRtlWithInt:(jint)startId
-                                withInt:(jint)startSide
-                                withInt:(jint)endId
-                                withInt:(jint)endSide
+- (void)createHorizontalChainRtlWithInt:(int32_t)startId
+                                withInt:(int32_t)startSide
+                                withInt:(int32_t)endId
+                                withInt:(int32_t)endSide
                            withIntArray:(IOSIntArray *)chainIds
                          withFloatArray:(IOSFloatArray *)weights
-                                withInt:(jint)style {
+                                withInt:(int32_t)style {
   ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(self, startId, startSide, endId, endSide, chainIds, weights, style, ADXConstraintSet_START, ADXConstraintSet_END);
 }
 
-- (void)createHorizontalChainWithInt:(jint)leftId
-                             withInt:(jint)leftSide
-                             withInt:(jint)rightId
-                             withInt:(jint)rightSide
+- (void)createHorizontalChainWithInt:(int32_t)leftId
+                             withInt:(int32_t)leftSide
+                             withInt:(int32_t)rightId
+                             withInt:(int32_t)rightSide
                         withIntArray:(IOSIntArray *)chainIds
                       withFloatArray:(IOSFloatArray *)weights
-                             withInt:(jint)style
-                             withInt:(jint)left
-                             withInt:(jint)right {
+                             withInt:(int32_t)style
+                             withInt:(int32_t)left
+                             withInt:(int32_t)right {
   ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(self, leftId, leftSide, rightId, rightSide, chainIds, weights, style, left, right);
 }
 
-- (void)connectWithInt:(jint)startID
-               withInt:(jint)startSide
-               withInt:(jint)endID
-               withInt:(jint)endSide
-               withInt:(jint)margin {
+- (void)connectWithInt:(int32_t)startID
+               withInt:(int32_t)startSide
+               withInt:(int32_t)endID
+               withInt:(int32_t)endSide
+               withInt:(int32_t)margin {
   if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(startID)]) {
     [((JavaUtilHashMap *) nil_chk(mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(startID) withId:create_ADXConstraintSet_Constraint_init()];
   }
@@ -1562,10 +1573,10 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)connectWithInt:(jint)startID
-               withInt:(jint)startSide
-               withInt:(jint)endID
-               withInt:(jint)endSide {
+- (void)connectWithInt:(int32_t)startID
+               withInt:(int32_t)startSide
+               withInt:(int32_t)endID
+               withInt:(int32_t)endSide {
   if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(startID)]) {
     [((JavaUtilHashMap *) nil_chk(mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(startID) withId:create_ADXConstraintSet_Constraint_init()];
   }
@@ -1695,8 +1706,8 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)centerHorizontallyWithInt:(jint)viewId
-                          withInt:(jint)toView {
+- (void)centerHorizontallyWithInt:(int32_t)viewId
+                          withInt:(int32_t)toView {
   if (toView == ADXConstraintSet_PARENT_ID) {
     [self centerWithInt:viewId withInt:ADXConstraintSet_PARENT_ID withInt:ADXConstraintSet_LEFT withInt:0 withInt:ADXConstraintSet_PARENT_ID withInt:ADXConstraintSet_RIGHT withInt:0 withFloat:0.5f];
   }
@@ -1705,8 +1716,8 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)centerHorizontallyRtlWithInt:(jint)viewId
-                             withInt:(jint)toView {
+- (void)centerHorizontallyRtlWithInt:(int32_t)viewId
+                             withInt:(int32_t)toView {
   if (toView == ADXConstraintSet_PARENT_ID) {
     [self centerWithInt:viewId withInt:ADXConstraintSet_PARENT_ID withInt:ADXConstraintSet_START withInt:0 withInt:ADXConstraintSet_PARENT_ID withInt:ADXConstraintSet_END withInt:0 withFloat:0.5f];
   }
@@ -1715,8 +1726,8 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)centerVerticallyWithInt:(jint)viewId
-                        withInt:(jint)toView {
+- (void)centerVerticallyWithInt:(int32_t)viewId
+                        withInt:(int32_t)toView {
   if (toView == ADXConstraintSet_PARENT_ID) {
     [self centerWithInt:viewId withInt:ADXConstraintSet_PARENT_ID withInt:ADXConstraintSet_TOP withInt:0 withInt:ADXConstraintSet_PARENT_ID withInt:ADXConstraintSet_BOTTOM withInt:0 withFloat:0.5f];
   }
@@ -1725,12 +1736,12 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)clearWithInt:(jint)viewId {
+- (void)clearWithInt:(int32_t)viewId {
   [((JavaUtilHashMap *) nil_chk(mConstraints_)) removeWithId:JavaLangInteger_valueOfWithInt_(viewId)];
 }
 
-- (void)clearWithInt:(jint)viewId
-             withInt:(jint)anchor {
+- (void)clearWithInt:(int32_t)viewId
+             withInt:(int32_t)anchor {
   if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(viewId)]) {
     ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(viewId)]);
     if (constraint == nil) {
@@ -1791,9 +1802,9 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)setMarginWithInt:(jint)viewId
-                 withInt:(jint)anchor
-                 withInt:(jint)value {
+- (void)setMarginWithInt:(int32_t)viewId
+                 withInt:(int32_t)anchor
+                 withInt:(int32_t)value {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   switch (anchor) {
     case ADXConstraintSet_LEFT:
@@ -1822,9 +1833,9 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)setGoneMarginWithInt:(jint)viewId
-                     withInt:(jint)anchor
-                     withInt:(jint)value {
+- (void)setGoneMarginWithInt:(int32_t)viewId
+                     withInt:(int32_t)anchor
+                     withInt:(int32_t)value {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   switch (anchor) {
     case ADXConstraintSet_LEFT:
@@ -1853,217 +1864,217 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)setHorizontalBiasWithInt:(jint)viewId
-                       withFloat:(jfloat)bias {
+- (void)setHorizontalBiasWithInt:(int32_t)viewId
+                       withFloat:(float)bias {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->horizontalBias_ = bias;
 }
 
-- (void)setVerticalBiasWithInt:(jint)viewId
-                     withFloat:(jfloat)bias {
+- (void)setVerticalBiasWithInt:(int32_t)viewId
+                     withFloat:(float)bias {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->verticalBias_ = bias;
 }
 
-- (void)setDimensionRatioWithInt:(jint)viewId
+- (void)setDimensionRatioWithInt:(int32_t)viewId
                     withNSString:(NSString *)ratio {
   JreStrongAssign(&((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->dimensionRatio_, ratio);
 }
 
-- (void)setVisibilityWithInt:(jint)viewId
-                     withInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)viewId
+                     withInt:(int32_t)visibility {
   ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->visibility_ = visibility;
 }
 
-- (jint)getVisibilityModeWithInt:(jint)viewId {
+- (int32_t)getVisibilityModeWithInt:(int32_t)viewId {
   return ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->mVisibilityMode_;
 }
 
-- (jint)getVisibilityWithInt:(jint)viewId {
+- (int32_t)getVisibilityWithInt:(int32_t)viewId {
   return ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->visibility_;
 }
 
-- (jint)getHeightWithInt:(jint)viewId {
+- (int32_t)getHeightWithInt:(int32_t)viewId {
   return ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mHeight_;
 }
 
-- (jint)getWidthWithInt:(jint)viewId {
+- (int32_t)getWidthWithInt:(int32_t)viewId {
   return ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mWidth_;
 }
 
-- (void)setAlphaWithInt:(jint)viewId
-              withFloat:(jfloat)alpha {
+- (void)setAlphaWithInt:(int32_t)viewId
+              withFloat:(float)alpha {
   ((ADXConstraintSet_PropertySet *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->propertySet_))->alpha_ = alpha;
 }
 
-- (jboolean)getApplyElevationWithInt:(jint)viewId {
+- (bool)getApplyElevationWithInt:(int32_t)viewId {
   return ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->applyElevation_;
 }
 
-- (void)setApplyElevationWithInt:(jint)viewId
-                     withBoolean:(jboolean)apply {
+- (void)setApplyElevationWithInt:(int32_t)viewId
+                     withBoolean:(bool)apply {
   {
     ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->applyElevation_ = apply;
   }
 }
 
-- (void)setElevationWithInt:(jint)viewId
-                  withFloat:(jfloat)elevation {
+- (void)setElevationWithInt:(int32_t)viewId
+                  withFloat:(float)elevation {
   {
     ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->elevation_ = elevation;
     ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_->applyElevation_ = true;
   }
 }
 
-- (void)setRotationWithInt:(jint)viewId
-                 withFloat:(jfloat)rotation {
+- (void)setRotationWithInt:(int32_t)viewId
+                 withFloat:(float)rotation {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->rotation_ = rotation;
 }
 
-- (void)setRotationXWithInt:(jint)viewId
-                  withFloat:(jfloat)rotationX {
+- (void)setRotationXWithInt:(int32_t)viewId
+                  withFloat:(float)rotationX {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->rotationX_ = rotationX;
 }
 
-- (void)setRotationYWithInt:(jint)viewId
-                  withFloat:(jfloat)rotationY {
+- (void)setRotationYWithInt:(int32_t)viewId
+                  withFloat:(float)rotationY {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->rotationY_ = rotationY;
 }
 
-- (void)setScaleXWithInt:(jint)viewId
-               withFloat:(jfloat)scaleX {
+- (void)setScaleXWithInt:(int32_t)viewId
+               withFloat:(float)scaleX {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->scaleX_ = scaleX;
 }
 
-- (void)setScaleYWithInt:(jint)viewId
-               withFloat:(jfloat)scaleY {
+- (void)setScaleYWithInt:(int32_t)viewId
+               withFloat:(float)scaleY {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->scaleY_ = scaleY;
 }
 
-- (void)setTransformPivotXWithInt:(jint)viewId
-                        withFloat:(jfloat)transformPivotX {
+- (void)setTransformPivotXWithInt:(int32_t)viewId
+                        withFloat:(float)transformPivotX {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->transformPivotX_ = transformPivotX;
 }
 
-- (void)setTransformPivotYWithInt:(jint)viewId
-                        withFloat:(jfloat)transformPivotY {
+- (void)setTransformPivotYWithInt:(int32_t)viewId
+                        withFloat:(float)transformPivotY {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->transformPivotY_ = transformPivotY;
 }
 
-- (void)setTransformPivotWithInt:(jint)viewId
-                       withFloat:(jfloat)transformPivotX
-                       withFloat:(jfloat)transformPivotY {
+- (void)setTransformPivotWithInt:(int32_t)viewId
+                       withFloat:(float)transformPivotX
+                       withFloat:(float)transformPivotY {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->transform_))->transformPivotY_ = transformPivotY;
   constraint->transform_->transformPivotX_ = transformPivotX;
 }
 
-- (void)setTranslationXWithInt:(jint)viewId
-                     withFloat:(jfloat)translationX {
+- (void)setTranslationXWithInt:(int32_t)viewId
+                     withFloat:(float)translationX {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->translationX_ = translationX;
 }
 
-- (void)setTranslationYWithInt:(jint)viewId
-                     withFloat:(jfloat)translationY {
+- (void)setTranslationYWithInt:(int32_t)viewId
+                     withFloat:(float)translationY {
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->translationY_ = translationY;
 }
 
-- (void)setTranslationWithInt:(jint)viewId
-                    withFloat:(jfloat)translationX
-                    withFloat:(jfloat)translationY {
+- (void)setTranslationWithInt:(int32_t)viewId
+                    withFloat:(float)translationX
+                    withFloat:(float)translationY {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->transform_))->translationX_ = translationX;
   constraint->transform_->translationY_ = translationY;
 }
 
-- (void)setTranslationZWithInt:(jint)viewId
-                     withFloat:(jfloat)translationZ {
+- (void)setTranslationZWithInt:(int32_t)viewId
+                     withFloat:(float)translationZ {
   {
     ((ADXConstraintSet_Transform *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->transform_))->translationZ_ = translationZ;
   }
 }
 
-- (void)constrainHeightWithInt:(jint)viewId
-                       withInt:(jint)height {
+- (void)constrainHeightWithInt:(int32_t)viewId
+                       withInt:(int32_t)height {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mHeight_ = height;
 }
 
-- (void)constrainWidthWithInt:(jint)viewId
-                      withInt:(jint)width {
+- (void)constrainWidthWithInt:(int32_t)viewId
+                      withInt:(int32_t)width {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->mWidth_ = width;
 }
 
-- (void)constrainCircleWithInt:(jint)viewId
-                       withInt:(jint)id_
-                       withInt:(jint)radius
-                     withFloat:(jfloat)angle {
+- (void)constrainCircleWithInt:(int32_t)viewId
+                       withInt:(int32_t)id_
+                       withInt:(int32_t)radius
+                     withFloat:(float)angle {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:viewId]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->circleConstraint_ = id_;
   constraint->layout_->circleRadius_ = radius;
   constraint->layout_->circleAngle_ = angle;
 }
 
-- (void)constrainMaxHeightWithInt:(jint)viewId
-                          withInt:(jint)height {
+- (void)constrainMaxHeightWithInt:(int32_t)viewId
+                          withInt:(int32_t)height {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightMax_ = height;
 }
 
-- (void)constrainMaxWidthWithInt:(jint)viewId
-                         withInt:(jint)width {
+- (void)constrainMaxWidthWithInt:(int32_t)viewId
+                         withInt:(int32_t)width {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthMax_ = width;
 }
 
-- (void)constrainMinHeightWithInt:(jint)viewId
-                          withInt:(jint)height {
+- (void)constrainMinHeightWithInt:(int32_t)viewId
+                          withInt:(int32_t)height {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightMin_ = height;
 }
 
-- (void)constrainMinWidthWithInt:(jint)viewId
-                         withInt:(jint)width {
+- (void)constrainMinWidthWithInt:(int32_t)viewId
+                         withInt:(int32_t)width {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthMin_ = width;
 }
 
-- (void)constrainPercentWidthWithInt:(jint)viewId
-                           withFloat:(jfloat)percent {
+- (void)constrainPercentWidthWithInt:(int32_t)viewId
+                           withFloat:(float)percent {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthPercent_ = percent;
 }
 
-- (void)constrainPercentHeightWithInt:(jint)viewId
-                            withFloat:(jfloat)percent {
+- (void)constrainPercentHeightWithInt:(int32_t)viewId
+                            withFloat:(float)percent {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightPercent_ = percent;
 }
 
-- (void)constrainDefaultHeightWithInt:(jint)viewId
-                              withInt:(jint)height {
+- (void)constrainDefaultHeightWithInt:(int32_t)viewId
+                              withInt:(int32_t)height {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->heightDefault_ = height;
 }
 
-- (void)constrainDefaultWidthWithInt:(jint)viewId
-                             withInt:(jint)width {
+- (void)constrainDefaultWidthWithInt:(int32_t)viewId
+                             withInt:(int32_t)width {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->widthDefault_ = width;
 }
 
-- (void)setHorizontalWeightWithInt:(jint)viewId
-                         withFloat:(jfloat)weight {
+- (void)setHorizontalWeightWithInt:(int32_t)viewId
+                         withFloat:(float)weight {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->horizontalWeight_ = weight;
 }
 
-- (void)setVerticalWeightWithInt:(jint)viewId
-                       withFloat:(jfloat)weight {
+- (void)setVerticalWeightWithInt:(int32_t)viewId
+                       withFloat:(float)weight {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->verticalWeight_ = weight;
 }
 
-- (void)setHorizontalChainStyleWithInt:(jint)viewId
-                               withInt:(jint)chainStyle {
+- (void)setHorizontalChainStyleWithInt:(int32_t)viewId
+                               withInt:(int32_t)chainStyle {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->horizontalChainStyle_ = chainStyle;
 }
 
-- (void)setVerticalChainStyleWithInt:(jint)viewId
-                             withInt:(jint)chainStyle {
+- (void)setVerticalChainStyleWithInt:(int32_t)viewId
+                             withInt:(int32_t)chainStyle {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:viewId]))->layout_))->verticalChainStyle_ = chainStyle;
 }
 
-- (void)addToHorizontalChainWithInt:(jint)viewId
-                            withInt:(jint)leftId
-                            withInt:(jint)rightId {
+- (void)addToHorizontalChainWithInt:(int32_t)viewId
+                            withInt:(int32_t)leftId
+                            withInt:(int32_t)rightId {
   [self connectWithInt:viewId withInt:ADXConstraintSet_LEFT withInt:leftId withInt:(leftId == ADXConstraintSet_PARENT_ID) ? ADXConstraintSet_LEFT : ADXConstraintSet_RIGHT withInt:0];
   [self connectWithInt:viewId withInt:ADXConstraintSet_RIGHT withInt:rightId withInt:(rightId == ADXConstraintSet_PARENT_ID) ? ADXConstraintSet_RIGHT : ADXConstraintSet_LEFT withInt:0];
   if (leftId != ADXConstraintSet_PARENT_ID) {
@@ -2074,9 +2085,9 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)addToHorizontalChainRTLWithInt:(jint)viewId
-                               withInt:(jint)leftId
-                               withInt:(jint)rightId {
+- (void)addToHorizontalChainRTLWithInt:(int32_t)viewId
+                               withInt:(int32_t)leftId
+                               withInt:(int32_t)rightId {
   [self connectWithInt:viewId withInt:ADXConstraintSet_START withInt:leftId withInt:(leftId == ADXConstraintSet_PARENT_ID) ? ADXConstraintSet_START : ADXConstraintSet_END withInt:0];
   [self connectWithInt:viewId withInt:ADXConstraintSet_END withInt:rightId withInt:(rightId == ADXConstraintSet_PARENT_ID) ? ADXConstraintSet_END : ADXConstraintSet_START withInt:0];
   if (leftId != ADXConstraintSet_PARENT_ID) {
@@ -2087,9 +2098,9 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)addToVerticalChainWithInt:(jint)viewId
-                          withInt:(jint)topId
-                          withInt:(jint)bottomId {
+- (void)addToVerticalChainWithInt:(int32_t)viewId
+                          withInt:(int32_t)topId
+                          withInt:(int32_t)bottomId {
   [self connectWithInt:viewId withInt:ADXConstraintSet_TOP withInt:topId withInt:(topId == ADXConstraintSet_PARENT_ID) ? ADXConstraintSet_TOP : ADXConstraintSet_BOTTOM withInt:0];
   [self connectWithInt:viewId withInt:ADXConstraintSet_BOTTOM withInt:bottomId withInt:(bottomId == ADXConstraintSet_PARENT_ID) ? ADXConstraintSet_BOTTOM : ADXConstraintSet_TOP withInt:0];
   if (topId != ADXConstraintSet_PARENT_ID) {
@@ -2100,14 +2111,14 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)removeFromVerticalChainWithInt:(jint)viewId {
+- (void)removeFromVerticalChainWithInt:(int32_t)viewId {
   if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(viewId)]) {
     ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(viewId)]);
     if (constraint == nil) {
       return;
     }
-    jint topId = ((ADXConstraintSet_Layout *) nil_chk(constraint->layout_))->topToBottom_;
-    jint bottomId = constraint->layout_->bottomToTop_;
+    int32_t topId = ((ADXConstraintSet_Layout *) nil_chk(constraint->layout_))->topToBottom_;
+    int32_t bottomId = constraint->layout_->bottomToTop_;
     if (topId != ADXConstraintSet_Layout_UNSET || bottomId != ADXConstraintSet_Layout_UNSET) {
       if (topId != ADXConstraintSet_Layout_UNSET && bottomId != ADXConstraintSet_Layout_UNSET) {
         [self connectWithInt:topId withInt:ADXConstraintSet_BOTTOM withInt:bottomId withInt:ADXConstraintSet_TOP withInt:0];
@@ -2125,14 +2136,14 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   [self clearWithInt:viewId withInt:ADXConstraintSet_BOTTOM];
 }
 
-- (void)removeFromHorizontalChainWithInt:(jint)viewId {
+- (void)removeFromHorizontalChainWithInt:(int32_t)viewId {
   if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(viewId)]) {
     ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(viewId)]);
     if (constraint == nil) {
       return;
     }
-    jint leftId = ((ADXConstraintSet_Layout *) nil_chk(constraint->layout_))->leftToRight_;
-    jint rightId = constraint->layout_->rightToLeft_;
+    int32_t leftId = ((ADXConstraintSet_Layout *) nil_chk(constraint->layout_))->leftToRight_;
+    int32_t rightId = constraint->layout_->rightToLeft_;
     if (leftId != ADXConstraintSet_Layout_UNSET || rightId != ADXConstraintSet_Layout_UNSET) {
       if (leftId != ADXConstraintSet_Layout_UNSET && rightId != ADXConstraintSet_Layout_UNSET) {
         [self connectWithInt:leftId withInt:ADXConstraintSet_RIGHT withInt:rightId withInt:ADXConstraintSet_LEFT withInt:0];
@@ -2148,8 +2159,8 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
       [self clearWithInt:viewId withInt:ADXConstraintSet_RIGHT];
     }
     else {
-      jint startId = constraint->layout_->startToEnd_;
-      jint endId = constraint->layout_->endToStart_;
+      int32_t startId = constraint->layout_->startToEnd_;
+      int32_t endId = constraint->layout_->endToStart_;
       if (startId != ADXConstraintSet_Layout_UNSET || endId != ADXConstraintSet_Layout_UNSET) {
         if (startId != ADXConstraintSet_Layout_UNSET && endId != ADXConstraintSet_Layout_UNSET) {
           [self connectWithInt:startId withInt:ADXConstraintSet_END withInt:endId withInt:ADXConstraintSet_START withInt:0];
@@ -2170,16 +2181,16 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   }
 }
 
-- (void)createWithInt:(jint)guidelineID
-              withInt:(jint)orientation {
+- (void)createWithInt:(int32_t)guidelineID
+              withInt:(int32_t)orientation {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:guidelineID]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->mIsGuideline_ = true;
   constraint->layout_->orientation_ = orientation;
 }
 
-- (void)createBarrierWithInt:(jint)id_
-                     withInt:(jint)direction
-                     withInt:(jint)margin
+- (void)createBarrierWithInt:(int32_t)id_
+                     withInt:(int32_t)direction
+                     withInt:(int32_t)margin
                 withIntArray:(IOSIntArray *)referenced {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:id_]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->mHelperType_ = ADXConstraintSet_BARRIER_TYPE;
@@ -2189,65 +2200,65 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   JreStrongAssign(&constraint->layout_->mReferenceIds_, referenced);
 }
 
-- (void)setGuidelineBeginWithInt:(jint)guidelineID
-                         withInt:(jint)margin {
+- (void)setGuidelineBeginWithInt:(int32_t)guidelineID
+                         withInt:(int32_t)margin {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_))->guideBegin_ = margin;
   ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideEnd_ = ADXConstraintSet_Layout_UNSET;
   ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guidePercent_ = ADXConstraintSet_Layout_UNSET;
 }
 
-- (void)setGuidelineEndWithInt:(jint)guidelineID
-                       withInt:(jint)margin {
+- (void)setGuidelineEndWithInt:(int32_t)guidelineID
+                       withInt:(int32_t)margin {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_))->guideEnd_ = margin;
   ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideBegin_ = ADXConstraintSet_Layout_UNSET;
   ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guidePercent_ = ADXConstraintSet_Layout_UNSET;
 }
 
-- (void)setGuidelinePercentWithInt:(jint)guidelineID
-                         withFloat:(jfloat)ratio {
+- (void)setGuidelinePercentWithInt:(int32_t)guidelineID
+                         withFloat:(float)ratio {
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_))->guidePercent_ = ratio;
   ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideEnd_ = ADXConstraintSet_Layout_UNSET;
   ((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:guidelineID]))->layout_->guideBegin_ = ADXConstraintSet_Layout_UNSET;
 }
 
-- (void)setBarrierTypeWithInt:(jint)id_
-                      withInt:(jint)type {
+- (void)setBarrierTypeWithInt:(int32_t)id_
+                      withInt:(int32_t)type {
   ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([self getWithInt:id_]);
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->mHelperType_ = type;
 }
 
-- (ADXConstraintSet_Constraint *)getWithInt:(jint)id_ {
+- (ADXConstraintSet_Constraint *)getWithInt:(int32_t)id_ {
   if (![((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
     [((JavaUtilHashMap *) nil_chk(mConstraints_)) putWithId:JavaLangInteger_valueOfWithInt_(id_) withId:create_ADXConstraintSet_Constraint_init()];
   }
   return [((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)];
 }
 
-- (NSString *)sideToStringWithInt:(jint)side {
+- (NSString *)sideToStringWithInt:(int32_t)side {
   return ADXConstraintSet_sideToStringWithInt_(self, side);
 }
 
 + (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
-                                           withFloat:(jfloat)value {
+                                             withInt:(int32_t)type
+                                           withFloat:(float)value {
   ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(c, type, value);
 }
 
 + (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
-                                             withInt:(jint)value {
+                                             withInt:(int32_t)type
+                                             withInt:(int32_t)value {
   ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(c, type, value);
 }
 
 + (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
+                                             withInt:(int32_t)type
                                         withNSString:(NSString *)value {
   ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(c, type, value);
 }
 
 + (void)setDeltaValueWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c
-                                             withInt:(jint)type
-                                         withBoolean:(jboolean)value {
+                                             withInt:(int32_t)type
+                                         withBoolean:(bool)value {
   ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(c, type, value);
 }
 
@@ -2256,22 +2267,22 @@ withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutP
   return ADXConstraintSet_convertReferenceStringWithADView_withNSString_(self, view, referenceIdString);
 }
 
-- (ADXConstraintSet_Constraint *)getConstraintWithInt:(jint)id_ {
+- (ADXConstraintSet_Constraint *)getConstraintWithInt:(int32_t)id_ {
   if ([((JavaUtilHashMap *) nil_chk(mConstraints_)) containsKeyWithId:JavaLangInteger_valueOfWithInt_(id_)]) {
     return [((JavaUtilHashMap *) nil_chk(mConstraints_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)];
   }
   return nil;
 }
 
-- (jboolean)isForceId {
+- (bool)isForceId {
   return mForceId_;
 }
 
-- (void)setForceIdWithBoolean:(jboolean)forceId {
+- (void)setForceIdWithBoolean:(bool)forceId {
   self->mForceId_ = forceId;
 }
 
-- (void)setValidateOnParseWithBoolean:(jboolean)validate {
+- (void)setValidateOnParseWithBoolean:(bool)validate {
   mValidate_ = validate;
 }
 
@@ -2646,7 +2657,7 @@ ADXConstraintSet *create_ADXConstraintSet_init() {
   J2OBJC_CREATE_IMPL(ADXConstraintSet, init)
 }
 
-void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(ADXConstraintSet *self, jint leftId, jint leftSide, jint rightId, jint rightSide, IOSIntArray *chainIds, IOSFloatArray *weights, jint style, jint left, jint right) {
+void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withIntArray_withFloatArray_withInt_withInt_withInt_(ADXConstraintSet *self, int32_t leftId, int32_t leftSide, int32_t rightId, int32_t rightSide, IOSIntArray *chainIds, IOSFloatArray *weights, int32_t style, int32_t left, int32_t right) {
   if (((IOSIntArray *) nil_chk(chainIds))->size_ < 2) {
     @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"must have 2 or more widgets in a chain");
   }
@@ -2658,8 +2669,8 @@ void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withI
   }
   ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk([self getWithInt:IOSIntArray_Get(chainIds, 0)]))->layout_))->horizontalChainStyle_ = style;
   [self connectWithInt:IOSIntArray_Get(chainIds, 0) withInt:left withInt:leftId withInt:leftSide withInt:ADXConstraintSet_UNSET];
-  for (jint i = 1; i < chainIds->size_; i++) {
-    jint chainId = IOSIntArray_Get(chainIds, i);
+  for (int32_t i = 1; i < chainIds->size_; i++) {
+    int32_t chainId = IOSIntArray_Get(chainIds, i);
     [self connectWithInt:IOSIntArray_Get(chainIds, i) withInt:left withInt:IOSIntArray_Get(chainIds, i - 1) withInt:right withInt:ADXConstraintSet_UNSET];
     [self connectWithInt:IOSIntArray_Get(chainIds, i - 1) withInt:right withInt:IOSIntArray_Get(chainIds, i) withInt:left withInt:ADXConstraintSet_UNSET];
     if (weights != nil) {
@@ -2669,7 +2680,7 @@ void ADXConstraintSet_createHorizontalChainWithInt_withInt_withInt_withInt_withI
   [self connectWithInt:IOSIntArray_Get(chainIds, chainIds->size_ - 1) withInt:right withInt:rightId withInt:rightSide withInt:ADXConstraintSet_UNSET];
 }
 
-NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, jint side) {
+NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, int32_t side) {
   switch (side) {
     case ADXConstraintSet_LEFT:
     return @"left";
@@ -2689,7 +2700,7 @@ NSString *ADXConstraintSet_sideToStringWithInt_(ADXConstraintSet *self, jint sid
   return @"undefined";
 }
 
-void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(ADXConstraintSet_Constraint *c, jint type, jfloat value) {
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(ADXConstraintSet_Constraint *c, int32_t type, float value) {
   ADXConstraintSet_initialize();
   switch (type) {
     case ADXConstraintSet_GUIDE_PERCENT:
@@ -2772,7 +2783,7 @@ void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withF
   }
 }
 
-void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(ADXConstraintSet_Constraint *c, jint type, jint value) {
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(ADXConstraintSet_Constraint *c, int32_t type, int32_t value) {
   ADXConstraintSet_initialize();
   switch (type) {
     case ADXConstraintSet_EDITOR_ABSOLUTE_X:
@@ -2917,7 +2928,7 @@ void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withI
   }
 }
 
-void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(ADXConstraintSet_Constraint *c, jint type, NSString *value) {
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(ADXConstraintSet_Constraint *c, int32_t type, NSString *value) {
   ADXConstraintSet_initialize();
   switch (type) {
     case ADXConstraintSet_DIMENSION_RATIO:
@@ -2942,7 +2953,7 @@ void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withN
   }
 }
 
-void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(ADXConstraintSet_Constraint *c, jint type, jboolean value) {
+void ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(ADXConstraintSet_Constraint *c, int32_t type, bool value) {
   ADXConstraintSet_initialize();
   switch (type) {
     case ADXConstraintSet_CONSTRAINED_WIDTH:
@@ -2968,11 +2979,11 @@ IOSIntArray *ADXConstraintSet_convertReferenceStringWithADView_withNSString_(ADX
   IOSObjectArray *split = [((NSString *) nil_chk(referenceIdString)) java_split:@","];
   ADContext *context = JreRetainedLocalValue([((ADView *) nil_chk(view)) getContext]);
   IOSIntArray *tags = [IOSIntArray arrayWithLength:((IOSObjectArray *) nil_chk(split))->size_];
-  jint count = 0;
-  for (jint i = 0; i < split->size_; i++) {
+  int32_t count = 0;
+  for (int32_t i = 0; i < split->size_; i++) {
     NSString *idString = IOSObjectArray_Get(split, i);
     idString = [((NSString *) nil_chk(idString)) java_trim];
-    jint tag = 0;
+    int32_t tag = 0;
     @try {
       IOSClass *res = ADR_id_class_();
     }
@@ -2997,6 +3008,8 @@ IOSIntArray *ADXConstraintSet_convertReferenceStringWithADView_withNSString_(ADX
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintSet)
+
+J2OBJC_NAME_MAPPING(ADXConstraintSet, "androidx.constraintlayout.widget", "ADX")
 
 @implementation ADXConstraintSet_Layout
 
@@ -3599,7 +3612,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)fillFromConstraintsWithADXConstraintHelper:(ADXConstraintHelper *)helper
-                                           withInt:(jint)viewId
+                                           withInt:(int32_t)viewId
                    withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param {
   [self fillFromConstraintsWithInt:viewId withADXConstraints_LayoutParams:param];
   if ([helper isKindOfClass:[ADXBarrier class]]) {
@@ -3611,7 +3624,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)fillFromConstraintsWithInt:(jint)viewId
+- (void)fillFromConstraintsWithInt:(int32_t)viewId
    withADXConstraints_LayoutParams:(ADXConstraints_LayoutParams *)param {
   ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(self, viewId, param);
   ((ADXConstraintSet_PropertySet *) nil_chk(propertySet_))->alpha_ = ((ADXConstraints_LayoutParams *) nil_chk(param))->alpha_;
@@ -3629,7 +3642,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   transform_->applyElevation_ = param->applyElevation_;
 }
 
-- (void)fillFromWithInt:(jint)viewId
+- (void)fillFromWithInt:(int32_t)viewId
 withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)param {
   ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(self, viewId, param);
 }
@@ -3763,7 +3776,7 @@ ADXConstraintSet_Constraint *create_ADXConstraintSet_Constraint_init() {
   J2OBJC_CREATE_IMPL(ADXConstraintSet_Constraint, init)
 }
 
-void ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(ADXConstraintSet_Constraint *self, jint viewId, ADXConstraintLayout_LayoutParams *param) {
+void ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutParams_(ADXConstraintSet_Constraint *self, int32_t viewId, ADXConstraintLayout_LayoutParams *param) {
   self->mViewId_ = viewId;
   ((ADXConstraintSet_Layout *) nil_chk(self->layout_))->leftToLeft_ = ((ADXConstraintLayout_LayoutParams *) nil_chk(param))->leftToLeft_;
   self->layout_->leftToRight_ = param->leftToRight_;
@@ -3822,7 +3835,7 @@ void ADXConstraintSet_Constraint_fillFromWithInt_withADXConstraintLayout_LayoutP
   self->layout_->goneEndMargin_ = param->goneEndMargin_;
   self->layout_->goneBaselineMargin_ = param->goneBaselineMargin_;
   self->layout_->mWrapBehavior_ = param->wrapBehaviorInParent_;
-  jint currentApiVersion = ADBuild_VERSION_SDK_INT;
+  int32_t currentApiVersion = ADBuild_VERSION_SDK_INT;
   if (currentApiVersion >= ADBuild_VERSION_CODES_JELLY_BEAN_MR1) {
     self->layout_->endMargin_ = [param getMarginEnd];
     self->layout_->startMargin_ = [param getMarginStart];
@@ -3841,16 +3854,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)applyDeltaWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c {
-  for (jint i = 0; i < mCountInt_; i++) {
+  for (int32_t i = 0; i < mCountInt_; i++) {
     ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withInt_(c, IOSIntArray_Get(nil_chk(mTypeInt_), i), IOSIntArray_Get(nil_chk(mValueInt_), i));
   }
-  for (jint i = 0; i < mCountFloat_; i++) {
+  for (int32_t i = 0; i < mCountFloat_; i++) {
     ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withFloat_(c, IOSIntArray_Get(nil_chk(mTypeFloat_), i), IOSFloatArray_Get(nil_chk(mValueFloat_), i));
   }
-  for (jint i = 0; i < mCountString_; i++) {
+  for (int32_t i = 0; i < mCountString_; i++) {
     ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withNSString_(c, IOSIntArray_Get(nil_chk(mTypeString_), i), IOSObjectArray_Get(nil_chk(mValueString_), i));
   }
-  for (jint i = 0; i < mCountBoolean_; i++) {
+  for (int32_t i = 0; i < mCountBoolean_; i++) {
     ADXConstraintSet_setDeltaValueWithADXConstraintSet_Constraint_withInt_withBoolean_(c, IOSIntArray_Get(nil_chk(mTypeBoolean_), i), IOSBooleanArray_Get(nil_chk(mValueBoolean_), i));
   }
 }

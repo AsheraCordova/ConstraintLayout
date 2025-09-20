@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\BaselineDimensionDependency.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_BaselineDimensionDependency")
@@ -44,6 +45,7 @@ FOUNDATION_EXPORT ADXBaselineDimensionDependency *create_ADXBaselineDimensionDep
 J2OBJC_TYPE_LITERAL_HEADER(ADXBaselineDimensionDependency)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerBaselineDimensionDependency ADXBaselineDimensionDependency;
+
 
 #endif
 

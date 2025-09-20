@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyTrigger.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AttributeSet.h"
 #include "CLDebug.h"
 #include "ConstraintAttribute.h"
@@ -18,8 +23,11 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Exception.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/NoSuchMethodException.h"
 #include "java/lang/reflect/Method.h"
@@ -29,26 +37,33 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXKeyTrigger () {
  @public
-  jint mCurveFit_;
+  int32_t mCurveFit_;
   NSString *mCross_;
-  jint mTriggerReceiver_;
+  int32_t mTriggerReceiver_;
   NSString *mNegativeCross_;
   NSString *mPositiveCross_;
-  jint mTriggerID_;
-  jint mTriggerCollisionId_;
+  int32_t mTriggerID_;
+  int32_t mTriggerCollisionId_;
   ADView *mTriggerCollisionView_;
-  jboolean mFireCrossReset_;
-  jboolean mFireNegativeReset_;
-  jboolean mFirePositiveReset_;
-  jfloat mFireLastPos_;
-  jboolean mPostLayout_;
+  bool mFireCrossReset_;
+  bool mFireNegativeReset_;
+  bool mFirePositiveReset_;
+  float mFireLastPos_;
+  bool mPostLayout_;
 }
 
 - (void)setUpRectWithADRectF:(ADRectF *)rect
                   withADView:(ADView *)child
-                 withBoolean:(jboolean)postLayout;
+                 withBoolean:(bool)postLayout;
 
 - (void)fireWithNSString:(NSString *)str
               withADView:(ADView *)call;
@@ -67,7 +82,7 @@ inline NSString *ADXKeyTrigger_get_TAG(void);
 static NSString *ADXKeyTrigger_TAG = @"KeyTrigger";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyTrigger, TAG, NSString *)
 
-__attribute__((unused)) static void ADXKeyTrigger_setUpRectWithADRectF_withADView_withBoolean_(ADXKeyTrigger *self, ADRectF *rect, ADView *child, jboolean postLayout);
+__attribute__((unused)) static void ADXKeyTrigger_setUpRectWithADRectF_withADView_withBoolean_(ADXKeyTrigger *self, ADRectF *rect, ADView *child, bool postLayout);
 
 __attribute__((unused)) static void ADXKeyTrigger_fireWithNSString_withADView_(ADXKeyTrigger *self, NSString *str, ADView *call);
 
@@ -88,6 +103,7 @@ __attribute__((unused)) static ADXKeyTrigger_Loader *new_ADXKeyTrigger_Loader_in
 __attribute__((unused)) static ADXKeyTrigger_Loader *create_ADXKeyTrigger_Loader_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyTrigger_Loader)
+
 
 NSString *ADXKeyTrigger_NAME = @"KeyTrigger";
 NSString *ADXKeyTrigger_VIEW_TRANSITION_ON_CROSS = @"viewTransitionOnCross";
@@ -116,7 +132,7 @@ J2OBJC_IGNORE_DESIGNATED_END
          withADAttributeSet:(ADAttributeSet *)attrs {
 }
 
-- (jint)getCurveFit {
+- (int32_t)getCurveFit {
   return mCurveFit_;
 }
 
@@ -170,22 +186,22 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setUpRectWithADRectF:(ADRectF *)rect
                   withADView:(ADView *)child
-                 withBoolean:(jboolean)postLayout {
+                 withBoolean:(bool)postLayout {
   ADXKeyTrigger_setUpRectWithADRectF_withADView_withBoolean_(self, rect, child, postLayout);
 }
 
-- (void)conditionallyFireWithFloat:(jfloat)pos
+- (void)conditionallyFireWithFloat:(float)pos
                         withADView:(ADView *)child {
-  jboolean fireCross = false;
-  jboolean fireNegative = false;
-  jboolean firePositive = false;
+  bool fireCross = false;
+  bool fireNegative = false;
+  bool firePositive = false;
   if (mTriggerCollisionId_ != JreLoadStatic(ADXKey, UNSET)) {
     if (mTriggerCollisionView_ == nil) {
       JreStrongAssign(&mTriggerCollisionView_, [((ADViewGroup *) nil_chk(((ADViewGroup *) cast_chk([((ADView *) nil_chk(child)) getParent], [ADViewGroup class])))) findViewByIdWithInt:mTriggerCollisionId_]);
     }
     ADXKeyTrigger_setUpRectWithADRectF_withADView_withBoolean_(self, mCollisionRect_, mTriggerCollisionView_, mPostLayout_);
     ADXKeyTrigger_setUpRectWithADRectF_withADView_withBoolean_(self, mTargetRect_, child, mPostLayout_);
-    jboolean in = [((ADRectF *) nil_chk(mCollisionRect_)) intersectWithADRectF:mTargetRect_];
+    bool in = [((ADRectF *) nil_chk(mCollisionRect_)) intersectWithADRectF:mTargetRect_];
     if (in) {
       if (mFireCrossReset_) {
         fireCross = true;
@@ -211,8 +227,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   else {
     if (mFireCrossReset_) {
-      jfloat offset = pos - mFireThreshold_;
-      jfloat lastOffset = mFireLastPos_ - mFireThreshold_;
+      float offset = pos - mFireThreshold_;
+      float lastOffset = mFireLastPos_ - mFireThreshold_;
       if (offset * lastOffset < 0) {
         fireCross = true;
         mFireCrossReset_ = false;
@@ -224,8 +240,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       }
     }
     if (mFireNegativeReset_) {
-      jfloat offset = pos - mFireThreshold_;
-      jfloat lastOffset = mFireLastPos_ - mFireThreshold_;
+      float offset = pos - mFireThreshold_;
+      float lastOffset = mFireLastPos_ - mFireThreshold_;
       if (offset * lastOffset < 0 && offset < 0) {
         fireNegative = true;
         mFireNegativeReset_ = false;
@@ -237,8 +253,8 @@ J2OBJC_IGNORE_DESIGNATED_END
       }
     }
     if (mFirePositiveReset_) {
-      jfloat offset = pos - mFireThreshold_;
-      jfloat lastOffset = mFireLastPos_ - mFireThreshold_;
+      float offset = pos - mFireThreshold_;
+      float lastOffset = mFireLastPos_ - mFireThreshold_;
       if (offset * lastOffset < 0 && offset > 0) {
         firePositive = true;
         mFirePositiveReset_ = false;
@@ -442,7 +458,7 @@ ADXKeyTrigger *create_ADXKeyTrigger_init() {
   J2OBJC_CREATE_IMPL(ADXKeyTrigger, init)
 }
 
-void ADXKeyTrigger_setUpRectWithADRectF_withADView_withBoolean_(ADXKeyTrigger *self, ADRectF *rect, ADView *child, jboolean postLayout) {
+void ADXKeyTrigger_setUpRectWithADRectF_withADView_withBoolean_(ADXKeyTrigger *self, ADRectF *rect, ADView *child, bool postLayout) {
   ((ADRectF *) nil_chk(rect))->top_ = [((ADView *) nil_chk(child)) getTop];
   rect->bottom_ = [child getBottom];
   rect->left_ = [child getLeft];
@@ -514,7 +530,7 @@ void ADXKeyTrigger_fireWithNSString_withADView_(ADXKeyTrigger *self, NSString *s
 }
 
 void ADXKeyTrigger_fireCustomWithNSString_withADView_(ADXKeyTrigger *self, NSString *str, ADView *view) {
-  jboolean callAll = [((NSString *) nil_chk(str)) java_length] == 1;
+  bool callAll = [((NSString *) nil_chk(str)) java_length] == 1;
   if (!callAll) {
     str = [((NSString *) nil_chk([str java_substring:1])) java_lowercaseStringWithJRELocale:JreLoadStatic(JavaUtilLocale, ROOT)];
   }
@@ -530,6 +546,8 @@ void ADXKeyTrigger_fireCustomWithNSString_withADView_(ADXKeyTrigger *self, NSStr
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyTrigger)
+
+J2OBJC_NAME_MAPPING(ADXKeyTrigger, "androidx.constraintlayout.motion.widget", "ADX")
 
 @implementation ADXKeyTrigger_Loader
 

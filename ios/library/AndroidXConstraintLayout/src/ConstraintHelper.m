@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintHelper.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintHelper.h"
 #include "ConstraintLayout.h"
 #include "ConstraintSet.h"
@@ -22,10 +27,20 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Exception.h"
+#include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashMap.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXConstraintHelper () {
@@ -33,14 +48,14 @@
   IOSObjectArray *mViews_;
 }
 
-- (void)addRscIDWithInt:(jint)id_;
+- (void)addRscIDWithInt:(int32_t)id_;
 
 - (void)addIDWithNSString:(NSString *)idString;
 
-- (jint)findIdWithNSString:(NSString *)referenceId;
+- (int32_t)findIdWithNSString:(NSString *)referenceId;
 
-- (jint)findIdWithADXConstraintLayout:(ADXConstraintLayout *)container
-                         withNSString:(NSString *)idString;
+- (int32_t)findIdWithADXConstraintLayout:(ADXConstraintLayout *)container
+                            withNSString:(NSString *)idString;
 
 - (IOSIntArray *)convertReferenceStringWithADView:(ADView *)view
                                      withNSString:(NSString *)referenceIdString;
@@ -49,13 +64,13 @@
 
 J2OBJC_FIELD_SETTER(ADXConstraintHelper, mViews_, IOSObjectArray *)
 
-__attribute__((unused)) static void ADXConstraintHelper_addRscIDWithInt_(ADXConstraintHelper *self, jint id_);
+__attribute__((unused)) static void ADXConstraintHelper_addRscIDWithInt_(ADXConstraintHelper *self, int32_t id_);
 
 __attribute__((unused)) static void ADXConstraintHelper_addIDWithNSString_(ADXConstraintHelper *self, NSString *idString);
 
-__attribute__((unused)) static jint ADXConstraintHelper_findIdWithNSString_(ADXConstraintHelper *self, NSString *referenceId);
+__attribute__((unused)) static int32_t ADXConstraintHelper_findIdWithNSString_(ADXConstraintHelper *self, NSString *referenceId);
 
-__attribute__((unused)) static jint ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(ADXConstraintHelper *self, ADXConstraintLayout *container, NSString *idString);
+__attribute__((unused)) static int32_t ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(ADXConstraintHelper *self, ADXConstraintLayout *container, NSString *idString);
 
 __attribute__((unused)) static IOSIntArray *ADXConstraintHelper_convertReferenceStringWithADView_withNSString_(ADXConstraintHelper *self, ADView *view, NSString *referenceIdString);
 
@@ -69,7 +84,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addViewWithADView:(ADView *)view {
-  if (view == self) {
+  if (JreObjectEqualsEquals(view, self)) {
     return;
   }
   if ([((ADView *) nil_chk(view)) getId] == -1) {
@@ -85,17 +100,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self requestLayout];
 }
 
-- (jint)removeViewWithADView:(ADView *)view {
-  jint index = -1;
-  jint id_ = [((ADView *) nil_chk(view)) getId];
+- (int32_t)removeViewWithADView:(ADView *)view {
+  int32_t index = -1;
+  int32_t id_ = [((ADView *) nil_chk(view)) getId];
   if (id_ == -1) {
     return index;
   }
   JreStrongAssign(&mReferenceIds_, nil);
-  for (jint i = 0; i < mCount_; i++) {
+  for (int32_t i = 0; i < mCount_; i++) {
     if (IOSIntArray_Get(nil_chk(mIds_), i) == id_) {
       index = i;
-      for (jint j = i; j < mCount_ - 1; j++) {
+      for (int32_t j = i; j < mCount_ - 1; j++) {
         *IOSIntArray_GetRef(mIds_, j) = IOSIntArray_Get(mIds_, j + 1);
       }
       *IOSIntArray_GetRef(mIds_, mCount_ - 1) = 0;
@@ -114,17 +129,17 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setReferencedIdsWithIntArray:(IOSIntArray *)ids {
   JreStrongAssign(&mReferenceIds_, nil);
   mCount_ = 0;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(ids))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(ids))->size_; i++) {
     ADXConstraintHelper_addRscIDWithInt_(self, IOSIntArray_Get(ids, i));
   }
 }
 
-- (void)addRscIDWithInt:(jint)id_ {
+- (void)addRscIDWithInt:(int32_t)id_ {
   ADXConstraintHelper_addRscIDWithInt_(self, id_);
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   if (mUseViewMeasure_) {
     [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
   }
@@ -148,12 +163,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXConstraintHelper_addIDWithNSString_(self, idString);
 }
 
-- (jint)findIdWithNSString:(NSString *)referenceId {
+- (int32_t)findIdWithNSString:(NSString *)referenceId {
   return ADXConstraintHelper_findIdWithNSString_(self, referenceId);
 }
 
-- (jint)findIdWithADXConstraintLayout:(ADXConstraintLayout *)container
-                         withNSString:(NSString *)idString {
+- (int32_t)findIdWithADXConstraintLayout:(ADXConstraintLayout *)container
+                            withNSString:(NSString *)idString {
   return ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(self, container, idString);
 }
 
@@ -162,10 +177,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (idList == nil) {
     return;
   }
-  jint begin = 0;
+  int32_t begin = 0;
   mCount_ = 0;
   while (true) {
-    jint end = [idList java_indexOf:',' fromIndex:begin];
+    int32_t end = [idList java_indexOf:',' fromIndex:begin];
     if (end == -1) {
       ADXConstraintHelper_addIDWithNSString_(self, [idList java_substring:begin]);
       break;
@@ -176,13 +191,13 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)applyLayoutFeaturesWithADXConstraintLayout:(ADXConstraintLayout *)container {
-  jint visibility = [self getVisibility];
-  jfloat elevation = 0;
+  int32_t visibility = [self getVisibility];
+  float elevation = 0;
   {
     elevation = [self getElevation];
   }
-  for (jint i = 0; i < mCount_; i++) {
-    jint id_ = IOSIntArray_Get(nil_chk(mIds_), i);
+  for (int32_t i = 0; i < mCount_; i++) {
+    int32_t id_ = IOSIntArray_Get(nil_chk(mIds_), i);
     ADView *view = JreRetainedLocalValue([((ADXConstraintLayout *) nil_chk(container)) getViewByIdWithInt:id_]);
     if (view != nil) {
       [view setVisibilityWithInt:visibility];
@@ -211,12 +226,12 @@ J2OBJC_IGNORE_DESIGNATED_END
     return;
   }
   [mHelperWidget_ removeAllIds];
-  for (jint i = 0; i < mCount_; i++) {
-    jint id_ = IOSIntArray_Get(nil_chk(mIds_), i);
+  for (int32_t i = 0; i < mCount_; i++) {
+    int32_t id_ = IOSIntArray_Get(nil_chk(mIds_), i);
     ADView *view = JreRetainedLocalValue([((ADXConstraintLayout *) nil_chk(container)) getViewByIdWithInt:id_]);
     if (view == nil) {
       NSString *candidate = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mMap_)) getWithId:JavaLangInteger_valueOfWithInt_(id_)]);
-      jint foundId = ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(self, container, candidate);
+      int32_t foundId = ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(self, container, candidate);
       if (foundId != 0) {
         *IOSIntArray_GetRef(nil_chk(mIds_), i) = foundId;
         [((JavaUtilHashMap *) nil_chk(mMap_)) putWithId:JavaLangInteger_valueOfWithInt_(foundId) withId:candidate];
@@ -234,8 +249,8 @@ J2OBJC_IGNORE_DESIGNATED_END
                                           withADXHelper:(id<ADXHelper>)helper
                                       withADSparseArray:(ADSparseArray *)map {
   [((id<ADXHelper>) nil_chk(helper)) removeAllIds];
-  for (jint i = 0; i < mCount_; i++) {
-    jint id_ = IOSIntArray_Get(nil_chk(mIds_), i);
+  for (int32_t i = 0; i < mCount_; i++) {
+    int32_t id_ = IOSIntArray_Get(nil_chk(mIds_), i);
     [helper addWithADXConstraintWidget:[((ADSparseArray *) nil_chk(map)) getWithInt:id_]];
   }
 }
@@ -244,8 +259,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (mViews_ == nil || mViews_->size_ != mCount_) {
     JreStrongAssignAndConsume(&mViews_, [IOSObjectArray newArrayWithLength:mCount_ type:ADView_class_()]);
   }
-  for (jint i = 0; i < mCount_; i++) {
-    jint id_ = IOSIntArray_Get(nil_chk(mIds_), i);
+  for (int32_t i = 0; i < mCount_; i++) {
+    int32_t id_ = IOSIntArray_Get(nil_chk(mIds_), i);
     IOSObjectArray_Set(nil_chk(mViews_), i, [((ADXConstraintLayout *) nil_chk(layout)) getViewByIdWithInt:id_]);
   }
   return mViews_;
@@ -269,8 +284,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   [((ADXHelperWidget *) nil_chk(child)) removeAllIds];
   if (constraint->layout_->mReferenceIds_ != nil) {
-    for (jint i = 0; i < ((IOSIntArray *) nil_chk(constraint->layout_->mReferenceIds_))->size_; i++) {
-      jint id_ = IOSIntArray_Get(constraint->layout_->mReferenceIds_, i);
+    for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(constraint->layout_->mReferenceIds_))->size_; i++) {
+      int32_t id_ = IOSIntArray_Get(constraint->layout_->mReferenceIds_, i);
       ADXConstraintWidget *widget = JreRetainedLocalValue([((ADSparseArray *) nil_chk(mapIdToWidget)) getWithInt:id_]);
       if (widget != nil) {
         [child addWithADXConstraintWidget:widget];
@@ -285,10 +300,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)resolveRtlWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                              withBoolean:(jboolean)isRtl {
+                              withBoolean:(bool)isRtl {
 }
 
-- (void)setTagWithInt:(jint)key
+- (void)setTagWithInt:(int32_t)key
                withId:(id)tag {
   [super setTagWithInt:key withId:tag];
   if (tag == nil && mReferenceIds_ == nil) {
@@ -296,14 +311,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jboolean)containsIdWithInt:(jint)id_ {
-  jboolean result = false;
+- (bool)containsIdWithInt:(int32_t)id_ {
+  bool result = false;
   {
     IOSIntArray *a__ = mIds_;
-    jint const *b__ = ((IOSIntArray *) nil_chk(a__))->buffer_;
-    jint const *e__ = b__ + a__->size_;
+    int32_t const *b__ = ((IOSIntArray *) nil_chk(a__))->buffer_;
+    int32_t const *e__ = b__ + a__->size_;
     while (b__ < e__) {
-      jint i = *b__++;
+      int32_t i = *b__++;
       if (i == id_) {
         result = true;
         break;
@@ -313,14 +328,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   return result;
 }
 
-- (jint)indexFromIdWithInt:(jint)id_ {
-  jint index = -1;
+- (int32_t)indexFromIdWithInt:(int32_t)id_ {
+  int32_t index = -1;
   {
     IOSIntArray *a__ = mIds_;
-    jint const *b__ = ((IOSIntArray *) nil_chk(a__))->buffer_;
-    jint const *e__ = b__ + a__->size_;
+    int32_t const *b__ = ((IOSIntArray *) nil_chk(a__))->buffer_;
+    int32_t const *e__ = b__ + a__->size_;
     while (b__ < e__) {
-      jint i = *b__++;
+      int32_t i = *b__++;
       index++;
       if (i == id_) {
         return index;
@@ -424,7 +439,7 @@ void ADXConstraintHelper_init(ADXConstraintHelper *self) {
   JreStrongAssignAndConsume(&self->mMap_, new_JavaUtilHashMap_init());
 }
 
-void ADXConstraintHelper_addRscIDWithInt_(ADXConstraintHelper *self, jint id_) {
+void ADXConstraintHelper_addRscIDWithInt_(ADXConstraintHelper *self, int32_t id_) {
   if (id_ == [self getId]) {
     return;
   }
@@ -447,7 +462,7 @@ void ADXConstraintHelper_addIDWithNSString_(ADXConstraintHelper *self, NSString 
   if ([[self getParent] isKindOfClass:[ADXConstraintLayout class]]) {
     parent = (ADXConstraintLayout *) cast_chk([self getParent], [ADXConstraintLayout class]);
   }
-  jint rscId = ADXConstraintHelper_findIdWithNSString_(self, idString);
+  int32_t rscId = ADXConstraintHelper_findIdWithNSString_(self, idString);
   if (rscId != 0) {
     [((JavaUtilHashMap *) nil_chk(self->mMap_)) putWithId:JavaLangInteger_valueOfWithInt_(rscId) withId:idString];
     ADXConstraintHelper_addRscIDWithInt_(self, rscId);
@@ -457,12 +472,12 @@ void ADXConstraintHelper_addIDWithNSString_(ADXConstraintHelper *self, NSString 
   }
 }
 
-jint ADXConstraintHelper_findIdWithNSString_(ADXConstraintHelper *self, NSString *referenceId) {
+int32_t ADXConstraintHelper_findIdWithNSString_(ADXConstraintHelper *self, NSString *referenceId) {
   ADXConstraintLayout *parent = nil;
   if ([[self getParent] isKindOfClass:[ADXConstraintLayout class]]) {
     parent = (ADXConstraintLayout *) cast_chk([self getParent], [ADXConstraintLayout class]);
   }
-  jint rscId = 0;
+  int32_t rscId = 0;
   if ([self isInEditMode] && parent != nil) {
     id value = JreRetainedLocalValue([parent getDesignInformationWithInt:0 withId:referenceId]);
     if ([value isKindOfClass:[JavaLangInteger class]]) {
@@ -485,7 +500,7 @@ jint ADXConstraintHelper_findIdWithNSString_(ADXConstraintHelper *self, NSString
   return rscId;
 }
 
-jint ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(ADXConstraintHelper *self, ADXConstraintLayout *container, NSString *idString) {
+int32_t ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(ADXConstraintHelper *self, ADXConstraintLayout *container, NSString *idString) {
   if (idString == nil || container == nil) {
     return 0;
   }
@@ -493,8 +508,8 @@ jint ADXConstraintHelper_findIdWithADXConstraintLayout_withNSString_(ADXConstrai
   if (resources == nil) {
     return 0;
   }
-  jint count = [container getChildCount];
-  for (jint j = 0; j < count; j++) {
+  int32_t count = [container getChildCount];
+  for (int32_t j = 0; j < count; j++) {
     ADView *child = JreRetainedLocalValue([container getChildAtWithInt:j]);
     if ([((ADView *) nil_chk(child)) getId] != -1) {
       NSString *res = nil;
@@ -515,11 +530,11 @@ IOSIntArray *ADXConstraintHelper_convertReferenceStringWithADView_withNSString_(
   IOSObjectArray *split = [((NSString *) nil_chk(referenceIdString)) java_split:@","];
   ADContext *context = JreRetainedLocalValue([((ADView *) nil_chk(view)) getContext]);
   IOSIntArray *rscIds = [IOSIntArray arrayWithLength:((IOSObjectArray *) nil_chk(split))->size_];
-  jint count = 0;
-  for (jint i = 0; i < split->size_; i++) {
+  int32_t count = 0;
+  for (int32_t i = 0; i < split->size_; i++) {
     NSString *idString = IOSObjectArray_Get(split, i);
     idString = [((NSString *) nil_chk(idString)) java_trim];
-    jint id_ = ADXConstraintHelper_findIdWithNSString_(self, idString);
+    int32_t id_ = ADXConstraintHelper_findIdWithNSString_(self, idString);
     if (id_ != 0) {
       *IOSIntArray_GetRef(rscIds, count++) = id_;
     }
@@ -531,3 +546,5 @@ IOSIntArray *ADXConstraintHelper_convertReferenceStringWithADView_withNSString_(
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintHelper)
+
+J2OBJC_NAME_MAPPING(ADXConstraintHelper, "androidx.constraintlayout.widget", "ADX")

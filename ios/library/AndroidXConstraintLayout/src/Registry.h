@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\Registry.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Registry")
@@ -16,6 +17,10 @@
 #if !defined (ADXRegistry_) && (INCLUDE_ALL_Registry || defined(INCLUDE_ADXRegistry))
 #define ADXRegistry_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 @protocol ADXRegistryCallback;
 @protocol JavaUtilSet;
 
@@ -31,7 +36,7 @@
 
 + (ADXRegistry *)getInstance;
 
-- (jlong)getLastModifiedWithNSString:(NSString *)name;
+- (int64_t)getLastModifiedWithNSString:(NSString *)name;
 
 - (id<JavaUtilSet>)getLayoutList;
 
@@ -39,10 +44,10 @@
        withADXRegistryCallback:(id<ADXRegistryCallback>)callback;
 
 - (void)setDrawDebugWithNSString:(NSString *)name
-                         withInt:(jint)debugMode;
+                         withInt:(int32_t)debugMode;
 
 - (void)setLayoutInformationModeWithNSString:(NSString *)name
-                                     withInt:(jint)mode;
+                                     withInt:(int32_t)mode;
 
 - (void)unregisterWithNSString:(NSString *)name
        withADXRegistryCallback:(id<ADXRegistryCallback>)callback;
@@ -51,11 +56,11 @@
                      withNSString:(NSString *)content;
 
 - (void)updateDimensionsWithNSString:(NSString *)name
-                             withInt:(jint)width
-                             withInt:(jint)height;
+                             withInt:(int32_t)width
+                             withInt:(int32_t)height;
 
 - (void)updateProgressWithNSString:(NSString *)name
-                         withFloat:(jfloat)progress;
+                         withFloat:(float)progress;
 
 @end
 
@@ -72,6 +77,7 @@ FOUNDATION_EXPORT ADXRegistry *ADXRegistry_getInstance(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXRegistry)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateRegistry ADXRegistry;
+
 
 #endif
 

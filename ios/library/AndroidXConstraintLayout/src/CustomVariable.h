@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\CustomVariable.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CustomVariable")
@@ -18,6 +19,10 @@
 
 @class ADXMotionWidget;
 @class IOSFloatArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  @brief Defines non standard Attributes
@@ -25,7 +30,7 @@
 @interface ADXCustomVariable : NSObject {
  @public
   NSString *mName_;
-  jboolean mBooleanValue_;
+  bool mBooleanValue_;
 }
 
 #pragma mark Public
@@ -36,31 +41,31 @@
                                    withId:(id)value;
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)attributeType;
+                         withInt:(int32_t)attributeType;
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
-                     withBoolean:(jboolean)value;
+                         withInt:(int32_t)type
+                     withBoolean:(bool)value;
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
-                       withFloat:(jfloat)value;
+                         withInt:(int32_t)type
+                       withFloat:(float)value;
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
-                         withInt:(jint)value;
+                         withInt:(int32_t)type
+                         withInt:(int32_t)value;
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)attributeType
+                         withInt:(int32_t)attributeType
                           withId:(id)value;
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
+                         withInt:(int32_t)type
                     withNSString:(NSString *)value;
 
 - (void)applyToWidgetWithADXMotionWidget:(ADXMotionWidget *)view;
 
-+ (NSString *)colorStringWithInt:(jint)v;
++ (NSString *)colorStringWithInt:(int32_t)v;
 
 - (ADXCustomVariable *)copy__ OBJC_METHOD_FAMILY_NONE;
 
@@ -68,23 +73,23 @@
  @brief test if the two attributes are different
  @param CustomAttribute
  */
-- (jboolean)diffWithADXCustomVariable:(ADXCustomVariable *)CustomAttribute;
+- (bool)diffWithADXCustomVariable:(ADXCustomVariable *)CustomAttribute;
 
-- (jboolean)getBooleanValue;
+- (bool)getBooleanValue;
 
-- (jint)getColorValue;
+- (int32_t)getColorValue;
 
-- (jfloat)getFloatValue;
+- (float)getFloatValue;
 
-- (jint)getIntegerValue;
+- (int32_t)getIntegerValue;
 
-- (jint)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value;
+- (int32_t)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value;
 
 - (NSString *)getName;
 
 - (NSString *)getStringValue;
 
-- (jint)getType;
+- (int32_t)getType;
 
 - (void)getValuesToInterpolateWithFloatArray:(IOSFloatArray *)ret;
 
@@ -92,37 +97,37 @@
  @brief Transforms value to a float for the purpose of interpolation
  @return interpolation value
  */
-- (jfloat)getValueToInterpolate;
+- (float)getValueToInterpolate;
 
-+ (jint)hsvToRgbWithFloat:(jfloat)hue
-                withFloat:(jfloat)saturation
-                withFloat:(jfloat)value;
++ (int32_t)hsvToRgbWithFloat:(float)hue
+                   withFloat:(float)saturation
+                   withFloat:(float)value;
 
 /*!
  @brief Continuous types are interpolated they are fired only at
  */
-- (jboolean)isContinuous;
+- (bool)isContinuous;
 
 /*!
  @brief The number of interpolation values that need to be interpolated
   Typically 1 but 3 for colors.
  @return Typically 1 but 3 for colors.
  */
-- (jint)numberOfInterpolatedValues;
+- (int32_t)numberOfInterpolatedValues;
 
-+ (jint)rgbaTocColorWithFloat:(jfloat)r
-                    withFloat:(jfloat)g
-                    withFloat:(jfloat)b
-                    withFloat:(jfloat)a;
++ (int32_t)rgbaTocColorWithFloat:(float)r
+                       withFloat:(float)g
+                       withFloat:(float)b
+                       withFloat:(float)a;
 
-- (void)setBooleanValueWithBoolean:(jboolean)value;
+- (void)setBooleanValueWithBoolean:(bool)value;
 
-- (void)setFloatValueWithFloat:(jfloat)value;
+- (void)setFloatValueWithFloat:(float)value;
 
 - (void)setInterpolatedValueWithADXMotionWidget:(ADXMotionWidget *)view
                                  withFloatArray:(IOSFloatArray *)value;
 
-- (void)setIntValueWithInt:(jint)value;
+- (void)setIntValueWithInt:(int32_t)value;
 
 - (void)setStringValueWithNSString:(NSString *)value;
 
@@ -148,45 +153,45 @@ FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithADXCustomVari
 
 FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithADXCustomVariable_(ADXCustomVariable *c);
 
-FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withNSString_(ADXCustomVariable *self, NSString *name, jint type, NSString *value);
+FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withNSString_(ADXCustomVariable *self, NSString *name, int32_t type, NSString *value);
 
-FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, jint type, NSString *value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, int32_t type, NSString *value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, jint type, NSString *value);
+FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, int32_t type, NSString *value);
 
-FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withInt_(ADXCustomVariable *self, NSString *name, jint type, jint value);
+FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withInt_(ADXCustomVariable *self, NSString *name, int32_t type, int32_t value);
 
-FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, jint type, jint value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, int32_t type, int32_t value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, jint type, jint value);
+FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, int32_t type, int32_t value);
 
-FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withFloat_(ADXCustomVariable *self, NSString *name, jint type, jfloat value);
+FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withFloat_(ADXCustomVariable *self, NSString *name, int32_t type, float value);
 
-FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, jint type, jfloat value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, int32_t type, float value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, jint type, jfloat value);
+FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, int32_t type, float value);
 
-FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withBoolean_(ADXCustomVariable *self, NSString *name, jint type, jboolean value);
+FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withBoolean_(ADXCustomVariable *self, NSString *name, int32_t type, bool value);
 
-FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, jint type, jboolean value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, int32_t type, bool value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, jint type, jboolean value);
+FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, int32_t type, bool value);
 
-FOUNDATION_EXPORT NSString *ADXCustomVariable_colorStringWithInt_(jint v);
+FOUNDATION_EXPORT NSString *ADXCustomVariable_colorStringWithInt_(int32_t v);
 
-FOUNDATION_EXPORT jint ADXCustomVariable_hsvToRgbWithFloat_withFloat_withFloat_(jfloat hue, jfloat saturation, jfloat value);
+FOUNDATION_EXPORT int32_t ADXCustomVariable_hsvToRgbWithFloat_withFloat_withFloat_(float hue, float saturation, float value);
 
-FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_(ADXCustomVariable *self, NSString *name, jint attributeType);
+FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_(ADXCustomVariable *self, NSString *name, int32_t attributeType);
 
-FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_(NSString *name, jint attributeType) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_(NSString *name, int32_t attributeType) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_(NSString *name, jint attributeType);
+FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_(NSString *name, int32_t attributeType);
 
-FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withId_(ADXCustomVariable *self, NSString *name, jint attributeType, id value);
+FOUNDATION_EXPORT void ADXCustomVariable_initWithNSString_withInt_withId_(ADXCustomVariable *self, NSString *name, int32_t attributeType, id value);
 
-FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, jint attributeType, id value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, int32_t attributeType, id value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, jint attributeType, id value);
+FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, int32_t attributeType, id value);
 
 FOUNDATION_EXPORT void ADXCustomVariable_initWithADXCustomVariable_withId_(ADXCustomVariable *self, ADXCustomVariable *source, id value);
 
@@ -194,11 +199,12 @@ FOUNDATION_EXPORT ADXCustomVariable *new_ADXCustomVariable_initWithADXCustomVari
 
 FOUNDATION_EXPORT ADXCustomVariable *create_ADXCustomVariable_initWithADXCustomVariable_withId_(ADXCustomVariable *source, id value);
 
-FOUNDATION_EXPORT jint ADXCustomVariable_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(jfloat r, jfloat g, jfloat b, jfloat a);
+FOUNDATION_EXPORT int32_t ADXCustomVariable_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(float r, float g, float b, float a);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCustomVariable)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionCustomVariable ADXCustomVariable;
+
 
 #endif
 

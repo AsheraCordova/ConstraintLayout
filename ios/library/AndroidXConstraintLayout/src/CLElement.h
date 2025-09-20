@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLElement.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLElement")
@@ -18,12 +19,17 @@
 
 @class ADXCLContainer;
 @class IOSCharArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
 @class JavaLangStringBuilder;
+@class NSString;
 
 @interface ADXCLElement : NSObject {
  @public
-  jlong start_;
-  jlong end_;
+  int64_t start_;
+  int64_t end_;
   ADXCLContainer *mContainer_;
 }
 
@@ -38,50 +44,50 @@
 /*!
  @brief The character index this element was ended on
  */
-- (jlong)getEnd;
+- (int64_t)getEnd;
 
-- (jfloat)getFloat;
+- (float)getFloat;
 
-- (jint)getInt;
+- (int32_t)getInt;
 
 /*!
  @brief get the line Number
  @return return the line number this element was on
  */
-- (jint)getLine;
+- (int32_t)getLine;
 
 /*!
  @brief The character index this element was started on
  */
-- (jlong)getStart;
+- (int64_t)getStart;
 
-- (jboolean)isDone;
+- (bool)isDone;
 
-- (jboolean)isStarted;
+- (bool)isStarted;
 
-- (jboolean)notStarted;
+- (bool)notStarted;
 
 - (void)setContainerWithADXCLContainer:(ADXCLContainer *)element;
 
-- (void)setEndWithLong:(jlong)end;
+- (void)setEndWithLong:(int64_t)end;
 
-- (void)setLineWithInt:(jint)line;
+- (void)setLineWithInt:(int32_t)line;
 
-- (void)setStartWithLong:(jlong)start;
+- (void)setStartWithLong:(int64_t)start;
 
 - (NSString *)description;
 
 #pragma mark Protected
 
 - (void)addIndentWithJavaLangStringBuilder:(JavaLangStringBuilder *)builder
-                                   withInt:(jint)indent;
+                                   withInt:(int32_t)indent;
 
 - (NSString *)getDebugName;
 
 - (NSString *)getStrClass;
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent;
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent;
 
 - (NSString *)toJSON;
 
@@ -95,19 +101,19 @@ J2OBJC_EMPTY_STATIC_INIT(ADXCLElement)
 
 J2OBJC_FIELD_SETTER(ADXCLElement, mContainer_, ADXCLContainer *)
 
-inline jint ADXCLElement_get_MAX_LINE(void);
-inline jint ADXCLElement_set_MAX_LINE(jint value);
-inline jint *ADXCLElement_getRef_MAX_LINE(void);
+inline int32_t ADXCLElement_get_MAX_LINE(void);
+inline int32_t ADXCLElement_set_MAX_LINE(int32_t value);
+inline int32_t *ADXCLElement_getRef_MAX_LINE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXCLElement_MAX_LINE;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCLElement, MAX_LINE, jint)
+FOUNDATION_EXPORT int32_t ADXCLElement_MAX_LINE;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCLElement, MAX_LINE, int32_t)
 
-inline jint ADXCLElement_get_BASE_INDENT(void);
-inline jint ADXCLElement_set_BASE_INDENT(jint value);
-inline jint *ADXCLElement_getRef_BASE_INDENT(void);
+inline int32_t ADXCLElement_get_BASE_INDENT(void);
+inline int32_t ADXCLElement_set_BASE_INDENT(int32_t value);
+inline int32_t *ADXCLElement_getRef_BASE_INDENT(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXCLElement_BASE_INDENT;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCLElement, BASE_INDENT, jint)
+FOUNDATION_EXPORT int32_t ADXCLElement_BASE_INDENT;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXCLElement, BASE_INDENT, int32_t)
 
 FOUNDATION_EXPORT void ADXCLElement_initWithCharArray_(ADXCLElement *self, IOSCharArray *content);
 
@@ -118,6 +124,7 @@ FOUNDATION_EXPORT ADXCLElement *create_ADXCLElement_initWithCharArray_(IOSCharAr
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLElement)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLElement ADXCLElement;
+
 
 #endif
 

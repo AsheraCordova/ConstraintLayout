@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\HelperReferences.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintWidget.h"
 #include "CoreBarrier.h"
 #include "Dependency.h"
@@ -14,7 +19,15 @@
 #include "RunGroup.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/util/List.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXHelperReferences ()
@@ -41,7 +54,7 @@ __attribute__((unused)) static void ADXHelperReferences_addDependencyWithADXDepe
   ((ADXDependencyNode *) nil_chk(start_))->resolved_ = false;
 }
 
-- (jboolean)supportsWrapComputation {
+- (bool)supportsWrapComputation {
   return false;
 }
 
@@ -53,13 +66,13 @@ __attribute__((unused)) static void ADXHelperReferences_addDependencyWithADXDepe
   if ([widget_ isKindOfClass:[ADXCoreBarrier class]]) {
     ((ADXDependencyNode *) nil_chk(start_))->delegateToWidgetRun_ = true;
     ADXCoreBarrier *barrier = (ADXCoreBarrier *) widget_;
-    jint type = [((ADXCoreBarrier *) nil_chk(barrier)) getBarrierType];
-    jboolean allowsGoneWidget = [barrier getAllowsGoneWidget];
+    int32_t type = [((ADXCoreBarrier *) nil_chk(barrier)) getBarrierType];
+    bool allowsGoneWidget = [barrier getAllowsGoneWidget];
     switch (type) {
       case ADXCoreBarrier_LEFT:
       {
         JreStrongAssign(&((ADXDependencyNode *) nil_chk(start_))->type_, JreLoadEnum(ADXDependencyNode_Type, LEFT));
-        for (jint i = 0; i < barrier->mWidgetsCount_; i++) {
+        for (int32_t i = 0; i < barrier->mWidgetsCount_; i++) {
           ADXConstraintWidget *refWidget = IOSObjectArray_Get(nil_chk(barrier->mWidgets_), i);
           if (!allowsGoneWidget && [((ADXConstraintWidget *) nil_chk(refWidget)) getVisibility] == ADXConstraintWidget_GONE) {
             continue;
@@ -75,7 +88,7 @@ __attribute__((unused)) static void ADXHelperReferences_addDependencyWithADXDepe
       case ADXCoreBarrier_RIGHT:
       {
         JreStrongAssign(&((ADXDependencyNode *) nil_chk(start_))->type_, JreLoadEnum(ADXDependencyNode_Type, RIGHT));
-        for (jint i = 0; i < barrier->mWidgetsCount_; i++) {
+        for (int32_t i = 0; i < barrier->mWidgetsCount_; i++) {
           ADXConstraintWidget *refWidget = IOSObjectArray_Get(nil_chk(barrier->mWidgets_), i);
           if (!allowsGoneWidget && [((ADXConstraintWidget *) nil_chk(refWidget)) getVisibility] == ADXConstraintWidget_GONE) {
             continue;
@@ -91,7 +104,7 @@ __attribute__((unused)) static void ADXHelperReferences_addDependencyWithADXDepe
       case ADXCoreBarrier_TOP:
       {
         JreStrongAssign(&((ADXDependencyNode *) nil_chk(start_))->type_, JreLoadEnum(ADXDependencyNode_Type, TOP));
-        for (jint i = 0; i < barrier->mWidgetsCount_; i++) {
+        for (int32_t i = 0; i < barrier->mWidgetsCount_; i++) {
           ADXConstraintWidget *refwidget = IOSObjectArray_Get(nil_chk(barrier->mWidgets_), i);
           if (!allowsGoneWidget && [((ADXConstraintWidget *) nil_chk(refwidget)) getVisibility] == ADXConstraintWidget_GONE) {
             continue;
@@ -107,7 +120,7 @@ __attribute__((unused)) static void ADXHelperReferences_addDependencyWithADXDepe
       case ADXCoreBarrier_BOTTOM:
       {
         JreStrongAssign(&((ADXDependencyNode *) nil_chk(start_))->type_, JreLoadEnum(ADXDependencyNode_Type, BOTTOM));
-        for (jint i = 0; i < barrier->mWidgetsCount_; i++) {
+        for (int32_t i = 0; i < barrier->mWidgetsCount_; i++) {
           ADXConstraintWidget *refwidget = IOSObjectArray_Get(nil_chk(barrier->mWidgets_), i);
           if (!allowsGoneWidget && [((ADXConstraintWidget *) nil_chk(refwidget)) getVisibility] == ADXConstraintWidget_GONE) {
             continue;
@@ -126,11 +139,11 @@ __attribute__((unused)) static void ADXHelperReferences_addDependencyWithADXDepe
 
 - (void)updateWithADXDependency:(id<ADXDependency>)dependency {
   ADXCoreBarrier *barrier = (ADXCoreBarrier *) cast_chk(widget_, [ADXCoreBarrier class]);
-  jint type = [((ADXCoreBarrier *) nil_chk(barrier)) getBarrierType];
-  jint min = -1;
-  jint max = 0;
+  int32_t type = [((ADXCoreBarrier *) nil_chk(barrier)) getBarrierType];
+  int32_t min = -1;
+  int32_t max = 0;
   for (ADXDependencyNode * __strong node in nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) {
-    jint value = ((ADXDependencyNode *) nil_chk(node))->value_;
+    int32_t value = ((ADXDependencyNode *) nil_chk(node))->value_;
     if (min == -1 || value < min) {
       min = value;
     }
@@ -149,7 +162,7 @@ __attribute__((unused)) static void ADXHelperReferences_addDependencyWithADXDepe
 - (void)applyToWidget {
   if ([widget_ isKindOfClass:[ADXCoreBarrier class]]) {
     ADXCoreBarrier *barrier = (ADXCoreBarrier *) widget_;
-    jint type = [((ADXCoreBarrier *) nil_chk(barrier)) getBarrierType];
+    int32_t type = [((ADXCoreBarrier *) nil_chk(barrier)) getBarrierType];
     if (type == ADXCoreBarrier_LEFT || type == ADXCoreBarrier_RIGHT) {
       [((ADXConstraintWidget *) nil_chk(widget_)) setXWithInt:((ADXDependencyNode *) nil_chk(start_))->value_];
     }

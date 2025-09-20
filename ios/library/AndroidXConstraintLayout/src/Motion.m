@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\Motion.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLRect.h"
 #include "CurveFit.h"
 #include "CustomVariable.h"
@@ -32,8 +37,11 @@
 #include "Utils.h"
 #include "VelocityMatrix.h"
 #include "ViewState.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Arrays.h"
@@ -43,13 +51,17 @@
 #include "java/util/HashSet.h"
 #include "java/util/Set.h"
 
-@class JavaUtilArrayList;
-@class JavaUtilHashMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXMotion () {
  @public
-  jint mCurveFitType_;
+  int32_t mCurveFitType_;
   ADXMotionPaths *mStartMotionPath_;
   ADXMotionPaths *mEndMotionPath_;
   ADXMotionConstrainedPoint *mStartPoint_;
@@ -61,7 +73,7 @@
   IOSDoubleArray *mInterpolateVelocity_;
   IOSObjectArray *mAttributeNames_;
   IOSIntArray *mAttributeInterpolatorCount_;
-  jint MAX_DIMENSION_;
+  int32_t MAX_DIMENSION_;
   IOSFloatArray *mValuesBuff_;
   JavaUtilArrayList *mMotionPaths_;
   IOSFloatArray *mVelocity_;
@@ -70,24 +82,24 @@
   JavaUtilHashMap *mAttributesMap_;
   JavaUtilHashMap *mCycleMap_;
   IOSObjectArray *mKeyTriggers_;
-  jint mPathMotionArc_;
-  jint mTransformPivotTarget_;
+  int32_t mPathMotionArc_;
+  int32_t mTransformPivotTarget_;
   ADXMotionWidget *mTransformPivotView_;
-  jint mQuantizeMotionSteps_;
-  jfloat mQuantizeMotionPhase_;
+  int32_t mQuantizeMotionSteps_;
+  float mQuantizeMotionPhase_;
   id<ADXDifferentialInterpolator> mQuantizeMotionInterpolator_;
-  jboolean mNoMovement_;
+  bool mNoMovement_;
 }
 
-- (jfloat)getPreCycleDistance;
+- (float)getPreCycleDistance;
 
 - (void)insertKeyWithADXMotionPaths:(ADXMotionPaths *)point;
 
 - (void)readViewWithADXMotionPaths:(ADXMotionPaths *)motionPaths;
 
-+ (id<ADXDifferentialInterpolator>)getInterpolatorWithInt:(jint)type
++ (id<ADXDifferentialInterpolator>)getInterpolatorWithInt:(int32_t)type
                                              withNSString:(NSString *)interpolatorString
-                                                  withInt:(jint)id_;
+                                                  withInt:(int32_t)id_;
 
 /*!
  @brief Calculates the adjusted (and optional velocity)
@@ -96,8 +108,8 @@
  @param velocity return velocity
  @return actual position accounting for easing and staggering
  */
-- (jfloat)getAdjustedPositionWithFloat:(jfloat)position
-                        withFloatArray:(IOSFloatArray *)velocity;
+- (float)getAdjustedPositionWithFloat:(float)position
+                       withFloatArray:(IOSFloatArray *)velocity;
 
 @end
 
@@ -127,47 +139,47 @@ inline NSString *ADXMotion_get_TAG(void);
 static NSString *ADXMotion_TAG = @"MotionController";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotion, TAG, NSString *)
 
-inline jboolean ADXMotion_get_DEBUG(void);
+inline bool ADXMotion_get_DEBUG(void);
 #define ADXMotion_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DEBUG, bool)
 
-inline jboolean ADXMotion_get_FAVOR_FIXED_SIZE_VIEWS(void);
+inline bool ADXMotion_get_FAVOR_FIXED_SIZE_VIEWS(void);
 #define ADXMotion_FAVOR_FIXED_SIZE_VIEWS false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, FAVOR_FIXED_SIZE_VIEWS, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, FAVOR_FIXED_SIZE_VIEWS, bool)
 
-inline jint ADXMotion_get_SPLINE_STRING(void);
+inline int32_t ADXMotion_get_SPLINE_STRING(void);
 #define ADXMotion_SPLINE_STRING -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, SPLINE_STRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, SPLINE_STRING, int32_t)
 
-inline jint ADXMotion_get_INTERPOLATOR_REFERENCE_ID(void);
+inline int32_t ADXMotion_get_INTERPOLATOR_REFERENCE_ID(void);
 #define ADXMotion_INTERPOLATOR_REFERENCE_ID -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, INTERPOLATOR_REFERENCE_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, INTERPOLATOR_REFERENCE_ID, int32_t)
 
-inline jint ADXMotion_get_INTERPOLATOR_UNDEFINED(void);
+inline int32_t ADXMotion_get_INTERPOLATOR_UNDEFINED(void);
 #define ADXMotion_INTERPOLATOR_UNDEFINED -3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, INTERPOLATOR_UNDEFINED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, INTERPOLATOR_UNDEFINED, int32_t)
 
-__attribute__((unused)) static jfloat ADXMotion_getPreCycleDistance(ADXMotion *self);
+__attribute__((unused)) static float ADXMotion_getPreCycleDistance(ADXMotion *self);
 
 __attribute__((unused)) static void ADXMotion_insertKeyWithADXMotionPaths_(ADXMotion *self, ADXMotionPaths *point);
 
 __attribute__((unused)) static void ADXMotion_readViewWithADXMotionPaths_(ADXMotion *self, ADXMotionPaths *motionPaths);
 
-__attribute__((unused)) static id<ADXDifferentialInterpolator> ADXMotion_getInterpolatorWithInt_withNSString_withInt_(jint type, NSString *interpolatorString, jint id_);
+__attribute__((unused)) static id<ADXDifferentialInterpolator> ADXMotion_getInterpolatorWithInt_withNSString_withInt_(int32_t type, NSString *interpolatorString, int32_t id_);
 
-__attribute__((unused)) static jfloat ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(ADXMotion *self, jfloat position, IOSFloatArray *velocity);
+__attribute__((unused)) static float ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(ADXMotion *self, float position, IOSFloatArray *velocity);
 
 @interface ADXMotion_1 : NSObject < ADXDifferentialInterpolator > {
  @public
   ADXEasing *val$easing_;
-  jfloat mX_;
+  float mX_;
 }
 
 - (instancetype)initWithADXEasing:(ADXEasing *)capture$0;
 
-- (jfloat)getInterpolationWithFloat:(jfloat)x;
+- (float)getInterpolationWithFloat:(float)x;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
 @end
 
@@ -179,18 +191,19 @@ __attribute__((unused)) static ADXMotion_1 *new_ADXMotion_1_initWithADXEasing_(A
 
 __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing_(ADXEasing *capture$0);
 
+
 @implementation ADXMotion
 
-- (jint)getTransformPivotTarget {
+- (int32_t)getTransformPivotTarget {
   return mTransformPivotTarget_;
 }
 
-- (void)setTransformPivotTargetWithInt:(jint)transformPivotTarget {
+- (void)setTransformPivotTargetWithInt:(int32_t)transformPivotTarget {
   mTransformPivotTarget_ = transformPivotTarget;
   JreStrongAssign(&mTransformPivotView_, nil);
 }
 
-- (ADXMotionPaths *)getKeyFrameWithInt:(jint)i {
+- (ADXMotionPaths *)getKeyFrameWithInt:(int32_t)i {
   return [((JavaUtilArrayList *) nil_chk(mMotionPaths_)) getWithInt:i];
 }
 
@@ -199,39 +212,39 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return self;
 }
 
-- (jfloat)getStartX {
+- (float)getStartX {
   return ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_;
 }
 
-- (jfloat)getStartY {
+- (float)getStartY {
   return ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->y_;
 }
 
-- (jfloat)getFinalX {
+- (float)getFinalX {
   return ((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_;
 }
 
-- (jfloat)getFinalY {
+- (float)getFinalY {
   return ((ADXMotionPaths *) nil_chk(mEndMotionPath_))->y_;
 }
 
-- (jfloat)getStartWidth {
+- (float)getStartWidth {
   return ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->width_;
 }
 
-- (jfloat)getStartHeight {
+- (float)getStartHeight {
   return ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->height_;
 }
 
-- (jfloat)getFinalWidth {
+- (float)getFinalWidth {
   return ((ADXMotionPaths *) nil_chk(mEndMotionPath_))->width_;
 }
 
-- (jfloat)getFinalHeight {
+- (float)getFinalHeight {
   return ((ADXMotionPaths *) nil_chk(mEndMotionPath_))->height_;
 }
 
-- (jint)getAnimateRelativeTo {
+- (int32_t)getAnimateRelativeTo {
   return ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->mAnimateRelativeTo_;
 }
 
@@ -240,15 +253,15 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   [((ADXMotionPaths *) nil_chk(mEndMotionPath_)) setupRelativeWithADXMotion:motionController withADXMotionPaths:motionController->mEndMotionPath_];
 }
 
-- (jfloat)getCenterX {
+- (float)getCenterX {
   return mCurrentCenterX_;
 }
 
-- (jfloat)getCenterY {
+- (float)getCenterY {
   return mCurrentCenterY_;
 }
 
-- (void)getCenterWithDouble:(jdouble)p
+- (void)getCenterWithDouble:(double)p
              withFloatArray:(IOSFloatArray *)pos
              withFloatArray:(IOSFloatArray *)vel {
   IOSDoubleArray *position = [IOSDoubleArray arrayWithLength:4];
@@ -261,14 +274,14 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
 }
 
 - (void)buildPathWithFloatArray:(IOSFloatArray *)points
-                        withInt:(jint)pointCount {
-  jfloat mils = 1.0f / (pointCount - 1);
+                        withInt:(int32_t)pointCount {
+  float mils = 1.0f / (pointCount - 1);
   ADXSplineSet *trans_x = (mAttributesMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mAttributesMap_)) getWithId:ADXMotionKey_TRANSLATION_X];
   ADXSplineSet *trans_y = (mAttributesMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mAttributesMap_)) getWithId:ADXMotionKey_TRANSLATION_Y];
   ADXKeyCycleOscillator *osc_x = (mCycleMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mCycleMap_)) getWithId:ADXMotionKey_TRANSLATION_X];
   ADXKeyCycleOscillator *osc_y = (mCycleMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mCycleMap_)) getWithId:ADXMotionKey_TRANSLATION_Y];
-  for (jint i = 0; i < pointCount; i++) {
-    jfloat position = (i) * mils;
+  for (int32_t i = 0; i < pointCount; i++) {
+    float position = (i) * mils;
     if (mStaggerScale_ != 1.0f) {
       if (position < mStaggerOffset_) {
         position = 0;
@@ -279,10 +292,10 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
         position = JavaLangMath_minWithFloat_withFloat_(position, 1.0f);
       }
     }
-    jdouble p = position;
+    double p = position;
     ADXEasing *easing = JreRetainedLocalValue(((ADXMotionPaths *) nil_chk(mStartMotionPath_))->mKeyFrameEasing_);
-    jfloat start = 0;
-    jfloat end = JavaLangFloat_NaN;
+    float start = 0;
+    float end = JavaLangFloat_NaN;
     for (ADXMotionPaths * __strong frame in nil_chk(mMotionPaths_)) {
       if (((ADXMotionPaths *) nil_chk(frame))->mKeyFrameEasing_ != nil) {
         if (frame->time_ < position) {
@@ -300,8 +313,8 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
       if (JavaLangFloat_isNaNWithFloat_(end)) {
         end = 1.0f;
       }
-      jfloat offset = (position - start) / (end - start);
-      offset = (jfloat) [easing getWithDouble:offset];
+      float offset = (position - start) / (end - start);
+      offset = (float) [easing getWithDouble:offset];
       p = offset * (end - start) + start;
     }
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:p withDoubleArray:mInterpolateData_];
@@ -326,7 +339,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   }
 }
 
-- (IOSDoubleArray *)getPosWithDouble:(jdouble)position {
+- (IOSDoubleArray *)getPosWithDouble:(double)position {
   [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:position withDoubleArray:mInterpolateData_];
   if (mArcSpline_ != nil) {
     if (((IOSDoubleArray *) nil_chk(mInterpolateData_))->size_ > 0) {
@@ -337,14 +350,14 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
 }
 
 - (void)buildBoundsWithFloatArray:(IOSFloatArray *)bounds
-                          withInt:(jint)pointCount {
-  jfloat mils = 1.0f / (pointCount - 1);
+                          withInt:(int32_t)pointCount {
+  float mils = 1.0f / (pointCount - 1);
   ADXSplineSet *trans_x = (mAttributesMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mAttributesMap_)) getWithId:ADXMotionKey_TRANSLATION_X];
   ADXSplineSet *trans_y = (mAttributesMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mAttributesMap_)) getWithId:ADXMotionKey_TRANSLATION_Y];
   ADXKeyCycleOscillator *osc_x = (mCycleMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mCycleMap_)) getWithId:ADXMotionKey_TRANSLATION_X];
   ADXKeyCycleOscillator *osc_y = (mCycleMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mCycleMap_)) getWithId:ADXMotionKey_TRANSLATION_Y];
-  for (jint i = 0; i < pointCount; i++) {
-    jfloat position = (i) * mils;
+  for (int32_t i = 0; i < pointCount; i++) {
+    float position = (i) * mils;
     if (mStaggerScale_ != 1.0f) {
       if (position < mStaggerOffset_) {
         position = 0;
@@ -355,10 +368,10 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
         position = JavaLangMath_minWithFloat_withFloat_(position, 1.0f);
       }
     }
-    jdouble p = position;
+    double p = position;
     ADXEasing *easing = JreRetainedLocalValue(((ADXMotionPaths *) nil_chk(mStartMotionPath_))->mKeyFrameEasing_);
-    jfloat start = 0;
-    jfloat end = JavaLangFloat_NaN;
+    float start = 0;
+    float end = JavaLangFloat_NaN;
     for (ADXMotionPaths * __strong frame in nil_chk(mMotionPaths_)) {
       if (((ADXMotionPaths *) nil_chk(frame))->mKeyFrameEasing_ != nil) {
         if (frame->time_ < position) {
@@ -376,8 +389,8 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
       if (JavaLangFloat_isNaNWithFloat_(end)) {
         end = 1.0f;
       }
-      jfloat offset = (position - start) / (end - start);
-      offset = (jfloat) [easing getWithDouble:offset];
+      float offset = (position - start) / (end - start);
+      offset = (float) [easing getWithDouble:offset];
       p = offset * (end - start) + start;
     }
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:p withDoubleArray:mInterpolateData_];
@@ -390,14 +403,14 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   }
 }
 
-- (jfloat)getPreCycleDistance {
+- (float)getPreCycleDistance {
   return ADXMotion_getPreCycleDistance(self);
 }
 
-- (ADXMotionKeyPosition *)getPositionKeyframeWithInt:(jint)layoutWidth
-                                             withInt:(jint)layoutHeight
-                                           withFloat:(jfloat)x
-                                           withFloat:(jfloat)y {
+- (ADXMotionKeyPosition *)getPositionKeyframeWithInt:(int32_t)layoutWidth
+                                             withInt:(int32_t)layoutHeight
+                                           withFloat:(float)x
+                                           withFloat:(float)y {
   ADXFloatRect *start = create_ADXFloatRect_init();
   start->left_ = ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_;
   start->top_ = mStartMotionPath_->y_;
@@ -418,11 +431,11 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return nil;
 }
 
-- (jint)buildKeyFramesWithFloatArray:(IOSFloatArray *)keyFrames
-                        withIntArray:(IOSIntArray *)mode
-                        withIntArray:(IOSIntArray *)pos {
+- (int32_t)buildKeyFramesWithFloatArray:(IOSFloatArray *)keyFrames
+                           withIntArray:(IOSIntArray *)mode
+                           withIntArray:(IOSIntArray *)pos {
   if (keyFrames != nil) {
-    jint count = 0;
+    int32_t count = 0;
     IOSDoubleArray *time = [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getTimePoints];
     if (mode != nil) {
       for (ADXMotionPaths * __strong keyFrame in nil_chk(mMotionPaths_)) {
@@ -436,7 +449,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
       }
       count = 0;
     }
-    for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(time))->size_; i++) {
+    for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(time))->size_; i++) {
       [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:IOSDoubleArray_Get(time, i) withDoubleArray:mInterpolateData_];
       [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) getCenterWithDouble:IOSDoubleArray_Get(time, i) withIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateData_ withFloatArray:keyFrames withInt:count];
       count += 2;
@@ -446,10 +459,10 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return 0;
 }
 
-- (jint)buildKeyBoundsWithFloatArray:(IOSFloatArray *)keyBounds
-                        withIntArray:(IOSIntArray *)mode {
+- (int32_t)buildKeyBoundsWithFloatArray:(IOSFloatArray *)keyBounds
+                           withIntArray:(IOSIntArray *)mode {
   if (keyBounds != nil) {
-    jint count = 0;
+    int32_t count = 0;
     IOSDoubleArray *time = [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getTimePoints];
     if (mode != nil) {
       for (ADXMotionPaths * __strong keyFrame in nil_chk(mMotionPaths_)) {
@@ -457,7 +470,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
       }
       count = 0;
     }
-    for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(time))->size_; i++) {
+    for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(time))->size_; i++) {
       [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:IOSDoubleArray_Get(time, i) withDoubleArray:mInterpolateData_];
       [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) getBoundsWithIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateData_ withFloatArray:keyBounds withInt:count];
       count += 2;
@@ -467,62 +480,62 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return 0;
 }
 
-- (jint)getAttributeValuesWithNSString:(NSString *)attributeType
-                        withFloatArray:(IOSFloatArray *)points
-                               withInt:(jint)pointCount {
-  jfloat mils = 1.0f / (pointCount - 1);
+- (int32_t)getAttributeValuesWithNSString:(NSString *)attributeType
+                           withFloatArray:(IOSFloatArray *)points
+                                  withInt:(int32_t)pointCount {
+  float mils = 1.0f / (pointCount - 1);
   ADXSplineSet *spline = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mAttributesMap_)) getWithId:attributeType]);
   if (spline == nil) {
     return -1;
   }
-  for (jint j = 0; j < ((IOSFloatArray *) nil_chk(points))->size_; j++) {
+  for (int32_t j = 0; j < ((IOSFloatArray *) nil_chk(points))->size_; j++) {
     *IOSFloatArray_GetRef(points, j) = [spline getWithFloat:JreIntDiv(j, (points->size_ - 1))];
   }
   return points->size_;
 }
 
-- (void)buildRectWithFloat:(jfloat)p
+- (void)buildRectWithFloat:(float)p
             withFloatArray:(IOSFloatArray *)path
-                   withInt:(jint)offset {
+                   withInt:(int32_t)offset {
   p = ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, p, nil);
   [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:p withDoubleArray:mInterpolateData_];
   [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) getRectWithIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateData_ withFloatArray:path withInt:offset];
 }
 
 - (void)buildRectanglesWithFloatArray:(IOSFloatArray *)path
-                              withInt:(jint)pointCount {
-  jfloat mils = 1.0f / (pointCount - 1);
-  for (jint i = 0; i < pointCount; i++) {
-    jfloat position = (i) * mils;
+                              withInt:(int32_t)pointCount {
+  float mils = 1.0f / (pointCount - 1);
+  for (int32_t i = 0; i < pointCount; i++) {
+    float position = (i) * mils;
     position = ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, position, nil);
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:position withDoubleArray:mInterpolateData_];
     [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) getRectWithIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateData_ withFloatArray:path withInt:i * 8];
   }
 }
 
-- (jfloat)getKeyFrameParameterWithInt:(jint)type
-                            withFloat:(jfloat)x
-                            withFloat:(jfloat)y {
-  jfloat dx = ((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_;
-  jfloat dy = mEndMotionPath_->y_ - mStartMotionPath_->y_;
-  jfloat startCenterX = mStartMotionPath_->x_ + mStartMotionPath_->width_ / 2;
-  jfloat startCenterY = mStartMotionPath_->y_ + mStartMotionPath_->height_ / 2;
-  jfloat hypotenuse = (jfloat) JavaLangMath_hypotWithDouble_withDouble_(dx, dy);
+- (float)getKeyFrameParameterWithInt:(int32_t)type
+                           withFloat:(float)x
+                           withFloat:(float)y {
+  float dx = ((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_;
+  float dy = mEndMotionPath_->y_ - mStartMotionPath_->y_;
+  float startCenterX = mStartMotionPath_->x_ + mStartMotionPath_->width_ / 2;
+  float startCenterY = mStartMotionPath_->y_ + mStartMotionPath_->height_ / 2;
+  float hypotenuse = (float) JavaLangMath_hypotWithDouble_withDouble_(dx, dy);
   if (hypotenuse < 0.0000001) {
     return JavaLangFloat_NaN;
   }
-  jfloat vx = x - startCenterX;
-  jfloat vy = y - startCenterY;
-  jfloat distFromStart = (jfloat) JavaLangMath_hypotWithDouble_withDouble_(vx, vy);
+  float vx = x - startCenterX;
+  float vy = y - startCenterY;
+  float distFromStart = (float) JavaLangMath_hypotWithDouble_withDouble_(vx, vy);
   if (distFromStart == 0) {
     return 0;
   }
-  jfloat pathDistance = (vx * dx + vy * dy);
+  float pathDistance = (vx * dx + vy * dy);
   switch (type) {
     case ADXMotion_PATH_PERCENT:
     return pathDistance / hypotenuse;
     case ADXMotion_PATH_PERPENDICULAR:
-    return (jfloat) JavaLangMath_sqrtWithDouble_(hypotenuse * hypotenuse - pathDistance * pathDistance);
+    return (float) JavaLangMath_sqrtWithDouble_(hypotenuse * hypotenuse - pathDistance * pathDistance);
     case ADXMotion_HORIZONTAL_PATH_X:
     return vx / dx;
     case ADXMotion_HORIZONTAL_PATH_Y:
@@ -547,14 +560,14 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   [((JavaUtilArrayList *) nil_chk(mKeyList_)) addWithId:key];
 }
 
-- (void)setPathMotionArcWithInt:(jint)arc {
+- (void)setPathMotionArcWithInt:(int32_t)arc {
   mPathMotionArc_ = arc;
 }
 
-- (void)setupWithInt:(jint)parentWidth
-             withInt:(jint)parentHeight
-           withFloat:(jfloat)transitionDuration
-            withLong:(jlong)currentTime {
+- (void)setupWithInt:(int32_t)parentWidth
+             withInt:(int32_t)parentHeight
+           withFloat:(float)transitionDuration
+            withLong:(int64_t)currentTime {
   JavaUtilHashSet *springAttributes = create_JavaUtilHashSet_init();
   JavaUtilHashSet *timeCycleAttributes = create_JavaUtilHashSet_init();
   JavaUtilHashSet *splineAttributes = create_JavaUtilHashSet_init();
@@ -632,7 +645,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
     [((ADXMotionConstrainedPoint *) nil_chk(mStartPoint_)) addValuesWithJavaUtilHashMap:mAttributesMap_ withInt:0];
     [((ADXMotionConstrainedPoint *) nil_chk(mEndPoint_)) addValuesWithJavaUtilHashMap:mAttributesMap_ withInt:100];
     for (NSString * __strong spline in nil_chk([((JavaUtilHashMap *) nil_chk(mAttributesMap_)) keySet])) {
-      jint curve = ADXCurveFit_SPLINE;
+      int32_t curve = ADXCurveFit_SPLINE;
       if ([interpolation containsKeyWithId:spline]) {
         JavaLangInteger *boxedCurve = JreRetainedLocalValue([interpolation getWithId:spline]);
         if (boxedCurve != nil) {
@@ -684,7 +697,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
       }
     }
     for (NSString * __strong spline in nil_chk([mTimeCycleAttributesMap_ keySet])) {
-      jint curve = ADXCurveFit_SPLINE;
+      int32_t curve = ADXCurveFit_SPLINE;
       if ([interpolation containsKeyWithId:spline]) {
         curve = [((JavaLangInteger *) nil_chk([interpolation getWithId:spline])) intValue];
       }
@@ -692,7 +705,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
     }
   }
   IOSObjectArray *points = [IOSObjectArray arrayWithLength:2 + [((JavaUtilArrayList *) nil_chk(mMotionPaths_)) size] type:ADXMotionPaths_class_()];
-  jint count = 1;
+  int32_t count = 1;
   IOSObjectArray_Set(points, 0, mStartMotionPath_);
   IOSObjectArray_Set(points, points->size_ - 1, mEndMotionPath_);
   if ([((JavaUtilArrayList *) nil_chk(mMotionPaths_)) size] > 0 && mCurveFitType_ == JreLoadStatic(ADXMotionKey, UNSET)) {
@@ -701,7 +714,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   for (ADXMotionPaths * __strong point in nil_chk(mMotionPaths_)) {
     IOSObjectArray_Set(points, count++, point);
   }
-  jint variables = 18;
+  int32_t variables = 18;
   JavaUtilHashSet *attributeNameSet = create_JavaUtilHashSet_init();
   for (NSString * __strong s in nil_chk([((JavaUtilHashMap *) nil_chk(((ADXMotionPaths *) nil_chk(mEndMotionPath_))->customAttributes_)) keySet])) {
     if ([((JavaUtilHashMap *) nil_chk(((ADXMotionPaths *) nil_chk(mStartMotionPath_))->customAttributes_)) containsKeyWithId:s]) {
@@ -710,10 +723,10 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   }
   JreStrongAssign(&mAttributeNames_, [attributeNameSet toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:0 type:NSString_class_()]]);
   JreStrongAssignAndConsume(&mAttributeInterpolatorCount_, [IOSIntArray newArrayWithLength:((IOSObjectArray *) nil_chk(mAttributeNames_))->size_]);
-  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(mAttributeNames_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSObjectArray *) nil_chk(mAttributeNames_))->size_; i++) {
     NSString *attributeName = IOSObjectArray_Get(mAttributeNames_, i);
     *IOSIntArray_GetRef(nil_chk(mAttributeInterpolatorCount_), i) = 0;
-    for (jint j = 0; j < points->size_; j++) {
+    for (int32_t j = 0; j < points->size_; j++) {
       if ([((JavaUtilHashMap *) nil_chk(((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, j)))->customAttributes_)) containsKeyWithId:attributeName]) {
         ADXCustomVariable *attribute = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, j)))->customAttributes_)) getWithId:attributeName]);
         if (attribute != nil) {
@@ -723,51 +736,51 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
       }
     }
   }
-  jboolean arcMode = ((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, 0)))->mPathMotionArc_ != ADXMotionWidget_UNSET;
+  bool arcMode = ((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, 0)))->mPathMotionArc_ != ADXMotionWidget_UNSET;
   IOSBooleanArray *mask = [IOSBooleanArray arrayWithLength:variables + mAttributeNames_->size_];
-  for (jint i = 1; i < points->size_; i++) {
+  for (int32_t i = 1; i < points->size_; i++) {
     [((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, i))) differentWithADXMotionPaths:IOSObjectArray_Get(points, i - 1) withBooleanArray:mask withNSStringArray:mAttributeNames_ withBoolean:arcMode];
   }
   count = 0;
-  for (jint i = 1; i < mask->size_; i++) {
+  for (int32_t i = 1; i < mask->size_; i++) {
     if (IOSBooleanArray_Get(mask, i)) {
       count++;
     }
   }
   JreStrongAssignAndConsume(&mInterpolateVariables_, [IOSIntArray newArrayWithLength:count]);
-  jint varLen = JavaLangMath_maxWithInt_withInt_(2, count);
+  int32_t varLen = JavaLangMath_maxWithInt_withInt_(2, count);
   JreStrongAssignAndConsume(&mInterpolateData_, [IOSDoubleArray newArrayWithLength:varLen]);
   JreStrongAssignAndConsume(&mInterpolateVelocity_, [IOSDoubleArray newArrayWithLength:varLen]);
   count = 0;
-  for (jint i = 1; i < mask->size_; i++) {
+  for (int32_t i = 1; i < mask->size_; i++) {
     if (IOSBooleanArray_Get(mask, i)) *IOSIntArray_GetRef(nil_chk(mInterpolateVariables_), count++) = i;
   }
-  IOSObjectArray *splineData = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ points->size_, ((IOSIntArray *) nil_chk(mInterpolateVariables_))->size_ }];
+  IOSObjectArray *splineData = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ points->size_, ((IOSIntArray *) nil_chk(mInterpolateVariables_))->size_ }];
   IOSDoubleArray *timePoint = [IOSDoubleArray arrayWithLength:points->size_];
-  for (jint i = 0; i < points->size_; i++) {
+  for (int32_t i = 0; i < points->size_; i++) {
     [((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, i))) fillStandardWithDoubleArray:IOSObjectArray_Get(splineData, i) withIntArray:mInterpolateVariables_];
     *IOSDoubleArray_GetRef(timePoint, i) = ((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, i)))->time_;
   }
-  for (jint j = 0; j < ((IOSIntArray *) nil_chk(mInterpolateVariables_))->size_; j++) {
-    jint interpolateVariable = IOSIntArray_Get(mInterpolateVariables_, j);
+  for (int32_t j = 0; j < ((IOSIntArray *) nil_chk(mInterpolateVariables_))->size_; j++) {
+    int32_t interpolateVariable = IOSIntArray_Get(mInterpolateVariables_, j);
     if (interpolateVariable < ((IOSObjectArray *) nil_chk(JreLoadStatic(ADXMotionPaths, names)))->size_) {
       NSString *s = JreStrcat("$$", IOSObjectArray_Get(JreLoadStatic(ADXMotionPaths, names), IOSIntArray_Get(mInterpolateVariables_, j)), @" [");
-      for (jint i = 0; i < points->size_; i++) {
+      for (int32_t i = 0; i < points->size_; i++) {
         JreStrAppend(&s, "D", IOSDoubleArray_Get(nil_chk(IOSObjectArray_Get(splineData, i)), j));
       }
     }
   }
   JreStrongAssignAndConsume(&mSpline_, [IOSObjectArray newArrayWithLength:1 + ((IOSObjectArray *) nil_chk(mAttributeNames_))->size_ type:ADXCurveFit_class_()]);
-  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(mAttributeNames_))->size_; i++) {
-    jint pointCount = 0;
+  for (int32_t i = 0; i < ((IOSObjectArray *) nil_chk(mAttributeNames_))->size_; i++) {
+    int32_t pointCount = 0;
     IOSObjectArray *splinePoints = nil;
     IOSDoubleArray *timePoints = nil;
     NSString *name = IOSObjectArray_Get(mAttributeNames_, i);
-    for (jint j = 0; j < points->size_; j++) {
+    for (int32_t j = 0; j < points->size_; j++) {
       if ([((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, j))) hasCustomDataWithNSString:name]) {
         if (splinePoints == nil) {
           timePoints = [IOSDoubleArray arrayWithLength:points->size_];
-          splinePoints = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ points->size_, [((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, j))) getCustomDataCountWithNSString:name] }];
+          splinePoints = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ points->size_, [((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, j))) getCustomDataCountWithNSString:name] }];
         }
         *IOSDoubleArray_GetRef(nil_chk(timePoints), pointCount) = ((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, j)))->time_;
         [((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, j))) getCustomDataWithNSString:name withDoubleArray:IOSObjectArray_Get(splinePoints, pointCount) withInt:0];
@@ -780,11 +793,11 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   }
   IOSObjectArray_Set(nil_chk(mSpline_), 0, ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(mCurveFitType_, timePoint, splineData));
   if (((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, 0)))->mPathMotionArc_ != ADXMotionWidget_UNSET) {
-    jint size = points->size_;
+    int32_t size = points->size_;
     IOSIntArray *mode = [IOSIntArray arrayWithLength:size];
     IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:size];
-    IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ size, 2 }];
-    for (jint i = 0; i < size; i++) {
+    IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ size, 2 }];
+    for (int32_t i = 0; i < size; i++) {
       *IOSIntArray_GetRef(mode, i) = ((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, i)))->mPathMotionArc_;
       *IOSDoubleArray_GetRef(time, i) = ((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, i)))->time_;
       *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), 0) = ((ADXMotionPaths *) nil_chk(IOSObjectArray_Get(points, i)))->x_;
@@ -792,7 +805,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
     }
     JreStrongAssign(&mArcSpline_, ADXCurveFit_getArcWithIntArray_withDoubleArray_withDoubleArray2_(mode, time, values));
   }
-  jfloat distance = JavaLangFloat_NaN;
+  float distance = JavaLangFloat_NaN;
   JreStrongAssignAndConsume(&mCycleMap_, new_JavaUtilHashMap_init());
   if (mKeyList_ != nil) {
     for (NSString * __strong attribute in cycleAttributes) {
@@ -854,13 +867,13 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
 
 - (void)setStartStateWithADXViewState:(ADXViewState *)rect
                   withADXMotionWidget:(ADXMotionWidget *)v
-                              withInt:(jint)rotation
-                              withInt:(jint)preWidth
-                              withInt:(jint)preHeight {
+                              withInt:(int32_t)rotation
+                              withInt:(int32_t)preWidth
+                              withInt:(int32_t)preHeight {
   ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->time_ = 0;
   mStartMotionPath_->position_ = 0;
-  jint cx;
-  jint cy;
+  int32_t cx;
+  int32_t cy;
   ADXCLRect *r = create_ADXCLRect_init();
   switch (rotation) {
     case 2:
@@ -886,11 +899,11 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
 
 - (void)rotateWithADXCLRect:(ADXCLRect *)rect
               withADXCLRect:(ADXCLRect *)outArg
-                    withInt:(jint)rotation
-                    withInt:(jint)preHeight
-                    withInt:(jint)preWidth {
-  jint cx;
-  jint cy;
+                    withInt:(int32_t)rotation
+                    withInt:(int32_t)preHeight
+                    withInt:(int32_t)preWidth {
+  int32_t cx;
+  int32_t cy;
   switch (rotation) {
     case ADXMotionConstraintSet_ROTATE_PORTRATE_OF_LEFT:
     cx = ((ADXCLRect *) nil_chk(rect))->left_ + rect->right_;
@@ -927,9 +940,9 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   }
 }
 
-+ (id<ADXDifferentialInterpolator>)getInterpolatorWithInt:(jint)type
++ (id<ADXDifferentialInterpolator>)getInterpolatorWithInt:(int32_t)type
                                              withNSString:(NSString *)interpolatorString
-                                                  withInt:(jint)id_ {
+                                                  withInt:(int32_t)id_ {
   return ADXMotion_getInterpolatorWithInt_withNSString_withInt_(type, interpolatorString, id_);
 }
 
@@ -943,25 +956,25 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   [((ADXMotionConstrainedPoint *) nil_chk(mEndPoint_)) setStateWithADXMotionWidget:v];
 }
 
-- (jfloat)getAdjustedPositionWithFloat:(jfloat)position
-                        withFloatArray:(IOSFloatArray *)velocity {
+- (float)getAdjustedPositionWithFloat:(float)position
+                       withFloatArray:(IOSFloatArray *)velocity {
   return ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, position, velocity);
 }
 
-- (void)endTriggerWithBoolean:(jboolean)start {
+- (void)endTriggerWithBoolean:(bool)start {
 }
 
-- (jboolean)interpolateWithADXMotionWidget:(ADXMotionWidget *)child
-                                 withFloat:(jfloat)global_position
-                                  withLong:(jlong)time
-                           withADXKeyCache:(ADXKeyCache *)keyCache {
-  jboolean timeAnimation = false;
-  jfloat position = ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, global_position, nil);
+- (bool)interpolateWithADXMotionWidget:(ADXMotionWidget *)child
+                             withFloat:(float)global_position
+                              withLong:(int64_t)time
+                       withADXKeyCache:(ADXKeyCache *)keyCache {
+  bool timeAnimation = false;
+  float position = ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, global_position, nil);
   if (mQuantizeMotionSteps_ != ADXMotionWidget_UNSET) {
-    jfloat pin = position;
-    jfloat steps = 1.0f / mQuantizeMotionSteps_;
-    jfloat jump = (jfloat) JavaLangMath_floorWithDouble_(position / steps) * steps;
-    jfloat section = (fmodf(position, steps)) / steps;
+    float pin = position;
+    float steps = 1.0f / mQuantizeMotionSteps_;
+    float jump = (float) JavaLangMath_floorWithDouble_(position / steps) * steps;
+    float section = (fmodf(position, steps)) / steps;
     if (!JavaLangFloat_isNaNWithFloat_(mQuantizeMotionPhase_)) {
       section = fmodf((section + mQuantizeMotionPhase_), 1);
     }
@@ -996,17 +1009,17 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
         JreStrongAssign(&mTransformPivotView_, [((ADXMotionWidget *) nil_chk(layout)) findViewByIdWithInt:mTransformPivotTarget_]);
       }
       if (mTransformPivotView_ != nil) {
-        jfloat cy = ([mTransformPivotView_ getTop] + [((ADXMotionWidget *) nil_chk(mTransformPivotView_)) getBottom]) / 2.0f;
-        jfloat cx = ([((ADXMotionWidget *) nil_chk(mTransformPivotView_)) getLeft] + [((ADXMotionWidget *) nil_chk(mTransformPivotView_)) getRight]) / 2.0f;
+        float cy = ([mTransformPivotView_ getTop] + [((ADXMotionWidget *) nil_chk(mTransformPivotView_)) getBottom]) / 2.0f;
+        float cx = ([((ADXMotionWidget *) nil_chk(mTransformPivotView_)) getLeft] + [((ADXMotionWidget *) nil_chk(mTransformPivotView_)) getRight]) / 2.0f;
         if ([((ADXMotionWidget *) nil_chk(child)) getRight] - [child getLeft] > 0 && [child getBottom] - [child getTop] > 0) {
-          jfloat px = (cx - [child getLeft]);
-          jfloat py = (cy - [child getTop]);
+          float px = (cx - [child getLeft]);
+          float py = (cy - [child getTop]);
           [child setPivotXWithFloat:px];
           [child setPivotYWithFloat:py];
         }
       }
     }
-    for (jint i = 1; i < ((IOSObjectArray *) nil_chk(mSpline_))->size_; i++) {
+    for (int32_t i = 1; i < ((IOSObjectArray *) nil_chk(mSpline_))->size_; i++) {
       ADXCurveFit *spline = IOSObjectArray_Get(mSpline_, i);
       [((ADXCurveFit *) nil_chk(spline)) getPosWithDouble:position withFloatArray:mValuesBuff_];
       [((ADXCustomVariable *) nil_chk([((JavaUtilHashMap *) nil_chk(((ADXMotionPaths *) nil_chk(mStartMotionPath_))->customAttributes_)) getWithId:IOSObjectArray_Get(nil_chk(mAttributeNames_), i - 1)])) setInterpolatedValueWithADXMotionWidget:child withFloatArray:mValuesBuff_];
@@ -1023,22 +1036,22 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
       }
     }
     if (mKeyTriggers_ != nil) {
-      for (jint i = 0; i < ((IOSObjectArray *) nil_chk(mKeyTriggers_))->size_; i++) {
+      for (int32_t i = 0; i < ((IOSObjectArray *) nil_chk(mKeyTriggers_))->size_; i++) {
         [((ADXMotionKeyTrigger *) nil_chk(IOSObjectArray_Get(mKeyTriggers_, i))) conditionallyFireWithFloat:position withADXMotionWidget:child];
       }
     }
   }
   else {
-    jfloat float_l = (((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_ + (((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - mStartMotionPath_->x_) * position);
-    jfloat float_t = (mStartMotionPath_->y_ + (mEndMotionPath_->y_ - mStartMotionPath_->y_) * position);
-    jfloat float_width = (mStartMotionPath_->width_ + (mEndMotionPath_->width_ - mStartMotionPath_->width_) * position);
-    jfloat float_height = (mStartMotionPath_->height_ + (mEndMotionPath_->height_ - mStartMotionPath_->height_) * position);
-    jint l = JreFpToInt((0.5f + float_l));
-    jint t = JreFpToInt((0.5f + float_t));
-    jint r = JreFpToInt((0.5f + float_l + float_width));
-    jint b = JreFpToInt((0.5f + float_t + float_height));
-    jint width = r - l;
-    jint height = b - t;
+    float float_l = (((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_ + (((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - mStartMotionPath_->x_) * position);
+    float float_t = (mStartMotionPath_->y_ + (mEndMotionPath_->y_ - mStartMotionPath_->y_) * position);
+    float float_width = (mStartMotionPath_->width_ + (mEndMotionPath_->width_ - mStartMotionPath_->width_) * position);
+    float float_height = (mStartMotionPath_->height_ + (mEndMotionPath_->height_ - mStartMotionPath_->height_) * position);
+    int32_t l = JreFpToInt((0.5f + float_l));
+    int32_t t = JreFpToInt((0.5f + float_t));
+    int32_t r = JreFpToInt((0.5f + float_l + float_width));
+    int32_t b = JreFpToInt((0.5f + float_t + float_height));
+    int32_t width = r - l;
+    int32_t height = b - t;
     [((ADXMotionWidget *) nil_chk(child)) layoutWithInt:l withInt:t withInt:r withInt:b];
   }
   if (mCycleMap_ != nil) {
@@ -1054,16 +1067,16 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return false;
 }
 
-- (void)getDpDtWithFloat:(jfloat)position
-               withFloat:(jfloat)locationX
-               withFloat:(jfloat)locationY
+- (void)getDpDtWithFloat:(float)position
+               withFloat:(float)locationX
+               withFloat:(float)locationY
           withFloatArray:(IOSFloatArray *)mAnchorDpDt {
   position = ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, position, mVelocity_);
   if (mSpline_ != nil) {
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(mSpline_, 0))) getSlopeWithDouble:position withDoubleArray:mInterpolateVelocity_];
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:position withDoubleArray:mInterpolateData_];
-    jfloat v = IOSFloatArray_Get(nil_chk(mVelocity_), 0);
-    for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(mInterpolateVelocity_))->size_; i++) {
+    float v = IOSFloatArray_Get(nil_chk(mVelocity_), 0);
+    for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(mInterpolateVelocity_))->size_; i++) {
       JreTimesAssignDoubleD(IOSDoubleArray_GetRef(mInterpolateVelocity_, i), v);
     }
     if (mArcSpline_ != nil) {
@@ -1077,21 +1090,21 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
     [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) setDpDtWithFloat:locationX withFloat:locationY withFloatArray:mAnchorDpDt withIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateVelocity_ withDoubleArray:mInterpolateData_];
     return;
   }
-  jfloat dleft = (((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_);
-  jfloat dTop = (mEndMotionPath_->y_ - mStartMotionPath_->y_);
-  jfloat dWidth = (mEndMotionPath_->width_ - mStartMotionPath_->width_);
-  jfloat dHeight = (mEndMotionPath_->height_ - mStartMotionPath_->height_);
-  jfloat dRight = dleft + dWidth;
-  jfloat dBottom = dTop + dHeight;
+  float dleft = (((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_);
+  float dTop = (mEndMotionPath_->y_ - mStartMotionPath_->y_);
+  float dWidth = (mEndMotionPath_->width_ - mStartMotionPath_->width_);
+  float dHeight = (mEndMotionPath_->height_ - mStartMotionPath_->height_);
+  float dRight = dleft + dWidth;
+  float dBottom = dTop + dHeight;
   *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt), 0) = dleft * (1 - locationX) + dRight * (locationX);
   *IOSFloatArray_GetRef(mAnchorDpDt, 1) = dTop * (1 - locationY) + dBottom * (locationY);
 }
 
-- (void)getPostLayoutDvDpWithFloat:(jfloat)position
-                           withInt:(jint)width
-                           withInt:(jint)height
-                         withFloat:(jfloat)locationX
-                         withFloat:(jfloat)locationY
+- (void)getPostLayoutDvDpWithFloat:(float)position
+                           withInt:(int32_t)width
+                           withInt:(int32_t)height
+                         withFloat:(float)locationX
+                         withFloat:(float)locationY
                     withFloatArray:(IOSFloatArray *)mAnchorDpDt {
   position = ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, position, mVelocity_);
   ADXSplineSet *trans_x = (mAttributesMap_ == nil) ? nil : [((JavaUtilHashMap *) nil_chk(mAttributesMap_)) getWithId:ADXMotionKey_TRANSLATION_X];
@@ -1125,20 +1138,20 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
     position = ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(self, position, mVelocity_);
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getSlopeWithDouble:position withDoubleArray:mInterpolateVelocity_];
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:position withDoubleArray:mInterpolateData_];
-    jfloat v = IOSFloatArray_Get(nil_chk(mVelocity_), 0);
-    for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(mInterpolateVelocity_))->size_; i++) {
+    float v = IOSFloatArray_Get(nil_chk(mVelocity_), 0);
+    for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(mInterpolateVelocity_))->size_; i++) {
       JreTimesAssignDoubleD(IOSDoubleArray_GetRef(mInterpolateVelocity_, i), v);
     }
     [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) setDpDtWithFloat:locationX withFloat:locationY withFloatArray:mAnchorDpDt withIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateVelocity_ withDoubleArray:mInterpolateData_];
     [vmat applyTransformWithFloat:locationX withFloat:locationY withInt:width withInt:height withFloatArray:mAnchorDpDt];
     return;
   }
-  jfloat dleft = (((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_);
-  jfloat dTop = (mEndMotionPath_->y_ - mStartMotionPath_->y_);
-  jfloat dWidth = (mEndMotionPath_->width_ - mStartMotionPath_->width_);
-  jfloat dHeight = (mEndMotionPath_->height_ - mStartMotionPath_->height_);
-  jfloat dRight = dleft + dWidth;
-  jfloat dBottom = dTop + dHeight;
+  float dleft = (((ADXMotionPaths *) nil_chk(mEndMotionPath_))->x_ - ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->x_);
+  float dTop = (mEndMotionPath_->y_ - mStartMotionPath_->y_);
+  float dWidth = (mEndMotionPath_->width_ - mStartMotionPath_->width_);
+  float dHeight = (mEndMotionPath_->height_ - mStartMotionPath_->height_);
+  float dRight = dleft + dWidth;
+  float dBottom = dTop + dHeight;
   *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt), 0) = dleft * (1 - locationX) + dRight * (locationX);
   *IOSFloatArray_GetRef(mAnchorDpDt, 1) = dTop * (1 - locationY) + dBottom * (locationY);
   [vmat clear];
@@ -1152,8 +1165,8 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return;
 }
 
-- (jint)getDrawPath {
-  jint mode = ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->mDrawPath_;
+- (int32_t)getDrawPath {
+  int32_t mode = ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->mDrawPath_;
   for (ADXMotionPaths * __strong keyFrame in nil_chk(mMotionPaths_)) {
     mode = JavaLangMath_maxWithInt_withInt_(mode, ((ADXMotionPaths *) nil_chk(keyFrame))->mDrawPath_);
   }
@@ -1161,7 +1174,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return mode;
 }
 
-- (void)setDrawPathWithInt:(jint)debugMode {
+- (void)setDrawPathWithInt:(int32_t)debugMode {
   ((ADXMotionPaths *) nil_chk(mStartMotionPath_))->mDrawPath_ = debugMode;
 }
 
@@ -1171,8 +1184,8 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
 
 - (void)positionKeyframeWithADXMotionWidget:(ADXMotionWidget *)view
                    withADXMotionKeyPosition:(ADXMotionKeyPosition *)key
-                                  withFloat:(jfloat)x
-                                  withFloat:(jfloat)y
+                                  withFloat:(float)x
+                                  withFloat:(float)y
                           withNSStringArray:(IOSObjectArray *)attribute
                              withFloatArray:(IOSFloatArray *)value {
   ADXFloatRect *start = create_ADXFloatRect_init();
@@ -1188,13 +1201,13 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   [((ADXMotionKeyPosition *) nil_chk(key)) positionAttributesWithADXMotionWidget:view withADXFloatRect:start withADXFloatRect:end withFloat:x withFloat:y withNSStringArray:attribute withFloatArray:value];
 }
 
-- (jint)getKeyFramePositionsWithIntArray:(IOSIntArray *)type
-                          withFloatArray:(IOSFloatArray *)pos {
-  jint i = 0;
-  jint count = 0;
+- (int32_t)getKeyFramePositionsWithIntArray:(IOSIntArray *)type
+                             withFloatArray:(IOSFloatArray *)pos {
+  int32_t i = 0;
+  int32_t count = 0;
   for (ADXMotionKey * __strong key in nil_chk(mKeyList_)) {
     *IOSIntArray_GetRef(nil_chk(type), i++) = ((ADXMotionKey *) nil_chk(key))->mFramePosition_ + 1000 * key->mType_;
-    jfloat time = key->mFramePosition_ / 100.0f;
+    float time = key->mFramePosition_ / 100.0f;
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:time withDoubleArray:mInterpolateData_];
     [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) getCenterWithDouble:time withIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateData_ withFloatArray:pos withInt:count];
     count += 2;
@@ -1202,12 +1215,12 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
   return i;
 }
 
-- (jint)getKeyFrameInfoWithInt:(jint)type
-                  withIntArray:(IOSIntArray *)info {
-  jint count = 0;
-  jint cursor = 0;
+- (int32_t)getKeyFrameInfoWithInt:(int32_t)type
+                     withIntArray:(IOSIntArray *)info {
+  int32_t count = 0;
+  int32_t cursor = 0;
   IOSFloatArray *pos = [IOSFloatArray arrayWithLength:2];
-  jint len;
+  int32_t len;
   for (ADXMotionKey * __strong key in nil_chk(mKeyList_)) {
     if (((ADXMotionKey *) nil_chk(key))->mType_ != type && type == -1) {
       continue;
@@ -1216,7 +1229,7 @@ __attribute__((unused)) static ADXMotion_1 *create_ADXMotion_1_initWithADXEasing
     *IOSIntArray_GetRef(nil_chk(info), cursor) = 0;
     *IOSIntArray_GetRef(info, ++cursor) = key->mType_;
     *IOSIntArray_GetRef(info, ++cursor) = key->mFramePosition_;
-    jfloat time = key->mFramePosition_ / 100.0f;
+    float time = key->mFramePosition_ / 100.0f;
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(mSpline_), 0))) getPosWithDouble:time withDoubleArray:mInterpolateData_];
     [((ADXMotionPaths *) nil_chk(mStartMotionPath_)) getCenterWithDouble:time withIntArray:mInterpolateVariables_ withDoubleArray:mInterpolateData_ withFloatArray:pos withInt:0];
     *IOSIntArray_GetRef(info, ++cursor) = JavaLangFloat_floatToIntBitsWithFloat_(IOSFloatArray_Get(pos, 0));
@@ -1486,19 +1499,19 @@ ADXMotion *create_ADXMotion_initWithADXMotionWidget_(ADXMotionWidget *view) {
   J2OBJC_CREATE_IMPL(ADXMotion, initWithADXMotionWidget_, view)
 }
 
-jfloat ADXMotion_getPreCycleDistance(ADXMotion *self) {
-  jint pointCount = 100;
+float ADXMotion_getPreCycleDistance(ADXMotion *self) {
+  int32_t pointCount = 100;
   IOSFloatArray *points = [IOSFloatArray arrayWithLength:2];
-  jfloat sum = 0;
-  jfloat mils = 1.0f / (pointCount - 1);
-  jdouble x = 0;
-  jdouble y = 0;
-  for (jint i = 0; i < pointCount; i++) {
-    jfloat position = (i) * mils;
-    jdouble p = position;
+  float sum = 0;
+  float mils = 1.0f / (pointCount - 1);
+  double x = 0;
+  double y = 0;
+  for (int32_t i = 0; i < pointCount; i++) {
+    float position = (i) * mils;
+    double p = position;
     ADXEasing *easing = JreRetainedLocalValue(((ADXMotionPaths *) nil_chk(self->mStartMotionPath_))->mKeyFrameEasing_);
-    jfloat start = 0;
-    jfloat end = JavaLangFloat_NaN;
+    float start = 0;
+    float end = JavaLangFloat_NaN;
     for (ADXMotionPaths * __strong frame in nil_chk(self->mMotionPaths_)) {
       if (((ADXMotionPaths *) nil_chk(frame))->mKeyFrameEasing_ != nil) {
         if (frame->time_ < position) {
@@ -1516,8 +1529,8 @@ jfloat ADXMotion_getPreCycleDistance(ADXMotion *self) {
       if (JavaLangFloat_isNaNWithFloat_(end)) {
         end = 1.0f;
       }
-      jfloat offset = (position - start) / (end - start);
-      offset = (jfloat) [easing getWithDouble:offset];
+      float offset = (position - start) / (end - start);
+      offset = (float) [easing getWithDouble:offset];
       p = offset * (end - start) + start;
     }
     [((ADXCurveFit *) nil_chk(IOSObjectArray_Get(nil_chk(self->mSpline_), 0))) getPosWithDouble:p withDoubleArray:self->mInterpolateData_];
@@ -1541,7 +1554,7 @@ void ADXMotion_insertKeyWithADXMotionPaths_(ADXMotion *self, ADXMotionPaths *poi
   if (redundant != nil) {
     [self->mMotionPaths_ removeWithId:redundant];
   }
-  jint pos = JavaUtilCollections_binarySearchWithJavaUtilList_withId_(self->mMotionPaths_, point);
+  int32_t pos = JavaUtilCollections_binarySearchWithJavaUtilList_withId_(self->mMotionPaths_, point);
   if (pos == 0) {
     ADXUtils_logeWithNSString_withNSString_(ADXMotion_TAG, JreStrcat("$F$", @" KeyPath position \"", ((ADXMotionPaths *) nil_chk(point))->position_, @"\" outside of range"));
   }
@@ -1549,10 +1562,10 @@ void ADXMotion_insertKeyWithADXMotionPaths_(ADXMotion *self, ADXMotionPaths *poi
 }
 
 void ADXMotion_readViewWithADXMotionPaths_(ADXMotion *self, ADXMotionPaths *motionPaths) {
-  [((ADXMotionPaths *) nil_chk(motionPaths)) setBoundsWithFloat:(jint) [((ADXMotionWidget *) nil_chk(self->mView_)) getX] withFloat:(jint) [((ADXMotionWidget *) nil_chk(self->mView_)) getY] withFloat:[((ADXMotionWidget *) nil_chk(self->mView_)) getWidth] withFloat:[((ADXMotionWidget *) nil_chk(self->mView_)) getHeight]];
+  [((ADXMotionPaths *) nil_chk(motionPaths)) setBoundsWithFloat:(int32_t) [((ADXMotionWidget *) nil_chk(self->mView_)) getX] withFloat:(int32_t) [((ADXMotionWidget *) nil_chk(self->mView_)) getY] withFloat:[((ADXMotionWidget *) nil_chk(self->mView_)) getWidth] withFloat:[((ADXMotionWidget *) nil_chk(self->mView_)) getHeight]];
 }
 
-id<ADXDifferentialInterpolator> ADXMotion_getInterpolatorWithInt_withNSString_withInt_(jint type, NSString *interpolatorString, jint id_) {
+id<ADXDifferentialInterpolator> ADXMotion_getInterpolatorWithInt_withNSString_withInt_(int32_t type, NSString *interpolatorString, int32_t id_) {
   ADXMotion_initialize();
   {
     ADXEasing *easing;
@@ -1565,7 +1578,7 @@ id<ADXDifferentialInterpolator> ADXMotion_getInterpolatorWithInt_withNSString_wi
   return nil;
 }
 
-jfloat ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(ADXMotion *self, jfloat position, IOSFloatArray *velocity) {
+float ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(ADXMotion *self, float position, IOSFloatArray *velocity) {
   if (velocity != nil) {
     *IOSFloatArray_GetRef(velocity, 0) = 1;
   }
@@ -1579,10 +1592,10 @@ jfloat ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(ADXMotion *self, j
       position = JavaLangMath_minWithFloat_withFloat_(position, 1.0f);
     }
   }
-  jfloat adjusted = position;
+  float adjusted = position;
   ADXEasing *easing = JreRetainedLocalValue(((ADXMotionPaths *) nil_chk(self->mStartMotionPath_))->mKeyFrameEasing_);
-  jfloat start = 0;
-  jfloat end = JavaLangFloat_NaN;
+  float start = 0;
+  float end = JavaLangFloat_NaN;
   for (ADXMotionPaths * __strong frame in nil_chk(self->mMotionPaths_)) {
     if (((ADXMotionPaths *) nil_chk(frame))->mKeyFrameEasing_ != nil) {
       if (frame->time_ < position) {
@@ -1600,17 +1613,19 @@ jfloat ADXMotion_getAdjustedPositionWithFloat_withFloatArray_(ADXMotion *self, j
     if (JavaLangFloat_isNaNWithFloat_(end)) {
       end = 1.0f;
     }
-    jfloat offset = (position - start) / (end - start);
-    jfloat new_offset = (jfloat) [easing getWithDouble:offset];
+    float offset = (position - start) / (end - start);
+    float new_offset = (float) [easing getWithDouble:offset];
     adjusted = new_offset * (end - start) + start;
     if (velocity != nil) {
-      *IOSFloatArray_GetRef(velocity, 0) = (jfloat) [easing getDiffWithDouble:offset];
+      *IOSFloatArray_GetRef(velocity, 0) = (float) [easing getDiffWithDouble:offset];
     }
   }
   return adjusted;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotion)
+
+J2OBJC_NAME_MAPPING(ADXMotion, "androidx.constraintlayout.core.motion", "ADX")
 
 @implementation ADXMotion_1
 
@@ -1619,13 +1634,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotion)
   return self;
 }
 
-- (jfloat)getInterpolationWithFloat:(jfloat)x {
+- (float)getInterpolationWithFloat:(float)x {
   mX_ = x;
-  return (jfloat) [((ADXEasing *) nil_chk(val$easing_)) getWithDouble:x];
+  return (float) [((ADXEasing *) nil_chk(val$easing_)) getWithDouble:x];
 }
 
-- (jfloat)getVelocity {
-  return (jfloat) [((ADXEasing *) nil_chk(val$easing_)) getDiffWithDouble:mX_];
+- (float)getVelocity {
+  return (float) [((ADXEasing *) nil_chk(val$easing_)) getDiffWithDouble:mX_];
 }
 
 - (void)dealloc {
@@ -1651,7 +1666,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotion)
     { "mX_", "F", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXEasing;", "getInterpolation", "F", "LADXMotion;", "getInterpolatorWithInt:withNSString:withInt:" };
-  static const J2ObjcClassInfo _ADXMotion_1 = { "", "androidx.constraintlayout.core.motion", ptrTable, methods, fields, 7, 0x8018, 3, 2, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _ADXMotion_1 = { "", "androidx.constraintlayout.core.motion", ptrTable, methods, fields, 7, 0x8000, 3, 2, 3, -1, 4, -1, -1 };
   return &_ADXMotion_1;
 }
 

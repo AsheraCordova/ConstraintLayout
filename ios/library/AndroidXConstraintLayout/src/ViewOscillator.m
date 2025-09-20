@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\utils\ViewOscillator.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAttribute.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
@@ -14,12 +19,22 @@
 #include "MotionLayout.h"
 #include "View.h"
 #include "ViewOscillator.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalAccessException.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/NoSuchMethodException.h"
 #include "java/lang/reflect/InvocationTargetException.h"
 #include "java/lang/reflect/Method.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 inline NSString *ADXViewOscillator_get_TAG(void);
@@ -36,7 +51,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }
@@ -113,6 +128,8 @@ ADXViewOscillator *ADXViewOscillator_makeSplineWithNSString_(NSString *str) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewOscillator)
 
+J2OBJC_NAME_MAPPING(ADXViewOscillator, "androidx.constraintlayout.motion.utils", "ADX")
+
 @implementation ADXViewOscillator_ElevationSet
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -123,7 +140,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   {
     [((ADView *) nil_chk(view)) setElevationWithFloat:[self getWithFloat:t]];
   }
@@ -171,7 +188,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setAlphaWithFloat:[self getWithFloat:t]];
 }
 
@@ -217,7 +234,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t]];
 }
 
@@ -263,7 +280,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setRotationXWithFloat:[self getWithFloat:t]];
 }
 
@@ -309,7 +326,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setRotationYWithFloat:[self getWithFloat:t]];
 }
 
@@ -355,14 +372,14 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
 }
 
 - (void)setPathRotateWithADView:(ADView *)view
-                      withFloat:(jfloat)t
-                     withDouble:(jdouble)dx
-                     withDouble:(jdouble)dy {
-  [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t] + (jfloat) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
+                      withFloat:(float)t
+                     withDouble:(double)dx
+                     withDouble:(double)dy {
+  [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t] + (float) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -409,7 +426,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setScaleXWithFloat:[self getWithFloat:t]];
 }
 
@@ -455,7 +472,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setScaleYWithFloat:[self getWithFloat:t]];
 }
 
@@ -501,7 +518,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setTranslationXWithFloat:[self getWithFloat:t]];
 }
 
@@ -547,7 +564,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setTranslationYWithFloat:[self getWithFloat:t]];
 }
 
@@ -593,7 +610,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   {
     [((ADView *) nil_chk(view)) setTranslationZWithFloat:[self getWithFloat:t]];
   }
@@ -645,7 +662,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   *IOSFloatArray_GetRef(nil_chk(value_), 0) = [self getWithFloat:t];
   [((ADXConstraintAttribute *) nil_chk(mCustom_)) setInterpolatedValueWithADView:view withFloatArray:value_];
 }
@@ -705,7 +722,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   if ([view isKindOfClass:[ADXMotionLayout class]]) {
     [((ADXMotionLayout *) nil_chk(((ADXMotionLayout *) view))) setProgressWithFloat:[self getWithFloat:t]];
   }

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\RunGroup.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ChainRun.h"
 #include "ConstraintWidget.h"
 #include "ConstraintWidgetContainer.h"
@@ -15,36 +20,46 @@
 #include "RunGroup.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXRunGroup ()
 
-- (jlong)traverseStartWithADXDependencyNode:(ADXDependencyNode *)node
-                                   withLong:(jlong)startPosition;
+- (int64_t)traverseStartWithADXDependencyNode:(ADXDependencyNode *)node
+                                     withLong:(int64_t)startPosition;
 
-- (jlong)traverseEndWithADXDependencyNode:(ADXDependencyNode *)node
-                                 withLong:(jlong)startPosition;
+- (int64_t)traverseEndWithADXDependencyNode:(ADXDependencyNode *)node
+                                   withLong:(int64_t)startPosition;
 
-- (jboolean)defineTerminalWidgetWithADXWidgetRun:(ADXWidgetRun *)run
-                                         withInt:(jint)orientation;
+- (bool)defineTerminalWidgetWithADXWidgetRun:(ADXWidgetRun *)run
+                                     withInt:(int32_t)orientation;
 
 @end
 
-__attribute__((unused)) static jlong ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, jlong startPosition);
+__attribute__((unused)) static int64_t ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, int64_t startPosition);
 
-__attribute__((unused)) static jlong ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, jlong startPosition);
+__attribute__((unused)) static int64_t ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, int64_t startPosition);
 
-__attribute__((unused)) static jboolean ADXRunGroup_defineTerminalWidgetWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, jint orientation);
+__attribute__((unused)) static bool ADXRunGroup_defineTerminalWidgetWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, int32_t orientation);
 
-jint ADXRunGroup_index;
+int32_t ADXRunGroup_index;
 
 @implementation ADXRunGroup
 
 - (instancetype)initPackagePrivateWithADXWidgetRun:(ADXWidgetRun *)run
-                                           withInt:(jint)dir {
+                                           withInt:(int32_t)dir {
   ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(self, run, dir);
   return self;
 }
@@ -54,18 +69,18 @@ jint ADXRunGroup_index;
   JreStrongAssign(&lastRun_, run);
 }
 
-- (jlong)traverseStartWithADXDependencyNode:(ADXDependencyNode *)node
-                                   withLong:(jlong)startPosition {
+- (int64_t)traverseStartWithADXDependencyNode:(ADXDependencyNode *)node
+                                     withLong:(int64_t)startPosition {
   return ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(self, node, startPosition);
 }
 
-- (jlong)traverseEndWithADXDependencyNode:(ADXDependencyNode *)node
-                                 withLong:(jlong)startPosition {
+- (int64_t)traverseEndWithADXDependencyNode:(ADXDependencyNode *)node
+                                   withLong:(int64_t)startPosition {
   return ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(self, node, startPosition);
 }
 
-- (jlong)computeWrapSizeWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
-                                                 withInt:(jint)orientation {
+- (int64_t)computeWrapSizeWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
+                                                   withInt:(int32_t)orientation {
   if ([firstRun_ isKindOfClass:[ADXChainRun class]]) {
     ADXChainRun *chainRun = (ADXChainRun *) firstRun_;
     if (((ADXChainRun *) nil_chk(chainRun))->orientation_ != orientation) {
@@ -86,38 +101,38 @@ jint ADXRunGroup_index;
   }
   ADXDependencyNode *containerStart = orientation == ADXConstraintWidget_HORIZONTAL ? ((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container))->horizontalRun_))->start_ : ((ADXVerticalWidgetRun *) nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container))->verticalRun_))->start_;
   ADXDependencyNode *containerEnd = orientation == ADXConstraintWidget_HORIZONTAL ? ((ADXHorizontalWidgetRun *) nil_chk(container->horizontalRun_))->end_ : ((ADXVerticalWidgetRun *) nil_chk(container->verticalRun_))->end_;
-  jboolean runWithStartTarget = [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->start_))->targets_)) containsWithId:containerStart];
-  jboolean runWithEndTarget = [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->end_))->targets_)) containsWithId:containerEnd];
-  jlong dimension = [((ADXWidgetRun *) nil_chk(firstRun_)) getWrapDimension];
+  bool runWithStartTarget = [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->start_))->targets_)) containsWithId:containerStart];
+  bool runWithEndTarget = [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->end_))->targets_)) containsWithId:containerEnd];
+  int64_t dimension = [((ADXWidgetRun *) nil_chk(firstRun_)) getWrapDimension];
   if (runWithStartTarget && runWithEndTarget) {
-    jlong maxPosition = ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->start_, 0);
-    jlong minPosition = ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->end_, 0);
-    jlong endGap = maxPosition - dimension;
+    int64_t maxPosition = ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->start_, 0);
+    int64_t minPosition = ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->end_, 0);
+    int64_t endGap = maxPosition - dimension;
     if (endGap >= -((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->end_))->margin_) {
       endGap += firstRun_->end_->margin_;
     }
-    jlong startGap = -minPosition - dimension - ((ADXDependencyNode *) nil_chk(firstRun_->start_))->margin_;
+    int64_t startGap = -minPosition - dimension - ((ADXDependencyNode *) nil_chk(firstRun_->start_))->margin_;
     if (startGap >= firstRun_->start_->margin_) {
       startGap -= firstRun_->start_->margin_;
     }
-    jfloat bias = [((ADXConstraintWidget *) nil_chk(firstRun_->widget_)) getBiasPercentWithInt:orientation];
-    jlong gap = 0;
+    float bias = [((ADXConstraintWidget *) nil_chk(firstRun_->widget_)) getBiasPercentWithInt:orientation];
+    int64_t gap = 0;
     if (bias > 0) {
       gap = JreFpToLong(((startGap / bias) + (endGap / (1.0f - bias))));
     }
     startGap = JreFpToLong((0.5f + (gap * bias)));
     endGap = JreFpToLong((0.5f + (gap * (1.0f - bias))));
-    jlong runDimension = startGap + dimension + endGap;
+    int64_t runDimension = startGap + dimension + endGap;
     dimension = ((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->start_))->margin_ + runDimension - ((ADXDependencyNode *) nil_chk(firstRun_->end_))->margin_;
   }
   else if (runWithStartTarget) {
-    jlong maxPosition = ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->start_, ((ADXDependencyNode *) nil_chk(firstRun_->start_))->margin_);
-    jlong runDimension = ((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->start_))->margin_ + dimension;
+    int64_t maxPosition = ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->start_, ((ADXDependencyNode *) nil_chk(firstRun_->start_))->margin_);
+    int64_t runDimension = ((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->start_))->margin_ + dimension;
     dimension = JavaLangMath_maxWithLong_withLong_(maxPosition, runDimension);
   }
   else if (runWithEndTarget) {
-    jlong minPosition = ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->end_, ((ADXDependencyNode *) nil_chk(firstRun_->end_))->margin_);
-    jlong runDimension = -((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->end_))->margin_ + dimension;
+    int64_t minPosition = ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(self, ((ADXWidgetRun *) nil_chk(firstRun_))->end_, ((ADXDependencyNode *) nil_chk(firstRun_->end_))->margin_);
+    int64_t runDimension = -((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(firstRun_))->end_))->margin_ + dimension;
     dimension = JavaLangMath_maxWithLong_withLong_(-minPosition, runDimension);
   }
   else {
@@ -126,13 +141,13 @@ jint ADXRunGroup_index;
   return dimension;
 }
 
-- (jboolean)defineTerminalWidgetWithADXWidgetRun:(ADXWidgetRun *)run
-                                         withInt:(jint)orientation {
+- (bool)defineTerminalWidgetWithADXWidgetRun:(ADXWidgetRun *)run
+                                     withInt:(int32_t)orientation {
   return ADXRunGroup_defineTerminalWidgetWithADXWidgetRun_withInt_(self, run, orientation);
 }
 
-- (void)defineTerminalWidgetsWithBoolean:(jboolean)horizontalCheck
-                             withBoolean:(jboolean)verticalCheck {
+- (void)defineTerminalWidgetsWithBoolean:(bool)horizontalCheck
+                             withBoolean:(bool)verticalCheck {
   if (horizontalCheck && [firstRun_ isKindOfClass:[ADXHorizontalWidgetRun class]]) {
     ADXRunGroup_defineTerminalWidgetWithADXWidgetRun_withInt_(self, firstRun_, ADXConstraintWidget_HORIZONTAL);
   }
@@ -189,7 +204,7 @@ jint ADXRunGroup_index;
 
 @end
 
-void ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, jint dir) {
+void ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, int32_t dir) {
   NSObject_init(self);
   self->position_ = 0;
   self->dual_ = false;
@@ -204,75 +219,75 @@ void ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXRunGroup *self, 
   self->direction_ = dir;
 }
 
-ADXRunGroup *new_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, jint dir) {
+ADXRunGroup *new_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, int32_t dir) {
   J2OBJC_NEW_IMPL(ADXRunGroup, initPackagePrivateWithADXWidgetRun_withInt_, run, dir)
 }
 
-ADXRunGroup *create_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, jint dir) {
+ADXRunGroup *create_ADXRunGroup_initPackagePrivateWithADXWidgetRun_withInt_(ADXWidgetRun *run, int32_t dir) {
   J2OBJC_CREATE_IMPL(ADXRunGroup, initPackagePrivateWithADXWidgetRun_withInt_, run, dir)
 }
 
-jlong ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, jlong startPosition) {
+int64_t ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, int64_t startPosition) {
   ADXWidgetRun *run = JreRetainedLocalValue(((ADXDependencyNode *) nil_chk(node))->run_);
   if ([run isKindOfClass:[ADXHelperReferences class]]) {
     return startPosition;
   }
-  jlong position = startPosition;
-  jint count = [((id<JavaUtilList>) nil_chk(node->dependencies_)) size];
-  for (jint i = 0; i < count; i++) {
+  int64_t position = startPosition;
+  int32_t count = [((id<JavaUtilList>) nil_chk(node->dependencies_)) size];
+  for (int32_t i = 0; i < count; i++) {
     id<ADXDependency> dependency = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(node->dependencies_)) getWithInt:i]);
     if ([dependency isKindOfClass:[ADXDependencyNode class]]) {
       ADXDependencyNode *nextNode = (ADXDependencyNode *) dependency;
-      if (((ADXDependencyNode *) nil_chk(nextNode))->run_ == run) {
+      if (JreObjectEqualsEquals(((ADXDependencyNode *) nil_chk(nextNode))->run_, run)) {
         continue;
       }
       position = JavaLangMath_maxWithLong_withLong_(position, ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(self, nextNode, startPosition + nextNode->margin_));
     }
   }
-  if (node == ((ADXWidgetRun *) nil_chk(run))->start_) {
-    jlong dimension = [run getWrapDimension];
+  if (JreObjectEqualsEquals(node, ((ADXWidgetRun *) nil_chk(run))->start_)) {
+    int64_t dimension = [run getWrapDimension];
     position = JavaLangMath_maxWithLong_withLong_(position, ADXRunGroup_traverseStartWithADXDependencyNode_withLong_(self, run->end_, startPosition + dimension));
     position = JavaLangMath_maxWithLong_withLong_(position, startPosition + dimension - ((ADXDependencyNode *) nil_chk(run->end_))->margin_);
   }
   return position;
 }
 
-jlong ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, jlong startPosition) {
+int64_t ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(ADXRunGroup *self, ADXDependencyNode *node, int64_t startPosition) {
   ADXWidgetRun *run = JreRetainedLocalValue(((ADXDependencyNode *) nil_chk(node))->run_);
   if ([run isKindOfClass:[ADXHelperReferences class]]) {
     return startPosition;
   }
-  jlong position = startPosition;
-  jint count = [((id<JavaUtilList>) nil_chk(node->dependencies_)) size];
-  for (jint i = 0; i < count; i++) {
+  int64_t position = startPosition;
+  int32_t count = [((id<JavaUtilList>) nil_chk(node->dependencies_)) size];
+  for (int32_t i = 0; i < count; i++) {
     id<ADXDependency> dependency = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(node->dependencies_)) getWithInt:i]);
     if ([dependency isKindOfClass:[ADXDependencyNode class]]) {
       ADXDependencyNode *nextNode = (ADXDependencyNode *) dependency;
-      if (((ADXDependencyNode *) nil_chk(nextNode))->run_ == run) {
+      if (JreObjectEqualsEquals(((ADXDependencyNode *) nil_chk(nextNode))->run_, run)) {
         continue;
       }
       position = JavaLangMath_minWithLong_withLong_(position, ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(self, nextNode, startPosition + nextNode->margin_));
     }
   }
-  if (node == ((ADXWidgetRun *) nil_chk(run))->end_) {
-    jlong dimension = [run getWrapDimension];
+  if (JreObjectEqualsEquals(node, ((ADXWidgetRun *) nil_chk(run))->end_)) {
+    int64_t dimension = [run getWrapDimension];
     position = JavaLangMath_minWithLong_withLong_(position, ADXRunGroup_traverseEndWithADXDependencyNode_withLong_(self, run->start_, startPosition - dimension));
     position = JavaLangMath_minWithLong_withLong_(position, startPosition - dimension - ((ADXDependencyNode *) nil_chk(run->start_))->margin_);
   }
   return position;
 }
 
-jboolean ADXRunGroup_defineTerminalWidgetWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, jint orientation) {
+bool ADXRunGroup_defineTerminalWidgetWithADXWidgetRun_withInt_(ADXRunGroup *self, ADXWidgetRun *run, int32_t orientation) {
   if (!IOSBooleanArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_))->isTerminalWidget_), orientation)) {
     return false;
   }
   for (id<ADXDependency> __strong dependency in nil_chk(((ADXDependencyNode *) nil_chk(run->start_))->dependencies_)) {
     if ([dependency isKindOfClass:[ADXDependencyNode class]]) {
       ADXDependencyNode *node = (ADXDependencyNode *) dependency;
-      if (((ADXDependencyNode *) nil_chk(node))->run_ == run) {
+      if (JreObjectEqualsEquals(((ADXDependencyNode *) nil_chk(node))->run_, run)) {
         continue;
       }
-      if (node == ((ADXWidgetRun *) nil_chk(node->run_))->start_) {
+      if (JreObjectEqualsEquals(node, ((ADXWidgetRun *) nil_chk(node->run_))->start_)) {
         if ([run isKindOfClass:[ADXChainRun class]]) {
           ADXChainRun *chainRun = (ADXChainRun *) run;
           for (ADXWidgetRun * __strong widgetChainRun in nil_chk(chainRun->widgets_)) {
@@ -291,10 +306,10 @@ jboolean ADXRunGroup_defineTerminalWidgetWithADXWidgetRun_withInt_(ADXRunGroup *
   for (id<ADXDependency> __strong dependency in ((ADXDependencyNode *) nil_chk(run->end_))->dependencies_) {
     if ([dependency isKindOfClass:[ADXDependencyNode class]]) {
       ADXDependencyNode *node = (ADXDependencyNode *) dependency;
-      if (((ADXDependencyNode *) nil_chk(node))->run_ == run) {
+      if (JreObjectEqualsEquals(((ADXDependencyNode *) nil_chk(node))->run_, run)) {
         continue;
       }
-      if (node == ((ADXWidgetRun *) nil_chk(node->run_))->start_) {
+      if (JreObjectEqualsEquals(node, ((ADXWidgetRun *) nil_chk(node->run_))->start_)) {
         if ([run isKindOfClass:[ADXChainRun class]]) {
           ADXChainRun *chainRun = (ADXChainRun *) run;
           for (ADXWidgetRun * __strong widgetChainRun in nil_chk(chainRun->widgets_)) {

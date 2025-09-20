@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Barrier.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Barrier")
@@ -26,6 +27,8 @@
 @class ADXConstraintSet_Constraint;
 @class ADXConstraintWidget;
 @class ADXHelperWidget;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 
 @interface ADXBarrier : ADXConstraintHelper
 
@@ -35,13 +38,13 @@
 
 - (instancetype)initWithADContext:(ADContext *)context;
 
-- (jboolean)allowsGoneWidget;
+- (bool)allowsGoneWidget;
 
-- (jboolean)getAllowsGoneWidget;
+- (bool)getAllowsGoneWidget;
 
-- (jint)getMargin;
+- (int32_t)getMargin;
 
-- (jint)getType;
+- (int32_t)getType;
 
 - (void)loadParametersWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)constraint
                                   withADXHelperWidget:(ADXHelperWidget *)child
@@ -49,41 +52,41 @@
                                     withADSparseArray:(ADSparseArray *)mapIdToWidget;
 
 - (void)resolveRtlWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                              withBoolean:(jboolean)isRtl;
+                              withBoolean:(bool)isRtl;
 
-- (void)setAllowsGoneWidgetWithBoolean:(jboolean)supportGone;
+- (void)setAllowsGoneWidgetWithBoolean:(bool)supportGone;
 
-- (void)setMarginWithInt:(jint)margin;
+- (void)setMarginWithInt:(int32_t)margin;
 
-- (void)setTypeWithInt:(jint)type;
+- (void)setTypeWithInt:(int32_t)type;
 
 @end
 
 J2OBJC_STATIC_INIT(ADXBarrier)
 
-inline jint ADXBarrier_get_LEFT(void);
+inline int32_t ADXBarrier_get_LEFT(void);
 #define ADXBarrier_LEFT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, LEFT, int32_t)
 
-inline jint ADXBarrier_get_TOP(void);
+inline int32_t ADXBarrier_get_TOP(void);
 #define ADXBarrier_TOP 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, TOP, int32_t)
 
-inline jint ADXBarrier_get_RIGHT(void);
+inline int32_t ADXBarrier_get_RIGHT(void);
 #define ADXBarrier_RIGHT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, RIGHT, int32_t)
 
-inline jint ADXBarrier_get_BOTTOM(void);
+inline int32_t ADXBarrier_get_BOTTOM(void);
 #define ADXBarrier_BOTTOM 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, BOTTOM, int32_t)
 
-inline jint ADXBarrier_get_START(void);
+inline int32_t ADXBarrier_get_START(void);
 #define ADXBarrier_START 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, START, int32_t)
 
-inline jint ADXBarrier_get_END(void);
+inline int32_t ADXBarrier_get_END(void);
 #define ADXBarrier_END 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXBarrier, END, int32_t)
 
 FOUNDATION_EXPORT void ADXBarrier_initWithADContext_(ADXBarrier *self, ADContext *context);
 
@@ -100,6 +103,7 @@ FOUNDATION_EXPORT ADXBarrier *create_ADXBarrier_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXBarrier)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetBarrier ADXBarrier;
+
 
 #endif
 

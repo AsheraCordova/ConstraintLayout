@@ -3,10 +3,22 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\ChainReference.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ChainReference.h"
 #include "HelperReference.h"
 #include "J2ObjC_source.h"
 #include "State.h"
+#include "java/lang/Float.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXChainReference
@@ -26,11 +38,11 @@
   return self;
 }
 
-- (jfloat)getBias {
+- (float)getBias {
   return mBias_;
 }
 
-- (ADXChainReference *)biasWithFloat:(jfloat)bias {
+- (ADXChainReference *)biasWithFloat:(float)bias {
   mBias_ = bias;
   return self;
 }
@@ -83,3 +95,5 @@ ADXChainReference *create_ADXChainReference_initWithADXState_withADXState_Helper
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXChainReference)
+
+J2OBJC_NAME_MAPPING(ADXChainReference, "androidx.constraintlayout.core.state.helpers", "ADX")

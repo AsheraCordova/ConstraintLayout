@@ -3,15 +3,26 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLKey.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLContainer.h"
 #include "CLElement.h"
 #include "CLKey.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/lang/StringBuilder.h"
 #include "java/util/ArrayList.h"
 
-@class JavaUtilArrayList;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 inline JavaUtilArrayList *ADXCLKey_get_sections(void);
@@ -48,8 +59,8 @@ J2OBJC_INITIALIZED_DEFN(ADXCLKey)
   return JreStrcat("$$$", [self getDebugName], [self content], @": <> ");
 }
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent {
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent {
   JavaLangStringBuilder *json = create_JavaLangStringBuilder_initWithNSString_([self getDebugName]);
   [self addIndentWithJavaLangStringBuilder:json withInt:indent];
   NSString *content = JreRetainedLocalValue([self content]);
@@ -169,3 +180,5 @@ ADXCLElement *ADXCLKey_allocateWithNSString_withADXCLElement_(NSString *name, AD
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLKey)
+
+J2OBJC_NAME_MAPPING(ADXCLKey, "androidx.constraintlayout.core.parser", "ADX")

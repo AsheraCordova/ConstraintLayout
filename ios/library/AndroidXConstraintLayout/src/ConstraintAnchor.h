@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\ConstraintAnchor.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintAnchor")
@@ -27,9 +28,12 @@
 @class ADXConstraintWidget;
 @class ADXSolverVariable;
 @class ADXWidgetGroup;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Model a constraint relation.Widgets contains anchors, and a constraint relation between
@@ -39,11 +43,11 @@
  */
 @interface ADXConstraintAnchor : NSObject {
  @public
-  __unsafe_unretained ADXConstraintWidget *mOwner_;
+  WEAK_ ADXConstraintWidget *mOwner_;
   ADXConstraintAnchor_Type *mType_;
-  __unsafe_unretained ADXConstraintAnchor *mTarget_;
-  jint mMargin_;
-  jint mGoneMargin_;
+  WEAK_ ADXConstraintAnchor *mTarget_;
+  int32_t mMargin_;
+  int32_t mGoneMargin_;
   ADXSolverVariable *mSolverVariable_;
 }
 
@@ -63,8 +67,8 @@
  @param margin
  @return true if the connection succeeds.
  */
-- (jboolean)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
-                                   withInt:(jint)margin;
+- (bool)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
+                               withInt:(int32_t)margin;
 
 /*!
  @brief Connects this anchor to another one.
@@ -74,27 +78,27 @@
  @param forceConnection
  @return true if the connection succeeds.
  */
-- (jboolean)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
-                                   withInt:(jint)margin
-                                   withInt:(jint)goneMargin
-                               withBoolean:(jboolean)forceConnection;
+- (bool)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
+                               withInt:(int32_t)margin
+                               withInt:(int32_t)goneMargin
+                           withBoolean:(bool)forceConnection;
 
 - (void)copyFromWithADXConstraintAnchor:(ADXConstraintAnchor *)source
                     withJavaUtilHashMap:(JavaUtilHashMap *)map OBJC_METHOD_FAMILY_NONE;
 
-- (void)findDependentsWithInt:(jint)orientation
+- (void)findDependentsWithInt:(int32_t)orientation
         withJavaUtilArrayList:(JavaUtilArrayList *)list
            withADXWidgetGroup:(ADXWidgetGroup *)group;
 
 - (JavaUtilHashSet *)getDependents;
 
-- (jint)getFinalValue;
+- (int32_t)getFinalValue;
 
 /*!
  @brief Return the connection's margin from this anchor to its target.
  @return the margin value. 0 if not connected.
  */
-- (jint)getMargin;
+- (int32_t)getMargin;
 
 /*!
  @brief Returns the opposite anchor to this one
@@ -125,17 +129,17 @@
  */
 - (ADXConstraintAnchor_Type *)getType;
 
-- (jboolean)hasCenteredDependents;
+- (bool)hasCenteredDependents;
 
-- (jboolean)hasDependents;
+- (bool)hasDependents;
 
-- (jboolean)hasFinalValue;
+- (bool)hasFinalValue;
 
 /*!
  @brief Returns the connection status of this anchor
  @return true if the anchor is connected to another one.
  */
-- (jboolean)isConnected;
+- (bool)isConnected;
 
 /*!
  @brief Return true if we can connect this anchor to this target.
@@ -145,7 +149,7 @@
  @param target the ConstraintWidget we are trying to connect to
  @return true if the connection is allowed, false otherwise
  */
-- (jboolean)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target;
+- (bool)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target;
 
 /*!
  @brief Return true if we can connect this anchor to this target.
@@ -156,14 +160,14 @@
  @param anchor Allow anchor if it loops back to me directly
  @return if the connection is allowed, false otherwise
  */
-- (jboolean)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target
-                               withADXConstraintAnchor:(ADXConstraintAnchor *)anchor;
+- (bool)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target
+                           withADXConstraintAnchor:(ADXConstraintAnchor *)anchor;
 
 /*!
  @brief Return true if this anchor is a side anchor
  @return true if side anchor
  */
-- (jboolean)isSideAnchor;
+- (bool)isSideAnchor;
 
 /*!
  @brief Return true if the connection to the given anchor is in the
@@ -171,20 +175,20 @@
  @param anchor the anchor we want to connect to
  @return true if it's an anchor on the same dimension
  */
-- (jboolean)isSimilarDimensionConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor;
+- (bool)isSimilarDimensionConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor;
 
 /*!
  @brief Checks if the connection to a given anchor is valid.
  @param anchor the anchor we want to connect to
  @return true if it's a compatible anchor
  */
-- (jboolean)isValidConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor;
+- (bool)isValidConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor;
 
 /*!
  @brief Utility function returning true if this anchor is a vertical one.
  @return true if vertical anchor, false otherwise
  */
-- (jboolean)isVerticalAnchor;
+- (bool)isVerticalAnchor;
 
 /*!
  @brief Resets the anchor's connection.
@@ -198,19 +202,19 @@
  */
 - (void)resetSolverVariableWithADXCache:(ADXCache *)cache;
 
-- (void)setFinalValueWithInt:(jint)finalValue;
+- (void)setFinalValueWithInt:(int32_t)finalValue;
 
 /*!
  @brief Set the gone margin of the connection (if there's one)
  @param margin the new margin of the connection
  */
-- (void)setGoneMarginWithInt:(jint)margin;
+- (void)setGoneMarginWithInt:(int32_t)margin;
 
 /*!
  @brief Set the margin of the connection (if there's one)
  @param margin the new margin of the connection
  */
-- (void)setMarginWithInt:(jint)margin;
+- (void)setMarginWithInt:(int32_t)margin;
 
 /*!
  @brief Return a string representation of this anchor
@@ -239,6 +243,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintAnchor)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsConstraintAnchor ADXConstraintAnchor;
 
+
 #endif
 
 #if !defined (ADXConstraintAnchor_Type_) && (INCLUDE_ALL_ConstraintAnchor || defined(INCLUDE_ADXConstraintAnchor_Type))
@@ -249,18 +254,26 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintAnchor)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXConstraintAnchor_Type_Enum) {
-  ADXConstraintAnchor_Type_Enum_NONE = 0,
-  ADXConstraintAnchor_Type_Enum_LEFT = 1,
-  ADXConstraintAnchor_Type_Enum_TOP = 2,
-  ADXConstraintAnchor_Type_Enum_RIGHT = 3,
-  ADXConstraintAnchor_Type_Enum_BOTTOM = 4,
-  ADXConstraintAnchor_Type_Enum_BASELINE = 5,
-  ADXConstraintAnchor_Type_Enum_CENTER = 6,
-  ADXConstraintAnchor_Type_Enum_CENTER_X = 7,
-  ADXConstraintAnchor_Type_Enum_CENTER_Y = 8,
+typedef NS_ENUM(int32_t, ADXConstraintAnchor_Type_Enum) {
+  ADXConstraintAnchor_Type_Enum_NONE NS_SWIFT_NAME(none) = 0,
+  ADXConstraintAnchor_Type_Enum_LEFT NS_SWIFT_NAME(left) = 1,
+  ADXConstraintAnchor_Type_Enum_TOP NS_SWIFT_NAME(top) = 2,
+  ADXConstraintAnchor_Type_Enum_RIGHT NS_SWIFT_NAME(right) = 3,
+  ADXConstraintAnchor_Type_Enum_BOTTOM NS_SWIFT_NAME(bottom) = 4,
+  ADXConstraintAnchor_Type_Enum_BASELINE NS_SWIFT_NAME(baseline) = 5,
+  ADXConstraintAnchor_Type_Enum_CENTER NS_SWIFT_NAME(center) = 6,
+  ADXConstraintAnchor_Type_Enum_CENTER_X NS_SWIFT_NAME(centerX) = 7,
+  ADXConstraintAnchor_Type_Enum_CENTER_Y NS_SWIFT_NAME(centerY) = 8,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXConstraintAnchor_Type_ORDINAL int32_t
+#else
+#define ADXConstraintAnchor_Type_ORDINAL ADXConstraintAnchor_Type_Enum
+#endif
+
 
 /*!
  @brief Define the type of anchor
@@ -276,6 +289,13 @@ typedef NS_ENUM(NSUInteger, ADXConstraintAnchor_Type_Enum) {
 #pragma mark Package-Private
 
 - (ADXConstraintAnchor_Type_Enum)toNSEnum;
+
+@property(readonly) ADXConstraintAnchor_Type_Enum enumValue;
++ (ADXConstraintAnchor_Type *)fromNSEnum:(ADXConstraintAnchor_Type_Enum)value;
+
+- (ADXConstraintAnchor_Type_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithType:(ADXConstraintAnchor_Type_Enum)value;
 
 @end
 
@@ -315,9 +335,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXConstraintAnchor_Type_values(void);
 
 FOUNDATION_EXPORT ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_fromOrdinal(ADXConstraintAnchor_Type_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintAnchor_Type)
+
 
 #endif
 

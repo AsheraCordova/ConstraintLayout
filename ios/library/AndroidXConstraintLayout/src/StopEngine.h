@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\StopEngine.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_StopEngine")
@@ -16,18 +17,22 @@
 #if !defined (ADXStopEngine_) && (INCLUDE_ALL_StopEngine || defined(INCLUDE_ADXStopEngine))
 #define ADXStopEngine_
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class NSString;
+
 @protocol ADXStopEngine < JavaObject >
 
 - (NSString *)debugWithNSString:(NSString *)desc
-                      withFloat:(jfloat)time;
+                      withFloat:(float)time;
 
-- (jfloat)getVelocityWithFloat:(jfloat)x;
+- (float)getVelocityWithFloat:(float)x;
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v;
+- (float)getInterpolationWithFloat:(float)v;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
-- (jboolean)isStopped;
+- (bool)isStopped;
 
 @end
 
@@ -36,6 +41,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXStopEngine)
 J2OBJC_TYPE_LITERAL_HEADER(ADXStopEngine)
 
 #define AndroidxConstraintlayoutCoreMotionUtilsStopEngine ADXStopEngine
+
 
 #endif
 

@@ -3,12 +3,25 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\KeyCache.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "KeyCache.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashMap.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXKeyCache
@@ -22,8 +35,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setFloatValueWithId:(id)view
                withNSString:(NSString *)type
-                    withInt:(jint)element
-                  withFloat:(jfloat)value {
+                    withInt:(int32_t)element
+                  withFloat:(float)value {
   if (![((JavaUtilHashMap *) nil_chk(map_)) containsKeyWithId:view]) {
     JavaUtilHashMap *array = create_JavaUtilHashMap_init();
     IOSFloatArray *vArray = [IOSFloatArray arrayWithLength:element + 1];
@@ -56,9 +69,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jfloat)getFloatValueWithId:(id)view
-                 withNSString:(NSString *)type
-                      withInt:(jint)element {
+- (float)getFloatValueWithId:(id)view
+                withNSString:(NSString *)type
+                     withInt:(int32_t)element {
   if (![((JavaUtilHashMap *) nil_chk(map_)) containsKeyWithId:view]) {
     return JavaLangFloat_NaN;
   }
@@ -120,3 +133,5 @@ ADXKeyCache *create_ADXKeyCache_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCache)
+
+J2OBJC_NAME_MAPPING(ADXKeyCache, "androidx.constraintlayout.core.motion.utils", "ADX")

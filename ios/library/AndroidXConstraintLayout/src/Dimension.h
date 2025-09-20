@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\Dimension.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Dimension")
@@ -24,19 +25,23 @@
 
 @class ADXConstraintWidget;
 @class ADXState;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  @brief Represents a dimension (width or height) of a constrained widget
  */
 @interface ADXDimension : NSObject {
  @public
-  jint mMin_;
-  jint mMax_;
-  jfloat mPercent_;
-  jint mValue_;
+  int32_t mMin_;
+  int32_t mMax_;
+  float mPercent_;
+  int32_t mValue_;
   NSString *mRatioString_;
   id mInitialValue_;
-  jboolean mIsSuggested_;
+  bool mIsSuggested_;
 }
 
 #pragma mark Public
@@ -48,38 +53,38 @@
  */
 - (void)applyWithADXState:(ADXState *)state
   withADXConstraintWidget:(ADXConstraintWidget *)constraintWidget
-                  withInt:(jint)orientation;
+                  withInt:(int32_t)orientation;
 
 /*!
  @brief Returns true if the dimension is a fixed dimension of
   the same given value
  @param value
  */
-- (jboolean)equalsFixedValueWithInt:(jint)value;
+- (bool)equalsFixedValueWithInt:(int32_t)value;
 
-+ (ADXDimension *)FixedWithInt:(jint)value;
++ (ADXDimension *)FixedWithInt:(int32_t)value;
 
 + (ADXDimension *)FixedWithId:(id)value;
 
-- (ADXDimension *)fixedWithInt:(jint)value;
+- (ADXDimension *)fixedWithInt:(int32_t)value;
 
 - (ADXDimension *)fixedWithId:(id)value;
 
-- (ADXDimension *)maxWithInt:(jint)value;
+- (ADXDimension *)maxWithInt:(int32_t)value;
 
 - (ADXDimension *)maxWithId:(id)value;
 
-- (ADXDimension *)minWithInt:(jint)value;
+- (ADXDimension *)minWithInt:(int32_t)value;
 
 - (ADXDimension *)minWithId:(id)value;
 
 + (ADXDimension *)Parent;
 
 + (ADXDimension *)PercentWithId:(id)key
-                      withFloat:(jfloat)value;
+                      withFloat:(float)value;
 
 - (ADXDimension *)percentWithId:(id)key
-                      withFloat:(jfloat)value;
+                      withFloat:(float)value;
 
 + (ADXDimension *)RatioWithNSString:(NSString *)ratio;
 
@@ -87,11 +92,11 @@
 
 + (ADXDimension *)Spread;
 
-+ (ADXDimension *)SuggestedWithInt:(jint)value;
++ (ADXDimension *)SuggestedWithInt:(int32_t)value;
 
 + (ADXDimension *)SuggestedWithId:(id)startValue;
 
-- (ADXDimension *)suggestedWithInt:(jint)value;
+- (ADXDimension *)suggestedWithInt:(int32_t)value;
 
 - (ADXDimension *)suggestedWithId:(id)value;
 
@@ -99,9 +104,9 @@
 
 #pragma mark Package-Private
 
-- (jint)getValue;
+- (int32_t)getValue;
 
-- (void)setValueWithInt:(jint)value;
+- (void)setValueWithInt:(int32_t)value;
 
 @end
 
@@ -140,15 +145,15 @@ inline id ADXDimension_get_RATIO_DIMENSION(void);
 FOUNDATION_EXPORT id ADXDimension_RATIO_DIMENSION;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXDimension, RATIO_DIMENSION, id)
 
-FOUNDATION_EXPORT ADXDimension *ADXDimension_SuggestedWithInt_(jint value);
+FOUNDATION_EXPORT ADXDimension *ADXDimension_SuggestedWithInt_(int32_t value);
 
 FOUNDATION_EXPORT ADXDimension *ADXDimension_SuggestedWithId_(id startValue);
 
-FOUNDATION_EXPORT ADXDimension *ADXDimension_FixedWithInt_(jint value);
+FOUNDATION_EXPORT ADXDimension *ADXDimension_FixedWithInt_(int32_t value);
 
 FOUNDATION_EXPORT ADXDimension *ADXDimension_FixedWithId_(id value);
 
-FOUNDATION_EXPORT ADXDimension *ADXDimension_PercentWithId_withFloat_(id key, jfloat value);
+FOUNDATION_EXPORT ADXDimension *ADXDimension_PercentWithId_withFloat_(id key, float value);
 
 FOUNDATION_EXPORT ADXDimension *ADXDimension_Parent(void);
 
@@ -162,6 +167,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXDimension)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateDimension ADXDimension;
 
+
 #endif
 
 #if !defined (ADXDimension_Type_) && (INCLUDE_ALL_Dimension || defined(INCLUDE_ADXDimension_Type))
@@ -172,13 +178,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXDimension)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXDimension_Type_Enum) {
-  ADXDimension_Type_Enum_FIXED = 0,
-  ADXDimension_Type_Enum_WRAP = 1,
-  ADXDimension_Type_Enum_MATCH_PARENT = 2,
-  ADXDimension_Type_Enum_MATCH_CONSTRAINT = 3,
+typedef NS_ENUM(int32_t, ADXDimension_Type_Enum) {
+  ADXDimension_Type_Enum_FIXED NS_SWIFT_NAME(fixed) = 0,
+  ADXDimension_Type_Enum_WRAP NS_SWIFT_NAME(wrap) = 1,
+  ADXDimension_Type_Enum_MATCH_PARENT NS_SWIFT_NAME(matchParent) = 2,
+  ADXDimension_Type_Enum_MATCH_CONSTRAINT NS_SWIFT_NAME(matchConstraint) = 3,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXDimension_Type_ORDINAL int32_t
+#else
+#define ADXDimension_Type_ORDINAL ADXDimension_Type_Enum
+#endif
+
 
 @interface ADXDimension_Type : JavaLangEnum
 
@@ -191,6 +205,13 @@ typedef NS_ENUM(NSUInteger, ADXDimension_Type_Enum) {
 #pragma mark Package-Private
 
 - (ADXDimension_Type_Enum)toNSEnum;
+
+@property(readonly) ADXDimension_Type_Enum enumValue;
++ (ADXDimension_Type *)fromNSEnum:(ADXDimension_Type_Enum)value;
+
+- (ADXDimension_Type_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithType:(ADXDimension_Type_Enum)value;
 
 @end
 
@@ -215,9 +236,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXDimension_Type_values(void);
 
 FOUNDATION_EXPORT ADXDimension_Type *ADXDimension_Type_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXDimension_Type *ADXDimension_Type_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXDimension_Type *ADXDimension_Type_fromOrdinal(ADXDimension_Type_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXDimension_Type)
+
 
 #endif
 

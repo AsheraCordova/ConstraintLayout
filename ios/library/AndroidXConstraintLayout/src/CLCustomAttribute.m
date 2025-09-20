@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\CLCustomAttribute.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLCustomAttribute.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
@@ -11,6 +16,8 @@
 #include "Utils.h"
 #include "java/lang/Boolean.h"
 #include "java/lang/CharSequence.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
 #include "java/lang/Enum.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalAccessException.h"
@@ -25,17 +32,24 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXCLCustomAttribute () {
  @public
-  jboolean mMethod_;
+  bool mMethod_;
   ADXCLCustomAttribute_AttributeType *mType_;
-  jint mIntegerValue_;
-  jfloat mFloatValue_;
+  int32_t mIntegerValue_;
+  float mFloatValue_;
   NSString *mStringValue_;
-  jint mColorValue_;
+  int32_t mColorValue_;
 }
 
-+ (jint)clampWithInt:(jint)c;
++ (int32_t)clampWithInt:(int32_t)c;
 
 @end
 
@@ -46,9 +60,9 @@ inline NSString *ADXCLCustomAttribute_get_TAG(void);
 static NSString *ADXCLCustomAttribute_TAG = @"TransitionLayout";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXCLCustomAttribute, TAG, NSString *)
 
-__attribute__((unused)) static jint ADXCLCustomAttribute_clampWithInt_(jint c);
+__attribute__((unused)) static int32_t ADXCLCustomAttribute_clampWithInt_(int32_t c);
 
-__attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithNSString_withInt_(ADXCLCustomAttribute_AttributeType *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithNSString_withInt_(ADXCLCustomAttribute_AttributeType *self, NSString *__name, int32_t __ordinal);
 
 @implementation ADXCLCustomAttribute
 
@@ -56,7 +70,7 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
   return mType_;
 }
 
-- (jboolean)isContinuous {
+- (bool)isContinuous {
   switch ([mType_ ordinal]) {
     case ADXCLCustomAttribute_AttributeType_Enum_REFERENCE_TYPE:
     case ADXCLCustomAttribute_AttributeType_Enum_BOOLEAN_TYPE:
@@ -67,15 +81,15 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
   }
 }
 
-- (void)setFloatValueWithFloat:(jfloat)value {
+- (void)setFloatValueWithFloat:(float)value {
   mFloatValue_ = value;
 }
 
-- (void)setColorValueWithInt:(jint)value {
+- (void)setColorValueWithInt:(int32_t)value {
   mColorValue_ = value;
 }
 
-- (void)setIntValueWithInt:(jint)value {
+- (void)setIntValueWithInt:(int32_t)value {
   mIntegerValue_ = value;
 }
 
@@ -83,7 +97,7 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
   JreStrongAssign(&mStringValue_, value);
 }
 
-- (jint)numberOfInterpolatedValues {
+- (int32_t)numberOfInterpolatedValues {
   switch ([mType_ ordinal]) {
     case ADXCLCustomAttribute_AttributeType_Enum_COLOR_TYPE:
     case ADXCLCustomAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
@@ -93,7 +107,7 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
   }
 }
 
-- (jfloat)getValueToInterpolate {
+- (float)getValueToInterpolate {
   switch ([mType_ ordinal]) {
     case ADXCLCustomAttribute_AttributeType_Enum_INT_TYPE:
     return mIntegerValue_;
@@ -115,13 +129,13 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
 
 - (void)getValuesToInterpolateWithFloatArray:(IOSFloatArray *)ret {
   {
-    jint a;
-    jint r;
-    jint g;
-    jint b;
-    jfloat f_r;
-    jfloat f_g;
-    jfloat f_b;
+    int32_t a;
+    int32_t r;
+    int32_t g;
+    int32_t b;
+    float f_r;
+    float f_g;
+    float f_b;
     switch ([mType_ ordinal]) {
       case ADXCLCustomAttribute_AttributeType_Enum_INT_TYPE:
       *IOSFloatArray_GetRef(nil_chk(ret), 0) = mIntegerValue_;
@@ -131,13 +145,13 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
       break;
       case ADXCLCustomAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
       case ADXCLCustomAttribute_AttributeType_Enum_COLOR_TYPE:
-      a = (jint) 0xFF & (JreRShift32(mColorValue_, 24));
-      r = (jint) 0xFF & (JreRShift32(mColorValue_, 16));
-      g = (jint) 0xFF & (JreRShift32(mColorValue_, 8));
-      b = (jint) 0xFF & (mColorValue_);
-      f_r = (jfloat) JavaLangMath_powWithDouble_withDouble_(r / 255.0f, 2.2);
-      f_g = (jfloat) JavaLangMath_powWithDouble_withDouble_(g / 255.0f, 2.2);
-      f_b = (jfloat) JavaLangMath_powWithDouble_withDouble_(b / 255.0f, 2.2);
+      a = (int32_t) 0xFF & (JreRShift32(mColorValue_, 24));
+      r = (int32_t) 0xFF & (JreRShift32(mColorValue_, 16));
+      g = (int32_t) 0xFF & (JreRShift32(mColorValue_, 8));
+      b = (int32_t) 0xFF & (mColorValue_);
+      f_r = (float) JavaLangMath_powWithDouble_withDouble_(r / 255.0f, 2.2);
+      f_g = (float) JavaLangMath_powWithDouble_withDouble_(g / 255.0f, 2.2);
+      f_b = (float) JavaLangMath_powWithDouble_withDouble_(b / 255.0f, 2.2);
       *IOSFloatArray_GetRef(nil_chk(ret), 0) = f_r;
       *IOSFloatArray_GetRef(ret, 1) = f_g;
       *IOSFloatArray_GetRef(ret, 2) = f_b;
@@ -169,7 +183,7 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
     case ADXCLCustomAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE:
     case ADXCLCustomAttribute_AttributeType_Enum_COLOR_TYPE:
     mColorValue_ = ADXCLCustomAttribute_hsvToRgbWithFloat_withFloat_withFloat_(IOSFloatArray_Get(nil_chk(value), 0), IOSFloatArray_Get(value, 1), IOSFloatArray_Get(value, 2));
-    mColorValue_ = (mColorValue_ & (jint) 0xFFFFFF) | (JreLShift32(ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((jint) 0xFF * IOSFloatArray_Get(value, 3)))), 24));
+    mColorValue_ = (mColorValue_ & (int32_t) 0xFFFFFF) | (JreLShift32(ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((int32_t) 0xFF * IOSFloatArray_Get(value, 3)))), 24));
     break;
     case ADXCLCustomAttribute_AttributeType_Enum_STRING_TYPE:
     @throw create_JavaLangRuntimeException_initWithNSString_(@"Color does not have a single color to interpolate");
@@ -184,13 +198,13 @@ __attribute__((unused)) static void ADXCLCustomAttribute_AttributeType_initWithN
   }
 }
 
-+ (jint)hsvToRgbWithFloat:(jfloat)hue
-                withFloat:(jfloat)saturation
-                withFloat:(jfloat)value {
++ (int32_t)hsvToRgbWithFloat:(float)hue
+                   withFloat:(float)saturation
+                   withFloat:(float)value {
   return ADXCLCustomAttribute_hsvToRgbWithFloat_withFloat_withFloat_(hue, saturation, value);
 }
 
-- (jboolean)diffWithADXCLCustomAttribute:(ADXCLCustomAttribute *)CustomAttribute {
+- (bool)diffWithADXCLCustomAttribute:(ADXCLCustomAttribute *)CustomAttribute {
   if (CustomAttribute == nil || mType_ != CustomAttribute->mType_) {
     return false;
   }
@@ -223,7 +237,7 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
 - (instancetype)initWithNSString:(NSString *)name
 withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)attributeType
                           withId:(id)value
-                     withBoolean:(jboolean)method {
+                     withBoolean:(bool)method {
   ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(self, name, attributeType, value, method);
   return self;
 }
@@ -325,7 +339,7 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
   }
 }
 
-+ (jint)clampWithInt:(jint)c {
++ (int32_t)clampWithInt:(int32_t)c {
   return ADXCLCustomAttribute_clampWithInt_(c);
 }
 
@@ -336,11 +350,11 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
   @try {
     JavaLangReflectMethod *method;
     {
-      jint r;
-      jint g;
-      jint b;
-      jint a;
-      jint color;
+      int32_t r;
+      int32_t g;
+      int32_t b;
+      int32_t a;
+      int32_t color;
       switch ([mType_ ordinal]) {
         case ADXCLCustomAttribute_AttributeType_Enum_INT_TYPE:
         method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangInteger, TYPE) } count:1 type:IOSClass_class_()]];
@@ -352,9 +366,9 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
         break;
         case ADXCLCustomAttribute_AttributeType_Enum_COLOR_TYPE:
         method = [viewClass getMethod:methodName parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(JavaLangInteger, TYPE) } count:1 type:IOSClass_class_()]];
-        r = ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
-        g = ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
-        b = ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+        r = ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+        g = ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+        b = ADXCLCustomAttribute_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
         a = ADXCLCustomAttribute_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
         color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
         [((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:view withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ JavaLangInteger_valueOfWithInt_(color) } count:1 type:NSObject_class_()]];
@@ -461,14 +475,14 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
 
 @end
 
-jint ADXCLCustomAttribute_hsvToRgbWithFloat_withFloat_withFloat_(jfloat hue, jfloat saturation, jfloat value) {
+int32_t ADXCLCustomAttribute_hsvToRgbWithFloat_withFloat_withFloat_(float hue, float saturation, float value) {
   ADXCLCustomAttribute_initialize();
-  jint h = JreFpToInt((hue * 6));
-  jfloat f = hue * 6 - h;
-  jint p = JreFpToInt((0.5f + 255 * value * (1 - saturation)));
-  jint q = JreFpToInt((0.5f + 255 * value * (1 - f * saturation)));
-  jint t = JreFpToInt((0.5f + 255 * value * (1 - (1 - f) * saturation)));
-  jint v = JreFpToInt((0.5f + 255 * value));
+  int32_t h = JreFpToInt((hue * 6));
+  float f = hue * 6 - h;
+  int32_t p = JreFpToInt((0.5f + 255 * value * (1 - saturation)));
+  int32_t q = JreFpToInt((0.5f + 255 * value * (1 - f * saturation)));
+  int32_t t = JreFpToInt((0.5f + 255 * value * (1 - (1 - f) * saturation)));
+  int32_t v = JreFpToInt((0.5f + 255 * value));
   switch (h) {
     case 0:
     return 0XFF000000 | ((JreLShift32(v, 16)) + (JreLShift32(t, 8)) + p);
@@ -502,7 +516,7 @@ ADXCLCustomAttribute *create_ADXCLCustomAttribute_initWithNSString_withADXCLCust
   J2OBJC_CREATE_IMPL(ADXCLCustomAttribute, initWithNSString_withADXCLCustomAttribute_AttributeType_, name, attributeType)
 }
 
-void ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(ADXCLCustomAttribute *self, NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, jboolean method) {
+void ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(ADXCLCustomAttribute *self, NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, bool method) {
   NSObject_init(self);
   self->mMethod_ = false;
   JreStrongAssign(&self->mName_, name);
@@ -511,11 +525,11 @@ void ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeTyp
   [self setValueWithId:value];
 }
 
-ADXCLCustomAttribute *new_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, jboolean method) {
+ADXCLCustomAttribute *new_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, bool method) {
   J2OBJC_NEW_IMPL(ADXCLCustomAttribute, initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_, name, attributeType, value, method)
 }
 
-ADXCLCustomAttribute *create_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, jboolean method) {
+ADXCLCustomAttribute *create_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, bool method) {
   J2OBJC_CREATE_IMPL(ADXCLCustomAttribute, initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_, name, attributeType, value, method)
 }
 
@@ -619,9 +633,9 @@ void ADXCLCustomAttribute_setAttributesWithId_withJavaUtilHashMap_(id view, Java
   }
 }
 
-jint ADXCLCustomAttribute_clampWithInt_(jint c) {
+int32_t ADXCLCustomAttribute_clampWithInt_(int32_t c) {
   ADXCLCustomAttribute_initialize();
-  jint N = 255;
+  int32_t N = 255;
   c &= ~(JreRShift32(c, 31));
   c -= N;
   c &= (JreRShift32(c, 31));
@@ -630,6 +644,8 @@ jint ADXCLCustomAttribute_clampWithInt_(jint c) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLCustomAttribute)
+
+J2OBJC_NAME_MAPPING(ADXCLCustomAttribute, "androidx.constraintlayout.core.motion", "ADX")
 
 J2OBJC_INITIALIZED_DEFN(ADXCLCustomAttribute_AttributeType)
 
@@ -647,6 +663,24 @@ ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_values_[8
 
 - (ADXCLCustomAttribute_AttributeType_Enum)toNSEnum {
   return (ADXCLCustomAttribute_AttributeType_Enum)[self ordinal];
+}
+
+- (ADXCLCustomAttribute_AttributeType_Enum)enumValue {
+  return (ADXCLCustomAttribute_AttributeType_Enum)[self ordinal];
+}
+
++ (ADXCLCustomAttribute_AttributeType *)fromNSEnum:(ADXCLCustomAttribute_AttributeType_Enum)nativeValue {
+  ADXCLCustomAttribute_AttributeType *javaEnum = ADXCLCustomAttribute_AttributeType_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXCLCustomAttribute_AttributeType_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXCLCustomAttribute_AttributeType_ORDINAL)ordinal {
+  return (ADXCLCustomAttribute_AttributeType_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithAttributeType:(ADXCLCustomAttribute_AttributeType_Enum)value {
+  return RETAIN_(ADXCLCustomAttribute_AttributeType_fromOrdinal((ADXCLCustomAttribute_AttributeType_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -681,7 +715,7 @@ ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_values_[8
     size_t allocSize = 8 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 8; i++) {
+    for (int32_t i = 0; i < 8; i++) {
       ((void)(ADXCLCustomAttribute_AttributeType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXCLCustomAttribute_AttributeType_initWithNSString_withInt_(e, JreEnumConstantName(ADXCLCustomAttribute_AttributeType_class_(), i), i);
     }
@@ -691,7 +725,7 @@ ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_values_[8
 
 @end
 
-void ADXCLCustomAttribute_AttributeType_initWithNSString_withInt_(ADXCLCustomAttribute_AttributeType *self, NSString *__name, jint __ordinal) {
+void ADXCLCustomAttribute_AttributeType_initWithNSString_withInt_(ADXCLCustomAttribute_AttributeType *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -709,12 +743,11 @@ ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_valueOfWi
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_fromOrdinal(NSUInteger ordinal) {
+ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_fromOrdinal(ADXCLCustomAttribute_AttributeType_ORDINAL ordinal) {
   ADXCLCustomAttribute_AttributeType_initialize();
-  if (ordinal >= 8) {
+  if (ordinal < 0 || ordinal >= 8) {
     return nil;
   }
   return ADXCLCustomAttribute_AttributeType_values_[ordinal];

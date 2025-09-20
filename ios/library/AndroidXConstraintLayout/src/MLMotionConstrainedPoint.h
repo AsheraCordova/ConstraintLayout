@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MLMotionConstrainedPoint.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MLMotionConstrainedPoint")
@@ -28,20 +29,24 @@
 @class IOSDoubleArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
 @class JavaUtilLinkedHashMap;
+@class NSString;
 
 /*!
  @brief All the parameter it extracts from a ConstraintSet/View
  */
 @interface ADXMLMotionConstrainedPoint : NSObject < JavaLangComparable > {
  @public
-  jint mVisibilityMode_;
-  jint visibility_;
-  jfloat rotationY_;
+  int32_t mVisibilityMode_;
+  int32_t visibility_;
+  float rotationY_;
   JavaUtilLinkedHashMap *attributes_;
-  jint mMode_;
+  int32_t mMode_;
   IOSDoubleArray *mTempValue_;
   IOSDoubleArray *mTempDelta_;
 }
@@ -51,13 +56,13 @@
 - (instancetype)initPackagePrivate;
 
 - (void)addValuesWithJavaUtilHashMap:(JavaUtilHashMap *)splines
-                             withInt:(jint)mFramePosition;
+                             withInt:(int32_t)mFramePosition;
 
 - (void)applyParametersWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)c;
 
 - (void)applyParametersWithADView:(ADView *)view;
 
-- (jint)compareToWithId:(ADXMLMotionConstrainedPoint *)o;
+- (int32_t)compareToWithId:(ADXMLMotionConstrainedPoint *)o;
 
 /*!
  @brief Sets the state of the position given a rect, constraintset, rotation and viewid
@@ -68,8 +73,8 @@
  */
 - (void)setStateWithADRect:(ADRect *)cw
       withADXConstraintSet:(ADXConstraintSet *)constraintSet
-                   withInt:(jint)rotation
-                   withInt:(jint)viewId;
+                   withInt:(int32_t)rotation
+                   withInt:(int32_t)viewId;
 
 /*!
  @param rect assumes pre rotated
@@ -78,8 +83,8 @@
  */
 - (void)setStateWithADRect:(ADRect *)rect
                 withADView:(ADView *)view
-                   withInt:(jint)rotation
-                 withFloat:(jfloat)prevous;
+                   withInt:(int32_t)rotation
+                 withFloat:(float)prevous;
 
 - (void)setStateWithADView:(ADView *)view;
 
@@ -100,18 +105,18 @@
 - (void)fillStandardWithDoubleArray:(IOSDoubleArray *)data
                        withIntArray:(IOSIntArray *)toUse;
 
-- (jint)getCustomDataWithNSString:(NSString *)name
-                  withDoubleArray:(IOSDoubleArray *)value
-                          withInt:(jint)offset;
+- (int32_t)getCustomDataWithNSString:(NSString *)name
+                     withDoubleArray:(IOSDoubleArray *)value
+                             withInt:(int32_t)offset;
 
-- (jint)getCustomDataCountWithNSString:(NSString *)name;
+- (int32_t)getCustomDataCountWithNSString:(NSString *)name;
 
-- (jboolean)hasCustomDataWithNSString:(NSString *)name;
+- (bool)hasCustomDataWithNSString:(NSString *)name;
 
-- (void)setBoundsWithFloat:(jfloat)x
-                 withFloat:(jfloat)y
-                 withFloat:(jfloat)w
-                 withFloat:(jfloat)h;
+- (void)setBoundsWithFloat:(float)x
+                 withFloat:(float)y
+                 withFloat:(float)w
+                 withFloat:(float)h;
 
 // Disallowed inherited constructors, do not use.
 
@@ -130,17 +135,17 @@ inline NSString *ADXMLMotionConstrainedPoint_get_TAG(void);
 FOUNDATION_EXPORT NSString *ADXMLMotionConstrainedPoint_TAG;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMLMotionConstrainedPoint, TAG, NSString *)
 
-inline jboolean ADXMLMotionConstrainedPoint_get_DEBUG(void);
+inline bool ADXMLMotionConstrainedPoint_get_DEBUG(void);
 #define ADXMLMotionConstrainedPoint_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionConstrainedPoint, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionConstrainedPoint, DEBUG, bool)
 
-inline jint ADXMLMotionConstrainedPoint_get_PERPENDICULAR(void);
+inline int32_t ADXMLMotionConstrainedPoint_get_PERPENDICULAR(void);
 #define ADXMLMotionConstrainedPoint_PERPENDICULAR 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionConstrainedPoint, PERPENDICULAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionConstrainedPoint, PERPENDICULAR, int32_t)
 
-inline jint ADXMLMotionConstrainedPoint_get_CARTESIAN(void);
+inline int32_t ADXMLMotionConstrainedPoint_get_CARTESIAN(void);
 #define ADXMLMotionConstrainedPoint_CARTESIAN 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionConstrainedPoint, CARTESIAN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMLMotionConstrainedPoint, CARTESIAN, int32_t)
 
 inline IOSObjectArray *ADXMLMotionConstrainedPoint_get_names(void);
 inline IOSObjectArray *ADXMLMotionConstrainedPoint_set_names(IOSObjectArray *value);
@@ -157,6 +162,7 @@ FOUNDATION_EXPORT ADXMLMotionConstrainedPoint *create_ADXMLMotionConstrainedPoin
 J2OBJC_TYPE_LITERAL_HEADER(ADXMLMotionConstrainedPoint)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetMLMotionConstrainedPoint ADXMLMotionConstrainedPoint;
+
 
 #endif
 

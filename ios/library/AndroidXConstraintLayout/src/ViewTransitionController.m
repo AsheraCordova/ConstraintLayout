@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\ViewTransitionController.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintLayout.h"
 #include "ConstraintSet.h"
 #include "IOSClass.h"
@@ -18,11 +23,18 @@
 #include "View.h"
 #include "ViewTransition.h"
 #include "ViewTransitionController.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashSet.h"
 
-@class JavaUtilArrayList;
-@class JavaUtilHashSet;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXViewTransitionController () {
@@ -37,7 +49,7 @@
                             withADViewArray:(IOSObjectArray *)view;
 
 - (void)listenForSharedVariableWithADXViewTransition:(ADXViewTransition *)viewTransition
-                                         withBoolean:(jboolean)isSet;
+                                         withBoolean:(bool)isSet;
 
 @end
 
@@ -48,36 +60,37 @@ J2OBJC_FIELD_SETTER(ADXViewTransitionController, TAG_, NSString *)
 
 __attribute__((unused)) static void ADXViewTransitionController_viewTransitionWithADXViewTransition_withADViewArray_(ADXViewTransitionController *self, ADXViewTransition *vt, IOSObjectArray *view);
 
-__attribute__((unused)) static void ADXViewTransitionController_listenForSharedVariableWithADXViewTransition_withBoolean_(ADXViewTransitionController *self, ADXViewTransition *viewTransition, jboolean isSet);
+__attribute__((unused)) static void ADXViewTransitionController_listenForSharedVariableWithADXViewTransition_withBoolean_(ADXViewTransitionController *self, ADXViewTransition *viewTransition, bool isSet);
 
 @interface ADXViewTransitionController_1 : NSObject < ADXSharedValues_SharedValuesListener > {
  @public
   ADXViewTransitionController *this$0_;
   ADXViewTransition *val$viewTransition_;
-  jint val$listen_for_id_;
-  jboolean val$isSet_;
-  jint val$listen_for_value_;
+  int32_t val$listen_for_id_;
+  bool val$isSet_;
+  int32_t val$listen_for_value_;
 }
 
 - (instancetype)initWithADXViewTransitionController:(ADXViewTransitionController *)outer$
                               withADXViewTransition:(ADXViewTransition *)capture$0
-                                            withInt:(jint)capture$1
-                                        withBoolean:(jboolean)capture$2
-                                            withInt:(jint)capture$3;
+                                            withInt:(int32_t)capture$1
+                                        withBoolean:(bool)capture$2
+                                            withInt:(int32_t)capture$3;
 
-- (void)onNewValueWithInt:(jint)id_
-                  withInt:(jint)value
-                  withInt:(jint)oldValue;
+- (void)onNewValueWithInt:(int32_t)id_
+                  withInt:(int32_t)value
+                  withInt:(int32_t)oldValue;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXViewTransitionController_1)
 
-__attribute__((unused)) static void ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController_1 *self, ADXViewTransitionController *outer$, ADXViewTransition *capture$0, jint capture$1, jboolean capture$2, jint capture$3);
+__attribute__((unused)) static void ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController_1 *self, ADXViewTransitionController *outer$, ADXViewTransition *capture$0, int32_t capture$1, bool capture$2, int32_t capture$3);
 
-__attribute__((unused)) static ADXViewTransitionController_1 *new_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, jint capture$1, jboolean capture$2, jint capture$3) NS_RETURNS_RETAINED;
+__attribute__((unused)) static ADXViewTransitionController_1 *new_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, int32_t capture$1, bool capture$2, int32_t capture$3) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, jint capture$1, jboolean capture$2, jint capture$3);
+__attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, int32_t capture$1, bool capture$2, int32_t capture$3);
+
 
 @implementation ADXViewTransitionController
 
@@ -97,7 +110,7 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
   }
 }
 
-- (void)removeWithInt:(jint)id_ {
+- (void)removeWithInt:(int32_t)id_ {
   ADXViewTransition *del = nil;
   for (ADXViewTransition * __strong viewTransition in nil_chk(viewTransitions_)) {
     if ([((ADXViewTransition *) nil_chk(viewTransition)) getId] == id_) {
@@ -116,8 +129,8 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
   ADXViewTransitionController_viewTransitionWithADXViewTransition_withADViewArray_(self, vt, view);
 }
 
-- (void)enableViewTransitionWithInt:(jint)id_
-                        withBoolean:(jboolean)enable {
+- (void)enableViewTransitionWithInt:(int32_t)id_
+                        withBoolean:(bool)enable {
   for (ADXViewTransition * __strong viewTransition in nil_chk(viewTransitions_)) {
     if ([((ADXViewTransition *) nil_chk(viewTransition)) getId] == id_) {
       [viewTransition setEnabledWithBoolean:enable];
@@ -126,7 +139,7 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
   }
 }
 
-- (jboolean)isViewTransitionEnabledWithInt:(jint)id_ {
+- (bool)isViewTransitionEnabledWithInt:(int32_t)id_ {
   for (ADXViewTransition * __strong viewTransition in nil_chk(viewTransitions_)) {
     if ([((ADXViewTransition *) nil_chk(viewTransition)) getId] == id_) {
       return [viewTransition isEnabled];
@@ -135,7 +148,7 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
   return false;
 }
 
-- (void)viewTransitionWithInt:(jint)id_
+- (void)viewTransitionWithInt:(int32_t)id_
               withADViewArray:(IOSObjectArray *)views {
   ADXViewTransition *vt = nil;
   JavaUtilArrayList *list = create_JavaUtilArrayList_init();
@@ -147,7 +160,7 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
         ADView * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
         ADView * const *e__ = b__ + a__->size_;
         while (b__ < e__) {
-          ADView *view = *b__++;
+          ADView *view = RETAIN_AND_AUTORELEASE(*b__++);
           if ([viewTransition checkTagsWithADView:view]) {
             [list addWithId:view];
           }
@@ -166,27 +179,27 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
 }
 
 - (void)touchEventWithADMotionEvent:(ADMotionEvent *)event {
-  jint currentId = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getCurrentState];
+  int32_t currentId = [((ADXMotionLayout *) nil_chk(mMotionLayout_)) getCurrentState];
   if (currentId == -1) {
     return;
   }
   if (mRelatedViews_ == nil) {
     JreStrongAssignAndConsume(&mRelatedViews_, new_JavaUtilHashSet_init());
     for (ADXViewTransition * __strong viewTransition in nil_chk(viewTransitions_)) {
-      jint count = [mMotionLayout_ getChildCount];
-      for (jint i = 0; i < count; i++) {
+      int32_t count = [mMotionLayout_ getChildCount];
+      for (int32_t i = 0; i < count; i++) {
         ADView *view = JreRetainedLocalValue([mMotionLayout_ getChildAtWithInt:i]);
         if ([((ADXViewTransition *) nil_chk(viewTransition)) matchesViewWithADView:view]) {
-          jint id_ = [((ADView *) nil_chk(view)) getId];
+          int32_t id_ = [((ADView *) nil_chk(view)) getId];
           [((JavaUtilHashSet *) nil_chk(mRelatedViews_)) addWithId:view];
         }
       }
     }
   }
-  jfloat x = [((ADMotionEvent *) nil_chk(event)) getX];
-  jfloat y = [event getY];
+  float x = [((ADMotionEvent *) nil_chk(event)) getX];
+  float y = [event getY];
   ADRect *rec = create_ADRect_init();
-  jint action = [event getAction];
+  int32_t action = [event getAction];
   if (animations_ != nil && ![animations_ isEmpty]) {
     for (ADXViewTransition_Animate * __strong animation in animations_) {
       [((ADXViewTransition_Animate *) nil_chk(animation)) reactToWithInt:action withFloat:x withFloat:y];
@@ -245,8 +258,8 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
   [((ADXMotionLayout *) nil_chk(mMotionLayout_)) invalidate];
 }
 
-- (jboolean)applyViewTransitionWithInt:(jint)viewTransitionId
-               withADXMotionController:(ADXMotionController *)motionController {
+- (bool)applyViewTransitionWithInt:(int32_t)viewTransitionId
+           withADXMotionController:(ADXMotionController *)motionController {
   for (ADXViewTransition * __strong viewTransition in nil_chk(viewTransitions_)) {
     if ([((ADXViewTransition *) nil_chk(viewTransition)) getId] == viewTransitionId) {
       [((ADXKeyFrames *) nil_chk(viewTransition->mKeyFrames_)) addAllFramesWithADXMotionController:motionController];
@@ -257,7 +270,7 @@ __attribute__((unused)) static ADXViewTransitionController_1 *create_ADXViewTran
 }
 
 - (void)listenForSharedVariableWithADXViewTransition:(ADXViewTransition *)viewTransition
-                                         withBoolean:(jboolean)isSet {
+                                         withBoolean:(bool)isSet {
   ADXViewTransitionController_listenForSharedVariableWithADXViewTransition_withBoolean_(self, viewTransition, isSet);
 }
 
@@ -338,7 +351,7 @@ ADXViewTransitionController *create_ADXViewTransitionController_initWithADXMotio
 }
 
 void ADXViewTransitionController_viewTransitionWithADXViewTransition_withADViewArray_(ADXViewTransitionController *self, ADXViewTransition *vt, IOSObjectArray *view) {
-  jint currentId = [((ADXMotionLayout *) nil_chk(self->mMotionLayout_)) getCurrentState];
+  int32_t currentId = [((ADXMotionLayout *) nil_chk(self->mMotionLayout_)) getCurrentState];
   if (((ADXViewTransition *) nil_chk(vt))->mViewTransitionMode_ != ADXViewTransition_VIEWTRANSITIONMODE_NOSTATE) {
     if (currentId == -1) {
       ADLog_wWithNSString_withNSString_(self->TAG_, JreStrcat("$$", @"No support for ViewTransition within transition yet. Currently: ", [self->mMotionLayout_ description]));
@@ -355,38 +368,40 @@ void ADXViewTransitionController_viewTransitionWithADXViewTransition_withADViewA
   }
 }
 
-void ADXViewTransitionController_listenForSharedVariableWithADXViewTransition_withBoolean_(ADXViewTransitionController *self, ADXViewTransition *viewTransition, jboolean isSet) {
-  jint listen_for_id = [((ADXViewTransition *) nil_chk(viewTransition)) getSharedValueID];
-  jint listen_for_value = [viewTransition getSharedValue];
+void ADXViewTransitionController_listenForSharedVariableWithADXViewTransition_withBoolean_(ADXViewTransitionController *self, ADXViewTransition *viewTransition, bool isSet) {
+  int32_t listen_for_id = [((ADXViewTransition *) nil_chk(viewTransition)) getSharedValueID];
+  int32_t listen_for_value = [viewTransition getSharedValue];
   [((ADXSharedValues *) nil_chk(ADXConstraintLayout_getSharedValues())) addListenerWithInt:[viewTransition getSharedValueID] withADXSharedValues_SharedValuesListener:create_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(self, viewTransition, listen_for_id, isSet, listen_for_value)];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransitionController)
 
+J2OBJC_NAME_MAPPING(ADXViewTransitionController, "androidx.constraintlayout.motion.widget", "ADX")
+
 @implementation ADXViewTransitionController_1
 
 - (instancetype)initWithADXViewTransitionController:(ADXViewTransitionController *)outer$
                               withADXViewTransition:(ADXViewTransition *)capture$0
-                                            withInt:(jint)capture$1
-                                        withBoolean:(jboolean)capture$2
-                                            withInt:(jint)capture$3 {
+                                            withInt:(int32_t)capture$1
+                                        withBoolean:(bool)capture$2
+                                            withInt:(int32_t)capture$3 {
   ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(self, outer$, capture$0, capture$1, capture$2, capture$3);
   return self;
 }
 
-- (void)onNewValueWithInt:(jint)id_
-                  withInt:(jint)value
-                  withInt:(jint)oldValue {
-  jint current_value = [((ADXViewTransition *) nil_chk(val$viewTransition_)) getSharedValueCurrent];
+- (void)onNewValueWithInt:(int32_t)id_
+                  withInt:(int32_t)value
+                  withInt:(int32_t)oldValue {
+  int32_t current_value = [((ADXViewTransition *) nil_chk(val$viewTransition_)) getSharedValueCurrent];
   [val$viewTransition_ setSharedValueCurrentWithInt:value];
   if (val$listen_for_id_ == id_ && current_value != value) {
     if (val$isSet_) {
       if (val$listen_for_value_ == value) {
-        jint count = [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) getChildCount];
-        for (jint i = 0; i < count; i++) {
+        int32_t count = [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) getChildCount];
+        for (int32_t i = 0; i < count; i++) {
           ADView *view = JreRetainedLocalValue([this$0_->mMotionLayout_ getChildAtWithInt:i]);
           if ([val$viewTransition_ matchesViewWithADView:view]) {
-            jint currentId = [this$0_->mMotionLayout_ getCurrentState];
+            int32_t currentId = [this$0_->mMotionLayout_ getCurrentState];
             ADXConstraintSet *current = JreRetainedLocalValue([this$0_->mMotionLayout_ getConstraintSetWithInt:currentId]);
             [val$viewTransition_ applyTransitionWithADXViewTransitionController:this$0_ withADXMotionLayout:this$0_->mMotionLayout_ withInt:currentId withADXConstraintSet:current withADViewArray:[IOSObjectArray arrayWithObjects:(id[]){ view } count:1 type:ADView_class_()]];
           }
@@ -395,11 +410,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransitionController)
     }
     else {
       if (val$listen_for_value_ != value) {
-        jint count = [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) getChildCount];
-        for (jint i = 0; i < count; i++) {
+        int32_t count = [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) getChildCount];
+        for (int32_t i = 0; i < count; i++) {
           ADView *view = JreRetainedLocalValue([this$0_->mMotionLayout_ getChildAtWithInt:i]);
           if ([val$viewTransition_ matchesViewWithADView:view]) {
-            jint currentId = [this$0_->mMotionLayout_ getCurrentState];
+            int32_t currentId = [this$0_->mMotionLayout_ getCurrentState];
             ADXConstraintSet *current = JreRetainedLocalValue([this$0_->mMotionLayout_ getConstraintSetWithInt:currentId]);
             [val$viewTransition_ applyTransitionWithADXViewTransitionController:this$0_ withADXMotionLayout:this$0_->mMotionLayout_ withInt:currentId withADXConstraintSet:current withADViewArray:[IOSObjectArray arrayWithObjects:(id[]){ view } count:1 type:ADView_class_()]];
           }
@@ -434,13 +449,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransitionController)
     { "val$listen_for_value_", "I", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXViewTransitionController;LADXViewTransition;IZI", "onNewValue", "III", "LADXViewTransitionController;", "listenForSharedVariableWithADXViewTransition:withBoolean:" };
-  static const J2ObjcClassInfo _ADXViewTransitionController_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x8010, 2, 5, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _ADXViewTransitionController_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x8000, 2, 5, 3, -1, 4, -1, -1 };
   return &_ADXViewTransitionController_1;
 }
 
 @end
 
-void ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController_1 *self, ADXViewTransitionController *outer$, ADXViewTransition *capture$0, jint capture$1, jboolean capture$2, jint capture$3) {
+void ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController_1 *self, ADXViewTransitionController *outer$, ADXViewTransition *capture$0, int32_t capture$1, bool capture$2, int32_t capture$3) {
   JreStrongAssign(&self->this$0_, outer$);
   JreStrongAssign(&self->val$viewTransition_, capture$0);
   self->val$listen_for_id_ = capture$1;
@@ -449,10 +464,10 @@ void ADXViewTransitionController_1_initWithADXViewTransitionController_withADXVi
   NSObject_init(self);
 }
 
-ADXViewTransitionController_1 *new_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, jint capture$1, jboolean capture$2, jint capture$3) {
+ADXViewTransitionController_1 *new_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, int32_t capture$1, bool capture$2, int32_t capture$3) {
   J2OBJC_NEW_IMPL(ADXViewTransitionController_1, initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_, outer$, capture$0, capture$1, capture$2, capture$3)
 }
 
-ADXViewTransitionController_1 *create_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, jint capture$1, jboolean capture$2, jint capture$3) {
+ADXViewTransitionController_1 *create_ADXViewTransitionController_1_initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_(ADXViewTransitionController *outer$, ADXViewTransition *capture$0, int32_t capture$1, bool capture$2, int32_t capture$3) {
   J2OBJC_CREATE_IMPL(ADXViewTransitionController_1, initWithADXViewTransitionController_withADXViewTransition_withInt_withBoolean_withInt_, outer$, capture$0, capture$1, capture$2, capture$3)
 }

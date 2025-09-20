@@ -3,8 +3,20 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintsChangedListener.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintsChangedListener.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXConstraintsChangedListener
@@ -16,12 +28,12 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)preLayoutChangeWithInt:(jint)stateId
-                       withInt:(jint)constraintId {
+- (void)preLayoutChangeWithInt:(int32_t)stateId
+                       withInt:(int32_t)constraintId {
 }
 
-- (void)postLayoutChangeWithInt:(jint)stateId
-                        withInt:(jint)constraintId {
+- (void)postLayoutChangeWithInt:(int32_t)stateId
+                        withInt:(int32_t)constraintId {
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -49,3 +61,5 @@ void ADXConstraintsChangedListener_init(ADXConstraintsChangedListener *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintsChangedListener)
+
+J2OBJC_NAME_MAPPING(ADXConstraintsChangedListener, "androidx.constraintlayout.widget", "ADX")

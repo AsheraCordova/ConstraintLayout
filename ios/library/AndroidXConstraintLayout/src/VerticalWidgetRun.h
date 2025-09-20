@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\VerticalWidgetRun.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_VerticalWidgetRun")
@@ -23,6 +24,8 @@
 @class ADXConstraintWidget;
 @class ADXDependencyNode;
 @class ADXDimensionDependency;
+@class JavaLangBoolean;
+@class NSString;
 @protocol ADXDependency;
 
 @interface ADXVerticalWidgetRun : ADXWidgetRun {
@@ -49,7 +52,7 @@
 
 - (void)reset;
 
-- (jboolean)supportsWrapComputation;
+- (bool)supportsWrapComputation;
 
 @end
 
@@ -67,6 +70,7 @@ FOUNDATION_EXPORT ADXVerticalWidgetRun *create_ADXVerticalWidgetRun_initWithADXC
 J2OBJC_TYPE_LITERAL_HEADER(ADXVerticalWidgetRun)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerVerticalWidgetRun ADXVerticalWidgetRun;
+
 
 #endif
 

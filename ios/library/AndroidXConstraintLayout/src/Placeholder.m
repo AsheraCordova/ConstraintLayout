@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Placeholder.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintLayout.h"
 #include "ConstraintWidget.h"
 #include "J2ObjC_source.h"
@@ -10,15 +15,23 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 
-static void (*ADXPlaceholder_super$_setVisibilityWithInt_)(id, SEL, jint);
+static void (*ADXPlaceholder_super$_setVisibilityWithInt_)(id, SEL, int32_t);
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXPlaceholder () {
  @public
-  jint mContentId_;
+  int32_t mContentId_;
   ADView *mContent_;
-  jint mEmptyVisibility_;
+  int32_t mEmptyVisibility_;
 }
 
 @end
@@ -29,11 +42,11 @@ J2OBJC_INITIALIZED_DEFN(ADXPlaceholder)
 
 @implementation ADXPlaceholder
 
-- (void)setEmptyVisibilityWithInt:(jint)visibility {
+- (void)setEmptyVisibilityWithInt:(int32_t)visibility {
   mEmptyVisibility_ = visibility;
 }
 
-- (jint)getEmptyVisibility {
+- (int32_t)getEmptyVisibility {
   return mEmptyVisibility_;
 }
 
@@ -56,7 +69,7 @@ J2OBJC_INITIALIZED_DEFN(ADXPlaceholder)
   }
 }
 
-- (void)setContentIdWithInt:(jint)id_ {
+- (void)setContentIdWithInt:(int32_t)id_ {
   if (mContentId_ == id_) {
     return;
   }
@@ -136,7 +149,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [ADXPlaceholder class]) {
-    ADXPlaceholder_super$_setVisibilityWithInt_ = (void (*)(id, SEL, jint))[ADView instanceMethodForSelector:@selector(setVisibilityWithInt:)];
+    ADXPlaceholder_super$_setVisibilityWithInt_ = (void (*)(id, SEL, int32_t))[ADView instanceMethodForSelector:@selector(setVisibilityWithInt:)];
     J2OBJC_SET_INITIALIZED(ADXPlaceholder)
   }
 }
@@ -161,3 +174,5 @@ ADXPlaceholder *create_ADXPlaceholder_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXPlaceholder)
+
+J2OBJC_NAME_MAPPING(ADXPlaceholder, "androidx.constraintlayout.widget", "ADX")

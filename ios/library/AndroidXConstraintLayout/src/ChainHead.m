@@ -3,20 +3,34 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\ChainHead.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ChainHead.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXChainHead () {
  @public
-  jint mOrientation_;
-  jboolean mIsRtl_;
-  jboolean mDefined_;
+  int32_t mOrientation_;
+  bool mIsRtl_;
+  bool mDefined_;
 }
 
 /*!
@@ -24,28 +38,28 @@
  @param widget the widget to test
  @param orientation current orientation, HORIZONTAL or VERTICAL
  */
-+ (jboolean)isMatchConstraintEqualityCandidateWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                                              withInt:(jint)orientation;
++ (bool)isMatchConstraintEqualityCandidateWithADXConstraintWidget:(ADXConstraintWidget *)widget
+                                                          withInt:(int32_t)orientation;
 
 - (void)defineChainProperties;
 
 @end
 
-__attribute__((unused)) static jboolean ADXChainHead_isMatchConstraintEqualityCandidateWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, jint orientation);
+__attribute__((unused)) static bool ADXChainHead_isMatchConstraintEqualityCandidateWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, int32_t orientation);
 
 __attribute__((unused)) static void ADXChainHead_defineChainProperties(ADXChainHead *self);
 
 @implementation ADXChainHead
 
 - (instancetype)initWithADXConstraintWidget:(ADXConstraintWidget *)first
-                                    withInt:(jint)orientation
-                                withBoolean:(jboolean)isRtl {
+                                    withInt:(int32_t)orientation
+                                withBoolean:(bool)isRtl {
   ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(self, first, orientation, isRtl);
   return self;
 }
 
-+ (jboolean)isMatchConstraintEqualityCandidateWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                                              withInt:(jint)orientation {
++ (bool)isMatchConstraintEqualityCandidateWithADXConstraintWidget:(ADXConstraintWidget *)widget
+                                                          withInt:(int32_t)orientation {
   return ADXChainHead_isMatchConstraintEqualityCandidateWithADXConstraintWidget_withInt_(widget, orientation);
 }
 
@@ -81,7 +95,7 @@ __attribute__((unused)) static void ADXChainHead_defineChainProperties(ADXChainH
   return mLastMatchConstraintWidget_;
 }
 
-- (jfloat)getTotalWeight {
+- (float)getTotalWeight {
   return mTotalWeight_;
 }
 
@@ -166,7 +180,7 @@ __attribute__((unused)) static void ADXChainHead_defineChainProperties(ADXChainH
 
 @end
 
-void ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXChainHead *self, ADXConstraintWidget *first, jint orientation, jboolean isRtl) {
+void ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXChainHead *self, ADXConstraintWidget *first, int32_t orientation, bool isRtl) {
   NSObject_init(self);
   self->mTotalWeight_ = 0.0f;
   self->mIsRtl_ = false;
@@ -175,26 +189,26 @@ void ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXChainHead 
   self->mIsRtl_ = isRtl;
 }
 
-ADXChainHead *new_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, jint orientation, jboolean isRtl) {
+ADXChainHead *new_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, int32_t orientation, bool isRtl) {
   J2OBJC_NEW_IMPL(ADXChainHead, initWithADXConstraintWidget_withInt_withBoolean_, first, orientation, isRtl)
 }
 
-ADXChainHead *create_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, jint orientation, jboolean isRtl) {
+ADXChainHead *create_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, int32_t orientation, bool isRtl) {
   J2OBJC_CREATE_IMPL(ADXChainHead, initWithADXConstraintWidget_withInt_withBoolean_, first, orientation, isRtl)
 }
 
-jboolean ADXChainHead_isMatchConstraintEqualityCandidateWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, jint orientation) {
+bool ADXChainHead_isMatchConstraintEqualityCandidateWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, int32_t orientation) {
   ADXChainHead_initialize();
   return [((ADXConstraintWidget *) nil_chk(widget)) getVisibility] != ADXConstraintWidget_GONE && IOSObjectArray_Get(nil_chk(widget->mListDimensionBehaviors_), orientation) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && (IOSIntArray_Get(nil_chk(widget->mResolvedMatchConstraintDefault_), orientation) == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD || IOSIntArray_Get(widget->mResolvedMatchConstraintDefault_, orientation) == ADXConstraintWidget_MATCH_CONSTRAINT_RATIO);
 }
 
 void ADXChainHead_defineChainProperties(ADXChainHead *self) {
-  jint offset = self->mOrientation_ * 2;
+  int32_t offset = self->mOrientation_ * 2;
   ADXConstraintWidget *lastVisited = JreRetainedLocalValue(self->mFirst_);
   self->mOptimizable_ = true;
   ADXConstraintWidget *widget = JreRetainedLocalValue(self->mFirst_);
   ADXConstraintWidget *next = JreRetainedLocalValue(self->mFirst_);
-  jboolean done = false;
+  bool done = false;
   while (!done) {
     self->mWidgetsCount_++;
     IOSObjectArray_Set(nil_chk(((ADXConstraintWidget *) nil_chk(widget))->mNextChainWidget_), self->mOrientation_, nil);
@@ -215,7 +229,7 @@ void ADXChainHead_defineChainProperties(ADXChainHead *self) {
       if (IOSObjectArray_Get(nil_chk(widget->mListDimensionBehaviors_), self->mOrientation_) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
         if (IOSIntArray_Get(nil_chk(widget->mResolvedMatchConstraintDefault_), self->mOrientation_) == ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD || IOSIntArray_Get(widget->mResolvedMatchConstraintDefault_, self->mOrientation_) == ADXConstraintWidget_MATCH_CONSTRAINT_RATIO || IOSIntArray_Get(widget->mResolvedMatchConstraintDefault_, self->mOrientation_) == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT) {
           self->mWidgetsMatchCount_++;
-          jfloat weight = IOSFloatArray_Get(nil_chk(widget->mWeight_), self->mOrientation_);
+          float weight = IOSFloatArray_Get(nil_chk(widget->mWeight_), self->mOrientation_);
           if (weight > 0) {
             JrePlusAssignFloatF(&self->mTotalWeight_, IOSFloatArray_Get(widget->mWeight_, self->mOrientation_));
           }
@@ -261,14 +275,14 @@ void ADXChainHead_defineChainProperties(ADXChainHead *self) {
         }
       }
     }
-    if (lastVisited != widget) {
+    if (!JreObjectEqualsEquals(lastVisited, widget)) {
       IOSObjectArray_Set(nil_chk(((ADXConstraintWidget *) nil_chk(lastVisited))->mNextChainWidget_), self->mOrientation_, widget);
     }
     lastVisited = widget;
     ADXConstraintAnchor *nextAnchor = JreRetainedLocalValue(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(nil_chk(widget->mListAnchors_), offset + 1)))->mTarget_);
     if (nextAnchor != nil) {
       next = nextAnchor->mOwner_;
-      if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || ((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_ != widget) {
+      if (((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(((ADXConstraintWidget *) nil_chk(next))->mListAnchors_, offset)))->mTarget_ == nil || !JreObjectEqualsEquals(((ADXConstraintAnchor *) nil_chk(IOSObjectArray_Get(next->mListAnchors_, offset)))->mTarget_->mOwner_, widget)) {
         next = nil;
       }
     }
@@ -299,3 +313,5 @@ void ADXChainHead_defineChainProperties(ADXChainHead *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXChainHead)
+
+J2OBJC_NAME_MAPPING(ADXChainHead, "androidx.constraintlayout.core.widgets", "ADX")

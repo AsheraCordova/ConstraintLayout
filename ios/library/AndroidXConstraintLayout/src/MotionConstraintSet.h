@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionConstraintSet.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionConstraintSet")
@@ -16,10 +17,13 @@
 #if !defined (ADXMotionConstraintSet_) && (INCLUDE_ALL_MotionConstraintSet || defined(INCLUDE_ADXMotionConstraintSet))
 #define ADXMotionConstraintSet_
 
+@class JavaLangInteger;
+@class NSString;
+
 @interface ADXMotionConstraintSet : NSObject {
  @public
   NSString *mIdString_;
-  jint mRotate_;
+  int32_t mRotate_;
 }
 
 #pragma mark Public
@@ -32,25 +36,25 @@ J2OBJC_EMPTY_STATIC_INIT(ADXMotionConstraintSet)
 
 J2OBJC_FIELD_SETTER(ADXMotionConstraintSet, mIdString_, NSString *)
 
-inline jint ADXMotionConstraintSet_get_ROTATE_NONE(void);
+inline int32_t ADXMotionConstraintSet_get_ROTATE_NONE(void);
 #define ADXMotionConstraintSet_ROTATE_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_NONE, int32_t)
 
-inline jint ADXMotionConstraintSet_get_ROTATE_PORTRATE_OF_RIGHT(void);
+inline int32_t ADXMotionConstraintSet_get_ROTATE_PORTRATE_OF_RIGHT(void);
 #define ADXMotionConstraintSet_ROTATE_PORTRATE_OF_RIGHT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_PORTRATE_OF_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_PORTRATE_OF_RIGHT, int32_t)
 
-inline jint ADXMotionConstraintSet_get_ROTATE_PORTRATE_OF_LEFT(void);
+inline int32_t ADXMotionConstraintSet_get_ROTATE_PORTRATE_OF_LEFT(void);
 #define ADXMotionConstraintSet_ROTATE_PORTRATE_OF_LEFT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_PORTRATE_OF_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_PORTRATE_OF_LEFT, int32_t)
 
-inline jint ADXMotionConstraintSet_get_ROTATE_RIGHT_OF_PORTRATE(void);
+inline int32_t ADXMotionConstraintSet_get_ROTATE_RIGHT_OF_PORTRATE(void);
 #define ADXMotionConstraintSet_ROTATE_RIGHT_OF_PORTRATE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_RIGHT_OF_PORTRATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_RIGHT_OF_PORTRATE, int32_t)
 
-inline jint ADXMotionConstraintSet_get_ROTATE_LEFT_OF_PORTRATE(void);
+inline int32_t ADXMotionConstraintSet_get_ROTATE_LEFT_OF_PORTRATE(void);
 #define ADXMotionConstraintSet_ROTATE_LEFT_OF_PORTRATE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_LEFT_OF_PORTRATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionConstraintSet, ROTATE_LEFT_OF_PORTRATE, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionConstraintSet_init(ADXMotionConstraintSet *self);
 
@@ -61,6 +65,7 @@ FOUNDATION_EXPORT ADXMotionConstraintSet *create_ADXMotionConstraintSet_init(voi
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionConstraintSet)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionKeyMotionConstraintSet ADXMotionConstraintSet;
+
 
 #endif
 

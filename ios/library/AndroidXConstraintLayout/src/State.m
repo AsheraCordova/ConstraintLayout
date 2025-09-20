@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\State.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AlignHorizontallyReference.h"
 #include "AlignVerticallyReference.h"
 #include "BarrierReference.h"
@@ -22,6 +27,7 @@
 #include "State.h"
 #include "VerticalChainReference.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Enum.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -32,9 +38,16 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXState () {
  @public
-  jint numHelpers_;
+  int32_t numHelpers_;
 }
 
 - (NSString *)createHelperKey;
@@ -43,13 +56,13 @@
 
 __attribute__((unused)) static NSString *ADXState_createHelperKey(ADXState *self);
 
-__attribute__((unused)) static void ADXState_Constraint_initWithNSString_withInt_(ADXState_Constraint *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXState_Constraint_initWithNSString_withInt_(ADXState_Constraint *self, NSString *__name, int32_t __ordinal);
 
-__attribute__((unused)) static void ADXState_Direction_initWithNSString_withInt_(ADXState_Direction *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXState_Direction_initWithNSString_withInt_(ADXState_Direction *self, NSString *__name, int32_t __ordinal);
 
-__attribute__((unused)) static void ADXState_Helper_initWithNSString_withInt_(ADXState_Helper *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXState_Helper_initWithNSString_withInt_(ADXState_Helper *self, NSString *__name, int32_t __ordinal);
 
-__attribute__((unused)) static void ADXState_Chain_initWithNSString_withInt_(ADXState_Chain *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXState_Chain_initWithNSString_withInt_(ADXState_Chain *self, NSString *__name, int32_t __ordinal);
 
 J2OBJC_INITIALIZED_DEFN(ADXState)
 
@@ -69,7 +82,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((JavaUtilHashMap *) nil_chk(mTags_)) clear];
 }
 
-- (jint)convertDimensionWithId:(id)value {
+- (int32_t)convertDimensionWithId:(id)value {
   if ([value isKindOfClass:[JavaLangFloat class]]) {
     return [((JavaLangFloat *) nil_chk(((JavaLangFloat *) value))) intValue];
   }
@@ -83,11 +96,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return create_ADXConstraintReference_initWithADXState_(self);
 }
 
-- (jboolean)sameFixedWidthWithInt:(jint)width {
+- (bool)sameFixedWidthWithInt:(int32_t)width {
   return [((ADXDimension *) nil_chk([((ADXConstraintReference *) nil_chk(mParent_)) getWidth])) equalsFixedValueWithInt:width];
 }
 
-- (jboolean)sameFixedHeightWithInt:(jint)height {
+- (bool)sameFixedHeightWithInt:(int32_t)height {
   return [((ADXDimension *) nil_chk([((ADXConstraintReference *) nil_chk(mParent_)) getHeight])) equalsFixedValueWithInt:height];
 }
 
@@ -182,7 +195,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ADXGuidelineReferenceHelper *)guidelineWithId:(id)key
-                                         withInt:(jint)orientation {
+                                         withInt:(int32_t)orientation {
   ADXConstraintReference *reference = JreRetainedLocalValue([self constraintsWithId:key]);
   if ([((ADXConstraintReference *) nil_chk(reference)) getFacade] == nil || !([[reference getFacade] isKindOfClass:[ADXGuidelineReferenceHelper class]])) {
     ADXGuidelineReferenceHelper *guidelineReference = create_ADXGuidelineReferenceHelper_initWithADXState_(self);
@@ -298,7 +311,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   for (id __strong key in nil_chk([((JavaUtilHashMap *) nil_chk(mReferences_)) keySet])) {
     id<ADXReference> reference = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mReferences_)) getWithId:key]);
-    if (reference != mParent_ && [[((id<ADXReference>) nil_chk(reference)) getFacade] isKindOfClass:[ADXHelperReference class]]) {
+    if (!JreObjectEqualsEquals(reference, mParent_) && [[((id<ADXReference>) nil_chk(reference)) getFacade] isKindOfClass:[ADXHelperReference class]]) {
       ADXHelperWidget *helperWidget = JreRetainedLocalValue([((ADXHelperReference *) nil_chk(((ADXHelperReference *) cast_chk([((id<ADXReference>) nil_chk(reference)) getFacade], [ADXHelperReference class])))) getHelperWidget]);
       if (helperWidget != nil) {
         id<ADXReference> constraintReference = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mReferences_)) getWithId:key]);
@@ -311,7 +324,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   for (id __strong key in nil_chk([((JavaUtilHashMap *) nil_chk(mReferences_)) keySet])) {
     id<ADXReference> reference = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mReferences_)) getWithId:key]);
-    if (reference != mParent_) {
+    if (!JreObjectEqualsEquals(reference, mParent_)) {
       ADXConstraintWidget *widget = JreRetainedLocalValue([((id<ADXReference>) nil_chk(reference)) getConstraintWidget]);
       [((ADXConstraintWidget *) nil_chk(widget)) setDebugNameWithNSString:[nil_chk([reference getKey]) description]];
       [widget setParentWithADXConstraintWidget:nil];
@@ -340,7 +353,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   for (id __strong key in nil_chk([((JavaUtilHashMap *) nil_chk(mReferences_)) keySet])) {
     id<ADXReference> reference = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mReferences_)) getWithId:key]);
-    if (reference != mParent_ && [[((id<ADXReference>) nil_chk(reference)) getFacade] isKindOfClass:[ADXHelperReference class]]) {
+    if (!JreObjectEqualsEquals(reference, mParent_) && [[((id<ADXReference>) nil_chk(reference)) getFacade] isKindOfClass:[ADXHelperReference class]]) {
       ADXHelperReference *helperReference = (ADXHelperReference *) cast_chk([((id<ADXReference>) nil_chk(reference)) getFacade], [ADXHelperReference class]);
       ADXHelperWidget *helperWidget = JreRetainedLocalValue([((ADXHelperReference *) nil_chk(helperReference)) getHelperWidget]);
       if (helperWidget != nil) {
@@ -493,6 +506,8 @@ NSString *ADXState_createHelperKey(ADXState *self) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXState)
 
+J2OBJC_NAME_MAPPING(ADXState, "androidx.constraintlayout.core.state", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXState_Constraint)
 
 ADXState_Constraint *ADXState_Constraint_values_[16];
@@ -509,6 +524,24 @@ ADXState_Constraint *ADXState_Constraint_values_[16];
 
 - (ADXState_Constraint_Enum)toNSEnum {
   return (ADXState_Constraint_Enum)[self ordinal];
+}
+
+- (ADXState_Constraint_Enum)enumValue {
+  return (ADXState_Constraint_Enum)[self ordinal];
+}
+
++ (ADXState_Constraint *)fromNSEnum:(ADXState_Constraint_Enum)nativeValue {
+  ADXState_Constraint *javaEnum = ADXState_Constraint_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXState_Constraint_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXState_Constraint_ORDINAL)ordinal {
+  return (ADXState_Constraint_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithConstraint:(ADXState_Constraint_Enum)value {
+  return RETAIN_(ADXState_Constraint_fromOrdinal((ADXState_Constraint_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -551,7 +584,7 @@ ADXState_Constraint *ADXState_Constraint_values_[16];
     size_t allocSize = 16 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 16; i++) {
+    for (int32_t i = 0; i < 16; i++) {
       ((void)(ADXState_Constraint_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXState_Constraint_initWithNSString_withInt_(e, JreEnumConstantName(ADXState_Constraint_class_(), i), i);
     }
@@ -561,7 +594,7 @@ ADXState_Constraint *ADXState_Constraint_values_[16];
 
 @end
 
-void ADXState_Constraint_initWithNSString_withInt_(ADXState_Constraint *self, NSString *__name, jint __ordinal) {
+void ADXState_Constraint_initWithNSString_withInt_(ADXState_Constraint *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -579,12 +612,11 @@ ADXState_Constraint *ADXState_Constraint_valueOfWithNSString_(NSString *name) {
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXState_Constraint *ADXState_Constraint_fromOrdinal(NSUInteger ordinal) {
+ADXState_Constraint *ADXState_Constraint_fromOrdinal(ADXState_Constraint_ORDINAL ordinal) {
   ADXState_Constraint_initialize();
-  if (ordinal >= 16) {
+  if (ordinal < 0 || ordinal >= 16) {
     return nil;
   }
   return ADXState_Constraint_values_[ordinal];
@@ -608,6 +640,24 @@ ADXState_Direction *ADXState_Direction_values_[6];
 
 - (ADXState_Direction_Enum)toNSEnum {
   return (ADXState_Direction_Enum)[self ordinal];
+}
+
+- (ADXState_Direction_Enum)enumValue {
+  return (ADXState_Direction_Enum)[self ordinal];
+}
+
++ (ADXState_Direction *)fromNSEnum:(ADXState_Direction_Enum)nativeValue {
+  ADXState_Direction *javaEnum = ADXState_Direction_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXState_Direction_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXState_Direction_ORDINAL)ordinal {
+  return (ADXState_Direction_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithDirection:(ADXState_Direction_Enum)value {
+  return RETAIN_(ADXState_Direction_fromOrdinal((ADXState_Direction_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -640,7 +690,7 @@ ADXState_Direction *ADXState_Direction_values_[6];
     size_t allocSize = 6 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 6; i++) {
+    for (int32_t i = 0; i < 6; i++) {
       ((void)(ADXState_Direction_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXState_Direction_initWithNSString_withInt_(e, JreEnumConstantName(ADXState_Direction_class_(), i), i);
     }
@@ -650,7 +700,7 @@ ADXState_Direction *ADXState_Direction_values_[6];
 
 @end
 
-void ADXState_Direction_initWithNSString_withInt_(ADXState_Direction *self, NSString *__name, jint __ordinal) {
+void ADXState_Direction_initWithNSString_withInt_(ADXState_Direction *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -668,12 +718,11 @@ ADXState_Direction *ADXState_Direction_valueOfWithNSString_(NSString *name) {
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXState_Direction *ADXState_Direction_fromOrdinal(NSUInteger ordinal) {
+ADXState_Direction *ADXState_Direction_fromOrdinal(ADXState_Direction_ORDINAL ordinal) {
   ADXState_Direction_initialize();
-  if (ordinal >= 6) {
+  if (ordinal < 0 || ordinal >= 6) {
     return nil;
   }
   return ADXState_Direction_values_[ordinal];
@@ -697,6 +746,24 @@ ADXState_Helper *ADXState_Helper_values_[7];
 
 - (ADXState_Helper_Enum)toNSEnum {
   return (ADXState_Helper_Enum)[self ordinal];
+}
+
+- (ADXState_Helper_Enum)enumValue {
+  return (ADXState_Helper_Enum)[self ordinal];
+}
+
++ (ADXState_Helper *)fromNSEnum:(ADXState_Helper_Enum)nativeValue {
+  ADXState_Helper *javaEnum = ADXState_Helper_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXState_Helper_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXState_Helper_ORDINAL)ordinal {
+  return (ADXState_Helper_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithHelper:(ADXState_Helper_Enum)value {
+  return RETAIN_(ADXState_Helper_fromOrdinal((ADXState_Helper_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -730,7 +797,7 @@ ADXState_Helper *ADXState_Helper_values_[7];
     size_t allocSize = 7 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 7; i++) {
+    for (int32_t i = 0; i < 7; i++) {
       ((void)(ADXState_Helper_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXState_Helper_initWithNSString_withInt_(e, JreEnumConstantName(ADXState_Helper_class_(), i), i);
     }
@@ -740,7 +807,7 @@ ADXState_Helper *ADXState_Helper_values_[7];
 
 @end
 
-void ADXState_Helper_initWithNSString_withInt_(ADXState_Helper *self, NSString *__name, jint __ordinal) {
+void ADXState_Helper_initWithNSString_withInt_(ADXState_Helper *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -758,12 +825,11 @@ ADXState_Helper *ADXState_Helper_valueOfWithNSString_(NSString *name) {
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXState_Helper *ADXState_Helper_fromOrdinal(NSUInteger ordinal) {
+ADXState_Helper *ADXState_Helper_fromOrdinal(ADXState_Helper_ORDINAL ordinal) {
   ADXState_Helper_initialize();
-  if (ordinal >= 7) {
+  if (ordinal < 0 || ordinal >= 7) {
     return nil;
   }
   return ADXState_Helper_values_[ordinal];
@@ -787,6 +853,24 @@ ADXState_Chain *ADXState_Chain_values_[3];
 
 - (ADXState_Chain_Enum)toNSEnum {
   return (ADXState_Chain_Enum)[self ordinal];
+}
+
+- (ADXState_Chain_Enum)enumValue {
+  return (ADXState_Chain_Enum)[self ordinal];
+}
+
++ (ADXState_Chain *)fromNSEnum:(ADXState_Chain_Enum)nativeValue {
+  ADXState_Chain *javaEnum = ADXState_Chain_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXState_Chain_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXState_Chain_ORDINAL)ordinal {
+  return (ADXState_Chain_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithChain:(ADXState_Chain_Enum)value {
+  return RETAIN_(ADXState_Chain_fromOrdinal((ADXState_Chain_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -816,7 +900,7 @@ ADXState_Chain *ADXState_Chain_values_[3];
     size_t allocSize = 3 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 3; i++) {
+    for (int32_t i = 0; i < 3; i++) {
       ((void)(ADXState_Chain_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXState_Chain_initWithNSString_withInt_(e, JreEnumConstantName(ADXState_Chain_class_(), i), i);
     }
@@ -826,7 +910,7 @@ ADXState_Chain *ADXState_Chain_values_[3];
 
 @end
 
-void ADXState_Chain_initWithNSString_withInt_(ADXState_Chain *self, NSString *__name, jint __ordinal) {
+void ADXState_Chain_initWithNSString_withInt_(ADXState_Chain *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -844,12 +928,11 @@ ADXState_Chain *ADXState_Chain_valueOfWithNSString_(NSString *name) {
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXState_Chain *ADXState_Chain_fromOrdinal(NSUInteger ordinal) {
+ADXState_Chain *ADXState_Chain_fromOrdinal(ADXState_Chain_ORDINAL ordinal) {
   ADXState_Chain_initialize();
-  if (ordinal >= 3) {
+  if (ordinal < 0 || ordinal >= 3) {
     return nil;
   }
   return ADXState_Chain_values_[ordinal];

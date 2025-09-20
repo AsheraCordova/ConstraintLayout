@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\ArrayRow.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ArrayRow")
@@ -24,17 +25,21 @@
 @class ADXLinearSystem;
 @class ADXSolverVariable;
 @class IOSBooleanArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
+@class NSString;
 @protocol ADXArrayRow_ArrayRowVariables;
 
 @interface ADXArrayRow : NSObject < ADXLinearSystem_Row > {
  @public
-  __unsafe_unretained ADXSolverVariable *variable_;
-  jfloat constantValue_;
-  jboolean used_;
+  WEAK_ ADXSolverVariable *variable_;
+  float constantValue_;
+  bool used_;
   JavaUtilArrayList *variablesToUpdate_;
   id<ADXArrayRow_ArrayRowVariables> variables_;
-  jboolean isSimpleDefinition_;
+  bool isSimpleDefinition_;
 }
 
 #pragma mark Public
@@ -44,7 +49,7 @@
 - (instancetype)initWithADXCache:(ADXCache *)cache;
 
 - (ADXArrayRow *)addErrorWithADXLinearSystem:(ADXLinearSystem *)system
-                                     withInt:(jint)strength;
+                                     withInt:(int32_t)strength;
 
 - (void)addErrorWithADXSolverVariable:(ADXSolverVariable *)error;
 
@@ -64,48 +69,48 @@
                                         withADXSolverVariable:(ADXSolverVariable *)variableB
                                         withADXSolverVariable:(ADXSolverVariable *)variableC
                                         withADXSolverVariable:(ADXSolverVariable *)variableD
-                                                    withFloat:(jfloat)ratio;
+                                                    withFloat:(float)ratio;
 
-- (ADXArrayRow *)createRowEqualDimensionWithFloat:(jfloat)currentWeight
-                                        withFloat:(jfloat)totalWeights
-                                        withFloat:(jfloat)nextWeight
+- (ADXArrayRow *)createRowEqualDimensionWithFloat:(float)currentWeight
+                                        withFloat:(float)totalWeights
+                                        withFloat:(float)nextWeight
                             withADXSolverVariable:(ADXSolverVariable *)variableStartA
-                                          withInt:(jint)marginStartA
+                                          withInt:(int32_t)marginStartA
                             withADXSolverVariable:(ADXSolverVariable *)variableEndA
-                                          withInt:(jint)marginEndA
+                                          withInt:(int32_t)marginEndA
                             withADXSolverVariable:(ADXSolverVariable *)variableStartB
-                                          withInt:(jint)marginStartB
+                                          withInt:(int32_t)marginStartB
                             withADXSolverVariable:(ADXSolverVariable *)variableEndB
-                                          withInt:(jint)marginEndB;
+                                          withInt:(int32_t)marginEndB;
 
-- (ADXArrayRow *)createRowEqualMatchDimensionsWithFloat:(jfloat)currentWeight
-                                              withFloat:(jfloat)totalWeights
-                                              withFloat:(jfloat)nextWeight
+- (ADXArrayRow *)createRowEqualMatchDimensionsWithFloat:(float)currentWeight
+                                              withFloat:(float)totalWeights
+                                              withFloat:(float)nextWeight
                                   withADXSolverVariable:(ADXSolverVariable *)variableStartA
                                   withADXSolverVariable:(ADXSolverVariable *)variableEndA
                                   withADXSolverVariable:(ADXSolverVariable *)variableStartB
                                   withADXSolverVariable:(ADXSolverVariable *)variableEndB;
 
 - (ADXArrayRow *)createRowEqualsWithADXSolverVariable:(ADXSolverVariable *)variable
-                                              withInt:(jint)value;
+                                              withInt:(int32_t)value;
 
 - (ADXArrayRow *)createRowEqualsWithADXSolverVariable:(ADXSolverVariable *)variableA
                                 withADXSolverVariable:(ADXSolverVariable *)variableB
-                                              withInt:(jint)margin;
+                                              withInt:(int32_t)margin;
 
 - (ADXArrayRow *)createRowGreaterThanWithADXSolverVariable:(ADXSolverVariable *)a
-                                                   withInt:(jint)b
+                                                   withInt:(int32_t)b
                                      withADXSolverVariable:(ADXSolverVariable *)slack;
 
 - (ADXArrayRow *)createRowGreaterThanWithADXSolverVariable:(ADXSolverVariable *)variableA
                                      withADXSolverVariable:(ADXSolverVariable *)variableB
                                      withADXSolverVariable:(ADXSolverVariable *)slack
-                                                   withInt:(jint)margin;
+                                                   withInt:(int32_t)margin;
 
 - (ADXArrayRow *)createRowLowerThanWithADXSolverVariable:(ADXSolverVariable *)variableA
                                    withADXSolverVariable:(ADXSolverVariable *)variableB
                                    withADXSolverVariable:(ADXSolverVariable *)slack
-                                                 withInt:(jint)margin;
+                                                 withInt:(int32_t)margin;
 
 /*!
  @brief Create a constraint to express At + (Ab-At)/2 = Bt + (Bb-Bt)/2 - angle
@@ -119,7 +124,7 @@
                                    withADXSolverVariable:(ADXSolverVariable *)ab
                                    withADXSolverVariable:(ADXSolverVariable *)bt
                                    withADXSolverVariable:(ADXSolverVariable *)bb
-                                               withFloat:(jfloat)angleComponent;
+                                               withFloat:(float)angleComponent;
 
 - (ADXSolverVariable *)getKey;
 
@@ -132,7 +137,7 @@
  */
 - (void)initFromRowWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)row OBJC_METHOD_FAMILY_NONE;
 
-- (jboolean)isEmpty;
+- (bool)isEmpty;
 
 - (ADXSolverVariable *)pickPivotWithADXSolverVariable:(ADXSolverVariable *)exclude;
 
@@ -142,22 +147,22 @@
 
 - (void)updateFromFinalVariableWithADXLinearSystem:(ADXLinearSystem *)system
                              withADXSolverVariable:(ADXSolverVariable *)variable
-                                       withBoolean:(jboolean)removeFromDefinition;
+                                       withBoolean:(bool)removeFromDefinition;
 
 - (void)updateFromRowWithADXLinearSystem:(ADXLinearSystem *)system
                          withADXArrayRow:(ADXArrayRow *)definition
-                             withBoolean:(jboolean)removeFromDefinition;
+                             withBoolean:(bool)removeFromDefinition;
 
 - (void)updateFromSynonymVariableWithADXLinearSystem:(ADXLinearSystem *)system
                                withADXSolverVariable:(ADXSolverVariable *)variable
-                                         withBoolean:(jboolean)removeFromDefinition;
+                                         withBoolean:(bool)removeFromDefinition;
 
 - (void)updateFromSystemWithADXLinearSystem:(ADXLinearSystem *)system;
 
 #pragma mark Package-Private
 
 - (ADXArrayRow *)addSingleErrorWithADXSolverVariable:(ADXSolverVariable *)error
-                                             withInt:(jint)sign;
+                                             withInt:(int32_t)sign;
 
 /*!
  @brief Pick a subject variable out of the existing ones
@@ -167,7 +172,7 @@
   - otherwise we have to add a new additional variable
  @return true if we added an extra variable to the system
  */
-- (jboolean)chooseSubjectWithADXLinearSystem:(ADXLinearSystem *)system;
+- (bool)chooseSubjectWithADXLinearSystem:(ADXLinearSystem *)system;
 
 /*!
  @brief Pick a subject variable out of the existing ones
@@ -181,28 +186,28 @@
 
 - (ADXArrayRow *)createRowCenteringWithADXSolverVariable:(ADXSolverVariable *)variableA
                                    withADXSolverVariable:(ADXSolverVariable *)variableB
-                                                 withInt:(jint)marginA
-                                               withFloat:(jfloat)bias
+                                                 withInt:(int32_t)marginA
+                                               withFloat:(float)bias
                                    withADXSolverVariable:(ADXSolverVariable *)variableC
                                    withADXSolverVariable:(ADXSolverVariable *)variableD
-                                                 withInt:(jint)marginB;
+                                                 withInt:(int32_t)marginB;
 
 - (ADXArrayRow *)createRowDefinitionWithADXSolverVariable:(ADXSolverVariable *)variable
-                                                  withInt:(jint)value;
+                                                  withInt:(int32_t)value;
 
 - (ADXArrayRow *)createRowDimensionPercentWithADXSolverVariable:(ADXSolverVariable *)variableA
                                           withADXSolverVariable:(ADXSolverVariable *)variableC
-                                                      withFloat:(jfloat)percent;
+                                                      withFloat:(float)percent;
 
 - (void)ensurePositiveConstant;
 
-- (jboolean)hasKeyVariable;
+- (bool)hasKeyVariable;
 
-- (jboolean)hasVariableWithADXSolverVariable:(ADXSolverVariable *)v;
+- (bool)hasVariableWithADXSolverVariable:(ADXSolverVariable *)v;
 
 - (void)pivotWithADXSolverVariable:(ADXSolverVariable *)v;
 
-- (jint)sizeInBytes;
+- (int32_t)sizeInBytes;
 
 - (NSString *)toReadableString;
 
@@ -229,6 +234,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArrayRow)
 
 @compatibility_alias AndroidxConstraintlayoutCoreArrayRow ADXArrayRow;
 
+
 #endif
 
 #if !defined (ADXArrayRow_ArrayRowVariables_) && (INCLUDE_ALL_ArrayRow || defined(INCLUDE_ADXArrayRow_ArrayRowVariables))
@@ -236,49 +242,53 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArrayRow)
 
 @class ADXArrayRow;
 @class ADXSolverVariable;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @protocol ADXArrayRow_ArrayRowVariables < JavaObject >
 
-- (jint)getCurrentSize;
+- (int32_t)getCurrentSize;
 
-- (ADXSolverVariable *)getVariableWithInt:(jint)i;
+- (ADXSolverVariable *)getVariableWithInt:(int32_t)i;
 
-- (jfloat)getVariableValueWithInt:(jint)i;
+- (float)getVariableValueWithInt:(int32_t)i;
 
-- (jfloat)getWithADXSolverVariable:(ADXSolverVariable *)variable;
+- (float)getWithADXSolverVariable:(ADXSolverVariable *)variable;
 
-- (jint)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable;
+- (int32_t)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable;
 
 - (void)display;
 
 - (void)clear;
 
-- (jboolean)containsWithADXSolverVariable:(ADXSolverVariable *)v;
+- (bool)containsWithADXSolverVariable:(ADXSolverVariable *)v;
 
 - (void)putWithADXSolverVariable:(ADXSolverVariable *)variable
-                       withFloat:(jfloat)value;
+                       withFloat:(float)value;
 
-- (jint)sizeInBytes;
+- (int32_t)sizeInBytes;
 
 - (void)invert;
 
-- (jfloat)removeWithADXSolverVariable:(ADXSolverVariable *)v
-                          withBoolean:(jboolean)removeFromDefinition;
+- (float)removeWithADXSolverVariable:(ADXSolverVariable *)v
+                         withBoolean:(bool)removeFromDefinition;
 
-- (void)divideByAmountWithFloat:(jfloat)amount;
+- (void)divideByAmountWithFloat:(float)amount;
 
 - (void)addWithADXSolverVariable:(ADXSolverVariable *)var
-                       withFloat:(jfloat)value
-                     withBoolean:(jboolean)removeFromDefinition;
+                       withFloat:(float)value
+                     withBoolean:(bool)removeFromDefinition;
 
-- (jfloat)useWithADXArrayRow:(ADXArrayRow *)definition
-                 withBoolean:(jboolean)removeFromDefinition;
+- (float)useWithADXArrayRow:(ADXArrayRow *)definition
+                withBoolean:(bool)removeFromDefinition;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXArrayRow_ArrayRowVariables)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXArrayRow_ArrayRowVariables)
+
 
 #endif
 

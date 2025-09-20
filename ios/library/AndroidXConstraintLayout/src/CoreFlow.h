@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreFlow.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CoreFlow")
@@ -22,6 +23,9 @@
 
 @class ADXConstraintWidget;
 @class ADXLinearSystem;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 
 /*!
@@ -39,97 +43,97 @@
  @param optimize true if <code>Optimizer.OPTIMIZATION_GRAPH</code>  is on
  */
 - (void)addToSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                           withBoolean:(jboolean)optimize;
+                           withBoolean:(bool)optimize;
 
 - (void)copy__WithADXConstraintWidget:(ADXConstraintWidget *)src
                   withJavaUtilHashMap:(JavaUtilHashMap *)map OBJC_METHOD_FAMILY_NONE;
 
-- (void)measureWithInt:(jint)widthMode
-               withInt:(jint)widthSize
-               withInt:(jint)heightMode
-               withInt:(jint)heightSize;
+- (void)measureWithInt:(int32_t)widthMode
+               withInt:(int32_t)widthSize
+               withInt:(int32_t)heightMode
+               withInt:(int32_t)heightSize;
 
-- (void)setFirstHorizontalBiasWithFloat:(jfloat)value;
+- (void)setFirstHorizontalBiasWithFloat:(float)value;
 
-- (void)setFirstHorizontalStyleWithInt:(jint)value;
+- (void)setFirstHorizontalStyleWithInt:(int32_t)value;
 
-- (void)setFirstVerticalBiasWithFloat:(jfloat)value;
+- (void)setFirstVerticalBiasWithFloat:(float)value;
 
-- (void)setFirstVerticalStyleWithInt:(jint)value;
+- (void)setFirstVerticalStyleWithInt:(int32_t)value;
 
-- (void)setHorizontalAlignWithInt:(jint)value;
+- (void)setHorizontalAlignWithInt:(int32_t)value;
 
-- (void)setHorizontalBiasWithFloat:(jfloat)value;
+- (void)setHorizontalBiasWithFloat:(float)value;
 
-- (void)setHorizontalGapWithInt:(jint)value;
+- (void)setHorizontalGapWithInt:(int32_t)value;
 
-- (void)setHorizontalStyleWithInt:(jint)value;
+- (void)setHorizontalStyleWithInt:(int32_t)value;
 
-- (void)setLastHorizontalBiasWithFloat:(jfloat)value;
+- (void)setLastHorizontalBiasWithFloat:(float)value;
 
-- (void)setLastHorizontalStyleWithInt:(jint)value;
+- (void)setLastHorizontalStyleWithInt:(int32_t)value;
 
-- (void)setLastVerticalBiasWithFloat:(jfloat)value;
+- (void)setLastVerticalBiasWithFloat:(float)value;
 
-- (void)setLastVerticalStyleWithInt:(jint)value;
+- (void)setLastVerticalStyleWithInt:(int32_t)value;
 
-- (void)setMaxElementsWrapWithInt:(jint)value;
+- (void)setMaxElementsWrapWithInt:(int32_t)value;
 
-- (void)setOrientationWithInt:(jint)value;
+- (void)setOrientationWithInt:(int32_t)value;
 
-- (void)setVerticalAlignWithInt:(jint)value;
+- (void)setVerticalAlignWithInt:(int32_t)value;
 
-- (void)setVerticalBiasWithFloat:(jfloat)value;
+- (void)setVerticalBiasWithFloat:(float)value;
 
-- (void)setVerticalGapWithInt:(jint)value;
+- (void)setVerticalGapWithInt:(int32_t)value;
 
-- (void)setVerticalStyleWithInt:(jint)value;
+- (void)setVerticalStyleWithInt:(int32_t)value;
 
-- (void)setWrapModeWithInt:(jint)value;
+- (void)setWrapModeWithInt:(int32_t)value;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCoreFlow)
 
-inline jint ADXCoreFlow_get_HORIZONTAL_ALIGN_START(void);
+inline int32_t ADXCoreFlow_get_HORIZONTAL_ALIGN_START(void);
 #define ADXCoreFlow_HORIZONTAL_ALIGN_START 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, HORIZONTAL_ALIGN_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, HORIZONTAL_ALIGN_START, int32_t)
 
-inline jint ADXCoreFlow_get_HORIZONTAL_ALIGN_END(void);
+inline int32_t ADXCoreFlow_get_HORIZONTAL_ALIGN_END(void);
 #define ADXCoreFlow_HORIZONTAL_ALIGN_END 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, HORIZONTAL_ALIGN_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, HORIZONTAL_ALIGN_END, int32_t)
 
-inline jint ADXCoreFlow_get_HORIZONTAL_ALIGN_CENTER(void);
+inline int32_t ADXCoreFlow_get_HORIZONTAL_ALIGN_CENTER(void);
 #define ADXCoreFlow_HORIZONTAL_ALIGN_CENTER 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, HORIZONTAL_ALIGN_CENTER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, HORIZONTAL_ALIGN_CENTER, int32_t)
 
-inline jint ADXCoreFlow_get_VERTICAL_ALIGN_TOP(void);
+inline int32_t ADXCoreFlow_get_VERTICAL_ALIGN_TOP(void);
 #define ADXCoreFlow_VERTICAL_ALIGN_TOP 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_TOP, int32_t)
 
-inline jint ADXCoreFlow_get_VERTICAL_ALIGN_BOTTOM(void);
+inline int32_t ADXCoreFlow_get_VERTICAL_ALIGN_BOTTOM(void);
 #define ADXCoreFlow_VERTICAL_ALIGN_BOTTOM 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_BOTTOM, int32_t)
 
-inline jint ADXCoreFlow_get_VERTICAL_ALIGN_CENTER(void);
+inline int32_t ADXCoreFlow_get_VERTICAL_ALIGN_CENTER(void);
 #define ADXCoreFlow_VERTICAL_ALIGN_CENTER 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_CENTER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_CENTER, int32_t)
 
-inline jint ADXCoreFlow_get_VERTICAL_ALIGN_BASELINE(void);
+inline int32_t ADXCoreFlow_get_VERTICAL_ALIGN_BASELINE(void);
 #define ADXCoreFlow_VERTICAL_ALIGN_BASELINE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_BASELINE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, VERTICAL_ALIGN_BASELINE, int32_t)
 
-inline jint ADXCoreFlow_get_WRAP_NONE(void);
+inline int32_t ADXCoreFlow_get_WRAP_NONE(void);
 #define ADXCoreFlow_WRAP_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, WRAP_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, WRAP_NONE, int32_t)
 
-inline jint ADXCoreFlow_get_WRAP_CHAIN(void);
+inline int32_t ADXCoreFlow_get_WRAP_CHAIN(void);
 #define ADXCoreFlow_WRAP_CHAIN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, WRAP_CHAIN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, WRAP_CHAIN, int32_t)
 
-inline jint ADXCoreFlow_get_WRAP_ALIGNED(void);
+inline int32_t ADXCoreFlow_get_WRAP_ALIGNED(void);
 #define ADXCoreFlow_WRAP_ALIGNED 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, WRAP_ALIGNED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCoreFlow, WRAP_ALIGNED, int32_t)
 
 FOUNDATION_EXPORT void ADXCoreFlow_init(ADXCoreFlow *self);
 
@@ -140,6 +144,7 @@ FOUNDATION_EXPORT ADXCoreFlow *create_ADXCoreFlow_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXCoreFlow)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsCoreFlow ADXCoreFlow;
+
 
 #endif
 

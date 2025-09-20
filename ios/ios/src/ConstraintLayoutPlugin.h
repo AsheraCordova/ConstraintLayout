@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\ConstraintLayoutPlugin.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintLayoutPlugin")
@@ -39,6 +40,7 @@ FOUNDATION_EXPORT void ASConstraintLayoutPlugin_initPlugin(void);
 J2OBJC_TYPE_LITERAL_HEADER(ASConstraintLayoutPlugin)
 
 @compatibility_alias ComAsheraConstraintlayoutConstraintLayoutPlugin ASConstraintLayoutPlugin;
+
 
 #endif
 

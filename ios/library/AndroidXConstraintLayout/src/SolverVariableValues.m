@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\SolverVariableValues.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "Cache.h"
 #include "IOSObjectArray.h"
@@ -11,69 +16,79 @@
 #include "SolverVariable.h"
 #include "SolverVariableValues.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/System.h"
 #include "java/util/Arrays.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXSolverVariableValues () {
  @public
-  jint SIZE_;
-  jint HASH_SIZE_;
-  __unsafe_unretained ADXArrayRow *mRow_;
+  int32_t SIZE_;
+  int32_t HASH_SIZE_;
+  WEAK_ ADXArrayRow *mRow_;
 }
 
 - (void)increaseSize;
 
 - (void)addToHashMapWithADXSolverVariable:(ADXSolverVariable *)variable
-                                  withInt:(jint)index;
+                                  withInt:(int32_t)index;
 
 - (void)displayHash;
 
 - (void)removeFromHashMapWithADXSolverVariable:(ADXSolverVariable *)variable;
 
-- (void)addVariableWithInt:(jint)index
+- (void)addVariableWithInt:(int32_t)index
      withADXSolverVariable:(ADXSolverVariable *)variable
-                 withFloat:(jfloat)value;
+                 withFloat:(float)value;
 
-- (jint)findEmptySlot;
+- (int32_t)findEmptySlot;
 
-- (void)insertVariableWithInt:(jint)index
+- (void)insertVariableWithInt:(int32_t)index
         withADXSolverVariable:(ADXSolverVariable *)variable
-                    withFloat:(jfloat)value;
+                    withFloat:(float)value;
 
 @end
 
-inline jboolean ADXSolverVariableValues_get_DEBUG(void);
+inline bool ADXSolverVariableValues_get_DEBUG(void);
 #define ADXSolverVariableValues_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariableValues, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariableValues, DEBUG, bool)
 
-inline jboolean ADXSolverVariableValues_get_HASH(void);
+inline bool ADXSolverVariableValues_get_HASH(void);
 #define ADXSolverVariableValues_HASH true
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariableValues, HASH, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariableValues, HASH, bool)
 
-inline jfloat ADXSolverVariableValues_get_epsilon(void);
-inline jfloat ADXSolverVariableValues_set_epsilon(jfloat value);
-inline jfloat *ADXSolverVariableValues_getRef_epsilon(void);
-static jfloat ADXSolverVariableValues_epsilon = 0.001f;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariableValues, epsilon, jfloat)
+inline float ADXSolverVariableValues_get_epsilon(void);
+inline float ADXSolverVariableValues_set_epsilon(float value);
+inline float *ADXSolverVariableValues_getRef_epsilon(void);
+static float ADXSolverVariableValues_epsilon = 0.001f;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariableValues, epsilon, float)
 
-inline jint ADXSolverVariableValues_get_NONE(void);
+inline int32_t ADXSolverVariableValues_get_NONE(void);
 #define ADXSolverVariableValues_NONE -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariableValues, NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariableValues, NONE, int32_t)
 
 __attribute__((unused)) static void ADXSolverVariableValues_increaseSize(ADXSolverVariableValues *self);
 
-__attribute__((unused)) static void ADXSolverVariableValues_addToHashMapWithADXSolverVariable_withInt_(ADXSolverVariableValues *self, ADXSolverVariable *variable, jint index);
+__attribute__((unused)) static void ADXSolverVariableValues_addToHashMapWithADXSolverVariable_withInt_(ADXSolverVariableValues *self, ADXSolverVariable *variable, int32_t index);
 
 __attribute__((unused)) static void ADXSolverVariableValues_displayHash(ADXSolverVariableValues *self);
 
 __attribute__((unused)) static void ADXSolverVariableValues_removeFromHashMapWithADXSolverVariable_(ADXSolverVariableValues *self, ADXSolverVariable *variable);
 
-__attribute__((unused)) static void ADXSolverVariableValues_addVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, jint index, ADXSolverVariable *variable, jfloat value);
+__attribute__((unused)) static void ADXSolverVariableValues_addVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, int32_t index, ADXSolverVariable *variable, float value);
 
-__attribute__((unused)) static jint ADXSolverVariableValues_findEmptySlot(ADXSolverVariableValues *self);
+__attribute__((unused)) static int32_t ADXSolverVariableValues_findEmptySlot(ADXSolverVariableValues *self);
 
-__attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, jint index, ADXSolverVariable *variable, jfloat value);
+__attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, int32_t index, ADXSolverVariable *variable, float value);
 
 @implementation ADXSolverVariableValues
 
@@ -83,17 +98,17 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   return self;
 }
 
-- (jint)getCurrentSize {
+- (int32_t)getCurrentSize {
   return mCount_;
 }
 
-- (ADXSolverVariable *)getVariableWithInt:(jint)index {
-  jint count = mCount_;
+- (ADXSolverVariable *)getVariableWithInt:(int32_t)index {
+  int32_t count = mCount_;
   if (count == 0) {
     return nil;
   }
-  jint j = head_;
-  for (jint i = 0; i < count; i++) {
+  int32_t j = head_;
+  for (int32_t i = 0; i < count; i++) {
     if (i == index && j != ADXSolverVariableValues_NONE) {
       return IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), IOSIntArray_Get(nil_chk(variables_), j));
     }
@@ -105,10 +120,10 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   return nil;
 }
 
-- (jfloat)getVariableValueWithInt:(jint)index {
-  jint count = mCount_;
-  jint j = head_;
-  for (jint i = 0; i < count; i++) {
+- (float)getVariableValueWithInt:(int32_t)index {
+  int32_t count = mCount_;
+  int32_t j = head_;
+  for (int32_t i = 0; i < count; i++) {
     if (i == index) {
       return IOSFloatArray_Get(nil_chk(values_), j);
     }
@@ -120,16 +135,16 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   return 0;
 }
 
-- (jboolean)containsWithADXSolverVariable:(ADXSolverVariable *)variable {
+- (bool)containsWithADXSolverVariable:(ADXSolverVariable *)variable {
   return [self indexOfWithADXSolverVariable:variable] != ADXSolverVariableValues_NONE;
 }
 
-- (jint)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable {
+- (int32_t)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable {
   if (mCount_ == 0 || variable == nil) {
     return ADXSolverVariableValues_NONE;
   }
-  jint id_ = variable->id__;
-  jint key = JreIntMod(id_, HASH_SIZE_);
+  int32_t id_ = variable->id__;
+  int32_t key = JreIntMod(id_, HASH_SIZE_);
   key = IOSIntArray_Get(nil_chk(keys_), key);
   if (key == ADXSolverVariableValues_NONE) {
     return ADXSolverVariableValues_NONE;
@@ -149,8 +164,8 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   return ADXSolverVariableValues_NONE;
 }
 
-- (jfloat)getWithADXSolverVariable:(ADXSolverVariable *)variable {
-  jint index = [self indexOfWithADXSolverVariable:variable];
+- (float)getWithADXSolverVariable:(ADXSolverVariable *)variable {
+  int32_t index = [self indexOfWithADXSolverVariable:variable];
   if (index != ADXSolverVariableValues_NONE) {
     return IOSFloatArray_Get(nil_chk(values_), index);
   }
@@ -158,28 +173,28 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
 }
 
 - (void)display {
-  jint count = mCount_;
+  int32_t count = mCount_;
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:@"{ "];
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXSolverVariable *v = JreRetainedLocalValue([self getVariableWithInt:i]);
     if (v == nil) {
       continue;
     }
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printWithNSString:JreStrcat("@$FC", v, @" = ", [self getVariableValueWithInt:i], ' ')];
+    [JreLoadStatic(JavaLangSystem, out) printWithNSString:JreStrcat("@$FC", v, @" = ", [self getVariableValueWithInt:i], ' ')];
   }
-  [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@" }"];
+  [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:@" }"];
 }
 
 - (NSString *)description {
-  NSString *str = JreStrcat("I$", ((jint) [self hash]), @" { ");
-  jint count = mCount_;
-  for (jint i = 0; i < count; i++) {
+  NSString *str = JreStrcat("I$", ((int32_t) [self hash]), @" { ");
+  int32_t count = mCount_;
+  for (int32_t i = 0; i < count; i++) {
     ADXSolverVariable *v = JreRetainedLocalValue([self getVariableWithInt:i]);
     if (v == nil) {
       continue;
     }
     JreStrAppend(&str, "@$FC", v, @" = ", [self getVariableValueWithInt:i], ' ');
-    jint index = [self indexOfWithADXSolverVariable:v];
+    int32_t index = [self indexOfWithADXSolverVariable:v];
     JreStrAppend(&str, "$", @"[p: ");
     if (IOSIntArray_Get(nil_chk(previous_), index) != ADXSolverVariableValues_NONE) {
       JreStrAppend(&str, "@", IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), IOSIntArray_Get(nil_chk(variables_), IOSIntArray_Get(previous_, index))));
@@ -201,18 +216,18 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
 }
 
 - (void)clear {
-  jint count = mCount_;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = mCount_;
+  for (int32_t i = 0; i < count; i++) {
     ADXSolverVariable *v = JreRetainedLocalValue([self getVariableWithInt:i]);
     if (v != nil) {
       [v removeFromRowWithADXArrayRow:mRow_];
     }
   }
-  for (jint i = 0; i < SIZE_; i++) {
+  for (int32_t i = 0; i < SIZE_; i++) {
     *IOSIntArray_GetRef(nil_chk(variables_), i) = ADXSolverVariableValues_NONE;
     *IOSIntArray_GetRef(nil_chk(nextKeys_), i) = ADXSolverVariableValues_NONE;
   }
-  for (jint i = 0; i < HASH_SIZE_; i++) {
+  for (int32_t i = 0; i < HASH_SIZE_; i++) {
     *IOSIntArray_GetRef(nil_chk(keys_), i) = ADXSolverVariableValues_NONE;
   }
   mCount_ = 0;
@@ -224,7 +239,7 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
 }
 
 - (void)addToHashMapWithADXSolverVariable:(ADXSolverVariable *)variable
-                                  withInt:(jint)index {
+                                  withInt:(int32_t)index {
   ADXSolverVariableValues_addToHashMapWithADXSolverVariable_withInt_(self, variable, index);
 }
 
@@ -236,24 +251,24 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   ADXSolverVariableValues_removeFromHashMapWithADXSolverVariable_(self, variable);
 }
 
-- (void)addVariableWithInt:(jint)index
+- (void)addVariableWithInt:(int32_t)index
      withADXSolverVariable:(ADXSolverVariable *)variable
-                 withFloat:(jfloat)value {
+                 withFloat:(float)value {
   ADXSolverVariableValues_addVariableWithInt_withADXSolverVariable_withFloat_(self, index, variable, value);
 }
 
-- (jint)findEmptySlot {
+- (int32_t)findEmptySlot {
   return ADXSolverVariableValues_findEmptySlot(self);
 }
 
-- (void)insertVariableWithInt:(jint)index
+- (void)insertVariableWithInt:(int32_t)index
         withADXSolverVariable:(ADXSolverVariable *)variable
-                    withFloat:(jfloat)value {
+                    withFloat:(float)value {
   ADXSolverVariableValues_insertVariableWithInt_withADXSolverVariable_withFloat_(self, index, variable, value);
 }
 
 - (void)putWithADXSolverVariable:(ADXSolverVariable *)variable
-                       withFloat:(jfloat)value {
+                       withFloat:(float)value {
   if (value > -ADXSolverVariableValues_epsilon && value < ADXSolverVariableValues_epsilon) {
     [self removeWithADXSolverVariable:variable withBoolean:true];
     return;
@@ -264,7 +279,7 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
     head_ = 0;
   }
   else {
-    jint index = [self indexOfWithADXSolverVariable:variable];
+    int32_t index = [self indexOfWithADXSolverVariable:variable];
     if (index != ADXSolverVariableValues_NONE) {
       *IOSFloatArray_GetRef(nil_chk(values_), index) = value;
     }
@@ -272,10 +287,10 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
       if (mCount_ + 1 >= SIZE_) {
         ADXSolverVariableValues_increaseSize(self);
       }
-      jint count = mCount_;
-      jint previousItem = -1;
-      jint j = head_;
-      for (jint i = 0; i < count; i++) {
+      int32_t count = mCount_;
+      int32_t previousItem = -1;
+      int32_t j = head_;
+      for (int32_t i = 0; i < count; i++) {
         if (IOSIntArray_Get(nil_chk(variables_), j) == ((ADXSolverVariable *) nil_chk(variable))->id__) {
           *IOSFloatArray_GetRef(nil_chk(values_), j) = value;
           return;
@@ -293,18 +308,18 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   }
 }
 
-- (jint)sizeInBytes {
+- (int32_t)sizeInBytes {
   return 0;
 }
 
-- (jfloat)removeWithADXSolverVariable:(ADXSolverVariable *)v
-                          withBoolean:(jboolean)removeFromDefinition {
-  jint index = [self indexOfWithADXSolverVariable:v];
+- (float)removeWithADXSolverVariable:(ADXSolverVariable *)v
+                         withBoolean:(bool)removeFromDefinition {
+  int32_t index = [self indexOfWithADXSolverVariable:v];
   if (index == ADXSolverVariableValues_NONE) {
     return 0;
   }
   ADXSolverVariableValues_removeFromHashMapWithADXSolverVariable_(self, v);
-  jfloat value = IOSFloatArray_Get(nil_chk(values_), index);
+  float value = IOSFloatArray_Get(nil_chk(values_), index);
   if (head_ == index) {
     head_ = IOSIntArray_Get(nil_chk(next_), index);
   }
@@ -324,12 +339,12 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
 }
 
 - (void)addWithADXSolverVariable:(ADXSolverVariable *)v
-                       withFloat:(jfloat)value
-                     withBoolean:(jboolean)removeFromDefinition {
+                       withFloat:(float)value
+                     withBoolean:(bool)removeFromDefinition {
   if (value > -ADXSolverVariableValues_epsilon && value < ADXSolverVariableValues_epsilon) {
     return;
   }
-  jint index = [self indexOfWithADXSolverVariable:v];
+  int32_t index = [self indexOfWithADXSolverVariable:v];
   if (index == ADXSolverVariableValues_NONE) {
     [self putWithADXSolverVariable:v withFloat:value];
   }
@@ -342,18 +357,18 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   }
 }
 
-- (jfloat)useWithADXArrayRow:(ADXArrayRow *)def
-                 withBoolean:(jboolean)removeFromDefinition {
-  jfloat value = [self getWithADXSolverVariable:((ADXArrayRow *) nil_chk(def))->variable_];
+- (float)useWithADXArrayRow:(ADXArrayRow *)def
+                withBoolean:(bool)removeFromDefinition {
+  float value = [self getWithADXSolverVariable:((ADXArrayRow *) nil_chk(def))->variable_];
   [self removeWithADXSolverVariable:def->variable_ withBoolean:removeFromDefinition];
   ADXSolverVariableValues *definition = (ADXSolverVariableValues *) cast_chk(def->variables_, [ADXSolverVariableValues class]);
-  jint definitionSize = [((ADXSolverVariableValues *) nil_chk(definition)) getCurrentSize];
-  jint j = definition->head_;
+  int32_t definitionSize = [((ADXSolverVariableValues *) nil_chk(definition)) getCurrentSize];
+  int32_t j = definition->head_;
   {
     j = 0;
-    for (jint i = 0; j < definitionSize; i++) {
+    for (int32_t i = 0; j < definitionSize; i++) {
       if (IOSIntArray_Get(nil_chk(definition->variables_), i) != ADXSolverVariableValues_NONE) {
-        jfloat definitionValue = IOSFloatArray_Get(nil_chk(definition->values_), i);
+        float definitionValue = IOSFloatArray_Get(nil_chk(definition->values_), i);
         ADXSolverVariable *definitionVariable = IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), IOSIntArray_Get(definition->variables_, i));
         [self addWithADXSolverVariable:definitionVariable withFloat:definitionValue * value withBoolean:removeFromDefinition];
         j++;
@@ -364,9 +379,9 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
 }
 
 - (void)invert {
-  jint count = mCount_;
-  jint j = head_;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = mCount_;
+  int32_t j = head_;
+  for (int32_t i = 0; i < count; i++) {
     JreTimesAssignFloatF(IOSFloatArray_GetRef(nil_chk(values_), j), -1);
     j = IOSIntArray_Get(nil_chk(next_), j);
     if (j == ADXSolverVariableValues_NONE) {
@@ -375,10 +390,10 @@ __attribute__((unused)) static void ADXSolverVariableValues_insertVariableWithIn
   }
 }
 
-- (void)divideByAmountWithFloat:(jfloat)amount {
-  jint count = mCount_;
-  jint j = head_;
-  for (jint i = 0; i < count; i++) {
+- (void)divideByAmountWithFloat:(float)amount {
+  int32_t count = mCount_;
+  int32_t j = head_;
+  for (int32_t i = 0; i < count; i++) {
     JreDivideAssignFloatF(IOSFloatArray_GetRef(nil_chk(values_), j), amount);
     j = IOSIntArray_Get(nil_chk(next_), j);
     if (j == ADXSolverVariableValues_NONE) {
@@ -509,22 +524,22 @@ ADXSolverVariableValues *create_ADXSolverVariableValues_initWithADXArrayRow_with
 }
 
 void ADXSolverVariableValues_increaseSize(ADXSolverVariableValues *self) {
-  jint size = self->SIZE_ * 2;
+  int32_t size = self->SIZE_ * 2;
   JreStrongAssign(&self->variables_, JavaUtilArrays_copyOfWithIntArray_withInt_(self->variables_, size));
   JreStrongAssign(&self->values_, JavaUtilArrays_copyOfWithFloatArray_withInt_(self->values_, size));
   JreStrongAssign(&self->previous_, JavaUtilArrays_copyOfWithIntArray_withInt_(self->previous_, size));
   JreStrongAssign(&self->next_, JavaUtilArrays_copyOfWithIntArray_withInt_(self->next_, size));
   JreStrongAssign(&self->nextKeys_, JavaUtilArrays_copyOfWithIntArray_withInt_(self->nextKeys_, size));
-  for (jint i = self->SIZE_; i < size; i++) {
+  for (int32_t i = self->SIZE_; i < size; i++) {
     *IOSIntArray_GetRef(nil_chk(self->variables_), i) = ADXSolverVariableValues_NONE;
     *IOSIntArray_GetRef(nil_chk(self->nextKeys_), i) = ADXSolverVariableValues_NONE;
   }
   self->SIZE_ = size;
 }
 
-void ADXSolverVariableValues_addToHashMapWithADXSolverVariable_withInt_(ADXSolverVariableValues *self, ADXSolverVariable *variable, jint index) {
-  jint hash_ = JreIntMod(((ADXSolverVariable *) nil_chk(variable))->id__, self->HASH_SIZE_);
-  jint key = IOSIntArray_Get(nil_chk(self->keys_), hash_);
+void ADXSolverVariableValues_addToHashMapWithADXSolverVariable_withInt_(ADXSolverVariableValues *self, ADXSolverVariable *variable, int32_t index) {
+  int32_t hash_ = JreIntMod(((ADXSolverVariable *) nil_chk(variable))->id__, self->HASH_SIZE_);
+  int32_t key = IOSIntArray_Get(nil_chk(self->keys_), hash_);
   if (key == ADXSolverVariableValues_NONE) {
     *IOSIntArray_GetRef(self->keys_, hash_) = index;
   }
@@ -538,11 +553,11 @@ void ADXSolverVariableValues_addToHashMapWithADXSolverVariable_withInt_(ADXSolve
 }
 
 void ADXSolverVariableValues_displayHash(ADXSolverVariableValues *self) {
-  for (jint i = 0; i < self->HASH_SIZE_; i++) {
+  for (int32_t i = 0; i < self->HASH_SIZE_; i++) {
     if (IOSIntArray_Get(nil_chk(self->keys_), i) != ADXSolverVariableValues_NONE) {
-      NSString *str = JreStrcat("I$I$", ((jint) [self hash]), @" hash [", i, @"] => ");
-      jint key = IOSIntArray_Get(nil_chk(self->keys_), i);
-      jboolean done = false;
+      NSString *str = JreStrcat("I$I$", ((int32_t) [self hash]), @" hash [", i, @"] => ");
+      int32_t key = IOSIntArray_Get(nil_chk(self->keys_), i);
+      bool done = false;
       while (!done) {
         JreStrAppend(&str, "CI", ' ', IOSIntArray_Get(nil_chk(self->variables_), key));
         if (IOSIntArray_Get(nil_chk(self->nextKeys_), key) != ADXSolverVariableValues_NONE) {
@@ -558,12 +573,12 @@ void ADXSolverVariableValues_displayHash(ADXSolverVariableValues *self) {
 }
 
 void ADXSolverVariableValues_removeFromHashMapWithADXSolverVariable_(ADXSolverVariableValues *self, ADXSolverVariable *variable) {
-  jint hash_ = JreIntMod(((ADXSolverVariable *) nil_chk(variable))->id__, self->HASH_SIZE_);
-  jint key = IOSIntArray_Get(nil_chk(self->keys_), hash_);
+  int32_t hash_ = JreIntMod(((ADXSolverVariable *) nil_chk(variable))->id__, self->HASH_SIZE_);
+  int32_t key = IOSIntArray_Get(nil_chk(self->keys_), hash_);
   if (key == ADXSolverVariableValues_NONE) {
     return;
   }
-  jint id_ = variable->id__;
+  int32_t id_ = variable->id__;
   if (IOSIntArray_Get(nil_chk(self->variables_), key) == id_) {
     *IOSIntArray_GetRef(self->keys_, hash_) = IOSIntArray_Get(nil_chk(self->nextKeys_), key);
     *IOSIntArray_GetRef(self->nextKeys_, key) = ADXSolverVariableValues_NONE;
@@ -572,7 +587,7 @@ void ADXSolverVariableValues_removeFromHashMapWithADXSolverVariable_(ADXSolverVa
     while (IOSIntArray_Get(nil_chk(self->nextKeys_), key) != ADXSolverVariableValues_NONE && IOSIntArray_Get(self->variables_, IOSIntArray_Get(self->nextKeys_, key)) != id_) {
       key = IOSIntArray_Get(self->nextKeys_, key);
     }
-    jint currentKey = IOSIntArray_Get(self->nextKeys_, key);
+    int32_t currentKey = IOSIntArray_Get(self->nextKeys_, key);
     if (currentKey != ADXSolverVariableValues_NONE && IOSIntArray_Get(self->variables_, currentKey) == id_) {
       *IOSIntArray_GetRef(self->nextKeys_, key) = IOSIntArray_Get(self->nextKeys_, currentKey);
       *IOSIntArray_GetRef(self->nextKeys_, currentKey) = ADXSolverVariableValues_NONE;
@@ -580,7 +595,7 @@ void ADXSolverVariableValues_removeFromHashMapWithADXSolverVariable_(ADXSolverVa
   }
 }
 
-void ADXSolverVariableValues_addVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, jint index, ADXSolverVariable *variable, jfloat value) {
+void ADXSolverVariableValues_addVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, int32_t index, ADXSolverVariable *variable, float value) {
   *IOSIntArray_GetRef(nil_chk(self->variables_), index) = ((ADXSolverVariable *) nil_chk(variable))->id__;
   *IOSFloatArray_GetRef(nil_chk(self->values_), index) = value;
   *IOSIntArray_GetRef(nil_chk(self->previous_), index) = ADXSolverVariableValues_NONE;
@@ -590,8 +605,8 @@ void ADXSolverVariableValues_addVariableWithInt_withADXSolverVariable_withFloat_
   self->mCount_++;
 }
 
-jint ADXSolverVariableValues_findEmptySlot(ADXSolverVariableValues *self) {
-  for (jint i = 0; i < self->SIZE_; i++) {
+int32_t ADXSolverVariableValues_findEmptySlot(ADXSolverVariableValues *self) {
+  for (int32_t i = 0; i < self->SIZE_; i++) {
     if (IOSIntArray_Get(nil_chk(self->variables_), i) == ADXSolverVariableValues_NONE) {
       return i;
     }
@@ -599,8 +614,8 @@ jint ADXSolverVariableValues_findEmptySlot(ADXSolverVariableValues *self) {
   return -1;
 }
 
-void ADXSolverVariableValues_insertVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, jint index, ADXSolverVariable *variable, jfloat value) {
-  jint availableSlot = ADXSolverVariableValues_findEmptySlot(self);
+void ADXSolverVariableValues_insertVariableWithInt_withADXSolverVariable_withFloat_(ADXSolverVariableValues *self, int32_t index, ADXSolverVariable *variable, float value) {
+  int32_t availableSlot = ADXSolverVariableValues_findEmptySlot(self);
   ADXSolverVariableValues_addVariableWithInt_withADXSolverVariable_withFloat_(self, availableSlot, variable, value);
   if (index != ADXSolverVariableValues_NONE) {
     *IOSIntArray_GetRef(nil_chk(self->previous_), availableSlot) = index;
@@ -624,3 +639,5 @@ void ADXSolverVariableValues_insertVariableWithInt_withADXSolverVariable_withFlo
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXSolverVariableValues)
+
+J2OBJC_NAME_MAPPING(ADXSolverVariableValues, "androidx.constraintlayout.core", "ADX")

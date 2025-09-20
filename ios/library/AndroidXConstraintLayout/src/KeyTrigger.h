@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyTrigger.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyTrigger")
@@ -24,8 +25,11 @@
 @class ADContext;
 @class ADRectF;
 @class ADView;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Defines container for a key frame of for storing KeyAttributes.
@@ -33,11 +37,11 @@
  */
 @interface ADXKeyTrigger : ADXKey {
  @public
-  jfloat mTriggerSlack_;
-  jfloat mFireThreshold_;
-  jint mViewTransitionOnNegativeCross_;
-  jint mViewTransitionOnPositiveCross_;
-  jint mViewTransitionOnCross_;
+  float mTriggerSlack_;
+  float mFireThreshold_;
+  int32_t mViewTransitionOnNegativeCross_;
+  int32_t mViewTransitionOnPositiveCross_;
+  int32_t mViewTransitionOnCross_;
   ADRectF *mCollisionRect_;
   ADRectF *mTargetRect_;
   JavaUtilHashMap *mMethodHashMap_;
@@ -51,7 +55,7 @@
 
 - (ADXKey *)java_clone;
 
-- (void)conditionallyFireWithFloat:(jfloat)pos
+- (void)conditionallyFireWithFloat:(float)pos
                         withADView:(ADView *)child;
 
 - (ADXKey *)copy__WithADXKey:(ADXKey *)src OBJC_METHOD_FAMILY_NONE;
@@ -69,7 +73,7 @@
 /*!
  @brief Gets the curve fit type this drives the interpolation
  */
-- (jint)getCurveFit;
+- (int32_t)getCurveFit;
 
 @end
 
@@ -144,9 +148,9 @@ inline NSString *ADXKeyTrigger_get_CROSS(void);
 FOUNDATION_EXPORT NSString *ADXKeyTrigger_CROSS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyTrigger, CROSS, NSString *)
 
-inline jint ADXKeyTrigger_get_KEY_TYPE(void);
+inline int32_t ADXKeyTrigger_get_KEY_TYPE(void);
 #define ADXKeyTrigger_KEY_TYPE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTrigger, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTrigger, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXKeyTrigger_init(ADXKeyTrigger *self);
 
@@ -157,6 +161,7 @@ FOUNDATION_EXPORT ADXKeyTrigger *create_ADXKeyTrigger_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyTrigger)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetKeyTrigger ADXKeyTrigger;
+
 
 #endif
 

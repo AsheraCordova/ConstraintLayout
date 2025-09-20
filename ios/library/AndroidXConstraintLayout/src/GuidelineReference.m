@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\GuidelineReference.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintWidget.h"
 #include "CoreGuideline.h"
 #include "Dependency.h"
@@ -12,7 +17,16 @@
 #include "J2ObjC_source.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/List.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXGuidelineReference ()
@@ -39,7 +53,7 @@ __attribute__((unused)) static void ADXGuidelineReference_addDependencyWithADXDe
   ((ADXDependencyNode *) nil_chk(end_))->resolved_ = false;
 }
 
-- (jboolean)supportsWrapComputation {
+- (bool)supportsWrapComputation {
   return false;
 }
 
@@ -56,15 +70,15 @@ __attribute__((unused)) static void ADXGuidelineReference_addDependencyWithADXDe
   }
   ADXDependencyNode *startTarget = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(start_->targets_)) getWithInt:0]);
   ADXCoreGuideline *guideline = (ADXCoreGuideline *) cast_chk(widget_, [ADXCoreGuideline class]);
-  jint startPos = JreFpToInt((0.5f + ((ADXDependencyNode *) nil_chk(startTarget))->value_ * [((ADXCoreGuideline *) nil_chk(guideline)) getRelativePercent]));
+  int32_t startPos = JreFpToInt((0.5f + ((ADXDependencyNode *) nil_chk(startTarget))->value_ * [((ADXCoreGuideline *) nil_chk(guideline)) getRelativePercent]));
   [((ADXDependencyNode *) nil_chk(start_)) resolveWithInt:startPos];
 }
 
 - (void)apply {
   ADXCoreGuideline *guideline = (ADXCoreGuideline *) cast_chk(widget_, [ADXCoreGuideline class]);
-  jint relativeBegin = [((ADXCoreGuideline *) nil_chk(guideline)) getRelativeBegin];
-  jint relativeEnd = [guideline getRelativeEnd];
-  jfloat percent = [guideline getRelativePercent];
+  int32_t relativeBegin = [((ADXCoreGuideline *) nil_chk(guideline)) getRelativeBegin];
+  int32_t relativeEnd = [guideline getRelativeEnd];
+  float percent = [guideline getRelativePercent];
   if ([guideline getOrientation] == ADXConstraintWidget_VERTICAL) {
     if (relativeBegin != -1) {
       [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) addWithId:((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidget *) nil_chk(((ADXConstraintWidget *) nil_chk(widget_))->mParent_))->horizontalRun_))->start_];

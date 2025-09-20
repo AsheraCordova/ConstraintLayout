@@ -3,13 +3,27 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\TransitionBuilder.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintSet.h"
 #include "J2ObjC_source.h"
 #include "MotionLayout.h"
 #include "MotionScene.h"
 #include "TransitionBuilder.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/lang/RuntimeException.h"
 #include "java/util/ArrayList.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXTransitionBuilder ()
@@ -44,10 +58,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (ADXMotionScene_Transition *)buildTransitionWithADXMotionScene:(ADXMotionScene *)scene
-                                                         withInt:(jint)transitionId
-                                                         withInt:(jint)startConstraintSetId
+                                                         withInt:(int32_t)transitionId
+                                                         withInt:(int32_t)startConstraintSetId
                                             withADXConstraintSet:(ADXConstraintSet *)startConstraintSet
-                                                         withInt:(jint)endConstraintSetId
+                                                         withInt:(int32_t)endConstraintSetId
                                             withADXConstraintSet:(ADXConstraintSet *)endConstraintSet {
   return ADXTransitionBuilder_buildTransitionWithADXMotionScene_withInt_withInt_withADXConstraintSet_withInt_withADXConstraintSet_(scene, transitionId, startConstraintSetId, startConstraintSet, endConstraintSetId, endConstraintSet);
 }
@@ -110,7 +124,7 @@ void ADXTransitionBuilder_validateWithADXMotionLayout_(ADXMotionLayout *layout) 
   }
 }
 
-ADXMotionScene_Transition *ADXTransitionBuilder_buildTransitionWithADXMotionScene_withInt_withInt_withADXConstraintSet_withInt_withADXConstraintSet_(ADXMotionScene *scene, jint transitionId, jint startConstraintSetId, ADXConstraintSet *startConstraintSet, jint endConstraintSetId, ADXConstraintSet *endConstraintSet) {
+ADXMotionScene_Transition *ADXTransitionBuilder_buildTransitionWithADXMotionScene_withInt_withInt_withADXConstraintSet_withInt_withADXConstraintSet_(ADXMotionScene *scene, int32_t transitionId, int32_t startConstraintSetId, ADXConstraintSet *startConstraintSet, int32_t endConstraintSetId, ADXConstraintSet *endConstraintSet) {
   ADXTransitionBuilder_initialize();
   ADXMotionScene_Transition *transition = create_ADXMotionScene_Transition_initWithInt_withADXMotionScene_withInt_withInt_(transitionId, scene, startConstraintSetId, endConstraintSetId);
   ADXTransitionBuilder_updateConstraintSetInMotionSceneWithADXMotionScene_withADXMotionScene_Transition_withADXConstraintSet_withADXConstraintSet_(scene, transition, startConstraintSet, endConstraintSet);
@@ -119,10 +133,12 @@ ADXMotionScene_Transition *ADXTransitionBuilder_buildTransitionWithADXMotionScen
 
 void ADXTransitionBuilder_updateConstraintSetInMotionSceneWithADXMotionScene_withADXMotionScene_Transition_withADXConstraintSet_withADXConstraintSet_(ADXMotionScene *scene, ADXMotionScene_Transition *transition, ADXConstraintSet *startConstraintSet, ADXConstraintSet *endConstraintSet) {
   ADXTransitionBuilder_initialize();
-  jint startId = [((ADXMotionScene_Transition *) nil_chk(transition)) getStartConstraintSetId];
-  jint endId = [transition getEndConstraintSetId];
+  int32_t startId = [((ADXMotionScene_Transition *) nil_chk(transition)) getStartConstraintSetId];
+  int32_t endId = [transition getEndConstraintSetId];
   [((ADXMotionScene *) nil_chk(scene)) setConstraintSetWithInt:startId withADXConstraintSet:startConstraintSet];
   [scene setConstraintSetWithInt:endId withADXConstraintSet:endConstraintSet];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXTransitionBuilder)
+
+J2OBJC_NAME_MAPPING(ADXTransitionBuilder, "androidx.constraintlayout.motion.widget", "ADX")

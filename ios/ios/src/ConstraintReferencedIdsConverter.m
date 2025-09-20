@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\ConstraintReferencedIdsConverter.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintReferencedIdsConverter.h"
 #include "IFragment.h"
 #include "IOSObjectArray.h"
@@ -11,10 +16,17 @@
 #include "IdGenerator.h"
 #include "J2ObjC_source.h"
 #include "StringUtils.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
 #include "java/util/Map.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ASConstraintReferencedIdsConverter
@@ -31,7 +43,7 @@ J2OBJC_IGNORE_DESIGNATED_END
                    withASIFragment:(id<ASIFragment>)fragment {
   IOSObjectArray *ids = [((NSString *) nil_chk(value)) java_split:@","];
   IOSIntArray *idRefs = [IOSIntArray newArrayWithLength:((IOSObjectArray *) nil_chk(ids))->size_];
-  for (jint i = 0; i < ids->size_; i++) {
+  for (int32_t i = 0; i < ids->size_; i++) {
     *IOSIntArray_GetRef(idRefs, i) = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk([((id<ASIWidget>) nil_chk([((id<ASIFragment>) nil_chk(fragment)) getRootWidget])) quickConvertWithId:JreStrcat("$$", @"@+id/", [((NSString *) nil_chk(IOSObjectArray_Get(ids, i))) java_trim]) withNSString:@"id"], [JavaLangInteger class]))) intValue];
   }
   return idRefs;
@@ -42,10 +54,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   id<JavaUtilList> idRefs = new_JavaUtilArrayList_init();
   {
     IOSIntArray *a__ = values;
-    jint const *b__ = ((IOSIntArray *) nil_chk(a__))->buffer_;
-    jint const *e__ = b__ + a__->size_;
+    int32_t const *b__ = ((IOSIntArray *) nil_chk(a__))->buffer_;
+    int32_t const *e__ = b__ + a__->size_;
     while (b__ < e__) {
-      jint value = *b__++;
+      int32_t value = *b__++;
       [idRefs addWithId:[((NSString *) nil_chk(ASIdGenerator_getNameWithInt_(value))) java_replace:@"@+id/" withSequence:@""]];
     }
   }
@@ -91,3 +103,5 @@ ASConstraintReferencedIdsConverter *create_ASConstraintReferencedIdsConverter_in
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintReferencedIdsConverter)
+
+J2OBJC_NAME_MAPPING(ASConstraintReferencedIdsConverter, "com.ashera.constraintlayout", "AS")

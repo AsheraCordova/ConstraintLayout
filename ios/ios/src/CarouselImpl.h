@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\CarouselImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CarouselImpl")
@@ -23,6 +24,8 @@
 @class ADXCarousel;
 @class ASWidgetAttribute;
 @class IOSClass;
+@class JavaLangBoolean;
+@class NSString;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -48,7 +51,7 @@
 
 - (id)asWidget;
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v;
+- (bool)checkIosVersionWithNSString:(NSString *)v;
 
 - (void)createWithASIFragment:(id<ASIFragment>)fragment
               withJavaUtilMap:(id<JavaUtilMap>)params;
@@ -77,7 +80,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)setVisibleWithBoolean:(jboolean)b;
+- (void)setVisibleWithBoolean:(bool)b;
 
 @end
 
@@ -118,6 +121,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl)
 
 @compatibility_alias ComAsheraConstraintlayoutCarouselImpl ASCarouselImpl;
 
+
 #endif
 
 #if !defined (ASCarouselImpl_Carousel_touchUpMode_) && (INCLUDE_ALL_CarouselImpl || defined(INCLUDE_ASCarouselImpl_Carousel_touchUpMode))
@@ -153,6 +157,7 @@ FOUNDATION_EXPORT ASCarouselImpl_Carousel_touchUpMode *new_ASCarouselImpl_Carous
 FOUNDATION_EXPORT ASCarouselImpl_Carousel_touchUpMode *create_ASCarouselImpl_Carousel_touchUpMode_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_touchUpMode)
+
 
 #endif
 
@@ -190,6 +195,7 @@ FOUNDATION_EXPORT ASCarouselImpl_Carousel_emptyViewsBehavior *create_ASCarouselI
 
 J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_emptyViewsBehavior)
 
+
 #endif
 
 #if !defined (ASCarouselImpl_CarouselExt_) && (INCLUDE_ALL_CarouselImpl || defined(INCLUDE_ASCarouselImpl_CarouselExt))
@@ -209,6 +215,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_emptyViewsBehavior)
 @class ASWidgetAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -239,14 +248,14 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_emptyViewsBehavior)
 
 - (id<ASILifeCycleDecorator>)newInstanceWithASIWidget:(id<ASIWidget>)widget OBJC_METHOD_FAMILY_NONE;
 
-- (void)offsetLeftAndRightWithInt:(jint)offset;
+- (void)offsetLeftAndRightWithInt:(int32_t)offset;
 
-- (void)offsetTopAndBottomWithInt:(jint)offset;
+- (void)offsetTopAndBottomWithInt:(int32_t)offset;
 
 - (void)onAttachedToWindow;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)remeasure;
 
@@ -269,7 +278,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_emptyViewsBehavior)
 
 - (void)setState4WithId:(id)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)state0;
 
@@ -285,16 +294,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_Carousel_emptyViewsBehavior)
 
 - (void)stateYes;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 // Disallowed inherited constructors, do not use.
 
@@ -311,6 +320,7 @@ FOUNDATION_EXPORT ASCarouselImpl_CarouselExt *new_ASCarouselImpl_CarouselExt_ini
 FOUNDATION_EXPORT ASCarouselImpl_CarouselExt *create_ASCarouselImpl_CarouselExt_initWithASCarouselImpl_(ASCarouselImpl *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselExt)
+
 
 #endif
 
@@ -335,20 +345,24 @@ FOUNDATION_EXPORT ASCarouselImpl_CarouselListener *create_ASCarouselImpl_Carouse
 
 J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener)
 
+
 #endif
 
 #if !defined (ASCarouselImpl_CarouselListener_NewItemListener_) && (INCLUDE_ALL_CarouselImpl || defined(INCLUDE_ASCarouselImpl_CarouselListener_NewItemListener))
 #define ASCarouselImpl_CarouselListener_NewItemListener_
 
+@class JavaLangInteger;
+
 @protocol ASCarouselImpl_CarouselListener_NewItemListener < JavaObject >
 
-- (void)onNewItemWithInt:(jint)index;
+- (void)onNewItemWithInt:(int32_t)index;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ASCarouselImpl_CarouselListener_NewItemListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ASCarouselImpl_CarouselListener_NewItemListener)
+
 
 #endif
 

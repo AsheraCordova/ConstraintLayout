@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\HelperReference.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintReference.h"
 #include "ConstraintWidget.h"
 #include "HelperReference.h"
@@ -10,8 +15,15 @@
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "State.h"
+#include "java/lang/Boolean.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Collections.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXHelperReference () {
@@ -113,3 +125,5 @@ ADXHelperReference *create_ADXHelperReference_initWithADXState_withADXState_Help
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXHelperReference)
+
+J2OBJC_NAME_MAPPING(ADXHelperReference, "androidx.constraintlayout.core.state", "ADX")

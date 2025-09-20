@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\ViewTransitionController.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewTransitionController")
@@ -22,6 +23,8 @@
 @class ADXViewTransition;
 @class ADXViewTransition_Animate;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 
 /*!
@@ -49,17 +52,17 @@
  */
 - (void)animate;
 
-- (jboolean)applyViewTransitionWithInt:(jint)viewTransitionId
-               withADXMotionController:(ADXMotionController *)motionController;
+- (bool)applyViewTransitionWithInt:(int32_t)viewTransitionId
+           withADXMotionController:(ADXMotionController *)motionController;
 
-- (void)enableViewTransitionWithInt:(jint)id_
-                        withBoolean:(jboolean)enable;
+- (void)enableViewTransitionWithInt:(int32_t)id_
+                        withBoolean:(bool)enable;
 
 - (void)invalidate;
 
-- (jboolean)isViewTransitionEnabledWithInt:(jint)id_;
+- (bool)isViewTransitionEnabledWithInt:(int32_t)id_;
 
-- (void)removeWithInt:(jint)id_;
+- (void)removeWithInt:(int32_t)id_;
 
 - (void)removeAnimationWithADXViewTransition_Animate:(ADXViewTransition_Animate *)animation;
 
@@ -74,7 +77,7 @@
  @param id_ the id of a ViewTransition
  @param views the list of views to transition simultaneously
  */
-- (void)viewTransitionWithInt:(jint)id_
+- (void)viewTransitionWithInt:(int32_t)id_
               withADViewArray:(IOSObjectArray *)views;
 
 // Disallowed inherited constructors, do not use.
@@ -97,6 +100,7 @@ FOUNDATION_EXPORT ADXViewTransitionController *create_ADXViewTransitionControlle
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTransitionController)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetViewTransitionController ADXViewTransitionController;
+
 
 #endif
 

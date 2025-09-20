@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintsChangedListener.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintsChangedListener")
@@ -16,9 +17,11 @@
 #if !defined (ADXConstraintsChangedListener_) && (INCLUDE_ALL_ConstraintsChangedListener || defined(INCLUDE_ADXConstraintsChangedListener))
 #define ADXConstraintsChangedListener_
 
+@class JavaLangInteger;
+
 /*!
  @brief <b>Added in 2.0</b>
- <p>
+  <p>
   Callbacks on state change 
  </p>
  */
@@ -33,16 +36,16 @@
  @param stateId -1 if state unknown, otherwise the current state
  @param constraintId the current constraintSet id we transitioned to
  */
-- (void)postLayoutChangeWithInt:(jint)stateId
-                        withInt:(jint)constraintId;
+- (void)postLayoutChangeWithInt:(int32_t)stateId
+                        withInt:(int32_t)constraintId;
 
 /*!
  @brief called before layout happens
  @param stateId -1 if state unknown, otherwise the state we will transition to
  @param constraintId the constraintSet id that we will transition to
  */
-- (void)preLayoutChangeWithInt:(jint)stateId
-                       withInt:(jint)constraintId;
+- (void)preLayoutChangeWithInt:(int32_t)stateId
+                       withInt:(int32_t)constraintId;
 
 @end
 
@@ -53,6 +56,7 @@ FOUNDATION_EXPORT void ADXConstraintsChangedListener_init(ADXConstraintsChangedL
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintsChangedListener)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetConstraintsChangedListener ADXConstraintsChangedListener;
+
 
 #endif
 

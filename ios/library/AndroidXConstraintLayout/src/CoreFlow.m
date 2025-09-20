@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\CoreFlow.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BasicMeasure.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -14,48 +19,56 @@
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "LinearSystem.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashMap.h"
 
-@class JavaUtilArrayList;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCoreFlow () {
  @public
-  jint mHorizontalStyle_;
-  jint mVerticalStyle_;
-  jint mFirstHorizontalStyle_;
-  jint mFirstVerticalStyle_;
-  jint mLastHorizontalStyle_;
-  jint mLastVerticalStyle_;
-  jfloat mHorizontalBias_;
-  jfloat mVerticalBias_;
-  jfloat mFirstHorizontalBias_;
-  jfloat mFirstVerticalBias_;
-  jfloat mLastHorizontalBias_;
-  jfloat mLastVerticalBias_;
-  jint mHorizontalGap_;
-  jint mVerticalGap_;
-  jint mHorizontalAlign_;
-  jint mVerticalAlign_;
-  jint mWrapMode_;
-  jint mMaxElementsWrap_;
-  jint mOrientation_;
+  int32_t mHorizontalStyle_;
+  int32_t mVerticalStyle_;
+  int32_t mFirstHorizontalStyle_;
+  int32_t mFirstVerticalStyle_;
+  int32_t mLastHorizontalStyle_;
+  int32_t mLastVerticalStyle_;
+  float mHorizontalBias_;
+  float mVerticalBias_;
+  float mFirstHorizontalBias_;
+  float mFirstVerticalBias_;
+  float mLastHorizontalBias_;
+  float mLastVerticalBias_;
+  int32_t mHorizontalGap_;
+  int32_t mVerticalGap_;
+  int32_t mHorizontalAlign_;
+  int32_t mVerticalAlign_;
+  int32_t mWrapMode_;
+  int32_t mMaxElementsWrap_;
+  int32_t mOrientation_;
   JavaUtilArrayList *mChainList_;
   IOSObjectArray *mAlignedBiggestElementsInRows_;
   IOSObjectArray *mAlignedBiggestElementsInCols_;
   IOSIntArray *mAlignedDimensions_;
   IOSObjectArray *mDisplayedWidgets_;
-  jint mDisplayedWidgetsCount_;
+  int32_t mDisplayedWidgetsCount_;
 }
 
-- (jint)getWidgetWidthWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                      withInt:(jint)max;
+- (int32_t)getWidgetWidthWithADXConstraintWidget:(ADXConstraintWidget *)widget
+                                         withInt:(int32_t)max;
 
-- (jint)getWidgetHeightWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                       withInt:(jint)max;
+- (int32_t)getWidgetHeightWithADXConstraintWidget:(ADXConstraintWidget *)widget
+                                          withInt:(int32_t)max;
 
 /*!
  @brief Measure the virtual layout using a list of chains for the children
@@ -66,9 +79,9 @@
  @param measured output parameters -- will contain the resulting measure
  */
 - (void)measureChainWrapWithADXConstraintWidgetArray:(IOSObjectArray *)widgets
-                                             withInt:(jint)count
-                                             withInt:(jint)orientation
-                                             withInt:(jint)max
+                                             withInt:(int32_t)count
+                                             withInt:(int32_t)orientation
+                                             withInt:(int32_t)max
                                         withIntArray:(IOSIntArray *)measured;
 
 /*!
@@ -80,9 +93,9 @@
  @param measured output parameters -- will contain the resulting measure
  */
 - (void)measureNoWrapWithADXConstraintWidgetArray:(IOSObjectArray *)widgets
-                                          withInt:(jint)count
-                                          withInt:(jint)orientation
-                                          withInt:(jint)max
+                                          withInt:(int32_t)count
+                                          withInt:(int32_t)orientation
+                                          withInt:(int32_t)max
                                      withIntArray:(IOSIntArray *)measured;
 
 /*!
@@ -93,12 +106,12 @@
  @param measured output parameters -- will contain the resulting measure
  */
 - (void)measureAlignedWithADXConstraintWidgetArray:(IOSObjectArray *)widgets
-                                           withInt:(jint)count
-                                           withInt:(jint)orientation
-                                           withInt:(jint)max
+                                           withInt:(int32_t)count
+                                           withInt:(int32_t)orientation
+                                           withInt:(int32_t)max
                                       withIntArray:(IOSIntArray *)measured;
 
-- (void)createAlignedConstraintsWithBoolean:(jboolean)isInRtl;
+- (void)createAlignedConstraintsWithBoolean:(bool)isInRtl;
 
 @end
 
@@ -108,74 +121,74 @@ J2OBJC_FIELD_SETTER(ADXCoreFlow, mAlignedBiggestElementsInCols_, IOSObjectArray 
 J2OBJC_FIELD_SETTER(ADXCoreFlow, mAlignedDimensions_, IOSIntArray *)
 J2OBJC_FIELD_SETTER(ADXCoreFlow, mDisplayedWidgets_, IOSObjectArray *)
 
-__attribute__((unused)) static jint ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, jint max);
+__attribute__((unused)) static int32_t ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, int32_t max);
 
-__attribute__((unused)) static jint ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, jint max);
+__attribute__((unused)) static int32_t ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, int32_t max);
 
-__attribute__((unused)) static void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, jint count, jint orientation, jint max, IOSIntArray *measured);
+__attribute__((unused)) static void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, int32_t count, int32_t orientation, int32_t max, IOSIntArray *measured);
 
-__attribute__((unused)) static void ADXCoreFlow_measureNoWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, jint count, jint orientation, jint max, IOSIntArray *measured);
+__attribute__((unused)) static void ADXCoreFlow_measureNoWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, int32_t count, int32_t orientation, int32_t max, IOSIntArray *measured);
 
-__attribute__((unused)) static void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, jint count, jint orientation, jint max, IOSIntArray *measured);
+__attribute__((unused)) static void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, int32_t count, int32_t orientation, int32_t max, IOSIntArray *measured);
 
-__attribute__((unused)) static void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, jboolean isInRtl);
+__attribute__((unused)) static void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, bool isInRtl);
 
 @interface ADXCoreFlow_WidgetsList : NSObject {
  @public
-  __unsafe_unretained ADXCoreFlow *this$0_;
-  jint mOrientation_;
+  WEAK_ ADXCoreFlow *this$0_;
+  int32_t mOrientation_;
   ADXConstraintWidget *biggest_;
-  jint biggestDimension_;
+  int32_t biggestDimension_;
   ADXConstraintAnchor *mLeft_;
   ADXConstraintAnchor *mTop_;
   ADXConstraintAnchor *mRight_;
   ADXConstraintAnchor *mBottom_;
-  jint mPaddingLeft_;
-  jint mPaddingTop_;
-  jint mPaddingRight_;
-  jint mPaddingBottom_;
-  jint mWidth_;
-  jint mHeight_;
-  jint mStartIndex_;
-  jint mCount_;
-  jint mNbMatchConstraintsWidgets_;
-  jint mMax_;
+  int32_t mPaddingLeft_;
+  int32_t mPaddingTop_;
+  int32_t mPaddingRight_;
+  int32_t mPaddingBottom_;
+  int32_t mWidth_;
+  int32_t mHeight_;
+  int32_t mStartIndex_;
+  int32_t mCount_;
+  int32_t mNbMatchConstraintsWidgets_;
+  int32_t mMax_;
 }
 
 - (instancetype)initWithADXCoreFlow:(ADXCoreFlow *)outer$
-                            withInt:(jint)orientation
+                            withInt:(int32_t)orientation
             withADXConstraintAnchor:(ADXConstraintAnchor *)left
             withADXConstraintAnchor:(ADXConstraintAnchor *)top
             withADXConstraintAnchor:(ADXConstraintAnchor *)right
             withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
-                            withInt:(jint)max;
+                            withInt:(int32_t)max;
 
-- (void)setupWithInt:(jint)orientation
+- (void)setupWithInt:(int32_t)orientation
 withADXConstraintAnchor:(ADXConstraintAnchor *)left
 withADXConstraintAnchor:(ADXConstraintAnchor *)top
 withADXConstraintAnchor:(ADXConstraintAnchor *)right
 withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
-             withInt:(jint)paddingLeft
-             withInt:(jint)paddingTop
-             withInt:(jint)paddingRight
-             withInt:(jint)paddingBottom
-             withInt:(jint)max;
+             withInt:(int32_t)paddingLeft
+             withInt:(int32_t)paddingTop
+             withInt:(int32_t)paddingRight
+             withInt:(int32_t)paddingBottom
+             withInt:(int32_t)max;
 
 - (void)clear;
 
-- (void)setStartIndexWithInt:(jint)value;
+- (void)setStartIndexWithInt:(int32_t)value;
 
-- (jint)getWidth;
+- (int32_t)getWidth;
 
-- (jint)getHeight;
+- (int32_t)getHeight;
 
 - (void)addWithADXConstraintWidget:(ADXConstraintWidget *)widget;
 
-- (void)createConstraintsWithBoolean:(jboolean)isInRtl
-                             withInt:(jint)chainIndex
-                         withBoolean:(jboolean)isLastChain;
+- (void)createConstraintsWithBoolean:(bool)isInRtl
+                             withInt:(int32_t)chainIndex
+                         withBoolean:(bool)isLastChain;
 
-- (void)measureMatchConstraintsWithInt:(jint)availableSpace;
+- (void)measureMatchConstraintsWithInt:(int32_t)availableSpace;
 
 - (void)recomputeDimensions;
 
@@ -189,15 +202,16 @@ J2OBJC_FIELD_SETTER(ADXCoreFlow_WidgetsList, mTop_, ADXConstraintAnchor *)
 J2OBJC_FIELD_SETTER(ADXCoreFlow_WidgetsList, mRight_, ADXConstraintAnchor *)
 J2OBJC_FIELD_SETTER(ADXCoreFlow_WidgetsList, mBottom_, ADXConstraintAnchor *)
 
-__attribute__((unused)) static void ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow_WidgetsList *self, ADXCoreFlow *outer$, jint orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, jint max);
+__attribute__((unused)) static void ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow_WidgetsList *self, ADXCoreFlow *outer$, int32_t orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, int32_t max);
 
-__attribute__((unused)) static ADXCoreFlow_WidgetsList *new_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, jint orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, jint max) NS_RETURNS_RETAINED;
+__attribute__((unused)) static ADXCoreFlow_WidgetsList *new_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, int32_t orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, int32_t max) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ADXCoreFlow_WidgetsList *create_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, jint orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, jint max);
+__attribute__((unused)) static ADXCoreFlow_WidgetsList *create_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, int32_t orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, int32_t max);
 
 __attribute__((unused)) static void ADXCoreFlow_WidgetsList_recomputeDimensions(ADXCoreFlow_WidgetsList *self);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCoreFlow_WidgetsList)
+
 
 @implementation ADXCoreFlow
 
@@ -233,109 +247,109 @@ J2OBJC_IGNORE_DESIGNATED_END
   mOrientation_ = srcFLow->mOrientation_;
 }
 
-- (void)setOrientationWithInt:(jint)value {
+- (void)setOrientationWithInt:(int32_t)value {
   mOrientation_ = value;
 }
 
-- (void)setFirstHorizontalStyleWithInt:(jint)value {
+- (void)setFirstHorizontalStyleWithInt:(int32_t)value {
   mFirstHorizontalStyle_ = value;
 }
 
-- (void)setFirstVerticalStyleWithInt:(jint)value {
+- (void)setFirstVerticalStyleWithInt:(int32_t)value {
   mFirstVerticalStyle_ = value;
 }
 
-- (void)setLastHorizontalStyleWithInt:(jint)value {
+- (void)setLastHorizontalStyleWithInt:(int32_t)value {
   mLastHorizontalStyle_ = value;
 }
 
-- (void)setLastVerticalStyleWithInt:(jint)value {
+- (void)setLastVerticalStyleWithInt:(int32_t)value {
   mLastVerticalStyle_ = value;
 }
 
-- (void)setHorizontalStyleWithInt:(jint)value {
+- (void)setHorizontalStyleWithInt:(int32_t)value {
   mHorizontalStyle_ = value;
 }
 
-- (void)setVerticalStyleWithInt:(jint)value {
+- (void)setVerticalStyleWithInt:(int32_t)value {
   mVerticalStyle_ = value;
 }
 
-- (void)setHorizontalBiasWithFloat:(jfloat)value {
+- (void)setHorizontalBiasWithFloat:(float)value {
   mHorizontalBias_ = value;
 }
 
-- (void)setVerticalBiasWithFloat:(jfloat)value {
+- (void)setVerticalBiasWithFloat:(float)value {
   mVerticalBias_ = value;
 }
 
-- (void)setFirstHorizontalBiasWithFloat:(jfloat)value {
+- (void)setFirstHorizontalBiasWithFloat:(float)value {
   mFirstHorizontalBias_ = value;
 }
 
-- (void)setFirstVerticalBiasWithFloat:(jfloat)value {
+- (void)setFirstVerticalBiasWithFloat:(float)value {
   mFirstVerticalBias_ = value;
 }
 
-- (void)setLastHorizontalBiasWithFloat:(jfloat)value {
+- (void)setLastHorizontalBiasWithFloat:(float)value {
   mLastHorizontalBias_ = value;
 }
 
-- (void)setLastVerticalBiasWithFloat:(jfloat)value {
+- (void)setLastVerticalBiasWithFloat:(float)value {
   mLastVerticalBias_ = value;
 }
 
-- (void)setHorizontalAlignWithInt:(jint)value {
+- (void)setHorizontalAlignWithInt:(int32_t)value {
   mHorizontalAlign_ = value;
 }
 
-- (void)setVerticalAlignWithInt:(jint)value {
+- (void)setVerticalAlignWithInt:(int32_t)value {
   mVerticalAlign_ = value;
 }
 
-- (void)setWrapModeWithInt:(jint)value {
+- (void)setWrapModeWithInt:(int32_t)value {
   mWrapMode_ = value;
 }
 
-- (void)setHorizontalGapWithInt:(jint)value {
+- (void)setHorizontalGapWithInt:(int32_t)value {
   mHorizontalGap_ = value;
 }
 
-- (void)setVerticalGapWithInt:(jint)value {
+- (void)setVerticalGapWithInt:(int32_t)value {
   mVerticalGap_ = value;
 }
 
-- (void)setMaxElementsWrapWithInt:(jint)value {
+- (void)setMaxElementsWrapWithInt:(int32_t)value {
   mMaxElementsWrap_ = value;
 }
 
-- (jint)getWidgetWidthWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                      withInt:(jint)max {
+- (int32_t)getWidgetWidthWithADXConstraintWidget:(ADXConstraintWidget *)widget
+                                         withInt:(int32_t)max {
   return ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self, widget, max);
 }
 
-- (jint)getWidgetHeightWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                       withInt:(jint)max {
+- (int32_t)getWidgetHeightWithADXConstraintWidget:(ADXConstraintWidget *)widget
+                                          withInt:(int32_t)max {
   return ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self, widget, max);
 }
 
-- (void)measureWithInt:(jint)widthMode
-               withInt:(jint)widthSize
-               withInt:(jint)heightMode
-               withInt:(jint)heightSize {
+- (void)measureWithInt:(int32_t)widthMode
+               withInt:(int32_t)widthSize
+               withInt:(int32_t)heightMode
+               withInt:(int32_t)heightSize {
   if (mWidgetsCount_ > 0 && ![self measureChildren]) {
     [self setMeasureWithInt:0 withInt:0];
     [self needsCallbackFromSolverWithBoolean:false];
     return;
   }
-  jint width = 0;
-  jint height = 0;
-  jint paddingLeft = [self getPaddingLeft];
-  jint paddingRight = [self getPaddingRight];
-  jint paddingTop = [self getPaddingTop];
-  jint paddingBottom = [self getPaddingBottom];
+  int32_t width = 0;
+  int32_t height = 0;
+  int32_t paddingLeft = [self getPaddingLeft];
+  int32_t paddingRight = [self getPaddingRight];
+  int32_t paddingTop = [self getPaddingTop];
+  int32_t paddingBottom = [self getPaddingBottom];
   IOSIntArray *measured = [IOSIntArray arrayWithLength:2];
-  jint max = widthSize - paddingLeft - paddingRight;
+  int32_t max = widthSize - paddingLeft - paddingRight;
   if (mOrientation_ == ADXConstraintWidget_VERTICAL) {
     max = heightSize - paddingTop - paddingBottom;
   }
@@ -356,18 +370,18 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   IOSObjectArray *widgets = mWidgets_;
-  jint gone = 0;
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  int32_t gone = 0;
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if ([((ADXConstraintWidget *) nil_chk(widget)) getVisibility] == ADXConstraintWidget_GONE) {
       gone++;
     }
   }
-  jint count = mWidgetsCount_;
+  int32_t count = mWidgetsCount_;
   if (gone > 0) {
     widgets = [IOSObjectArray arrayWithLength:mWidgetsCount_ - gone type:ADXConstraintWidget_class_()];
-    jint j = 0;
-    for (jint i = 0; i < mWidgetsCount_; i++) {
+    int32_t j = 0;
+    for (int32_t i = 0; i < mWidgetsCount_; i++) {
       ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
       if ([((ADXConstraintWidget *) nil_chk(widget)) getVisibility] != ADXConstraintWidget_GONE) {
         IOSObjectArray_Set(widgets, j, widget);
@@ -397,8 +411,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   width = IOSIntArray_Get(measured, ADXConstraintWidget_HORIZONTAL) + paddingLeft + paddingRight;
   height = IOSIntArray_Get(measured, ADXConstraintWidget_VERTICAL) + paddingTop + paddingBottom;
-  jint measuredWidth = 0;
-  jint measuredHeight = 0;
+  int32_t measuredWidth = 0;
+  int32_t measuredHeight = 0;
   if (widthMode == ADXBasicMeasure_EXACTLY) {
     measuredWidth = widthSize;
   }
@@ -424,42 +438,42 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)measureChainWrapWithADXConstraintWidgetArray:(IOSObjectArray *)widgets
-                                             withInt:(jint)count
-                                             withInt:(jint)orientation
-                                             withInt:(jint)max
+                                             withInt:(int32_t)count
+                                             withInt:(int32_t)orientation
+                                             withInt:(int32_t)max
                                         withIntArray:(IOSIntArray *)measured {
   ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(self, widgets, count, orientation, max, measured);
 }
 
 - (void)measureNoWrapWithADXConstraintWidgetArray:(IOSObjectArray *)widgets
-                                          withInt:(jint)count
-                                          withInt:(jint)orientation
-                                          withInt:(jint)max
+                                          withInt:(int32_t)count
+                                          withInt:(int32_t)orientation
+                                          withInt:(int32_t)max
                                      withIntArray:(IOSIntArray *)measured {
   ADXCoreFlow_measureNoWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(self, widgets, count, orientation, max, measured);
 }
 
 - (void)measureAlignedWithADXConstraintWidgetArray:(IOSObjectArray *)widgets
-                                           withInt:(jint)count
-                                           withInt:(jint)orientation
-                                           withInt:(jint)max
+                                           withInt:(int32_t)count
+                                           withInt:(int32_t)orientation
+                                           withInt:(int32_t)max
                                       withIntArray:(IOSIntArray *)measured {
   ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(self, widgets, count, orientation, max, measured);
 }
 
-- (void)createAlignedConstraintsWithBoolean:(jboolean)isInRtl {
+- (void)createAlignedConstraintsWithBoolean:(bool)isInRtl {
   ADXCoreFlow_createAlignedConstraintsWithBoolean_(self, isInRtl);
 }
 
 - (void)addToSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                           withBoolean:(jboolean)optimize {
+                           withBoolean:(bool)optimize {
   [super addToSolverWithADXLinearSystem:system withBoolean:optimize];
-  jboolean isInRtl = [self getParent] != nil && [((ADXConstraintWidgetContainer *) nil_chk(((ADXConstraintWidgetContainer *) cast_chk([self getParent], [ADXConstraintWidgetContainer class])))) isRtl];
+  bool isInRtl = [self getParent] != nil && [((ADXConstraintWidgetContainer *) nil_chk(((ADXConstraintWidgetContainer *) cast_chk([self getParent], [ADXConstraintWidgetContainer class])))) isRtl];
   switch (mWrapMode_) {
     case ADXCoreFlow_WRAP_CHAIN:
     {
-      jint count = [((JavaUtilArrayList *) nil_chk(mChainList_)) size];
-      for (jint i = 0; i < count; i++) {
+      int32_t count = [((JavaUtilArrayList *) nil_chk(mChainList_)) size];
+      for (int32_t i = 0; i < count; i++) {
         ADXCoreFlow_WidgetsList *list = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mChainList_)) getWithInt:i]);
         [((ADXCoreFlow_WidgetsList *) nil_chk(list)) createConstraintsWithBoolean:isInRtl withInt:i withBoolean:i == count - 1];
       }
@@ -635,7 +649,7 @@ ADXCoreFlow *create_ADXCoreFlow_init() {
   J2OBJC_CREATE_IMPL(ADXCoreFlow, init)
 }
 
-jint ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, jint max) {
+int32_t ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, int32_t max) {
   if (widget == nil) {
     return 0;
   }
@@ -644,7 +658,7 @@ jint ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(ADXCoreFlow *sel
       return 0;
     }
     else if (widget->mMatchConstraintDefaultWidth_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT) {
-      jint value = JreFpToInt((widget->mMatchConstraintPercentWidth_ * max));
+      int32_t value = JreFpToInt((widget->mMatchConstraintPercentWidth_ * max));
       if (value != [widget getWidth]) {
         [widget setMeasureRequestedWithBoolean:true];
         [self measureWithADXConstraintWidget:widget withADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) withInt:value withADXConstraintWidget_DimensionBehaviour:[widget getVerticalDimensionBehaviour] withInt:[widget getHeight]];
@@ -661,7 +675,7 @@ jint ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(ADXCoreFlow *sel
   return [widget getWidth];
 }
 
-jint ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, jint max) {
+int32_t ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(ADXCoreFlow *self, ADXConstraintWidget *widget, int32_t max) {
   if (widget == nil) {
     return 0;
   }
@@ -670,7 +684,7 @@ jint ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(ADXCoreFlow *se
       return 0;
     }
     else if (widget->mMatchConstraintDefaultHeight_ == ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT) {
-      jint value = JreFpToInt((widget->mMatchConstraintPercentHeight_ * max));
+      int32_t value = JreFpToInt((widget->mMatchConstraintPercentHeight_ * max));
       if (value != [widget getHeight]) {
         [widget setMeasureRequestedWithBoolean:true];
         [self measureWithADXConstraintWidget:widget withADXConstraintWidget_DimensionBehaviour:[widget getHorizontalDimensionBehaviour] withInt:[widget getWidth] withADXConstraintWidget_DimensionBehaviour:JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED) withInt:value];
@@ -687,23 +701,23 @@ jint ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(ADXCoreFlow *se
   return [widget getHeight];
 }
 
-void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, jint count, jint orientation, jint max, IOSIntArray *measured) {
+void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, int32_t count, int32_t orientation, int32_t max, IOSIntArray *measured) {
   if (count == 0) {
     return;
   }
   [((JavaUtilArrayList *) nil_chk(self->mChainList_)) clear];
   ADXCoreFlow_WidgetsList *list = create_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(self, orientation, self->mLeft_, self->mTop_, self->mRight_, self->mBottom_, max);
   [((JavaUtilArrayList *) nil_chk(self->mChainList_)) addWithId:list];
-  jint nbMatchConstraintsWidgets = 0;
+  int32_t nbMatchConstraintsWidgets = 0;
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
-    jint width = 0;
-    for (jint i = 0; i < count; i++) {
+    int32_t width = 0;
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(widgets), i);
-      jint w = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self, widget, max);
+      int32_t w = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self, widget, max);
       if ([((ADXConstraintWidget *) nil_chk(widget)) getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
         nbMatchConstraintsWidgets++;
       }
-      jboolean doWrap = (width == max || (width + self->mHorizontalGap_ + w) > max) && list->biggest_ != nil;
+      bool doWrap = (width == max || (width + self->mHorizontalGap_ + w) > max) && list->biggest_ != nil;
       if (!doWrap && i > 0 && self->mMaxElementsWrap_ > 0 && (JreIntMod(i, self->mMaxElementsWrap_) == 0)) {
         doWrap = true;
       }
@@ -725,14 +739,14 @@ void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_wi
     }
   }
   else {
-    jint height = 0;
-    for (jint i = 0; i < count; i++) {
+    int32_t height = 0;
+    for (int32_t i = 0; i < count; i++) {
       ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(widgets), i);
-      jint h = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self, widget, max);
+      int32_t h = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self, widget, max);
       if ([((ADXConstraintWidget *) nil_chk(widget)) getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
         nbMatchConstraintsWidgets++;
       }
-      jboolean doWrap = (height == max || (height + self->mVerticalGap_ + h) > max) && list->biggest_ != nil;
+      bool doWrap = (height == max || (height + self->mVerticalGap_ + h) > max) && list->biggest_ != nil;
       if (!doWrap && i > 0 && self->mMaxElementsWrap_ > 0 && (JreIntMod(i, self->mMaxElementsWrap_) == 0)) {
         doWrap = true;
       }
@@ -753,20 +767,20 @@ void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_wi
       [list addWithADXConstraintWidget:widget];
     }
   }
-  jint listCount = [((JavaUtilArrayList *) nil_chk(self->mChainList_)) size];
+  int32_t listCount = [((JavaUtilArrayList *) nil_chk(self->mChainList_)) size];
   ADXConstraintAnchor *left = JreRetainedLocalValue(self->mLeft_);
   ADXConstraintAnchor *top = JreRetainedLocalValue(self->mTop_);
   ADXConstraintAnchor *right = JreRetainedLocalValue(self->mRight_);
   ADXConstraintAnchor *bottom = JreRetainedLocalValue(self->mBottom_);
-  jint paddingLeft = [self getPaddingLeft];
-  jint paddingTop = [self getPaddingTop];
-  jint paddingRight = [self getPaddingRight];
-  jint paddingBottom = [self getPaddingBottom];
-  jint maxWidth = 0;
-  jint maxHeight = 0;
-  jboolean needInternalMeasure = [self getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || [self getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT);
+  int32_t paddingLeft = [self getPaddingLeft];
+  int32_t paddingTop = [self getPaddingTop];
+  int32_t paddingRight = [self getPaddingRight];
+  int32_t paddingBottom = [self getPaddingBottom];
+  int32_t maxWidth = 0;
+  int32_t maxHeight = 0;
+  bool needInternalMeasure = [self getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) || [self getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT);
   if (nbMatchConstraintsWidgets > 0 && needInternalMeasure) {
-    for (jint i = 0; i < listCount; i++) {
+    for (int32_t i = 0; i < listCount; i++) {
       ADXCoreFlow_WidgetsList *current = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(self->mChainList_)) getWithInt:i]);
       if (orientation == ADXConstraintWidget_HORIZONTAL) {
         [((ADXCoreFlow_WidgetsList *) nil_chk(current)) measureMatchConstraintsWithInt:max - [current getWidth]];
@@ -776,7 +790,7 @@ void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_wi
       }
     }
   }
-  for (jint i = 0; i < listCount; i++) {
+  for (int32_t i = 0; i < listCount; i++) {
     ADXCoreFlow_WidgetsList *current = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(self->mChainList_)) getWithInt:i]);
     if (orientation == ADXConstraintWidget_HORIZONTAL) {
       if (i < listCount - 1) {
@@ -823,7 +837,7 @@ void ADXCoreFlow_measureChainWrapWithADXConstraintWidgetArray_withInt_withInt_wi
   *IOSIntArray_GetRef(measured, ADXConstraintWidget_VERTICAL) = maxHeight;
 }
 
-void ADXCoreFlow_measureNoWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, jint count, jint orientation, jint max, IOSIntArray *measured) {
+void ADXCoreFlow_measureNoWrapWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, int32_t count, int32_t orientation, int32_t max, IOSIntArray *measured) {
   if (count == 0) {
     return;
   }
@@ -837,7 +851,7 @@ void ADXCoreFlow_measureNoWrapWithADXConstraintWidgetArray_withInt_withInt_withI
     [((ADXCoreFlow_WidgetsList *) nil_chk(list)) clear];
     [list setupWithInt:orientation withADXConstraintAnchor:self->mLeft_ withADXConstraintAnchor:self->mTop_ withADXConstraintAnchor:self->mRight_ withADXConstraintAnchor:self->mBottom_ withInt:[self getPaddingLeft] withInt:[self getPaddingTop] withInt:[self getPaddingRight] withInt:[self getPaddingBottom] withInt:max];
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(widgets), i);
     [list addWithADXConstraintWidget:widget];
   }
@@ -845,16 +859,16 @@ void ADXCoreFlow_measureNoWrapWithADXConstraintWidgetArray_withInt_withInt_withI
   *IOSIntArray_GetRef(measured, ADXConstraintWidget_VERTICAL) = [list getHeight];
 }
 
-void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, jint count, jint orientation, jint max, IOSIntArray *measured) {
-  jboolean done = false;
-  jint rows = 0;
-  jint cols = 0;
+void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_withInt_withIntArray_(ADXCoreFlow *self, IOSObjectArray *widgets, int32_t count, int32_t orientation, int32_t max, IOSIntArray *measured) {
+  bool done = false;
+  int32_t rows = 0;
+  int32_t cols = 0;
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
     cols = self->mMaxElementsWrap_;
     if (cols <= 0) {
-      jint w = 0;
+      int32_t w = 0;
       cols = 0;
-      for (jint i = 0; i < count; i++) {
+      for (int32_t i = 0; i < count; i++) {
         if (i > 0) {
           w += self->mHorizontalGap_;
         }
@@ -873,9 +887,9 @@ void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_with
   else {
     rows = self->mMaxElementsWrap_;
     if (rows <= 0) {
-      jint h = 0;
+      int32_t h = 0;
       rows = 0;
-      for (jint i = 0; i < count; i++) {
+      for (int32_t i = 0; i < count; i++) {
         if (i > 0) {
           h += self->mVerticalGap_;
         }
@@ -899,10 +913,10 @@ void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_with
   }
   while (!done) {
     if (orientation == ADXConstraintWidget_HORIZONTAL) {
-      rows = JreFpToInt((JavaLangMath_ceilWithDouble_(count / (jfloat) cols)));
+      rows = JreFpToInt((JavaLangMath_ceilWithDouble_(count / (float) cols)));
     }
     else {
-      cols = JreFpToInt((JavaLangMath_ceilWithDouble_(count / (jfloat) rows)));
+      cols = JreFpToInt((JavaLangMath_ceilWithDouble_(count / (float) rows)));
     }
     if (self->mAlignedBiggestElementsInCols_ == nil || self->mAlignedBiggestElementsInCols_->size_ < cols) {
       JreStrongAssignAndConsume(&self->mAlignedBiggestElementsInCols_, [IOSObjectArray newArrayWithLength:cols type:ADXConstraintWidget_class_()]);
@@ -916,9 +930,9 @@ void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_with
     else {
       JavaUtilArrays_fillWithNSObjectArray_withId_(self->mAlignedBiggestElementsInRows_, nil);
     }
-    for (jint i = 0; i < cols; i++) {
-      for (jint j = 0; j < rows; j++) {
-        jint index = j * cols + i;
+    for (int32_t i = 0; i < cols; i++) {
+      for (int32_t j = 0; j < rows; j++) {
+        int32_t index = j * cols + i;
         if (orientation == ADXConstraintWidget_VERTICAL) {
           index = i * rows + j;
         }
@@ -929,18 +943,18 @@ void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_with
         if (widget == nil) {
           continue;
         }
-        jint w = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self, widget, max);
+        int32_t w = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self, widget, max);
         if (IOSObjectArray_Get(nil_chk(self->mAlignedBiggestElementsInCols_), i) == nil || [((ADXConstraintWidget *) nil_chk(IOSObjectArray_Get(self->mAlignedBiggestElementsInCols_, i))) getWidth] < w) {
           IOSObjectArray_Set(nil_chk(self->mAlignedBiggestElementsInCols_), i, widget);
         }
-        jint h = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self, widget, max);
+        int32_t h = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self, widget, max);
         if (IOSObjectArray_Get(nil_chk(self->mAlignedBiggestElementsInRows_), j) == nil || [((ADXConstraintWidget *) nil_chk(IOSObjectArray_Get(self->mAlignedBiggestElementsInRows_, j))) getHeight] < h) {
           IOSObjectArray_Set(nil_chk(self->mAlignedBiggestElementsInRows_), j, widget);
         }
       }
     }
-    jint w = 0;
-    for (jint i = 0; i < cols; i++) {
+    int32_t w = 0;
+    for (int32_t i = 0; i < cols; i++) {
       ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(self->mAlignedBiggestElementsInCols_), i);
       if (widget != nil) {
         if (i > 0) {
@@ -949,8 +963,8 @@ void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_with
         w += ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self, widget, max);
       }
     }
-    jint h = 0;
-    for (jint j = 0; j < rows; j++) {
+    int32_t h = 0;
+    for (int32_t j = 0; j < rows; j++) {
       ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(self->mAlignedBiggestElementsInRows_), j);
       if (widget != nil) {
         if (j > 0) {
@@ -992,20 +1006,20 @@ void ADXCoreFlow_measureAlignedWithADXConstraintWidgetArray_withInt_withInt_with
   *IOSIntArray_GetRef(self->mAlignedDimensions_, ADXConstraintWidget_VERTICAL) = rows;
 }
 
-void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, jboolean isInRtl) {
+void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, bool isInRtl) {
   if (self->mAlignedDimensions_ == nil || self->mAlignedBiggestElementsInCols_ == nil || self->mAlignedBiggestElementsInRows_ == nil) {
     return;
   }
-  for (jint i = 0; i < self->mDisplayedWidgetsCount_; i++) {
+  for (int32_t i = 0; i < self->mDisplayedWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(self->mDisplayedWidgets_), i);
     [((ADXConstraintWidget *) nil_chk(widget)) resetAnchors];
   }
-  jint cols = IOSIntArray_Get(nil_chk(self->mAlignedDimensions_), ADXConstraintWidget_HORIZONTAL);
-  jint rows = IOSIntArray_Get(self->mAlignedDimensions_, ADXConstraintWidget_VERTICAL);
+  int32_t cols = IOSIntArray_Get(nil_chk(self->mAlignedDimensions_), ADXConstraintWidget_HORIZONTAL);
+  int32_t rows = IOSIntArray_Get(self->mAlignedDimensions_, ADXConstraintWidget_VERTICAL);
   ADXConstraintWidget *previous = nil;
-  jfloat horizontalBias = self->mHorizontalBias_;
-  for (jint i = 0; i < cols; i++) {
-    jint index = i;
+  float horizontalBias = self->mHorizontalBias_;
+  for (int32_t i = 0; i < cols; i++) {
+    int32_t index = i;
     if (isInRtl) {
       index = cols - i - 1;
       horizontalBias = 1 - self->mHorizontalBias_;
@@ -1028,7 +1042,7 @@ void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, jboolea
     }
     previous = widget;
   }
-  for (jint j = 0; j < rows; j++) {
+  for (int32_t j = 0; j < rows; j++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(self->mAlignedBiggestElementsInRows_), j);
     if (widget == nil || [widget getVisibility] == ADXConstraintWidget_GONE) {
       continue;
@@ -1047,9 +1061,9 @@ void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, jboolea
     }
     previous = widget;
   }
-  for (jint i = 0; i < cols; i++) {
-    for (jint j = 0; j < rows; j++) {
-      jint index = j * cols + i;
+  for (int32_t i = 0; i < cols; i++) {
+    for (int32_t j = 0; j < rows; j++) {
+      int32_t index = j * cols + i;
       if (self->mOrientation_ == ADXConstraintWidget_VERTICAL) {
         index = i * rows + j;
       }
@@ -1062,11 +1076,11 @@ void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, jboolea
       }
       ADXConstraintWidget *biggestInCol = IOSObjectArray_Get(nil_chk(self->mAlignedBiggestElementsInCols_), i);
       ADXConstraintWidget *biggestInRow = IOSObjectArray_Get(nil_chk(self->mAlignedBiggestElementsInRows_), j);
-      if (widget != biggestInCol) {
+      if (!JreObjectEqualsEquals(widget, biggestInCol)) {
         [widget connectWithADXConstraintAnchor:widget->mLeft_ withADXConstraintAnchor:((ADXConstraintWidget *) nil_chk(biggestInCol))->mLeft_ withInt:0];
         [widget connectWithADXConstraintAnchor:widget->mRight_ withADXConstraintAnchor:biggestInCol->mRight_ withInt:0];
       }
-      if (widget != biggestInRow) {
+      if (!JreObjectEqualsEquals(widget, biggestInRow)) {
         [widget connectWithADXConstraintAnchor:widget->mTop_ withADXConstraintAnchor:((ADXConstraintWidget *) nil_chk(biggestInRow))->mTop_ withInt:0];
         [widget connectWithADXConstraintAnchor:widget->mBottom_ withADXConstraintAnchor:biggestInRow->mBottom_ withInt:0];
       }
@@ -1076,29 +1090,31 @@ void ADXCoreFlow_createAlignedConstraintsWithBoolean_(ADXCoreFlow *self, jboolea
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCoreFlow)
 
+J2OBJC_NAME_MAPPING(ADXCoreFlow, "androidx.constraintlayout.core.widgets", "ADX")
+
 @implementation ADXCoreFlow_WidgetsList
 
 - (instancetype)initWithADXCoreFlow:(ADXCoreFlow *)outer$
-                            withInt:(jint)orientation
+                            withInt:(int32_t)orientation
             withADXConstraintAnchor:(ADXConstraintAnchor *)left
             withADXConstraintAnchor:(ADXConstraintAnchor *)top
             withADXConstraintAnchor:(ADXConstraintAnchor *)right
             withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
-                            withInt:(jint)max {
+                            withInt:(int32_t)max {
   ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(self, outer$, orientation, left, top, right, bottom, max);
   return self;
 }
 
-- (void)setupWithInt:(jint)orientation
+- (void)setupWithInt:(int32_t)orientation
 withADXConstraintAnchor:(ADXConstraintAnchor *)left
 withADXConstraintAnchor:(ADXConstraintAnchor *)top
 withADXConstraintAnchor:(ADXConstraintAnchor *)right
 withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
-             withInt:(jint)paddingLeft
-             withInt:(jint)paddingTop
-             withInt:(jint)paddingRight
-             withInt:(jint)paddingBottom
-             withInt:(jint)max {
+             withInt:(int32_t)paddingLeft
+             withInt:(int32_t)paddingTop
+             withInt:(int32_t)paddingRight
+             withInt:(int32_t)paddingBottom
+             withInt:(int32_t)max {
   mOrientation_ = orientation;
   JreStrongAssign(&mLeft_, left);
   JreStrongAssign(&mTop_, top);
@@ -1121,18 +1137,18 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
   mNbMatchConstraintsWidgets_ = 0;
 }
 
-- (void)setStartIndexWithInt:(jint)value {
+- (void)setStartIndexWithInt:(int32_t)value {
   mStartIndex_ = value;
 }
 
-- (jint)getWidth {
+- (int32_t)getWidth {
   if (mOrientation_ == ADXConstraintWidget_HORIZONTAL) {
     return mWidth_ - this$0_->mHorizontalGap_;
   }
   return mWidth_;
 }
 
-- (jint)getHeight {
+- (int32_t)getHeight {
   if (mOrientation_ == ADXConstraintWidget_VERTICAL) {
     return mHeight_ - this$0_->mVerticalGap_;
   }
@@ -1141,17 +1157,17 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
 
 - (void)addWithADXConstraintWidget:(ADXConstraintWidget *)widget {
   if (mOrientation_ == ADXConstraintWidget_HORIZONTAL) {
-    jint width = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
+    int32_t width = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
     if ([((ADXConstraintWidget *) nil_chk(widget)) getHorizontalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
       mNbMatchConstraintsWidgets_++;
       width = 0;
     }
-    jint gap = this$0_->mHorizontalGap_;
+    int32_t gap = this$0_->mHorizontalGap_;
     if ([widget getVisibility] == ADXConstraintWidget_GONE) {
       gap = 0;
     }
     mWidth_ += width + gap;
-    jint height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
+    int32_t height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
     if (biggest_ == nil || biggestDimension_ < height) {
       JreStrongAssign(&biggest_, widget);
       biggestDimension_ = height;
@@ -1159,13 +1175,13 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
     }
   }
   else {
-    jint width = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
-    jint height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
+    int32_t width = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
+    int32_t height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(this$0_, widget, mMax_);
     if ([((ADXConstraintWidget *) nil_chk(widget)) getVerticalDimensionBehaviour] == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
       mNbMatchConstraintsWidgets_++;
       height = 0;
     }
-    jint gap = this$0_->mVerticalGap_;
+    int32_t gap = this$0_->mVerticalGap_;
     if ([widget getVisibility] == ADXConstraintWidget_GONE) {
       gap = 0;
     }
@@ -1179,11 +1195,11 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
   mCount_++;
 }
 
-- (void)createConstraintsWithBoolean:(jboolean)isInRtl
-                             withInt:(jint)chainIndex
-                         withBoolean:(jboolean)isLastChain {
-  jint count = mCount_;
-  for (jint i = 0; i < count; i++) {
+- (void)createConstraintsWithBoolean:(bool)isInRtl
+                             withInt:(int32_t)chainIndex
+                         withBoolean:(bool)isLastChain {
+  int32_t count = mCount_;
+  for (int32_t i = 0; i < count; i++) {
     if (mStartIndex_ + i >= this$0_->mDisplayedWidgetsCount_) {
       break;
     }
@@ -1195,11 +1211,11 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
   if (count == 0 || biggest_ == nil) {
     return;
   }
-  jboolean singleChain = isLastChain && chainIndex == 0;
-  jint firstVisible = -1;
-  jint lastVisible = -1;
-  for (jint i = 0; i < count; i++) {
-    jint index = i;
+  bool singleChain = isLastChain && chainIndex == 0;
+  int32_t firstVisible = -1;
+  int32_t lastVisible = -1;
+  for (int32_t i = 0; i < count; i++) {
+    int32_t index = i;
     if (isInRtl) {
       index = count - 1 - i;
     }
@@ -1218,7 +1234,7 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
   if (mOrientation_ == ADXConstraintWidget_HORIZONTAL) {
     ADXConstraintWidget *verticalWidget = JreRetainedLocalValue(biggest_);
     [((ADXConstraintWidget *) nil_chk(verticalWidget)) setVerticalChainStyleWithInt:this$0_->mVerticalStyle_];
-    jint padding = mPaddingTop_;
+    int32_t padding = mPaddingTop_;
     if (chainIndex > 0) {
       padding += this$0_->mVerticalGap_;
     }
@@ -1232,8 +1248,8 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
     }
     ADXConstraintWidget *baselineVerticalWidget = JreRetainedLocalValue(verticalWidget);
     if (this$0_->mVerticalAlign_ == ADXCoreFlow_VERTICAL_ALIGN_BASELINE && ![verticalWidget hasBaseline]) {
-      for (jint i = 0; i < count; i++) {
-        jint index = i;
+      for (int32_t i = 0; i < count; i++) {
+        int32_t index = i;
         if (isInRtl) {
           index = count - 1 - i;
         }
@@ -1247,8 +1263,8 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
         }
       }
     }
-    for (jint i = 0; i < count; i++) {
-      jint index = i;
+    for (int32_t i = 0; i < count; i++) {
+      int32_t index = i;
       if (isInRtl) {
         index = count - 1 - i;
       }
@@ -1260,8 +1276,8 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
         [((ADXConstraintWidget *) nil_chk(widget)) connectWithADXConstraintAnchor:widget->mLeft_ withADXConstraintAnchor:mLeft_ withInt:mPaddingLeft_];
       }
       if (index == 0) {
-        jint style = this$0_->mHorizontalStyle_;
-        jfloat bias = isInRtl ? (1 - this$0_->mHorizontalBias_) : this$0_->mHorizontalBias_;
+        int32_t style = this$0_->mHorizontalStyle_;
+        float bias = isInRtl ? (1 - this$0_->mHorizontalBias_) : this$0_->mHorizontalBias_;
         if (mStartIndex_ == 0 && this$0_->mFirstHorizontalStyle_ != ADXConstraintWidget_UNKNOWN) {
           style = this$0_->mFirstHorizontalStyle_;
           bias = isInRtl ? (1 - this$0_->mFirstHorizontalBias_) : this$0_->mFirstHorizontalBias_;
@@ -1286,8 +1302,8 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
           [((ADXConstraintAnchor *) nil_chk(previous->mRight_)) setGoneMarginWithInt:mPaddingRight_];
         }
       }
-      if (widget != verticalWidget) {
-        if (this$0_->mVerticalAlign_ == ADXCoreFlow_VERTICAL_ALIGN_BASELINE && [baselineVerticalWidget hasBaseline] && widget != baselineVerticalWidget && [((ADXConstraintWidget *) nil_chk(widget)) hasBaseline]) {
+      if (!JreObjectEqualsEquals(widget, verticalWidget)) {
+        if (this$0_->mVerticalAlign_ == ADXCoreFlow_VERTICAL_ALIGN_BASELINE && [baselineVerticalWidget hasBaseline] && !JreObjectEqualsEquals(widget, baselineVerticalWidget) && [((ADXConstraintWidget *) nil_chk(widget)) hasBaseline]) {
           [((ADXConstraintAnchor *) nil_chk(((ADXConstraintWidget *) nil_chk(widget))->mBaseline_)) connectWithADXConstraintAnchor:baselineVerticalWidget->mBaseline_ withInt:0];
         }
         else {
@@ -1323,7 +1339,7 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
   else {
     ADXConstraintWidget *horizontalWidget = JreRetainedLocalValue(biggest_);
     [((ADXConstraintWidget *) nil_chk(horizontalWidget)) setHorizontalChainStyleWithInt:this$0_->mHorizontalStyle_];
-    jint padding = mPaddingLeft_;
+    int32_t padding = mPaddingLeft_;
     if (chainIndex > 0) {
       padding += this$0_->mHorizontalGap_;
     }
@@ -1347,15 +1363,15 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
         [((ADXConstraintAnchor *) nil_chk(right)) connectWithADXConstraintAnchor:horizontalWidget->mLeft_ withInt:0];
       }
     }
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       if (mStartIndex_ + i >= this$0_->mDisplayedWidgetsCount_) {
         break;
       }
       ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(this$0_->mDisplayedWidgets_), mStartIndex_ + i);
       if (i == 0) {
         [((ADXConstraintWidget *) nil_chk(widget)) connectWithADXConstraintAnchor:widget->mTop_ withADXConstraintAnchor:mTop_ withInt:mPaddingTop_];
-        jint style = this$0_->mVerticalStyle_;
-        jfloat bias = this$0_->mVerticalBias_;
+        int32_t style = this$0_->mVerticalStyle_;
+        float bias = this$0_->mVerticalBias_;
         if (mStartIndex_ == 0 && this$0_->mFirstVerticalStyle_ != ADXConstraintWidget_UNKNOWN) {
           style = this$0_->mFirstVerticalStyle_;
           bias = this$0_->mFirstVerticalBias_;
@@ -1380,7 +1396,7 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
           [((ADXConstraintAnchor *) nil_chk(previous->mBottom_)) setGoneMarginWithInt:mPaddingBottom_];
         }
       }
-      if (widget != horizontalWidget) {
+      if (!JreObjectEqualsEquals(widget, horizontalWidget)) {
         if (isInRtl) {
           switch (this$0_->mHorizontalAlign_) {
             case ADXCoreFlow_HORIZONTAL_ALIGN_START:
@@ -1433,13 +1449,13 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
   }
 }
 
-- (void)measureMatchConstraintsWithInt:(jint)availableSpace {
+- (void)measureMatchConstraintsWithInt:(int32_t)availableSpace {
   if (mNbMatchConstraintsWidgets_ == 0) {
     return;
   }
-  jint count = mCount_;
-  jint widgetSize = JreIntDiv(availableSpace, mNbMatchConstraintsWidgets_);
-  for (jint i = 0; i < count; i++) {
+  int32_t count = mCount_;
+  int32_t widgetSize = JreIntDiv(availableSpace, mNbMatchConstraintsWidgets_);
+  for (int32_t i = 0; i < count; i++) {
     if (mStartIndex_ + i >= this$0_->mDisplayedWidgetsCount_) {
       break;
     }
@@ -1534,7 +1550,7 @@ withADXConstraintAnchor:(ADXConstraintAnchor *)bottom
 
 @end
 
-void ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow_WidgetsList *self, ADXCoreFlow *outer$, jint orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, jint max) {
+void ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow_WidgetsList *self, ADXCoreFlow *outer$, int32_t orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, int32_t max) {
   self->this$0_ = outer$;
   NSObject_init(self);
   self->mOrientation_ = ADXConstraintWidget_HORIZONTAL;
@@ -1562,11 +1578,11 @@ void ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor
   self->mMax_ = max;
 }
 
-ADXCoreFlow_WidgetsList *new_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, jint orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, jint max) {
+ADXCoreFlow_WidgetsList *new_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, int32_t orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, int32_t max) {
   J2OBJC_NEW_IMPL(ADXCoreFlow_WidgetsList, initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_, outer$, orientation, left, top, right, bottom, max)
 }
 
-ADXCoreFlow_WidgetsList *create_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, jint orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, jint max) {
+ADXCoreFlow_WidgetsList *create_ADXCoreFlow_WidgetsList_initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_(ADXCoreFlow *outer$, int32_t orientation, ADXConstraintAnchor *left, ADXConstraintAnchor *top, ADXConstraintAnchor *right, ADXConstraintAnchor *bottom, int32_t max) {
   J2OBJC_CREATE_IMPL(ADXCoreFlow_WidgetsList, initWithADXCoreFlow_withInt_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withADXConstraintAnchor_withInt_, outer$, orientation, left, top, right, bottom, max)
 }
 
@@ -1575,20 +1591,20 @@ void ADXCoreFlow_WidgetsList_recomputeDimensions(ADXCoreFlow_WidgetsList *self) 
   self->mHeight_ = 0;
   JreStrongAssign(&self->biggest_, nil);
   self->biggestDimension_ = 0;
-  jint count = self->mCount_;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = self->mCount_;
+  for (int32_t i = 0; i < count; i++) {
     if (self->mStartIndex_ + i >= self->this$0_->mDisplayedWidgetsCount_) {
       break;
     }
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(self->this$0_->mDisplayedWidgets_), self->mStartIndex_ + i);
     if (self->mOrientation_ == ADXConstraintWidget_HORIZONTAL) {
-      jint width = [((ADXConstraintWidget *) nil_chk(widget)) getWidth];
-      jint gap = self->this$0_->mHorizontalGap_;
+      int32_t width = [((ADXConstraintWidget *) nil_chk(widget)) getWidth];
+      int32_t gap = self->this$0_->mHorizontalGap_;
       if ([widget getVisibility] == ADXConstraintWidget_GONE) {
         gap = 0;
       }
       self->mWidth_ += width + gap;
-      jint height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self->this$0_, widget, self->mMax_);
+      int32_t height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self->this$0_, widget, self->mMax_);
       if (self->biggest_ == nil || self->biggestDimension_ < height) {
         JreStrongAssign(&self->biggest_, widget);
         self->biggestDimension_ = height;
@@ -1596,9 +1612,9 @@ void ADXCoreFlow_WidgetsList_recomputeDimensions(ADXCoreFlow_WidgetsList *self) 
       }
     }
     else {
-      jint width = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self->this$0_, widget, self->mMax_);
-      jint height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self->this$0_, widget, self->mMax_);
-      jint gap = self->this$0_->mVerticalGap_;
+      int32_t width = ADXCoreFlow_getWidgetWidthWithADXConstraintWidget_withInt_(self->this$0_, widget, self->mMax_);
+      int32_t height = ADXCoreFlow_getWidgetHeightWithADXConstraintWidget_withInt_(self->this$0_, widget, self->mMax_);
+      int32_t gap = self->this$0_->mVerticalGap_;
       if ([((ADXConstraintWidget *) nil_chk(widget)) getVisibility] == ADXConstraintWidget_GONE) {
         gap = 0;
       }

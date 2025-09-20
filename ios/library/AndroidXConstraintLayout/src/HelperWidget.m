@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\HelperWidget.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintWidget.h"
 #include "ConstraintWidgetContainer.h"
 #include "Grouping.h"
@@ -11,9 +16,17 @@
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "WidgetGroup.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashMap.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXHelperWidget
@@ -29,7 +42,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addWithADXConstraintWidget:(ADXConstraintWidget *)widget {
-  if (widget == self || widget == nil) {
+  if (JreObjectEqualsEquals(widget, self) || widget == nil) {
     return;
   }
   if (mWidgetsCount_ + 1 > ((IOSObjectArray *) nil_chk(mWidgets_))->size_) {
@@ -44,8 +57,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   [super copy__WithADXConstraintWidget:src withJavaUtilHashMap:map];
   ADXHelperWidget *srcHelper = (ADXHelperWidget *) cast_chk(src, [ADXHelperWidget class]);
   mWidgetsCount_ = 0;
-  jint count = ((ADXHelperWidget *) nil_chk(srcHelper))->mWidgetsCount_;
-  for (jint i = 0; i < count; i++) {
+  int32_t count = ((ADXHelperWidget *) nil_chk(srcHelper))->mWidgetsCount_;
+  for (int32_t i = 0; i < count; i++) {
     [self addWithADXConstraintWidget:[((JavaUtilHashMap *) nil_chk(map)) getWithId:IOSObjectArray_Get(nil_chk(srcHelper->mWidgets_), i)]];
   }
 }
@@ -56,20 +69,20 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addDependentsWithJavaUtilArrayList:(JavaUtilArrayList *)dependencyLists
-                                   withInt:(jint)orientation
+                                   withInt:(int32_t)orientation
                         withADXWidgetGroup:(ADXWidgetGroup *)group {
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     [((ADXWidgetGroup *) nil_chk(group)) addWithADXConstraintWidget:widget];
   }
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJavaUtilArrayList_withADXWidgetGroup_(widget, orientation, dependencyLists, group);
   }
 }
 
-- (jint)findGroupInDependentsWithInt:(jint)orientation {
-  for (jint i = 0; i < mWidgetsCount_; i++) {
+- (int32_t)findGroupInDependentsWithInt:(int32_t)orientation {
+  for (int32_t i = 0; i < mWidgetsCount_; i++) {
     ADXConstraintWidget *widget = IOSObjectArray_Get(nil_chk(mWidgets_), i);
     if (orientation == ADXConstraintWidget_HORIZONTAL && ((ADXConstraintWidget *) nil_chk(widget))->horizontalGroup_ != -1) {
       return ((ADXConstraintWidget *) nil_chk(widget))->horizontalGroup_;
@@ -133,3 +146,5 @@ ADXHelperWidget *create_ADXHelperWidget_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXHelperWidget)
+
+J2OBJC_NAME_MAPPING(ADXHelperWidget, "androidx.constraintlayout.core.widgets", "ADX")

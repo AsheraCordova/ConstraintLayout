@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\ViewState.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewState")
@@ -17,14 +18,16 @@
 #define ADXViewState_
 
 @class ADXMotionWidget;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXViewState : NSObject {
  @public
-  jfloat rotation_;
-  jint left_;
-  jint top_;
-  jint right_;
-  jint bottom_;
+  float rotation_;
+  int32_t left_;
+  int32_t top_;
+  int32_t right_;
+  int32_t bottom_;
 }
 
 #pragma mark Public
@@ -33,9 +36,9 @@
 
 - (void)getStateWithADXMotionWidget:(ADXMotionWidget *)v;
 
-- (jint)height;
+- (int32_t)height;
 
-- (jint)width;
+- (int32_t)width;
 
 @end
 
@@ -50,6 +53,7 @@ FOUNDATION_EXPORT ADXViewState *create_ADXViewState_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewState)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsViewState ADXViewState;
+
 
 #endif
 

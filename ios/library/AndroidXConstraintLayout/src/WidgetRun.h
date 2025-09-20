@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\WidgetRun.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_WidgetRun")
@@ -33,16 +34,19 @@
 @class ADXDimensionDependency;
 @class ADXRunGroup;
 @class ADXWidgetRun_RunType;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class JavaLangLong;
 
 @interface ADXWidgetRun : NSObject < ADXDependency > {
  @public
-  jint matchConstraintsType_;
+  int32_t matchConstraintsType_;
   ADXConstraintWidget *widget_;
   ADXRunGroup *runGroup_;
   ADXConstraintWidget_DimensionBehaviour *dimensionBehavior_;
   ADXDimensionDependency *dimension_;
-  jint orientation_;
-  jboolean resolved_;
+  int32_t orientation_;
+  bool resolved_;
   ADXDependencyNode *start_;
   ADXDependencyNode *end_;
   ADXWidgetRun_RunType *mRunType_;
@@ -52,41 +56,41 @@
 
 - (instancetype)initWithADXConstraintWidget:(ADXConstraintWidget *)widget;
 
-- (jlong)getWrapDimension;
+- (int64_t)getWrapDimension;
 
-- (jboolean)isCenterConnection;
+- (bool)isCenterConnection;
 
-- (jboolean)isDimensionResolved;
+- (bool)isDimensionResolved;
 
-- (jboolean)isResolved;
+- (bool)isResolved;
 
 - (void)updateWithADXDependency:(id<ADXDependency>)dependency;
 
-- (jlong)wrapSizeWithInt:(jint)direction;
+- (int64_t)wrapSizeWithInt:(int32_t)direction;
 
 #pragma mark Protected
 
 - (void)addTargetWithADXDependencyNode:(ADXDependencyNode *)node
                  withADXDependencyNode:(ADXDependencyNode *)target
-                               withInt:(jint)margin;
+                               withInt:(int32_t)margin;
 
 - (void)addTargetWithADXDependencyNode:(ADXDependencyNode *)node
                  withADXDependencyNode:(ADXDependencyNode *)target
-                               withInt:(jint)marginFactor
+                               withInt:(int32_t)marginFactor
             withADXDimensionDependency:(ADXDimensionDependency *)dimensionDependency;
 
-- (jint)getLimitedDimensionWithInt:(jint)dimension
-                           withInt:(jint)orientation;
+- (int32_t)getLimitedDimensionWithInt:(int32_t)dimension
+                              withInt:(int32_t)orientation;
 
 - (ADXDependencyNode *)getTargetWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor;
 
 - (ADXDependencyNode *)getTargetWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor
-                                                withInt:(jint)orientation;
+                                                withInt:(int32_t)orientation;
 
 - (void)updateRunCenterWithADXDependency:(id<ADXDependency>)dependency
                  withADXConstraintAnchor:(ADXConstraintAnchor *)startAnchor
                  withADXConstraintAnchor:(ADXConstraintAnchor *)endAnchor
-                                 withInt:(jint)orientation;
+                                 withInt:(int32_t)orientation;
 
 - (void)updateRunEndWithADXDependency:(id<ADXDependency>)dependency;
 
@@ -102,7 +106,7 @@
 
 - (void)reset;
 
-- (jboolean)supportsWrapComputation;
+- (bool)supportsWrapComputation;
 
 // Disallowed inherited constructors, do not use.
 
@@ -126,6 +130,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetRun)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerWidgetRun ADXWidgetRun;
 
+
 #endif
 
 #if !defined (ADXWidgetRun_RunType_) && (INCLUDE_ALL_WidgetRun || defined(INCLUDE_ADXWidgetRun_RunType))
@@ -136,13 +141,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetRun)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXWidgetRun_RunType_Enum) {
-  ADXWidgetRun_RunType_Enum_NONE = 0,
-  ADXWidgetRun_RunType_Enum_START = 1,
-  ADXWidgetRun_RunType_Enum_END = 2,
-  ADXWidgetRun_RunType_Enum_CENTER = 3,
+typedef NS_ENUM(int32_t, ADXWidgetRun_RunType_Enum) {
+  ADXWidgetRun_RunType_Enum_NONE NS_SWIFT_NAME(none) = 0,
+  ADXWidgetRun_RunType_Enum_START NS_SWIFT_NAME(start) = 1,
+  ADXWidgetRun_RunType_Enum_END NS_SWIFT_NAME(end) = 2,
+  ADXWidgetRun_RunType_Enum_CENTER NS_SWIFT_NAME(center) = 3,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXWidgetRun_RunType_ORDINAL int32_t
+#else
+#define ADXWidgetRun_RunType_ORDINAL ADXWidgetRun_RunType_Enum
+#endif
+
 
 @interface ADXWidgetRun_RunType : JavaLangEnum
 
@@ -155,6 +168,13 @@ typedef NS_ENUM(NSUInteger, ADXWidgetRun_RunType_Enum) {
 #pragma mark Package-Private
 
 - (ADXWidgetRun_RunType_Enum)toNSEnum;
+
+@property(readonly) ADXWidgetRun_RunType_Enum enumValue;
++ (ADXWidgetRun_RunType *)fromNSEnum:(ADXWidgetRun_RunType_Enum)value;
+
+- (ADXWidgetRun_RunType_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithRunType:(ADXWidgetRun_RunType_Enum)value;
 
 @end
 
@@ -179,9 +199,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXWidgetRun_RunType_values(void);
 
 FOUNDATION_EXPORT ADXWidgetRun_RunType *ADXWidgetRun_RunType_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXWidgetRun_RunType *ADXWidgetRun_RunType_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXWidgetRun_RunType *ADXWidgetRun_RunType_fromOrdinal(ADXWidgetRun_RunType_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetRun_RunType)
+
 
 #endif
 

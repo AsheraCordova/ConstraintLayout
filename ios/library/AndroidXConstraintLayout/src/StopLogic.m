@@ -3,12 +3,26 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\utils\StopLogic.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "MotionInterpolator.h"
 #include "SpringStopEngine.h"
 #include "StopEngine.h"
 #include "StopLogic.h"
 #include "StopLogicEngine.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXStopLogic () {
@@ -34,32 +48,32 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)debugWithNSString:(NSString *)desc
-                      withFloat:(jfloat)time {
+                      withFloat:(float)time {
   return [((id<ADXStopEngine>) nil_chk(mEngine_)) debugWithNSString:desc withFloat:time];
 }
 
-- (jfloat)getVelocityWithFloat:(jfloat)x {
+- (float)getVelocityWithFloat:(float)x {
   return [((id<ADXStopEngine>) nil_chk(mEngine_)) getVelocityWithFloat:x];
 }
 
-- (void)configWithFloat:(jfloat)currentPos
-              withFloat:(jfloat)destination
-              withFloat:(jfloat)currentVelocity
-              withFloat:(jfloat)maxTime
-              withFloat:(jfloat)maxAcceleration
-              withFloat:(jfloat)maxVelocity {
+- (void)configWithFloat:(float)currentPos
+              withFloat:(float)destination
+              withFloat:(float)currentVelocity
+              withFloat:(float)maxTime
+              withFloat:(float)maxAcceleration
+              withFloat:(float)maxVelocity {
   JreStrongAssign(&mEngine_, mStopLogicEngine_);
   [((ADXStopLogicEngine *) nil_chk(mStopLogicEngine_)) configWithFloat:currentPos withFloat:destination withFloat:currentVelocity withFloat:maxTime withFloat:maxAcceleration withFloat:maxVelocity];
 }
 
-- (void)springConfigWithFloat:(jfloat)currentPos
-                    withFloat:(jfloat)destination
-                    withFloat:(jfloat)currentVelocity
-                    withFloat:(jfloat)mass
-                    withFloat:(jfloat)stiffness
-                    withFloat:(jfloat)damping
-                    withFloat:(jfloat)stopThreshold
-                      withInt:(jint)boundaryMode {
+- (void)springConfigWithFloat:(float)currentPos
+                    withFloat:(float)destination
+                    withFloat:(float)currentVelocity
+                    withFloat:(float)mass
+                    withFloat:(float)stiffness
+                    withFloat:(float)damping
+                    withFloat:(float)stopThreshold
+                      withInt:(int32_t)boundaryMode {
   if (mSpringStopEngine_ == nil) {
     JreStrongAssignAndConsume(&mSpringStopEngine_, new_ADXSpringStopEngine_init());
   }
@@ -67,15 +81,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   [mSpringStopEngine_ springConfigWithFloat:currentPos withFloat:destination withFloat:currentVelocity withFloat:mass withFloat:stiffness withFloat:damping withFloat:stopThreshold withInt:boundaryMode];
 }
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v {
+- (float)getInterpolationWithFloat:(float)v {
   return [((id<ADXStopEngine>) nil_chk(mEngine_)) getInterpolationWithFloat:v];
 }
 
-- (jfloat)getVelocity {
+- (float)getVelocity {
   return [((id<ADXStopEngine>) nil_chk(mEngine_)) getVelocity];
 }
 
-- (jboolean)isStopped {
+- (bool)isStopped {
   return [((id<ADXStopEngine>) nil_chk(mEngine_)) isStopped];
 }
 
@@ -136,3 +150,5 @@ ADXStopLogic *create_ADXStopLogic_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXStopLogic)
+
+J2OBJC_NAME_MAPPING(ADXStopLogic, "androidx.constraintlayout.motion.utils", "ADX")

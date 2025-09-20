@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\helper\widget\Flow.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintLayout.h"
 #include "ConstraintSet.h"
 #include "ConstraintWidget.h"
@@ -15,6 +20,16 @@
 #include "SparseArray.h"
 #include "View.h"
 #include "VirtualLayout.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXFlow () {
@@ -33,22 +48,22 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXFlow, TAG, NSString *)
 @implementation ADXFlow
 
 - (void)resolveRtlWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                              withBoolean:(jboolean)isRtl {
+                              withBoolean:(bool)isRtl {
   [((ADXCoreFlow *) nil_chk(mFlow_)) applyRtlWithBoolean:isRtl];
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   [self onMeasureWithADXCoreVirtualLayout:mFlow_ withInt:widthMeasureSpec withInt:heightMeasureSpec];
 }
 
 - (void)onMeasureWithADXCoreVirtualLayout:(ADXCoreVirtualLayout *)layout
-                                  withInt:(jint)widthMeasureSpec
-                                  withInt:(jint)heightMeasureSpec {
-  jint widthMode = ADView_MeasureSpec_getModeWithInt_(widthMeasureSpec);
-  jint widthSize = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
-  jint heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
-  jint heightSize = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
+                                  withInt:(int32_t)widthMeasureSpec
+                                  withInt:(int32_t)heightMeasureSpec {
+  int32_t widthMode = ADView_MeasureSpec_getModeWithInt_(widthMeasureSpec);
+  int32_t widthSize = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
+  int32_t heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
+  int32_t heightSize = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
   if (layout != nil) {
     [layout measureWithInt:widthMode withInt:widthSize withInt:heightMode withInt:heightSize];
     [self setMeasuredDimensionWithInt:[layout getMeasuredWidth] withInt:[layout getMeasuredHeight]];
@@ -71,102 +86,102 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXFlow, TAG, NSString *)
   }
 }
 
-- (void)setOrientationWithInt:(jint)orientation {
+- (void)setOrientationWithInt:(int32_t)orientation {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setOrientationWithInt:orientation];
   [self requestLayout];
 }
 
-- (void)setPaddingWithInt:(jint)padding {
+- (void)setPaddingWithInt:(int32_t)padding {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setPaddingWithInt:padding];
   [self requestLayout];
 }
 
-- (void)setPaddingLeftWithInt:(jint)paddingLeft {
+- (void)setPaddingLeftWithInt:(int32_t)paddingLeft {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setPaddingLeftWithInt:paddingLeft];
   [self requestLayout];
 }
 
-- (void)setPaddingTopWithInt:(jint)paddingTop {
+- (void)setPaddingTopWithInt:(int32_t)paddingTop {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setPaddingTopWithInt:paddingTop];
   [self requestLayout];
 }
 
-- (void)setPaddingRightWithInt:(jint)paddingRight {
+- (void)setPaddingRightWithInt:(int32_t)paddingRight {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setPaddingRightWithInt:paddingRight];
   [self requestLayout];
 }
 
-- (void)setPaddingBottomWithInt:(jint)paddingBottom {
+- (void)setPaddingBottomWithInt:(int32_t)paddingBottom {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setPaddingBottomWithInt:paddingBottom];
   [self requestLayout];
 }
 
-- (void)setWrapModeWithInt:(jint)mode {
+- (void)setWrapModeWithInt:(int32_t)mode {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setWrapModeWithInt:mode];
   [self requestLayout];
 }
 
-- (void)setHorizontalStyleWithInt:(jint)style {
+- (void)setHorizontalStyleWithInt:(int32_t)style {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setHorizontalStyleWithInt:style];
   [self requestLayout];
 }
 
-- (void)setVerticalStyleWithInt:(jint)style {
+- (void)setVerticalStyleWithInt:(int32_t)style {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setVerticalStyleWithInt:style];
   [self requestLayout];
 }
 
-- (void)setHorizontalBiasWithFloat:(jfloat)bias {
+- (void)setHorizontalBiasWithFloat:(float)bias {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setHorizontalBiasWithFloat:bias];
   [self requestLayout];
 }
 
-- (void)setVerticalBiasWithFloat:(jfloat)bias {
+- (void)setVerticalBiasWithFloat:(float)bias {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setVerticalBiasWithFloat:bias];
   [self requestLayout];
 }
 
-- (void)setFirstHorizontalStyleWithInt:(jint)style {
+- (void)setFirstHorizontalStyleWithInt:(int32_t)style {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setFirstHorizontalStyleWithInt:style];
   [self requestLayout];
 }
 
-- (void)setFirstVerticalStyleWithInt:(jint)style {
+- (void)setFirstVerticalStyleWithInt:(int32_t)style {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setFirstVerticalStyleWithInt:style];
   [self requestLayout];
 }
 
-- (void)setFirstHorizontalBiasWithFloat:(jfloat)bias {
+- (void)setFirstHorizontalBiasWithFloat:(float)bias {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setFirstHorizontalBiasWithFloat:bias];
   [self requestLayout];
 }
 
-- (void)setFirstVerticalBiasWithFloat:(jfloat)bias {
+- (void)setFirstVerticalBiasWithFloat:(float)bias {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setFirstVerticalBiasWithFloat:bias];
   [self requestLayout];
 }
 
-- (void)setHorizontalAlignWithInt:(jint)align {
+- (void)setHorizontalAlignWithInt:(int32_t)align {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setHorizontalAlignWithInt:align];
   [self requestLayout];
 }
 
-- (void)setVerticalAlignWithInt:(jint)align {
+- (void)setVerticalAlignWithInt:(int32_t)align {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setVerticalAlignWithInt:align];
   [self requestLayout];
 }
 
-- (void)setHorizontalGapWithInt:(jint)gap {
+- (void)setHorizontalGapWithInt:(int32_t)gap {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setHorizontalGapWithInt:gap];
   [self requestLayout];
 }
 
-- (void)setVerticalGapWithInt:(jint)gap {
+- (void)setVerticalGapWithInt:(int32_t)gap {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setVerticalGapWithInt:gap];
   [self requestLayout];
 }
 
-- (void)setMaxElementsWrapWithInt:(jint)max {
+- (void)setMaxElementsWrapWithInt:(int32_t)max {
   [((ADXCoreFlow *) nil_chk(mFlow_)) setMaxElementsWrapWithInt:max];
   [self requestLayout];
 }
@@ -282,3 +297,5 @@ ADXFlow *create_ADXFlow_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXFlow)
+
+J2OBJC_NAME_MAPPING(ADXFlow, "androidx.constraintlayout.helper.widget", "ADX")

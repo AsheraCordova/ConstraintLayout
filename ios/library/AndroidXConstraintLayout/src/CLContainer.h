@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLContainer.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLContainer")
@@ -23,7 +24,11 @@
 @class ADXCLArray;
 @class ADXCLObject;
 @class IOSCharArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
+@class NSString;
 
 @interface ADXCLContainer : ADXCLElement {
  @public
@@ -38,49 +43,49 @@
 
 + (ADXCLElement *)allocateWithCharArray:(IOSCharArray *)content OBJC_METHOD_FAMILY_NONE;
 
-- (ADXCLElement *)getWithInt:(jint)index;
+- (ADXCLElement *)getWithInt:(int32_t)index;
 
 - (ADXCLElement *)getWithNSString:(NSString *)name;
 
-- (ADXCLArray *)getArrayWithInt:(jint)index;
+- (ADXCLArray *)getArrayWithInt:(int32_t)index;
 
 - (ADXCLArray *)getArrayWithNSString:(NSString *)name;
 
 - (ADXCLArray *)getArrayOrNullWithNSString:(NSString *)name;
 
-- (jboolean)getBooleanWithInt:(jint)index;
+- (bool)getBooleanWithInt:(int32_t)index;
 
-- (jboolean)getBooleanWithNSString:(NSString *)name;
+- (bool)getBooleanWithNSString:(NSString *)name;
 
-- (jfloat)getFloatWithInt:(jint)index;
+- (float)getFloatWithInt:(int32_t)index;
 
-- (jfloat)getFloatWithNSString:(NSString *)name;
+- (float)getFloatWithNSString:(NSString *)name;
 
-- (jfloat)getFloatOrNaNWithNSString:(NSString *)name;
+- (float)getFloatOrNaNWithNSString:(NSString *)name;
 
-- (jint)getIntWithInt:(jint)index;
+- (int32_t)getIntWithInt:(int32_t)index;
 
-- (jint)getIntWithNSString:(NSString *)name;
+- (int32_t)getIntWithNSString:(NSString *)name;
 
-- (ADXCLObject *)getObjectWithInt:(jint)index;
+- (ADXCLObject *)getObjectWithInt:(int32_t)index;
 
 - (ADXCLObject *)getObjectWithNSString:(NSString *)name;
 
 - (ADXCLObject *)getObjectOrNullWithNSString:(NSString *)name;
 
-- (ADXCLElement *)getOrNullWithInt:(jint)index;
+- (ADXCLElement *)getOrNullWithInt:(int32_t)index;
 
 - (ADXCLElement *)getOrNullWithNSString:(NSString *)name;
 
-- (NSString *)getStringWithInt:(jint)index;
+- (NSString *)getStringWithInt:(int32_t)index;
 
 - (NSString *)getStringWithNSString:(NSString *)name;
 
-- (NSString *)getStringOrNullWithInt:(jint)index;
+- (NSString *)getStringOrNullWithInt:(int32_t)index;
 
 - (NSString *)getStringOrNullWithNSString:(NSString *)name;
 
-- (jboolean)hasWithNSString:(NSString *)name;
+- (bool)hasWithNSString:(NSString *)name;
 
 - (JavaUtilArrayList *)names;
 
@@ -88,11 +93,11 @@
        withADXCLElement:(ADXCLElement *)value;
 
 - (void)putNumberWithNSString:(NSString *)name
-                    withFloat:(jfloat)value;
+                    withFloat:(float)value;
 
 - (void)removeWithNSString:(NSString *)name;
 
-- (jint)size;
+- (int32_t)size;
 
 - (NSString *)description;
 
@@ -113,6 +118,7 @@ FOUNDATION_EXPORT ADXCLElement *ADXCLContainer_allocateWithCharArray_(IOSCharArr
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLContainer)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLContainer ADXCLContainer;
+
 
 #endif
 

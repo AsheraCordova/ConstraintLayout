@@ -3,12 +3,24 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\Cache.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLPools.h"
 #include "Cache.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "SolverVariable.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCache
@@ -67,3 +79,5 @@ ADXCache *create_ADXCache_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCache)
+
+J2OBJC_NAME_MAPPING(ADXCache, "androidx.constraintlayout.core", "ADX")

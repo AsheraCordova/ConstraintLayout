@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\helper\widget\CircularFlow.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CircularFlow")
@@ -24,13 +25,15 @@
 @class ADXConstraintLayout;
 @class IOSFloatArray;
 @class IOSIntArray;
+@class JavaLangBoolean;
 @class JavaLangFloat;
 @class JavaLangInteger;
+@class NSString;
 
 @interface ADXCircularFlow : ADXVirtualLayout {
  @public
-  __unsafe_unretained ADXConstraintLayout *mContainer_;
-  jint mViewCenter_;
+  WEAK_ ADXConstraintLayout *mContainer_;
+  int32_t mViewCenter_;
 }
 
 #pragma mark Public
@@ -38,28 +41,28 @@
 - (instancetype)init;
 
 - (void)addViewToCircularFlowWithADView:(ADView *)view
-                                withInt:(jint)radius
-                              withFloat:(jfloat)angle;
+                                withInt:(int32_t)radius
+                              withFloat:(float)angle;
 
 - (IOSFloatArray *)getAngles;
 
 - (IOSIntArray *)getRadius;
 
-- (jboolean)isUpdatableWithADView:(ADView *)view;
+- (bool)isUpdatableWithADView:(ADView *)view;
 
 - (void)onAttachedToWindow;
 
 + (IOSFloatArray *)removeElementFromArrayWithFloatArray:(IOSFloatArray *)array
-                                                withInt:(jint)index;
+                                                withInt:(int32_t)index;
 
 + (IOSIntArray *)removeElementFromArrayWithIntArray:(IOSIntArray *)array
-                                            withInt:(jint)index;
+                                            withInt:(int32_t)index;
 
-- (jint)removeViewWithADView:(ADView *)view;
+- (int32_t)removeViewWithADView:(ADView *)view;
 
-- (void)setDefaultAngleWithFloat:(jfloat)angle;
+- (void)setDefaultAngleWithFloat:(float)angle;
 
-- (void)setDefaultRadiusWithInt:(jint)radius;
+- (void)setDefaultRadiusWithInt:(int32_t)radius;
 
 - (void)setMyAnglesWithNSString:(NSString *)idList;
 
@@ -69,25 +72,25 @@
 
 - (void)setReferenceDefaultRadiusWithJavaLangInteger:(JavaLangInteger *)mReferenceDefaultRadius;
 
-- (void)setViewCenterWithInt:(jint)mViewCenter;
+- (void)setViewCenterWithInt:(int32_t)mViewCenter;
 
 - (void)updateAngleWithADView:(ADView *)view
-                    withFloat:(jfloat)angle;
+                    withFloat:(float)angle;
 
 - (void)updateRadiusWithADView:(ADView *)view
-                       withInt:(jint)radius;
+                       withInt:(int32_t)radius;
 
 - (void)updateReferenceWithADView:(ADView *)view
-                          withInt:(jint)radius
-                        withFloat:(jfloat)angle;
+                          withInt:(int32_t)radius
+                        withFloat:(float)angle;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCircularFlow)
 
-FOUNDATION_EXPORT IOSIntArray *ADXCircularFlow_removeElementFromArrayWithIntArray_withInt_(IOSIntArray *array, jint index);
+FOUNDATION_EXPORT IOSIntArray *ADXCircularFlow_removeElementFromArrayWithIntArray_withInt_(IOSIntArray *array, int32_t index);
 
-FOUNDATION_EXPORT IOSFloatArray *ADXCircularFlow_removeElementFromArrayWithFloatArray_withInt_(IOSFloatArray *array, jint index);
+FOUNDATION_EXPORT IOSFloatArray *ADXCircularFlow_removeElementFromArrayWithFloatArray_withInt_(IOSFloatArray *array, int32_t index);
 
 FOUNDATION_EXPORT void ADXCircularFlow_init(ADXCircularFlow *self);
 
@@ -98,6 +101,7 @@ FOUNDATION_EXPORT ADXCircularFlow *create_ADXCircularFlow_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXCircularFlow)
 
 @compatibility_alias AndroidxConstraintlayoutHelperWidgetCircularFlow ADXCircularFlow;
+
 
 #endif
 

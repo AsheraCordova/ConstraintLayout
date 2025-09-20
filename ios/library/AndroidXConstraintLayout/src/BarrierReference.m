@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\BarrierReference.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BarrierReference.h"
 #include "ConstraintReference.h"
 #include "CoreBarrier.h"
@@ -10,12 +15,19 @@
 #include "HelperWidget.h"
 #include "J2ObjC_source.h"
 #include "State.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXBarrierReference () {
  @public
   ADXState_Direction *mDirection_;
-  jint mMargin_;
+  int32_t mMargin_;
   ADXCoreBarrier *mBarrierWidget_;
 }
 
@@ -40,7 +52,7 @@ J2OBJC_FIELD_SETTER(ADXBarrierReference, mBarrierWidget_, ADXCoreBarrier *)
   return self;
 }
 
-- (ADXConstraintReference *)marginWithInt:(jint)value {
+- (ADXConstraintReference *)marginWithInt:(int32_t)value {
   mMargin_ = value;
   return self;
 }
@@ -54,7 +66,7 @@ J2OBJC_FIELD_SETTER(ADXBarrierReference, mBarrierWidget_, ADXCoreBarrier *)
 
 - (void)apply {
   [self getHelperWidget];
-  jint direction = ADXCoreBarrier_LEFT;
+  int32_t direction = ADXCoreBarrier_LEFT;
   switch ([mDirection_ ordinal]) {
     case ADXState_Direction_Enum_LEFT:
     case ADXState_Direction_Enum_START:
@@ -131,3 +143,5 @@ ADXBarrierReference *create_ADXBarrierReference_initWithADXState_(ADXState *stat
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXBarrierReference)
+
+J2OBJC_NAME_MAPPING(ADXBarrierReference, "androidx.constraintlayout.core.state.helpers", "ADX")

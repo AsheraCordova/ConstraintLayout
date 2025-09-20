@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\Cache.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Cache")
@@ -52,6 +53,7 @@ FOUNDATION_EXPORT ADXCache *create_ADXCache_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXCache)
 
 @compatibility_alias AndroidxConstraintlayoutCoreCache ADXCache;
+
 
 #endif
 

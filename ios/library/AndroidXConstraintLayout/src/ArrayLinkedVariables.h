@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\ArrayLinkedVariables.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ArrayLinkedVariables")
@@ -23,6 +24,10 @@
 @class ADXArrayRow;
 @class ADXCache;
 @class ADXSolverVariable;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  @brief Store a set of variables and their values in an array-based linked list.
@@ -39,8 +44,8 @@
  */
 @interface ADXArrayLinkedVariables : NSObject < ADXArrayRow_ArrayRowVariables > {
  @public
-  jint currentSize_;
-  __unsafe_unretained ADXCache *mCache_;
+  int32_t currentSize_;
+  WEAK_ ADXCache *mCache_;
 }
 
 #pragma mark Public
@@ -54,8 +59,8 @@
  @param removeFromDefinition
  */
 - (void)addWithADXSolverVariable:(ADXSolverVariable *)variable
-                       withFloat:(jfloat)value
-                     withBoolean:(jboolean)removeFromDefinition;
+                       withFloat:(float)value
+                     withBoolean:(bool)removeFromDefinition;
 
 /*!
  @brief Clear the list of variables
@@ -67,7 +72,7 @@
  @param variable the variable we are looking for
  @return return true if we found the variable
  */
-- (jboolean)containsWithADXSolverVariable:(ADXSolverVariable *)variable;
+- (bool)containsWithADXSolverVariable:(ADXSolverVariable *)variable;
 
 - (void)display;
 
@@ -76,40 +81,40 @@
   by the given amount
  @param amount amount to divide by
  */
-- (void)divideByAmountWithFloat:(jfloat)amount;
+- (void)divideByAmountWithFloat:(float)amount;
 
 /*!
  @brief Return the value of a variable, 0 if not found
  @param v the variable we are looking up
  @return the value of the found variable, or 0 if not found
  */
-- (jfloat)getWithADXSolverVariable:(ADXSolverVariable *)v;
+- (float)getWithADXSolverVariable:(ADXSolverVariable *)v;
 
-- (jint)getCurrentSize;
+- (int32_t)getCurrentSize;
 
-- (jint)getHead;
+- (int32_t)getHead;
 
-- (jint)getIdWithInt:(jint)index;
+- (int32_t)getIdWithInt:(int32_t)index;
 
-- (jint)getNextIndiceWithInt:(jint)index;
+- (int32_t)getNextIndiceWithInt:(int32_t)index;
 
-- (jfloat)getValueWithInt:(jint)index;
+- (float)getValueWithInt:(int32_t)index;
 
 /*!
  @brief Return a variable from its position in the linked list
  @param index the index of the variable we want to return
  @return the variable found, or null
  */
-- (ADXSolverVariable *)getVariableWithInt:(jint)index;
+- (ADXSolverVariable *)getVariableWithInt:(int32_t)index;
 
 /*!
  @brief Return the value of a variable from its position in the linked list
  @param index the index of the variable we want to look up
  @return the value of the found variable, or 0 if not found
  */
-- (jfloat)getVariableValueWithInt:(jint)index;
+- (float)getVariableValueWithInt:(int32_t)index;
 
-- (jint)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable;
+- (int32_t)indexOfWithADXSolverVariable:(ADXSolverVariable *)variable;
 
 /*!
  @brief Invert the values of all the variables in the list
@@ -122,7 +127,7 @@
  @param value the value of the variable
  */
 - (void)putWithADXSolverVariable:(ADXSolverVariable *)variable
-                       withFloat:(jfloat)value;
+                       withFloat:(float)value;
 
 /*!
  @brief Remove a variable from the list
@@ -130,10 +135,10 @@
  @param removeFromDefinition
  @return the value of the removed variable
  */
-- (jfloat)removeWithADXSolverVariable:(ADXSolverVariable *)variable
-                          withBoolean:(jboolean)removeFromDefinition;
+- (float)removeWithADXSolverVariable:(ADXSolverVariable *)variable
+                         withBoolean:(bool)removeFromDefinition;
 
-- (jint)sizeInBytes;
+- (int32_t)sizeInBytes;
 
 /*!
  @brief Returns a string representation of the list
@@ -146,8 +151,8 @@
  @param definition the row containing the definition
  @param removeFromDefinition
  */
-- (jfloat)useWithADXArrayRow:(ADXArrayRow *)definition
-                 withBoolean:(jboolean)removeFromDefinition;
+- (float)useWithADXArrayRow:(ADXArrayRow *)definition
+                withBoolean:(bool)removeFromDefinition;
 
 #pragma mark Package-Private
 
@@ -170,7 +175,7 @@
  @brief Returns true if at least one of the variable is positive
  @return true if at least one of the variable is positive
  */
-- (jboolean)hasAtLeastOnePositiveVariable;
+- (bool)hasAtLeastOnePositiveVariable;
 
 // Disallowed inherited constructors, do not use.
 
@@ -180,9 +185,9 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXArrayLinkedVariables)
 
-inline jint ADXArrayLinkedVariables_get_NONE(void);
+inline int32_t ADXArrayLinkedVariables_get_NONE(void);
 #define ADXArrayLinkedVariables_NONE -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayLinkedVariables, NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArrayLinkedVariables, NONE, int32_t)
 
 FOUNDATION_EXPORT void ADXArrayLinkedVariables_initWithADXArrayRow_withADXCache_(ADXArrayLinkedVariables *self, ADXArrayRow *arrayRow, ADXCache *cache);
 
@@ -193,6 +198,7 @@ FOUNDATION_EXPORT ADXArrayLinkedVariables *create_ADXArrayLinkedVariables_initWi
 J2OBJC_TYPE_LITERAL_HEADER(ADXArrayLinkedVariables)
 
 @compatibility_alias AndroidxConstraintlayoutCoreArrayLinkedVariables ADXArrayLinkedVariables;
+
 
 #endif
 

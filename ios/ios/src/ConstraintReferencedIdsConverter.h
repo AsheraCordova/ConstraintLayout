@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\ConstraintReferencedIdsConverter.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintReferencedIdsConverter")
@@ -21,6 +22,7 @@
 #include "IConverter.h"
 
 @class IOSIntArray;
+@class NSString;
 @protocol ASIFragment;
 @protocol JavaUtilList;
 @protocol JavaUtilMap;
@@ -53,6 +55,7 @@ FOUNDATION_EXPORT ASConstraintReferencedIdsConverter *create_ASConstraintReferen
 J2OBJC_TYPE_LITERAL_HEADER(ASConstraintReferencedIdsConverter)
 
 @compatibility_alias ComAsheraConstraintlayoutConstraintReferencedIdsConverter ASConstraintReferencedIdsConverter;
+
 
 #endif
 

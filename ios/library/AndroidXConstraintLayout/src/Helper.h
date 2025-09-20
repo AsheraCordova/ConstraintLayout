@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\Helper.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Helper")
@@ -37,6 +38,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXHelper)
 J2OBJC_TYPE_LITERAL_HEADER(ADXHelper)
 
 #define AndroidxConstraintlayoutCoreWidgetsHelper ADXHelper
+
 
 #endif
 

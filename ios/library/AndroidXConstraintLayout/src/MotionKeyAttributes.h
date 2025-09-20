@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyAttributes.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionKeyAttributes")
@@ -20,8 +21,12 @@
 #define INCLUDE_ADXMotionKey 1
 #include "MotionKey.h"
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 @interface ADXMotionKeyAttributes : ADXMotionKey
 
@@ -35,22 +40,22 @@
 
 - (void)getAttributeNamesWithJavaUtilHashSet:(JavaUtilHashSet *)attributes;
 
-- (jint)getCurveFit;
+- (int32_t)getCurveFit;
 
-- (jint)getIdWithNSString:(NSString *)name;
+- (int32_t)getIdWithNSString:(NSString *)name;
 
 - (void)printAttributes;
 
 - (void)setInterpolationWithJavaUtilHashMap:(JavaUtilHashMap *)interpolation;
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value;
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value;
 
 @end
 
@@ -61,9 +66,9 @@ inline NSString *ADXMotionKeyAttributes_get_NAME(void);
 FOUNDATION_EXPORT NSString *ADXMotionKeyAttributes_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionKeyAttributes, NAME, NSString *)
 
-inline jint ADXMotionKeyAttributes_get_KEY_TYPE(void);
+inline int32_t ADXMotionKeyAttributes_get_KEY_TYPE(void);
 #define ADXMotionKeyAttributes_KEY_TYPE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyAttributes, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyAttributes, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionKeyAttributes_init(ADXMotionKeyAttributes *self);
 
@@ -74,6 +79,7 @@ FOUNDATION_EXPORT ADXMotionKeyAttributes *create_ADXMotionKeyAttributes_init(voi
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionKeyAttributes)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionKeyMotionKeyAttributes ADXMotionKeyAttributes;
+
 
 #endif
 

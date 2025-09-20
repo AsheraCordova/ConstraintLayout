@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\Rectangle.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Rectangle")
@@ -16,39 +17,42 @@
 #if !defined (ADXRectangle_) && (INCLUDE_ALL_Rectangle || defined(INCLUDE_ADXRectangle))
 #define ADXRectangle_
 
+@class JavaLangBoolean;
+@class JavaLangInteger;
+
 /*!
  @brief Simple rect class
  */
 @interface ADXRectangle : NSObject {
  @public
-  jint x_;
-  jint y_;
-  jint width_;
-  jint height_;
+  int32_t x_;
+  int32_t y_;
+  int32_t width_;
+  int32_t height_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (jboolean)containsWithInt:(jint)x
-                    withInt:(jint)y;
+- (bool)containsWithInt:(int32_t)x
+                withInt:(int32_t)y;
 
-- (jint)getCenterX;
+- (int32_t)getCenterX;
 
-- (jint)getCenterY;
+- (int32_t)getCenterY;
 
-- (void)setBoundsWithInt:(jint)x
-                 withInt:(jint)y
-                 withInt:(jint)width
-                 withInt:(jint)height;
+- (void)setBoundsWithInt:(int32_t)x
+                 withInt:(int32_t)y
+                 withInt:(int32_t)width
+                 withInt:(int32_t)height;
 
 #pragma mark Package-Private
 
-- (void)growWithInt:(jint)w
-            withInt:(jint)h;
+- (void)growWithInt:(int32_t)w
+            withInt:(int32_t)h;
 
-- (jboolean)intersectsWithADXRectangle:(ADXRectangle *)bounds;
+- (bool)intersectsWithADXRectangle:(ADXRectangle *)bounds;
 
 @end
 
@@ -63,6 +67,7 @@ FOUNDATION_EXPORT ADXRectangle *create_ADXRectangle_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXRectangle)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsRectangle ADXRectangle;
+
 
 #endif
 

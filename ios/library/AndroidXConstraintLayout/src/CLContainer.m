@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLContainer.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLArray.h"
 #include "CLContainer.h"
 #include "CLElement.h"
@@ -16,10 +21,19 @@
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/StringBuilder.h"
 #include "java/lang/System.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCLContainer
@@ -51,7 +65,7 @@
   return JreStrcat("$$@$", [super description], @" = <", list, @" >");
 }
 
-- (jint)size {
+- (int32_t)size {
   return [((JavaUtilArrayList *) nil_chk(mElements_)) size];
 }
 
@@ -66,7 +80,7 @@
   return names;
 }
 
-- (jboolean)hasWithNSString:(NSString *)name {
+- (bool)hasWithNSString:(NSString *)name {
   for (ADXCLElement * __strong element in nil_chk(mElements_)) {
     if ([element isKindOfClass:[ADXCLKey class]]) {
       ADXCLKey *key = (ADXCLKey *) element;
@@ -92,7 +106,7 @@
 }
 
 - (void)putNumberWithNSString:(NSString *)name
-                    withFloat:(jfloat)value {
+                    withFloat:(float)value {
   [self putWithNSString:name withADXCLElement:create_ADXCLNumber_initWithFloat_(value)];
 }
 
@@ -119,7 +133,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$$C", @"no element for key <", name, '>'), self);
 }
 
-- (jint)getIntWithNSString:(NSString *)name {
+- (int32_t)getIntWithNSString:(NSString *)name {
   ADXCLElement *element = JreRetainedLocalValue([self getWithNSString:name]);
   if (element != nil) {
     return [element getInt];
@@ -127,7 +141,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$$$$$@", @"no int found for key <", name, @">, found [", [((ADXCLElement *) nil_chk(element)) getStrClass], @"] : ", element), self);
 }
 
-- (jfloat)getFloatWithNSString:(NSString *)name {
+- (float)getFloatWithNSString:(NSString *)name {
   ADXCLElement *element = JreRetainedLocalValue([self getWithNSString:name]);
   if (element != nil) {
     return [element getFloat];
@@ -163,7 +177,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$$$$$@", @"no string found for key <", name, @">, found [", strClass, @"] : ", element), self);
 }
 
-- (jboolean)getBooleanWithNSString:(NSString *)name {
+- (bool)getBooleanWithNSString:(NSString *)name {
   ADXCLElement *element = JreRetainedLocalValue([self getWithNSString:name]);
   if ([element isKindOfClass:[ADXCLToken class]]) {
     return [((ADXCLToken *) nil_chk(((ADXCLToken *) element))) getBoolean];
@@ -205,7 +219,7 @@
   return nil;
 }
 
-- (jfloat)getFloatOrNaNWithNSString:(NSString *)name {
+- (float)getFloatOrNaNWithNSString:(NSString *)name {
   ADXCLElement *element = JreRetainedLocalValue([self getOrNullWithNSString:name]);
   if ([element isKindOfClass:[ADXCLNumber class]]) {
     return [((ADXCLElement *) nil_chk(element)) getFloat];
@@ -213,14 +227,14 @@
   return JavaLangFloat_NaN;
 }
 
-- (ADXCLElement *)getWithInt:(jint)index {
+- (ADXCLElement *)getWithInt:(int32_t)index {
   if (index >= 0 && index < [((JavaUtilArrayList *) nil_chk(mElements_)) size]) {
     return [((JavaUtilArrayList *) nil_chk(mElements_)) getWithInt:index];
   }
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$I", @"no element at index ", index), self);
 }
 
-- (jint)getIntWithInt:(jint)index {
+- (int32_t)getIntWithInt:(int32_t)index {
   ADXCLElement *element = JreRetainedLocalValue([self getWithInt:index]);
   if (element != nil) {
     return [element getInt];
@@ -228,7 +242,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$I", @"no int at index ", index), self);
 }
 
-- (jfloat)getFloatWithInt:(jint)index {
+- (float)getFloatWithInt:(int32_t)index {
   ADXCLElement *element = JreRetainedLocalValue([self getWithInt:index]);
   if (element != nil) {
     return [element getFloat];
@@ -236,7 +250,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$I", @"no float at index ", index), self);
 }
 
-- (ADXCLArray *)getArrayWithInt:(jint)index {
+- (ADXCLArray *)getArrayWithInt:(int32_t)index {
   ADXCLElement *element = JreRetainedLocalValue([self getWithInt:index]);
   if ([element isKindOfClass:[ADXCLArray class]]) {
     return (ADXCLArray *) element;
@@ -244,7 +258,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$I", @"no array at index ", index), self);
 }
 
-- (ADXCLObject *)getObjectWithInt:(jint)index {
+- (ADXCLObject *)getObjectWithInt:(int32_t)index {
   ADXCLElement *element = JreRetainedLocalValue([self getWithInt:index]);
   if ([element isKindOfClass:[ADXCLObject class]]) {
     return (ADXCLObject *) element;
@@ -252,7 +266,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$I", @"no object at index ", index), self);
 }
 
-- (NSString *)getStringWithInt:(jint)index {
+- (NSString *)getStringWithInt:(int32_t)index {
   ADXCLElement *element = JreRetainedLocalValue([self getWithInt:index]);
   if ([element isKindOfClass:[ADXCLString class]]) {
     return [((ADXCLElement *) nil_chk(element)) content];
@@ -260,7 +274,7 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$I", @"no string at index ", index), self);
 }
 
-- (jboolean)getBooleanWithInt:(jint)index {
+- (bool)getBooleanWithInt:(int32_t)index {
   ADXCLElement *element = JreRetainedLocalValue([self getWithInt:index]);
   if ([element isKindOfClass:[ADXCLToken class]]) {
     return [((ADXCLToken *) nil_chk(((ADXCLToken *) element))) getBoolean];
@@ -268,14 +282,14 @@
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$I", @"no boolean at index ", index), self);
 }
 
-- (ADXCLElement *)getOrNullWithInt:(jint)index {
+- (ADXCLElement *)getOrNullWithInt:(int32_t)index {
   if (index >= 0 && index < [((JavaUtilArrayList *) nil_chk(mElements_)) size]) {
     return [((JavaUtilArrayList *) nil_chk(mElements_)) getWithInt:index];
   }
   return nil;
 }
 
-- (NSString *)getStringOrNullWithInt:(jint)index {
+- (NSString *)getStringOrNullWithInt:(int32_t)index {
   ADXCLElement *element = JreRetainedLocalValue([self getOrNullWithInt:index]);
   if ([element isKindOfClass:[ADXCLString class]]) {
     return [((ADXCLElement *) nil_chk(element)) content];
@@ -386,3 +400,5 @@ ADXCLElement *ADXCLContainer_allocateWithCharArray_(IOSCharArray *content) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLContainer)
+
+J2OBJC_NAME_MAPPING(ADXCLContainer, "androidx.constraintlayout.core.parser", "ADX")

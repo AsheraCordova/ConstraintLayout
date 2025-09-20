@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\KeyCache.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyCache")
@@ -16,7 +17,10 @@
 #if !defined (ADXKeyCache_) && (INCLUDE_ALL_KeyCache || defined(INCLUDE_ADXKeyCache))
 #define ADXKeyCache_
 
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
+@class NSString;
 
 /*!
  @brief Used by KeyTimeCycles (and any future time dependent behaviour) to cache its current parameters
@@ -31,14 +35,14 @@
 
 - (instancetype)init;
 
-- (jfloat)getFloatValueWithId:(id)view
-                 withNSString:(NSString *)type
-                      withInt:(jint)element;
+- (float)getFloatValueWithId:(id)view
+                withNSString:(NSString *)type
+                     withInt:(int32_t)element;
 
 - (void)setFloatValueWithId:(id)view
                withNSString:(NSString *)type
-                    withInt:(jint)element
-                  withFloat:(jfloat)value;
+                    withInt:(int32_t)element
+                  withFloat:(float)value;
 
 @end
 
@@ -55,6 +59,7 @@ FOUNDATION_EXPORT ADXKeyCache *create_ADXKeyCache_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCache)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsKeyCache ADXKeyCache;
+
 
 #endif
 

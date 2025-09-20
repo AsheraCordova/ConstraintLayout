@@ -3,13 +3,26 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\DimensionDependency.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Dependency.h"
 #include "DependencyNode.h"
 #include "DimensionDependency.h"
 #include "HorizontalWidgetRun.h"
 #include "J2ObjC_source.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/util/List.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXDimensionDependency
@@ -19,7 +32,7 @@
   return self;
 }
 
-- (void)resolveWithInt:(jint)value {
+- (void)resolveWithInt:(int32_t)value {
   if (resolved_) {
     return;
   }

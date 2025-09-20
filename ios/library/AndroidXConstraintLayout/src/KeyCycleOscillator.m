@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\KeyCycleOscillator.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CurveFit.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
@@ -11,6 +16,10 @@
 #include "MotionWidget.h"
 #include "Oscillator.h"
 #include "TypedValues.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/text/DecimalFormat.h"
@@ -22,11 +31,12 @@
 #include "java/util/function/ToIntFunction.h"
 #include "java/util/function/ToLongFunction.h"
 
-@protocol JavaUtilComparator;
-@protocol JavaUtilFunctionFunction;
-@protocol JavaUtilFunctionToDoubleFunction;
-@protocol JavaUtilFunctionToIntFunction;
-@protocol JavaUtilFunctionToLongFunction;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
@@ -36,7 +46,7 @@
   ADXCurveFit *mCurveFit_;
   ADXKeyCycleOscillator_CycleOscillator *mCycleOscillator_;
   NSString *mType_;
-  jint mWaveShape_;
+  int32_t mWaveShape_;
   NSString *mWaveString_;
 }
 
@@ -54,13 +64,13 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyCycleOscillator, TAG, NSString *)
 @interface ADXKeyCycleOscillator_CoreSpline : ADXKeyCycleOscillator {
  @public
   NSString *type_;
-  jint typeId_;
+  int32_t typeId_;
 }
 
 - (instancetype)initWithNSString:(NSString *)str;
 
 - (void)setPropertyWithADXMotionWidget:(ADXMotionWidget *)widget
-                             withFloat:(jfloat)t;
+                             withFloat:(float)t;
 
 @end
 
@@ -76,12 +86,13 @@ __attribute__((unused)) static ADXKeyCycleOscillator_CoreSpline *create_ADXKeyCy
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_CoreSpline)
 
+
 @interface ADXKeyCycleOscillator_1 : NSObject < JavaUtilComparator >
 
 - (instancetype)init;
 
-- (jint)compareWithId:(ADXKeyCycleOscillator_WavePoint *)lhs
-               withId:(ADXKeyCycleOscillator_WavePoint *)rhs;
+- (int32_t)compareWithId:(ADXKeyCycleOscillator_WavePoint *)lhs
+                  withId:(ADXKeyCycleOscillator_WavePoint *)rhs;
 
 @end
 
@@ -93,24 +104,25 @@ __attribute__((unused)) static ADXKeyCycleOscillator_1 *new_ADXKeyCycleOscillato
 
 __attribute__((unused)) static ADXKeyCycleOscillator_1 *create_ADXKeyCycleOscillator_1_init(void);
 
+
 @interface ADXKeyCycleOscillator_IntDoubleSort : NSObject
 
 - (instancetype)init;
 
 + (void)sortWithIntArray:(IOSIntArray *)key
           withFloatArray:(IOSFloatArray *)value
-                 withInt:(jint)low
-                 withInt:(jint)hi;
+                 withInt:(int32_t)low
+                 withInt:(int32_t)hi;
 
-+ (jint)partitionWithIntArray:(IOSIntArray *)array
-               withFloatArray:(IOSFloatArray *)value
-                      withInt:(jint)low
-                      withInt:(jint)hi;
++ (int32_t)partitionWithIntArray:(IOSIntArray *)array
+                  withFloatArray:(IOSFloatArray *)value
+                         withInt:(int32_t)low
+                         withInt:(int32_t)hi;
 
 + (void)swapWithIntArray:(IOSIntArray *)array
           withFloatArray:(IOSFloatArray *)value
-                 withInt:(jint)a
-                 withInt:(jint)b;
+                 withInt:(int32_t)a
+                 withInt:(int32_t)b;
 
 @end
 
@@ -122,13 +134,14 @@ __attribute__((unused)) static ADXKeyCycleOscillator_IntDoubleSort *new_ADXKeyCy
 
 __attribute__((unused)) static ADXKeyCycleOscillator_IntDoubleSort *create_ADXKeyCycleOscillator_IntDoubleSort_init(void);
 
-__attribute__((unused)) static void ADXKeyCycleOscillator_IntDoubleSort_sortWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value, jint low, jint hi);
+__attribute__((unused)) static void ADXKeyCycleOscillator_IntDoubleSort_sortWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value, int32_t low, int32_t hi);
 
-__attribute__((unused)) static jint ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, jint low, jint hi);
+__attribute__((unused)) static int32_t ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, int32_t low, int32_t hi);
 
-__attribute__((unused)) static void ADXKeyCycleOscillator_IntDoubleSort_swapWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, jint a, jint b);
+__attribute__((unused)) static void ADXKeyCycleOscillator_IntDoubleSort_swapWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, int32_t a, int32_t b);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_IntDoubleSort)
+
 
 @interface ADXKeyCycleOscillator_IntFloatFloatSort : NSObject
 
@@ -137,20 +150,20 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_IntDoubleSort)
 + (void)sortWithIntArray:(IOSIntArray *)key
           withFloatArray:(IOSFloatArray *)value1
           withFloatArray:(IOSFloatArray *)value2
-                 withInt:(jint)low
-                 withInt:(jint)hi;
+                 withInt:(int32_t)low
+                 withInt:(int32_t)hi;
 
-+ (jint)partitionWithIntArray:(IOSIntArray *)array
-               withFloatArray:(IOSFloatArray *)value1
-               withFloatArray:(IOSFloatArray *)value2
-                      withInt:(jint)low
-                      withInt:(jint)hi;
++ (int32_t)partitionWithIntArray:(IOSIntArray *)array
+                  withFloatArray:(IOSFloatArray *)value1
+                  withFloatArray:(IOSFloatArray *)value2
+                         withInt:(int32_t)low
+                         withInt:(int32_t)hi;
 
 + (void)swapWithIntArray:(IOSIntArray *)array
           withFloatArray:(IOSFloatArray *)value1
           withFloatArray:(IOSFloatArray *)value2
-                 withInt:(jint)a
-                 withInt:(jint)b;
+                 withInt:(int32_t)a
+                 withInt:(int32_t)b;
 
 @end
 
@@ -162,17 +175,18 @@ __attribute__((unused)) static ADXKeyCycleOscillator_IntFloatFloatSort *new_ADXK
 
 __attribute__((unused)) static ADXKeyCycleOscillator_IntFloatFloatSort *create_ADXKeyCycleOscillator_IntFloatFloatSort_init(void);
 
-__attribute__((unused)) static void ADXKeyCycleOscillator_IntFloatFloatSort_sortWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value1, IOSFloatArray *value2, jint low, jint hi);
+__attribute__((unused)) static void ADXKeyCycleOscillator_IntFloatFloatSort_sortWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value1, IOSFloatArray *value2, int32_t low, int32_t hi);
 
-__attribute__((unused)) static jint ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, jint low, jint hi);
+__attribute__((unused)) static int32_t ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, int32_t low, int32_t hi);
 
-__attribute__((unused)) static void ADXKeyCycleOscillator_IntFloatFloatSort_swapWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, jint a, jint b);
+__attribute__((unused)) static void ADXKeyCycleOscillator_IntFloatFloatSort_swapWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, int32_t a, int32_t b);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyCycleOscillator_IntFloatFloatSort)
 
+
 @interface ADXKeyCycleOscillator_CycleOscillator () {
  @public
-  jint mVariesBy_;
+  int32_t mVariesBy_;
 }
 
 @end
@@ -181,17 +195,17 @@ inline NSString *ADXKeyCycleOscillator_CycleOscillator_get_TAG(void);
 static NSString *ADXKeyCycleOscillator_CycleOscillator_TAG = @"CycleOscillator";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyCycleOscillator_CycleOscillator, TAG, NSString *)
 
-inline jint ADXKeyCycleOscillator_CycleOscillator_get_OFFST(void);
+inline int32_t ADXKeyCycleOscillator_CycleOscillator_get_OFFST(void);
 #define ADXKeyCycleOscillator_CycleOscillator_OFFST 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, OFFST, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, OFFST, int32_t)
 
-inline jint ADXKeyCycleOscillator_CycleOscillator_get_PHASE(void);
+inline int32_t ADXKeyCycleOscillator_CycleOscillator_get_PHASE(void);
 #define ADXKeyCycleOscillator_CycleOscillator_PHASE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, PHASE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, PHASE, int32_t)
 
-inline jint ADXKeyCycleOscillator_CycleOscillator_get_VALUE(void);
+inline int32_t ADXKeyCycleOscillator_CycleOscillator_get_VALUE(void);
 #define ADXKeyCycleOscillator_CycleOscillator_VALUE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, VALUE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyCycleOscillator_CycleOscillator, VALUE, int32_t)
 
 @implementation ADXKeyCycleOscillator
 
@@ -206,7 +220,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXKeyCycleOscillator_makeWidgetCycleWithNSString_(attribute);
 }
 
-- (jboolean)variesByPath {
+- (bool)variesByPath {
   return mVariesBy_ == 1;
 }
 
@@ -223,12 +237,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&mType_, type);
 }
 
-- (jfloat)getWithFloat:(jfloat)t {
-  return (jfloat) [((ADXKeyCycleOscillator_CycleOscillator *) nil_chk(mCycleOscillator_)) getValuesWithFloat:t];
+- (float)getWithFloat:(float)t {
+  return (float) [((ADXKeyCycleOscillator_CycleOscillator *) nil_chk(mCycleOscillator_)) getValuesWithFloat:t];
 }
 
-- (jfloat)getSlopeWithFloat:(jfloat)position {
-  return (jfloat) [((ADXKeyCycleOscillator_CycleOscillator *) nil_chk(mCycleOscillator_)) getSlopeWithFloat:position];
+- (float)getSlopeWithFloat:(float)position {
+  return (float) [((ADXKeyCycleOscillator_CycleOscillator *) nil_chk(mCycleOscillator_)) getSlopeWithFloat:position];
 }
 
 - (ADXCurveFit *)getCurveFit {
@@ -238,14 +252,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)setCustomWithId:(id)custom {
 }
 
-- (void)setPointWithInt:(jint)framePosition
-                withInt:(jint)shape
+- (void)setPointWithInt:(int32_t)framePosition
+                withInt:(int32_t)shape
            withNSString:(NSString *)waveString
-                withInt:(jint)variesBy
-              withFloat:(jfloat)period
-              withFloat:(jfloat)offset
-              withFloat:(jfloat)phase
-              withFloat:(jfloat)value
+                withInt:(int32_t)variesBy
+              withFloat:(float)period
+              withFloat:(float)offset
+              withFloat:(float)phase
+              withFloat:(float)value
                  withId:(id)custom {
   [((JavaUtilArrayList *) nil_chk(mWavePoints_)) addWithId:create_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(framePosition, period, offset, phase, value)];
   if (variesBy != -1) {
@@ -256,14 +270,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&mWaveString_, waveString);
 }
 
-- (void)setPointWithInt:(jint)framePosition
-                withInt:(jint)shape
+- (void)setPointWithInt:(int32_t)framePosition
+                withInt:(int32_t)shape
            withNSString:(NSString *)waveString
-                withInt:(jint)variesBy
-              withFloat:(jfloat)period
-              withFloat:(jfloat)offset
-              withFloat:(jfloat)phase
-              withFloat:(jfloat)value {
+                withInt:(int32_t)variesBy
+              withFloat:(float)period
+              withFloat:(float)offset
+              withFloat:(float)phase
+              withFloat:(float)value {
   [((JavaUtilArrayList *) nil_chk(mWavePoints_)) addWithId:create_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(framePosition, period, offset, phase, value)];
   if (variesBy != -1) {
     mVariesBy_ = variesBy;
@@ -272,16 +286,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&mWaveString_, waveString);
 }
 
-- (void)setupWithFloat:(jfloat)pathLength {
-  jint count = [((JavaUtilArrayList *) nil_chk(mWavePoints_)) size];
+- (void)setupWithFloat:(float)pathLength {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mWavePoints_)) size];
   if (count == 0) {
     return;
   }
   JavaUtilCollections_sortWithJavaUtilList_withJavaUtilComparator_(mWavePoints_, create_ADXKeyCycleOscillator_1_init());
   IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:count];
-  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ count, 3 }];
+  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ count, 3 }];
   JreStrongAssignAndConsume(&mCycleOscillator_, new_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(mWaveShape_, mWaveString_, mVariesBy_, count));
-  jint i = 0;
+  int32_t i = 0;
   for (ADXKeyCycleOscillator_WavePoint * __strong wp in nil_chk(mWavePoints_)) {
     *IOSDoubleArray_GetRef(time, i) = ((ADXKeyCycleOscillator_WavePoint *) nil_chk(wp))->mPeriod_ * 1E-2;
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), 0) = wp->mValue_;
@@ -295,7 +309,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setPropertyWithADXMotionWidget:(ADXMotionWidget *)widget
-                             withFloat:(jfloat)t {
+                             withFloat:(float)t {
 }
 
 - (void)dealloc {
@@ -375,6 +389,8 @@ ADXKeyCycleOscillator *ADXKeyCycleOscillator_makeWidgetCycleWithNSString_(NSStri
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator)
 
+J2OBJC_NAME_MAPPING(ADXKeyCycleOscillator, "androidx.constraintlayout.core.motion.utils", "ADX")
+
 @implementation ADXKeyCycleOscillator_CoreSpline
 
 - (instancetype)initWithNSString:(NSString *)str {
@@ -383,7 +399,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator)
 }
 
 - (void)setPropertyWithADXMotionWidget:(ADXMotionWidget *)widget
-                             withFloat:(jfloat)t {
+                             withFloat:(float)t {
   [((ADXMotionWidget *) nil_chk(widget)) setValueWithInt:typeId_ withFloat:[self getWithFloat:t]];
 }
 
@@ -438,15 +454,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_CoreSpline)
 }
 
 - (void)setPropertyWithADXMotionWidget:(ADXMotionWidget *)widget
-                             withFloat:(jfloat)t {
+                             withFloat:(float)t {
   [((ADXMotionWidget *) nil_chk(widget)) setValueWithInt:typeId_ withFloat:[self getWithFloat:t]];
 }
 
 - (void)setPathRotateWithADXMotionWidget:(ADXMotionWidget *)view
-                               withFloat:(jfloat)t
-                              withDouble:(jdouble)dx
-                              withDouble:(jdouble)dy {
-  [((ADXMotionWidget *) nil_chk(view)) setRotationZWithFloat:[self getWithFloat:t] + (jfloat) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
+                               withFloat:(float)t
+                              withDouble:(double)dx
+                              withDouble:(double)dy {
+  [((ADXMotionWidget *) nil_chk(view)) setRotationZWithFloat:[self getWithFloat:t] + (float) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
 }
 
 - (void)dealloc {
@@ -496,11 +512,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_PathRotateSet)
 
 @implementation ADXKeyCycleOscillator_WavePoint
 
-- (instancetype)initWithInt:(jint)position
-                  withFloat:(jfloat)period
-                  withFloat:(jfloat)offset
-                  withFloat:(jfloat)phase
-                  withFloat:(jfloat)value {
+- (instancetype)initWithInt:(int32_t)position
+                  withFloat:(float)period
+                  withFloat:(float)offset
+                  withFloat:(float)phase
+                  withFloat:(float)value {
   ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(self, position, period, offset, phase, value);
   return self;
 }
@@ -528,7 +544,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_PathRotateSet)
 
 @end
 
-void ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(ADXKeyCycleOscillator_WavePoint *self, jint position, jfloat period, jfloat offset, jfloat phase, jfloat value) {
+void ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(ADXKeyCycleOscillator_WavePoint *self, int32_t position, float period, float offset, float phase, float value) {
   NSObject_init(self);
   self->mPosition_ = position;
   self->mValue_ = value;
@@ -537,11 +553,11 @@ void ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_w
   self->mPhase_ = phase;
 }
 
-ADXKeyCycleOscillator_WavePoint *new_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(jint position, jfloat period, jfloat offset, jfloat phase, jfloat value) {
+ADXKeyCycleOscillator_WavePoint *new_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(int32_t position, float period, float offset, float phase, float value) {
   J2OBJC_NEW_IMPL(ADXKeyCycleOscillator_WavePoint, initWithInt_withFloat_withFloat_withFloat_withFloat_, position, period, offset, phase, value)
 }
 
-ADXKeyCycleOscillator_WavePoint *create_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(jint position, jfloat period, jfloat offset, jfloat phase, jfloat value) {
+ADXKeyCycleOscillator_WavePoint *create_ADXKeyCycleOscillator_WavePoint_initWithInt_withFloat_withFloat_withFloat_withFloat_(int32_t position, float period, float offset, float phase, float value) {
   J2OBJC_CREATE_IMPL(ADXKeyCycleOscillator_WavePoint, initWithInt_withFloat_withFloat_withFloat_withFloat_, position, period, offset, phase, value)
 }
 
@@ -556,8 +572,8 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jint)compareWithId:(ADXKeyCycleOscillator_WavePoint *)lhs
-               withId:(ADXKeyCycleOscillator_WavePoint *)rhs {
+- (int32_t)compareWithId:(ADXKeyCycleOscillator_WavePoint *)lhs
+                  withId:(ADXKeyCycleOscillator_WavePoint *)rhs {
   return JavaLangInteger_compareWithInt_withInt_(((ADXKeyCycleOscillator_WavePoint *) nil_chk(lhs))->mPosition_, ((ADXKeyCycleOscillator_WavePoint *) nil_chk(rhs))->mPosition_);
 }
 
@@ -602,7 +618,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(compareWithId:withId:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "compare", "LADXKeyCycleOscillator_WavePoint;LADXKeyCycleOscillator_WavePoint;", "LADXKeyCycleOscillator;", "setupWithFloat:", "Ljava/lang/Object;Ljava/util/Comparator<Landroidx/constraintlayout/core/motion/utils/KeyCycleOscillator$WavePoint;>;" };
-  static const J2ObjcClassInfo _ADXKeyCycleOscillator_1 = { "", "androidx.constraintlayout.core.motion.utils", ptrTable, methods, NULL, 7, 0x8010, 2, 0, 2, -1, 3, 4, -1 };
+  static const J2ObjcClassInfo _ADXKeyCycleOscillator_1 = { "", "androidx.constraintlayout.core.motion.utils", ptrTable, methods, NULL, 7, 0x8000, 2, 0, 2, -1, 3, 4, -1 };
   return &_ADXKeyCycleOscillator_1;
 }
 
@@ -631,22 +647,22 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)sortWithIntArray:(IOSIntArray *)key
           withFloatArray:(IOSFloatArray *)value
-                 withInt:(jint)low
-                 withInt:(jint)hi {
+                 withInt:(int32_t)low
+                 withInt:(int32_t)hi {
   ADXKeyCycleOscillator_IntDoubleSort_sortWithIntArray_withFloatArray_withInt_withInt_(key, value, low, hi);
 }
 
-+ (jint)partitionWithIntArray:(IOSIntArray *)array
-               withFloatArray:(IOSFloatArray *)value
-                      withInt:(jint)low
-                      withInt:(jint)hi {
++ (int32_t)partitionWithIntArray:(IOSIntArray *)array
+                  withFloatArray:(IOSFloatArray *)value
+                         withInt:(int32_t)low
+                         withInt:(int32_t)hi {
   return ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_withInt_withInt_(array, value, low, hi);
 }
 
 + (void)swapWithIntArray:(IOSIntArray *)array
           withFloatArray:(IOSFloatArray *)value
-                 withInt:(jint)a
-                 withInt:(jint)b {
+                 withInt:(int32_t)a
+                 withInt:(int32_t)b {
   ADXKeyCycleOscillator_IntDoubleSort_swapWithIntArray_withFloatArray_withInt_withInt_(array, value, a, b);
 }
 
@@ -684,17 +700,17 @@ ADXKeyCycleOscillator_IntDoubleSort *create_ADXKeyCycleOscillator_IntDoubleSort_
   J2OBJC_CREATE_IMPL(ADXKeyCycleOscillator_IntDoubleSort, init)
 }
 
-void ADXKeyCycleOscillator_IntDoubleSort_sortWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value, jint low, jint hi) {
+void ADXKeyCycleOscillator_IntDoubleSort_sortWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value, int32_t low, int32_t hi) {
   ADXKeyCycleOscillator_IntDoubleSort_initialize();
   IOSIntArray *stack = [IOSIntArray arrayWithLength:((IOSIntArray *) nil_chk(key))->size_ + 10];
-  jint count = 0;
+  int32_t count = 0;
   *IOSIntArray_GetRef(stack, count++) = hi;
   *IOSIntArray_GetRef(stack, count++) = low;
   while (count > 0) {
     low = IOSIntArray_Get(stack, --count);
     hi = IOSIntArray_Get(stack, --count);
     if (low < hi) {
-      jint p = ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_withInt_withInt_(key, value, low, hi);
+      int32_t p = ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_withInt_withInt_(key, value, low, hi);
       *IOSIntArray_GetRef(stack, count++) = p - 1;
       *IOSIntArray_GetRef(stack, count++) = low;
       *IOSIntArray_GetRef(stack, count++) = hi;
@@ -703,11 +719,11 @@ void ADXKeyCycleOscillator_IntDoubleSort_sortWithIntArray_withFloatArray_withInt
   }
 }
 
-jint ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, jint low, jint hi) {
+int32_t ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, int32_t low, int32_t hi) {
   ADXKeyCycleOscillator_IntDoubleSort_initialize();
-  jint pivot = IOSIntArray_Get(nil_chk(array), hi);
-  jint i = low;
-  for (jint j = low; j < hi; j++) {
+  int32_t pivot = IOSIntArray_Get(nil_chk(array), hi);
+  int32_t i = low;
+  for (int32_t j = low; j < hi; j++) {
     if (IOSIntArray_Get(array, j) <= pivot) {
       ADXKeyCycleOscillator_IntDoubleSort_swapWithIntArray_withFloatArray_withInt_withInt_(array, value, i, j);
       i++;
@@ -717,12 +733,12 @@ jint ADXKeyCycleOscillator_IntDoubleSort_partitionWithIntArray_withFloatArray_wi
   return i;
 }
 
-void ADXKeyCycleOscillator_IntDoubleSort_swapWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, jint a, jint b) {
+void ADXKeyCycleOscillator_IntDoubleSort_swapWithIntArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value, int32_t a, int32_t b) {
   ADXKeyCycleOscillator_IntDoubleSort_initialize();
-  jint tmp = IOSIntArray_Get(nil_chk(array), a);
+  int32_t tmp = IOSIntArray_Get(nil_chk(array), a);
   *IOSIntArray_GetRef(array, a) = IOSIntArray_Get(array, b);
   *IOSIntArray_GetRef(array, b) = tmp;
-  jfloat tmpv = IOSFloatArray_Get(nil_chk(value), a);
+  float tmpv = IOSFloatArray_Get(nil_chk(value), a);
   *IOSFloatArray_GetRef(value, a) = IOSFloatArray_Get(value, b);
   *IOSFloatArray_GetRef(value, b) = tmpv;
 }
@@ -741,24 +757,24 @@ J2OBJC_IGNORE_DESIGNATED_END
 + (void)sortWithIntArray:(IOSIntArray *)key
           withFloatArray:(IOSFloatArray *)value1
           withFloatArray:(IOSFloatArray *)value2
-                 withInt:(jint)low
-                 withInt:(jint)hi {
+                 withInt:(int32_t)low
+                 withInt:(int32_t)hi {
   ADXKeyCycleOscillator_IntFloatFloatSort_sortWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(key, value1, value2, low, hi);
 }
 
-+ (jint)partitionWithIntArray:(IOSIntArray *)array
-               withFloatArray:(IOSFloatArray *)value1
-               withFloatArray:(IOSFloatArray *)value2
-                      withInt:(jint)low
-                      withInt:(jint)hi {
++ (int32_t)partitionWithIntArray:(IOSIntArray *)array
+                  withFloatArray:(IOSFloatArray *)value1
+                  withFloatArray:(IOSFloatArray *)value2
+                         withInt:(int32_t)low
+                         withInt:(int32_t)hi {
   return ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(array, value1, value2, low, hi);
 }
 
 + (void)swapWithIntArray:(IOSIntArray *)array
           withFloatArray:(IOSFloatArray *)value1
           withFloatArray:(IOSFloatArray *)value2
-                 withInt:(jint)a
-                 withInt:(jint)b {
+                 withInt:(int32_t)a
+                 withInt:(int32_t)b {
   ADXKeyCycleOscillator_IntFloatFloatSort_swapWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(array, value1, value2, a, b);
 }
 
@@ -796,17 +812,17 @@ ADXKeyCycleOscillator_IntFloatFloatSort *create_ADXKeyCycleOscillator_IntFloatFl
   J2OBJC_CREATE_IMPL(ADXKeyCycleOscillator_IntFloatFloatSort, init)
 }
 
-void ADXKeyCycleOscillator_IntFloatFloatSort_sortWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value1, IOSFloatArray *value2, jint low, jint hi) {
+void ADXKeyCycleOscillator_IntFloatFloatSort_sortWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *key, IOSFloatArray *value1, IOSFloatArray *value2, int32_t low, int32_t hi) {
   ADXKeyCycleOscillator_IntFloatFloatSort_initialize();
   IOSIntArray *stack = [IOSIntArray arrayWithLength:((IOSIntArray *) nil_chk(key))->size_ + 10];
-  jint count = 0;
+  int32_t count = 0;
   *IOSIntArray_GetRef(stack, count++) = hi;
   *IOSIntArray_GetRef(stack, count++) = low;
   while (count > 0) {
     low = IOSIntArray_Get(stack, --count);
     hi = IOSIntArray_Get(stack, --count);
     if (low < hi) {
-      jint p = ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(key, value1, value2, low, hi);
+      int32_t p = ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(key, value1, value2, low, hi);
       *IOSIntArray_GetRef(stack, count++) = p - 1;
       *IOSIntArray_GetRef(stack, count++) = low;
       *IOSIntArray_GetRef(stack, count++) = hi;
@@ -815,11 +831,11 @@ void ADXKeyCycleOscillator_IntFloatFloatSort_sortWithIntArray_withFloatArray_wit
   }
 }
 
-jint ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, jint low, jint hi) {
+int32_t ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, int32_t low, int32_t hi) {
   ADXKeyCycleOscillator_IntFloatFloatSort_initialize();
-  jint pivot = IOSIntArray_Get(nil_chk(array), hi);
-  jint i = low;
-  for (jint j = low; j < hi; j++) {
+  int32_t pivot = IOSIntArray_Get(nil_chk(array), hi);
+  int32_t i = low;
+  for (int32_t j = low; j < hi; j++) {
     if (IOSIntArray_Get(array, j) <= pivot) {
       ADXKeyCycleOscillator_IntFloatFloatSort_swapWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(array, value1, value2, i, j);
       i++;
@@ -829,12 +845,12 @@ jint ADXKeyCycleOscillator_IntFloatFloatSort_partitionWithIntArray_withFloatArra
   return i;
 }
 
-void ADXKeyCycleOscillator_IntFloatFloatSort_swapWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, jint a, jint b) {
+void ADXKeyCycleOscillator_IntFloatFloatSort_swapWithIntArray_withFloatArray_withFloatArray_withInt_withInt_(IOSIntArray *array, IOSFloatArray *value1, IOSFloatArray *value2, int32_t a, int32_t b) {
   ADXKeyCycleOscillator_IntFloatFloatSort_initialize();
-  jint tmp = IOSIntArray_Get(nil_chk(array), a);
+  int32_t tmp = IOSIntArray_Get(nil_chk(array), a);
   *IOSIntArray_GetRef(array, a) = IOSIntArray_Get(array, b);
   *IOSIntArray_GetRef(array, b) = tmp;
-  jfloat tmpFloat = IOSFloatArray_Get(nil_chk(value1), a);
+  float tmpFloat = IOSFloatArray_Get(nil_chk(value1), a);
   *IOSFloatArray_GetRef(value1, a) = IOSFloatArray_Get(value1, b);
   *IOSFloatArray_GetRef(value1, b) = tmpFloat;
   tmpFloat = IOSFloatArray_Get(nil_chk(value2), a);
@@ -846,15 +862,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_IntFloatFloatSort)
 
 @implementation ADXKeyCycleOscillator_CycleOscillator
 
-- (instancetype)initWithInt:(jint)waveShape
+- (instancetype)initWithInt:(int32_t)waveShape
                withNSString:(NSString *)customShape
-                    withInt:(jint)variesBy
-                    withInt:(jint)steps {
+                    withInt:(int32_t)variesBy
+                    withInt:(int32_t)steps {
   ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(self, waveShape, customShape, variesBy, steps);
   return self;
 }
 
-- (jdouble)getValuesWithFloat:(jfloat)time {
+- (double)getValuesWithFloat:(float)time {
   if (mCurveFit_ != nil) {
     [mCurveFit_ getPosWithDouble:time withDoubleArray:mSplineValueCache_];
   }
@@ -863,17 +879,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_IntFloatFloatSort)
     *IOSDoubleArray_GetRef(mSplineValueCache_, ADXKeyCycleOscillator_CycleOscillator_PHASE) = IOSFloatArray_Get(nil_chk(mPhase_), 0);
     *IOSDoubleArray_GetRef(mSplineValueCache_, ADXKeyCycleOscillator_CycleOscillator_VALUE) = IOSFloatArray_Get(nil_chk(mValues_), 0);
   }
-  jdouble offset = IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_OFFST);
-  jdouble phase = IOSDoubleArray_Get(mSplineValueCache_, ADXKeyCycleOscillator_CycleOscillator_PHASE);
-  jdouble waveValue = [((ADXOscillator *) nil_chk(mOscillator_)) getValueWithDouble:time withDouble:phase];
+  double offset = IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_OFFST);
+  double phase = IOSDoubleArray_Get(mSplineValueCache_, ADXKeyCycleOscillator_CycleOscillator_PHASE);
+  double waveValue = [((ADXOscillator *) nil_chk(mOscillator_)) getValueWithDouble:time withDouble:phase];
   return offset + waveValue * IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_VALUE);
 }
 
-- (jdouble)getLastPhase {
+- (double)getLastPhase {
   return IOSDoubleArray_Get(nil_chk(mSplineValueCache_), 1);
 }
 
-- (jdouble)getSlopeWithFloat:(jfloat)time {
+- (double)getSlopeWithFloat:(float)time {
   if (mCurveFit_ != nil) {
     [mCurveFit_ getSlopeWithDouble:time withDoubleArray:mSplineSlopeCache_];
     [((ADXCurveFit *) nil_chk(mCurveFit_)) getPosWithDouble:time withDoubleArray:mSplineValueCache_];
@@ -883,17 +899,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_IntFloatFloatSort)
     *IOSDoubleArray_GetRef(mSplineSlopeCache_, ADXKeyCycleOscillator_CycleOscillator_PHASE) = 0;
     *IOSDoubleArray_GetRef(mSplineSlopeCache_, ADXKeyCycleOscillator_CycleOscillator_VALUE) = 0;
   }
-  jdouble waveValue = [((ADXOscillator *) nil_chk(mOscillator_)) getValueWithDouble:time withDouble:IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_PHASE)];
-  jdouble waveSlope = [((ADXOscillator *) nil_chk(mOscillator_)) getSlopeWithDouble:time withDouble:IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_PHASE) withDouble:IOSDoubleArray_Get(nil_chk(mSplineSlopeCache_), ADXKeyCycleOscillator_CycleOscillator_PHASE)];
+  double waveValue = [((ADXOscillator *) nil_chk(mOscillator_)) getValueWithDouble:time withDouble:IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_PHASE)];
+  double waveSlope = [((ADXOscillator *) nil_chk(mOscillator_)) getSlopeWithDouble:time withDouble:IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_PHASE) withDouble:IOSDoubleArray_Get(nil_chk(mSplineSlopeCache_), ADXKeyCycleOscillator_CycleOscillator_PHASE)];
   return IOSDoubleArray_Get(nil_chk(mSplineSlopeCache_), ADXKeyCycleOscillator_CycleOscillator_OFFST) + waveValue * IOSDoubleArray_Get(mSplineSlopeCache_, ADXKeyCycleOscillator_CycleOscillator_VALUE) + waveSlope * IOSDoubleArray_Get(nil_chk(mSplineValueCache_), ADXKeyCycleOscillator_CycleOscillator_VALUE);
 }
 
-- (void)setPointWithInt:(jint)index
-                withInt:(jint)framePosition
-              withFloat:(jfloat)wavePeriod
-              withFloat:(jfloat)offset
-              withFloat:(jfloat)phase
-              withFloat:(jfloat)values {
+- (void)setPointWithInt:(int32_t)index
+                withInt:(int32_t)framePosition
+              withFloat:(float)wavePeriod
+              withFloat:(float)offset
+              withFloat:(float)phase
+              withFloat:(float)values {
   *IOSDoubleArray_GetRef(nil_chk(mPosition_), index) = framePosition / 100.0;
   *IOSFloatArray_GetRef(nil_chk(mPeriod_), index) = wavePeriod;
   *IOSFloatArray_GetRef(nil_chk(mOffset_), index) = offset;
@@ -901,19 +917,19 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_IntFloatFloatSort)
   *IOSFloatArray_GetRef(nil_chk(mValues_), index) = values;
 }
 
-- (void)setupWithFloat:(jfloat)pathLength {
+- (void)setupWithFloat:(float)pathLength {
   mPathLength_ = pathLength;
-  IOSObjectArray *splineValues = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ ((IOSDoubleArray *) nil_chk(mPosition_))->size_, 3 }];
+  IOSObjectArray *splineValues = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ ((IOSDoubleArray *) nil_chk(mPosition_))->size_, 3 }];
   JreStrongAssignAndConsume(&mSplineValueCache_, [IOSDoubleArray newArrayWithLength:2 + ((IOSFloatArray *) nil_chk(mValues_))->size_]);
   JreStrongAssignAndConsume(&mSplineSlopeCache_, [IOSDoubleArray newArrayWithLength:2 + mValues_->size_]);
   if (IOSDoubleArray_Get(mPosition_, 0) > 0) {
     [((ADXOscillator *) nil_chk(mOscillator_)) addPointWithDouble:0 withFloat:IOSFloatArray_Get(nil_chk(mPeriod_), 0)];
   }
-  jint last = ((IOSDoubleArray *) nil_chk(mPosition_))->size_ - 1;
+  int32_t last = ((IOSDoubleArray *) nil_chk(mPosition_))->size_ - 1;
   if (IOSDoubleArray_Get(mPosition_, last) < 1.0f) {
     [((ADXOscillator *) nil_chk(mOscillator_)) addPointWithDouble:1 withFloat:IOSFloatArray_Get(nil_chk(mPeriod_), last)];
   }
-  for (jint i = 0; i < splineValues->size_; i++) {
+  for (int32_t i = 0; i < splineValues->size_; i++) {
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(splineValues, i)), ADXKeyCycleOscillator_CycleOscillator_OFFST) = IOSFloatArray_Get(nil_chk(mOffset_), i);
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(splineValues, i)), ADXKeyCycleOscillator_CycleOscillator_PHASE) = IOSFloatArray_Get(nil_chk(mPhase_), i);
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(splineValues, i)), ADXKeyCycleOscillator_CycleOscillator_VALUE) = IOSFloatArray_Get(nil_chk(mValues_), i);
@@ -988,7 +1004,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyCycleOscillator_IntFloatFloatSort)
 
 @end
 
-void ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(ADXKeyCycleOscillator_CycleOscillator *self, jint waveShape, NSString *customShape, jint variesBy, jint steps) {
+void ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(ADXKeyCycleOscillator_CycleOscillator *self, int32_t waveShape, NSString *customShape, int32_t variesBy, int32_t steps) {
   NSObject_init(self);
   JreStrongAssignAndConsume(&self->mOscillator_, new_ADXOscillator_init());
   self->mWaveShape_ = waveShape;
@@ -1002,11 +1018,11 @@ void ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_with
   JreStrongAssignAndConsume(&self->mScale_, [IOSFloatArray newArrayWithLength:steps]);
 }
 
-ADXKeyCycleOscillator_CycleOscillator *new_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(jint waveShape, NSString *customShape, jint variesBy, jint steps) {
+ADXKeyCycleOscillator_CycleOscillator *new_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(int32_t waveShape, NSString *customShape, int32_t variesBy, int32_t steps) {
   J2OBJC_NEW_IMPL(ADXKeyCycleOscillator_CycleOscillator, initWithInt_withNSString_withInt_withInt_, waveShape, customShape, variesBy, steps)
 }
 
-ADXKeyCycleOscillator_CycleOscillator *create_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(jint waveShape, NSString *customShape, jint variesBy, jint steps) {
+ADXKeyCycleOscillator_CycleOscillator *create_ADXKeyCycleOscillator_CycleOscillator_initWithInt_withNSString_withInt_withInt_(int32_t waveShape, NSString *customShape, int32_t variesBy, int32_t steps) {
   J2OBJC_CREATE_IMPL(ADXKeyCycleOscillator_CycleOscillator, initWithInt_withNSString_withInt_withInt_, waveShape, customShape, variesBy, steps)
 }
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\DependencyNode.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_DependencyNode")
@@ -29,20 +30,23 @@
 @class ADXDependencyNode_Type;
 @class ADXDimensionDependency;
 @class ADXWidgetRun;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol JavaUtilList;
 
 @interface ADXDependencyNode : NSObject < ADXDependency > {
  @public
   id<ADXDependency> updateDelegate_;
-  jboolean delegateToWidgetRun_;
-  jboolean readyToSolve_;
+  bool delegateToWidgetRun_;
+  bool readyToSolve_;
   ADXWidgetRun *run_;
   ADXDependencyNode_Type *type_;
-  jint margin_;
-  jint value_;
-  jint marginFactor_;
+  int32_t margin_;
+  int32_t value_;
+  int32_t marginFactor_;
   ADXDimensionDependency *marginDependency_;
-  jboolean resolved_;
+  bool resolved_;
   id<JavaUtilList> dependencies_;
   id<JavaUtilList> targets_;
 }
@@ -57,7 +61,7 @@
 
 - (NSString *)name;
 
-- (void)resolveWithInt:(jint)value;
+- (void)resolveWithInt:(int32_t)value;
 
 - (NSString *)description;
 
@@ -88,6 +92,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXDependencyNode)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerDependencyNode ADXDependencyNode;
 
+
 #endif
 
 #if !defined (ADXDependencyNode_Type_) && (INCLUDE_ALL_DependencyNode || defined(INCLUDE_ADXDependencyNode_Type))
@@ -98,17 +103,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXDependencyNode)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXDependencyNode_Type_Enum) {
-  ADXDependencyNode_Type_Enum_UNKNOWN = 0,
-  ADXDependencyNode_Type_Enum_HORIZONTAL_DIMENSION = 1,
-  ADXDependencyNode_Type_Enum_VERTICAL_DIMENSION = 2,
-  ADXDependencyNode_Type_Enum_LEFT = 3,
-  ADXDependencyNode_Type_Enum_RIGHT = 4,
-  ADXDependencyNode_Type_Enum_TOP = 5,
-  ADXDependencyNode_Type_Enum_BOTTOM = 6,
-  ADXDependencyNode_Type_Enum_BASELINE = 7,
+typedef NS_ENUM(int32_t, ADXDependencyNode_Type_Enum) {
+  ADXDependencyNode_Type_Enum_UNKNOWN NS_SWIFT_NAME(unknown) = 0,
+  ADXDependencyNode_Type_Enum_HORIZONTAL_DIMENSION NS_SWIFT_NAME(horizontalDimension) = 1,
+  ADXDependencyNode_Type_Enum_VERTICAL_DIMENSION NS_SWIFT_NAME(verticalDimension) = 2,
+  ADXDependencyNode_Type_Enum_LEFT NS_SWIFT_NAME(left) = 3,
+  ADXDependencyNode_Type_Enum_RIGHT NS_SWIFT_NAME(right) = 4,
+  ADXDependencyNode_Type_Enum_TOP NS_SWIFT_NAME(top) = 5,
+  ADXDependencyNode_Type_Enum_BOTTOM NS_SWIFT_NAME(bottom) = 6,
+  ADXDependencyNode_Type_Enum_BASELINE NS_SWIFT_NAME(baseline) = 7,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXDependencyNode_Type_ORDINAL int32_t
+#else
+#define ADXDependencyNode_Type_ORDINAL ADXDependencyNode_Type_Enum
+#endif
+
 
 @interface ADXDependencyNode_Type : JavaLangEnum
 
@@ -121,6 +134,13 @@ typedef NS_ENUM(NSUInteger, ADXDependencyNode_Type_Enum) {
 #pragma mark Package-Private
 
 - (ADXDependencyNode_Type_Enum)toNSEnum;
+
+@property(readonly) ADXDependencyNode_Type_Enum enumValue;
++ (ADXDependencyNode_Type *)fromNSEnum:(ADXDependencyNode_Type_Enum)value;
+
+- (ADXDependencyNode_Type_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithType:(ADXDependencyNode_Type_Enum)value;
 
 @end
 
@@ -157,9 +177,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXDependencyNode_Type_values(void);
 
 FOUNDATION_EXPORT ADXDependencyNode_Type *ADXDependencyNode_Type_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXDependencyNode_Type *ADXDependencyNode_Type_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXDependencyNode_Type *ADXDependencyNode_Type_fromOrdinal(ADXDependencyNode_Type_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXDependencyNode_Type)
+
 
 #endif
 

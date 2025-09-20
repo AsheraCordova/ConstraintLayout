@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintAttribute.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintAttribute")
@@ -25,12 +26,16 @@
 @class ADView;
 @class ADXConstraintAttribute_AttributeType;
 @class IOSFloatArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
+@class NSString;
 
 @interface ADXConstraintAttribute : NSObject {
  @public
   NSString *mName_;
-  jboolean mBooleanValue_;
+  bool mBooleanValue_;
 }
 
 #pragma mark Public
@@ -41,7 +46,7 @@
 - (instancetype)initWithNSString:(NSString *)name
 withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *)attributeType
                           withId:(id)value
-                     withBoolean:(jboolean)method;
+                     withBoolean:(bool)method;
 
 - (void)applyCustomWithADView:(ADView *)view;
 
@@ -52,11 +57,11 @@ withADXConstraintAttribute_AttributeType:(ADXConstraintAttribute_AttributeType *
 
 - (void)getValuesToInterpolateWithFloatArray:(IOSFloatArray *)ret;
 
-- (jfloat)getValueToInterpolate;
+- (float)getValueToInterpolate;
 
-- (jboolean)isContinuous;
+- (bool)isContinuous;
 
-- (jint)numberOfInterpolatedValues;
+- (int32_t)numberOfInterpolatedValues;
 
 + (void)setAttributesWithADView:(ADView *)view
             withJavaUtilHashMap:(JavaUtilHashMap *)map;
@@ -78,11 +83,11 @@ J2OBJC_EMPTY_STATIC_INIT(ADXConstraintAttribute)
 
 J2OBJC_FIELD_SETTER(ADXConstraintAttribute, mName_, NSString *)
 
-FOUNDATION_EXPORT void ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(ADXConstraintAttribute *self, NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method);
+FOUNDATION_EXPORT void ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(ADXConstraintAttribute *self, NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, bool method);
 
-FOUNDATION_EXPORT ADXConstraintAttribute *new_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintAttribute *new_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, bool method) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintAttribute *create_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, jboolean method);
+FOUNDATION_EXPORT ADXConstraintAttribute *create_ADXConstraintAttribute_initWithNSString_withADXConstraintAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXConstraintAttribute_AttributeType *attributeType, id value, bool method);
 
 FOUNDATION_EXPORT void ADXConstraintAttribute_initWithADXConstraintAttribute_withId_(ADXConstraintAttribute *self, ADXConstraintAttribute *source, id value);
 
@@ -98,6 +103,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintAttribute)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetConstraintAttribute ADXConstraintAttribute;
 
+
 #endif
 
 #if !defined (ADXConstraintAttribute_AttributeType_) && (INCLUDE_ALL_ConstraintAttribute || defined(INCLUDE_ADXConstraintAttribute_AttributeType))
@@ -108,17 +114,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintAttribute)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXConstraintAttribute_AttributeType_Enum) {
-  ADXConstraintAttribute_AttributeType_Enum_INT_TYPE = 0,
-  ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE = 1,
-  ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE = 2,
-  ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE = 3,
-  ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE = 4,
-  ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE = 5,
-  ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE = 6,
-  ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE = 7,
+typedef NS_ENUM(int32_t, ADXConstraintAttribute_AttributeType_Enum) {
+  ADXConstraintAttribute_AttributeType_Enum_INT_TYPE NS_SWIFT_NAME(intType) = 0,
+  ADXConstraintAttribute_AttributeType_Enum_FLOAT_TYPE NS_SWIFT_NAME(floatType) = 1,
+  ADXConstraintAttribute_AttributeType_Enum_COLOR_TYPE NS_SWIFT_NAME(colorType) = 2,
+  ADXConstraintAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE NS_SWIFT_NAME(colorDrawableType) = 3,
+  ADXConstraintAttribute_AttributeType_Enum_STRING_TYPE NS_SWIFT_NAME(stringType) = 4,
+  ADXConstraintAttribute_AttributeType_Enum_BOOLEAN_TYPE NS_SWIFT_NAME(booleanType) = 5,
+  ADXConstraintAttribute_AttributeType_Enum_DIMENSION_TYPE NS_SWIFT_NAME(dimensionType) = 6,
+  ADXConstraintAttribute_AttributeType_Enum_REFERENCE_TYPE NS_SWIFT_NAME(referenceType) = 7,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXConstraintAttribute_AttributeType_ORDINAL int32_t
+#else
+#define ADXConstraintAttribute_AttributeType_ORDINAL ADXConstraintAttribute_AttributeType_Enum
+#endif
+
 
 @interface ADXConstraintAttribute_AttributeType : JavaLangEnum
 
@@ -131,6 +145,13 @@ typedef NS_ENUM(NSUInteger, ADXConstraintAttribute_AttributeType_Enum) {
 #pragma mark Package-Private
 
 - (ADXConstraintAttribute_AttributeType_Enum)toNSEnum;
+
+@property(readonly) ADXConstraintAttribute_AttributeType_Enum enumValue;
++ (ADXConstraintAttribute_AttributeType *)fromNSEnum:(ADXConstraintAttribute_AttributeType_Enum)value;
+
+- (ADXConstraintAttribute_AttributeType_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithAttributeType:(ADXConstraintAttribute_AttributeType_Enum)value;
 
 @end
 
@@ -167,9 +188,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXConstraintAttribute_AttributeType_values(vo
 
 FOUNDATION_EXPORT ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXConstraintAttribute_AttributeType *ADXConstraintAttribute_AttributeType_fromOrdinal(ADXConstraintAttribute_AttributeType_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintAttribute_AttributeType)
+
 
 #endif
 

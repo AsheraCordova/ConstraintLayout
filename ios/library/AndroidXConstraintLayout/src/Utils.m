@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Utils.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
@@ -10,6 +15,10 @@
 #include "java/io/IOException.h"
 #include "java/io/OutputStream.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/StackTraceElement.h"
 #include "java/lang/System.h"
@@ -17,13 +26,19 @@
 #include "java/net/Socket.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXUtils ()
 
-+ (jint)clampWithInt:(jint)c;
++ (int32_t)clampWithInt:(int32_t)c;
 
 @end
 
-__attribute__((unused)) static jint ADXUtils_clampWithInt_(jint c);
+__attribute__((unused)) static int32_t ADXUtils_clampWithInt_(int32_t c);
 
 @implementation ADXUtils
 
@@ -48,28 +63,28 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXUtils_socketSendWithNSString_(str);
 }
 
-+ (jint)clampWithInt:(jint)c {
++ (int32_t)clampWithInt:(int32_t)c {
   return ADXUtils_clampWithInt_(c);
 }
 
-- (jint)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value {
-  jint r = ADXUtils_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
-  jint g = ADXUtils_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
-  jint b = ADXUtils_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
-  jint a = ADXUtils_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
-  jint color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
+- (int32_t)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value {
+  int32_t r = ADXUtils_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+  int32_t g = ADXUtils_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+  int32_t b = ADXUtils_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+  int32_t a = ADXUtils_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
+  int32_t color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
   return color;
 }
 
-+ (jint)rgbaTocColorWithFloat:(jfloat)r
-                    withFloat:(jfloat)g
-                    withFloat:(jfloat)b
-                    withFloat:(jfloat)a {
++ (int32_t)rgbaTocColorWithFloat:(float)r
+                       withFloat:(float)g
+                       withFloat:(float)b
+                       withFloat:(float)a {
   return ADXUtils_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(r, g, b, a);
 }
 
 + (void)logStackWithNSString:(NSString *)msg
-                     withInt:(jint)n {
+                     withInt:(int32_t)n {
   ADXUtils_logStackWithNSString_withInt_(msg, n);
 }
 
@@ -144,9 +159,9 @@ void ADXUtils_socketSendWithNSString_(NSString *str) {
   }
 }
 
-jint ADXUtils_clampWithInt_(jint c) {
+int32_t ADXUtils_clampWithInt_(int32_t c) {
   ADXUtils_initialize();
-  jint N = 255;
+  int32_t N = 255;
   c &= ~(JreRShift32(c, 31));
   c -= N;
   c &= (JreRShift32(c, 31));
@@ -154,22 +169,22 @@ jint ADXUtils_clampWithInt_(jint c) {
   return c;
 }
 
-jint ADXUtils_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(jfloat r, jfloat g, jfloat b, jfloat a) {
+int32_t ADXUtils_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(float r, float g, float b, float a) {
   ADXUtils_initialize();
-  jint ir = ADXUtils_clampWithInt_(JreFpToInt((r * 255.0f)));
-  jint ig = ADXUtils_clampWithInt_(JreFpToInt((g * 255.0f)));
-  jint ib = ADXUtils_clampWithInt_(JreFpToInt((b * 255.0f)));
-  jint ia = ADXUtils_clampWithInt_(JreFpToInt((a * 255.0f)));
-  jint color = (JreLShift32(ia, 24)) | (JreLShift32(ir, 16)) | (JreLShift32(ig, 8)) | ib;
+  int32_t ir = ADXUtils_clampWithInt_(JreFpToInt((r * 255.0f)));
+  int32_t ig = ADXUtils_clampWithInt_(JreFpToInt((g * 255.0f)));
+  int32_t ib = ADXUtils_clampWithInt_(JreFpToInt((b * 255.0f)));
+  int32_t ia = ADXUtils_clampWithInt_(JreFpToInt((a * 255.0f)));
+  int32_t color = (JreLShift32(ia, 24)) | (JreLShift32(ir, 16)) | (JreLShift32(ig, 8)) | ib;
   return color;
 }
 
-void ADXUtils_logStackWithNSString_withInt_(NSString *msg, jint n) {
+void ADXUtils_logStackWithNSString_withInt_(NSString *msg, int32_t n) {
   ADXUtils_initialize();
   IOSObjectArray *st = [create_JavaLangThrowable_init() getStackTrace];
   NSString *s = @" ";
   n = JavaLangMath_minWithInt_withInt_(n, ((IOSObjectArray *) nil_chk(st))->size_ - 1);
-  for (jint i = 1; i <= n; i++) {
+  for (int32_t i = 1; i <= n; i++) {
     JavaLangStackTraceElement *ste = IOSObjectArray_Get(st, i);
     NSString *stack = JreStrcat("$$CI$$", @".(", [((JavaLangStackTraceElement *) nil_chk(IOSObjectArray_Get(st, i))) getFileName], ':', [((JavaLangStackTraceElement *) nil_chk(IOSObjectArray_Get(st, i))) getLineNumber], @") ", [((JavaLangStackTraceElement *) nil_chk(IOSObjectArray_Get(st, i))) getMethodName]);
     JreStrAppend(&s, "$", @" ");
@@ -185,3 +200,5 @@ void ADXUtils_logWithNSString_(NSString *str) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXUtils)
+
+J2OBJC_NAME_MAPPING(ADXUtils, "androidx.constraintlayout.core.motion.utils", "ADX")

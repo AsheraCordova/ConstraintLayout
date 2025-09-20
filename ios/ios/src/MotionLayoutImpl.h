@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\MotionLayoutImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionLayoutImpl")
@@ -22,6 +23,9 @@
 
 @class ASWidgetAttribute;
 @class IOSClass;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -40,13 +44,13 @@
                     withNSString:(NSString *)localname;
 
 - (void)addWithASIWidget:(id<ASIWidget>)w
-                 withInt:(jint)index;
+                 withInt:(int32_t)index;
 
 - (id)asNativeWidget;
 
 - (id)asWidget;
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v;
+- (bool)checkIosVersionWithNSString:(NSString *)v;
 
 - (void)createWithASIFragment:(id<ASIFragment>)fragment
               withJavaUtilMap:(id<JavaUtilMap>)params;
@@ -69,9 +73,9 @@
 
 - (id<ASIWidget>)newInstance OBJC_METHOD_FAMILY_NONE;
 
-- (jboolean)removeWithInt:(jint)index;
+- (bool)removeWithInt:(int32_t)index;
 
-- (jboolean)removeWithASIWidget:(id<ASIWidget>)w;
+- (bool)removeWithASIWidget:(id<ASIWidget>)w;
 
 - (void)requestLayout;
 
@@ -87,13 +91,13 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)setVisibleWithBoolean:(jboolean)b;
+- (void)setVisibleWithBoolean:(bool)b;
 
 #pragma mark Protected
 
-- (jint)getDragDirectionWithNSString:(NSString *)value;
+- (int32_t)getDragDirectionWithNSString:(NSString *)value;
 
-- (jint)getTouchAnchorSideWithNSString:(NSString *)value;
+- (int32_t)getTouchAnchorSideWithNSString:(NSString *)value;
 
 @end
 
@@ -131,6 +135,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl)
 
 @compatibility_alias ComAsheraConstraintlayoutMotionLayoutImpl ASMotionLayoutImpl;
 
+
 #endif
 
 #if !defined (ASMotionLayoutImpl_DallocHandler_) && (INCLUDE_ALL_MotionLayoutImpl || defined(INCLUDE_ASMotionLayoutImpl_DallocHandler))
@@ -141,6 +146,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl)
 #include "EventBusHandler.h"
 
 @class ASMotionLayoutImpl;
+@class NSString;
 
 @interface ASMotionLayoutImpl_DallocHandler : ASEventBusHandler
 
@@ -168,6 +174,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_DallocHandler *new_ASMotionLayoutImpl_Dallo
 FOUNDATION_EXPORT ASMotionLayoutImpl_DallocHandler *create_ASMotionLayoutImpl_DallocHandler_initWithASMotionLayoutImpl_withNSString_(ASMotionLayoutImpl *outer$, NSString *type);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_DallocHandler)
+
 
 #endif
 
@@ -205,6 +212,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_OptimizationLevel *create_ASMotionLayoutImp
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_OptimizationLevel)
 
+
 #endif
 
 #if !defined (ASMotionLayoutImpl_Orientation_) && (INCLUDE_ALL_MotionLayoutImpl || defined(INCLUDE_ASMotionLayoutImpl_Orientation))
@@ -240,6 +248,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Orientation *new_ASMotionLayoutImpl_Orienta
 FOUNDATION_EXPORT ASMotionLayoutImpl_Orientation *create_ASMotionLayoutImpl_Orientation_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Orientation)
+
 
 #endif
 
@@ -277,6 +286,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintWidth *create_ASMotionLayo
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_constraintWidth)
 
+
 #endif
 
 #if !defined (ASMotionLayoutImpl_Layout_constraintHeight_) && (INCLUDE_ALL_MotionLayoutImpl || defined(INCLUDE_ASMotionLayoutImpl_Layout_constraintHeight))
@@ -312,6 +322,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintHeight *new_ASMotionLayout
 FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintHeight *create_ASMotionLayoutImpl_Layout_constraintHeight_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_constraintHeight)
+
 
 #endif
 
@@ -349,6 +360,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintWidth_default *create_ASMo
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_constraintWidth_default)
 
+
 #endif
 
 #if !defined (ASMotionLayoutImpl_Layout_constraintHeight_default_) && (INCLUDE_ALL_MotionLayoutImpl || defined(INCLUDE_ASMotionLayoutImpl_Layout_constraintHeight_default))
@@ -384,6 +396,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintHeight_default *new_ASMoti
 FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintHeight_default *create_ASMotionLayoutImpl_Layout_constraintHeight_default_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_constraintHeight_default)
+
 
 #endif
 
@@ -421,6 +434,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintHorizontal_chainStyle *cre
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_constraintHorizontal_chainStyle)
 
+
 #endif
 
 #if !defined (ASMotionLayoutImpl_Layout_constraintVertical_chainStyle_) && (INCLUDE_ALL_MotionLayoutImpl || defined(INCLUDE_ASMotionLayoutImpl_Layout_constraintVertical_chainStyle))
@@ -456,6 +470,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintVertical_chainStyle *new_A
 FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_constraintVertical_chainStyle *create_ASMotionLayoutImpl_Layout_constraintVertical_chainStyle_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_constraintVertical_chainStyle)
+
 
 #endif
 
@@ -493,6 +508,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_Layout_wrapBehaviorInParent *create_ASMotio
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 
+
 #endif
 
 #if !defined (ASMotionLayoutImpl_MotionLayoutExt_) && (INCLUDE_ALL_MotionLayoutImpl || defined(INCLUDE_ASMotionLayoutImpl_MotionLayoutExt))
@@ -512,6 +528,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 @class ASWidgetAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -544,12 +563,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 
 - (id<ASILifeCycleDecorator>)newInstanceWithASIWidget:(id<ASIWidget>)widget OBJC_METHOD_FAMILY_NONE;
 
-- (void)offsetLeftAndRightWithInt:(jint)offset;
+- (void)offsetLeftAndRightWithInt:(int32_t)offset;
 
-- (void)offsetTopAndBottomWithInt:(jint)offset;
+- (void)offsetTopAndBottomWithInt:(int32_t)offset;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)remeasure;
 
@@ -572,7 +591,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 
 - (void)setState4WithId:(id)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)state0;
 
@@ -588,16 +607,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_Layout_wrapBehaviorInParent)
 
 - (void)stateYes;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 // Disallowed inherited constructors, do not use.
 
@@ -614,6 +633,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_MotionLayoutExt *new_ASMotionLayoutImpl_Mot
 FOUNDATION_EXPORT ASMotionLayoutImpl_MotionLayoutExt *create_ASMotionLayoutImpl_MotionLayoutExt_initWithASMotionLayoutImpl_(ASMotionLayoutImpl *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_MotionLayoutExt)
+
 
 #endif
 
@@ -650,6 +670,7 @@ FOUNDATION_EXPORT ASMotionLayoutImpl_TransitionFlagsConverter *new_ASMotionLayou
 FOUNDATION_EXPORT ASMotionLayoutImpl_TransitionFlagsConverter *create_ASMotionLayoutImpl_TransitionFlagsConverter_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASMotionLayoutImpl_TransitionFlagsConverter)
+
 
 #endif
 

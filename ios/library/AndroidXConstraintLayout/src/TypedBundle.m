@@ -3,30 +3,44 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\TypedBundle.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "TypedBundle.h"
 #include "TypedValues.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/Arrays.h"
 
 
-inline jint ADXTypedBundle_get_INITIAL_BOOLEAN(void);
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
+inline int32_t ADXTypedBundle_get_INITIAL_BOOLEAN(void);
 #define ADXTypedBundle_INITIAL_BOOLEAN 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_BOOLEAN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_BOOLEAN, int32_t)
 
-inline jint ADXTypedBundle_get_INITIAL_INT(void);
+inline int32_t ADXTypedBundle_get_INITIAL_INT(void);
 #define ADXTypedBundle_INITIAL_INT 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_INT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_INT, int32_t)
 
-inline jint ADXTypedBundle_get_INITIAL_FLOAT(void);
+inline int32_t ADXTypedBundle_get_INITIAL_FLOAT(void);
 #define ADXTypedBundle_INITIAL_FLOAT 10
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_FLOAT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_FLOAT, int32_t)
 
-inline jint ADXTypedBundle_get_INITIAL_STRING(void);
+inline int32_t ADXTypedBundle_get_INITIAL_STRING(void);
 #define ADXTypedBundle_INITIAL_STRING 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_STRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTypedBundle, INITIAL_STRING, int32_t)
 
 @implementation ADXTypedBundle
 
@@ -37,8 +51,8 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jint)getIntegerWithInt:(jint)type {
-  for (jint i = 0; i < mCountInt_; i++) {
+- (int32_t)getIntegerWithInt:(int32_t)type {
+  for (int32_t i = 0; i < mCountInt_; i++) {
     if (IOSIntArray_Get(nil_chk(mTypeInt_), i) == type) {
       return IOSIntArray_Get(nil_chk(mValueInt_), i);
     }
@@ -46,8 +60,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   return -1;
 }
 
-- (void)addWithInt:(jint)type
-           withInt:(jint)value {
+- (void)addWithInt:(int32_t)type
+           withInt:(int32_t)value {
   if (mCountInt_ >= ((IOSIntArray *) nil_chk(mTypeInt_))->size_) {
     JreStrongAssign(&mTypeInt_, JavaUtilArrays_copyOfWithIntArray_withInt_(mTypeInt_, mTypeInt_->size_ * 2));
     JreStrongAssign(&mValueInt_, JavaUtilArrays_copyOfWithIntArray_withInt_(mValueInt_, ((IOSIntArray *) nil_chk(mValueInt_))->size_ * 2));
@@ -56,8 +70,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   *IOSIntArray_GetRef(nil_chk(mValueInt_), mCountInt_++) = value;
 }
 
-- (void)addWithInt:(jint)type
-         withFloat:(jfloat)value {
+- (void)addWithInt:(int32_t)type
+         withFloat:(float)value {
   if (mCountFloat_ >= ((IOSIntArray *) nil_chk(mTypeFloat_))->size_) {
     JreStrongAssign(&mTypeFloat_, JavaUtilArrays_copyOfWithIntArray_withInt_(mTypeFloat_, mTypeFloat_->size_ * 2));
     JreStrongAssign(&mValueFloat_, JavaUtilArrays_copyOfWithFloatArray_withInt_(mValueFloat_, ((IOSFloatArray *) nil_chk(mValueFloat_))->size_ * 2));
@@ -66,14 +80,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   *IOSFloatArray_GetRef(nil_chk(mValueFloat_), mCountFloat_++) = value;
 }
 
-- (void)addIfNotNullWithInt:(jint)type
+- (void)addIfNotNullWithInt:(int32_t)type
                withNSString:(NSString *)value {
   if (value != nil) {
     [self addWithInt:type withNSString:value];
   }
 }
 
-- (void)addWithInt:(jint)type
+- (void)addWithInt:(int32_t)type
       withNSString:(NSString *)value {
   if (mCountString_ >= ((IOSIntArray *) nil_chk(mTypeString_))->size_) {
     JreStrongAssign(&mTypeString_, JavaUtilArrays_copyOfWithIntArray_withInt_(mTypeString_, mTypeString_->size_ * 2));
@@ -83,8 +97,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   IOSObjectArray_Set(nil_chk(mValueString_), mCountString_++, value);
 }
 
-- (void)addWithInt:(jint)type
-       withBoolean:(jboolean)value {
+- (void)addWithInt:(int32_t)type
+       withBoolean:(bool)value {
   if (mCountBoolean_ >= ((IOSIntArray *) nil_chk(mTypeBoolean_))->size_) {
     JreStrongAssign(&mTypeBoolean_, JavaUtilArrays_copyOfWithIntArray_withInt_(mTypeBoolean_, mTypeBoolean_->size_ * 2));
     JreStrongAssign(&mValueBoolean_, JavaUtilArrays_copyOfWithBooleanArray_withInt_(mValueBoolean_, ((IOSBooleanArray *) nil_chk(mValueBoolean_))->size_ * 2));
@@ -94,16 +108,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)applyDeltaWithADXTypedValues:(id<ADXTypedValues>)values {
-  for (jint i = 0; i < mCountInt_; i++) {
+  for (int32_t i = 0; i < mCountInt_; i++) {
     [((id<ADXTypedValues>) nil_chk(values)) setValueWithInt:IOSIntArray_Get(nil_chk(mTypeInt_), i) withInt:IOSIntArray_Get(nil_chk(mValueInt_), i)];
   }
-  for (jint i = 0; i < mCountFloat_; i++) {
+  for (int32_t i = 0; i < mCountFloat_; i++) {
     [((id<ADXTypedValues>) nil_chk(values)) setValueWithInt:IOSIntArray_Get(nil_chk(mTypeFloat_), i) withFloat:IOSFloatArray_Get(nil_chk(mValueFloat_), i)];
   }
-  for (jint i = 0; i < mCountString_; i++) {
+  for (int32_t i = 0; i < mCountString_; i++) {
     [((id<ADXTypedValues>) nil_chk(values)) setValueWithInt:IOSIntArray_Get(nil_chk(mTypeString_), i) withNSString:IOSObjectArray_Get(nil_chk(mValueString_), i)];
   }
-  for (jint i = 0; i < mCountBoolean_; i++) {
+  for (int32_t i = 0; i < mCountBoolean_; i++) {
     [((id<ADXTypedValues>) nil_chk(values)) setValueWithInt:IOSIntArray_Get(nil_chk(mTypeBoolean_), i) withBoolean:IOSBooleanArray_Get(nil_chk(mValueBoolean_), i)];
   }
 }
@@ -202,3 +216,5 @@ ADXTypedBundle *create_ADXTypedBundle_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXTypedBundle)
+
+J2OBJC_NAME_MAPPING(ADXTypedBundle, "androidx.constraintlayout.core.motion.utils", "ADX")

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKey.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionKey")
@@ -20,18 +21,22 @@
 #define INCLUDE_ADXTypedValues 1
 #include "TypedValues.h"
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Base class in an element in a KeyFrame
  */
 @interface ADXMotionKey : NSObject < ADXTypedValues > {
  @public
-  jint mFramePosition_;
-  jint mTargetId_;
+  int32_t mFramePosition_;
+  int32_t mTargetId_;
   NSString *mTargetString_;
-  jint mType_;
+  int32_t mType_;
   JavaUtilHashMap *mCustom_;
 }
 
@@ -55,29 +60,29 @@
 /*!
  @brief Gets the current frame position
  */
-- (jint)getFramePosition;
+- (int32_t)getFramePosition;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                           withBoolean:(jboolean)value;
+                               withInt:(int32_t)type
+                           withBoolean:(bool)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                             withFloat:(jfloat)value;
+                               withInt:(int32_t)type
+                             withFloat:(float)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                               withInt:(jint)value;
+                               withInt:(int32_t)type
+                               withInt:(int32_t)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
+                               withInt:(int32_t)type
                           withNSString:(NSString *)value;
 
 /*!
  @brief sets the frame position
  @param pos
  */
-- (void)setFramePositionWithInt:(jint)pos;
+- (void)setFramePositionWithInt:(int32_t)pos;
 
 /*!
  @brief Key frame can specify the type of interpolation it wants on various attributes
@@ -86,41 +91,41 @@
  */
 - (void)setInterpolationWithJavaUtilHashMap:(JavaUtilHashMap *)interpolation;
 
-- (jboolean)setValueWithInt:(jint)type
-                withBoolean:(jboolean)value;
+- (bool)setValueWithInt:(int32_t)type
+            withBoolean:(bool)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value;
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value;
 
-- (ADXMotionKey *)setViewIdWithInt:(jint)id_;
+- (ADXMotionKey *)setViewIdWithInt:(int32_t)id_;
 
 #pragma mark Package-Private
 
-- (jboolean)matchesWithNSString:(NSString *)constraintTag;
+- (bool)matchesWithNSString:(NSString *)constraintTag;
 
 /*!
  @brief Return the boolean version this object if the object is a Boolean it is casted.
  @param value
  */
-- (jboolean)toBooleanWithId:(id)value;
+- (bool)toBooleanWithId:(id)value;
 
 /*!
  @brief Return the float given a value.If the value is a "Float" object it is casted
  @param value
  */
-- (jfloat)toFloatWithId:(id)value;
+- (float)toFloatWithId:(id)value;
 
 /*!
  @brief Return the int version of an object if the value is an Integer object it is casted.
  @param value
  */
-- (jint)toIntWithId:(id)value;
+- (int32_t)toIntWithId:(id)value;
 
 @end
 
@@ -129,12 +134,12 @@ J2OBJC_EMPTY_STATIC_INIT(ADXMotionKey)
 J2OBJC_FIELD_SETTER(ADXMotionKey, mTargetString_, NSString *)
 J2OBJC_FIELD_SETTER(ADXMotionKey, mCustom_, JavaUtilHashMap *)
 
-inline jint ADXMotionKey_get_UNSET(void);
-inline jint ADXMotionKey_set_UNSET(jint value);
-inline jint *ADXMotionKey_getRef_UNSET(void);
+inline int32_t ADXMotionKey_get_UNSET(void);
+inline int32_t ADXMotionKey_set_UNSET(int32_t value);
+inline int32_t *ADXMotionKey_getRef_UNSET(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXMotionKey_UNSET;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXMotionKey, UNSET, jint)
+FOUNDATION_EXPORT int32_t ADXMotionKey_UNSET;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXMotionKey, UNSET, int32_t)
 
 inline NSString *ADXMotionKey_get_ALPHA(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
@@ -196,6 +201,7 @@ FOUNDATION_EXPORT void ADXMotionKey_init(ADXMotionKey *self);
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionKey)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionKeyMotionKey ADXMotionKey;
+
 
 #endif
 

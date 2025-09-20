@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\DependencyGraph.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_DependencyGraph")
@@ -18,6 +19,8 @@
 
 @class ADXConstraintWidgetContainer;
 @class ADXConstraintWidget_DimensionBehaviour;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 @protocol ADXBasicMeasure_Measurer;
 
@@ -48,12 +51,12 @@
  @param optimizeWrap use the wrap_content optimizer
  @return true if all widgets have been resolved
  */
-- (jboolean)directMeasureWithBoolean:(jboolean)optimizeWrap;
+- (bool)directMeasureWithBoolean:(bool)optimizeWrap;
 
-- (jboolean)directMeasureSetupWithBoolean:(jboolean)optimizeWrap;
+- (bool)directMeasureSetupWithBoolean:(bool)optimizeWrap;
 
-- (jboolean)directMeasureWithOrientationWithBoolean:(jboolean)optimizeWrap
-                                            withInt:(jint)orientation;
+- (bool)directMeasureWithOrientationWithBoolean:(bool)optimizeWrap
+                                        withInt:(int32_t)orientation;
 
 /*!
  @brief Invalidate the graph of constraints
@@ -88,6 +91,7 @@ FOUNDATION_EXPORT ADXDependencyGraph *create_ADXDependencyGraph_initWithADXConst
 J2OBJC_TYPE_LITERAL_HEADER(ADXDependencyGraph)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerDependencyGraph ADXDependencyGraph;
+
 
 #endif
 

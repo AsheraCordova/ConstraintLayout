@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\ConstraintWidget.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintWidget")
@@ -37,10 +38,14 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaLangStringBuilder;
 @class JavaUtilArrayList;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Implements a constraint Widget model supporting constraints relations between other widgets.
@@ -62,31 +67,31 @@
  */
 @interface ADXConstraintWidget : NSObject {
  @public
-  jboolean measured_;
+  bool measured_;
   IOSObjectArray *run_;
   ADXChainRun *horizontalChainRun_;
   ADXChainRun *verticalChainRun_;
   ADXHorizontalWidgetRun *horizontalRun_;
   ADXVerticalWidgetRun *verticalRun_;
   IOSBooleanArray *isTerminalWidget_;
-  jboolean mResolvedHasRatio_;
+  bool mResolvedHasRatio_;
   ADXWidgetFrame *frame_;
   NSString *stringId_;
-  jint mHorizontalResolution_;
-  jint mVerticalResolution_;
-  jint mMatchConstraintDefaultWidth_;
-  jint mMatchConstraintDefaultHeight_;
+  int32_t mHorizontalResolution_;
+  int32_t mVerticalResolution_;
+  int32_t mMatchConstraintDefaultWidth_;
+  int32_t mMatchConstraintDefaultHeight_;
   IOSIntArray *mResolvedMatchConstraintDefault_;
-  jint mMatchConstraintMinWidth_;
-  jint mMatchConstraintMaxWidth_;
-  jfloat mMatchConstraintPercentWidth_;
-  jint mMatchConstraintMinHeight_;
-  jint mMatchConstraintMaxHeight_;
-  jfloat mMatchConstraintPercentHeight_;
-  jboolean mIsWidthWrapContent_;
-  jboolean mIsHeightWrapContent_;
-  jint mResolvedDimensionRatioSide_;
-  jfloat mResolvedDimensionRatio_;
+  int32_t mMatchConstraintMinWidth_;
+  int32_t mMatchConstraintMaxWidth_;
+  float mMatchConstraintPercentWidth_;
+  int32_t mMatchConstraintMinHeight_;
+  int32_t mMatchConstraintMaxHeight_;
+  float mMatchConstraintPercentHeight_;
+  bool mIsWidthWrapContent_;
+  bool mIsHeightWrapContent_;
+  int32_t mResolvedDimensionRatioSide_;
+  float mResolvedDimensionRatio_;
   ADXConstraintAnchor *mLeft_;
   ADXConstraintAnchor *mTop_;
   ADXConstraintAnchor *mRight_;
@@ -98,44 +103,44 @@
   IOSObjectArray *mListAnchors_;
   JavaUtilArrayList *mAnchors_;
   IOSObjectArray *mListDimensionBehaviors_;
-  __unsafe_unretained ADXConstraintWidget *mParent_;
-  jint mWidth_;
-  jint mHeight_;
-  jfloat mDimensionRatio_;
-  jint mDimensionRatioSide_;
-  jint mX_;
-  jint mY_;
-  jint mRelX_;
-  jint mRelY_;
-  jint mOffsetX_;
-  jint mOffsetY_;
-  jint mBaselineDistance_;
-  jint mMinWidth_;
-  jint mMinHeight_;
-  jfloat mHorizontalBiasPercent_;
-  jfloat mVerticalBiasPercent_;
-  jint mDistToTop_;
-  jint mDistToLeft_;
-  jint mDistToRight_;
-  jint mDistToBottom_;
-  jboolean mLeftHasCentered_;
-  jboolean mRightHasCentered_;
-  jboolean mTopHasCentered_;
-  jboolean mBottomHasCentered_;
-  jboolean mHorizontalWrapVisited_;
-  jboolean mVerticalWrapVisited_;
-  jboolean mGroupsToSolver_;
-  jint mHorizontalChainStyle_;
-  jint mVerticalChainStyle_;
-  jboolean mHorizontalChainFixedPosition_;
-  jboolean mVerticalChainFixedPosition_;
+  WEAK_ ADXConstraintWidget *mParent_;
+  int32_t mWidth_;
+  int32_t mHeight_;
+  float mDimensionRatio_;
+  int32_t mDimensionRatioSide_;
+  int32_t mX_;
+  int32_t mY_;
+  int32_t mRelX_;
+  int32_t mRelY_;
+  int32_t mOffsetX_;
+  int32_t mOffsetY_;
+  int32_t mBaselineDistance_;
+  int32_t mMinWidth_;
+  int32_t mMinHeight_;
+  float mHorizontalBiasPercent_;
+  float mVerticalBiasPercent_;
+  int32_t mDistToTop_;
+  int32_t mDistToLeft_;
+  int32_t mDistToRight_;
+  int32_t mDistToBottom_;
+  bool mLeftHasCentered_;
+  bool mRightHasCentered_;
+  bool mTopHasCentered_;
+  bool mBottomHasCentered_;
+  bool mHorizontalWrapVisited_;
+  bool mVerticalWrapVisited_;
+  bool mGroupsToSolver_;
+  int32_t mHorizontalChainStyle_;
+  int32_t mVerticalChainStyle_;
+  bool mHorizontalChainFixedPosition_;
+  bool mVerticalChainFixedPosition_;
   IOSFloatArray *mWeight_;
   IOSObjectArray *mListNextMatchConstraintsWidget_;
   IOSObjectArray *mNextChainWidget_;
   ADXConstraintWidget *mHorizontalNextWidget_;
   ADXConstraintWidget *mVerticalNextWidget_;
-  jint horizontalGroup_;
-  jint verticalGroup_;
+  int32_t horizontalGroup_;
+  int32_t verticalGroup_;
 }
 
 #pragma mark Public
@@ -150,8 +155,8 @@
  @param width width of the layout
  @param height height of the layout
  */
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 /*!
  @brief Constructor
@@ -160,28 +165,28 @@
  @param width width of the layout
  @param height height of the layout
  */
-- (instancetype)initWithInt:(jint)x
-                    withInt:(jint)y
-                    withInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)x
+                    withInt:(int32_t)y
+                    withInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 - (instancetype)initWithNSString:(NSString *)debugName;
 
 - (instancetype)initWithNSString:(NSString *)debugName
-                         withInt:(jint)width
-                         withInt:(jint)height;
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height;
 
 - (instancetype)initWithNSString:(NSString *)debugName
-                         withInt:(jint)x
-                         withInt:(jint)y
-                         withInt:(jint)width
-                         withInt:(jint)height;
+                         withInt:(int32_t)x
+                         withInt:(int32_t)y
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height;
 
 - (void)addChildrenToSolverByDependencyWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
                                                     withADXLinearSystem:(ADXLinearSystem *)system
                                                     withJavaUtilHashSet:(JavaUtilHashSet *)widgets
-                                                                withInt:(jint)orientation
-                                                            withBoolean:(jboolean)addSelf;
+                                                                withInt:(int32_t)orientation
+                                                            withBoolean:(bool)addSelf;
 
 /*!
  @brief Add this widget to the solver
@@ -189,12 +194,12 @@
  @param optimize true if <code>Optimizer.OPTIMIZATION_GRAPH</code>  is on
  */
 - (void)addToSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                           withBoolean:(jboolean)optimize;
+                           withBoolean:(bool)optimize;
 
 /*!
  @brief Returns true if this widget should be used in a barrier
  */
-- (jboolean)allowedInBarrier;
+- (bool)allowedInBarrier;
 
 /*!
  @brief Connect the given anchors together (the from anchor should be owned by this widget)
@@ -204,7 +209,7 @@
  */
 - (void)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)from
                withADXConstraintAnchor:(ADXConstraintAnchor *)to
-                               withInt:(jint)margin;
+                               withInt:(int32_t)margin;
 
 /*!
  @brief Connect a given anchor of this widget to another anchor of a target widget
@@ -226,7 +231,7 @@
 - (void)connectWithADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)constraintFrom
                     withADXConstraintWidget:(ADXConstraintWidget *)target
                withADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)constraintTo
-                                    withInt:(jint)margin;
+                                    withInt:(int32_t)margin;
 
 /*!
  @brief Set a circular constraint
@@ -235,8 +240,8 @@
  @param radius the radius used
  */
 - (void)connectCircularConstraintWithADXConstraintWidget:(ADXConstraintWidget *)target
-                                               withFloat:(jfloat)angle
-                                                 withInt:(jint)radius;
+                                               withFloat:(float)angle
+                                                 withInt:(int32_t)radius;
 
 - (void)copy__WithADXConstraintWidget:(ADXConstraintWidget *)src
                   withJavaUtilHashMap:(JavaUtilHashMap *)map OBJC_METHOD_FAMILY_NONE;
@@ -268,7 +273,7 @@
  @brief Return the baseline distance relative to the top of the widget
  @return baseline
  */
-- (jint)getBaselineDistance;
+- (int32_t)getBaselineDistance;
 
 /*!
  @brief Return the percentage bias that is used when two opposite connections exist of the same
@@ -276,13 +281,13 @@
  @param orientation Orientation <code>HORIZONTAL</code> /<code>VERTICAL</code> .
  @return Respective percentage bias.
  */
-- (jfloat)getBiasPercentWithInt:(jint)orientation;
+- (float)getBiasPercentWithInt:(int32_t)orientation;
 
 /*!
  @brief Return the bottom position of the widget
  @return bottom position of the widget
  */
-- (jint)getBottom;
+- (int32_t)getBottom;
 
 /*!
  @brief Return the companion widget.Typically, this would be the real
@@ -295,7 +300,7 @@
  @brief Accessor for the skip value
  @return skip value
  */
-- (jint)getContainerItemSkip;
+- (int32_t)getContainerItemSkip;
 
 /*!
  @brief Returns the name of this widget (used for debug purposes)
@@ -308,34 +313,34 @@
  @param orientation
  @return The <code>DimensionBehaviour</code> of the widget.
  */
-- (ADXConstraintWidget_DimensionBehaviour *)getDimensionBehaviourWithInt:(jint)orientation;
+- (ADXConstraintWidget_DimensionBehaviour *)getDimensionBehaviourWithInt:(int32_t)orientation;
 
 /*!
  @brief Return the current ratio of this widget
  @return the dimension ratio (HORIZONTAL, VERTICAL, or UNKNOWN)
  */
-- (jfloat)getDimensionRatio;
+- (float)getDimensionRatio;
 
 /*!
  @brief Return the current side on which ratio will be applied
  @return HORIZONTAL, VERTICAL, or UNKNOWN
  */
-- (jint)getDimensionRatioSide;
+- (int32_t)getDimensionRatioSide;
 
-- (jboolean)getHasBaseline;
+- (bool)getHasBaseline;
 
 /*!
  @brief Return the height of the widget
  @return height height
  */
-- (jint)getHeight;
+- (int32_t)getHeight;
 
 /*!
  @brief Return the horizontal percentage bias that is used when two opposite connections
   exist of the same strength.
  @return horizontal percentage bias
  */
-- (jfloat)getHorizontalBiasPercent;
+- (float)getHorizontalBiasPercent;
 
 /*!
  @brief if in a horizontal chain return the left most widget in the chain.
@@ -348,7 +353,7 @@
  The horizontal bias will control how elements of the chain are positioned.
  @return Horizontal Chain Style
  */
-- (jint)getHorizontalChainStyle;
+- (int32_t)getHorizontalChainStyle;
 
 /*!
  @brief Accessor for the horizontal dimension behaviour
@@ -359,51 +364,51 @@
 /*!
  @brief Returns all the horizontal margin of the widget.
  */
-- (jint)getHorizontalMargin;
+- (int32_t)getHorizontalMargin;
 
-- (jint)getLastHorizontalMeasureSpec;
+- (int32_t)getLastHorizontalMeasureSpec;
 
-- (jint)getLastVerticalMeasureSpec;
+- (int32_t)getLastVerticalMeasureSpec;
 
 /*!
  @brief Return the left position of the widget (similar to <code>getX()</code>)
  @return left position of the widget
  */
-- (jint)getLeft;
+- (int32_t)getLeft;
 
 /*!
  @brief Get a dimension of the widget in a particular orientation.
  @param orientation
  @return The dimension of the specified orientation.
  */
-- (jint)getLengthWithInt:(jint)orientation;
+- (int32_t)getLengthWithInt:(int32_t)orientation;
 
-- (jint)getMaxHeight;
+- (int32_t)getMaxHeight;
 
-- (jint)getMaxWidth;
+- (int32_t)getMaxWidth;
 
 /*!
  @brief Return the minimum height of the widget
  @return minimum height
  */
-- (jint)getMinHeight;
+- (int32_t)getMinHeight;
 
 /*!
  @brief Return the minimum width of the widget
  @return minimum width
  */
-- (jint)getMinWidth;
+- (int32_t)getMinWidth;
 
 /*!
  @brief Return the next chain member if one exists
  @param orientation HORIZONTAL or VERTICAL
  @return the next chain member or null if we are the last chain element
  */
-- (ADXConstraintWidget *)getNextChainMemberWithInt:(jint)orientation;
+- (ADXConstraintWidget *)getNextChainMemberWithInt:(int32_t)orientation;
 
-- (jint)getOptimizerWrapHeight;
+- (int32_t)getOptimizerWrapHeight;
 
-- (jint)getOptimizerWrapWidth;
+- (int32_t)getOptimizerWrapWidth;
 
 /*!
  @brief Returns the parent of this widget if there is one
@@ -416,21 +421,21 @@
  @param orientation HORIZONTAL or VERTICAL
  @return the previous chain member or null if we are the first chain element
  */
-- (ADXConstraintWidget *)getPreviousChainMemberWithInt:(jint)orientation;
+- (ADXConstraintWidget *)getPreviousChainMemberWithInt:(int32_t)orientation;
 
 /*!
  @brief Return the right position of the widget
  @return right position of the widget
  */
-- (jint)getRight;
+- (int32_t)getRight;
 
-- (ADXWidgetRun *)getRunWithInt:(jint)orientation;
+- (ADXWidgetRun *)getRunWithInt:(int32_t)orientation;
 
 /*!
  @brief Return the top position of the widget (similar to <code>getY()</code>)
  @return top position of the widget
  */
-- (jint)getTop;
+- (int32_t)getTop;
 
 /*!
  @brief Returns the type string if set
@@ -443,7 +448,7 @@
   exist of the same strength.
  @return vertical percentage bias
  */
-- (jfloat)getVerticalBiasPercent;
+- (float)getVerticalBiasPercent;
 
 /*!
  @brief if in a vertical chain return the top most widget in the chain.
@@ -455,7 +460,7 @@
  @brief Set the chain starting from this widget to be packed.
  The vertical bias will control how elements of the chain are positioned.
  */
-- (jint)getVerticalChainStyle;
+- (int32_t)getVerticalChainStyle;
 
 /*!
  @brief Accessor for the vertical dimension behaviour
@@ -466,48 +471,48 @@
 /*!
  @brief Returns all the vertical margin of the widget
  */
-- (jint)getVerticalMargin;
+- (int32_t)getVerticalMargin;
 
 /*!
  @brief Returns the current visibility value for this widget
  @return the visibility (VISIBLE, INVISIBLE, or GONE)
  */
-- (jint)getVisibility;
+- (int32_t)getVisibility;
 
 /*!
  @brief Return the width of the widget
  @return width width
  */
-- (jint)getWidth;
+- (int32_t)getWidth;
 
-- (jint)getWrapBehaviorInParent;
+- (int32_t)getWrapBehaviorInParent;
 
 /*!
  @brief Return the x position of the widget, relative to its container
  @return x position
  */
-- (jint)getX;
+- (int32_t)getX;
 
 /*!
  @brief Return the y position of the widget, relative to its container
  @return y position
  */
-- (jint)getY;
+- (int32_t)getY;
 
 /*!
  @brief Return true if this widget has a baseline
  @return true if the widget has a baseline, false otherwise
  */
-- (jboolean)hasBaseline;
+- (bool)hasBaseline;
 
-- (jboolean)hasDanglingDimensionWithInt:(jint)orientation;
+- (bool)hasDanglingDimensionWithInt:(int32_t)orientation;
 
-- (jboolean)hasDependencies;
+- (bool)hasDependencies;
 
-- (jboolean)hasDimensionOverride;
+- (bool)hasDimensionOverride;
 
-- (jboolean)hasResolvedTargetsWithInt:(jint)orientation
-                              withInt:(jint)size;
+- (bool)hasResolvedTargetsWithInt:(int32_t)orientation
+                          withInt:(int32_t)size;
 
 /*!
  @brief Immediate connection to an anchor without any checks.
@@ -520,64 +525,64 @@
 - (void)immediateConnectWithADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)startType
                              withADXConstraintWidget:(ADXConstraintWidget *)target
                         withADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)endType
-                                             withInt:(jint)margin
-                                             withInt:(jint)goneMargin;
+                                             withInt:(int32_t)margin
+                                             withInt:(int32_t)goneMargin;
 
 /*!
  @brief Returns true if height is set to wrap_content
  */
-- (jboolean)isHeightWrapContent;
+- (bool)isHeightWrapContent;
 
-- (jboolean)isHorizontalSolvingPassDone;
+- (bool)isHorizontalSolvingPassDone;
 
-- (jboolean)isInBarrierWithInt:(jint)orientation;
+- (bool)isInBarrierWithInt:(int32_t)orientation;
 
 /*!
  @brief Test if you are in a Horizontal chain
  @return true if in a horizontal chain
  */
-- (jboolean)isInHorizontalChain;
+- (bool)isInHorizontalChain;
 
-- (jboolean)isInPlaceholder;
+- (bool)isInPlaceholder;
 
 /*!
  @brief Test if you are in a vertical chain
  @return true if in a vertical chain
  */
-- (jboolean)isInVerticalChain;
+- (bool)isInVerticalChain;
 
-- (jboolean)isInVirtualLayout;
+- (bool)isInVirtualLayout;
 
-- (jboolean)isMeasureRequested;
+- (bool)isMeasureRequested;
 
-- (jboolean)isResolvedHorizontally;
+- (bool)isResolvedHorizontally;
 
-- (jboolean)isResolvedVertically;
+- (bool)isResolvedVertically;
 
 /*!
  @brief Returns true if the widget is the root widget
  @return true if root widget, false otherwise
  */
-- (jboolean)isRoot;
+- (bool)isRoot;
 
-- (jboolean)isSpreadHeight;
+- (bool)isSpreadHeight;
 
-- (jboolean)isSpreadWidth;
+- (bool)isSpreadWidth;
 
-- (jboolean)isVerticalSolvingPassDone;
+- (bool)isVerticalSolvingPassDone;
 
 /*!
  @brief Returns true if width is set to wrap_content
  */
-- (jboolean)isWidthWrapContent;
+- (bool)isWidthWrapContent;
 
 - (void)markHorizontalSolvingPassDone;
 
 - (void)markVerticalSolvingPassDone;
 
-- (jboolean)oppositeDimensionDependsOnWithInt:(jint)orientation;
+- (bool)oppositeDimensionDependsOnWithInt:(int32_t)orientation;
 
-- (jboolean)oppositeDimensionsTied;
+- (bool)oppositeDimensionsTied;
 
 - (void)reset;
 
@@ -612,7 +617,7 @@
  @brief Set the baseline distance relative to the top of the widget
  @param baseline the distance of the baseline relative to the widget's top
  */
-- (void)setBaselineDistanceWithInt:(jint)baseline;
+- (void)setBaselineDistanceWithInt:(int32_t)baseline;
 
 /*!
  @brief Set the companion widget.Typically, this would be the real widget we
@@ -629,7 +634,7 @@
   (the widget after an empty cell will have a skip value of one)
  @param skip
  */
-- (void)setContainerItemSkipWithInt:(jint)skip;
+- (void)setContainerItemSkipWithInt:(int32_t)skip;
 
 /*!
  @brief Set the debug name of this widget
@@ -660,8 +665,8 @@
  @param w width
  @param h height
  */
-- (void)setDimensionWithInt:(jint)w
-                    withInt:(jint)h;
+- (void)setDimensionWithInt:(int32_t)w
+                    withInt:(int32_t)h;
 
 /*!
  @brief Set the ratio of the widget
@@ -670,8 +675,8 @@
  @param ratio A float value that describes W/H or H/W depending on the provided dimensionRatioSide
  @param dimensionRatioSide The side the ratio should be calculated on, HORIZONTAL, VERTICAL, or UNKNOWN
  */
-- (void)setDimensionRatioWithFloat:(jfloat)ratio
-                           withInt:(jint)dimensionRatioSide;
+- (void)setDimensionRatioWithFloat:(float)ratio
+                           withInt:(int32_t)dimensionRatioSide;
 
 /*!
  @brief Set the ratio of the widget
@@ -679,24 +684,24 @@
  */
 - (void)setDimensionRatioWithNSString:(NSString *)ratio;
 
-- (void)setFinalBaselineWithInt:(jint)baselineValue;
+- (void)setFinalBaselineWithInt:(int32_t)baselineValue;
 
-- (void)setFinalFrameWithInt:(jint)left
-                     withInt:(jint)top
-                     withInt:(jint)right
-                     withInt:(jint)bottom
-                     withInt:(jint)baseline
-                     withInt:(jint)orientation;
+- (void)setFinalFrameWithInt:(int32_t)left
+                     withInt:(int32_t)top
+                     withInt:(int32_t)right
+                     withInt:(int32_t)bottom
+                     withInt:(int32_t)baseline
+                     withInt:(int32_t)orientation;
 
-- (void)setFinalHorizontalWithInt:(jint)x1
-                          withInt:(jint)x2;
+- (void)setFinalHorizontalWithInt:(int32_t)x1
+                          withInt:(int32_t)x2;
 
-- (void)setFinalLeftWithInt:(jint)x1;
+- (void)setFinalLeftWithInt:(int32_t)x1;
 
-- (void)setFinalTopWithInt:(jint)y1;
+- (void)setFinalTopWithInt:(int32_t)y1;
 
-- (void)setFinalVerticalWithInt:(jint)y1
-                        withInt:(jint)y2;
+- (void)setFinalVerticalWithInt:(int32_t)y1
+                        withInt:(int32_t)y2;
 
 /*!
  @brief Set the position+dimension of the widget based on starting/ending positions on one dimension.
@@ -704,9 +709,9 @@
  @param end Right/Bottom side position of the widget.
  @param orientation Orientation being set (HORIZONTAL/VERTICAL).
  */
-- (void)setFrameWithInt:(jint)start
-                withInt:(jint)end
-                withInt:(jint)orientation;
+- (void)setFrameWithInt:(int32_t)start
+                withInt:(int32_t)end
+                withInt:(int32_t)orientation;
 
 /*!
  @brief Set the position+dimension of the widget given left/top/right/bottom
@@ -715,10 +720,10 @@
  @param right right side position of the widget
  @param bottom bottom side position of the widget
  */
-- (void)setFrameWithInt:(jint)left
-                withInt:(jint)top
-                withInt:(jint)right
-                withInt:(jint)bottom;
+- (void)setFrameWithInt:(int32_t)left
+                withInt:(int32_t)top
+                withInt:(int32_t)right
+                withInt:(int32_t)bottom;
 
 /*!
  @brief Set the margin to be used when connected to a widget with a visibility of GONE
@@ -726,43 +731,43 @@
  @param goneMargin the margin value to use
  */
 - (void)setGoneMarginWithADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)type
-                                          withInt:(jint)goneMargin;
+                                          withInt:(int32_t)goneMargin;
 
-- (void)setHasBaselineWithBoolean:(jboolean)hasBaseline;
+- (void)setHasBaselineWithBoolean:(bool)hasBaseline;
 
 /*!
  @brief Set the height of the widget
  @param h height
  */
-- (void)setHeightWithInt:(jint)h;
+- (void)setHeightWithInt:(int32_t)h;
 
 /*!
  @brief Keep track of wrap_content for height
  @param heightWrapContent
  */
-- (void)setHeightWrapContentWithBoolean:(jboolean)heightWrapContent;
+- (void)setHeightWrapContentWithBoolean:(bool)heightWrapContent;
 
 /*!
  @brief Set the horizontal bias percent to apply when we have two opposite constraints of
   equal strength
  @param horizontalBiasPercent the percentage used
  */
-- (void)setHorizontalBiasPercentWithFloat:(jfloat)horizontalBiasPercent;
+- (void)setHorizontalBiasPercentWithFloat:(float)horizontalBiasPercent;
 
 /*!
  @brief Set the chain starting from this widget to be packed.
  The horizontal bias will control how elements of the chain are positioned.
  @param horizontalChainStyle (CHAIN_SPREAD, CHAIN_SPREAD_INSIDE, CHAIN_PACKED)
  */
-- (void)setHorizontalChainStyleWithInt:(jint)horizontalChainStyle;
+- (void)setHorizontalChainStyleWithInt:(int32_t)horizontalChainStyle;
 
 /*!
  @brief Set the positions for the horizontal dimension only
  @param left left side position of the widget
  @param right right side position of the widget
  */
-- (void)setHorizontalDimensionWithInt:(jint)left
-                              withInt:(jint)right;
+- (void)setHorizontalDimensionWithInt:(int32_t)left
+                              withInt:(int32_t)right;
 
 /*!
  @brief Set the widget's behaviour for the horizontal dimension
@@ -777,65 +782,65 @@
  @param max maximum value
  @param percent Percent width
  */
-- (void)setHorizontalMatchStyleWithInt:(jint)horizontalMatchStyle
-                               withInt:(jint)min
-                               withInt:(jint)max
-                             withFloat:(jfloat)percent;
+- (void)setHorizontalMatchStyleWithInt:(int32_t)horizontalMatchStyle
+                               withInt:(int32_t)min
+                               withInt:(int32_t)max
+                             withFloat:(float)percent;
 
 /*!
  @brief Set the horizontal weight (only used in chains)
  @param horizontalWeight Floating point value weight
  */
-- (void)setHorizontalWeightWithFloat:(jfloat)horizontalWeight;
+- (void)setHorizontalWeightWithFloat:(float)horizontalWeight;
 
-- (void)setInPlaceholderWithBoolean:(jboolean)inPlaceholder;
+- (void)setInPlaceholderWithBoolean:(bool)inPlaceholder;
 
-- (void)setInVirtualLayoutWithBoolean:(jboolean)inVirtualLayout;
+- (void)setInVirtualLayoutWithBoolean:(bool)inVirtualLayout;
 
-- (void)setLastMeasureSpecWithInt:(jint)horizontal
-                          withInt:(jint)vertical;
+- (void)setLastMeasureSpecWithInt:(int32_t)horizontal
+                          withInt:(int32_t)vertical;
 
 /*!
  @brief Set the dimension of a widget in a particular orientation.
  @param length Size of the dimension.
  @param orientation HORIZONTAL or VERTICAL
  */
-- (void)setLengthWithInt:(jint)length
-                 withInt:(jint)orientation;
+- (void)setLengthWithInt:(int32_t)length
+                 withInt:(int32_t)orientation;
 
-- (void)setMaxHeightWithInt:(jint)maxHeight;
+- (void)setMaxHeightWithInt:(int32_t)maxHeight;
 
-- (void)setMaxWidthWithInt:(jint)maxWidth;
+- (void)setMaxWidthWithInt:(int32_t)maxWidth;
 
-- (void)setMeasureRequestedWithBoolean:(jboolean)measureRequested;
+- (void)setMeasureRequestedWithBoolean:(bool)measureRequested;
 
 /*!
  @brief Set the minimum height of the widget
  @param h minimum height
  */
-- (void)setMinHeightWithInt:(jint)h;
+- (void)setMinHeightWithInt:(int32_t)h;
 
 /*!
  @brief Set the minimum width of the widget
  @param w minimum width
  */
-- (void)setMinWidthWithInt:(jint)w;
+- (void)setMinWidthWithInt:(int32_t)w;
 
 /*!
  @brief Set the offset of this widget relative to the root widget
  @param x horizontal offset
  @param y vertical offset
  */
-- (void)setOffsetWithInt:(jint)x
-                 withInt:(jint)y;
+- (void)setOffsetWithInt:(int32_t)x
+                 withInt:(int32_t)y;
 
 /*!
  @brief Set both the origin in (x, y) of the widget, relative to its container
  @param x x position
  @param y y position
  */
-- (void)setOriginWithInt:(jint)x
-                 withInt:(jint)y;
+- (void)setOriginWithInt:(int32_t)x
+                 withInt:(int32_t)y;
 
 /*!
  @brief Set the parent of this widget
@@ -857,32 +862,32 @@
  @param horizontalDimensionFixed true if this widget horizontal dimension is fixed
  @param verticalDimensionFixed true if this widget vertical dimension is fixed
  */
-- (void)setupDimensionRatioWithBoolean:(jboolean)hParentWrapContent
-                           withBoolean:(jboolean)vParentWrapContent
-                           withBoolean:(jboolean)horizontalDimensionFixed
-                           withBoolean:(jboolean)verticalDimensionFixed;
+- (void)setupDimensionRatioWithBoolean:(bool)hParentWrapContent
+                           withBoolean:(bool)vParentWrapContent
+                           withBoolean:(bool)horizontalDimensionFixed
+                           withBoolean:(bool)verticalDimensionFixed;
 
 /*!
  @brief Set the vertical bias percent to apply when we have two opposite constraints of
   equal strength
  @param verticalBiasPercent the percentage used
  */
-- (void)setVerticalBiasPercentWithFloat:(jfloat)verticalBiasPercent;
+- (void)setVerticalBiasPercentWithFloat:(float)verticalBiasPercent;
 
 /*!
  @brief Set the chain starting from this widget to be packed.
  The vertical bias will control how elements of the chain are positioned.
  @param verticalChainStyle (CHAIN_SPREAD, CHAIN_SPREAD_INSIDE, CHAIN_PACKED)
  */
-- (void)setVerticalChainStyleWithInt:(jint)verticalChainStyle;
+- (void)setVerticalChainStyleWithInt:(int32_t)verticalChainStyle;
 
 /*!
  @brief Set the positions for the vertical dimension only
  @param top top side position of the widget
  @param bottom bottom side position of the widget
  */
-- (void)setVerticalDimensionWithInt:(jint)top
-                            withInt:(jint)bottom;
+- (void)setVerticalDimensionWithInt:(int32_t)top
+                            withInt:(int32_t)bottom;
 
 /*!
  @brief Set the widget's behaviour for the vertical dimension
@@ -897,48 +902,48 @@
  @param max maximum value
  @param percent Percent height
  */
-- (void)setVerticalMatchStyleWithInt:(jint)verticalMatchStyle
-                             withInt:(jint)min
-                             withInt:(jint)max
-                           withFloat:(jfloat)percent;
+- (void)setVerticalMatchStyleWithInt:(int32_t)verticalMatchStyle
+                             withInt:(int32_t)min
+                             withInt:(int32_t)max
+                           withFloat:(float)percent;
 
 /*!
  @brief Set the vertical weight (only used in chains)
  @param verticalWeight Floating point value weight
  */
-- (void)setVerticalWeightWithFloat:(jfloat)verticalWeight;
+- (void)setVerticalWeightWithFloat:(float)verticalWeight;
 
 /*!
  @brief Set the visibility for this widget
  @param visibility either VISIBLE, INVISIBLE, or GONE
  */
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 /*!
  @brief Set the width of the widget
  @param w width
  */
-- (void)setWidthWithInt:(jint)w;
+- (void)setWidthWithInt:(int32_t)w;
 
 /*!
  @brief Keep track of wrap_content for width
  @param widthWrapContent
  */
-- (void)setWidthWrapContentWithBoolean:(jboolean)widthWrapContent;
+- (void)setWidthWrapContentWithBoolean:(bool)widthWrapContent;
 
-- (void)setWrapBehaviorInParentWithInt:(jint)behavior;
+- (void)setWrapBehaviorInParentWithInt:(int32_t)behavior;
 
 /*!
  @brief Set the x position of the widget, relative to its container
  @param x x position
  */
-- (void)setXWithInt:(jint)x;
+- (void)setXWithInt:(int32_t)x;
 
 /*!
  @brief Set the y position of the widget, relative to its container
  @param y y position
  */
-- (void)setYWithInt:(jint)y;
+- (void)setYWithInt:(int32_t)y;
 
 /*!
  @brief Returns a string representation of the ConstraintWidget
@@ -946,8 +951,8 @@
  */
 - (NSString *)description;
 
-- (void)updateFromRunsWithBoolean:(jboolean)updateHorizontal
-                      withBoolean:(jboolean)updateVertical;
+- (void)updateFromRunsWithBoolean:(bool)updateHorizontal
+                      withBoolean:(bool)updateVertical;
 
 /*!
  @brief Update the widget from the values generated by the solver
@@ -955,7 +960,7 @@
  @param optimize true if <code>Optimizer.OPTIMIZATION_GRAPH</code>  is on
  */
 - (void)updateFromSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                                withBoolean:(jboolean)optimize;
+                                withBoolean:(bool)optimize;
 
 #pragma mark Protected
 
@@ -964,38 +969,38 @@
   (without animation)
  @return x position
  */
-- (jint)getRootX;
+- (int32_t)getRootX;
 
 /*!
  @brief Return the y position of the widget, relative to the root
   (without animation)
  */
-- (jint)getRootY;
+- (int32_t)getRootY;
 
-- (void)setInBarrierWithInt:(jint)orientation
-                withBoolean:(jboolean)value;
+- (void)setInBarrierWithInt:(int32_t)orientation
+                withBoolean:(bool)value;
 
 #pragma mark Package-Private
 
 /*!
  @brief Used to select which widgets should be added to the solver first
  */
-- (jboolean)addFirst;
+- (bool)addFirst;
 
 /*!
  @brief Get the left/top position of the widget relative to the outer side of the container (right/bottom).
  @param orientation Orientation by which to find the relative positioning of the widget.
  @return The relative position of the widget.
  */
-- (jint)getRelativePositioningWithInt:(jint)orientation;
+- (int32_t)getRelativePositioningWithInt:(int32_t)orientation;
 
 /*!
  @brief Set the left/top position of the widget relative to the outer side of the container (right/bottom).
  @param offset Offset of the relative position.
  @param orientation Orientation of the offset being set.
  */
-- (void)setRelativePositioningWithInt:(jint)offset
-                              withInt:(jint)orientation;
+- (void)setRelativePositioningWithInt:(int32_t)offset
+                              withInt:(int32_t)orientation;
 
 @end
 
@@ -1027,124 +1032,124 @@ J2OBJC_FIELD_SETTER(ADXConstraintWidget, mNextChainWidget_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(ADXConstraintWidget, mHorizontalNextWidget_, ADXConstraintWidget *)
 J2OBJC_FIELD_SETTER(ADXConstraintWidget, mVerticalNextWidget_, ADXConstraintWidget *)
 
-inline jint ADXConstraintWidget_get_SOLVER(void);
+inline int32_t ADXConstraintWidget_get_SOLVER(void);
 #define ADXConstraintWidget_SOLVER 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, SOLVER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, SOLVER, int32_t)
 
-inline jint ADXConstraintWidget_get_DIRECT(void);
+inline int32_t ADXConstraintWidget_get_DIRECT(void);
 #define ADXConstraintWidget_DIRECT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, DIRECT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, DIRECT, int32_t)
 
-inline jint ADXConstraintWidget_get_MATCH_CONSTRAINT_SPREAD(void);
+inline int32_t ADXConstraintWidget_get_MATCH_CONSTRAINT_SPREAD(void);
 #define ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_SPREAD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_SPREAD, int32_t)
 
-inline jint ADXConstraintWidget_get_MATCH_CONSTRAINT_WRAP(void);
+inline int32_t ADXConstraintWidget_get_MATCH_CONSTRAINT_WRAP(void);
 #define ADXConstraintWidget_MATCH_CONSTRAINT_WRAP 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_WRAP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_WRAP, int32_t)
 
-inline jint ADXConstraintWidget_get_MATCH_CONSTRAINT_PERCENT(void);
+inline int32_t ADXConstraintWidget_get_MATCH_CONSTRAINT_PERCENT(void);
 #define ADXConstraintWidget_MATCH_CONSTRAINT_PERCENT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_PERCENT, int32_t)
 
-inline jint ADXConstraintWidget_get_MATCH_CONSTRAINT_RATIO(void);
+inline int32_t ADXConstraintWidget_get_MATCH_CONSTRAINT_RATIO(void);
 #define ADXConstraintWidget_MATCH_CONSTRAINT_RATIO 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_RATIO, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_RATIO, int32_t)
 
-inline jint ADXConstraintWidget_get_MATCH_CONSTRAINT_RATIO_RESOLVED(void);
+inline int32_t ADXConstraintWidget_get_MATCH_CONSTRAINT_RATIO_RESOLVED(void);
 #define ADXConstraintWidget_MATCH_CONSTRAINT_RATIO_RESOLVED 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_RATIO_RESOLVED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, MATCH_CONSTRAINT_RATIO_RESOLVED, int32_t)
 
-inline jint ADXConstraintWidget_get_UNKNOWN(void);
+inline int32_t ADXConstraintWidget_get_UNKNOWN(void);
 #define ADXConstraintWidget_UNKNOWN -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, UNKNOWN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, UNKNOWN, int32_t)
 
-inline jint ADXConstraintWidget_get_HORIZONTAL(void);
+inline int32_t ADXConstraintWidget_get_HORIZONTAL(void);
 #define ADXConstraintWidget_HORIZONTAL 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, HORIZONTAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, HORIZONTAL, int32_t)
 
-inline jint ADXConstraintWidget_get_VERTICAL(void);
+inline int32_t ADXConstraintWidget_get_VERTICAL(void);
 #define ADXConstraintWidget_VERTICAL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, VERTICAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, VERTICAL, int32_t)
 
-inline jint ADXConstraintWidget_get_BOTH(void);
+inline int32_t ADXConstraintWidget_get_BOTH(void);
 #define ADXConstraintWidget_BOTH 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, BOTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, BOTH, int32_t)
 
-inline jint ADXConstraintWidget_get_VISIBLE(void);
+inline int32_t ADXConstraintWidget_get_VISIBLE(void);
 #define ADXConstraintWidget_VISIBLE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, VISIBLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, VISIBLE, int32_t)
 
-inline jint ADXConstraintWidget_get_INVISIBLE(void);
+inline int32_t ADXConstraintWidget_get_INVISIBLE(void);
 #define ADXConstraintWidget_INVISIBLE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, INVISIBLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, INVISIBLE, int32_t)
 
-inline jint ADXConstraintWidget_get_GONE(void);
+inline int32_t ADXConstraintWidget_get_GONE(void);
 #define ADXConstraintWidget_GONE 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, GONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, GONE, int32_t)
 
-inline jint ADXConstraintWidget_get_CHAIN_SPREAD(void);
+inline int32_t ADXConstraintWidget_get_CHAIN_SPREAD(void);
 #define ADXConstraintWidget_CHAIN_SPREAD 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, CHAIN_SPREAD, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, CHAIN_SPREAD, int32_t)
 
-inline jint ADXConstraintWidget_get_CHAIN_SPREAD_INSIDE(void);
+inline int32_t ADXConstraintWidget_get_CHAIN_SPREAD_INSIDE(void);
 #define ADXConstraintWidget_CHAIN_SPREAD_INSIDE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, CHAIN_SPREAD_INSIDE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, CHAIN_SPREAD_INSIDE, int32_t)
 
-inline jint ADXConstraintWidget_get_CHAIN_PACKED(void);
+inline int32_t ADXConstraintWidget_get_CHAIN_PACKED(void);
 #define ADXConstraintWidget_CHAIN_PACKED 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, CHAIN_PACKED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, CHAIN_PACKED, int32_t)
 
-inline jint ADXConstraintWidget_get_WRAP_BEHAVIOR_INCLUDED(void);
+inline int32_t ADXConstraintWidget_get_WRAP_BEHAVIOR_INCLUDED(void);
 #define ADXConstraintWidget_WRAP_BEHAVIOR_INCLUDED 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_INCLUDED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_INCLUDED, int32_t)
 
-inline jint ADXConstraintWidget_get_WRAP_BEHAVIOR_HORIZONTAL_ONLY(void);
+inline int32_t ADXConstraintWidget_get_WRAP_BEHAVIOR_HORIZONTAL_ONLY(void);
 #define ADXConstraintWidget_WRAP_BEHAVIOR_HORIZONTAL_ONLY 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_HORIZONTAL_ONLY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_HORIZONTAL_ONLY, int32_t)
 
-inline jint ADXConstraintWidget_get_WRAP_BEHAVIOR_VERTICAL_ONLY(void);
+inline int32_t ADXConstraintWidget_get_WRAP_BEHAVIOR_VERTICAL_ONLY(void);
 #define ADXConstraintWidget_WRAP_BEHAVIOR_VERTICAL_ONLY 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_VERTICAL_ONLY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_VERTICAL_ONLY, int32_t)
 
-inline jint ADXConstraintWidget_get_WRAP_BEHAVIOR_SKIPPED(void);
+inline int32_t ADXConstraintWidget_get_WRAP_BEHAVIOR_SKIPPED(void);
 #define ADXConstraintWidget_WRAP_BEHAVIOR_SKIPPED 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_SKIPPED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, WRAP_BEHAVIOR_SKIPPED, int32_t)
 
-inline jint ADXConstraintWidget_get_ANCHOR_LEFT(void);
+inline int32_t ADXConstraintWidget_get_ANCHOR_LEFT(void);
 #define ADXConstraintWidget_ANCHOR_LEFT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_LEFT, int32_t)
 
-inline jint ADXConstraintWidget_get_ANCHOR_RIGHT(void);
+inline int32_t ADXConstraintWidget_get_ANCHOR_RIGHT(void);
 #define ADXConstraintWidget_ANCHOR_RIGHT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_RIGHT, int32_t)
 
-inline jint ADXConstraintWidget_get_ANCHOR_TOP(void);
+inline int32_t ADXConstraintWidget_get_ANCHOR_TOP(void);
 #define ADXConstraintWidget_ANCHOR_TOP 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_TOP, int32_t)
 
-inline jint ADXConstraintWidget_get_ANCHOR_BOTTOM(void);
+inline int32_t ADXConstraintWidget_get_ANCHOR_BOTTOM(void);
 #define ADXConstraintWidget_ANCHOR_BOTTOM 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_BOTTOM, int32_t)
 
-inline jint ADXConstraintWidget_get_ANCHOR_BASELINE(void);
+inline int32_t ADXConstraintWidget_get_ANCHOR_BASELINE(void);
 #define ADXConstraintWidget_ANCHOR_BASELINE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_BASELINE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, ANCHOR_BASELINE, int32_t)
 
-inline jint ADXConstraintWidget_get_DIMENSION_HORIZONTAL(void);
+inline int32_t ADXConstraintWidget_get_DIMENSION_HORIZONTAL(void);
 #define ADXConstraintWidget_DIMENSION_HORIZONTAL 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, DIMENSION_HORIZONTAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, DIMENSION_HORIZONTAL, int32_t)
 
-inline jint ADXConstraintWidget_get_DIMENSION_VERTICAL(void);
+inline int32_t ADXConstraintWidget_get_DIMENSION_VERTICAL(void);
 #define ADXConstraintWidget_DIMENSION_VERTICAL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, DIMENSION_VERTICAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidget, DIMENSION_VERTICAL, int32_t)
 
-inline jfloat ADXConstraintWidget_get_DEFAULT_BIAS(void);
-inline jfloat ADXConstraintWidget_set_DEFAULT_BIAS(jfloat value);
-inline jfloat *ADXConstraintWidget_getRef_DEFAULT_BIAS(void);
+inline float ADXConstraintWidget_get_DEFAULT_BIAS(void);
+inline float ADXConstraintWidget_set_DEFAULT_BIAS(float value);
+inline float *ADXConstraintWidget_getRef_DEFAULT_BIAS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jfloat ADXConstraintWidget_DEFAULT_BIAS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXConstraintWidget, DEFAULT_BIAS, jfloat)
+FOUNDATION_EXPORT float ADXConstraintWidget_DEFAULT_BIAS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXConstraintWidget, DEFAULT_BIAS, float)
 
 FOUNDATION_EXPORT void ADXConstraintWidget_init(ADXConstraintWidget *self);
 
@@ -1158,33 +1163,34 @@ FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithNSString_
 
 FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithNSString_(NSString *debugName);
 
-FOUNDATION_EXPORT void ADXConstraintWidget_initWithInt_withInt_withInt_withInt_(ADXConstraintWidget *self, jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintWidget_initWithInt_withInt_withInt_withInt_(ADXConstraintWidget *self, int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT void ADXConstraintWidget_initWithNSString_withInt_withInt_withInt_withInt_(ADXConstraintWidget *self, NSString *debugName, jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintWidget_initWithNSString_withInt_withInt_withInt_withInt_(ADXConstraintWidget *self, NSString *debugName, int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithNSString_withInt_withInt_withInt_withInt_(NSString *debugName, jint x, jint y, jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithNSString_withInt_withInt_withInt_withInt_(NSString *debugName, int32_t x, int32_t y, int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithNSString_withInt_withInt_withInt_withInt_(NSString *debugName, jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithNSString_withInt_withInt_withInt_withInt_(NSString *debugName, int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT void ADXConstraintWidget_initWithInt_withInt_(ADXConstraintWidget *self, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintWidget_initWithInt_withInt_(ADXConstraintWidget *self, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithInt_withInt_(jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithInt_withInt_(int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithInt_withInt_(jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithInt_withInt_(int32_t width, int32_t height);
 
-FOUNDATION_EXPORT void ADXConstraintWidget_initWithNSString_withInt_withInt_(ADXConstraintWidget *self, NSString *debugName, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintWidget_initWithNSString_withInt_withInt_(ADXConstraintWidget *self, NSString *debugName, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithNSString_withInt_withInt_(NSString *debugName, jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintWidget *new_ADXConstraintWidget_initWithNSString_withInt_withInt_(NSString *debugName, int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithNSString_withInt_withInt_(NSString *debugName, jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintWidget *create_ADXConstraintWidget_initWithNSString_withInt_withInt_(NSString *debugName, int32_t width, int32_t height);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintWidget)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsConstraintWidget ADXConstraintWidget;
+
 
 #endif
 
@@ -1196,13 +1202,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintWidget)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXConstraintWidget_DimensionBehaviour_Enum) {
-  ADXConstraintWidget_DimensionBehaviour_Enum_FIXED = 0,
-  ADXConstraintWidget_DimensionBehaviour_Enum_WRAP_CONTENT = 1,
-  ADXConstraintWidget_DimensionBehaviour_Enum_MATCH_CONSTRAINT = 2,
-  ADXConstraintWidget_DimensionBehaviour_Enum_MATCH_PARENT = 3,
+typedef NS_ENUM(int32_t, ADXConstraintWidget_DimensionBehaviour_Enum) {
+  ADXConstraintWidget_DimensionBehaviour_Enum_FIXED NS_SWIFT_NAME(fixed) = 0,
+  ADXConstraintWidget_DimensionBehaviour_Enum_WRAP_CONTENT NS_SWIFT_NAME(wrapContent) = 1,
+  ADXConstraintWidget_DimensionBehaviour_Enum_MATCH_CONSTRAINT NS_SWIFT_NAME(matchConstraint) = 2,
+  ADXConstraintWidget_DimensionBehaviour_Enum_MATCH_PARENT NS_SWIFT_NAME(matchParent) = 3,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXConstraintWidget_DimensionBehaviour_ORDINAL int32_t
+#else
+#define ADXConstraintWidget_DimensionBehaviour_ORDINAL ADXConstraintWidget_DimensionBehaviour_Enum
+#endif
+
 
 /*!
  @brief Define how the widget will resize
@@ -1218,6 +1232,13 @@ typedef NS_ENUM(NSUInteger, ADXConstraintWidget_DimensionBehaviour_Enum) {
 #pragma mark Package-Private
 
 - (ADXConstraintWidget_DimensionBehaviour_Enum)toNSEnum;
+
+@property(readonly) ADXConstraintWidget_DimensionBehaviour_Enum enumValue;
++ (ADXConstraintWidget_DimensionBehaviour *)fromNSEnum:(ADXConstraintWidget_DimensionBehaviour_Enum)value;
+
+- (ADXConstraintWidget_DimensionBehaviour_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithDimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour_Enum)value;
 
 @end
 
@@ -1242,9 +1263,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXConstraintWidget_DimensionBehaviour_values(
 
 FOUNDATION_EXPORT ADXConstraintWidget_DimensionBehaviour *ADXConstraintWidget_DimensionBehaviour_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXConstraintWidget_DimensionBehaviour *ADXConstraintWidget_DimensionBehaviour_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXConstraintWidget_DimensionBehaviour *ADXConstraintWidget_DimensionBehaviour_fromOrdinal(ADXConstraintWidget_DimensionBehaviour_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintWidget_DimensionBehaviour)
+
 
 #endif
 

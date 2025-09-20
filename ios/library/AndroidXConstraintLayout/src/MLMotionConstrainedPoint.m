@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MLMotionConstrainedPoint.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAttribute.h"
 #include "ConstraintSet.h"
 #include "Easing.h"
@@ -16,7 +21,10 @@
 #include "Rect.h"
 #include "View.h"
 #include "ViewSpline.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/HashMap.h"
 #include "java/util/HashSet.h"
@@ -24,40 +32,46 @@
 #include "java/util/Set.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXMLMotionConstrainedPoint () {
  @public
-  jfloat alpha_;
-  jboolean applyElevation_;
-  jfloat elevation_;
-  jfloat rotation_;
-  jfloat rotationX_;
-  jfloat scaleX_;
-  jfloat scaleY_;
-  jfloat mPivotX_;
-  jfloat mPivotY_;
-  jfloat translationX_;
-  jfloat translationY_;
-  jfloat translationZ_;
+  float alpha_;
+  bool applyElevation_;
+  float elevation_;
+  float rotation_;
+  float rotationX_;
+  float scaleX_;
+  float scaleY_;
+  float mPivotX_;
+  float mPivotY_;
+  float translationX_;
+  float translationY_;
+  float translationZ_;
   ADXEasing *mKeyFrameEasing_;
-  jint mDrawPath_;
-  jfloat position_;
-  jfloat x_;
-  jfloat y_;
-  jfloat width_;
-  jfloat height_;
-  jfloat mPathRotate_;
-  jfloat mProgress_;
-  jint mAnimateRelativeTo_;
+  int32_t mDrawPath_;
+  float position_;
+  float x_;
+  float y_;
+  float width_;
+  float height_;
+  float mPathRotate_;
+  float mProgress_;
+  int32_t mAnimateRelativeTo_;
 }
 
-- (jboolean)diffWithFloat:(jfloat)a
-                withFloat:(jfloat)b;
+- (bool)diffWithFloat:(float)a
+            withFloat:(float)b;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXMLMotionConstrainedPoint, mKeyFrameEasing_, ADXEasing *)
 
-__attribute__((unused)) static jboolean ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(ADXMLMotionConstrainedPoint *self, jfloat a, jfloat b);
+__attribute__((unused)) static bool ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(ADXMLMotionConstrainedPoint *self, float a, float b);
 
 J2OBJC_INITIALIZED_DEFN(ADXMLMotionConstrainedPoint)
 
@@ -71,8 +85,8 @@ IOSObjectArray *ADXMLMotionConstrainedPoint_names;
   return self;
 }
 
-- (jboolean)diffWithFloat:(jfloat)a
-                withFloat:(jfloat)b {
+- (bool)diffWithFloat:(float)a
+            withFloat:(float)b {
   return ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(self, a, b);
 }
 
@@ -128,7 +142,7 @@ IOSObjectArray *ADXMLMotionConstrainedPoint_names;
 - (void)differentWithADXMLMotionConstrainedPoint:(ADXMLMotionConstrainedPoint *)points
                                 withBooleanArray:(IOSBooleanArray *)mask
                                withNSStringArray:(IOSObjectArray *)custom {
-  jint c = 0;
+  int32_t c = 0;
   *IOSBooleanArray_GetRef(nil_chk(mask), c++) |= ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(self, position_, ((ADXMLMotionConstrainedPoint *) nil_chk(points))->position_);
   *IOSBooleanArray_GetRef(mask, c++) |= ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(self, x_, points->x_);
   *IOSBooleanArray_GetRef(mask, c++) |= ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(self, y_, points->y_);
@@ -138,53 +152,53 @@ IOSObjectArray *ADXMLMotionConstrainedPoint_names;
 
 - (void)fillStandardWithDoubleArray:(IOSDoubleArray *)data
                        withIntArray:(IOSIntArray *)toUse {
-  IOSFloatArray *set = [IOSFloatArray arrayWithFloats:(jfloat[]){ position_, x_, y_, width_, height_, alpha_, elevation_, rotation_, rotationX_, rotationY_, scaleX_, scaleY_, mPivotX_, mPivotY_, translationX_, translationY_, translationZ_, mPathRotate_ } count:18];
-  jint c = 0;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+  IOSFloatArray *set = [IOSFloatArray arrayWithFloats:(float[]){ position_, x_, y_, width_, height_, alpha_, elevation_, rotation_, rotationX_, rotationY_, scaleX_, scaleY_, mPivotX_, mPivotY_, translationX_, translationY_, translationZ_, mPathRotate_ } count:18];
+  int32_t c = 0;
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
     if (IOSIntArray_Get(toUse, i) < set->size_) {
       *IOSDoubleArray_GetRef(nil_chk(data), c++) = IOSFloatArray_Get(set, IOSIntArray_Get(toUse, i));
     }
   }
 }
 
-- (jboolean)hasCustomDataWithNSString:(NSString *)name {
+- (bool)hasCustomDataWithNSString:(NSString *)name {
   return [((JavaUtilLinkedHashMap *) nil_chk(attributes_)) containsKeyWithId:name];
 }
 
-- (jint)getCustomDataCountWithNSString:(NSString *)name {
+- (int32_t)getCustomDataCountWithNSString:(NSString *)name {
   return [((ADXConstraintAttribute *) nil_chk([((JavaUtilLinkedHashMap *) nil_chk(attributes_)) getWithId:name])) numberOfInterpolatedValues];
 }
 
-- (jint)getCustomDataWithNSString:(NSString *)name
-                  withDoubleArray:(IOSDoubleArray *)value
-                          withInt:(jint)offset {
+- (int32_t)getCustomDataWithNSString:(NSString *)name
+                     withDoubleArray:(IOSDoubleArray *)value
+                             withInt:(int32_t)offset {
   ADXConstraintAttribute *a = JreRetainedLocalValue([((JavaUtilLinkedHashMap *) nil_chk(attributes_)) getWithId:name]);
   if ([((ADXConstraintAttribute *) nil_chk(a)) numberOfInterpolatedValues] == 1) {
     *IOSDoubleArray_GetRef(nil_chk(value), offset) = [a getValueToInterpolate];
     return 1;
   }
   else {
-    jint N = [a numberOfInterpolatedValues];
+    int32_t N = [a numberOfInterpolatedValues];
     IOSFloatArray *f = [IOSFloatArray arrayWithLength:N];
     [a getValuesToInterpolateWithFloatArray:f];
-    for (jint i = 0; i < N; i++) {
+    for (int32_t i = 0; i < N; i++) {
       *IOSDoubleArray_GetRef(nil_chk(value), offset++) = IOSFloatArray_Get(f, i);
     }
     return N;
   }
 }
 
-- (void)setBoundsWithFloat:(jfloat)x
-                 withFloat:(jfloat)y
-                 withFloat:(jfloat)w
-                 withFloat:(jfloat)h {
+- (void)setBoundsWithFloat:(float)x
+                 withFloat:(float)y
+                 withFloat:(float)w
+                 withFloat:(float)h {
   self->x_ = x;
   self->y_ = y;
   width_ = w;
   height_ = h;
 }
 
-- (jint)compareToWithId:(ADXMLMotionConstrainedPoint *)o {
+- (int32_t)compareToWithId:(ADXMLMotionConstrainedPoint *)o {
   cast_chk(o, [ADXMLMotionConstrainedPoint class]);
   return JavaLangFloat_compareWithFloat_withFloat_(position_, ((ADXMLMotionConstrainedPoint *) nil_chk(o))->position_);
 }
@@ -241,7 +255,7 @@ IOSObjectArray *ADXMLMotionConstrainedPoint_names;
 }
 
 - (void)addValuesWithJavaUtilHashMap:(JavaUtilHashMap *)splines
-                             withInt:(jint)mFramePosition {
+                             withInt:(int32_t)mFramePosition {
   for (NSString * __strong s in nil_chk([((JavaUtilHashMap *) nil_chk(splines)) keySet])) {
     ADXViewSpline *ViewSpline = JreRetainedLocalValue([splines getWithId:s]);
     switch (JreIndexOfStr(s, (id[]){ ADXKey_ALPHA, ADXKey_ELEVATION, ADXKey_ROTATION, ADXKey_ROTATION_X, ADXKey_ROTATION_Y, ADXKey_PIVOT_X, ADXKey_PIVOT_Y, ADXKey_TRANSITION_PATH_ROTATE, ADXKey_PROGRESS, ADXKey_SCALE_X, ADXKey_SCALE_Y, ADXKey_TRANSLATION_X, ADXKey_TRANSLATION_Y, ADXKey_TRANSLATION_Z }, 14)) {
@@ -314,8 +328,8 @@ IOSObjectArray *ADXMLMotionConstrainedPoint_names;
 
 - (void)setStateWithADRect:(ADRect *)rect
                 withADView:(ADView *)view
-                   withInt:(jint)rotation
-                 withFloat:(jfloat)prevous {
+                   withInt:(int32_t)rotation
+                 withFloat:(float)prevous {
   [self setBoundsWithFloat:((ADRect *) nil_chk(rect))->left_ withFloat:rect->top_ withFloat:[rect width] withFloat:[rect height]];
   [self applyParametersWithADView:view];
   mPivotX_ = JavaLangFloat_NaN;
@@ -332,8 +346,8 @@ IOSObjectArray *ADXMLMotionConstrainedPoint_names;
 
 - (void)setStateWithADRect:(ADRect *)cw
       withADXConstraintSet:(ADXConstraintSet *)constraintSet
-                   withInt:(jint)rotation
-                   withInt:(jint)viewId {
+                   withInt:(int32_t)rotation
+                   withInt:(int32_t)viewId {
   [self setBoundsWithFloat:((ADRect *) nil_chk(cw))->left_ withFloat:cw->top_ withFloat:[cw width] withFloat:[cw height]];
   [self applyParametersWithADXConstraintSet_Constraint:[((ADXConstraintSet *) nil_chk(constraintSet)) getParametersWithInt:viewId]];
   switch (rotation) {
@@ -480,7 +494,7 @@ ADXMLMotionConstrainedPoint *create_ADXMLMotionConstrainedPoint_initPackagePriva
   J2OBJC_CREATE_IMPL(ADXMLMotionConstrainedPoint, initPackagePrivate)
 }
 
-jboolean ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(ADXMLMotionConstrainedPoint *self, jfloat a, jfloat b) {
+bool ADXMLMotionConstrainedPoint_diffWithFloat_withFloat_(ADXMLMotionConstrainedPoint *self, float a, float b) {
   if (JavaLangFloat_isNaNWithFloat_(a) || JavaLangFloat_isNaNWithFloat_(b)) {
     return JavaLangFloat_isNaNWithFloat_(a) != JavaLangFloat_isNaNWithFloat_(b);
   }

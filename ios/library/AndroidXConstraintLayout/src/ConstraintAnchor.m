@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\ConstraintAnchor.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Cache.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -13,20 +18,28 @@
 #include "SolverVariable.h"
 #include "WidgetGroup.h"
 #include "java/lang/AssertionError.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Enum.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashMap.h"
 #include "java/util/HashSet.h"
 
-@class JavaUtilHashSet;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXConstraintAnchor () {
  @public
   JavaUtilHashSet *mDependents_;
-  jint mFinalValue_;
-  jboolean mHasFinalValue_;
+  int32_t mFinalValue_;
+  bool mHasFinalValue_;
 }
 
 /*!
@@ -35,30 +48,30 @@
  @param checked set of things already checked
  @return true if it is connected to me
  */
-- (jboolean)isConnectionToMeWithADXConstraintWidget:(ADXConstraintWidget *)target
-                                withJavaUtilHashSet:(JavaUtilHashSet *)checked;
+- (bool)isConnectionToMeWithADXConstraintWidget:(ADXConstraintWidget *)target
+                            withJavaUtilHashSet:(JavaUtilHashSet *)checked;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXConstraintAnchor, mDependents_, JavaUtilHashSet *)
 
-inline jboolean ADXConstraintAnchor_get_ALLOW_BINARY(void);
+inline bool ADXConstraintAnchor_get_ALLOW_BINARY(void);
 #define ADXConstraintAnchor_ALLOW_BINARY false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintAnchor, ALLOW_BINARY, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintAnchor, ALLOW_BINARY, bool)
 
-inline jint ADXConstraintAnchor_get_UNSET_GONE_MARGIN(void);
-#define ADXConstraintAnchor_UNSET_GONE_MARGIN ((jint) 0x80000000)
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintAnchor, UNSET_GONE_MARGIN, jint)
+inline int32_t ADXConstraintAnchor_get_UNSET_GONE_MARGIN(void);
+#define ADXConstraintAnchor_UNSET_GONE_MARGIN ((int32_t) 0x80000000)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintAnchor, UNSET_GONE_MARGIN, int32_t)
 
-__attribute__((unused)) static jboolean ADXConstraintAnchor_isConnectionToMeWithADXConstraintWidget_withJavaUtilHashSet_(ADXConstraintAnchor *self, ADXConstraintWidget *target, JavaUtilHashSet *checked);
+__attribute__((unused)) static bool ADXConstraintAnchor_isConnectionToMeWithADXConstraintWidget_withJavaUtilHashSet_(ADXConstraintAnchor *self, ADXConstraintWidget *target, JavaUtilHashSet *checked);
 
 __attribute__((unused)) static ADXConstraintAnchor *ADXConstraintAnchor_getOpposite(ADXConstraintAnchor *self);
 
-__attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_withInt_(ADXConstraintAnchor_Type *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_withInt_(ADXConstraintAnchor_Type *self, NSString *__name, int32_t __ordinal);
 
 @implementation ADXConstraintAnchor
 
-- (void)findDependentsWithInt:(jint)orientation
+- (void)findDependentsWithInt:(int32_t)orientation
         withJavaUtilArrayList:(JavaUtilArrayList *)list
            withADXWidgetGroup:(ADXWidgetGroup *)group {
   if (mDependents_ != nil) {
@@ -72,14 +85,14 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   return mDependents_;
 }
 
-- (jboolean)hasDependents {
+- (bool)hasDependents {
   if (mDependents_ == nil) {
     return false;
   }
   return [mDependents_ size] > 0;
 }
 
-- (jboolean)hasCenteredDependents {
+- (bool)hasCenteredDependents {
   if (mDependents_ == nil) {
     return false;
   }
@@ -92,12 +105,12 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   return false;
 }
 
-- (void)setFinalValueWithInt:(jint)finalValue {
+- (void)setFinalValueWithInt:(int32_t)finalValue {
   self->mFinalValue_ = finalValue;
   self->mHasFinalValue_ = true;
 }
 
-- (jint)getFinalValue {
+- (int32_t)getFinalValue {
   if (!mHasFinalValue_) {
     return 0;
   }
@@ -109,7 +122,7 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   mFinalValue_ = 0;
 }
 
-- (jboolean)hasFinalValue {
+- (bool)hasFinalValue {
   return mHasFinalValue_;
 }
 
@@ -165,7 +178,7 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   return mType_;
 }
 
-- (jint)getMargin {
+- (int32_t)getMargin {
   if ([((ADXConstraintWidget *) nil_chk(mOwner_)) getVisibility] == ADXConstraintWidget_GONE) {
     return 0;
   }
@@ -194,10 +207,10 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   mFinalValue_ = 0;
 }
 
-- (jboolean)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
-                                   withInt:(jint)margin
-                                   withInt:(jint)goneMargin
-                               withBoolean:(jboolean)forceConnection {
+- (bool)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
+                               withInt:(int32_t)margin
+                               withInt:(int32_t)goneMargin
+                           withBoolean:(bool)forceConnection {
   if (toAnchor == nil) {
     [self reset];
     return true;
@@ -217,16 +230,16 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   return true;
 }
 
-- (jboolean)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
-                                   withInt:(jint)margin {
+- (bool)connectWithADXConstraintAnchor:(ADXConstraintAnchor *)toAnchor
+                               withInt:(int32_t)margin {
   return [self connectWithADXConstraintAnchor:toAnchor withInt:margin withInt:ADXConstraintAnchor_UNSET_GONE_MARGIN withBoolean:false];
 }
 
-- (jboolean)isConnected {
+- (bool)isConnected {
   return mTarget_ != nil;
 }
 
-- (jboolean)isValidConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor {
+- (bool)isValidConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor {
   if (anchor == nil) {
     return false;
   }
@@ -245,7 +258,7 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
     case ADXConstraintAnchor_Type_Enum_LEFT:
     case ADXConstraintAnchor_Type_Enum_RIGHT:
     {
-      jboolean isCompatible = target == JreLoadEnum(ADXConstraintAnchor_Type, LEFT) || target == JreLoadEnum(ADXConstraintAnchor_Type, RIGHT);
+      bool isCompatible = target == JreLoadEnum(ADXConstraintAnchor_Type, LEFT) || target == JreLoadEnum(ADXConstraintAnchor_Type, RIGHT);
       if ([[anchor getOwner] isKindOfClass:[ADXCoreGuideline class]]) {
         isCompatible = (isCompatible || target == JreLoadEnum(ADXConstraintAnchor_Type, CENTER_X));
       }
@@ -254,7 +267,7 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
     case ADXConstraintAnchor_Type_Enum_TOP:
     case ADXConstraintAnchor_Type_Enum_BOTTOM:
     {
-      jboolean isCompatible = target == JreLoadEnum(ADXConstraintAnchor_Type, TOP) || target == JreLoadEnum(ADXConstraintAnchor_Type, BOTTOM);
+      bool isCompatible = target == JreLoadEnum(ADXConstraintAnchor_Type, TOP) || target == JreLoadEnum(ADXConstraintAnchor_Type, BOTTOM);
       if ([[anchor getOwner] isKindOfClass:[ADXCoreGuideline class]]) {
         isCompatible = (isCompatible || target == JreLoadEnum(ADXConstraintAnchor_Type, CENTER_Y));
       }
@@ -275,7 +288,7 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   @throw create_JavaLangAssertionError_initWithId_([((ADXConstraintAnchor_Type *) nil_chk(mType_)) name]);
 }
 
-- (jboolean)isSideAnchor {
+- (bool)isSideAnchor {
   switch ([mType_ ordinal]) {
     case ADXConstraintAnchor_Type_Enum_LEFT:
     case ADXConstraintAnchor_Type_Enum_RIGHT:
@@ -292,7 +305,7 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   @throw create_JavaLangAssertionError_initWithId_([((ADXConstraintAnchor_Type *) nil_chk(mType_)) name]);
 }
 
-- (jboolean)isSimilarDimensionConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor {
+- (bool)isSimilarDimensionConnectionWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor {
   ADXConstraintAnchor_Type *target = JreRetainedLocalValue([((ADXConstraintAnchor *) nil_chk(anchor)) getType]);
   if (target == mType_) {
     return true;
@@ -321,19 +334,19 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   @throw create_JavaLangAssertionError_initWithId_([((ADXConstraintAnchor_Type *) nil_chk(mType_)) name]);
 }
 
-- (void)setMarginWithInt:(jint)margin {
+- (void)setMarginWithInt:(int32_t)margin {
   if ([self isConnected]) {
     mMargin_ = margin;
   }
 }
 
-- (void)setGoneMarginWithInt:(jint)margin {
+- (void)setGoneMarginWithInt:(int32_t)margin {
   if ([self isConnected]) {
     mGoneMargin_ = margin;
   }
 }
 
-- (jboolean)isVerticalAnchor {
+- (bool)isVerticalAnchor {
   switch ([mType_ ordinal]) {
     case ADXConstraintAnchor_Type_Enum_LEFT:
     case ADXConstraintAnchor_Type_Enum_RIGHT:
@@ -354,28 +367,28 @@ __attribute__((unused)) static void ADXConstraintAnchor_Type_initWithNSString_wi
   return JreStrcat("$C$", [((ADXConstraintWidget *) nil_chk(mOwner_)) getDebugName], ':', [((ADXConstraintAnchor_Type *) nil_chk(mType_)) description]);
 }
 
-- (jboolean)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target
-                               withADXConstraintAnchor:(ADXConstraintAnchor *)anchor {
+- (bool)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target
+                           withADXConstraintAnchor:(ADXConstraintAnchor *)anchor {
   return [self isConnectionAllowedWithADXConstraintWidget:target];
 }
 
-- (jboolean)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target {
+- (bool)isConnectionAllowedWithADXConstraintWidget:(ADXConstraintWidget *)target {
   JavaUtilHashSet *checked = create_JavaUtilHashSet_init();
   if (ADXConstraintAnchor_isConnectionToMeWithADXConstraintWidget_withJavaUtilHashSet_(self, target, checked)) {
     return false;
   }
   ADXConstraintWidget *parent = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk([self getOwner])) getParent]);
-  if (parent == target) {
+  if (JreObjectEqualsEquals(parent, target)) {
     return true;
   }
-  if ([((ADXConstraintWidget *) nil_chk(target)) getParent] == parent) {
+  if (JreObjectEqualsEquals([((ADXConstraintWidget *) nil_chk(target)) getParent], parent)) {
     return true;
   }
   return false;
 }
 
-- (jboolean)isConnectionToMeWithADXConstraintWidget:(ADXConstraintWidget *)target
-                                withJavaUtilHashSet:(JavaUtilHashSet *)checked {
+- (bool)isConnectionToMeWithADXConstraintWidget:(ADXConstraintWidget *)target
+                            withJavaUtilHashSet:(JavaUtilHashSet *)checked {
   return ADXConstraintAnchor_isConnectionToMeWithADXConstraintWidget_withJavaUtilHashSet_(self, target, checked);
 }
 
@@ -502,16 +515,16 @@ ADXConstraintAnchor *create_ADXConstraintAnchor_initWithADXConstraintWidget_with
   J2OBJC_CREATE_IMPL(ADXConstraintAnchor, initWithADXConstraintWidget_withADXConstraintAnchor_Type_, owner, type)
 }
 
-jboolean ADXConstraintAnchor_isConnectionToMeWithADXConstraintWidget_withJavaUtilHashSet_(ADXConstraintAnchor *self, ADXConstraintWidget *target, JavaUtilHashSet *checked) {
+bool ADXConstraintAnchor_isConnectionToMeWithADXConstraintWidget_withJavaUtilHashSet_(ADXConstraintAnchor *self, ADXConstraintWidget *target, JavaUtilHashSet *checked) {
   if ([((JavaUtilHashSet *) nil_chk(checked)) containsWithId:target]) {
     return false;
   }
   [checked addWithId:target];
-  if (target == [self getOwner]) {
+  if (JreObjectEqualsEquals(target, [self getOwner])) {
     return true;
   }
   JavaUtilArrayList *targetAnchors = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk(target)) getAnchors]);
-  for (jint i = 0, targetAnchorsSize = [((JavaUtilArrayList *) nil_chk(targetAnchors)) size]; i < targetAnchorsSize; i++) {
+  for (int32_t i = 0, targetAnchorsSize = [((JavaUtilArrayList *) nil_chk(targetAnchors)) size]; i < targetAnchorsSize; i++) {
     ADXConstraintAnchor *anchor = JreRetainedLocalValue([targetAnchors getWithInt:i]);
     if ([((ADXConstraintAnchor *) nil_chk(anchor)) isSimilarDimensionConnectionWithADXConstraintAnchor:self] && [anchor isConnected]) {
       if (ADXConstraintAnchor_isConnectionToMeWithADXConstraintWidget_withJavaUtilHashSet_(self, [((ADXConstraintAnchor *) nil_chk([anchor getTarget])) getOwner], checked)) {
@@ -552,6 +565,8 @@ ADXConstraintAnchor *ADXConstraintAnchor_getOpposite(ADXConstraintAnchor *self) 
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintAnchor)
 
+J2OBJC_NAME_MAPPING(ADXConstraintAnchor, "androidx.constraintlayout.core.widgets", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXConstraintAnchor_Type)
 
 ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_values_[9];
@@ -568,6 +583,24 @@ ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_values_[9];
 
 - (ADXConstraintAnchor_Type_Enum)toNSEnum {
   return (ADXConstraintAnchor_Type_Enum)[self ordinal];
+}
+
+- (ADXConstraintAnchor_Type_Enum)enumValue {
+  return (ADXConstraintAnchor_Type_Enum)[self ordinal];
+}
+
++ (ADXConstraintAnchor_Type *)fromNSEnum:(ADXConstraintAnchor_Type_Enum)nativeValue {
+  ADXConstraintAnchor_Type *javaEnum = ADXConstraintAnchor_Type_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXConstraintAnchor_Type_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXConstraintAnchor_Type_ORDINAL)ordinal {
+  return (ADXConstraintAnchor_Type_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithType:(ADXConstraintAnchor_Type_Enum)value {
+  return RETAIN_(ADXConstraintAnchor_Type_fromOrdinal((ADXConstraintAnchor_Type_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -603,7 +636,7 @@ ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_values_[9];
     size_t allocSize = 9 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 9; i++) {
+    for (int32_t i = 0; i < 9; i++) {
       ((void)(ADXConstraintAnchor_Type_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXConstraintAnchor_Type_initWithNSString_withInt_(e, JreEnumConstantName(ADXConstraintAnchor_Type_class_(), i), i);
     }
@@ -613,7 +646,7 @@ ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_values_[9];
 
 @end
 
-void ADXConstraintAnchor_Type_initWithNSString_withInt_(ADXConstraintAnchor_Type *self, NSString *__name, jint __ordinal) {
+void ADXConstraintAnchor_Type_initWithNSString_withInt_(ADXConstraintAnchor_Type *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -631,12 +664,11 @@ ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_valueOfWithNSString_(NSString
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_fromOrdinal(NSUInteger ordinal) {
+ADXConstraintAnchor_Type *ADXConstraintAnchor_Type_fromOrdinal(ADXConstraintAnchor_Type_ORDINAL ordinal) {
   ADXConstraintAnchor_Type_initialize();
-  if (ordinal >= 9) {
+  if (ordinal < 0 || ordinal >= 9) {
     return nil;
   }
   return ADXConstraintAnchor_Type_values_[ordinal];

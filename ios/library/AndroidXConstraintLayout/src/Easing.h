@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Easing.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Easing")
@@ -20,6 +21,8 @@
 #define ADXEasing_
 
 @class IOSObjectArray;
+@class JavaLangDouble;
+@class NSString;
 
 /*!
  @brief Provide the engine for cubic spline easing
@@ -33,9 +36,9 @@
 
 - (instancetype)init;
 
-- (jdouble)getWithDouble:(jdouble)x;
+- (double)getWithDouble:(double)x;
 
-- (jdouble)getDiffWithDouble:(jdouble)x;
+- (double)getDiffWithDouble:(double)x;
 
 + (ADXEasing *)getInterpolatorWithNSString:(NSString *)configString;
 
@@ -71,46 +74,50 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXEasing)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsEasing ADXEasing;
 
+
 #endif
 
 #if !defined (ADXEasing_CubicEasing_) && (INCLUDE_ALL_Easing || defined(INCLUDE_ADXEasing_CubicEasing))
 #define ADXEasing_CubicEasing_
 
+@class JavaLangDouble;
+@class NSString;
+
 @interface ADXEasing_CubicEasing : ADXEasing {
  @public
-  jdouble x1_;
-  jdouble y1_;
-  jdouble x2_;
-  jdouble y2_;
+  double x1_;
+  double y1_;
+  double x2_;
+  double y2_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithDouble:(jdouble)x1
-                    withDouble:(jdouble)y1
-                    withDouble:(jdouble)x2
-                    withDouble:(jdouble)y2;
+- (instancetype)initWithDouble:(double)x1
+                    withDouble:(double)y1
+                    withDouble:(double)x2
+                    withDouble:(double)y2;
 
 /*!
  @brief binary search for the region
   and linear interpolate the answer
  */
-- (jdouble)getWithDouble:(jdouble)x;
+- (double)getWithDouble:(double)x;
 
 /*!
  @brief binary search for the region
   and linear interpolate the answer
  */
-- (jdouble)getDiffWithDouble:(jdouble)x;
+- (double)getDiffWithDouble:(double)x;
 
 #pragma mark Package-Private
 
 - (instancetype)initWithNSString:(NSString *)configString;
 
-- (void)setupWithDouble:(jdouble)x1
-             withDouble:(jdouble)y1
-             withDouble:(jdouble)x2
-             withDouble:(jdouble)y2;
+- (void)setupWithDouble:(double)x1
+             withDouble:(double)y1
+             withDouble:(double)x2
+             withDouble:(double)y2;
 
 // Disallowed inherited constructors, do not use.
 
@@ -126,13 +133,14 @@ FOUNDATION_EXPORT ADXEasing_CubicEasing *new_ADXEasing_CubicEasing_initWithNSStr
 
 FOUNDATION_EXPORT ADXEasing_CubicEasing *create_ADXEasing_CubicEasing_initWithNSString_(NSString *configString);
 
-FOUNDATION_EXPORT void ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(ADXEasing_CubicEasing *self, jdouble x1, jdouble y1, jdouble x2, jdouble y2);
+FOUNDATION_EXPORT void ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(ADXEasing_CubicEasing *self, double x1, double y1, double x2, double y2);
 
-FOUNDATION_EXPORT ADXEasing_CubicEasing *new_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(jdouble x1, jdouble y1, jdouble x2, jdouble y2) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXEasing_CubicEasing *new_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(double x1, double y1, double x2, double y2) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXEasing_CubicEasing *create_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(jdouble x1, jdouble y1, jdouble x2, jdouble y2);
+FOUNDATION_EXPORT ADXEasing_CubicEasing *create_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(double x1, double y1, double x2, double y2);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXEasing_CubicEasing)
+
 
 #endif
 

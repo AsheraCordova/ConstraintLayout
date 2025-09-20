@@ -3,12 +3,25 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\CLStateSet.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLStateSet.h"
 #include "ConstraintsChangedListener.h"
 #include "J2ObjC_source.h"
 #include "SparseArray.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCLStateSet () {
@@ -22,9 +35,9 @@
 J2OBJC_FIELD_SETTER(ADXCLStateSet, mStateList_, ADSparseArray *)
 J2OBJC_FIELD_SETTER(ADXCLStateSet, mConstraintsChangedListener_, ADXConstraintsChangedListener *)
 
-inline jboolean ADXCLStateSet_get_DEBUG(void);
+inline bool ADXCLStateSet_get_DEBUG(void);
 #define ADXCLStateSet_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCLStateSet, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCLStateSet, DEBUG, bool)
 
 NSString *ADXCLStateSet_TAG = @"ConstraintLayoutStates";
 
@@ -37,9 +50,9 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)needsToChangeWithInt:(jint)id_
-                       withFloat:(jfloat)width
-                       withFloat:(jfloat)height {
+- (bool)needsToChangeWithInt:(int32_t)id_
+                   withFloat:(float)width
+                   withFloat:(float)height {
   if (mCurrentStateId_ != id_) {
     return true;
   }
@@ -59,16 +72,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&self->mConstraintsChangedListener_, constraintsChangedListener);
 }
 
-- (jint)stateGetConstraintIDWithInt:(jint)id_
-                            withInt:(jint)width
-                            withInt:(jint)height {
+- (int32_t)stateGetConstraintIDWithInt:(int32_t)id_
+                               withInt:(int32_t)width
+                               withInt:(int32_t)height {
   return [self updateConstraintsWithInt:-1 withInt:id_ withFloat:width withFloat:height];
 }
 
-- (jint)convertToConstraintSetWithInt:(jint)currentConstrainSettId
-                              withInt:(jint)stateId
-                            withFloat:(jfloat)width
-                            withFloat:(jfloat)height {
+- (int32_t)convertToConstraintSetWithInt:(int32_t)currentConstrainSettId
+                                 withInt:(int32_t)stateId
+                               withFloat:(float)width
+                               withFloat:(float)height {
   ADXCLStateSet_State *state = JreRetainedLocalValue([((ADSparseArray *) nil_chk(mStateList_)) getWithInt:stateId]);
   if (state == nil) {
     return stateId;
@@ -101,10 +114,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)updateConstraintsWithInt:(jint)currentId
-                         withInt:(jint)id_
-                       withFloat:(jfloat)width
-                       withFloat:(jfloat)height {
+- (int32_t)updateConstraintsWithInt:(int32_t)currentId
+                            withInt:(int32_t)id_
+                          withFloat:(float)width
+                          withFloat:(float)height {
   if (currentId == id_) {
     ADXCLStateSet_State *state;
     if (id_ == -1) {
@@ -121,7 +134,7 @@ J2OBJC_IGNORE_DESIGNATED_END
         return currentId;
       }
     }
-    jint match = [state findMatchWithFloat:width withFloat:height];
+    int32_t match = [state findMatchWithFloat:width withFloat:height];
     if (currentId == match) {
       return currentId;
     }
@@ -132,7 +145,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     if (state == nil) {
       return -1;
     }
-    jint match = [state findMatchWithFloat:width withFloat:height];
+    int32_t match = [state findMatchWithFloat:width withFloat:height];
     return (match == -1) ? state->mConstraintID_ : ((ADXCLStateSet_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(state->mVariants_)) getWithInt:match]))->mConstraintID_;
   }
 }
@@ -197,6 +210,8 @@ ADXCLStateSet *create_ADXCLStateSet_init() {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLStateSet)
 
+J2OBJC_NAME_MAPPING(ADXCLStateSet, "androidx.constraintlayout.widget", "ADX")
+
 @implementation ADXCLStateSet_State
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -210,9 +225,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((JavaUtilArrayList *) nil_chk(mVariants_)) addWithId:size];
 }
 
-- (jint)findMatchWithFloat:(jfloat)width
-                 withFloat:(jfloat)height {
-  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(mVariants_)) size]; i++) {
+- (int32_t)findMatchWithFloat:(float)width
+                    withFloat:(float)height {
+  for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(mVariants_)) size]; i++) {
     if ([((ADXCLStateSet_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(mVariants_)) getWithInt:i])) matchWithFloat:width withFloat:height]) {
       return i;
     }
@@ -277,8 +292,8 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)matchWithFloat:(jfloat)widthDp
-                 withFloat:(jfloat)heightDp {
+- (bool)matchWithFloat:(float)widthDp
+             withFloat:(float)heightDp {
   if (!JavaLangFloat_isNaNWithFloat_(mMinWidth_)) {
     if (widthDp < mMinWidth_) return false;
   }

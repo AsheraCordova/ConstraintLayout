@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\ChainHead.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ChainHead")
@@ -17,6 +18,9 @@
 #define ADXChainHead_
 
 @class ADXConstraintWidget;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 
 /*!
@@ -32,17 +36,17 @@
   ADXConstraintWidget *mFirstMatchConstraintWidget_;
   ADXConstraintWidget *mLastMatchConstraintWidget_;
   JavaUtilArrayList *mWeightedMatchConstraintsWidgets_;
-  jint mWidgetsCount_;
-  jint mWidgetsMatchCount_;
-  jfloat mTotalWeight_;
-  jint mVisibleWidgets_;
-  jint mTotalSize_;
-  jint mTotalMargins_;
-  jboolean mOptimizable_;
-  jboolean mHasUndefinedWeights_;
-  jboolean mHasDefinedWeights_;
-  jboolean mHasComplexMatchWeights_;
-  jboolean mHasRatio_;
+  int32_t mWidgetsCount_;
+  int32_t mWidgetsMatchCount_;
+  float mTotalWeight_;
+  int32_t mVisibleWidgets_;
+  int32_t mTotalSize_;
+  int32_t mTotalMargins_;
+  bool mOptimizable_;
+  bool mHasUndefinedWeights_;
+  bool mHasDefinedWeights_;
+  bool mHasComplexMatchWeights_;
+  bool mHasRatio_;
 }
 
 #pragma mark Public
@@ -55,8 +59,8 @@
  @param isRtl Right-to-left layout flag to determine the actual head of the chain
  */
 - (instancetype)initWithADXConstraintWidget:(ADXConstraintWidget *)first
-                                    withInt:(jint)orientation
-                                withBoolean:(jboolean)isRtl;
+                                    withInt:(int32_t)orientation
+                                withBoolean:(bool)isRtl;
 
 - (void)define;
 
@@ -74,7 +78,7 @@
 
 - (ADXConstraintWidget *)getLastVisibleWidget;
 
-- (jfloat)getTotalWeight;
+- (float)getTotalWeight;
 
 // Disallowed inherited constructors, do not use.
 
@@ -93,15 +97,16 @@ J2OBJC_FIELD_SETTER(ADXChainHead, mFirstMatchConstraintWidget_, ADXConstraintWid
 J2OBJC_FIELD_SETTER(ADXChainHead, mLastMatchConstraintWidget_, ADXConstraintWidget *)
 J2OBJC_FIELD_SETTER(ADXChainHead, mWeightedMatchConstraintsWidgets_, JavaUtilArrayList *)
 
-FOUNDATION_EXPORT void ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXChainHead *self, ADXConstraintWidget *first, jint orientation, jboolean isRtl);
+FOUNDATION_EXPORT void ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXChainHead *self, ADXConstraintWidget *first, int32_t orientation, bool isRtl);
 
-FOUNDATION_EXPORT ADXChainHead *new_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, jint orientation, jboolean isRtl) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXChainHead *new_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, int32_t orientation, bool isRtl) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXChainHead *create_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, jint orientation, jboolean isRtl);
+FOUNDATION_EXPORT ADXChainHead *create_ADXChainHead_initWithADXConstraintWidget_withInt_withBoolean_(ADXConstraintWidget *first, int32_t orientation, bool isRtl);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXChainHead)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsChainHead ADXChainHead;
+
 
 #endif
 

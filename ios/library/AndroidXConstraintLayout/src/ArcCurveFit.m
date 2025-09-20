@@ -3,93 +3,108 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\ArcCurveFit.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArcCurveFit.h"
 #include "CurveFit.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/Arrays.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXArcCurveFit () {
  @public
   IOSDoubleArray *mTime_;
-  jboolean mExtrapolate_;
+  bool mExtrapolate_;
 }
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXArcCurveFit, mTime_, IOSDoubleArray *)
 
-inline jint ADXArcCurveFit_get_START_VERTICAL(void);
+inline int32_t ADXArcCurveFit_get_START_VERTICAL(void);
 #define ADXArcCurveFit_START_VERTICAL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, START_VERTICAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, START_VERTICAL, int32_t)
 
-inline jint ADXArcCurveFit_get_START_HORIZONTAL(void);
+inline int32_t ADXArcCurveFit_get_START_HORIZONTAL(void);
 #define ADXArcCurveFit_START_HORIZONTAL 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, START_HORIZONTAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, START_HORIZONTAL, int32_t)
 
-inline jint ADXArcCurveFit_get_START_LINEAR(void);
+inline int32_t ADXArcCurveFit_get_START_LINEAR(void);
 #define ADXArcCurveFit_START_LINEAR 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, START_LINEAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, START_LINEAR, int32_t)
 
 @interface ADXArcCurveFit_Arc : NSObject {
  @public
   IOSDoubleArray *mLut_;
-  jdouble mArcDistance_;
-  jdouble mTime1_;
-  jdouble mTime2_;
-  jdouble mX1_;
-  jdouble mX2_;
-  jdouble mY1_;
-  jdouble mY2_;
-  jdouble mOneOverDeltaTime_;
-  jdouble mEllipseA_;
-  jdouble mEllipseB_;
-  jdouble mEllipseCenterX_;
-  jdouble mEllipseCenterY_;
-  jdouble mArcVelocity_;
-  jdouble mTmpSinAngle_;
-  jdouble mTmpCosAngle_;
-  jboolean mVertical_;
-  jboolean linear_;
+  double mArcDistance_;
+  double mTime1_;
+  double mTime2_;
+  double mX1_;
+  double mX2_;
+  double mY1_;
+  double mY2_;
+  double mOneOverDeltaTime_;
+  double mEllipseA_;
+  double mEllipseB_;
+  double mEllipseCenterX_;
+  double mEllipseCenterY_;
+  double mArcVelocity_;
+  double mTmpSinAngle_;
+  double mTmpCosAngle_;
+  bool mVertical_;
+  bool linear_;
 }
 
-- (instancetype)initWithInt:(jint)mode
-                 withDouble:(jdouble)t1
-                 withDouble:(jdouble)t2
-                 withDouble:(jdouble)x1
-                 withDouble:(jdouble)y1
-                 withDouble:(jdouble)x2
-                 withDouble:(jdouble)y2;
+- (instancetype)initWithInt:(int32_t)mode
+                 withDouble:(double)t1
+                 withDouble:(double)t2
+                 withDouble:(double)x1
+                 withDouble:(double)y1
+                 withDouble:(double)x2
+                 withDouble:(double)y2;
 
-- (void)setPointWithDouble:(jdouble)time;
+- (void)setPointWithDouble:(double)time;
 
-- (jdouble)getX;
+- (double)getX;
 
-- (jdouble)getY;
+- (double)getY;
 
-- (jdouble)getDX;
+- (double)getDX;
 
-- (jdouble)getDY;
+- (double)getDY;
 
-- (jdouble)getLinearXWithDouble:(jdouble)t;
+- (double)getLinearXWithDouble:(double)t;
 
-- (jdouble)getLinearYWithDouble:(jdouble)t;
+- (double)getLinearYWithDouble:(double)t;
 
-- (jdouble)getLinearDXWithDouble:(jdouble)t;
+- (double)getLinearDXWithDouble:(double)t;
 
-- (jdouble)getLinearDYWithDouble:(jdouble)t;
+- (double)getLinearDYWithDouble:(double)t;
 
-- (jdouble)lookupWithDouble:(jdouble)v;
+- (double)lookupWithDouble:(double)v;
 
-- (void)buildTableWithDouble:(jdouble)x1
-                  withDouble:(jdouble)y1
-                  withDouble:(jdouble)x2
-                  withDouble:(jdouble)y2;
+- (void)buildTableWithDouble:(double)x1
+                  withDouble:(double)y1
+                  withDouble:(double)x2
+                  withDouble:(double)y2;
 
 @end
 
@@ -106,29 +121,30 @@ inline IOSDoubleArray *ADXArcCurveFit_Arc_set_ourPercent(IOSDoubleArray *value);
 static IOSDoubleArray *ADXArcCurveFit_Arc_ourPercent;
 J2OBJC_STATIC_FIELD_OBJ(ADXArcCurveFit_Arc, ourPercent, IOSDoubleArray *)
 
-inline jdouble ADXArcCurveFit_Arc_get_EPSILON(void);
+inline double ADXArcCurveFit_Arc_get_EPSILON(void);
 #define ADXArcCurveFit_Arc_EPSILON 0.001
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit_Arc, EPSILON, jdouble)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit_Arc, EPSILON, double)
 
-__attribute__((unused)) static void ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, jint mode, jdouble t1, jdouble t2, jdouble x1, jdouble y1, jdouble x2, jdouble y2);
+__attribute__((unused)) static void ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, int32_t mode, double t1, double t2, double x1, double y1, double x2, double y2);
 
-__attribute__((unused)) static ADXArcCurveFit_Arc *new_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(jint mode, jdouble t1, jdouble t2, jdouble x1, jdouble y1, jdouble x2, jdouble y2) NS_RETURNS_RETAINED;
+__attribute__((unused)) static ADXArcCurveFit_Arc *new_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(int32_t mode, double t1, double t2, double x1, double y1, double x2, double y2) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ADXArcCurveFit_Arc *create_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(jint mode, jdouble t1, jdouble t2, jdouble x1, jdouble y1, jdouble x2, jdouble y2);
+__attribute__((unused)) static ADXArcCurveFit_Arc *create_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(int32_t mode, double t1, double t2, double x1, double y1, double x2, double y2);
 
-__attribute__((unused)) static void ADXArcCurveFit_Arc_buildTableWithDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, jdouble x1, jdouble y1, jdouble x2, jdouble y2);
+__attribute__((unused)) static void ADXArcCurveFit_Arc_buildTableWithDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, double x1, double y1, double x2, double y2);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
 
+
 @implementation ADXArcCurveFit
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v {
   if (mExtrapolate_) {
     if (t < ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), 0)))->mTime1_) {
-      jdouble t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
-      jdouble dt = t - ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
-      jint p = 0;
+      double t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
+      double dt = t - ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
+      int32_t p = 0;
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p)))->linear_) {
         *IOSDoubleArray_GetRef(nil_chk(v), 0) = ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0]);
         *IOSDoubleArray_GetRef(v, 1) = ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearYWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDYWithDouble:t0]);
@@ -141,9 +157,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
       return;
     }
     if (t > ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_) {
-      jdouble t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
-      jdouble dt = t - t0;
-      jint p = mArcs_->size_ - 1;
+      double t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
+      double dt = t - t0;
+      int32_t p = mArcs_->size_ - 1;
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p)))->linear_) {
         *IOSDoubleArray_GetRef(nil_chk(v), 0) = ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0]);
         *IOSDoubleArray_GetRef(v, 1) = ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearYWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDYWithDouble:t0]);
@@ -164,7 +180,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
       t = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
     }
   }
-  for (jint i = 0; i < mArcs_->size_; i++) {
+  for (int32_t i = 0; i < mArcs_->size_; i++) {
     if (t <= ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->mTime2_) {
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->linear_) {
         *IOSDoubleArray_GetRef(nil_chk(v), 0) = [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i))) getLinearXWithDouble:t];
@@ -179,36 +195,36 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
   }
 }
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v {
   if (mExtrapolate_) {
     if (t < ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), 0)))->mTime1_) {
-      jdouble t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
-      jdouble dt = t - ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
-      jint p = 0;
+      double t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
+      double dt = t - ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
+      int32_t p = 0;
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p)))->linear_) {
-        *IOSFloatArray_GetRef(nil_chk(v), 0) = (jfloat) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0]);
-        *IOSFloatArray_GetRef(v, 1) = (jfloat) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearYWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDYWithDouble:t0]);
+        *IOSFloatArray_GetRef(nil_chk(v), 0) = (float) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0]);
+        *IOSFloatArray_GetRef(v, 1) = (float) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearYWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDYWithDouble:t0]);
       }
       else {
         [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) setPointWithDouble:t0];
-        *IOSFloatArray_GetRef(nil_chk(v), 0) = (jfloat) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getX] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getDX]);
-        *IOSFloatArray_GetRef(v, 1) = (jfloat) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getY] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getDY]);
+        *IOSFloatArray_GetRef(nil_chk(v), 0) = (float) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getX] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getDX]);
+        *IOSFloatArray_GetRef(v, 1) = (float) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getY] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getDY]);
       }
       return;
     }
     if (t > ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_) {
-      jdouble t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
-      jdouble dt = t - t0;
-      jint p = mArcs_->size_ - 1;
+      double t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
+      double dt = t - t0;
+      int32_t p = mArcs_->size_ - 1;
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p)))->linear_) {
-        *IOSFloatArray_GetRef(nil_chk(v), 0) = (jfloat) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0]);
-        *IOSFloatArray_GetRef(v, 1) = (jfloat) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearYWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDYWithDouble:t0]);
+        *IOSFloatArray_GetRef(nil_chk(v), 0) = (float) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0]);
+        *IOSFloatArray_GetRef(v, 1) = (float) ([((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearYWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDYWithDouble:t0]);
       }
       else {
         [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) setPointWithDouble:t];
-        *IOSFloatArray_GetRef(nil_chk(v), 0) = (jfloat) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getX];
-        *IOSFloatArray_GetRef(v, 1) = (jfloat) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getY];
+        *IOSFloatArray_GetRef(nil_chk(v), 0) = (float) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getX];
+        *IOSFloatArray_GetRef(v, 1) = (float) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getY];
       }
       return;
     }
@@ -221,22 +237,22 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
       t = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
     }
   }
-  for (jint i = 0; i < mArcs_->size_; i++) {
+  for (int32_t i = 0; i < mArcs_->size_; i++) {
     if (t <= ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->mTime2_) {
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->linear_) {
-        *IOSFloatArray_GetRef(nil_chk(v), 0) = (jfloat) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i))) getLinearXWithDouble:t];
-        *IOSFloatArray_GetRef(v, 1) = (jfloat) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), i))) getLinearYWithDouble:t];
+        *IOSFloatArray_GetRef(nil_chk(v), 0) = (float) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i))) getLinearXWithDouble:t];
+        *IOSFloatArray_GetRef(v, 1) = (float) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), i))) getLinearYWithDouble:t];
         return;
       }
       [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i))) setPointWithDouble:t];
-      *IOSFloatArray_GetRef(nil_chk(v), 0) = (jfloat) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), i))) getX];
-      *IOSFloatArray_GetRef(v, 1) = (jfloat) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), i))) getY];
+      *IOSFloatArray_GetRef(nil_chk(v), 0) = (float) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), i))) getX];
+      *IOSFloatArray_GetRef(v, 1) = (float) [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), i))) getY];
       return;
     }
   }
 }
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v {
   if (t < ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), 0)))->mTime1_) {
     t = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
@@ -244,7 +260,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
   else if (t > ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_) {
     t = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
   }
-  for (jint i = 0; i < mArcs_->size_; i++) {
+  for (int32_t i = 0; i < mArcs_->size_; i++) {
     if (t <= ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->mTime2_) {
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->linear_) {
         *IOSDoubleArray_GetRef(nil_chk(v), 0) = [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i))) getLinearDXWithDouble:t];
@@ -259,13 +275,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
   }
 }
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j {
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j {
   if (mExtrapolate_) {
     if (t < ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), 0)))->mTime1_) {
-      jdouble t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
-      jdouble dt = t - ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
-      jint p = 0;
+      double t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
+      double dt = t - ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
+      int32_t p = 0;
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p)))->linear_) {
         if (j == 0) {
           return [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0];
@@ -281,9 +297,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
       }
     }
     if (t > ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_) {
-      jdouble t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
-      jdouble dt = t - t0;
-      jint p = mArcs_->size_ - 1;
+      double t0 = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
+      double dt = t - t0;
+      int32_t p = mArcs_->size_ - 1;
       if (j == 0) {
         return [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, p))) getLinearXWithDouble:t0] + dt * [((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), p))) getLinearDXWithDouble:t0];
       }
@@ -298,7 +314,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
       t = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
     }
   }
-  for (jint i = 0; i < mArcs_->size_; i++) {
+  for (int32_t i = 0; i < mArcs_->size_; i++) {
     if (t <= ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->mTime2_) {
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->linear_) {
         if (j == 0) {
@@ -316,15 +332,15 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit_Arc)
   return JavaLangDouble_NaN;
 }
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j {
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j {
   if (t < ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(nil_chk(mArcs_), 0)))->mTime1_) {
     t = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, 0)))->mTime1_;
   }
   if (t > ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_) {
     t = ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, mArcs_->size_ - 1)))->mTime2_;
   }
-  for (jint i = 0; i < mArcs_->size_; i++) {
+  for (int32_t i = 0; i < mArcs_->size_; i++) {
     if (t <= ((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->mTime2_) {
       if (((ADXArcCurveFit_Arc *) nil_chk(IOSObjectArray_Get(mArcs_, i)))->linear_) {
         if (j == 0) {
@@ -404,9 +420,9 @@ void ADXArcCurveFit_initWithIntArray_withDoubleArray_withDoubleArray2_(ADXArcCur
   self->mExtrapolate_ = true;
   JreStrongAssign(&self->mTime_, time);
   JreStrongAssignAndConsume(&self->mArcs_, [IOSObjectArray newArrayWithLength:((IOSDoubleArray *) nil_chk(time))->size_ - 1 type:ADXArcCurveFit_Arc_class_()]);
-  jint mode = ADXArcCurveFit_START_VERTICAL;
-  jint last = ADXArcCurveFit_START_VERTICAL;
-  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(self->mArcs_))->size_; i++) {
+  int32_t mode = ADXArcCurveFit_START_VERTICAL;
+  int32_t last = ADXArcCurveFit_START_VERTICAL;
+  for (int32_t i = 0; i < ((IOSObjectArray *) nil_chk(self->mArcs_))->size_; i++) {
     switch (IOSIntArray_Get(nil_chk(arcModes), i)) {
       case ADXArcCurveFit_ARC_START_VERTICAL:
       last = mode = ADXArcCurveFit_START_VERTICAL;
@@ -435,85 +451,87 @@ ADXArcCurveFit *create_ADXArcCurveFit_initWithIntArray_withDoubleArray_withDoubl
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXArcCurveFit)
 
+J2OBJC_NAME_MAPPING(ADXArcCurveFit, "androidx.constraintlayout.core.motion.utils", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXArcCurveFit_Arc)
 
 @implementation ADXArcCurveFit_Arc
 
-- (instancetype)initWithInt:(jint)mode
-                 withDouble:(jdouble)t1
-                 withDouble:(jdouble)t2
-                 withDouble:(jdouble)x1
-                 withDouble:(jdouble)y1
-                 withDouble:(jdouble)x2
-                 withDouble:(jdouble)y2 {
+- (instancetype)initWithInt:(int32_t)mode
+                 withDouble:(double)t1
+                 withDouble:(double)t2
+                 withDouble:(double)x1
+                 withDouble:(double)y1
+                 withDouble:(double)x2
+                 withDouble:(double)y2 {
   ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(self, mode, t1, t2, x1, y1, x2, y2);
   return self;
 }
 
-- (void)setPointWithDouble:(jdouble)time {
-  jdouble percent = (mVertical_ ? (mTime2_ - time) : (time - mTime1_)) * mOneOverDeltaTime_;
-  jdouble angle = JavaLangMath_PI * 0.5 * [self lookupWithDouble:percent];
+- (void)setPointWithDouble:(double)time {
+  double percent = (mVertical_ ? (mTime2_ - time) : (time - mTime1_)) * mOneOverDeltaTime_;
+  double angle = JavaLangMath_PI * 0.5 * [self lookupWithDouble:percent];
   mTmpSinAngle_ = JavaLangMath_sinWithDouble_(angle);
   mTmpCosAngle_ = JavaLangMath_cosWithDouble_(angle);
 }
 
-- (jdouble)getX {
+- (double)getX {
   return mEllipseCenterX_ + mEllipseA_ * mTmpSinAngle_;
 }
 
-- (jdouble)getY {
+- (double)getY {
   return mEllipseCenterY_ + mEllipseB_ * mTmpCosAngle_;
 }
 
-- (jdouble)getDX {
-  jdouble vx = mEllipseA_ * mTmpCosAngle_;
-  jdouble vy = -mEllipseB_ * mTmpSinAngle_;
-  jdouble norm = mArcVelocity_ / JavaLangMath_hypotWithDouble_withDouble_(vx, vy);
+- (double)getDX {
+  double vx = mEllipseA_ * mTmpCosAngle_;
+  double vy = -mEllipseB_ * mTmpSinAngle_;
+  double norm = mArcVelocity_ / JavaLangMath_hypotWithDouble_withDouble_(vx, vy);
   return mVertical_ ? -vx * norm : vx * norm;
 }
 
-- (jdouble)getDY {
-  jdouble vx = mEllipseA_ * mTmpCosAngle_;
-  jdouble vy = -mEllipseB_ * mTmpSinAngle_;
-  jdouble norm = mArcVelocity_ / JavaLangMath_hypotWithDouble_withDouble_(vx, vy);
+- (double)getDY {
+  double vx = mEllipseA_ * mTmpCosAngle_;
+  double vy = -mEllipseB_ * mTmpSinAngle_;
+  double norm = mArcVelocity_ / JavaLangMath_hypotWithDouble_withDouble_(vx, vy);
   return mVertical_ ? -vy * norm : vy * norm;
 }
 
-- (jdouble)getLinearXWithDouble:(jdouble)t {
+- (double)getLinearXWithDouble:(double)t {
   t = (t - mTime1_) * mOneOverDeltaTime_;
   return mX1_ + t * (mX2_ - mX1_);
 }
 
-- (jdouble)getLinearYWithDouble:(jdouble)t {
+- (double)getLinearYWithDouble:(double)t {
   t = (t - mTime1_) * mOneOverDeltaTime_;
   return mY1_ + t * (mY2_ - mY1_);
 }
 
-- (jdouble)getLinearDXWithDouble:(jdouble)t {
+- (double)getLinearDXWithDouble:(double)t {
   return mEllipseCenterX_;
 }
 
-- (jdouble)getLinearDYWithDouble:(jdouble)t {
+- (double)getLinearDYWithDouble:(double)t {
   return mEllipseCenterY_;
 }
 
-- (jdouble)lookupWithDouble:(jdouble)v {
+- (double)lookupWithDouble:(double)v {
   if (v <= 0) {
     return 0;
   }
   if (v >= 1) {
     return 1;
   }
-  jdouble pos = v * (((IOSDoubleArray *) nil_chk(mLut_))->size_ - 1);
-  jint iv = JreFpToInt((pos));
-  jdouble off = pos - JreFpToInt((pos));
+  double pos = v * (((IOSDoubleArray *) nil_chk(mLut_))->size_ - 1);
+  int32_t iv = JreFpToInt((pos));
+  double off = pos - JreFpToInt((pos));
   return IOSDoubleArray_Get(mLut_, iv) + (off * (IOSDoubleArray_Get(mLut_, iv + 1) - IOSDoubleArray_Get(mLut_, iv)));
 }
 
-- (void)buildTableWithDouble:(jdouble)x1
-                  withDouble:(jdouble)y1
-                  withDouble:(jdouble)x2
-                  withDouble:(jdouble)y2 {
+- (void)buildTableWithDouble:(double)x1
+                  withDouble:(double)y1
+                  withDouble:(double)x2
+                  withDouble:(double)y2 {
   ADXArcCurveFit_Arc_buildTableWithDouble_withDouble_withDouble_withDouble_(self, x1, y1, x2, y2);
 }
 
@@ -590,7 +608,7 @@ J2OBJC_INITIALIZED_DEFN(ADXArcCurveFit_Arc)
 
 @end
 
-void ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, jint mode, jdouble t1, jdouble t2, jdouble x1, jdouble y1, jdouble x2, jdouble y2) {
+void ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, int32_t mode, double t1, double t2, double x1, double y1, double x2, double y2) {
   NSObject_init(self);
   self->linear_ = false;
   self->mVertical_ = (mode == ADXArcCurveFit_START_VERTICAL);
@@ -600,8 +618,8 @@ void ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_
   if (ADXArcCurveFit_START_LINEAR == mode) {
     self->linear_ = true;
   }
-  jdouble dx = x2 - x1;
-  jdouble dy = y2 - y1;
+  double dx = x2 - x1;
+  double dy = y2 - y1;
   if (self->linear_ || JavaLangMath_absWithDouble_(dx) < ADXArcCurveFit_Arc_EPSILON || JavaLangMath_absWithDouble_(dy) < ADXArcCurveFit_Arc_EPSILON) {
     self->linear_ = true;
     self->mX1_ = x1;
@@ -623,26 +641,26 @@ void ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_
   self->mArcVelocity_ = self->mArcDistance_ * self->mOneOverDeltaTime_;
 }
 
-ADXArcCurveFit_Arc *new_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(jint mode, jdouble t1, jdouble t2, jdouble x1, jdouble y1, jdouble x2, jdouble y2) {
+ADXArcCurveFit_Arc *new_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(int32_t mode, double t1, double t2, double x1, double y1, double x2, double y2) {
   J2OBJC_NEW_IMPL(ADXArcCurveFit_Arc, initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_, mode, t1, t2, x1, y1, x2, y2)
 }
 
-ADXArcCurveFit_Arc *create_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(jint mode, jdouble t1, jdouble t2, jdouble x1, jdouble y1, jdouble x2, jdouble y2) {
+ADXArcCurveFit_Arc *create_ADXArcCurveFit_Arc_initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_(int32_t mode, double t1, double t2, double x1, double y1, double x2, double y2) {
   J2OBJC_CREATE_IMPL(ADXArcCurveFit_Arc, initWithInt_withDouble_withDouble_withDouble_withDouble_withDouble_withDouble_, mode, t1, t2, x1, y1, x2, y2)
 }
 
-void ADXArcCurveFit_Arc_buildTableWithDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, jdouble x1, jdouble y1, jdouble x2, jdouble y2) {
-  jdouble a = x2 - x1;
-  jdouble b = y1 - y2;
-  jdouble lx = 0;
-  jdouble ly = 0;
-  jdouble dist = 0;
-  for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(ADXArcCurveFit_Arc_ourPercent))->size_; i++) {
-    jdouble angle = JavaLangMath_toRadiansWithDouble_(90.0 * i / (ADXArcCurveFit_Arc_ourPercent->size_ - 1));
-    jdouble s = JavaLangMath_sinWithDouble_(angle);
-    jdouble c = JavaLangMath_cosWithDouble_(angle);
-    jdouble px = a * s;
-    jdouble py = b * c;
+void ADXArcCurveFit_Arc_buildTableWithDouble_withDouble_withDouble_withDouble_(ADXArcCurveFit_Arc *self, double x1, double y1, double x2, double y2) {
+  double a = x2 - x1;
+  double b = y1 - y2;
+  double lx = 0;
+  double ly = 0;
+  double dist = 0;
+  for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(ADXArcCurveFit_Arc_ourPercent))->size_; i++) {
+    double angle = JavaLangMath_toRadiansWithDouble_(90.0 * i / (ADXArcCurveFit_Arc_ourPercent->size_ - 1));
+    double s = JavaLangMath_sinWithDouble_(angle);
+    double c = JavaLangMath_cosWithDouble_(angle);
+    double px = a * s;
+    double py = b * c;
     if (i > 0) {
       JrePlusAssignDoubleD(&dist, JavaLangMath_hypotWithDouble_withDouble_(px - lx, py - ly));
       *IOSDoubleArray_GetRef(nil_chk(ADXArcCurveFit_Arc_ourPercent), i) = dist;
@@ -651,22 +669,22 @@ void ADXArcCurveFit_Arc_buildTableWithDouble_withDouble_withDouble_withDouble_(A
     ly = py;
   }
   self->mArcDistance_ = dist;
-  for (jint i = 0; i < ADXArcCurveFit_Arc_ourPercent->size_; i++) {
+  for (int32_t i = 0; i < ADXArcCurveFit_Arc_ourPercent->size_; i++) {
     JreDivideAssignDoubleD(IOSDoubleArray_GetRef(ADXArcCurveFit_Arc_ourPercent, i), dist);
   }
-  for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(self->mLut_))->size_; i++) {
-    jdouble pos = i / (jdouble) (self->mLut_->size_ - 1);
-    jint index = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(ADXArcCurveFit_Arc_ourPercent, pos);
+  for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(self->mLut_))->size_; i++) {
+    double pos = i / (double) (self->mLut_->size_ - 1);
+    int32_t index = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(ADXArcCurveFit_Arc_ourPercent, pos);
     if (index >= 0) {
-      *IOSDoubleArray_GetRef(nil_chk(self->mLut_), i) = index / (jdouble) (((IOSDoubleArray *) nil_chk(ADXArcCurveFit_Arc_ourPercent))->size_ - 1);
+      *IOSDoubleArray_GetRef(nil_chk(self->mLut_), i) = index / (double) (((IOSDoubleArray *) nil_chk(ADXArcCurveFit_Arc_ourPercent))->size_ - 1);
     }
     else if (index == -1) {
       *IOSDoubleArray_GetRef(nil_chk(self->mLut_), i) = 0;
     }
     else {
-      jint p1 = -index - 2;
-      jint p2 = -index - 1;
-      jdouble ans = (p1 + (pos - IOSDoubleArray_Get(nil_chk(ADXArcCurveFit_Arc_ourPercent), p1)) / (IOSDoubleArray_Get(ADXArcCurveFit_Arc_ourPercent, p2) - IOSDoubleArray_Get(ADXArcCurveFit_Arc_ourPercent, p1))) / (ADXArcCurveFit_Arc_ourPercent->size_ - 1);
+      int32_t p1 = -index - 2;
+      int32_t p2 = -index - 1;
+      double ans = (p1 + (pos - IOSDoubleArray_Get(nil_chk(ADXArcCurveFit_Arc_ourPercent), p1)) / (IOSDoubleArray_Get(ADXArcCurveFit_Arc_ourPercent, p2) - IOSDoubleArray_Get(ADXArcCurveFit_Arc_ourPercent, p1))) / (ADXArcCurveFit_Arc_ourPercent->size_ - 1);
       *IOSDoubleArray_GetRef(nil_chk(self->mLut_), i) = ans;
     }
   }

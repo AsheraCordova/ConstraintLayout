@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\GuidelineReferenceHelper.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_GuidelineReferenceHelper")
@@ -26,6 +27,8 @@
 
 @class ADXConstraintWidget;
 @class ADXState;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXGuidelineReferenceHelper : NSObject < ADXFacade, ADXReference > {
  @public
@@ -46,15 +49,15 @@
 
 - (id)getKey;
 
-- (jint)getOrientation;
+- (int32_t)getOrientation;
 
-- (ADXGuidelineReferenceHelper *)percentWithFloat:(jfloat)percent;
+- (ADXGuidelineReferenceHelper *)percentWithFloat:(float)percent;
 
 - (void)setConstraintWidgetWithADXConstraintWidget:(ADXConstraintWidget *)widget;
 
 - (void)setKeyWithId:(id)key;
 
-- (void)setOrientationWithInt:(jint)orientation;
+- (void)setOrientationWithInt:(int32_t)orientation;
 
 - (ADXGuidelineReferenceHelper *)startWithId:(id)margin;
 
@@ -77,6 +80,7 @@ FOUNDATION_EXPORT ADXGuidelineReferenceHelper *create_ADXGuidelineReferenceHelpe
 J2OBJC_TYPE_LITERAL_HEADER(ADXGuidelineReferenceHelper)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateHelpersGuidelineReferenceHelper ADXGuidelineReferenceHelper;
+
 
 #endif
 

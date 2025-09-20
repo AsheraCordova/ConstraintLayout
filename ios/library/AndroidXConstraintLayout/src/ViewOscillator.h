@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\utils\ViewOscillator.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewOscillator")
@@ -60,6 +61,8 @@
 #include "KeyCycleOscillator.h"
 
 @class ADView;
+@class JavaLangFloat;
+@class NSString;
 
 /*!
  @brief Provide the engine for executing cycles.
@@ -74,7 +77,7 @@
 + (ADXViewOscillator *)makeSplineWithNSString:(NSString *)str;
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 @end
 
@@ -88,19 +91,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator)
 
 @compatibility_alias AndroidxConstraintlayoutMotionUtilsViewOscillator ADXViewOscillator;
 
+
 #endif
 
 #if !defined (ADXViewOscillator_ElevationSet_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_ElevationSet))
 #define ADXViewOscillator_ElevationSet_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_ElevationSet : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -118,19 +123,21 @@ FOUNDATION_EXPORT ADXViewOscillator_ElevationSet *create_ADXViewOscillator_Eleva
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_ElevationSet)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_AlphaSet_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_AlphaSet))
 #define ADXViewOscillator_AlphaSet_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_AlphaSet : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -148,19 +155,21 @@ FOUNDATION_EXPORT ADXViewOscillator_AlphaSet *create_ADXViewOscillator_AlphaSet_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_AlphaSet)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_RotationSet_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_RotationSet))
 #define ADXViewOscillator_RotationSet_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_RotationSet : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -178,19 +187,21 @@ FOUNDATION_EXPORT ADXViewOscillator_RotationSet *create_ADXViewOscillator_Rotati
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_RotationSet)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_RotationXset_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_RotationXset))
 #define ADXViewOscillator_RotationXset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_RotationXset : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -208,19 +219,21 @@ FOUNDATION_EXPORT ADXViewOscillator_RotationXset *create_ADXViewOscillator_Rotat
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_RotationXset)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_RotationYset_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_RotationYset))
 #define ADXViewOscillator_RotationYset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_RotationYset : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -238,12 +251,15 @@ FOUNDATION_EXPORT ADXViewOscillator_RotationYset *create_ADXViewOscillator_Rotat
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_RotationYset)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_PathRotateSet_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_PathRotateSet))
 #define ADXViewOscillator_PathRotateSet_
 
 @class ADView;
+@class JavaLangDouble;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_PathRotateSet : ADXViewOscillator
 
@@ -252,12 +268,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_RotationYset)
 - (instancetype)init;
 
 - (void)setPathRotateWithADView:(ADView *)view
-                      withFloat:(jfloat)t
-                     withDouble:(jdouble)dx
-                     withDouble:(jdouble)dy;
+                      withFloat:(float)t
+                     withDouble:(double)dx
+                     withDouble:(double)dy;
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 @end
 
@@ -271,19 +287,21 @@ FOUNDATION_EXPORT ADXViewOscillator_PathRotateSet *create_ADXViewOscillator_Path
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_PathRotateSet)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_ScaleXset_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_ScaleXset))
 #define ADXViewOscillator_ScaleXset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_ScaleXset : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -301,19 +319,21 @@ FOUNDATION_EXPORT ADXViewOscillator_ScaleXset *create_ADXViewOscillator_ScaleXse
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_ScaleXset)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_ScaleYset_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_ScaleYset))
 #define ADXViewOscillator_ScaleYset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_ScaleYset : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -331,19 +351,21 @@ FOUNDATION_EXPORT ADXViewOscillator_ScaleYset *create_ADXViewOscillator_ScaleYse
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_ScaleYset)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_TranslationXset_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_TranslationXset))
 #define ADXViewOscillator_TranslationXset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_TranslationXset : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -361,19 +383,21 @@ FOUNDATION_EXPORT ADXViewOscillator_TranslationXset *create_ADXViewOscillator_Tr
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_TranslationXset)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_TranslationYset_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_TranslationYset))
 #define ADXViewOscillator_TranslationYset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_TranslationYset : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -391,19 +415,21 @@ FOUNDATION_EXPORT ADXViewOscillator_TranslationYset *create_ADXViewOscillator_Tr
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_TranslationYset)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_TranslationZset_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_TranslationZset))
 #define ADXViewOscillator_TranslationZset_
 
 @class ADView;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_TranslationZset : ADXViewOscillator
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -421,6 +447,7 @@ FOUNDATION_EXPORT ADXViewOscillator_TranslationZset *create_ADXViewOscillator_Tr
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_TranslationZset)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_CustomSet_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_CustomSet))
@@ -429,6 +456,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_TranslationZset)
 @class ADView;
 @class ADXConstraintAttribute;
 @class IOSFloatArray;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_CustomSet : ADXViewOscillator {
  @public
@@ -439,7 +467,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_TranslationZset)
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Protected
 
@@ -464,22 +492,25 @@ FOUNDATION_EXPORT ADXViewOscillator_CustomSet *create_ADXViewOscillator_CustomSe
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_CustomSet)
 
+
 #endif
 
 #if !defined (ADXViewOscillator_ProgressSet_) && (INCLUDE_ALL_ViewOscillator || defined(INCLUDE_ADXViewOscillator_ProgressSet))
 #define ADXViewOscillator_ProgressSet_
 
 @class ADView;
+@class JavaLangBoolean;
+@class JavaLangFloat;
 
 @interface ADXViewOscillator_ProgressSet : ADXViewOscillator {
  @public
-  jboolean mNoMethod_;
+  bool mNoMethod_;
 }
 
 #pragma mark Public
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t;
+                    withFloat:(float)t;
 
 #pragma mark Package-Private
 
@@ -496,6 +527,7 @@ FOUNDATION_EXPORT ADXViewOscillator_ProgressSet *new_ADXViewOscillator_ProgressS
 FOUNDATION_EXPORT ADXViewOscillator_ProgressSet *create_ADXViewOscillator_ProgressSet_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewOscillator_ProgressSet)
+
 
 #endif
 

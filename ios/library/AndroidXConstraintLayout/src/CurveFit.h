@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\CurveFit.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CurveFit")
@@ -23,6 +24,8 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangDouble;
+@class JavaLangInteger;
 
 /*!
  @brief Base class for curve fitting / interpolation
@@ -34,7 +37,7 @@
 
 - (instancetype)init;
 
-+ (ADXCurveFit *)getWithInt:(jint)type
++ (ADXCurveFit *)getWithInt:(int32_t)type
             withDoubleArray:(IOSDoubleArray *)time
            withDoubleArray2:(IOSObjectArray *)y;
 
@@ -42,20 +45,20 @@
                     withDoubleArray:(IOSDoubleArray *)time
                    withDoubleArray2:(IOSObjectArray *)y;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v;
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j;
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j;
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v;
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j;
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j;
 
 - (IOSDoubleArray *)getTimePoints;
 
@@ -63,27 +66,28 @@
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCurveFit)
 
-inline jint ADXCurveFit_get_SPLINE(void);
+inline int32_t ADXCurveFit_get_SPLINE(void);
 #define ADXCurveFit_SPLINE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCurveFit, SPLINE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCurveFit, SPLINE, int32_t)
 
-inline jint ADXCurveFit_get_LINEAR(void);
+inline int32_t ADXCurveFit_get_LINEAR(void);
 #define ADXCurveFit_LINEAR 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCurveFit, LINEAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCurveFit, LINEAR, int32_t)
 
-inline jint ADXCurveFit_get_CONSTANT(void);
+inline int32_t ADXCurveFit_get_CONSTANT(void);
 #define ADXCurveFit_CONSTANT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCurveFit, CONSTANT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCurveFit, CONSTANT, int32_t)
 
 FOUNDATION_EXPORT void ADXCurveFit_init(ADXCurveFit *self);
 
-FOUNDATION_EXPORT ADXCurveFit *ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(jint type, IOSDoubleArray *time, IOSObjectArray *y);
+FOUNDATION_EXPORT ADXCurveFit *ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(int32_t type, IOSDoubleArray *time, IOSObjectArray *y);
 
 FOUNDATION_EXPORT ADXCurveFit *ADXCurveFit_getArcWithIntArray_withDoubleArray_withDoubleArray2_(IOSIntArray *arcModes, IOSDoubleArray *time, IOSObjectArray *y);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCurveFit)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsCurveFit ADXCurveFit;
+
 
 #endif
 
@@ -92,35 +96,37 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCurveFit)
 
 @class IOSDoubleArray;
 @class IOSFloatArray;
+@class JavaLangDouble;
+@class JavaLangInteger;
 
 @interface ADXCurveFit_Constant : ADXCurveFit {
  @public
-  jdouble mTime_;
+  double mTime_;
   IOSDoubleArray *mValue_;
 }
 
 #pragma mark Public
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v;
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j;
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j;
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v;
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j;
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j;
 
 - (IOSDoubleArray *)getTimePoints;
 
 #pragma mark Package-Private
 
-- (instancetype)initWithDouble:(jdouble)time
+- (instancetype)initWithDouble:(double)time
                withDoubleArray:(IOSDoubleArray *)value;
 
 // Disallowed inherited constructors, do not use.
@@ -133,13 +139,14 @@ J2OBJC_EMPTY_STATIC_INIT(ADXCurveFit_Constant)
 
 J2OBJC_FIELD_SETTER(ADXCurveFit_Constant, mValue_, IOSDoubleArray *)
 
-FOUNDATION_EXPORT void ADXCurveFit_Constant_initWithDouble_withDoubleArray_(ADXCurveFit_Constant *self, jdouble time, IOSDoubleArray *value);
+FOUNDATION_EXPORT void ADXCurveFit_Constant_initWithDouble_withDoubleArray_(ADXCurveFit_Constant *self, double time, IOSDoubleArray *value);
 
-FOUNDATION_EXPORT ADXCurveFit_Constant *new_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(jdouble time, IOSDoubleArray *value) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCurveFit_Constant *new_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(double time, IOSDoubleArray *value) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCurveFit_Constant *create_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(jdouble time, IOSDoubleArray *value);
+FOUNDATION_EXPORT ADXCurveFit_Constant *create_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(double time, IOSDoubleArray *value);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCurveFit_Constant)
+
 
 #endif
 

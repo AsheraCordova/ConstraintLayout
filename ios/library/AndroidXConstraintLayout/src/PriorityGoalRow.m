@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\PriorityGoalRow.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "Cache.h"
 #include "IOSClass.h"
@@ -12,6 +17,10 @@
 #include "LinearSystem.h"
 #include "PriorityGoalRow.h"
 #include "SolverVariable.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/Arrays.h"
 #include "java/util/Comparator.h"
@@ -20,21 +29,21 @@
 #include "java/util/function/ToIntFunction.h"
 #include "java/util/function/ToLongFunction.h"
 
-@protocol JavaUtilComparator;
-@protocol JavaUtilFunctionFunction;
-@protocol JavaUtilFunctionToDoubleFunction;
-@protocol JavaUtilFunctionToIntFunction;
-@protocol JavaUtilFunctionToLongFunction;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
 @interface ADXPriorityGoalRow () {
  @public
-  jint TABLE_SIZE_;
+  int32_t TABLE_SIZE_;
   IOSObjectArray *arrayGoals_;
   IOSObjectArray *sortArray_;
-  jint numGoals_;
+  int32_t numGoals_;
 }
 
 - (void)addToGoalWithADXSolverVariable:(ADXSolverVariable *)variable;
@@ -46,13 +55,13 @@
 J2OBJC_FIELD_SETTER(ADXPriorityGoalRow, arrayGoals_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(ADXPriorityGoalRow, sortArray_, IOSObjectArray *)
 
-inline jfloat ADXPriorityGoalRow_get_epsilon(void);
+inline float ADXPriorityGoalRow_get_epsilon(void);
 #define ADXPriorityGoalRow_epsilon 1.0E-4f
-J2OBJC_STATIC_FIELD_CONSTANT(ADXPriorityGoalRow, epsilon, jfloat)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXPriorityGoalRow, epsilon, float)
 
-inline jboolean ADXPriorityGoalRow_get_DEBUG(void);
+inline bool ADXPriorityGoalRow_get_DEBUG(void);
 #define ADXPriorityGoalRow_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXPriorityGoalRow, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXPriorityGoalRow, DEBUG, bool)
 
 __attribute__((unused)) static void ADXPriorityGoalRow_addToGoalWithADXSolverVariable_(ADXPriorityGoalRow *self, ADXSolverVariable *variable);
 
@@ -60,21 +69,21 @@ __attribute__((unused)) static void ADXPriorityGoalRow_removeGoalWithADXSolverVa
 
 @interface ADXPriorityGoalRow_GoalVariableAccessor () {
  @public
-  __unsafe_unretained ADXPriorityGoalRow *this$0_;
+  WEAK_ ADXPriorityGoalRow *this$0_;
 }
 
 @end
 
-__attribute__((unused)) static jboolean ADXPriorityGoalRow_GoalVariableAccessor_isNegative(ADXPriorityGoalRow_GoalVariableAccessor *self);
+__attribute__((unused)) static bool ADXPriorityGoalRow_GoalVariableAccessor_isNegative(ADXPriorityGoalRow_GoalVariableAccessor *self);
 
-__attribute__((unused)) static jboolean ADXPriorityGoalRow_GoalVariableAccessor_isSmallerThanWithADXSolverVariable_(ADXPriorityGoalRow_GoalVariableAccessor *self, ADXSolverVariable *other);
+__attribute__((unused)) static bool ADXPriorityGoalRow_GoalVariableAccessor_isSmallerThanWithADXSolverVariable_(ADXPriorityGoalRow_GoalVariableAccessor *self, ADXSolverVariable *other);
 
 @interface ADXPriorityGoalRow_1 : NSObject < JavaUtilComparator >
 
 - (instancetype)init;
 
-- (jint)compareWithId:(ADXSolverVariable *)variable1
-               withId:(ADXSolverVariable *)variable2;
+- (int32_t)compareWithId:(ADXSolverVariable *)variable1
+                  withId:(ADXSolverVariable *)variable2;
 
 @end
 
@@ -85,6 +94,7 @@ __attribute__((unused)) static void ADXPriorityGoalRow_1_init(ADXPriorityGoalRow
 __attribute__((unused)) static ADXPriorityGoalRow_1 *new_ADXPriorityGoalRow_1_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ADXPriorityGoalRow_1 *create_ADXPriorityGoalRow_1_init(void);
+
 
 @implementation ADXPriorityGoalRow
 
@@ -98,14 +108,14 @@ __attribute__((unused)) static ADXPriorityGoalRow_1 *create_ADXPriorityGoalRow_1
   return self;
 }
 
-- (jboolean)isEmpty {
+- (bool)isEmpty {
   return numGoals_ == 0;
 }
 
 - (ADXSolverVariable *)getPivotCandidateWithADXLinearSystem:(ADXLinearSystem *)system
                                            withBooleanArray:(IOSBooleanArray *)avoid {
-  jint pivot = ADXPriorityGoalRow_NOT_FOUND;
-  for (jint i = 0; i < numGoals_; i++) {
+  int32_t pivot = ADXPriorityGoalRow_NOT_FOUND;
+  for (int32_t i = 0; i < numGoals_; i++) {
     ADXSolverVariable *variable = IOSObjectArray_Get(nil_chk(arrayGoals_), i);
     if (IOSBooleanArray_Get(nil_chk(avoid), ((ADXSolverVariable *) nil_chk(variable))->id__)) {
       continue;
@@ -143,16 +153,16 @@ __attribute__((unused)) static ADXPriorityGoalRow_1 *create_ADXPriorityGoalRow_1
 
 - (void)updateFromRowWithADXLinearSystem:(ADXLinearSystem *)system
                          withADXArrayRow:(ADXArrayRow *)definition
-                             withBoolean:(jboolean)removeFromDefinition {
+                             withBoolean:(bool)removeFromDefinition {
   ADXSolverVariable *goalVariable = JreRetainedLocalValue(((ADXArrayRow *) nil_chk(definition))->variable_);
   if (goalVariable == nil) {
     return;
   }
   id<ADXArrayRow_ArrayRowVariables> rowVariables = JreRetainedLocalValue(definition->variables_);
-  jint currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(rowVariables)) getCurrentSize];
-  for (jint i = 0; i < currentSize; i++) {
+  int32_t currentSize = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(rowVariables)) getCurrentSize];
+  for (int32_t i = 0; i < currentSize; i++) {
     ADXSolverVariable *solverVariable = JreRetainedLocalValue([rowVariables getVariableWithInt:i]);
-    jfloat value = [rowVariables getVariableValueWithInt:i];
+    float value = [rowVariables getVariableValueWithInt:i];
     [((ADXPriorityGoalRow_GoalVariableAccessor *) nil_chk(accessor_)) init__WithADXSolverVariable:solverVariable];
     if ([((ADXPriorityGoalRow_GoalVariableAccessor *) nil_chk(accessor_)) addToGoalWithADXSolverVariable:goalVariable withFloat:value]) {
       ADXPriorityGoalRow_addToGoalWithADXSolverVariable_(self, solverVariable);
@@ -165,7 +175,7 @@ __attribute__((unused)) static ADXPriorityGoalRow_1 *create_ADXPriorityGoalRow_1
 - (NSString *)description {
   NSString *result = @"";
   JreStrAppend(&result, "$F$", @" goal -> (", constantValue_, @") : ");
-  for (jint i = 0; i < numGoals_; i++) {
+  for (int32_t i = 0; i < numGoals_; i++) {
     ADXSolverVariable *v = IOSObjectArray_Get(nil_chk(arrayGoals_), i);
     [((ADXPriorityGoalRow_GoalVariableAccessor *) nil_chk(accessor_)) init__WithADXSolverVariable:v];
     JreStrAppend(&result, "@C", accessor_, ' ');
@@ -254,11 +264,11 @@ void ADXPriorityGoalRow_addToGoalWithADXSolverVariable_(ADXPriorityGoalRow *self
   IOSObjectArray_Set(nil_chk(self->arrayGoals_), self->numGoals_, variable);
   self->numGoals_++;
   if (self->numGoals_ > 1 && ((ADXSolverVariable *) nil_chk(IOSObjectArray_Get(self->arrayGoals_, self->numGoals_ - 1)))->id__ > ((ADXSolverVariable *) nil_chk(variable))->id__) {
-    for (jint i = 0; i < self->numGoals_; i++) {
+    for (int32_t i = 0; i < self->numGoals_; i++) {
       IOSObjectArray_Set(nil_chk(self->sortArray_), i, IOSObjectArray_Get(self->arrayGoals_, i));
     }
     JavaUtilArrays_sortWithNSObjectArray_withInt_withInt_withJavaUtilComparator_(self->sortArray_, 0, self->numGoals_, create_ADXPriorityGoalRow_1_init());
-    for (jint i = 0; i < self->numGoals_; i++) {
+    for (int32_t i = 0; i < self->numGoals_; i++) {
       IOSObjectArray_Set(nil_chk(self->arrayGoals_), i, IOSObjectArray_Get(nil_chk(self->sortArray_), i));
     }
   }
@@ -267,9 +277,9 @@ void ADXPriorityGoalRow_addToGoalWithADXSolverVariable_(ADXPriorityGoalRow *self
 }
 
 void ADXPriorityGoalRow_removeGoalWithADXSolverVariable_(ADXPriorityGoalRow *self, ADXSolverVariable *variable) {
-  for (jint i = 0; i < self->numGoals_; i++) {
-    if (IOSObjectArray_Get(nil_chk(self->arrayGoals_), i) == variable) {
-      for (jint j = i; j < self->numGoals_ - 1; j++) {
+  for (int32_t i = 0; i < self->numGoals_; i++) {
+    if (JreObjectEqualsEquals(IOSObjectArray_Get(nil_chk(self->arrayGoals_), i), variable)) {
+      for (int32_t j = i; j < self->numGoals_ - 1; j++) {
         IOSObjectArray_Set(self->arrayGoals_, j, IOSObjectArray_Get(self->arrayGoals_, j + 1));
       }
       self->numGoals_--;
@@ -280,6 +290,8 @@ void ADXPriorityGoalRow_removeGoalWithADXSolverVariable_(ADXPriorityGoalRow *sel
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXPriorityGoalRow)
+
+J2OBJC_NAME_MAPPING(ADXPriorityGoalRow, "androidx.constraintlayout.core", "ADX")
 
 @implementation ADXPriorityGoalRow_GoalVariableAccessor
 
@@ -293,13 +305,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXPriorityGoalRow)
   self->variable_ = variable;
 }
 
-- (jboolean)addToGoalWithADXSolverVariable:(ADXSolverVariable *)other
-                                 withFloat:(jfloat)value {
+- (bool)addToGoalWithADXSolverVariable:(ADXSolverVariable *)other
+                             withFloat:(float)value {
   if (((ADXSolverVariable *) nil_chk(variable_))->inGoal_) {
-    jboolean empty = true;
-    for (jint i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
+    bool empty = true;
+    for (int32_t i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
       JrePlusAssignFloatF(IOSFloatArray_GetRef(nil_chk(((ADXSolverVariable *) nil_chk(variable_))->goalStrengthVector_), i), IOSFloatArray_Get(((ADXSolverVariable *) nil_chk(other))->goalStrengthVector_, i) * value);
-      jfloat v = IOSFloatArray_Get(variable_->goalStrengthVector_, i);
+      float v = IOSFloatArray_Get(variable_->goalStrengthVector_, i);
       if (JavaLangMath_absWithFloat_(v) < ADXPriorityGoalRow_epsilon) {
         *IOSFloatArray_GetRef(nil_chk(((ADXSolverVariable *) nil_chk(variable_))->goalStrengthVector_), i) = 0;
       }
@@ -312,10 +324,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXPriorityGoalRow)
     }
   }
   else {
-    for (jint i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
-      jfloat strength = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(other))->goalStrengthVector_), i);
+    for (int32_t i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
+      float strength = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(other))->goalStrengthVector_), i);
       if (strength != 0) {
-        jfloat v = value * strength;
+        float v = value * strength;
         if (JavaLangMath_absWithFloat_(v) < ADXPriorityGoalRow_epsilon) {
           v = 0;
         }
@@ -331,25 +343,25 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXPriorityGoalRow)
 }
 
 - (void)addWithADXSolverVariable:(ADXSolverVariable *)other {
-  for (jint i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
+  for (int32_t i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
     JrePlusAssignFloatF(IOSFloatArray_GetRef(nil_chk(((ADXSolverVariable *) nil_chk(variable_))->goalStrengthVector_), i), IOSFloatArray_Get(((ADXSolverVariable *) nil_chk(other))->goalStrengthVector_, i));
-    jfloat value = IOSFloatArray_Get(variable_->goalStrengthVector_, i);
+    float value = IOSFloatArray_Get(variable_->goalStrengthVector_, i);
     if (JavaLangMath_absWithFloat_(value) < ADXPriorityGoalRow_epsilon) {
       *IOSFloatArray_GetRef(nil_chk(((ADXSolverVariable *) nil_chk(variable_))->goalStrengthVector_), i) = 0;
     }
   }
 }
 
-- (jboolean)isNegative {
+- (bool)isNegative {
   return ADXPriorityGoalRow_GoalVariableAccessor_isNegative(self);
 }
 
-- (jboolean)isSmallerThanWithADXSolverVariable:(ADXSolverVariable *)other {
+- (bool)isSmallerThanWithADXSolverVariable:(ADXSolverVariable *)other {
   return ADXPriorityGoalRow_GoalVariableAccessor_isSmallerThanWithADXSolverVariable_(self, other);
 }
 
-- (jboolean)isNull {
-  for (jint i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
+- (bool)isNull {
+  for (int32_t i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
     if (IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(variable_))->goalStrengthVector_), i) != 0) {
       return false;
     }
@@ -364,7 +376,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXPriorityGoalRow)
 - (NSString *)description {
   NSString *result = @"[ ";
   if (variable_ != nil) {
-    for (jint i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
+    for (int32_t i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
       JreStrAppend(&result, "FC", IOSFloatArray_Get(nil_chk(variable_->goalStrengthVector_), i), ' ');
     }
   }
@@ -430,9 +442,9 @@ ADXPriorityGoalRow_GoalVariableAccessor *create_ADXPriorityGoalRow_GoalVariableA
   J2OBJC_CREATE_IMPL(ADXPriorityGoalRow_GoalVariableAccessor, initWithADXPriorityGoalRow_withADXPriorityGoalRow_, outer$, row)
 }
 
-jboolean ADXPriorityGoalRow_GoalVariableAccessor_isNegative(ADXPriorityGoalRow_GoalVariableAccessor *self) {
-  for (jint i = ADXSolverVariable_MAX_STRENGTH - 1; i >= 0; i--) {
-    jfloat value = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(self->variable_))->goalStrengthVector_), i);
+bool ADXPriorityGoalRow_GoalVariableAccessor_isNegative(ADXPriorityGoalRow_GoalVariableAccessor *self) {
+  for (int32_t i = ADXSolverVariable_MAX_STRENGTH - 1; i >= 0; i--) {
+    float value = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(self->variable_))->goalStrengthVector_), i);
     if (value > 0) {
       return false;
     }
@@ -443,10 +455,10 @@ jboolean ADXPriorityGoalRow_GoalVariableAccessor_isNegative(ADXPriorityGoalRow_G
   return false;
 }
 
-jboolean ADXPriorityGoalRow_GoalVariableAccessor_isSmallerThanWithADXSolverVariable_(ADXPriorityGoalRow_GoalVariableAccessor *self, ADXSolverVariable *other) {
-  for (jint i = ADXSolverVariable_MAX_STRENGTH - 1; i >= 0; i--) {
-    jfloat comparedValue = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(other))->goalStrengthVector_), i);
-    jfloat value = IOSFloatArray_Get(((ADXSolverVariable *) nil_chk(self->variable_))->goalStrengthVector_, i);
+bool ADXPriorityGoalRow_GoalVariableAccessor_isSmallerThanWithADXSolverVariable_(ADXPriorityGoalRow_GoalVariableAccessor *self, ADXSolverVariable *other) {
+  for (int32_t i = ADXSolverVariable_MAX_STRENGTH - 1; i >= 0; i--) {
+    float comparedValue = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(other))->goalStrengthVector_), i);
+    float value = IOSFloatArray_Get(((ADXSolverVariable *) nil_chk(self->variable_))->goalStrengthVector_, i);
     if (value == comparedValue) {
       continue;
     }
@@ -471,8 +483,8 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jint)compareWithId:(ADXSolverVariable *)variable1
-               withId:(ADXSolverVariable *)variable2 {
+- (int32_t)compareWithId:(ADXSolverVariable *)variable1
+                  withId:(ADXSolverVariable *)variable2 {
   return ((ADXSolverVariable *) nil_chk(variable1))->id__ - ((ADXSolverVariable *) nil_chk(variable2))->id__;
 }
 
@@ -517,7 +529,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   methods[1].selector = @selector(compareWithId:withId:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "compare", "LADXSolverVariable;LADXSolverVariable;", "LADXPriorityGoalRow;", "addToGoalWithADXSolverVariable:", "Ljava/lang/Object;Ljava/util/Comparator<Landroidx/constraintlayout/core/SolverVariable;>;" };
-  static const J2ObjcClassInfo _ADXPriorityGoalRow_1 = { "", "androidx.constraintlayout.core", ptrTable, methods, NULL, 7, 0x8010, 2, 0, 2, -1, 3, 4, -1 };
+  static const J2ObjcClassInfo _ADXPriorityGoalRow_1 = { "", "androidx.constraintlayout.core", ptrTable, methods, NULL, 7, 0x8000, 2, 0, 2, -1, 3, 4, -1 };
   return &_ADXPriorityGoalRow_1;
 }
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\Motion.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Motion")
@@ -27,7 +28,13 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangDouble;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
 @class JavaUtilArrayList;
+@class NSString;
 
 /*!
  @brief This contains the picture of a view through the a transition and is used to interpolate it
@@ -40,13 +47,13 @@
  @public
   ADXCLRect *mTempRect_;
   ADXMotionWidget *mView_;
-  jint mId_;
+  int32_t mId_;
   NSString *mConstraintTag_;
-  jfloat mMotionStagger_;
-  jfloat mStaggerOffset_;
-  jfloat mStaggerScale_;
-  jfloat mCurrentCenterX_;
-  jfloat mCurrentCenterY_;
+  float mMotionStagger_;
+  float mStaggerOffset_;
+  float mStaggerScale_;
+  float mCurrentCenterX_;
+  float mCurrentCenterY_;
   IOSObjectArray *attributeTable_;
 }
 
@@ -56,9 +63,9 @@
 
 - (void)addKeyWithADXMotionKey:(ADXMotionKey *)key;
 
-- (jint)buildKeyFramesWithFloatArray:(IOSFloatArray *)keyFrames
-                        withIntArray:(IOSIntArray *)mode
-                        withIntArray:(IOSIntArray *)pos;
+- (int32_t)buildKeyFramesWithFloatArray:(IOSFloatArray *)keyFrames
+                           withIntArray:(IOSIntArray *)mode
+                           withIntArray:(IOSIntArray *)pos;
 
 /*!
  @brief fill the array point with the center coordinates point[0] is filled with the
@@ -69,11 +76,11 @@
  @return number of key frames
  */
 - (void)buildPathWithFloatArray:(IOSFloatArray *)points
-                        withInt:(jint)pointCount;
+                        withInt:(int32_t)pointCount;
 
-- (void)buildRectWithFloat:(jfloat)p
+- (void)buildRectWithFloat:(float)p
             withFloatArray:(IOSFloatArray *)path
-                   withInt:(jint)offset;
+                   withInt:(int32_t)offset;
 
 /*!
  @brief Will return the id of the view to move relative to
@@ -81,48 +88,48 @@
   -1 is the return value if NOT in polar mode
  @return the view id of the view this is in polar mode to or -1 if not in polar
  */
-- (jint)getAnimateRelativeTo;
+- (int32_t)getAnimateRelativeTo;
 
-- (void)getCenterWithDouble:(jdouble)p
+- (void)getCenterWithDouble:(double)p
              withFloatArray:(IOSFloatArray *)pos
              withFloatArray:(IOSFloatArray *)vel;
 
-- (jfloat)getCenterX;
+- (float)getCenterX;
 
-- (jfloat)getCenterY;
+- (float)getCenterY;
 
-- (jint)getDrawPath;
+- (int32_t)getDrawPath;
 
 /*!
  @brief get the width of the widget at the end of the movement.
  @return the height at the end
  */
-- (jfloat)getFinalHeight;
+- (float)getFinalHeight;
 
 /*!
  @brief get the width of the widget at the end of the movement.
  @return the width at the end
  */
-- (jfloat)getFinalWidth;
+- (float)getFinalWidth;
 
 /*!
  @brief get the left most position of the widget at the end of the movement.
  @return the left most position
  */
-- (jfloat)getFinalX;
+- (float)getFinalX;
 
 /*!
  @brief get the top most position of the widget at the end of the movement.
  Positive is down.
  @return the top most position
  */
-- (jfloat)getFinalY;
+- (float)getFinalY;
 
 /*!
  @brief provides acces to MotionPath objects
  @param i
  */
-- (ADXMotionPaths *)getKeyFrameWithInt:(jint)i;
+- (ADXMotionPaths *)getKeyFrameWithInt:(int32_t)i;
 
 /*!
  @brief Get the keyFrames for the view controlled by this MotionController
@@ -138,8 +145,8 @@
  @param info is a data structure array of int that holds info on each keyframe
  @return Number of keyFrames found
  */
-- (jint)getKeyFrameInfoWithInt:(jint)type
-                  withIntArray:(IOSIntArray *)info;
+- (int32_t)getKeyFrameInfoWithInt:(int32_t)type
+                     withIntArray:(IOSIntArray *)info;
 
 /*!
  @brief Get the keyFrames for the view controlled by this MotionController
@@ -147,39 +154,39 @@
  @param pos the x &y  position of the keyFrame along the path
  @return Number of keyFrames found
  */
-- (jint)getKeyFramePositionsWithIntArray:(IOSIntArray *)type
-                          withFloatArray:(IOSFloatArray *)pos;
+- (int32_t)getKeyFramePositionsWithIntArray:(IOSIntArray *)type
+                             withFloatArray:(IOSFloatArray *)pos;
 
 /*!
  @brief get the width of the widget at the start of the movement.
  @return the height at the start
  */
-- (jfloat)getStartHeight;
+- (float)getStartHeight;
 
 /*!
  @brief get the width of the widget at the start of the movement.
  @return the width at the start
  */
-- (jfloat)getStartWidth;
+- (float)getStartWidth;
 
 /*!
  @brief get the left most position of the widget at the start of the movement.
  @return the left most position
  */
-- (jfloat)getStartX;
+- (float)getStartX;
 
 /*!
  @brief get the top most position of the widget at the start of the movement.
  Positive is down.
  @return the top most position
  */
-- (jfloat)getStartY;
+- (float)getStartY;
 
 /*!
  @brief Get the view to pivot around
  @return id of view or UNSET if not set
  */
-- (jint)getTransformPivotTarget;
+- (int32_t)getTransformPivotTarget;
 
 - (ADXMotionWidget *)getView;
 
@@ -191,39 +198,39 @@
  @param keyCache
  @return do you need to keep animating
  */
-- (jboolean)interpolateWithADXMotionWidget:(ADXMotionWidget *)child
-                                 withFloat:(jfloat)global_position
-                                  withLong:(jlong)time
-                           withADXKeyCache:(ADXKeyCache *)keyCache;
+- (bool)interpolateWithADXMotionWidget:(ADXMotionWidget *)child
+                             withFloat:(float)global_position
+                              withLong:(int64_t)time
+                       withADXKeyCache:(ADXKeyCache *)keyCache;
 
-- (void)setDrawPathWithInt:(jint)debugMode;
+- (void)setDrawPathWithInt:(int32_t)debugMode;
 
 - (void)setEndWithADXMotionWidget:(ADXMotionWidget *)mw;
 
-- (void)setPathMotionArcWithInt:(jint)arc;
+- (void)setPathMotionArcWithInt:(int32_t)arc;
 
 - (void)setStartWithADXMotionWidget:(ADXMotionWidget *)mw;
 
 - (void)setStartStateWithADXViewState:(ADXViewState *)rect
                   withADXMotionWidget:(ADXMotionWidget *)v
-                              withInt:(jint)rotation
-                              withInt:(jint)preWidth
-                              withInt:(jint)preHeight;
+                              withInt:(int32_t)rotation
+                              withInt:(int32_t)preWidth
+                              withInt:(int32_t)preHeight;
 
 /*!
  @brief Set a view to pivot around
  @param transformPivotTarget id of view
  */
-- (void)setTransformPivotTargetWithInt:(jint)transformPivotTarget;
+- (void)setTransformPivotTargetWithInt:(int32_t)transformPivotTarget;
 
 /*!
  @brief Called after all TimePoints & Cycles have been added;
   Spines are evaluated
  */
-- (void)setupWithInt:(jint)parentWidth
-             withInt:(jint)parentHeight
-           withFloat:(jfloat)transitionDuration
-            withLong:(jlong)currentTime;
+- (void)setupWithInt:(int32_t)parentWidth
+             withInt:(int32_t)parentHeight
+           withFloat:(float)transitionDuration
+            withLong:(int64_t)currentTime;
 
 - (void)setupRelativeWithADXMotion:(ADXMotion *)motionController;
 
@@ -247,19 +254,19 @@
  @return number of key frames
  */
 - (void)buildBoundsWithFloatArray:(IOSFloatArray *)bounds
-                          withInt:(jint)pointCount;
+                          withInt:(int32_t)pointCount;
 
-- (jint)buildKeyBoundsWithFloatArray:(IOSFloatArray *)keyBounds
-                        withIntArray:(IOSIntArray *)mode;
+- (int32_t)buildKeyBoundsWithFloatArray:(IOSFloatArray *)keyBounds
+                           withIntArray:(IOSIntArray *)mode;
 
 - (void)buildRectanglesWithFloatArray:(IOSFloatArray *)path
-                              withInt:(jint)pointCount;
+                              withInt:(int32_t)pointCount;
 
-- (void)endTriggerWithBoolean:(jboolean)start;
+- (void)endTriggerWithBoolean:(bool)start;
 
-- (jint)getAttributeValuesWithNSString:(NSString *)attributeType
-                        withFloatArray:(IOSFloatArray *)points
-                               withInt:(jint)pointCount;
+- (int32_t)getAttributeValuesWithNSString:(NSString *)attributeType
+                           withFloatArray:(IOSFloatArray *)points
+                                  withInt:(int32_t)pointCount;
 
 /*!
  @brief This returns the differential with respect to the animation layout position (Progress)
@@ -269,21 +276,21 @@
  @param locationY the y location on the view (0 = top, 1 = bottom)
  @param mAnchorDpDt returns the differential of the motion with respect to the position
  */
-- (void)getDpDtWithFloat:(jfloat)position
-               withFloat:(jfloat)locationX
-               withFloat:(jfloat)locationY
+- (void)getDpDtWithFloat:(float)position
+               withFloat:(float)locationX
+               withFloat:(float)locationY
           withFloatArray:(IOSFloatArray *)mAnchorDpDt;
 
-- (jfloat)getKeyFrameParameterWithInt:(jint)type
-                            withFloat:(jfloat)x
-                            withFloat:(jfloat)y;
+- (float)getKeyFrameParameterWithInt:(int32_t)type
+                           withFloat:(float)x
+                           withFloat:(float)y;
 
-- (IOSDoubleArray *)getPosWithDouble:(jdouble)position;
+- (IOSDoubleArray *)getPosWithDouble:(double)position;
 
-- (ADXMotionKeyPosition *)getPositionKeyframeWithInt:(jint)layoutWidth
-                                             withInt:(jint)layoutHeight
-                                           withFloat:(jfloat)x
-                                           withFloat:(jfloat)y;
+- (ADXMotionKeyPosition *)getPositionKeyframeWithInt:(int32_t)layoutWidth
+                                             withInt:(int32_t)layoutHeight
+                                           withFloat:(float)x
+                                           withFloat:(float)y;
 
 /*!
  @brief This returns the differential with respect to the animation post layout transform
@@ -295,27 +302,27 @@
  @param locationY the y location on the view (0 = top, 1 = bottom)
  @param mAnchorDpDt returns the differential of the motion with respect to the position
  */
-- (void)getPostLayoutDvDpWithFloat:(jfloat)position
-                           withInt:(jint)width
-                           withInt:(jint)height
-                         withFloat:(jfloat)locationX
-                         withFloat:(jfloat)locationY
+- (void)getPostLayoutDvDpWithFloat:(float)position
+                           withInt:(int32_t)width
+                           withInt:(int32_t)height
+                         withFloat:(float)locationX
+                         withFloat:(float)locationY
                     withFloatArray:(IOSFloatArray *)mAnchorDpDt;
 
 - (NSString *)name;
 
 - (void)positionKeyframeWithADXMotionWidget:(ADXMotionWidget *)view
                    withADXMotionKeyPosition:(ADXMotionKeyPosition *)key
-                                  withFloat:(jfloat)x
-                                  withFloat:(jfloat)y
+                                  withFloat:(float)x
+                                  withFloat:(float)y
                           withNSStringArray:(IOSObjectArray *)attribute
                              withFloatArray:(IOSFloatArray *)value;
 
 - (void)rotateWithADXCLRect:(ADXCLRect *)rect
               withADXCLRect:(ADXCLRect *)outArg
-                    withInt:(jint)rotation
-                    withInt:(jint)preHeight
-                    withInt:(jint)preWidth;
+                    withInt:(int32_t)rotation
+                    withInt:(int32_t)preHeight
+                    withInt:(int32_t)preWidth;
 
 - (void)setBothStatesWithADXMotionWidget:(ADXMotionWidget *)v;
 
@@ -332,89 +339,89 @@ J2OBJC_FIELD_SETTER(ADXMotion, mView_, ADXMotionWidget *)
 J2OBJC_FIELD_SETTER(ADXMotion, mConstraintTag_, NSString *)
 J2OBJC_FIELD_SETTER(ADXMotion, attributeTable_, IOSObjectArray *)
 
-inline jint ADXMotion_get_PATH_PERCENT(void);
+inline int32_t ADXMotion_get_PATH_PERCENT(void);
 #define ADXMotion_PATH_PERCENT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, PATH_PERCENT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, PATH_PERCENT, int32_t)
 
-inline jint ADXMotion_get_PATH_PERPENDICULAR(void);
+inline int32_t ADXMotion_get_PATH_PERPENDICULAR(void);
 #define ADXMotion_PATH_PERPENDICULAR 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, PATH_PERPENDICULAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, PATH_PERPENDICULAR, int32_t)
 
-inline jint ADXMotion_get_HORIZONTAL_PATH_X(void);
+inline int32_t ADXMotion_get_HORIZONTAL_PATH_X(void);
 #define ADXMotion_HORIZONTAL_PATH_X 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, HORIZONTAL_PATH_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, HORIZONTAL_PATH_X, int32_t)
 
-inline jint ADXMotion_get_HORIZONTAL_PATH_Y(void);
+inline int32_t ADXMotion_get_HORIZONTAL_PATH_Y(void);
 #define ADXMotion_HORIZONTAL_PATH_Y 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, HORIZONTAL_PATH_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, HORIZONTAL_PATH_Y, int32_t)
 
-inline jint ADXMotion_get_VERTICAL_PATH_X(void);
+inline int32_t ADXMotion_get_VERTICAL_PATH_X(void);
 #define ADXMotion_VERTICAL_PATH_X 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, VERTICAL_PATH_X, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, VERTICAL_PATH_X, int32_t)
 
-inline jint ADXMotion_get_VERTICAL_PATH_Y(void);
+inline int32_t ADXMotion_get_VERTICAL_PATH_Y(void);
 #define ADXMotion_VERTICAL_PATH_Y 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, VERTICAL_PATH_Y, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, VERTICAL_PATH_Y, int32_t)
 
-inline jint ADXMotion_get_DRAW_PATH_NONE(void);
+inline int32_t ADXMotion_get_DRAW_PATH_NONE(void);
 #define ADXMotion_DRAW_PATH_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_NONE, int32_t)
 
-inline jint ADXMotion_get_DRAW_PATH_BASIC(void);
+inline int32_t ADXMotion_get_DRAW_PATH_BASIC(void);
 #define ADXMotion_DRAW_PATH_BASIC 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_BASIC, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_BASIC, int32_t)
 
-inline jint ADXMotion_get_DRAW_PATH_RELATIVE(void);
+inline int32_t ADXMotion_get_DRAW_PATH_RELATIVE(void);
 #define ADXMotion_DRAW_PATH_RELATIVE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_RELATIVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_RELATIVE, int32_t)
 
-inline jint ADXMotion_get_DRAW_PATH_CARTESIAN(void);
+inline int32_t ADXMotion_get_DRAW_PATH_CARTESIAN(void);
 #define ADXMotion_DRAW_PATH_CARTESIAN 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_CARTESIAN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_CARTESIAN, int32_t)
 
-inline jint ADXMotion_get_DRAW_PATH_AS_CONFIGURED(void);
+inline int32_t ADXMotion_get_DRAW_PATH_AS_CONFIGURED(void);
 #define ADXMotion_DRAW_PATH_AS_CONFIGURED 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_AS_CONFIGURED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_AS_CONFIGURED, int32_t)
 
-inline jint ADXMotion_get_DRAW_PATH_RECTANGLE(void);
+inline int32_t ADXMotion_get_DRAW_PATH_RECTANGLE(void);
 #define ADXMotion_DRAW_PATH_RECTANGLE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_RECTANGLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_RECTANGLE, int32_t)
 
-inline jint ADXMotion_get_DRAW_PATH_SCREEN(void);
+inline int32_t ADXMotion_get_DRAW_PATH_SCREEN(void);
 #define ADXMotion_DRAW_PATH_SCREEN 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_SCREEN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, DRAW_PATH_SCREEN, int32_t)
 
-inline jint ADXMotion_get_ROTATION_RIGHT(void);
+inline int32_t ADXMotion_get_ROTATION_RIGHT(void);
 #define ADXMotion_ROTATION_RIGHT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, ROTATION_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, ROTATION_RIGHT, int32_t)
 
-inline jint ADXMotion_get_ROTATION_LEFT(void);
+inline int32_t ADXMotion_get_ROTATION_LEFT(void);
 #define ADXMotion_ROTATION_LEFT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, ROTATION_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, ROTATION_LEFT, int32_t)
 
-inline jint ADXMotion_get_EASE_IN_OUT(void);
+inline int32_t ADXMotion_get_EASE_IN_OUT(void);
 #define ADXMotion_EASE_IN_OUT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, EASE_IN_OUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, EASE_IN_OUT, int32_t)
 
-inline jint ADXMotion_get_EASE_IN(void);
+inline int32_t ADXMotion_get_EASE_IN(void);
 #define ADXMotion_EASE_IN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, EASE_IN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, EASE_IN, int32_t)
 
-inline jint ADXMotion_get_EASE_OUT(void);
+inline int32_t ADXMotion_get_EASE_OUT(void);
 #define ADXMotion_EASE_OUT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, EASE_OUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, EASE_OUT, int32_t)
 
-inline jint ADXMotion_get_LINEAR(void);
+inline int32_t ADXMotion_get_LINEAR(void);
 #define ADXMotion_LINEAR 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, LINEAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, LINEAR, int32_t)
 
-inline jint ADXMotion_get_BOUNCE(void);
+inline int32_t ADXMotion_get_BOUNCE(void);
 #define ADXMotion_BOUNCE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, BOUNCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, BOUNCE, int32_t)
 
-inline jint ADXMotion_get_OVERSHOOT(void);
+inline int32_t ADXMotion_get_OVERSHOOT(void);
 #define ADXMotion_OVERSHOOT 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, OVERSHOOT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotion, OVERSHOOT, int32_t)
 
 FOUNDATION_EXPORT void ADXMotion_initWithADXMotionWidget_(ADXMotion *self, ADXMotionWidget *view);
 
@@ -425,6 +432,7 @@ FOUNDATION_EXPORT ADXMotion *create_ADXMotion_initWithADXMotionWidget_(ADXMotion
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotion)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionMotion ADXMotion;
+
 
 #endif
 

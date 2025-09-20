@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\parse\KeyParser.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLElement.h"
 #include "CLKey.h"
 #include "CLObject.h"
@@ -14,10 +19,19 @@
 #include "TypedBundle.h"
 #include "TypedValues.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/System.h"
 
+
+@class NSString;
 @protocol ADXKeyParser_DataType;
 @protocol ADXKeyParser_Ids;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
@@ -34,7 +48,7 @@ __attribute__((unused)) static ADXTypedBundle *ADXKeyParser_parseWithNSString_wi
 
 @protocol ADXKeyParser_Ids < JavaObject >
 
-- (jint)getWithNSString:(NSString *)str;
+- (int32_t)getWithNSString:(NSString *)str;
 
 @end
 
@@ -46,9 +60,10 @@ J2OBJC_EMPTY_STATIC_INIT(ADXKeyParser_Ids)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyParser_Ids)
 
+
 @protocol ADXKeyParser_DataType < JavaObject >
 
-- (jint)getWithInt:(jint)str;
+- (int32_t)getWithInt:(int32_t)str;
 
 @end
 
@@ -60,9 +75,10 @@ J2OBJC_EMPTY_STATIC_INIT(ADXKeyParser_DataType)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyParser_DataType)
 
+
 @interface ADXKeyParser_$Lambda$1 : NSObject < ADXKeyParser_Ids >
 
-- (jint)getWithNSString:(NSString *)a;
+- (int32_t)getWithNSString:(NSString *)a;
 
 @end
 
@@ -78,9 +94,10 @@ __attribute__((unused)) static ADXKeyParser_$Lambda$1 *new_ADXKeyParser_$Lambda$
 
 __attribute__((unused)) static ADXKeyParser_$Lambda$1 *create_ADXKeyParser_$Lambda$1_init(void);
 
+
 @interface ADXKeyParser_$Lambda$2 : NSObject < ADXKeyParser_DataType >
 
-- (jint)getWithInt:(jint)a;
+- (int32_t)getWithInt:(int32_t)a;
 
 @end
 
@@ -95,6 +112,7 @@ __attribute__((unused)) static void ADXKeyParser_$Lambda$2_init(ADXKeyParser_$La
 __attribute__((unused)) static ADXKeyParser_$Lambda$2 *new_ADXKeyParser_$Lambda$2_init(void) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ADXKeyParser_$Lambda$2 *create_ADXKeyParser_$Lambda$2_init(void);
+
 
 @implementation ADXKeyParser
 
@@ -158,14 +176,14 @@ ADXTypedBundle *ADXKeyParser_parseWithNSString_withADXKeyParser_Ids_withADXKeyPa
   ADXTypedBundle *bundle = create_ADXTypedBundle_init();
   @try {
     ADXCLObject *parsedContent = ADXCLParser_parseWithNSString_(str);
-    jint n = [((ADXCLObject *) nil_chk(parsedContent)) size];
-    for (jint i = 0; i < n; i++) {
+    int32_t n = [((ADXCLObject *) nil_chk(parsedContent)) size];
+    for (int32_t i = 0; i < n; i++) {
       ADXCLKey *clkey = ((ADXCLKey *) cast_chk([parsedContent getWithInt:i], [ADXCLKey class]));
       NSString *type = JreRetainedLocalValue([((ADXCLKey *) nil_chk(clkey)) content]);
       
       ;
       ADXCLElement *value = JreRetainedLocalValue([clkey getValue]);
-      jint id_ = [((id<ADXKeyParser_Ids>) nil_chk(table)) getWithNSString:type];
+      int32_t id_ = [((id<ADXKeyParser_Ids>) nil_chk(table)) getWithNSString:type];
       if (id_ == -1) {
         [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, err))) printlnWithNSString:JreStrcat("$$", @"unknown type ", type)];
         continue;
@@ -207,6 +225,8 @@ void ADXKeyParser_mainWithNSStringArray_(IOSObjectArray *args) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyParser)
+
+J2OBJC_NAME_MAPPING(ADXKeyParser, "androidx.constraintlayout.core.motion.parse", "ADX")
 
 @implementation ADXKeyParser_Ids
 
@@ -252,7 +272,7 @@ J2OBJC_INITIALIZED_DEFN(ADXKeyParser_$Lambda$1)
 
 @implementation ADXKeyParser_$Lambda$1
 
-- (jint)getWithNSString:(NSString *)a {
+- (int32_t)getWithNSString:(NSString *)a {
   return ADXTypedValues_Attributes_getIdWithNSString_(a);
 }
 
@@ -281,7 +301,7 @@ J2OBJC_INITIALIZED_DEFN(ADXKeyParser_$Lambda$2)
 
 @implementation ADXKeyParser_$Lambda$2
 
-- (jint)getWithInt:(jint)a {
+- (int32_t)getWithInt:(int32_t)a {
   return ADXTypedValues_Attributes_getTypeWithInt_(a);
 }
 

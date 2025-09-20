@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLParser.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLArray.h"
 #include "CLContainer.h"
 #include "CLElement.h"
@@ -17,41 +22,52 @@
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Enum.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/System.h"
 #include "java/util/ArrayList.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCLParser () {
  @public
   NSString *mContent_;
-  jboolean hasComment_;
-  jint lineNumber_;
+  bool hasComment_;
+  int32_t lineNumber_;
 }
 
-- (ADXCLElement *)getNextJsonElementWithInt:(jint)position
-                                   withChar:(jchar)c
+- (ADXCLElement *)getNextJsonElementWithInt:(int32_t)position
+                                   withChar:(unichar)c
                            withADXCLElement:(ADXCLElement *)currentElement
                               withCharArray:(IOSCharArray *)content;
 
 - (ADXCLElement *)createElementWithADXCLElement:(ADXCLElement *)currentElement
-                                        withInt:(jint)position
+                                        withInt:(int32_t)position
                            withADXCLParser_TYPE:(ADXCLParser_TYPE *)type
-                                    withBoolean:(jboolean)applyStart
+                                    withBoolean:(bool)applyStart
                                   withCharArray:(IOSCharArray *)content;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXCLParser, mContent_, NSString *)
 
-__attribute__((unused)) static ADXCLElement *ADXCLParser_getNextJsonElementWithInt_withChar_withADXCLElement_withCharArray_(ADXCLParser *self, jint position, jchar c, ADXCLElement *currentElement, IOSCharArray *content);
+__attribute__((unused)) static ADXCLElement *ADXCLParser_getNextJsonElementWithInt_withChar_withADXCLElement_withCharArray_(ADXCLParser *self, int32_t position, unichar c, ADXCLElement *currentElement, IOSCharArray *content);
 
-__attribute__((unused)) static ADXCLElement *ADXCLParser_createElementWithADXCLElement_withInt_withADXCLParser_TYPE_withBoolean_withCharArray_(ADXCLParser *self, ADXCLElement *currentElement, jint position, ADXCLParser_TYPE *type, jboolean applyStart, IOSCharArray *content);
+__attribute__((unused)) static ADXCLElement *ADXCLParser_createElementWithADXCLElement_withInt_withADXCLParser_TYPE_withBoolean_withCharArray_(ADXCLParser *self, ADXCLElement *currentElement, int32_t position, ADXCLParser_TYPE *type, bool applyStart, IOSCharArray *content);
 
-__attribute__((unused)) static void ADXCLParser_TYPE_initWithNSString_withInt_(ADXCLParser_TYPE *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXCLParser_TYPE_initWithNSString_withInt_(ADXCLParser_TYPE *self, NSString *__name, int32_t __ordinal);
 
-jboolean ADXCLParser_DEBUG = false;
+bool ADXCLParser_DEBUG = false;
 
 @implementation ADXCLParser
 
@@ -68,11 +84,11 @@ jboolean ADXCLParser_DEBUG = false;
   ADXCLObject *root = nil;
   IOSCharArray *content = [((NSString *) nil_chk(mContent_)) java_toCharArray];
   ADXCLElement *currentElement = nil;
-  jint length = ((IOSCharArray *) nil_chk(content))->size_;
+  int32_t length = ((IOSCharArray *) nil_chk(content))->size_;
   lineNumber_ = 1;
-  jint startIndex = -1;
-  for (jint i = 0; i < length; i++) {
-    jchar c = IOSCharArray_Get(content, i);
+  int32_t startIndex = -1;
+  for (int32_t i = 0; i < length; i++) {
+    unichar c = IOSCharArray_Get(content, i);
     if (c == '{') {
       startIndex = i;
       break;
@@ -88,8 +104,8 @@ jboolean ADXCLParser_DEBUG = false;
   [((ADXCLObject *) nil_chk(root)) setLineWithInt:lineNumber_];
   [root setStartWithLong:startIndex];
   currentElement = root;
-  for (jint i = startIndex + 1; i < length; i++) {
-    jchar c = IOSCharArray_Get(content, i);
+  for (int32_t i = startIndex + 1; i < length; i++) {
+    unichar c = IOSCharArray_Get(content, i);
     if (c == 0x000a) {
       lineNumber_++;
     }
@@ -124,7 +140,7 @@ jboolean ADXCLParser_DEBUG = false;
       }
     }
     else if ([currentElement isKindOfClass:[ADXCLString class]]) {
-      jchar ck = IOSCharArray_Get(content, (jint) currentElement->start_);
+      unichar ck = IOSCharArray_Get(content, (int32_t) currentElement->start_);
       if (ck == c) {
         [currentElement setStartWithLong:currentElement->start_ + 1];
         [currentElement setEndWithLong:i - 1];
@@ -138,7 +154,7 @@ jboolean ADXCLParser_DEBUG = false;
         }
       }
       if ([currentElement isKindOfClass:[ADXCLKey class]] || [currentElement isKindOfClass:[ADXCLString class]]) {
-        jchar ck = IOSCharArray_Get(content, (jint) currentElement->start_);
+        unichar ck = IOSCharArray_Get(content, (int32_t) currentElement->start_);
         if ((ck == '\'' || ck == '"') && ck == c) {
           [currentElement setStartWithLong:currentElement->start_ + 1];
           [currentElement setEndWithLong:i - 1];
@@ -164,7 +180,7 @@ jboolean ADXCLParser_DEBUG = false;
   }
   while (currentElement != nil && ![currentElement isDone]) {
     if ([currentElement isKindOfClass:[ADXCLString class]]) {
-      [currentElement setStartWithLong:(jint) currentElement->start_ + 1];
+      [currentElement setStartWithLong:(int32_t) currentElement->start_ + 1];
     }
     [currentElement setEndWithLong:length - 1];
     currentElement = [currentElement getContainer];
@@ -175,17 +191,17 @@ jboolean ADXCLParser_DEBUG = false;
   return root;
 }
 
-- (ADXCLElement *)getNextJsonElementWithInt:(jint)position
-                                   withChar:(jchar)c
+- (ADXCLElement *)getNextJsonElementWithInt:(int32_t)position
+                                   withChar:(unichar)c
                            withADXCLElement:(ADXCLElement *)currentElement
                               withCharArray:(IOSCharArray *)content {
   return ADXCLParser_getNextJsonElementWithInt_withChar_withADXCLElement_withCharArray_(self, position, c, currentElement, content);
 }
 
 - (ADXCLElement *)createElementWithADXCLElement:(ADXCLElement *)currentElement
-                                        withInt:(jint)position
+                                        withInt:(int32_t)position
                            withADXCLParser_TYPE:(ADXCLParser_TYPE *)type
-                                    withBoolean:(jboolean)applyStart
+                                    withBoolean:(bool)applyStart
                                   withCharArray:(IOSCharArray *)content {
   return ADXCLParser_createElementWithADXCLElement_withInt_withADXCLParser_TYPE_withBoolean_withCharArray_(self, currentElement, position, type, applyStart, content);
 }
@@ -244,7 +260,7 @@ ADXCLParser *create_ADXCLParser_initWithNSString_(NSString *content) {
   J2OBJC_CREATE_IMPL(ADXCLParser, initWithNSString_, content)
 }
 
-ADXCLElement *ADXCLParser_getNextJsonElementWithInt_withChar_withADXCLElement_withCharArray_(ADXCLParser *self, jint position, jchar c, ADXCLElement *currentElement, IOSCharArray *content) {
+ADXCLElement *ADXCLParser_getNextJsonElementWithInt_withChar_withADXCLElement_withCharArray_(ADXCLParser *self, int32_t position, unichar c, ADXCLElement *currentElement, IOSCharArray *content) {
   switch (c) {
     case ' ':
     case ':':
@@ -325,7 +341,7 @@ ADXCLElement *ADXCLParser_getNextJsonElementWithInt_withChar_withADXCLElement_wi
   return currentElement;
 }
 
-ADXCLElement *ADXCLParser_createElementWithADXCLElement_withInt_withADXCLParser_TYPE_withBoolean_withCharArray_(ADXCLParser *self, ADXCLElement *currentElement, jint position, ADXCLParser_TYPE *type, jboolean applyStart, IOSCharArray *content) {
+ADXCLElement *ADXCLParser_createElementWithADXCLElement_withInt_withADXCLParser_TYPE_withBoolean_withCharArray_(ADXCLParser *self, ADXCLElement *currentElement, int32_t position, ADXCLParser_TYPE *type, bool applyStart, IOSCharArray *content) {
   ADXCLElement *newElement = nil;
   if (ADXCLParser_DEBUG) {
     [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$@$C", @"CREATE ", type, @" at ", IOSCharArray_Get(nil_chk(content), position))];
@@ -382,6 +398,8 @@ ADXCLElement *ADXCLParser_createElementWithADXCLElement_withInt_withADXCLParser_
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLParser)
 
+J2OBJC_NAME_MAPPING(ADXCLParser, "androidx.constraintlayout.core.parser", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXCLParser_TYPE)
 
 ADXCLParser_TYPE *ADXCLParser_TYPE_values_[7];
@@ -398,6 +416,24 @@ ADXCLParser_TYPE *ADXCLParser_TYPE_values_[7];
 
 - (ADXCLParser_TYPE_Enum)toNSEnum {
   return (ADXCLParser_TYPE_Enum)[self ordinal];
+}
+
+- (ADXCLParser_TYPE_Enum)enumValue {
+  return (ADXCLParser_TYPE_Enum)[self ordinal];
+}
+
++ (ADXCLParser_TYPE *)fromNSEnum:(ADXCLParser_TYPE_Enum)nativeValue {
+  ADXCLParser_TYPE *javaEnum = ADXCLParser_TYPE_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXCLParser_TYPE_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXCLParser_TYPE_ORDINAL)ordinal {
+  return (ADXCLParser_TYPE_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithTYPE:(ADXCLParser_TYPE_Enum)value {
+  return RETAIN_(ADXCLParser_TYPE_fromOrdinal((ADXCLParser_TYPE_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -431,7 +467,7 @@ ADXCLParser_TYPE *ADXCLParser_TYPE_values_[7];
     size_t allocSize = 7 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 7; i++) {
+    for (int32_t i = 0; i < 7; i++) {
       ((void)(ADXCLParser_TYPE_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXCLParser_TYPE_initWithNSString_withInt_(e, JreEnumConstantName(ADXCLParser_TYPE_class_(), i), i);
     }
@@ -441,7 +477,7 @@ ADXCLParser_TYPE *ADXCLParser_TYPE_values_[7];
 
 @end
 
-void ADXCLParser_TYPE_initWithNSString_withInt_(ADXCLParser_TYPE *self, NSString *__name, jint __ordinal) {
+void ADXCLParser_TYPE_initWithNSString_withInt_(ADXCLParser_TYPE *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -459,12 +495,11 @@ ADXCLParser_TYPE *ADXCLParser_TYPE_valueOfWithNSString_(NSString *name) {
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXCLParser_TYPE *ADXCLParser_TYPE_fromOrdinal(NSUInteger ordinal) {
+ADXCLParser_TYPE *ADXCLParser_TYPE_fromOrdinal(ADXCLParser_TYPE_ORDINAL ordinal) {
   ADXCLParser_TYPE_initialize();
-  if (ordinal >= 7) {
+  if (ordinal < 0 || ordinal >= 7) {
     return nil;
   }
   return ADXCLParser_TYPE_values_[ordinal];

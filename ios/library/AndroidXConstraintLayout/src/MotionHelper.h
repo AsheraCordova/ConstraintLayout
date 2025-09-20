@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionHelper.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionHelper")
@@ -27,6 +28,9 @@
 @class ADView;
 @class ADXMotionLayout;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @protocol ADCanvas;
 
@@ -41,15 +45,15 @@
 
 - (instancetype)init;
 
-- (jfloat)getProgress;
+- (float)getProgress;
 
-- (jboolean)isDecorator;
+- (bool)isDecorator;
 
-- (jboolean)isUsedOnShow;
+- (bool)isUsedOnShow;
 
 /*!
  */
-- (jboolean)isUseOnHide;
+- (bool)isUseOnHide;
 
 - (void)onFinishedMotionSceneWithADXMotionLayout:(ADXMotionLayout *)motionLayout;
 
@@ -61,30 +65,30 @@
                   withJavaUtilHashMap:(JavaUtilHashMap *)controllerMap;
 
 - (void)onTransitionChangeWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)startId
-                                      withInt:(jint)endId
-                                    withFloat:(jfloat)progress;
+                                      withInt:(int32_t)startId
+                                      withInt:(int32_t)endId
+                                    withFloat:(float)progress;
 
 - (void)onTransitionCompletedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                         withInt:(jint)currentId;
+                                         withInt:(int32_t)currentId;
 
 - (void)onTransitionStartedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)startId
-                                       withInt:(jint)endId;
+                                       withInt:(int32_t)startId
+                                       withInt:(int32_t)endId;
 
 - (void)onTransitionTriggerWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)triggerId
-                                   withBoolean:(jboolean)positive
-                                     withFloat:(jfloat)progress;
+                                       withInt:(int32_t)triggerId
+                                   withBoolean:(bool)positive
+                                     withFloat:(float)progress;
 
-- (void)setProgressWithFloat:(jfloat)progress;
+- (void)setProgressWithFloat:(float)progress;
 
 /*!
  @param view
  @param progress
  */
 - (void)setProgressWithADView:(ADView *)view
-                    withFloat:(jfloat)progress;
+                    withFloat:(float)progress;
 
 @end
 
@@ -101,6 +105,7 @@ FOUNDATION_EXPORT ADXMotionHelper *create_ADXMotionHelper_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionHelper)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetMotionHelper ADXMotionHelper;
+
 
 #endif
 

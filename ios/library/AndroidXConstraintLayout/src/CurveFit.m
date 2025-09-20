@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\CurveFit.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArcCurveFit.h"
 #include "CurveFit.h"
 #include "IOSObjectArray.h"
@@ -10,7 +15,16 @@
 #include "J2ObjC_source.h"
 #include "LinearCurveFit.h"
 #include "MonotonicCurveFit.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/System.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXCurveFit
@@ -22,7 +36,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-+ (ADXCurveFit *)getWithInt:(jint)type
++ (ADXCurveFit *)getWithInt:(int32_t)type
             withDoubleArray:(IOSDoubleArray *)time
            withDoubleArray2:(IOSObjectArray *)y {
   return ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(type, time, y);
@@ -34,33 +48,33 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXCurveFit_getArcWithIntArray_withDoubleArray_withDoubleArray2_(arcModes, time, y);
 }
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j {
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
 }
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j {
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
@@ -113,7 +127,7 @@ void ADXCurveFit_init(ADXCurveFit *self) {
   NSObject_init(self);
 }
 
-ADXCurveFit *ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(jint type, IOSDoubleArray *time, IOSObjectArray *y) {
+ADXCurveFit *ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(int32_t type, IOSDoubleArray *time, IOSObjectArray *y) {
   ADXCurveFit_initialize();
   if (((IOSDoubleArray *) nil_chk(time))->size_ == 1) {
     type = ADXCurveFit_CONSTANT;
@@ -135,45 +149,47 @@ ADXCurveFit *ADXCurveFit_getArcWithIntArray_withDoubleArray_withDoubleArray2_(IO
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCurveFit)
 
+J2OBJC_NAME_MAPPING(ADXCurveFit, "androidx.constraintlayout.core.motion.utils", "ADX")
+
 @implementation ADXCurveFit_Constant
 
-- (instancetype)initWithDouble:(jdouble)time
+- (instancetype)initWithDouble:(double)time
                withDoubleArray:(IOSDoubleArray *)value {
   ADXCurveFit_Constant_initWithDouble_withDoubleArray_(self, time, value);
   return self;
 }
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v {
   JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(mValue_, 0, v, 0, ((IOSDoubleArray *) nil_chk(mValue_))->size_);
 }
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v {
-  for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(mValue_))->size_; i++) {
-    *IOSFloatArray_GetRef(nil_chk(v), i) = (jfloat) IOSDoubleArray_Get(mValue_, i);
+  for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(mValue_))->size_; i++) {
+    *IOSFloatArray_GetRef(nil_chk(v), i) = (float) IOSDoubleArray_Get(mValue_, i);
   }
 }
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j {
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j {
   return IOSDoubleArray_Get(nil_chk(mValue_), j);
 }
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v {
-  for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(mValue_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(mValue_))->size_; i++) {
     *IOSDoubleArray_GetRef(nil_chk(v), i) = 0;
   }
 }
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j {
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j {
   return 0;
 }
 
 - (IOSDoubleArray *)getTimePoints {
-  return [IOSDoubleArray arrayWithDoubles:(jdouble[]){ mTime_ } count:1];
+  return [IOSDoubleArray arrayWithDoubles:(double[]){ mTime_ } count:1];
 }
 
 - (void)dealloc {
@@ -213,17 +229,17 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCurveFit)
 
 @end
 
-void ADXCurveFit_Constant_initWithDouble_withDoubleArray_(ADXCurveFit_Constant *self, jdouble time, IOSDoubleArray *value) {
+void ADXCurveFit_Constant_initWithDouble_withDoubleArray_(ADXCurveFit_Constant *self, double time, IOSDoubleArray *value) {
   ADXCurveFit_init(self);
   self->mTime_ = time;
   JreStrongAssign(&self->mValue_, value);
 }
 
-ADXCurveFit_Constant *new_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(jdouble time, IOSDoubleArray *value) {
+ADXCurveFit_Constant *new_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(double time, IOSDoubleArray *value) {
   J2OBJC_NEW_IMPL(ADXCurveFit_Constant, initWithDouble_withDoubleArray_, time, value)
 }
 
-ADXCurveFit_Constant *create_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(jdouble time, IOSDoubleArray *value) {
+ADXCurveFit_Constant *create_ADXCurveFit_Constant_initWithDouble_withDoubleArray_(double time, IOSDoubleArray *value) {
   J2OBJC_CREATE_IMPL(ADXCurveFit_Constant, initWithDouble_withDoubleArray_, time, value)
 }
 

@@ -3,9 +3,23 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\Metrics.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "Metrics.h"
+#include "java/lang/Character.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXMetrics
@@ -140,3 +154,5 @@ ADXMetrics *create_ADXMetrics_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMetrics)
+
+J2OBJC_NAME_MAPPING(ADXMetrics, "androidx.constraintlayout.core", "ADX")

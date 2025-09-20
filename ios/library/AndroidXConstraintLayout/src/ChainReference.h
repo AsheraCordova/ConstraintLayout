@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\ChainReference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ChainReference")
@@ -23,10 +24,11 @@
 @class ADXState;
 @class ADXState_Chain;
 @class ADXState_Helper;
+@class JavaLangFloat;
 
 @interface ADXChainReference : ADXHelperReference {
  @public
-  jfloat mBias_;
+  float mBias_;
   ADXState_Chain *mStyle_;
 }
 
@@ -35,9 +37,9 @@
 - (instancetype)initWithADXState:(ADXState *)state
              withADXState_Helper:(ADXState_Helper *)type;
 
-- (ADXChainReference *)biasWithFloat:(jfloat)bias;
+- (ADXChainReference *)biasWithFloat:(float)bias;
 
-- (jfloat)getBias;
+- (float)getBias;
 
 - (ADXState_Chain *)getStyle;
 
@@ -58,6 +60,7 @@ FOUNDATION_EXPORT ADXChainReference *create_ADXChainReference_initWithADXState_w
 J2OBJC_TYPE_LITERAL_HEADER(ADXChainReference)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateHelpersChainReference ADXChainReference;
+
 
 #endif
 

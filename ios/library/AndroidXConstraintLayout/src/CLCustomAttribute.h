@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\CLCustomAttribute.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLCustomAttribute")
@@ -24,7 +25,11 @@
 
 @class ADXCLCustomAttribute_AttributeType;
 @class IOSFloatArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
+@class NSString;
 
 /*!
  @brief Defines non standard Attributes
@@ -32,7 +37,7 @@
 @interface ADXCLCustomAttribute : NSObject {
  @public
   NSString *mName_;
-  jboolean mBooleanValue_;
+  bool mBooleanValue_;
 }
 
 #pragma mark Public
@@ -46,7 +51,7 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
 - (instancetype)initWithNSString:(NSString *)name
 withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)attributeType
                           withId:(id)value
-                     withBoolean:(jboolean)method;
+                     withBoolean:(bool)method;
 
 - (void)applyCustomWithId:(id)view;
 
@@ -54,7 +59,7 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
  @brief test if the two attributes are different
  @param CustomAttribute
  */
-- (jboolean)diffWithADXCLCustomAttribute:(ADXCLCustomAttribute *)CustomAttribute;
+- (bool)diffWithADXCLCustomAttribute:(ADXCLCustomAttribute *)CustomAttribute;
 
 + (JavaUtilHashMap *)extractAttributesWithJavaUtilHashMap:(JavaUtilHashMap *)base
                                                    withId:(id)view;
@@ -67,35 +72,35 @@ withADXCLCustomAttribute_AttributeType:(ADXCLCustomAttribute_AttributeType *)att
  @brief Transforms value to a float for the purpose of interpolation
  @return interpolation value
  */
-- (jfloat)getValueToInterpolate;
+- (float)getValueToInterpolate;
 
-+ (jint)hsvToRgbWithFloat:(jfloat)hue
-                withFloat:(jfloat)saturation
-                withFloat:(jfloat)value;
++ (int32_t)hsvToRgbWithFloat:(float)hue
+                   withFloat:(float)saturation
+                   withFloat:(float)value;
 
 /*!
  @brief Continuous types are interpolated they are fired only at
  */
-- (jboolean)isContinuous;
+- (bool)isContinuous;
 
 /*!
  @brief The number of interpolation values that need to be interpolated
   Typically 1 but 3 for colors.
  @return Typically 1 but 3 for colors.
  */
-- (jint)numberOfInterpolatedValues;
+- (int32_t)numberOfInterpolatedValues;
 
 + (void)setAttributesWithId:(id)view
         withJavaUtilHashMap:(JavaUtilHashMap *)map;
 
-- (void)setColorValueWithInt:(jint)value;
+- (void)setColorValueWithInt:(int32_t)value;
 
-- (void)setFloatValueWithFloat:(jfloat)value;
+- (void)setFloatValueWithFloat:(float)value;
 
 - (void)setInterpolatedValueWithId:(id)view
                     withFloatArray:(IOSFloatArray *)value;
 
-- (void)setIntValueWithInt:(jint)value;
+- (void)setIntValueWithInt:(int32_t)value;
 
 - (void)setStringValueWithNSString:(NSString *)value;
 
@@ -113,7 +118,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXCLCustomAttribute)
 
 J2OBJC_FIELD_SETTER(ADXCLCustomAttribute, mName_, NSString *)
 
-FOUNDATION_EXPORT jint ADXCLCustomAttribute_hsvToRgbWithFloat_withFloat_withFloat_(jfloat hue, jfloat saturation, jfloat value);
+FOUNDATION_EXPORT int32_t ADXCLCustomAttribute_hsvToRgbWithFloat_withFloat_withFloat_(float hue, float saturation, float value);
 
 FOUNDATION_EXPORT void ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_(ADXCLCustomAttribute *self, NSString *name, ADXCLCustomAttribute_AttributeType *attributeType);
 
@@ -121,11 +126,11 @@ FOUNDATION_EXPORT ADXCLCustomAttribute *new_ADXCLCustomAttribute_initWithNSStrin
 
 FOUNDATION_EXPORT ADXCLCustomAttribute *create_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType);
 
-FOUNDATION_EXPORT void ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(ADXCLCustomAttribute *self, NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, jboolean method);
+FOUNDATION_EXPORT void ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(ADXCLCustomAttribute *self, NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, bool method);
 
-FOUNDATION_EXPORT ADXCLCustomAttribute *new_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, jboolean method) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXCLCustomAttribute *new_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, bool method) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXCLCustomAttribute *create_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, jboolean method);
+FOUNDATION_EXPORT ADXCLCustomAttribute *create_ADXCLCustomAttribute_initWithNSString_withADXCLCustomAttribute_AttributeType_withId_withBoolean_(NSString *name, ADXCLCustomAttribute_AttributeType *attributeType, id value, bool method);
 
 FOUNDATION_EXPORT void ADXCLCustomAttribute_initWithADXCLCustomAttribute_withId_(ADXCLCustomAttribute *self, ADXCLCustomAttribute *source, id value);
 
@@ -141,6 +146,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLCustomAttribute)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionCLCustomAttribute ADXCLCustomAttribute;
 
+
 #endif
 
 #if !defined (ADXCLCustomAttribute_AttributeType_) && (INCLUDE_ALL_CLCustomAttribute || defined(INCLUDE_ADXCLCustomAttribute_AttributeType))
@@ -151,17 +157,25 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLCustomAttribute)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXCLCustomAttribute_AttributeType_Enum) {
-  ADXCLCustomAttribute_AttributeType_Enum_INT_TYPE = 0,
-  ADXCLCustomAttribute_AttributeType_Enum_FLOAT_TYPE = 1,
-  ADXCLCustomAttribute_AttributeType_Enum_COLOR_TYPE = 2,
-  ADXCLCustomAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE = 3,
-  ADXCLCustomAttribute_AttributeType_Enum_STRING_TYPE = 4,
-  ADXCLCustomAttribute_AttributeType_Enum_BOOLEAN_TYPE = 5,
-  ADXCLCustomAttribute_AttributeType_Enum_DIMENSION_TYPE = 6,
-  ADXCLCustomAttribute_AttributeType_Enum_REFERENCE_TYPE = 7,
+typedef NS_ENUM(int32_t, ADXCLCustomAttribute_AttributeType_Enum) {
+  ADXCLCustomAttribute_AttributeType_Enum_INT_TYPE NS_SWIFT_NAME(intType) = 0,
+  ADXCLCustomAttribute_AttributeType_Enum_FLOAT_TYPE NS_SWIFT_NAME(floatType) = 1,
+  ADXCLCustomAttribute_AttributeType_Enum_COLOR_TYPE NS_SWIFT_NAME(colorType) = 2,
+  ADXCLCustomAttribute_AttributeType_Enum_COLOR_DRAWABLE_TYPE NS_SWIFT_NAME(colorDrawableType) = 3,
+  ADXCLCustomAttribute_AttributeType_Enum_STRING_TYPE NS_SWIFT_NAME(stringType) = 4,
+  ADXCLCustomAttribute_AttributeType_Enum_BOOLEAN_TYPE NS_SWIFT_NAME(booleanType) = 5,
+  ADXCLCustomAttribute_AttributeType_Enum_DIMENSION_TYPE NS_SWIFT_NAME(dimensionType) = 6,
+  ADXCLCustomAttribute_AttributeType_Enum_REFERENCE_TYPE NS_SWIFT_NAME(referenceType) = 7,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXCLCustomAttribute_AttributeType_ORDINAL int32_t
+#else
+#define ADXCLCustomAttribute_AttributeType_ORDINAL ADXCLCustomAttribute_AttributeType_Enum
+#endif
+
 
 @interface ADXCLCustomAttribute_AttributeType : JavaLangEnum
 
@@ -174,6 +188,13 @@ typedef NS_ENUM(NSUInteger, ADXCLCustomAttribute_AttributeType_Enum) {
 #pragma mark Package-Private
 
 - (ADXCLCustomAttribute_AttributeType_Enum)toNSEnum;
+
+@property(readonly) ADXCLCustomAttribute_AttributeType_Enum enumValue;
++ (ADXCLCustomAttribute_AttributeType *)fromNSEnum:(ADXCLCustomAttribute_AttributeType_Enum)value;
+
+- (ADXCLCustomAttribute_AttributeType_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithAttributeType:(ADXCLCustomAttribute_AttributeType_Enum)value;
 
 @end
 
@@ -210,9 +231,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXCLCustomAttribute_AttributeType_values(void
 
 FOUNDATION_EXPORT ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXCLCustomAttribute_AttributeType *ADXCLCustomAttribute_AttributeType_fromOrdinal(ADXCLCustomAttribute_AttributeType_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLCustomAttribute_AttributeType)
+
 
 #endif
 

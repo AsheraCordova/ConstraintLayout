@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionHelper.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Canvas.h"
 #include "ConstraintHelper.h"
 #include "ConstraintLayout.h"
@@ -13,14 +18,23 @@
 #include "View.h"
 #include "ViewGroup.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/HashMap.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXMotionHelper () {
  @public
-  jboolean mUseOnShow_;
-  jboolean mUseOnHide_;
-  jfloat mProgress_;
+  bool mUseOnShow_;
+  bool mUseOnHide_;
+  float mProgress_;
 }
 
 @end
@@ -34,31 +48,31 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)isUsedOnShow {
+- (bool)isUsedOnShow {
   return mUseOnShow_;
 }
 
-- (jboolean)isUseOnHide {
+- (bool)isUseOnHide {
   return mUseOnHide_;
 }
 
-- (jfloat)getProgress {
+- (float)getProgress {
   return mProgress_;
 }
 
-- (void)setProgressWithFloat:(jfloat)progress {
+- (void)setProgressWithFloat:(float)progress {
   mProgress_ = progress;
   if (self->mCount_ > 0) {
     JreStrongAssign(&self->views_, [self getViewsWithADXConstraintLayout:(ADXConstraintLayout *) cast_chk([self getParent], [ADXConstraintLayout class])]);
-    for (jint i = 0; i < self->mCount_; ++i) {
+    for (int32_t i = 0; i < self->mCount_; ++i) {
       ADView *view = IOSObjectArray_Get(nil_chk(self->views_), i);
       [self setProgressWithADView:view withFloat:progress];
     }
   }
   else {
     ADViewGroup *group = (ADViewGroup *) cast_chk([self getParent], [ADViewGroup class]);
-    jint count = [((ADViewGroup *) nil_chk(group)) getChildCount];
-    for (jint i = 0; i < count; ++i) {
+    int32_t count = [((ADViewGroup *) nil_chk(group)) getChildCount];
+    for (int32_t i = 0; i < count; ++i) {
       ADView *view = JreRetainedLocalValue([group getChildAtWithInt:i]);
       if ([view isKindOfClass:[ADXMotionHelper class]]) {
         continue;
@@ -69,31 +83,31 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)setProgressWithADView:(ADView *)view
-                    withFloat:(jfloat)progress {
+                    withFloat:(float)progress {
 }
 
 - (void)onTransitionStartedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)startId
-                                       withInt:(jint)endId {
+                                       withInt:(int32_t)startId
+                                       withInt:(int32_t)endId {
 }
 
 - (void)onTransitionChangeWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)startId
-                                      withInt:(jint)endId
-                                    withFloat:(jfloat)progress {
+                                      withInt:(int32_t)startId
+                                      withInt:(int32_t)endId
+                                    withFloat:(float)progress {
 }
 
 - (void)onTransitionCompletedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                         withInt:(jint)currentId {
+                                         withInt:(int32_t)currentId {
 }
 
 - (void)onTransitionTriggerWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)triggerId
-                                   withBoolean:(jboolean)positive
-                                     withFloat:(jfloat)progress {
+                                       withInt:(int32_t)triggerId
+                                   withBoolean:(bool)positive
+                                     withFloat:(float)progress {
 }
 
-- (jboolean)isDecorator {
+- (bool)isDecorator {
   return false;
 }
 
@@ -180,3 +194,5 @@ ADXMotionHelper *create_ADXMotionHelper_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionHelper)
+
+J2OBJC_NAME_MAPPING(ADXMotionHelper, "androidx.constraintlayout.motion.widget", "ADX")

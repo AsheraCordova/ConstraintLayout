@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLElement.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLContainer.h"
 #include "CLElement.h"
 #include "CLNumber.h"
@@ -11,24 +16,33 @@
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Long.h"
 #include "java/lang/StringBuilder.h"
 #include "java/lang/System.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXCLElement () {
  @public
   IOSCharArray *mContent_;
-  jint line_;
+  int32_t line_;
 }
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXCLElement, mContent_, IOSCharArray *)
 
-jint ADXCLElement_MAX_LINE = 80;
-jint ADXCLElement_BASE_INDENT = 2;
+int32_t ADXCLElement_MAX_LINE = 80;
+int32_t ADXCLElement_BASE_INDENT = 2;
 
 @implementation ADXCLElement
 
@@ -37,37 +51,37 @@ jint ADXCLElement_BASE_INDENT = 2;
   return self;
 }
 
-- (jboolean)notStarted {
+- (bool)notStarted {
   return start_ == -1;
 }
 
-- (void)setLineWithInt:(jint)line {
+- (void)setLineWithInt:(int32_t)line {
   self->line_ = line;
 }
 
-- (jint)getLine {
+- (int32_t)getLine {
   return line_;
 }
 
-- (void)setStartWithLong:(jlong)start {
+- (void)setStartWithLong:(int64_t)start {
   self->start_ = start;
 }
 
-- (jlong)getStart {
+- (int64_t)getStart {
   return self->start_;
 }
 
-- (jlong)getEnd {
+- (int64_t)getEnd {
   return self->end_;
 }
 
-- (void)setEndWithLong:(jlong)end {
+- (void)setEndWithLong:(int64_t)end {
   if (self->end_ != JavaLangLong_MAX_VALUE) {
     return;
   }
   self->end_ = end;
   if (JreLoadStatic(ADXCLParser, DEBUG)) {
-    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$I$@", @"closing ", ((jint) [self hash]), @" -> ", self)];
+    [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$I$@", @"closing ", ((int32_t) [self hash]), @" -> ", self)];
   }
   if (mContainer_ != nil) {
     [mContainer_ addWithADXCLElement:self];
@@ -75,8 +89,8 @@ jint ADXCLElement_BASE_INDENT = 2;
 }
 
 - (void)addIndentWithJavaLangStringBuilder:(JavaLangStringBuilder *)builder
-                                   withInt:(jint)indent {
-  for (jint i = 0; i < indent; i++) {
+                                   withInt:(int32_t)indent {
+  for (int32_t i = 0; i < indent; i++) {
     [((JavaLangStringBuilder *) nil_chk(builder)) appendWithChar:' '];
   }
 }
@@ -86,7 +100,7 @@ jint ADXCLElement_BASE_INDENT = 2;
     return JreStrcat("@$JCJC", [self java_getClass], @" (INVALID, ", start_, '-', end_, ')');
   }
   NSString *content = [NSString java_stringWithCharacters:mContent_];
-  content = [content java_substring:(jint) start_ endIndex:(jint) end_ + 1];
+  content = [content java_substring:(int32_t) start_ endIndex:(int32_t) end_ + 1];
   return JreStrcat("$$J$J$$$", [self getStrClass], @" (", start_, @" : ", end_, @") <<", content, @">>");
 }
 
@@ -105,12 +119,12 @@ jint ADXCLElement_BASE_INDENT = 2;
 - (NSString *)content {
   NSString *content = [NSString java_stringWithCharacters:mContent_];
   if (end_ == JavaLangLong_MAX_VALUE || end_ < start_) {
-    return [content java_substring:(jint) start_ endIndex:(jint) start_ + 1];
+    return [content java_substring:(int32_t) start_ endIndex:(int32_t) start_ + 1];
   }
-  return [content java_substring:(jint) start_ endIndex:(jint) end_ + 1];
+  return [content java_substring:(int32_t) start_ endIndex:(int32_t) end_ + 1];
 }
 
-- (jboolean)isDone {
+- (bool)isDone {
   return end_ != JavaLangLong_MAX_VALUE;
 }
 
@@ -122,7 +136,7 @@ jint ADXCLElement_BASE_INDENT = 2;
   return mContainer_;
 }
 
-- (jboolean)isStarted {
+- (bool)isStarted {
   return start_ > -1;
 }
 
@@ -130,19 +144,19 @@ jint ADXCLElement_BASE_INDENT = 2;
   return @"";
 }
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent {
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent {
   return @"";
 }
 
-- (jint)getInt {
+- (int32_t)getInt {
   if ([self isKindOfClass:[ADXCLNumber class]]) {
     return [((ADXCLNumber *) cast_chk(self, [ADXCLNumber class])) getInt];
   }
   return 0;
 }
 
-- (jfloat)getFloat {
+- (float)getFloat {
   if ([self isKindOfClass:[ADXCLNumber class]]) {
     return [((ADXCLNumber *) cast_chk(self, [ADXCLNumber class])) getFloat];
   }
@@ -236,3 +250,5 @@ ADXCLElement *create_ADXCLElement_initWithCharArray_(IOSCharArray *content) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLElement)
+
+J2OBJC_NAME_MAPPING(ADXCLElement, "androidx.constraintlayout.core.parser", "ADX")

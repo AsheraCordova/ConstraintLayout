@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintHelper.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintHelper")
@@ -30,16 +31,19 @@
 @class ADXHelperWidget;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
+@class NSString;
 @protocol ADXHelper;
 
 @interface ADXConstraintHelper : ADView {
  @public
   IOSIntArray *mIds_;
-  jint mCount_;
+  int32_t mCount_;
   ADContext *myContext_;
   id<ADXHelper> mHelperWidget_;
-  jboolean mUseViewMeasure_;
+  bool mUseViewMeasure_;
   NSString *mReferenceIds_;
   JavaUtilHashMap *mMap_;
 }
@@ -50,25 +54,25 @@
 
 - (void)addViewWithADView:(ADView *)view;
 
-- (jboolean)containsIdWithInt:(jint)id_;
+- (bool)containsIdWithInt:(int32_t)id_;
 
 - (IOSIntArray *)getReferencedIds;
 
-- (jint)indexFromIdWithInt:(jint)id_;
+- (int32_t)indexFromIdWithInt:(int32_t)id_;
 
 - (void)loadParametersWithADXConstraintSet_Constraint:(ADXConstraintSet_Constraint *)constraint
                                   withADXHelperWidget:(ADXHelperWidget *)child
                  withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
                                     withADSparseArray:(ADSparseArray *)mapIdToWidget;
 
-- (jint)removeViewWithADView:(ADView *)view;
+- (int32_t)removeViewWithADView:(ADView *)view;
 
 - (void)resolveRtlWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                              withBoolean:(jboolean)isRtl;
+                              withBoolean:(bool)isRtl;
 
 - (void)setReferencedIdsWithIntArray:(IOSIntArray *)ids;
 
-- (void)setTagWithInt:(jint)key
+- (void)setTagWithInt:(int32_t)key
                withId:(id)tag;
 
 - (void)updatePostLayoutWithADXConstraintLayout:(ADXConstraintLayout *)container;
@@ -93,8 +97,8 @@
 
 - (IOSObjectArray *)getViewsWithADXConstraintLayout:(ADXConstraintLayout *)layout;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)setIdsWithNSString:(NSString *)idList;
 
@@ -113,6 +117,7 @@ FOUNDATION_EXPORT void ADXConstraintHelper_init(ADXConstraintHelper *self);
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintHelper)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetConstraintHelper ADXConstraintHelper;
+
 
 #endif
 

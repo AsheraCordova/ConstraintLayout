@@ -3,17 +3,31 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\VirtualLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintHelper.h"
 #include "ConstraintLayout.h"
 #include "CoreVirtualLayout.h"
 #include "J2ObjC_source.h"
 #include "VirtualLayout.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXVirtualLayout () {
  @public
-  jboolean mApplyVisibilityOnAttach_;
-  jboolean mApplyElevationOnAttach_;
+  bool mApplyVisibilityOnAttach_;
+  bool mApplyElevationOnAttach_;
 }
 
 @end
@@ -28,16 +42,16 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)onMeasureWithADXCoreVirtualLayout:(ADXCoreVirtualLayout *)layout
-                                  withInt:(jint)widthMeasureSpec
-                                  withInt:(jint)heightMeasureSpec {
+                                  withInt:(int32_t)widthMeasureSpec
+                                  withInt:(int32_t)heightMeasureSpec {
 }
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   [super setVisibilityWithInt:visibility];
   [self applyLayoutFeatures];
 }
 
-- (void)setElevationWithFloat:(jfloat)elevation {
+- (void)setElevationWithFloat:(float)elevation {
   [super setElevationWithFloat:elevation];
   [self applyLayoutFeatures];
 }
@@ -79,3 +93,5 @@ void ADXVirtualLayout_init(ADXVirtualLayout *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXVirtualLayout)
+
+J2OBJC_NAME_MAPPING(ADXVirtualLayout, "androidx.constraintlayout.widget", "ADX")

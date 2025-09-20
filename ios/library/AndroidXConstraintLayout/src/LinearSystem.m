@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\LinearSystem.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "CLPools.h"
 #include "Cache.h"
@@ -18,25 +23,35 @@
 #include "SolverVariable.h"
 #include "SolverVariableValues.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/System.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashMap.h"
 
-@class JavaUtilHashMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXLinearSystem () {
  @public
   JavaUtilHashMap *mVariables_;
   id<ADXLinearSystem_Row> mGoal_;
-  jint TABLE_SIZE_;
-  jint mMaxColumns_;
+  int32_t TABLE_SIZE_;
+  int32_t mMaxColumns_;
   IOSBooleanArray *mAlreadyTestedCandidates_;
-  jint mMaxRows_;
+  int32_t mMaxRows_;
   IOSObjectArray *mPoolVariables_;
-  jint mPoolVariablesCount_;
+  int32_t mPoolVariablesCount_;
   id<ADXLinearSystem_Row> mTempGoal_;
 }
 
@@ -53,7 +68,7 @@
 - (void)addErrorWithADXArrayRow:(ADXArrayRow *)row;
 
 - (void)addSingleErrorWithADXArrayRow:(ADXArrayRow *)row
-                              withInt:(jint)sign;
+                              withInt:(int32_t)sign;
 
 - (ADXSolverVariable *)createVariableWithNSString:(NSString *)name
                        withADXSolverVariable_Type:(ADXSolverVariable_Type *)type;
@@ -74,15 +89,15 @@
  @param b
  @return number of iterations.
  */
-- (jint)optimizeWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal
-                            withBoolean:(jboolean)b;
+- (int32_t)optimizeWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal
+                               withBoolean:(bool)b;
 
 /*!
  @brief Make sure that the system is in Basic Feasible Solved form (BFS).
  @param goal the row representing the system goal
  @return number of iterations
  */
-- (jint)enforceBFSWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal;
+- (int32_t)enforceBFSWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal;
 
 - (void)computeValues;
 
@@ -90,9 +105,9 @@
 
 - (void)displaySolverVariables;
 
-- (NSString *)getDisplaySizeWithInt:(jint)n;
+- (NSString *)getDisplaySizeWithInt:(int32_t)n;
 
-- (NSString *)getDisplayStrengthWithInt:(jint)strength;
+- (NSString *)getDisplayStrengthWithInt:(int32_t)strength;
 
 @end
 
@@ -102,15 +117,15 @@ J2OBJC_FIELD_SETTER(ADXLinearSystem, mAlreadyTestedCandidates_, IOSBooleanArray 
 J2OBJC_FIELD_SETTER(ADXLinearSystem, mPoolVariables_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(ADXLinearSystem, mTempGoal_, id<ADXLinearSystem_Row>)
 
-inline jboolean ADXLinearSystem_get_DEBUG_CONSTRAINTS(void);
+inline bool ADXLinearSystem_get_DEBUG_CONSTRAINTS(void);
 #define ADXLinearSystem_DEBUG_CONSTRAINTS false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, DEBUG_CONSTRAINTS, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, DEBUG_CONSTRAINTS, bool)
 
-inline jint ADXLinearSystem_get_POOL_SIZE(void);
-inline jint ADXLinearSystem_set_POOL_SIZE(jint value);
-inline jint *ADXLinearSystem_getRef_POOL_SIZE(void);
-static jint ADXLinearSystem_POOL_SIZE = 1000;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, POOL_SIZE, jint)
+inline int32_t ADXLinearSystem_get_POOL_SIZE(void);
+inline int32_t ADXLinearSystem_set_POOL_SIZE(int32_t value);
+inline int32_t *ADXLinearSystem_getRef_POOL_SIZE(void);
+static int32_t ADXLinearSystem_POOL_SIZE = 1000;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, POOL_SIZE, int32_t)
 
 __attribute__((unused)) static void ADXLinearSystem_increaseTableSize(ADXLinearSystem *self);
 
@@ -118,7 +133,7 @@ __attribute__((unused)) static void ADXLinearSystem_releaseRows(ADXLinearSystem 
 
 __attribute__((unused)) static void ADXLinearSystem_addErrorWithADXArrayRow_(ADXLinearSystem *self, ADXArrayRow *row);
 
-__attribute__((unused)) static void ADXLinearSystem_addSingleErrorWithADXArrayRow_withInt_(ADXLinearSystem *self, ADXArrayRow *row, jint sign);
+__attribute__((unused)) static void ADXLinearSystem_addSingleErrorWithADXArrayRow_withInt_(ADXLinearSystem *self, ADXArrayRow *row, int32_t sign);
 
 __attribute__((unused)) static ADXSolverVariable *ADXLinearSystem_createVariableWithNSString_withADXSolverVariable_Type_(ADXLinearSystem *self, NSString *name, ADXSolverVariable_Type *type);
 
@@ -126,9 +141,9 @@ __attribute__((unused)) static ADXSolverVariable *ADXLinearSystem_acquireSolverV
 
 __attribute__((unused)) static void ADXLinearSystem_addRowWithADXArrayRow_(ADXLinearSystem *self, ADXArrayRow *row);
 
-__attribute__((unused)) static jint ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal, jboolean b);
+__attribute__((unused)) static int32_t ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal, bool b);
 
-__attribute__((unused)) static jint ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal);
+__attribute__((unused)) static int32_t ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal);
 
 __attribute__((unused)) static void ADXLinearSystem_computeValues(ADXLinearSystem *self);
 
@@ -136,23 +151,23 @@ __attribute__((unused)) static void ADXLinearSystem_displayRows(ADXLinearSystem 
 
 __attribute__((unused)) static void ADXLinearSystem_displaySolverVariables(ADXLinearSystem *self);
 
-__attribute__((unused)) static NSString *ADXLinearSystem_getDisplaySizeWithInt_(ADXLinearSystem *self, jint n);
+__attribute__((unused)) static NSString *ADXLinearSystem_getDisplaySizeWithInt_(ADXLinearSystem *self, int32_t n);
 
-__attribute__((unused)) static NSString *ADXLinearSystem_getDisplayStrengthWithInt_(ADXLinearSystem *self, jint strength);
+__attribute__((unused)) static NSString *ADXLinearSystem_getDisplayStrengthWithInt_(ADXLinearSystem *self, int32_t strength);
 
 @interface ADXLinearSystem_Row : NSObject
 
 @end
 
-jboolean ADXLinearSystem_USE_DEPENDENCY_ORDERING = false;
-jboolean ADXLinearSystem_USE_BASIC_SYNONYMS = true;
-jboolean ADXLinearSystem_SIMPLIFY_SYNONYMS = true;
-jboolean ADXLinearSystem_USE_SYNONYMS = true;
-jboolean ADXLinearSystem_SKIP_COLUMNS = true;
-jboolean ADXLinearSystem_OPTIMIZED_ENGINE = false;
+bool ADXLinearSystem_USE_DEPENDENCY_ORDERING = false;
+bool ADXLinearSystem_USE_BASIC_SYNONYMS = true;
+bool ADXLinearSystem_SIMPLIFY_SYNONYMS = true;
+bool ADXLinearSystem_USE_SYNONYMS = true;
+bool ADXLinearSystem_SKIP_COLUMNS = true;
+bool ADXLinearSystem_OPTIMIZED_ENGINE = false;
 ADXMetrics *ADXLinearSystem_sMetrics;
-jlong ADXLinearSystem_ARRAY_ROW_CREATION = 0;
-jlong ADXLinearSystem_OPTIMIZED_ARRAY_ROW_CREATION = 0;
+int64_t ADXLinearSystem_ARRAY_ROW_CREATION = 0;
+int64_t ADXLinearSystem_OPTIMIZED_ARRAY_ROW_CREATION = 0;
 
 @implementation ADXLinearSystem
 
@@ -180,7 +195,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)reset {
-  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSObjectArray *) nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_))->size_; i++) {
     ADXSolverVariable *variable = IOSObjectArray_Get(mCache_->mIndexedVariables_, i);
     if (variable != nil) {
       [variable reset];
@@ -195,7 +210,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   mVariablesID_ = 0;
   [((id<ADXLinearSystem_Row>) nil_chk(mGoal_)) clear];
   mNumColumns_ = 1;
-  for (jint i = 0; i < mNumRows_; i++) {
+  for (int32_t i = 0; i < mNumRows_; i++) {
     if (IOSObjectArray_Get(nil_chk(mRows_), i) != nil) {
       ((ADXArrayRow *) nil_chk(IOSObjectArray_Get(mRows_, i)))->used_ = false;
     }
@@ -299,13 +314,13 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addSingleErrorWithADXArrayRow:(ADXArrayRow *)row
-                              withInt:(jint)sign {
+                              withInt:(int32_t)sign {
   ADXLinearSystem_addSingleErrorWithADXArrayRow_withInt_(self, row, sign);
 }
 
 - (void)addSingleErrorWithADXArrayRow:(ADXArrayRow *)row
-                              withInt:(jint)sign
-                              withInt:(jint)strength {
+                              withInt:(int32_t)sign
+                              withInt:(int32_t)strength {
   NSString *prefix = nil;
   ADXSolverVariable *error = JreRetainedLocalValue([self createErrorVariableWithInt:strength withNSString:prefix]);
   [((ADXArrayRow *) nil_chk(row)) addSingleErrorWithADXSolverVariable:error withInt:sign];
@@ -316,7 +331,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXLinearSystem_createVariableWithNSString_withADXSolverVariable_Type_(self, name, type);
 }
 
-- (ADXSolverVariable *)createErrorVariableWithInt:(jint)strength
+- (ADXSolverVariable *)createErrorVariableWithInt:(int32_t)strength
                                      withNSString:(NSString *)prefix {
   if (ADXLinearSystem_sMetrics != nil) {
     ADXLinearSystem_sMetrics->errors_++;
@@ -343,11 +358,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   return mGoal_;
 }
 
-- (ADXArrayRow *)getRowWithInt:(jint)n {
+- (ADXArrayRow *)getRowWithInt:(int32_t)n {
   return IOSObjectArray_Get(nil_chk(mRows_), n);
 }
 
-- (jfloat)getValueForWithNSString:(NSString *)name {
+- (float)getValueForWithNSString:(NSString *)name {
   ADXSolverVariable *v = JreRetainedLocalValue([self getVariableWithNSString:name withADXSolverVariable_Type:JreLoadEnum(ADXSolverVariable_Type, UNRESTRICTED)]);
   if (v == nil) {
     return 0;
@@ -355,7 +370,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return v->computedValue_;
 }
 
-- (jint)getObjectVariableValueWithId:(id)object {
+- (int32_t)getObjectVariableValueWithId:(id)object {
   ADXConstraintAnchor *anchor = (ADXConstraintAnchor *) cast_chk(object, [ADXConstraintAnchor class]);
   ADXSolverVariable *variable = JreRetainedLocalValue([((ADXConstraintAnchor *) nil_chk(anchor)) getSolverVariable]);
   if (variable != nil) {
@@ -388,8 +403,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     if (ADXLinearSystem_sMetrics != nil) {
       ADXLinearSystem_sMetrics->graphOptimizer_++;
     }
-    jboolean fullySolved = true;
-    for (jint i = 0; i < mNumRows_; i++) {
+    bool fullySolved = true;
+    for (int32_t i = 0; i < mNumRows_; i++) {
       ADXArrayRow *r = IOSObjectArray_Get(nil_chk(mRows_), i);
       if (!((ADXArrayRow *) nil_chk(r))->isSimpleDefinition_) {
         fullySolved = false;
@@ -423,7 +438,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)cleanupRows {
-  jint i = 0;
+  int32_t i = 0;
   while (i < mNumRows_) {
     ADXArrayRow *current = IOSObjectArray_Get(nil_chk(mRows_), i);
     if ([((id<ADXArrayRow_ArrayRowVariables>) nil_chk(((ADXArrayRow *) nil_chk(current))->variables_)) getCurrentSize] == 0) {
@@ -432,7 +447,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     if (current->isSimpleDefinition_) {
       ((ADXSolverVariable *) nil_chk(current->variable_))->computedValue_ = current->constantValue_;
       [current->variable_ removeFromRowWithADXArrayRow:current];
-      for (jint j = i; j < mNumRows_ - 1; j++) {
+      for (int32_t j = i; j < mNumRows_ - 1; j++) {
         IOSObjectArray_Set(nil_chk(mRows_), j, IOSObjectArray_Get(mRows_, j + 1));
       }
       IOSObjectArray_Set(nil_chk(mRows_), mNumRows_ - 1, nil);
@@ -462,7 +477,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (mNumRows_ + 1 >= mMaxRows_ || mNumColumns_ + 1 >= mMaxColumns_) {
     ADXLinearSystem_increaseTableSize(self);
   }
-  jboolean added = false;
+  bool added = false;
   if (!row->isSimpleDefinition_) {
     [row updateFromSystemWithADXLinearSystem:self];
     if ([row isEmpty]) {
@@ -472,14 +487,14 @@ J2OBJC_IGNORE_DESIGNATED_END
     if ([row chooseSubjectWithADXLinearSystem:self]) {
       ADXSolverVariable *extra = JreRetainedLocalValue([self createExtraVariable]);
       row->variable_ = extra;
-      jint numRows = mNumRows_;
+      int32_t numRows = mNumRows_;
       ADXLinearSystem_addRowWithADXArrayRow_(self, row);
       if (mNumRows_ == numRows + 1) {
         added = true;
         [((id<ADXLinearSystem_Row>) nil_chk(mTempGoal_)) initFromRowWithADXLinearSystem_Row:row];
         ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(self, mTempGoal_, true);
         if (((ADXSolverVariable *) nil_chk(extra))->definitionId_ == -1) {
-          if (row->variable_ == extra) {
+          if (JreObjectEqualsEquals(row->variable_, extra)) {
             ADXSolverVariable *pivotCandidate = JreRetainedLocalValue([row pickPivotWithADXSolverVariable:extra]);
             if (pivotCandidate != nil) {
               if (ADXLinearSystem_sMetrics != nil) {
@@ -517,7 +532,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)removeRowWithADXArrayRow:(ADXArrayRow *)row {
   if (((ADXArrayRow *) nil_chk(row))->isSimpleDefinition_ && row->variable_ != nil) {
     if (row->variable_->definitionId_ != -1) {
-      for (jint i = row->variable_->definitionId_; i < mNumRows_ - 1; i++) {
+      for (int32_t i = row->variable_->definitionId_; i < mNumRows_ - 1; i++) {
         ADXSolverVariable *rowVariable = JreRetainedLocalValue(((ADXArrayRow *) nil_chk(IOSObjectArray_Get(nil_chk(mRows_), i + 1)))->variable_);
         if (rowVariable->definitionId_ == i + 1) {
           rowVariable->definitionId_ = i;
@@ -538,12 +553,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)optimizeWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal
-                            withBoolean:(jboolean)b {
+- (int32_t)optimizeWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal
+                               withBoolean:(bool)b {
   return ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(self, goal, b);
 }
 
-- (jint)enforceBFSWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal {
+- (int32_t)enforceBFSWithADXLinearSystem_Row:(id<ADXLinearSystem_Row>)goal {
   return ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(self, goal);
 }
 
@@ -558,14 +573,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)displayReadableRows {
   ADXLinearSystem_displaySolverVariables(self);
   NSString *s = JreStrcat("$IC", @" num vars ", mVariablesID_, 0x000a);
-  for (jint i = 0; i < mVariablesID_ + 1; i++) {
+  for (int32_t i = 0; i < mVariablesID_ + 1; i++) {
     ADXSolverVariable *variable = IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), i);
     if (variable != nil && variable->isFinalValue_) {
       JreStrAppend(&s, "$I$@$FC", @" $[", i, @"] => ", variable, @" = ", variable->computedValue_, 0x000a);
     }
   }
   JreStrAppend(&s, "$", @"\n");
-  for (jint i = 0; i < mVariablesID_ + 1; i++) {
+  for (int32_t i = 0; i < mVariablesID_ + 1; i++) {
     ADXSolverVariable *variable = IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), i);
     if (variable != nil && variable->isSynonym_) {
       ADXSolverVariable *synonym = IOSObjectArray_Get(mCache_->mIndexedVariables_, variable->synonym_);
@@ -573,7 +588,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   JreStrAppend(&s, "$", @"\n\n #  ");
-  for (jint i = 0; i < mNumRows_; i++) {
+  for (int32_t i = 0; i < mNumRows_; i++) {
     JreStrAppend(&s, "$", [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(nil_chk(mRows_), i))) toReadableString]);
     JreStrAppend(&s, "$", @"\n #  ");
   }
@@ -586,7 +601,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)displayVariablesReadableRows {
   ADXLinearSystem_displaySolverVariables(self);
   __unused NSString *s = @"";
-  for (jint i = 0; i < mNumRows_; i++) {
+  for (int32_t i = 0; i < mNumRows_; i++) {
     if (((ADXSolverVariable *) nil_chk(((ADXArrayRow *) nil_chk(IOSObjectArray_Get(nil_chk(mRows_), i)))->variable_))->mType_ == JreLoadEnum(ADXSolverVariable_Type, UNRESTRICTED)) {
       JreStrAppend(&s, "$", [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(mRows_, i))) toReadableString]);
       JreStrAppend(&s, "$", @"\n");
@@ -596,9 +611,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:s];
 }
 
-- (jint)getMemoryUsed {
-  __unused jint actualRowSize = 0;
-  for (jint i = 0; i < mNumRows_; i++) {
+- (int32_t)getMemoryUsed {
+  __unused int32_t actualRowSize = 0;
+  for (int32_t i = 0; i < mNumRows_; i++) {
     if (IOSObjectArray_Get(nil_chk(mRows_), i) != nil) {
       actualRowSize += [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(mRows_, i))) sizeInBytes];
     }
@@ -606,24 +621,24 @@ J2OBJC_IGNORE_DESIGNATED_END
   return actualRowSize;
 }
 
-- (jint)getNumEquations {
+- (int32_t)getNumEquations {
   return mNumRows_;
 }
 
-- (jint)getNumVariables {
+- (int32_t)getNumVariables {
   return mVariablesID_;
 }
 
 - (void)displaySystemInformation {
-  jint count = 0;
-  jint rowSize = 0;
-  for (jint i = 0; i < TABLE_SIZE_; i++) {
+  int32_t count = 0;
+  int32_t rowSize = 0;
+  for (int32_t i = 0; i < TABLE_SIZE_; i++) {
     if (IOSObjectArray_Get(nil_chk(mRows_), i) != nil) {
       rowSize += [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(mRows_, i))) sizeInBytes];
     }
   }
-  jint actualRowSize = 0;
-  for (jint i = 0; i < mNumRows_; i++) {
+  int32_t actualRowSize = 0;
+  for (int32_t i = 0; i < mNumRows_; i++) {
     if (IOSObjectArray_Get(nil_chk(mRows_), i) != nil) {
       actualRowSize += [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(mRows_, i))) sizeInBytes];
     }
@@ -635,7 +650,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXLinearSystem_displaySolverVariables(self);
 }
 
-- (NSString *)getDisplaySizeWithInt:(jint)n {
+- (NSString *)getDisplaySizeWithInt:(int32_t)n {
   return ADXLinearSystem_getDisplaySizeWithInt_(self, n);
 }
 
@@ -643,20 +658,20 @@ J2OBJC_IGNORE_DESIGNATED_END
   return mCache_;
 }
 
-- (NSString *)getDisplayStrengthWithInt:(jint)strength {
+- (NSString *)getDisplayStrengthWithInt:(int32_t)strength {
   return ADXLinearSystem_getDisplayStrengthWithInt_(self, strength);
 }
 
 - (void)addGreaterThanWithADXSolverVariable:(ADXSolverVariable *)a
                       withADXSolverVariable:(ADXSolverVariable *)b
-                                    withInt:(jint)margin
-                                    withInt:(jint)strength {
+                                    withInt:(int32_t)margin
+                                    withInt:(int32_t)strength {
   ADXArrayRow *row = JreRetainedLocalValue([self createRow]);
   ADXSolverVariable *slack = JreRetainedLocalValue([self createSlackVariable]);
   ((ADXSolverVariable *) nil_chk(slack))->strength_ = 0;
   [((ADXArrayRow *) nil_chk(row)) createRowGreaterThanWithADXSolverVariable:a withADXSolverVariable:b withADXSolverVariable:slack withInt:margin];
   if (strength != ADXSolverVariable_STRENGTH_FIXED) {
-    jfloat slackValue = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(row->variables_)) getWithADXSolverVariable:slack];
+    float slackValue = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(row->variables_)) getWithADXSolverVariable:slack];
     [self addSingleErrorWithADXArrayRow:row withInt:JreFpToInt((-1 * slackValue)) withInt:strength];
   }
   [self addConstraintWithADXArrayRow:row];
@@ -664,8 +679,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addGreaterBarrierWithADXSolverVariable:(ADXSolverVariable *)a
                          withADXSolverVariable:(ADXSolverVariable *)b
-                                       withInt:(jint)margin
-                                   withBoolean:(jboolean)hasMatchConstraintWidgets {
+                                       withInt:(int32_t)margin
+                                   withBoolean:(bool)hasMatchConstraintWidgets {
   ADXArrayRow *row = JreRetainedLocalValue([self createRow]);
   ADXSolverVariable *slack = JreRetainedLocalValue([self createSlackVariable]);
   ((ADXSolverVariable *) nil_chk(slack))->strength_ = 0;
@@ -675,14 +690,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addLowerThanWithADXSolverVariable:(ADXSolverVariable *)a
                     withADXSolverVariable:(ADXSolverVariable *)b
-                                  withInt:(jint)margin
-                                  withInt:(jint)strength {
+                                  withInt:(int32_t)margin
+                                  withInt:(int32_t)strength {
   ADXArrayRow *row = JreRetainedLocalValue([self createRow]);
   ADXSolverVariable *slack = JreRetainedLocalValue([self createSlackVariable]);
   ((ADXSolverVariable *) nil_chk(slack))->strength_ = 0;
   [((ADXArrayRow *) nil_chk(row)) createRowLowerThanWithADXSolverVariable:a withADXSolverVariable:b withADXSolverVariable:slack withInt:margin];
   if (strength != ADXSolverVariable_STRENGTH_FIXED) {
-    jfloat slackValue = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(row->variables_)) getWithADXSolverVariable:slack];
+    float slackValue = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(row->variables_)) getWithADXSolverVariable:slack];
     [self addSingleErrorWithADXArrayRow:row withInt:JreFpToInt((-1 * slackValue)) withInt:strength];
   }
   [self addConstraintWithADXArrayRow:row];
@@ -690,8 +705,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addLowerBarrierWithADXSolverVariable:(ADXSolverVariable *)a
                        withADXSolverVariable:(ADXSolverVariable *)b
-                                     withInt:(jint)margin
-                                 withBoolean:(jboolean)hasMatchConstraintWidgets {
+                                     withInt:(int32_t)margin
+                                 withBoolean:(bool)hasMatchConstraintWidgets {
   ADXArrayRow *row = JreRetainedLocalValue([self createRow]);
   ADXSolverVariable *slack = JreRetainedLocalValue([self createSlackVariable]);
   ((ADXSolverVariable *) nil_chk(slack))->strength_ = 0;
@@ -701,12 +716,12 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addCenteringWithADXSolverVariable:(ADXSolverVariable *)a
                     withADXSolverVariable:(ADXSolverVariable *)b
-                                  withInt:(jint)m1
-                                withFloat:(jfloat)bias
+                                  withInt:(int32_t)m1
+                                withFloat:(float)bias
                     withADXSolverVariable:(ADXSolverVariable *)c
                     withADXSolverVariable:(ADXSolverVariable *)d
-                                  withInt:(jint)m2
-                                  withInt:(jint)strength {
+                                  withInt:(int32_t)m2
+                                  withInt:(int32_t)strength {
   ADXArrayRow *row = JreRetainedLocalValue([self createRow]);
   [((ADXArrayRow *) nil_chk(row)) createRowCenteringWithADXSolverVariable:a withADXSolverVariable:b withInt:m1 withFloat:bias withADXSolverVariable:c withADXSolverVariable:d withInt:m2];
   if (strength != ADXSolverVariable_STRENGTH_FIXED) {
@@ -719,8 +734,8 @@ J2OBJC_IGNORE_DESIGNATED_END
                 withADXSolverVariable:(ADXSolverVariable *)b
                 withADXSolverVariable:(ADXSolverVariable *)c
                 withADXSolverVariable:(ADXSolverVariable *)d
-                            withFloat:(jfloat)ratio
-                              withInt:(jint)strength {
+                            withFloat:(float)ratio
+                              withInt:(int32_t)strength {
   ADXArrayRow *row = JreRetainedLocalValue([self createRow]);
   [((ADXArrayRow *) nil_chk(row)) createRowDimensionRatioWithADXSolverVariable:a withADXSolverVariable:b withADXSolverVariable:c withADXSolverVariable:d withFloat:ratio];
   if (strength != ADXSolverVariable_STRENGTH_FIXED) {
@@ -731,7 +746,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addSynonymWithADXSolverVariable:(ADXSolverVariable *)a
                   withADXSolverVariable:(ADXSolverVariable *)b
-                                withInt:(jint)margin {
+                                withInt:(int32_t)margin {
   if (((ADXSolverVariable *) nil_chk(a))->definitionId_ == -1 && margin == 0) {
     if (((ADXSolverVariable *) nil_chk(b))->isSynonym_) {
       JrePlusAssignIntF(&margin, b->synonymDelta_);
@@ -752,8 +767,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (ADXArrayRow *)addEqualityWithADXSolverVariable:(ADXSolverVariable *)a
                             withADXSolverVariable:(ADXSolverVariable *)b
-                                          withInt:(jint)margin
-                                          withInt:(jint)strength {
+                                          withInt:(int32_t)margin
+                                          withInt:(int32_t)strength {
   if (ADXLinearSystem_USE_BASIC_SYNONYMS && strength == ADXSolverVariable_STRENGTH_FIXED && ((ADXSolverVariable *) nil_chk(b))->isFinalValue_ && ((ADXSolverVariable *) nil_chk(a))->definitionId_ == -1) {
     [((ADXSolverVariable *) nil_chk(a)) setFinalValueWithADXLinearSystem:self withFloat:((ADXSolverVariable *) nil_chk(b))->computedValue_ + margin];
     return nil;
@@ -768,10 +783,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addEqualityWithADXSolverVariable:(ADXSolverVariable *)a
-                                 withInt:(jint)value {
+                                 withInt:(int32_t)value {
   if (ADXLinearSystem_USE_BASIC_SYNONYMS && ((ADXSolverVariable *) nil_chk(a))->definitionId_ == -1) {
     [((ADXSolverVariable *) nil_chk(a)) setFinalValueWithADXLinearSystem:self withFloat:value];
-    for (jint i = 0; i < mVariablesID_ + 1; i++) {
+    for (int32_t i = 0; i < mVariablesID_ + 1; i++) {
       ADXSolverVariable *variable = IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(mCache_))->mIndexedVariables_), i);
       if (variable != nil && variable->isSynonym_ && variable->synonym_ == a->id__) {
         [variable setFinalValueWithADXLinearSystem:self withFloat:value + variable->synonymDelta_];
@@ -779,7 +794,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
     return;
   }
-  jint idx = ((ADXSolverVariable *) nil_chk(a))->definitionId_;
+  int32_t idx = ((ADXSolverVariable *) nil_chk(a))->definitionId_;
   if (a->definitionId_ != -1) {
     ADXArrayRow *row = IOSObjectArray_Get(nil_chk(mRows_), idx);
     if (((ADXArrayRow *) nil_chk(row))->isSimpleDefinition_) {
@@ -807,14 +822,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 + (ADXArrayRow *)createRowDimensionPercentWithADXLinearSystem:(ADXLinearSystem *)linearSystem
                                         withADXSolverVariable:(ADXSolverVariable *)variableA
                                         withADXSolverVariable:(ADXSolverVariable *)variableC
-                                                    withFloat:(jfloat)percent {
+                                                    withFloat:(float)percent {
   return ADXLinearSystem_createRowDimensionPercentWithADXLinearSystem_withADXSolverVariable_withADXSolverVariable_withFloat_(linearSystem, variableA, variableC, percent);
 }
 
 - (void)addCenterPointWithADXConstraintWidget:(ADXConstraintWidget *)widget
                       withADXConstraintWidget:(ADXConstraintWidget *)target
-                                    withFloat:(jfloat)angle
-                                      withInt:(jint)radius {
+                                    withFloat:(float)angle
+                                      withInt:(int32_t)radius {
   ADXSolverVariable *Al = JreRetainedLocalValue([self createObjectVariableWithId:[((ADXConstraintWidget *) nil_chk(widget)) getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, LEFT)]]);
   ADXSolverVariable *At = JreRetainedLocalValue([self createObjectVariableWithId:[widget getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, TOP)]]);
   ADXSolverVariable *Ar = JreRetainedLocalValue([self createObjectVariableWithId:[widget getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, RIGHT)]]);
@@ -824,11 +839,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXSolverVariable *Br = JreRetainedLocalValue([self createObjectVariableWithId:[target getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, RIGHT)]]);
   ADXSolverVariable *Bb = JreRetainedLocalValue([self createObjectVariableWithId:[target getAnchorWithADXConstraintAnchor_Type:JreLoadEnum(ADXConstraintAnchor_Type, BOTTOM)]]);
   ADXArrayRow *row = JreRetainedLocalValue([self createRow]);
-  jfloat angleComponent = (jfloat) (JavaLangMath_sinWithDouble_(angle) * radius);
+  float angleComponent = (float) (JavaLangMath_sinWithDouble_(angle) * radius);
   [((ADXArrayRow *) nil_chk(row)) createRowWithAngleWithADXSolverVariable:At withADXSolverVariable:Ab withADXSolverVariable:Bt withADXSolverVariable:Bb withFloat:angleComponent];
   [self addConstraintWithADXArrayRow:row];
   row = [self createRow];
-  angleComponent = (jfloat) (JavaLangMath_cosWithDouble_(angle) * radius);
+  angleComponent = (float) (JavaLangMath_cosWithDouble_(angle) * radius);
   [((ADXArrayRow *) nil_chk(row)) createRowWithAngleWithADXSolverVariable:Al withADXSolverVariable:Ar withADXSolverVariable:Bl withADXSolverVariable:Br withFloat:angleComponent];
   [self addConstraintWithADXArrayRow:row];
 }
@@ -1052,7 +1067,7 @@ void ADXLinearSystem_increaseTableSize(ADXLinearSystem *self) {
 
 void ADXLinearSystem_releaseRows(ADXLinearSystem *self) {
   if (ADXLinearSystem_OPTIMIZED_ENGINE) {
-    for (jint i = 0; i < self->mNumRows_; i++) {
+    for (int32_t i = 0; i < self->mNumRows_; i++) {
       ADXArrayRow *row = IOSObjectArray_Get(nil_chk(self->mRows_), i);
       if (row != nil) {
         [((id<ADXCLPools_Pool>) nil_chk(((ADXCache *) nil_chk(self->mCache_))->optimizedArrayRowPool_)) release__WithId:row];
@@ -1061,7 +1076,7 @@ void ADXLinearSystem_releaseRows(ADXLinearSystem *self) {
     }
   }
   else {
-    for (jint i = 0; i < self->mNumRows_; i++) {
+    for (int32_t i = 0; i < self->mNumRows_; i++) {
       ADXArrayRow *row = IOSObjectArray_Get(nil_chk(self->mRows_), i);
       if (row != nil) {
         [((id<ADXCLPools_Pool>) nil_chk(((ADXCache *) nil_chk(self->mCache_))->arrayRowPool_)) release__WithId:row];
@@ -1075,7 +1090,7 @@ void ADXLinearSystem_addErrorWithADXArrayRow_(ADXLinearSystem *self, ADXArrayRow
   [((ADXArrayRow *) nil_chk(row)) addErrorWithADXLinearSystem:self withInt:ADXSolverVariable_STRENGTH_NONE];
 }
 
-void ADXLinearSystem_addSingleErrorWithADXArrayRow_withInt_(ADXLinearSystem *self, ADXArrayRow *row, jint sign) {
+void ADXLinearSystem_addSingleErrorWithADXArrayRow_withInt_(ADXLinearSystem *self, ADXArrayRow *row, int32_t sign) {
   [self addSingleErrorWithADXArrayRow:row withInt:sign withInt:ADXSolverVariable_STRENGTH_NONE];
 }
 
@@ -1128,7 +1143,7 @@ void ADXLinearSystem_addRowWithADXArrayRow_(ADXLinearSystem *self, ADXArrayRow *
     [row->variable_ updateReferencesWithNewDefinitionWithADXLinearSystem:self withADXArrayRow:row];
   }
   if (ADXLinearSystem_SIMPLIFY_SYNONYMS && self->hasSimpleDefinition_) {
-    for (jint i = 0; i < self->mNumRows_; i++) {
+    for (int32_t i = 0; i < self->mNumRows_; i++) {
       if (IOSObjectArray_Get(nil_chk(self->mRows_), i) == nil) {
         [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:@"WTF"];
       }
@@ -1142,8 +1157,8 @@ void ADXLinearSystem_addRowWithADXArrayRow_(ADXLinearSystem *self, ADXArrayRow *
           [((id<ADXCLPools_Pool>) nil_chk(((ADXCache *) nil_chk(self->mCache_))->arrayRowPool_)) release__WithId:removedRow];
         }
         IOSObjectArray_Set(nil_chk(self->mRows_), i, nil);
-        jint lastRow = i + 1;
-        for (jint j = i + 1; j < self->mNumRows_; j++) {
+        int32_t lastRow = i + 1;
+        for (int32_t j = i + 1; j < self->mNumRows_; j++) {
           IOSObjectArray_Set(self->mRows_, j - 1, IOSObjectArray_Get(self->mRows_, j));
           if (((ADXSolverVariable *) nil_chk(((ADXArrayRow *) nil_chk(IOSObjectArray_Get(self->mRows_, j - 1)))->variable_))->definitionId_ == j) {
             ((ADXArrayRow *) nil_chk(IOSObjectArray_Get(self->mRows_, j - 1)))->variable_->definitionId_ = j - 1;
@@ -1161,13 +1176,13 @@ void ADXLinearSystem_addRowWithADXArrayRow_(ADXLinearSystem *self, ADXArrayRow *
   }
 }
 
-jint ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal, jboolean b) {
+int32_t ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal, bool b) {
   if (ADXLinearSystem_sMetrics != nil) {
     ADXLinearSystem_sMetrics->optimize_++;
   }
-  jboolean done = false;
-  jint tries = 0;
-  for (jint i = 0; i < self->mNumColumns_; i++) {
+  bool done = false;
+  int32_t tries = 0;
+  for (int32_t i = 0; i < self->mNumColumns_; i++) {
     *IOSBooleanArray_GetRef(nil_chk(self->mAlreadyTestedCandidates_), i) = false;
   }
   while (!done) {
@@ -1191,9 +1206,9 @@ jint ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(ADXLinearSyste
       }
     }
     if (pivotCandidate != nil) {
-      jfloat min = JavaLangFloat_MAX_VALUE;
-      jint pivotRowIndex = -1;
-      for (jint i = 0; i < self->mNumRows_; i++) {
+      float min = JavaLangFloat_MAX_VALUE;
+      int32_t pivotRowIndex = -1;
+      for (int32_t i = 0; i < self->mNumRows_; i++) {
         ADXArrayRow *current = IOSObjectArray_Get(nil_chk(self->mRows_), i);
         ADXSolverVariable *variable = JreRetainedLocalValue(((ADXArrayRow *) nil_chk(current))->variable_);
         if (((ADXSolverVariable *) nil_chk(variable))->mType_ == JreLoadEnum(ADXSolverVariable_Type, UNRESTRICTED)) {
@@ -1203,9 +1218,9 @@ jint ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(ADXLinearSyste
           continue;
         }
         if ([current hasVariableWithADXSolverVariable:pivotCandidate]) {
-          jfloat a_j = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getWithADXSolverVariable:pivotCandidate];
+          float a_j = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getWithADXSolverVariable:pivotCandidate];
           if (a_j < 0) {
-            jfloat value = -current->constantValue_ / a_j;
+            float value = -current->constantValue_ / a_j;
             if (value < min) {
               min = value;
               pivotRowIndex = i;
@@ -1233,11 +1248,11 @@ jint ADXLinearSystem_optimizeWithADXLinearSystem_Row_withBoolean_(ADXLinearSyste
   return tries;
 }
 
-jint ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal) {
-  jint tries = 0;
-  jboolean done;
-  jboolean infeasibleSystem = false;
-  for (jint i = 0; i < self->mNumRows_; i++) {
+int32_t ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, id<ADXLinearSystem_Row> goal) {
+  int32_t tries = 0;
+  bool done;
+  bool infeasibleSystem = false;
+  for (int32_t i = 0; i < self->mNumRows_; i++) {
     ADXSolverVariable *variable = JreRetainedLocalValue(((ADXArrayRow *) nil_chk(IOSObjectArray_Get(nil_chk(self->mRows_), i)))->variable_);
     if (((ADXSolverVariable *) nil_chk(variable))->mType_ == JreLoadEnum(ADXSolverVariable_Type, UNRESTRICTED)) {
       continue;
@@ -1255,11 +1270,11 @@ jint ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, i
         ADXLinearSystem_sMetrics->bfs_++;
       }
       tries++;
-      jfloat min = JavaLangFloat_MAX_VALUE;
-      jint strength = 0;
-      jint pivotRowIndex = -1;
-      jint pivotColumnIndex = -1;
-      for (jint i = 0; i < self->mNumRows_; i++) {
+      float min = JavaLangFloat_MAX_VALUE;
+      int32_t strength = 0;
+      int32_t pivotRowIndex = -1;
+      int32_t pivotColumnIndex = -1;
+      for (int32_t i = 0; i < self->mNumRows_; i++) {
         ADXArrayRow *current = IOSObjectArray_Get(nil_chk(self->mRows_), i);
         ADXSolverVariable *variable = JreRetainedLocalValue(((ADXArrayRow *) nil_chk(current))->variable_);
         if (((ADXSolverVariable *) nil_chk(variable))->mType_ == JreLoadEnum(ADXSolverVariable_Type, UNRESTRICTED)) {
@@ -1270,15 +1285,15 @@ jint ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, i
         }
         if (current->constantValue_ < 0) {
           if (ADXLinearSystem_SKIP_COLUMNS) {
-            jint size = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getCurrentSize];
-            for (jint j = 0; j < size; j++) {
+            int32_t size = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getCurrentSize];
+            for (int32_t j = 0; j < size; j++) {
               ADXSolverVariable *candidate = JreRetainedLocalValue([((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getVariableWithInt:j]);
-              jfloat a_j = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getWithADXSolverVariable:candidate];
+              float a_j = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getWithADXSolverVariable:candidate];
               if (a_j <= 0) {
                 continue;
               }
-              for (jint k = 0; k < ADXSolverVariable_MAX_STRENGTH; k++) {
-                jfloat value = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(candidate))->strengthVector_), k) / a_j;
+              for (int32_t k = 0; k < ADXSolverVariable_MAX_STRENGTH; k++) {
+                float value = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(candidate))->strengthVector_), k) / a_j;
                 if ((value < min && k == strength) || k > strength) {
                   min = value;
                   pivotRowIndex = i;
@@ -1289,14 +1304,14 @@ jint ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, i
             }
           }
           else {
-            for (jint j = 1; j < self->mNumColumns_; j++) {
+            for (int32_t j = 1; j < self->mNumColumns_; j++) {
               ADXSolverVariable *candidate = IOSObjectArray_Get(nil_chk(((ADXCache *) nil_chk(self->mCache_))->mIndexedVariables_), j);
-              jfloat a_j = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getWithADXSolverVariable:candidate];
+              float a_j = [((id<ADXArrayRow_ArrayRowVariables>) nil_chk(current->variables_)) getWithADXSolverVariable:candidate];
               if (a_j <= 0) {
                 continue;
               }
-              for (jint k = 0; k < ADXSolverVariable_MAX_STRENGTH; k++) {
-                jfloat value = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(candidate))->strengthVector_), k) / a_j;
+              for (int32_t k = 0; k < ADXSolverVariable_MAX_STRENGTH; k++) {
+                float value = IOSFloatArray_Get(nil_chk(((ADXSolverVariable *) nil_chk(candidate))->strengthVector_), k) / a_j;
                 if ((value < min && k == strength) || k > strength) {
                   min = value;
                   pivotRowIndex = i;
@@ -1330,7 +1345,7 @@ jint ADXLinearSystem_enforceBFSWithADXLinearSystem_Row_(ADXLinearSystem *self, i
 }
 
 void ADXLinearSystem_computeValues(ADXLinearSystem *self) {
-  for (jint i = 0; i < self->mNumRows_; i++) {
+  for (int32_t i = 0; i < self->mNumRows_; i++) {
     ADXArrayRow *row = IOSObjectArray_Get(nil_chk(self->mRows_), i);
     ((ADXSolverVariable *) nil_chk(((ADXArrayRow *) nil_chk(row))->variable_))->computedValue_ = row->constantValue_;
   }
@@ -1339,7 +1354,7 @@ void ADXLinearSystem_computeValues(ADXLinearSystem *self) {
 void ADXLinearSystem_displayRows(ADXLinearSystem *self) {
   ADXLinearSystem_displaySolverVariables(self);
   __unused NSString *s = @"";
-  for (jint i = 0; i < self->mNumRows_; i++) {
+  for (int32_t i = 0; i < self->mNumRows_; i++) {
     JreStrAppend(&s, "@", IOSObjectArray_Get(nil_chk(self->mRows_), i));
     JreStrAppend(&s, "$", @"\n");
   }
@@ -1352,19 +1367,19 @@ void ADXLinearSystem_displaySolverVariables(ADXLinearSystem *self) {
   [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:s];
 }
 
-NSString *ADXLinearSystem_getDisplaySizeWithInt_(ADXLinearSystem *self, jint n) {
-  jint mb = JreIntDiv(JreIntDiv((n * 4), 1024), 1024);
+NSString *ADXLinearSystem_getDisplaySizeWithInt_(ADXLinearSystem *self, int32_t n) {
+  int32_t mb = JreIntDiv(JreIntDiv((n * 4), 1024), 1024);
   if (mb > 0) {
     return JreStrcat("I$", mb, @" Mb");
   }
-  jint kb = JreIntDiv((n * 4), 1024);
+  int32_t kb = JreIntDiv((n * 4), 1024);
   if (kb > 0) {
     return JreStrcat("I$", kb, @" Kb");
   }
   return JreStrcat("I$", (n * 4), @" bytes");
 }
 
-NSString *ADXLinearSystem_getDisplayStrengthWithInt_(ADXLinearSystem *self, jint strength) {
+NSString *ADXLinearSystem_getDisplayStrengthWithInt_(ADXLinearSystem *self, int32_t strength) {
   if (strength == ADXSolverVariable_STRENGTH_LOW) {
     return @"LOW";
   }
@@ -1389,13 +1404,15 @@ NSString *ADXLinearSystem_getDisplayStrengthWithInt_(ADXLinearSystem *self, jint
   return @"NONE";
 }
 
-ADXArrayRow *ADXLinearSystem_createRowDimensionPercentWithADXLinearSystem_withADXSolverVariable_withADXSolverVariable_withFloat_(ADXLinearSystem *linearSystem, ADXSolverVariable *variableA, ADXSolverVariable *variableC, jfloat percent) {
+ADXArrayRow *ADXLinearSystem_createRowDimensionPercentWithADXLinearSystem_withADXSolverVariable_withADXSolverVariable_withFloat_(ADXLinearSystem *linearSystem, ADXSolverVariable *variableA, ADXSolverVariable *variableC, float percent) {
   ADXLinearSystem_initialize();
   ADXArrayRow *row = JreRetainedLocalValue([((ADXLinearSystem *) nil_chk(linearSystem)) createRow]);
   return [((ADXArrayRow *) nil_chk(row)) createRowDimensionPercentWithADXSolverVariable:variableA withADXSolverVariable:variableC withFloat:percent];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXLinearSystem)
+
+J2OBJC_NAME_MAPPING(ADXLinearSystem, "androidx.constraintlayout.core", "ADX")
 
 @implementation ADXLinearSystem_ValuesRow
 

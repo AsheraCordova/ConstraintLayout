@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\utils\ViewTimeCycle.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ViewTimeCycle")
@@ -62,6 +63,10 @@
 @class ADSparseArray;
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
+@class NSString;
 
 /*!
  @brief This engine allows manipulation of attributes by wave shapes oscillating in time
@@ -72,21 +77,21 @@
 
 - (instancetype)init;
 
-- (jfloat)getWithFloat:(jfloat)pos
-              withLong:(jlong)time
-            withADView:(ADView *)view
-       withADXKeyCache:(ADXKeyCache *)cache;
+- (float)getWithFloat:(float)pos
+             withLong:(int64_t)time
+           withADView:(ADView *)view
+      withADXKeyCache:(ADXKeyCache *)cache;
 
 + (ADXViewTimeCycle *)makeCustomSplineWithNSString:(NSString *)str
                                  withADSparseArray:(ADSparseArray *)attrList;
 
 + (ADXViewTimeCycle *)makeSplineWithNSString:(NSString *)str
-                                    withLong:(jlong)currentTime;
+                                    withLong:(int64_t)currentTime;
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 @end
 
@@ -96,11 +101,12 @@ FOUNDATION_EXPORT void ADXViewTimeCycle_init(ADXViewTimeCycle *self);
 
 FOUNDATION_EXPORT ADXViewTimeCycle *ADXViewTimeCycle_makeCustomSplineWithNSString_withADSparseArray_(NSString *str, ADSparseArray *attrList);
 
-FOUNDATION_EXPORT ADXViewTimeCycle *ADXViewTimeCycle_makeSplineWithNSString_withLong_(NSString *str, jlong currentTime);
+FOUNDATION_EXPORT ADXViewTimeCycle *ADXViewTimeCycle_makeSplineWithNSString_withLong_(NSString *str, int64_t currentTime);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle)
 
 @compatibility_alias AndroidxConstraintlayoutMotionUtilsViewTimeCycle ADXViewTimeCycle;
+
 
 #endif
 
@@ -109,15 +115,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_ElevationSet : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -135,6 +144,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_ElevationSet *create_ADXViewTimeCycle_Elevati
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_ElevationSet)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_AlphaSet_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_AlphaSet))
@@ -142,15 +152,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_ElevationSet)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_AlphaSet : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -168,6 +181,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_AlphaSet *create_ADXViewTimeCycle_AlphaSet_in
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_AlphaSet)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_RotationSet_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_RotationSet))
@@ -175,15 +189,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_AlphaSet)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_RotationSet : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -201,6 +218,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_RotationSet *create_ADXViewTimeCycle_Rotation
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_RotationSet)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_RotationXset_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_RotationXset))
@@ -208,15 +226,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_RotationSet)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_RotationXset : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -234,6 +255,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_RotationXset *create_ADXViewTimeCycle_Rotatio
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_RotationXset)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_RotationYset_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_RotationYset))
@@ -241,15 +263,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_RotationXset)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_RotationYset : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -267,6 +292,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_RotationYset *create_ADXViewTimeCycle_Rotatio
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_RotationYset)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_PathRotate_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_PathRotate))
@@ -274,6 +300,10 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_RotationYset)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangDouble;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_PathRotate : ADXViewTimeCycle
 
@@ -281,17 +311,17 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_RotationYset)
 
 - (instancetype)init;
 
-- (jboolean)setPathRotateWithADView:(ADView *)view
-                    withADXKeyCache:(ADXKeyCache *)cache
-                          withFloat:(jfloat)t
-                           withLong:(jlong)time
-                         withDouble:(jdouble)dx
-                         withDouble:(jdouble)dy;
+- (bool)setPathRotateWithADView:(ADView *)view
+                withADXKeyCache:(ADXKeyCache *)cache
+                      withFloat:(float)t
+                       withLong:(int64_t)time
+                     withDouble:(double)dx
+                     withDouble:(double)dy;
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 @end
 
@@ -305,6 +335,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_PathRotate *create_ADXViewTimeCycle_PathRotat
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_PathRotate)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_ScaleXset_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_ScaleXset))
@@ -312,15 +343,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_PathRotate)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_ScaleXset : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -338,6 +372,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_ScaleXset *create_ADXViewTimeCycle_ScaleXset_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_ScaleXset)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_ScaleYset_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_ScaleYset))
@@ -345,15 +380,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_ScaleXset)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_ScaleYset : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -371,6 +409,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_ScaleYset *create_ADXViewTimeCycle_ScaleYset_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_ScaleYset)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_TranslationXset_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_TranslationXset))
@@ -378,15 +417,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_ScaleYset)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_TranslationXset : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -404,6 +446,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_TranslationXset *create_ADXViewTimeCycle_Tran
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_TranslationXset)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_TranslationYset_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_TranslationYset))
@@ -411,15 +454,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_TranslationXset)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_TranslationYset : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -437,6 +483,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_TranslationYset *create_ADXViewTimeCycle_Tran
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_TranslationYset)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_TranslationZset_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_TranslationZset))
@@ -444,15 +491,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_TranslationYset)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_TranslationZset : ADXViewTimeCycle
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -470,6 +520,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_TranslationZset *create_ADXViewTimeCycle_Tran
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_TranslationZset)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_CustomSet_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_CustomSet))
@@ -480,6 +531,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_TranslationZset)
 @class ADXConstraintAttribute;
 @class ADXKeyCache;
 @class IOSFloatArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 
 @interface ADXViewTimeCycle_CustomSet : ADXViewTimeCycle {
  @public
@@ -495,24 +551,24 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_TranslationZset)
 - (instancetype)initWithNSString:(NSString *)attribute
                withADSparseArray:(ADSparseArray *)attrList;
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
 withADXConstraintAttribute:(ADXConstraintAttribute *)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset;
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset;
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 // Disallowed inherited constructors, do not use.
 
@@ -536,6 +592,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_CustomSet *create_ADXViewTimeCycle_CustomSet_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_CustomSet)
 
+
 #endif
 
 #if !defined (ADXViewTimeCycle_ProgressSet_) && (INCLUDE_ALL_ViewTimeCycle || defined(INCLUDE_ADXViewTimeCycle_ProgressSet))
@@ -543,18 +600,21 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_CustomSet)
 
 @class ADView;
 @class ADXKeyCache;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangLong;
 
 @interface ADXViewTimeCycle_ProgressSet : ADXViewTimeCycle {
  @public
-  jboolean mNoMethod_;
+  bool mNoMethod_;
 }
 
 #pragma mark Public
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache;
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache;
 
 #pragma mark Package-Private
 
@@ -571,6 +631,7 @@ FOUNDATION_EXPORT ADXViewTimeCycle_ProgressSet *new_ADXViewTimeCycle_ProgressSet
 FOUNDATION_EXPORT ADXViewTimeCycle_ProgressSet *create_ADXViewTimeCycle_ProgressSet_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXViewTimeCycle_ProgressSet)
+
 
 #endif
 

@@ -3,9 +3,15 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\SharedValues.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "SharedValues.h"
 #include "SparseIntArray.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Integer.h"
 #include "java/lang/ref/WeakReference.h"
 #include "java/util/ArrayList.h"
@@ -14,7 +20,11 @@
 #include "java/util/List.h"
 #include "java/util/Set.h"
 
-@class JavaUtilHashMap;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXSharedValues () {
@@ -41,7 +51,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)addListenerWithInt:(jint)key
+- (void)addListenerWithInt:(int32_t)key
 withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListener>)listener {
   JavaUtilHashSet *listeners = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mValuesListeners_)) getWithId:JavaLangInteger_valueOfWithInt_(key)]);
   if (listeners == nil) {
@@ -51,7 +61,7 @@ withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListene
   [listeners addWithId:create_JavaLangRefWeakReference_initWithId_(listener)];
 }
 
-- (void)removeListenerWithInt:(jint)key
+- (void)removeListenerWithInt:(int32_t)key
 withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListener>)listener {
   JavaUtilHashSet *listeners = JreRetainedLocalValue([((JavaUtilHashMap *) nil_chk(mValuesListeners_)) getWithId:JavaLangInteger_valueOfWithInt_(key)]);
   if (listeners == nil) {
@@ -60,7 +70,7 @@ withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListene
   id<JavaUtilList> toRemove = create_JavaUtilArrayList_init();
   for (JavaLangRefWeakReference * __strong listenerWeakReference in listeners) {
     id<ADXSharedValues_SharedValuesListener> l = JreRetainedLocalValue([((JavaLangRefWeakReference *) nil_chk(listenerWeakReference)) get]);
-    if (l == nil || l == listener) {
+    if (l == nil || JreObjectEqualsEquals(l, listener)) {
       [toRemove addWithId:listenerWeakReference];
     }
   }
@@ -77,14 +87,14 @@ withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListene
   [((JavaUtilHashMap *) nil_chk(mValuesListeners_)) clear];
 }
 
-- (jint)getValueWithInt:(jint)key {
+- (int32_t)getValueWithInt:(int32_t)key {
   return [((ADSparseIntArray *) nil_chk(mValues_)) getWithInt:key withInt:ADXSharedValues_UNSET];
 }
 
-- (void)fireNewValueWithInt:(jint)key
-                    withInt:(jint)value {
-  jboolean needsCleanup = false;
-  jint previousValue = [((ADSparseIntArray *) nil_chk(mValues_)) getWithInt:key withInt:ADXSharedValues_UNSET];
+- (void)fireNewValueWithInt:(int32_t)key
+                    withInt:(int32_t)value {
+  bool needsCleanup = false;
+  int32_t previousValue = [((ADSparseIntArray *) nil_chk(mValues_)) getWithInt:key withInt:ADXSharedValues_UNSET];
   if (previousValue == value) {
     return;
   }
@@ -168,6 +178,8 @@ ADXSharedValues *create_ADXSharedValues_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXSharedValues)
+
+J2OBJC_NAME_MAPPING(ADXSharedValues, "androidx.constraintlayout.widget", "ADX")
 
 @implementation ADXSharedValues_SharedValuesListener
 

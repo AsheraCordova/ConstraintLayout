@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\FloatLayout.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_FloatLayout")
@@ -15,6 +16,8 @@
 
 #if !defined (ADXFloatLayout_) && (INCLUDE_ALL_FloatLayout || defined(INCLUDE_ADXFloatLayout))
 #define ADXFloatLayout_
+
+@class JavaLangFloat;
 
 /*!
  @brief Add support to views that do floating point layout.
@@ -32,10 +35,10 @@
  @param rf
  @param bf
  */
-- (void)layoutWithFloat:(jfloat)lf
-              withFloat:(jfloat)tf
-              withFloat:(jfloat)rf
-              withFloat:(jfloat)bf;
+- (void)layoutWithFloat:(float)lf
+              withFloat:(float)tf
+              withFloat:(float)rf
+              withFloat:(float)bf;
 
 @end
 
@@ -44,6 +47,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXFloatLayout)
 J2OBJC_TYPE_LITERAL_HEADER(ADXFloatLayout)
 
 #define AndroidxConstraintlayoutMotionWidgetFloatLayout ADXFloatLayout
+
 
 #endif
 

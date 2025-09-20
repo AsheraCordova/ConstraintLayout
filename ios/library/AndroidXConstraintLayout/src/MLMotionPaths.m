@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MLMotionPaths.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAttribute.h"
 #include "ConstraintSet.h"
 #include "Easing.h"
@@ -16,8 +21,10 @@
 #include "MLMotionPaths.h"
 #include "MotionController.h"
 #include "View.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Double.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashMap.h"
@@ -25,32 +32,38 @@
 #include "java/util/Set.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXMLMotionPaths ()
 
-+ (jfloat)xRotateWithFloat:(jfloat)sin
-                 withFloat:(jfloat)cos
-                 withFloat:(jfloat)cx
-                 withFloat:(jfloat)cy
-                 withFloat:(jfloat)x
-                 withFloat:(jfloat)y;
++ (float)xRotateWithFloat:(float)sin
+                withFloat:(float)cos
+                withFloat:(float)cx
+                withFloat:(float)cy
+                withFloat:(float)x
+                withFloat:(float)y;
 
-+ (jfloat)yRotateWithFloat:(jfloat)sin
-                 withFloat:(jfloat)cos
-                 withFloat:(jfloat)cx
-                 withFloat:(jfloat)cy
-                 withFloat:(jfloat)x
-                 withFloat:(jfloat)y;
++ (float)yRotateWithFloat:(float)sin
+                withFloat:(float)cos
+                withFloat:(float)cx
+                withFloat:(float)cy
+                withFloat:(float)x
+                withFloat:(float)y;
 
-- (jboolean)diffWithFloat:(jfloat)a
-                withFloat:(jfloat)b;
+- (bool)diffWithFloat:(float)a
+            withFloat:(float)b;
 
 @end
 
-__attribute__((unused)) static jfloat ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(jfloat sin, jfloat cos, jfloat cx, jfloat cy, jfloat x, jfloat y);
+__attribute__((unused)) static float ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(float sin, float cos, float cx, float cy, float x, float y);
 
-__attribute__((unused)) static jfloat ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(jfloat sin, jfloat cos, jfloat cx, jfloat cy, jfloat x, jfloat y);
+__attribute__((unused)) static float ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(float sin, float cos, float cx, float cy, float x, float y);
 
-__attribute__((unused)) static jboolean ADXMLMotionPaths_diffWithFloat_withFloat_(ADXMLMotionPaths *self, jfloat a, jfloat b);
+__attribute__((unused)) static bool ADXMLMotionPaths_diffWithFloat_withFloat_(ADXMLMotionPaths *self, float a, float b);
 
 J2OBJC_INITIALIZED_DEFN(ADXMLMotionPaths)
 
@@ -67,30 +80,30 @@ IOSObjectArray *ADXMLMotionPaths_names;
 - (void)initCartesianWithADXKeyPosition:(ADXKeyPosition *)c
                    withADXMLMotionPaths:(ADXMLMotionPaths *)startTimePoint
                    withADXMLMotionPaths:(ADXMLMotionPaths *)endTimePoint {
-  jfloat position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
+  float position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
   ADXMLMotionPaths *point = self;
   point->time_ = position;
   mDrawPath_ = c->mDrawPath_;
-  jfloat scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
-  jfloat scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
-  jfloat scaleX = ((ADXMLMotionPaths *) nil_chk(endTimePoint))->width_ - ((ADXMLMotionPaths *) nil_chk(startTimePoint))->width_;
-  jfloat scaleY = endTimePoint->height_ - startTimePoint->height_;
+  float scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
+  float scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
+  float scaleX = ((ADXMLMotionPaths *) nil_chk(endTimePoint))->width_ - ((ADXMLMotionPaths *) nil_chk(startTimePoint))->width_;
+  float scaleY = endTimePoint->height_ - startTimePoint->height_;
   point->position_ = point->time_;
-  jfloat path = position;
-  jfloat startCenterX = startTimePoint->x_ + startTimePoint->width_ / 2;
-  jfloat startCenterY = startTimePoint->y_ + startTimePoint->height_ / 2;
-  jfloat endCenterX = endTimePoint->x_ + endTimePoint->width_ / 2;
-  jfloat endCenterY = endTimePoint->y_ + endTimePoint->height_ / 2;
-  jfloat pathVectorX = endCenterX - startCenterX;
-  jfloat pathVectorY = endCenterY - startCenterY;
+  float path = position;
+  float startCenterX = startTimePoint->x_ + startTimePoint->width_ / 2;
+  float startCenterY = startTimePoint->y_ + startTimePoint->height_ / 2;
+  float endCenterX = endTimePoint->x_ + endTimePoint->width_ / 2;
+  float endCenterY = endTimePoint->y_ + endTimePoint->height_ / 2;
+  float pathVectorX = endCenterX - startCenterX;
+  float pathVectorY = endCenterY - startCenterY;
   point->x_ = JreFpToInt((startTimePoint->x_ + (pathVectorX) * path - scaleX * scaleWidth / 2));
   point->y_ = JreFpToInt((startTimePoint->y_ + (pathVectorY) * path - scaleY * scaleHeight / 2));
   point->width_ = JreFpToInt((startTimePoint->width_ + scaleX * scaleWidth));
   point->height_ = JreFpToInt((startTimePoint->height_ + scaleY * scaleHeight));
-  jfloat dxdx = (JavaLangFloat_isNaNWithFloat_(c->mPercentX_)) ? position : c->mPercentX_;
-  jfloat dydx = (JavaLangFloat_isNaNWithFloat_(c->mAltPercentY_)) ? 0 : c->mAltPercentY_;
-  jfloat dydy = (JavaLangFloat_isNaNWithFloat_(c->mPercentY_)) ? position : c->mPercentY_;
-  jfloat dxdy = (JavaLangFloat_isNaNWithFloat_(c->mAltPercentX_)) ? 0 : c->mAltPercentX_;
+  float dxdx = (JavaLangFloat_isNaNWithFloat_(c->mPercentX_)) ? position : c->mPercentX_;
+  float dydx = (JavaLangFloat_isNaNWithFloat_(c->mAltPercentY_)) ? 0 : c->mAltPercentY_;
+  float dydy = (JavaLangFloat_isNaNWithFloat_(c->mPercentY_)) ? position : c->mPercentY_;
+  float dxdy = (JavaLangFloat_isNaNWithFloat_(c->mAltPercentX_)) ? 0 : c->mAltPercentX_;
   point->mMode_ = ADXMLMotionPaths_CARTESIAN;
   point->x_ = JreFpToInt((startTimePoint->x_ + pathVectorX * dxdx + pathVectorY * dxdy - scaleX * scaleWidth / 2));
   point->y_ = JreFpToInt((startTimePoint->y_ + pathVectorX * dydx + pathVectorY * dydy - scaleY * scaleHeight / 2));
@@ -98,8 +111,8 @@ IOSObjectArray *ADXMLMotionPaths_names;
   point->mPathMotionArc_ = c->mPathMotionArc_;
 }
 
-- (instancetype)initPackagePrivateWithInt:(jint)parentWidth
-                                  withInt:(jint)parentHeight
+- (instancetype)initPackagePrivateWithInt:(int32_t)parentWidth
+                                  withInt:(int32_t)parentHeight
                        withADXKeyPosition:(ADXKeyPosition *)c
                      withADXMLMotionPaths:(ADXMLMotionPaths *)startTimePoint
                      withADXMLMotionPaths:(ADXMLMotionPaths *)endTimePoint {
@@ -107,24 +120,24 @@ IOSObjectArray *ADXMLMotionPaths_names;
   return self;
 }
 
-- (void)initPolarWithInt:(jint)parentWidth
-                 withInt:(jint)parentHeight
+- (void)initPolarWithInt:(int32_t)parentWidth
+                 withInt:(int32_t)parentHeight
       withADXKeyPosition:(ADXKeyPosition *)c
     withADXMLMotionPaths:(ADXMLMotionPaths *)s
     withADXMLMotionPaths:(ADXMLMotionPaths *)e {
-  jfloat position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
+  float position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
   self->time_ = position;
   mDrawPath_ = c->mDrawPath_;
   self->mMode_ = c->mPositionType_;
-  jfloat scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
-  jfloat scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
-  jfloat scaleX = ((ADXMLMotionPaths *) nil_chk(e))->width_ - ((ADXMLMotionPaths *) nil_chk(s))->width_;
-  jfloat scaleY = e->height_ - s->height_;
+  float scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
+  float scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
+  float scaleX = ((ADXMLMotionPaths *) nil_chk(e))->width_ - ((ADXMLMotionPaths *) nil_chk(s))->width_;
+  float scaleY = e->height_ - s->height_;
   self->position_ = self->time_;
   width_ = JreFpToInt((s->width_ + scaleX * scaleWidth));
   height_ = JreFpToInt((s->height_ + scaleY * scaleHeight));
-  jfloat startfactor = 1 - position;
-  jfloat endfactor = position;
+  float startfactor = 1 - position;
+  float endfactor = position;
   switch (c->mPositionType_) {
     case ADXKeyPosition_TYPE_SCREEN:
     self->x_ = JavaLangFloat_isNaNWithFloat_(c->mPercentX_) ? (position * (e->x_ - s->x_) + s->x_) : c->mPercentX_ * JavaLangMath_minWithFloat_withFloat_(scaleHeight, scaleWidth);
@@ -147,39 +160,39 @@ IOSObjectArray *ADXMLMotionPaths_names;
 
 - (void)setupRelativeWithADXMotionController:(ADXMotionController *)mc
                         withADXMLMotionPaths:(ADXMLMotionPaths *)relative {
-  jdouble dx = x_ + width_ / 2 - ((ADXMLMotionPaths *) nil_chk(relative))->x_ - relative->width_ / 2;
-  jdouble dy = y_ + height_ / 2 - relative->y_ - relative->height_ / 2;
+  double dx = x_ + width_ / 2 - ((ADXMLMotionPaths *) nil_chk(relative))->x_ - relative->width_ / 2;
+  double dy = y_ + height_ / 2 - relative->y_ - relative->height_ / 2;
   JreStrongAssign(&mRelativeToController_, mc);
-  x_ = (jfloat) JavaLangMath_hypotWithDouble_withDouble_(dy, dx);
+  x_ = (float) JavaLangMath_hypotWithDouble_withDouble_(dy, dx);
   if (JavaLangFloat_isNaNWithFloat_(mRelativeAngle_)) {
-    y_ = (jfloat) (JavaLangMath_atan2WithDouble_withDouble_(dy, dx) + JavaLangMath_PI / 2);
+    y_ = (float) (JavaLangMath_atan2WithDouble_withDouble_(dy, dx) + JavaLangMath_PI / 2);
   }
   else {
-    y_ = (jfloat) JavaLangMath_toRadiansWithDouble_(mRelativeAngle_);
+    y_ = (float) JavaLangMath_toRadiansWithDouble_(mRelativeAngle_);
   }
 }
 
-- (void)initScreenWithInt:(jint)parentWidth
-                  withInt:(jint)parentHeight
+- (void)initScreenWithInt:(int32_t)parentWidth
+                  withInt:(int32_t)parentHeight
        withADXKeyPosition:(ADXKeyPosition *)c
      withADXMLMotionPaths:(ADXMLMotionPaths *)startTimePoint
      withADXMLMotionPaths:(ADXMLMotionPaths *)endTimePoint {
-  jfloat position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
+  float position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
   ADXMLMotionPaths *point = self;
   point->time_ = position;
   mDrawPath_ = c->mDrawPath_;
-  jfloat scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
-  jfloat scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
-  jfloat scaleX = ((ADXMLMotionPaths *) nil_chk(endTimePoint))->width_ - ((ADXMLMotionPaths *) nil_chk(startTimePoint))->width_;
-  jfloat scaleY = endTimePoint->height_ - startTimePoint->height_;
+  float scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
+  float scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
+  float scaleX = ((ADXMLMotionPaths *) nil_chk(endTimePoint))->width_ - ((ADXMLMotionPaths *) nil_chk(startTimePoint))->width_;
+  float scaleY = endTimePoint->height_ - startTimePoint->height_;
   point->position_ = point->time_;
-  jfloat path = position;
-  jfloat startCenterX = startTimePoint->x_ + startTimePoint->width_ / 2;
-  jfloat startCenterY = startTimePoint->y_ + startTimePoint->height_ / 2;
-  jfloat endCenterX = endTimePoint->x_ + endTimePoint->width_ / 2;
-  jfloat endCenterY = endTimePoint->y_ + endTimePoint->height_ / 2;
-  jfloat pathVectorX = endCenterX - startCenterX;
-  jfloat pathVectorY = endCenterY - startCenterY;
+  float path = position;
+  float startCenterX = startTimePoint->x_ + startTimePoint->width_ / 2;
+  float startCenterY = startTimePoint->y_ + startTimePoint->height_ / 2;
+  float endCenterX = endTimePoint->x_ + endTimePoint->width_ / 2;
+  float endCenterY = endTimePoint->y_ + endTimePoint->height_ / 2;
+  float pathVectorX = endCenterX - startCenterX;
+  float pathVectorY = endCenterY - startCenterY;
   point->x_ = JreFpToInt((startTimePoint->x_ + (pathVectorX) * path - scaleX * scaleWidth / 2));
   point->y_ = JreFpToInt((startTimePoint->y_ + (pathVectorY) * path - scaleY * scaleHeight / 2));
   point->width_ = JreFpToInt((startTimePoint->width_ + scaleX * scaleWidth));
@@ -201,31 +214,31 @@ IOSObjectArray *ADXMLMotionPaths_names;
 - (void)initPathWithADXKeyPosition:(ADXKeyPosition *)c
               withADXMLMotionPaths:(ADXMLMotionPaths *)startTimePoint
               withADXMLMotionPaths:(ADXMLMotionPaths *)endTimePoint {
-  jfloat position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
+  float position = ((ADXKeyPosition *) nil_chk(c))->mFramePosition_ / 100.0f;
   ADXMLMotionPaths *point = self;
   point->time_ = position;
   mDrawPath_ = c->mDrawPath_;
-  jfloat scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
-  jfloat scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
-  jfloat scaleX = ((ADXMLMotionPaths *) nil_chk(endTimePoint))->width_ - ((ADXMLMotionPaths *) nil_chk(startTimePoint))->width_;
-  jfloat scaleY = endTimePoint->height_ - startTimePoint->height_;
+  float scaleWidth = JavaLangFloat_isNaNWithFloat_(c->mPercentWidth_) ? position : c->mPercentWidth_;
+  float scaleHeight = JavaLangFloat_isNaNWithFloat_(c->mPercentHeight_) ? position : c->mPercentHeight_;
+  float scaleX = ((ADXMLMotionPaths *) nil_chk(endTimePoint))->width_ - ((ADXMLMotionPaths *) nil_chk(startTimePoint))->width_;
+  float scaleY = endTimePoint->height_ - startTimePoint->height_;
   point->position_ = point->time_;
-  jfloat path = JavaLangFloat_isNaNWithFloat_(c->mPercentX_) ? position : c->mPercentX_;
-  jfloat startCenterX = startTimePoint->x_ + startTimePoint->width_ / 2;
-  jfloat startCenterY = startTimePoint->y_ + startTimePoint->height_ / 2;
-  jfloat endCenterX = endTimePoint->x_ + endTimePoint->width_ / 2;
-  jfloat endCenterY = endTimePoint->y_ + endTimePoint->height_ / 2;
-  jfloat pathVectorX = endCenterX - startCenterX;
-  jfloat pathVectorY = endCenterY - startCenterY;
+  float path = JavaLangFloat_isNaNWithFloat_(c->mPercentX_) ? position : c->mPercentX_;
+  float startCenterX = startTimePoint->x_ + startTimePoint->width_ / 2;
+  float startCenterY = startTimePoint->y_ + startTimePoint->height_ / 2;
+  float endCenterX = endTimePoint->x_ + endTimePoint->width_ / 2;
+  float endCenterY = endTimePoint->y_ + endTimePoint->height_ / 2;
+  float pathVectorX = endCenterX - startCenterX;
+  float pathVectorY = endCenterY - startCenterY;
   point->x_ = JreFpToInt((startTimePoint->x_ + (pathVectorX) * path - scaleX * scaleWidth / 2));
   point->y_ = JreFpToInt((startTimePoint->y_ + (pathVectorY) * path - scaleY * scaleHeight / 2));
   point->width_ = JreFpToInt((startTimePoint->width_ + scaleX * scaleWidth));
   point->height_ = JreFpToInt((startTimePoint->height_ + scaleY * scaleHeight));
-  jfloat perpendicular = JavaLangFloat_isNaNWithFloat_(c->mPercentY_) ? 0 : c->mPercentY_;
-  jfloat perpendicularX = -pathVectorY;
-  jfloat perpendicularY = pathVectorX;
-  jfloat normalX = perpendicularX * perpendicular;
-  jfloat normalY = perpendicularY * perpendicular;
+  float perpendicular = JavaLangFloat_isNaNWithFloat_(c->mPercentY_) ? 0 : c->mPercentY_;
+  float perpendicularX = -pathVectorY;
+  float perpendicularY = pathVectorX;
+  float normalX = perpendicularX * perpendicular;
+  float normalY = perpendicularY * perpendicular;
   point->mMode_ = ADXMLMotionPaths_PERPENDICULAR;
   point->x_ = JreFpToInt((startTimePoint->x_ + (pathVectorX) * path - scaleX * scaleWidth / 2));
   point->y_ = JreFpToInt((startTimePoint->y_ + (pathVectorY) * path - scaleY * scaleHeight / 2));
@@ -236,36 +249,36 @@ IOSObjectArray *ADXMLMotionPaths_names;
   point->mPathMotionArc_ = c->mPathMotionArc_;
 }
 
-+ (jfloat)xRotateWithFloat:(jfloat)sin
-                 withFloat:(jfloat)cos
-                 withFloat:(jfloat)cx
-                 withFloat:(jfloat)cy
-                 withFloat:(jfloat)x
-                 withFloat:(jfloat)y {
++ (float)xRotateWithFloat:(float)sin
+                withFloat:(float)cos
+                withFloat:(float)cx
+                withFloat:(float)cy
+                withFloat:(float)x
+                withFloat:(float)y {
   return ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x, y);
 }
 
-+ (jfloat)yRotateWithFloat:(jfloat)sin
-                 withFloat:(jfloat)cos
-                 withFloat:(jfloat)cx
-                 withFloat:(jfloat)cy
-                 withFloat:(jfloat)x
-                 withFloat:(jfloat)y {
++ (float)yRotateWithFloat:(float)sin
+                withFloat:(float)cos
+                withFloat:(float)cx
+                withFloat:(float)cy
+                withFloat:(float)x
+                withFloat:(float)y {
   return ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x, y);
 }
 
-- (jboolean)diffWithFloat:(jfloat)a
-                withFloat:(jfloat)b {
+- (bool)diffWithFloat:(float)a
+            withFloat:(float)b {
   return ADXMLMotionPaths_diffWithFloat_withFloat_(self, a, b);
 }
 
 - (void)differentWithADXMLMotionPaths:(ADXMLMotionPaths *)points
                      withBooleanArray:(IOSBooleanArray *)mask
                     withNSStringArray:(IOSObjectArray *)custom
-                          withBoolean:(jboolean)arcMode {
-  jint c = 0;
-  jboolean diffx = ADXMLMotionPaths_diffWithFloat_withFloat_(self, x_, ((ADXMLMotionPaths *) nil_chk(points))->x_);
-  jboolean diffy = ADXMLMotionPaths_diffWithFloat_withFloat_(self, y_, points->y_);
+                          withBoolean:(bool)arcMode {
+  int32_t c = 0;
+  bool diffx = ADXMLMotionPaths_diffWithFloat_withFloat_(self, x_, ((ADXMLMotionPaths *) nil_chk(points))->x_);
+  bool diffy = ADXMLMotionPaths_diffWithFloat_withFloat_(self, y_, points->y_);
   *IOSBooleanArray_GetRef(nil_chk(mask), c++) |= ADXMLMotionPaths_diffWithFloat_withFloat_(self, position_, points->position_);
   *IOSBooleanArray_GetRef(mask, c++) |= (diffx | diffy | arcMode);
   *IOSBooleanArray_GetRef(mask, c++) |= (diffx | diffy | arcMode);
@@ -273,19 +286,19 @@ IOSObjectArray *ADXMLMotionPaths_names;
   *IOSBooleanArray_GetRef(mask, c++) |= ADXMLMotionPaths_diffWithFloat_withFloat_(self, height_, points->height_);
 }
 
-- (void)getCenterWithDouble:(jdouble)p
+- (void)getCenterWithDouble:(double)p
                withIntArray:(IOSIntArray *)toUse
             withDoubleArray:(IOSDoubleArray *)data
              withFloatArray:(IOSFloatArray *)point
-                    withInt:(jint)offset {
-  jfloat v_x = x_;
-  jfloat v_y = y_;
-  jfloat v_width = width_;
-  jfloat v_height = height_;
-  jfloat translationX = 0;
-  jfloat translationY = 0;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
-    jfloat value = (jfloat) IOSDoubleArray_Get(nil_chk(data), i);
+                    withInt:(int32_t)offset {
+  float v_x = x_;
+  float v_y = y_;
+  float v_width = width_;
+  float v_height = height_;
+  float translationX = 0;
+  float translationY = 0;
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+    float value = (float) IOSDoubleArray_Get(nil_chk(data), i);
     switch (IOSIntArray_Get(toUse, i)) {
       case ADXMLMotionPaths_OFF_X:
       v_x = value;
@@ -305,36 +318,36 @@ IOSObjectArray *ADXMLMotionPaths_names;
     IOSFloatArray *pos = [IOSFloatArray arrayWithLength:2];
     IOSFloatArray *vel = [IOSFloatArray arrayWithLength:2];
     [mRelativeToController_ getCenterWithDouble:p withFloatArray:pos withFloatArray:vel];
-    jfloat rx = IOSFloatArray_Get(pos, 0);
-    jfloat ry = IOSFloatArray_Get(pos, 1);
-    jfloat radius = v_x;
-    jfloat angle = v_y;
-    v_x = (jfloat) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
-    v_y = (jfloat) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
+    float rx = IOSFloatArray_Get(pos, 0);
+    float ry = IOSFloatArray_Get(pos, 1);
+    float radius = v_x;
+    float angle = v_y;
+    v_x = (float) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
+    v_y = (float) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
   }
   *IOSFloatArray_GetRef(nil_chk(point), offset) = v_x + v_width / 2 + translationX;
   *IOSFloatArray_GetRef(point, offset + 1) = v_y + v_height / 2 + translationY;
 }
 
-- (void)getCenterWithDouble:(jdouble)p
+- (void)getCenterWithDouble:(double)p
                withIntArray:(IOSIntArray *)toUse
             withDoubleArray:(IOSDoubleArray *)data
              withFloatArray:(IOSFloatArray *)point
             withDoubleArray:(IOSDoubleArray *)vdata
              withFloatArray:(IOSFloatArray *)velocity {
-  jfloat v_x = x_;
-  jfloat v_y = y_;
-  jfloat v_width = width_;
-  jfloat v_height = height_;
-  jfloat dv_x = 0;
-  jfloat dv_y = 0;
-  jfloat dv_width = 0;
-  jfloat dv_height = 0;
-  jfloat translationX = 0;
-  jfloat translationY = 0;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
-    jfloat value = (jfloat) IOSDoubleArray_Get(nil_chk(data), i);
-    jfloat dvalue = (jfloat) IOSDoubleArray_Get(nil_chk(vdata), i);
+  float v_x = x_;
+  float v_y = y_;
+  float v_width = width_;
+  float v_height = height_;
+  float dv_x = 0;
+  float dv_y = 0;
+  float dv_width = 0;
+  float dv_height = 0;
+  float translationX = 0;
+  float translationY = 0;
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+    float value = (float) IOSDoubleArray_Get(nil_chk(data), i);
+    float dvalue = (float) IOSDoubleArray_Get(nil_chk(vdata), i);
     switch (IOSIntArray_Get(toUse, i)) {
       case ADXMLMotionPaths_OFF_X:
       v_x = value;
@@ -354,24 +367,24 @@ IOSObjectArray *ADXMLMotionPaths_names;
       break;
     }
   }
-  jfloat dpos_x = dv_x + dv_width / 2;
-  jfloat dpos_y = dv_y + dv_height / 2;
+  float dpos_x = dv_x + dv_width / 2;
+  float dpos_y = dv_y + dv_height / 2;
   if (mRelativeToController_ != nil) {
     IOSFloatArray *pos = [IOSFloatArray arrayWithLength:2];
     IOSFloatArray *vel = [IOSFloatArray arrayWithLength:2];
     [mRelativeToController_ getCenterWithDouble:p withFloatArray:pos withFloatArray:vel];
-    jfloat rx = IOSFloatArray_Get(pos, 0);
-    jfloat ry = IOSFloatArray_Get(pos, 1);
-    jfloat radius = v_x;
-    jfloat angle = v_y;
-    jfloat dradius = dv_x;
-    jfloat dangle = dv_y;
-    jfloat drx = IOSFloatArray_Get(vel, 0);
-    jfloat dry = IOSFloatArray_Get(vel, 1);
-    v_x = (jfloat) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
-    v_y = (jfloat) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
-    dpos_x = (jfloat) (drx + dradius * JavaLangMath_sinWithDouble_(angle) + JavaLangMath_cosWithDouble_(angle) * dangle);
-    dpos_y = (jfloat) (dry - dradius * JavaLangMath_cosWithDouble_(angle) + JavaLangMath_sinWithDouble_(angle) * dangle);
+    float rx = IOSFloatArray_Get(pos, 0);
+    float ry = IOSFloatArray_Get(pos, 1);
+    float radius = v_x;
+    float angle = v_y;
+    float dradius = dv_x;
+    float dangle = dv_y;
+    float drx = IOSFloatArray_Get(vel, 0);
+    float dry = IOSFloatArray_Get(vel, 1);
+    v_x = (float) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
+    v_y = (float) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
+    dpos_x = (float) (drx + dradius * JavaLangMath_sinWithDouble_(angle) + JavaLangMath_cosWithDouble_(angle) * dangle);
+    dpos_y = (float) (dry - dradius * JavaLangMath_cosWithDouble_(angle) + JavaLangMath_sinWithDouble_(angle) * dangle);
   }
   *IOSFloatArray_GetRef(nil_chk(point), 0) = v_x + v_width / 2 + translationX;
   *IOSFloatArray_GetRef(point, 1) = v_y + v_height / 2 + translationY;
@@ -379,19 +392,19 @@ IOSObjectArray *ADXMLMotionPaths_names;
   *IOSFloatArray_GetRef(velocity, 1) = dpos_y;
 }
 
-- (void)getCenterVelocityWithDouble:(jdouble)p
+- (void)getCenterVelocityWithDouble:(double)p
                        withIntArray:(IOSIntArray *)toUse
                     withDoubleArray:(IOSDoubleArray *)data
                      withFloatArray:(IOSFloatArray *)point
-                            withInt:(jint)offset {
-  jfloat v_x = x_;
-  jfloat v_y = y_;
-  jfloat v_width = width_;
-  jfloat v_height = height_;
-  jfloat translationX = 0;
-  jfloat translationY = 0;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
-    jfloat value = (jfloat) IOSDoubleArray_Get(nil_chk(data), i);
+                            withInt:(int32_t)offset {
+  float v_x = x_;
+  float v_y = y_;
+  float v_width = width_;
+  float v_height = height_;
+  float translationX = 0;
+  float translationY = 0;
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+    float value = (float) IOSDoubleArray_Get(nil_chk(data), i);
     switch (IOSIntArray_Get(toUse, i)) {
       case ADXMLMotionPaths_OFF_X:
       v_x = value;
@@ -411,12 +424,12 @@ IOSObjectArray *ADXMLMotionPaths_names;
     IOSFloatArray *pos = [IOSFloatArray arrayWithLength:2];
     IOSFloatArray *vel = [IOSFloatArray arrayWithLength:2];
     [mRelativeToController_ getCenterWithDouble:p withFloatArray:pos withFloatArray:vel];
-    jfloat rx = IOSFloatArray_Get(pos, 0);
-    jfloat ry = IOSFloatArray_Get(pos, 1);
-    jfloat radius = v_x;
-    jfloat angle = v_y;
-    v_x = (jfloat) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
-    v_y = (jfloat) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
+    float rx = IOSFloatArray_Get(pos, 0);
+    float ry = IOSFloatArray_Get(pos, 1);
+    float radius = v_x;
+    float angle = v_y;
+    v_x = (float) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
+    v_y = (float) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
   }
   *IOSFloatArray_GetRef(nil_chk(point), offset) = v_x + v_width / 2 + translationX;
   *IOSFloatArray_GetRef(point, offset + 1) = v_y + v_height / 2 + translationY;
@@ -425,15 +438,15 @@ IOSObjectArray *ADXMLMotionPaths_names;
 - (void)getBoundsWithIntArray:(IOSIntArray *)toUse
               withDoubleArray:(IOSDoubleArray *)data
                withFloatArray:(IOSFloatArray *)point
-                      withInt:(jint)offset {
-  jfloat v_x = x_;
-  jfloat v_y = y_;
-  jfloat v_width = width_;
-  jfloat v_height = height_;
-  jfloat translationX = 0;
-  jfloat translationY = 0;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
-    jfloat value = (jfloat) IOSDoubleArray_Get(nil_chk(data), i);
+                      withInt:(int32_t)offset {
+  float v_x = x_;
+  float v_y = y_;
+  float v_width = width_;
+  float v_height = height_;
+  float translationX = 0;
+  float translationY = 0;
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+    float value = (float) IOSDoubleArray_Get(nil_chk(data), i);
     switch (IOSIntArray_Get(toUse, i)) {
       case ADXMLMotionPaths_OFF_X:
       v_x = value;
@@ -453,40 +466,40 @@ IOSObjectArray *ADXMLMotionPaths_names;
   *IOSFloatArray_GetRef(point, offset + 1) = v_height;
 }
 
-- (void)setViewWithFloat:(jfloat)position
+- (void)setViewWithFloat:(float)position
               withADView:(ADView *)view
             withIntArray:(IOSIntArray *)toUse
          withDoubleArray:(IOSDoubleArray *)data
          withDoubleArray:(IOSDoubleArray *)slope
          withDoubleArray:(IOSDoubleArray *)cycle {
-  jfloat v_x = x_;
-  jfloat v_y = y_;
-  jfloat v_width = width_;
-  jfloat v_height = height_;
-  jfloat dv_x = 0;
-  jfloat dv_y = 0;
-  jfloat dv_width = 0;
-  jfloat dv_height = 0;
-  jfloat delta_path = 0;
-  jfloat path_rotate = JavaLangFloat_NaN;
+  float v_x = x_;
+  float v_y = y_;
+  float v_width = width_;
+  float v_height = height_;
+  float dv_x = 0;
+  float dv_y = 0;
+  float dv_width = 0;
+  float dv_height = 0;
+  float delta_path = 0;
+  float path_rotate = JavaLangFloat_NaN;
   NSString *mod;
   if (((IOSIntArray *) nil_chk(toUse))->size_ != 0 && ((IOSDoubleArray *) nil_chk(mTempValue_))->size_ <= IOSIntArray_Get(toUse, toUse->size_ - 1)) {
-    jint scratch_data_length = IOSIntArray_Get(toUse, toUse->size_ - 1) + 1;
+    int32_t scratch_data_length = IOSIntArray_Get(toUse, toUse->size_ - 1) + 1;
     JreStrongAssignAndConsume(&mTempValue_, [IOSDoubleArray newArrayWithLength:scratch_data_length]);
     JreStrongAssignAndConsume(&mTempDelta_, [IOSDoubleArray newArrayWithLength:scratch_data_length]);
   }
   JavaUtilArrays_fillWithDoubleArray_withDouble_(mTempValue_, JavaLangDouble_NaN);
-  for (jint i = 0; i < toUse->size_; i++) {
+  for (int32_t i = 0; i < toUse->size_; i++) {
     *IOSDoubleArray_GetRef(nil_chk(mTempValue_), IOSIntArray_Get(toUse, i)) = IOSDoubleArray_Get(nil_chk(data), i);
     *IOSDoubleArray_GetRef(nil_chk(mTempDelta_), IOSIntArray_Get(toUse, i)) = IOSDoubleArray_Get(nil_chk(slope), i);
   }
-  for (jint i = 0; i < ((IOSDoubleArray *) nil_chk(mTempValue_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSDoubleArray *) nil_chk(mTempValue_))->size_; i++) {
     if (JavaLangDouble_isNaNWithDouble_(IOSDoubleArray_Get(mTempValue_, i)) && (cycle == nil || IOSDoubleArray_Get(cycle, i) == 0.0)) {
       continue;
     }
-    jdouble deltaCycle = (cycle != nil) ? IOSDoubleArray_Get(nil_chk(cycle), i) : 0.0;
-    jfloat value = (jfloat) (JavaLangDouble_isNaNWithDouble_(IOSDoubleArray_Get(nil_chk(mTempValue_), i)) ? deltaCycle : IOSDoubleArray_Get(nil_chk(mTempValue_), i) + deltaCycle);
-    jfloat dvalue = (jfloat) IOSDoubleArray_Get(nil_chk(mTempDelta_), i);
+    double deltaCycle = (cycle != nil) ? IOSDoubleArray_Get(nil_chk(cycle), i) : 0.0;
+    float value = (float) (JavaLangDouble_isNaNWithDouble_(IOSDoubleArray_Get(nil_chk(mTempValue_), i)) ? deltaCycle : IOSDoubleArray_Get(nil_chk(mTempValue_), i) + deltaCycle);
+    float dvalue = (float) IOSDoubleArray_Get(nil_chk(mTempDelta_), i);
     switch (i) {
       case ADXMLMotionPaths_OFF_POSITION:
       delta_path = value;
@@ -516,18 +529,18 @@ IOSObjectArray *ADXMLMotionPaths_names;
     IOSFloatArray *pos = [IOSFloatArray arrayWithLength:2];
     IOSFloatArray *vel = [IOSFloatArray arrayWithLength:2];
     [mRelativeToController_ getCenterWithDouble:position withFloatArray:pos withFloatArray:vel];
-    jfloat rx = IOSFloatArray_Get(pos, 0);
-    jfloat ry = IOSFloatArray_Get(pos, 1);
-    jfloat radius = v_x;
-    jfloat angle = v_y;
-    jfloat dradius = dv_x;
-    jfloat dangle = dv_y;
-    jfloat drx = IOSFloatArray_Get(vel, 0);
-    jfloat dry = IOSFloatArray_Get(vel, 1);
-    jfloat pos_x = (jfloat) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
-    jfloat pos_y = (jfloat) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
-    jfloat dpos_x = (jfloat) (drx + dradius * JavaLangMath_sinWithDouble_(angle) + radius * JavaLangMath_cosWithDouble_(angle) * dangle);
-    jfloat dpos_y = (jfloat) (dry - dradius * JavaLangMath_cosWithDouble_(angle) + radius * JavaLangMath_sinWithDouble_(angle) * dangle);
+    float rx = IOSFloatArray_Get(pos, 0);
+    float ry = IOSFloatArray_Get(pos, 1);
+    float radius = v_x;
+    float angle = v_y;
+    float dradius = dv_x;
+    float dangle = dv_y;
+    float drx = IOSFloatArray_Get(vel, 0);
+    float dry = IOSFloatArray_Get(vel, 1);
+    float pos_x = (float) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
+    float pos_y = (float) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
+    float dpos_x = (float) (drx + dradius * JavaLangMath_sinWithDouble_(angle) + radius * JavaLangMath_cosWithDouble_(angle) * dangle);
+    float dpos_y = (float) (dry - dradius * JavaLangMath_cosWithDouble_(angle) + radius * JavaLangMath_sinWithDouble_(angle) * dangle);
     dv_x = dpos_x;
     dv_y = dpos_y;
     v_x = pos_x;
@@ -537,37 +550,37 @@ IOSObjectArray *ADXMLMotionPaths_names;
       *IOSDoubleArray_GetRef(slope, 1) = dpos_y;
     }
     if (!JavaLangFloat_isNaNWithFloat_(path_rotate)) {
-      jfloat rot = (jfloat) (path_rotate + JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dv_y, dv_x)));
+      float rot = (float) (path_rotate + JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dv_y, dv_x)));
       [((ADView *) nil_chk(view)) setRotationWithFloat:rot];
     }
   }
   else {
     if (!JavaLangFloat_isNaNWithFloat_(path_rotate)) {
-      jfloat rot = 0;
-      jfloat dx = dv_x + dv_width / 2;
-      jfloat dy = dv_y + dv_height / 2;
+      float rot = 0;
+      float dx = dv_x + dv_width / 2;
+      float dy = dv_y + dv_height / 2;
       JrePlusAssignFloatD(&rot, path_rotate + JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx)));
       [((ADView *) nil_chk(view)) setRotationWithFloat:rot];
     }
   }
   if ([ADXFloatLayout_class_() isInstance:view]) {
-    jfloat l = v_x;
-    jfloat t = v_y;
-    jfloat r = v_x + v_width;
-    jfloat b = v_y + v_height;
+    float l = v_x;
+    float t = v_y;
+    float r = v_x + v_width;
+    float b = v_y + v_height;
     [((id<ADXFloatLayout>) nil_chk(((id<ADXFloatLayout>) cast_check(view, ADXFloatLayout_class_())))) layoutWithFloat:l withFloat:t withFloat:r withFloat:b];
     return;
   }
-  jint l = JreFpToInt((0.5f + v_x));
-  jint t = JreFpToInt((0.5f + v_y));
-  jint r = JreFpToInt((0.5f + v_x + v_width));
-  jint b = JreFpToInt((0.5f + v_y + v_height));
-  jint i_width = r - l;
-  jint i_height = b - t;
-  jboolean remeasure = i_width != [((ADView *) nil_chk(view)) getMeasuredWidth] || i_height != [view getMeasuredHeight];
+  int32_t l = JreFpToInt((0.5f + v_x));
+  int32_t t = JreFpToInt((0.5f + v_y));
+  int32_t r = JreFpToInt((0.5f + v_x + v_width));
+  int32_t b = JreFpToInt((0.5f + v_y + v_height));
+  int32_t i_width = r - l;
+  int32_t i_height = b - t;
+  bool remeasure = i_width != [((ADView *) nil_chk(view)) getMeasuredWidth] || i_height != [view getMeasuredHeight];
   if (remeasure) {
-    jint widthMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(i_width, ADView_MeasureSpec_EXACTLY);
-    jint heightMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(i_height, ADView_MeasureSpec_EXACTLY);
+    int32_t widthMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(i_width, ADView_MeasureSpec_EXACTLY);
+    int32_t heightMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(i_height, ADView_MeasureSpec_EXACTLY);
     [view measureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
   }
   [view layoutWithInt:l withInt:t withInt:r withInt:b];
@@ -576,25 +589,25 @@ IOSObjectArray *ADXMLMotionPaths_names;
 - (void)getRectWithIntArray:(IOSIntArray *)toUse
             withDoubleArray:(IOSDoubleArray *)data
              withFloatArray:(IOSFloatArray *)path
-                    withInt:(jint)offset {
-  jfloat v_x = x_;
-  jfloat v_y = y_;
-  jfloat v_width = width_;
-  jfloat v_height = height_;
-  jfloat delta_path = 0;
-  jfloat rotation = 0;
-  jfloat alpha = 0;
-  jfloat rotationX = 0;
-  jfloat rotationY = 0;
-  jfloat scaleX = 1;
-  jfloat scaleY = 1;
-  jfloat pivotX = JavaLangFloat_NaN;
-  jfloat pivotY = JavaLangFloat_NaN;
-  jfloat translationX = 0;
-  jfloat translationY = 0;
+                    withInt:(int32_t)offset {
+  float v_x = x_;
+  float v_y = y_;
+  float v_width = width_;
+  float v_height = height_;
+  float delta_path = 0;
+  float rotation = 0;
+  float alpha = 0;
+  float rotationX = 0;
+  float rotationY = 0;
+  float scaleX = 1;
+  float scaleY = 1;
+  float pivotX = JavaLangFloat_NaN;
+  float pivotY = JavaLangFloat_NaN;
+  float translationX = 0;
+  float translationY = 0;
   NSString *mod;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
-    jfloat value = (jfloat) IOSDoubleArray_Get(nil_chk(data), i);
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+    float value = (float) IOSDoubleArray_Get(nil_chk(data), i);
     switch (IOSIntArray_Get(toUse, i)) {
       case ADXMLMotionPaths_OFF_POSITION:
       delta_path = value;
@@ -614,23 +627,23 @@ IOSObjectArray *ADXMLMotionPaths_names;
     }
   }
   if (mRelativeToController_ != nil) {
-    jfloat rx = [mRelativeToController_ getCenterX];
-    jfloat ry = [((ADXMotionController *) nil_chk(mRelativeToController_)) getCenterY];
-    jfloat radius = v_x;
-    jfloat angle = v_y;
-    v_x = (jfloat) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
-    v_y = (jfloat) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
+    float rx = [mRelativeToController_ getCenterX];
+    float ry = [((ADXMotionController *) nil_chk(mRelativeToController_)) getCenterY];
+    float radius = v_x;
+    float angle = v_y;
+    v_x = (float) (rx + radius * JavaLangMath_sinWithDouble_(angle) - v_width / 2);
+    v_y = (float) (ry - radius * JavaLangMath_cosWithDouble_(angle) - v_height / 2);
   }
-  jfloat x1 = v_x;
-  jfloat y1 = v_y;
-  jfloat x2 = v_x + v_width;
-  jfloat y2 = y1;
-  jfloat x3 = x2;
-  jfloat y3 = v_y + v_height;
-  jfloat x4 = x1;
-  jfloat y4 = y3;
-  jfloat cx = x1 + v_width / 2;
-  jfloat cy = y1 + v_height / 2;
+  float x1 = v_x;
+  float y1 = v_y;
+  float x2 = v_x + v_width;
+  float y2 = y1;
+  float x3 = x2;
+  float y3 = v_y + v_height;
+  float x4 = x1;
+  float y4 = y3;
+  float cx = x1 + v_width / 2;
+  float cy = y1 + v_height / 2;
   if (!JavaLangFloat_isNaNWithFloat_(pivotX)) {
     cx = x1 + (x2 - x1) * pivotX;
   }
@@ -638,30 +651,30 @@ IOSObjectArray *ADXMLMotionPaths_names;
     cy = y1 + (y3 - y1) * pivotY;
   }
   if (scaleX != 1) {
-    jfloat midx = (x1 + x2) / 2;
+    float midx = (x1 + x2) / 2;
     x1 = (x1 - midx) * scaleX + midx;
     x2 = (x2 - midx) * scaleX + midx;
     x3 = (x3 - midx) * scaleX + midx;
     x4 = (x4 - midx) * scaleX + midx;
   }
   if (scaleY != 1) {
-    jfloat midy = (y1 + y3) / 2;
+    float midy = (y1 + y3) / 2;
     y1 = (y1 - midy) * scaleY + midy;
     y2 = (y2 - midy) * scaleY + midy;
     y3 = (y3 - midy) * scaleY + midy;
     y4 = (y4 - midy) * scaleY + midy;
   }
   if (rotation != 0) {
-    jfloat sin = (jfloat) JavaLangMath_sinWithDouble_(JavaLangMath_toRadiansWithDouble_(rotation));
-    jfloat cos = (jfloat) JavaLangMath_cosWithDouble_(JavaLangMath_toRadiansWithDouble_(rotation));
-    jfloat tx1 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x1, y1);
-    jfloat ty1 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x1, y1);
-    jfloat tx2 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x2, y2);
-    jfloat ty2 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x2, y2);
-    jfloat tx3 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x3, y3);
-    jfloat ty3 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x3, y3);
-    jfloat tx4 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x4, y4);
-    jfloat ty4 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x4, y4);
+    float sin = (float) JavaLangMath_sinWithDouble_(JavaLangMath_toRadiansWithDouble_(rotation));
+    float cos = (float) JavaLangMath_cosWithDouble_(JavaLangMath_toRadiansWithDouble_(rotation));
+    float tx1 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x1, y1);
+    float ty1 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x1, y1);
+    float tx2 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x2, y2);
+    float ty2 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x2, y2);
+    float tx3 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x3, y3);
+    float ty3 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x3, y3);
+    float tx4 = ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x4, y4);
+    float ty4 = ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(sin, cos, cx, cy, x4, y4);
     x1 = tx1;
     y1 = ty1;
     x2 = tx2;
@@ -689,25 +702,25 @@ IOSObjectArray *ADXMLMotionPaths_names;
   *IOSFloatArray_GetRef(path, offset++) = y4;
 }
 
-- (void)setDpDtWithFloat:(jfloat)locationX
-               withFloat:(jfloat)locationY
+- (void)setDpDtWithFloat:(float)locationX
+               withFloat:(float)locationY
           withFloatArray:(IOSFloatArray *)mAnchorDpDt
             withIntArray:(IOSIntArray *)toUse
          withDoubleArray:(IOSDoubleArray *)deltaData
          withDoubleArray:(IOSDoubleArray *)data {
-  jfloat d_x = 0;
-  jfloat d_y = 0;
-  jfloat d_width = 0;
-  jfloat d_height = 0;
-  jfloat deltaScaleX = 0;
-  jfloat deltaScaleY = 0;
-  jfloat mPathRotate = JavaLangFloat_NaN;
-  jfloat deltaTranslationX = 0;
-  jfloat deltaTranslationY = 0;
+  float d_x = 0;
+  float d_y = 0;
+  float d_width = 0;
+  float d_height = 0;
+  float deltaScaleX = 0;
+  float deltaScaleY = 0;
+  float mPathRotate = JavaLangFloat_NaN;
+  float deltaTranslationX = 0;
+  float deltaTranslationY = 0;
   NSString *mod = @" dd = ";
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
-    jfloat deltaV = (jfloat) IOSDoubleArray_Get(nil_chk(deltaData), i);
-    jfloat value = (jfloat) IOSDoubleArray_Get(nil_chk(data), i);
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+    float deltaV = (float) IOSDoubleArray_Get(nil_chk(deltaData), i);
+    float value = (float) IOSDoubleArray_Get(nil_chk(data), i);
     switch (IOSIntArray_Get(toUse, i)) {
       case ADXMLMotionPaths_OFF_POSITION:
       break;
@@ -725,32 +738,32 @@ IOSObjectArray *ADXMLMotionPaths_names;
       break;
     }
   }
-  jfloat deltaX = d_x - deltaScaleX * d_width / 2;
-  jfloat deltaY = d_y - deltaScaleY * d_height / 2;
-  jfloat deltaWidth = d_width * (1 + deltaScaleX);
-  jfloat deltaHeight = d_height * (1 + deltaScaleY);
-  jfloat deltaRight = deltaX + deltaWidth;
-  jfloat deltaBottom = deltaY + deltaHeight;
+  float deltaX = d_x - deltaScaleX * d_width / 2;
+  float deltaY = d_y - deltaScaleY * d_height / 2;
+  float deltaWidth = d_width * (1 + deltaScaleX);
+  float deltaHeight = d_height * (1 + deltaScaleY);
+  float deltaRight = deltaX + deltaWidth;
+  float deltaBottom = deltaY + deltaHeight;
   *IOSFloatArray_GetRef(nil_chk(mAnchorDpDt), 0) = deltaX * (1 - locationX) + deltaRight * (locationX) + deltaTranslationX;
   *IOSFloatArray_GetRef(mAnchorDpDt, 1) = deltaY * (1 - locationY) + deltaBottom * (locationY) + deltaTranslationY;
 }
 
 - (void)fillStandardWithDoubleArray:(IOSDoubleArray *)data
                        withIntArray:(IOSIntArray *)toUse {
-  IOSFloatArray *set = [IOSFloatArray arrayWithFloats:(jfloat[]){ position_, x_, y_, width_, height_, mPathRotate_ } count:6];
-  jint c = 0;
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
+  IOSFloatArray *set = [IOSFloatArray arrayWithFloats:(float[]){ position_, x_, y_, width_, height_, mPathRotate_ } count:6];
+  int32_t c = 0;
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(toUse))->size_; i++) {
     if (IOSIntArray_Get(toUse, i) < set->size_) {
       *IOSDoubleArray_GetRef(nil_chk(data), c++) = IOSFloatArray_Get(set, IOSIntArray_Get(toUse, i));
     }
   }
 }
 
-- (jboolean)hasCustomDataWithNSString:(NSString *)name {
+- (bool)hasCustomDataWithNSString:(NSString *)name {
   return [((JavaUtilLinkedHashMap *) nil_chk(attributes_)) containsKeyWithId:name];
 }
 
-- (jint)getCustomDataCountWithNSString:(NSString *)name {
+- (int32_t)getCustomDataCountWithNSString:(NSString *)name {
   ADXConstraintAttribute *a = JreRetainedLocalValue([((JavaUtilLinkedHashMap *) nil_chk(attributes_)) getWithId:name]);
   if (a == nil) {
     return 0;
@@ -758,9 +771,9 @@ IOSObjectArray *ADXMLMotionPaths_names;
   return [a numberOfInterpolatedValues];
 }
 
-- (jint)getCustomDataWithNSString:(NSString *)name
-                  withDoubleArray:(IOSDoubleArray *)value
-                          withInt:(jint)offset {
+- (int32_t)getCustomDataWithNSString:(NSString *)name
+                     withDoubleArray:(IOSDoubleArray *)value
+                             withInt:(int32_t)offset {
   ADXConstraintAttribute *a = JreRetainedLocalValue([((JavaUtilLinkedHashMap *) nil_chk(attributes_)) getWithId:name]);
   if (a == nil) {
     return 0;
@@ -770,27 +783,27 @@ IOSObjectArray *ADXMLMotionPaths_names;
     return 1;
   }
   else {
-    jint N = [a numberOfInterpolatedValues];
+    int32_t N = [a numberOfInterpolatedValues];
     IOSFloatArray *f = [IOSFloatArray arrayWithLength:N];
     [a getValuesToInterpolateWithFloatArray:f];
-    for (jint i = 0; i < N; i++) {
+    for (int32_t i = 0; i < N; i++) {
       *IOSDoubleArray_GetRef(nil_chk(value), offset++) = IOSFloatArray_Get(f, i);
     }
     return N;
   }
 }
 
-- (void)setBoundsWithFloat:(jfloat)x
-                 withFloat:(jfloat)y
-                 withFloat:(jfloat)w
-                 withFloat:(jfloat)h {
+- (void)setBoundsWithFloat:(float)x
+                 withFloat:(float)y
+                 withFloat:(float)w
+                 withFloat:(float)h {
   self->x_ = x;
   self->y_ = y;
   width_ = w;
   height_ = h;
 }
 
-- (jint)compareToWithId:(ADXMLMotionPaths *)o {
+- (int32_t)compareToWithId:(ADXMLMotionPaths *)o {
   cast_chk(o, [ADXMLMotionPaths class]);
   return JavaLangFloat_compareWithFloat_withFloat_(position_, ((ADXMLMotionPaths *) nil_chk(o))->position_);
 }
@@ -957,7 +970,7 @@ ADXMLMotionPaths *create_ADXMLMotionPaths_initPackagePrivate() {
   J2OBJC_CREATE_IMPL(ADXMLMotionPaths, initPackagePrivate)
 }
 
-void ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(ADXMLMotionPaths *self, jint parentWidth, jint parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) {
+void ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(ADXMLMotionPaths *self, int32_t parentWidth, int32_t parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) {
   NSObject_init(self);
   self->mDrawPath_ = 0;
   self->mPathRotate_ = JavaLangFloat_NaN;
@@ -988,29 +1001,29 @@ void ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withA
   }
 }
 
-ADXMLMotionPaths *new_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(jint parentWidth, jint parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) {
+ADXMLMotionPaths *new_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(int32_t parentWidth, int32_t parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) {
   J2OBJC_NEW_IMPL(ADXMLMotionPaths, initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_, parentWidth, parentHeight, c, startTimePoint, endTimePoint)
 }
 
-ADXMLMotionPaths *create_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(jint parentWidth, jint parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) {
+ADXMLMotionPaths *create_ADXMLMotionPaths_initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_(int32_t parentWidth, int32_t parentHeight, ADXKeyPosition *c, ADXMLMotionPaths *startTimePoint, ADXMLMotionPaths *endTimePoint) {
   J2OBJC_CREATE_IMPL(ADXMLMotionPaths, initPackagePrivateWithInt_withInt_withADXKeyPosition_withADXMLMotionPaths_withADXMLMotionPaths_, parentWidth, parentHeight, c, startTimePoint, endTimePoint)
 }
 
-jfloat ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(jfloat sin, jfloat cos, jfloat cx, jfloat cy, jfloat x, jfloat y) {
+float ADXMLMotionPaths_xRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(float sin, float cos, float cx, float cy, float x, float y) {
   ADXMLMotionPaths_initialize();
   x = x - cx;
   y = y - cy;
   return x * cos - y * sin + cx;
 }
 
-jfloat ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(jfloat sin, jfloat cos, jfloat cx, jfloat cy, jfloat x, jfloat y) {
+float ADXMLMotionPaths_yRotateWithFloat_withFloat_withFloat_withFloat_withFloat_withFloat_(float sin, float cos, float cx, float cy, float x, float y) {
   ADXMLMotionPaths_initialize();
   x = x - cx;
   y = y - cy;
   return x * sin + y * cos + cy;
 }
 
-jboolean ADXMLMotionPaths_diffWithFloat_withFloat_(ADXMLMotionPaths *self, jfloat a, jfloat b) {
+bool ADXMLMotionPaths_diffWithFloat_withFloat_(ADXMLMotionPaths *self, float a, float b) {
   if (JavaLangFloat_isNaNWithFloat_(a) || JavaLangFloat_isNaNWithFloat_(b)) {
     return JavaLangFloat_isNaNWithFloat_(a) != JavaLangFloat_isNaNWithFloat_(b);
   }

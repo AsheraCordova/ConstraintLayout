@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\Direct.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Direct")
@@ -19,6 +20,9 @@
 @class ADXChainHead;
 @class ADXConstraintWidgetContainer;
 @class ADXLinearSystem;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADXBasicMeasure_Measurer;
 
 /*!
@@ -39,7 +43,7 @@
  @param level
  @return a formatted string for the indentation
  */
-+ (NSString *)lsWithInt:(jint)level;
++ (NSString *)lsWithInt:(int32_t)level;
 
 /*!
  @brief Try to directly resolve the chain
@@ -53,14 +57,14 @@
  @param isChainPacked
  @return true if fully resolved
  */
-+ (jboolean)solveChainWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
-                                   withADXLinearSystem:(ADXLinearSystem *)system
-                                               withInt:(jint)orientation
-                                               withInt:(jint)offset
-                                      withADXChainHead:(ADXChainHead *)chainHead
-                                           withBoolean:(jboolean)isChainSpread
-                                           withBoolean:(jboolean)isChainSpreadInside
-                                           withBoolean:(jboolean)isChainPacked;
++ (bool)solveChainWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)container
+                               withADXLinearSystem:(ADXLinearSystem *)system
+                                           withInt:(int32_t)orientation
+                                           withInt:(int32_t)offset
+                                  withADXChainHead:(ADXChainHead *)chainHead
+                                       withBoolean:(bool)isChainSpread
+                                       withBoolean:(bool)isChainSpreadInside
+                                       withBoolean:(bool)isChainPacked;
 
 /*!
  @brief Walk the dependency graph and solves it.
@@ -82,13 +86,14 @@ FOUNDATION_EXPORT ADXDirect *create_ADXDirect_init(void);
 
 FOUNDATION_EXPORT void ADXDirect_solvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(ADXConstraintWidgetContainer *layout, id<ADXBasicMeasure_Measurer> measurer);
 
-FOUNDATION_EXPORT NSString *ADXDirect_lsWithInt_(jint level);
+FOUNDATION_EXPORT NSString *ADXDirect_lsWithInt_(int32_t level);
 
-FOUNDATION_EXPORT jboolean ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_withBoolean_withBoolean_withBoolean_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, jint orientation, jint offset, ADXChainHead *chainHead, jboolean isChainSpread, jboolean isChainSpreadInside, jboolean isChainPacked);
+FOUNDATION_EXPORT bool ADXDirect_solveChainWithADXConstraintWidgetContainer_withADXLinearSystem_withInt_withInt_withADXChainHead_withBoolean_withBoolean_withBoolean_(ADXConstraintWidgetContainer *container, ADXLinearSystem *system, int32_t orientation, int32_t offset, ADXChainHead *chainHead, bool isChainSpread, bool isChainSpreadInside, bool isChainPacked);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXDirect)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerDirect ADXDirect;
+
 
 #endif
 

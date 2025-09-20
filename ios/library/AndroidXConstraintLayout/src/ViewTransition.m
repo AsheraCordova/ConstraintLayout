@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\ViewTransition.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AccelerateDecelerateInterpolator.h"
 #include "AccelerateInterpolator.h"
 #include "AnimationUtils.h"
@@ -32,7 +37,11 @@
 #include "ViewGroup.h"
 #include "ViewTransition.h"
 #include "ViewTransitionController.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Long.h"
 #include "java/lang/Runnable.h"
 #include "java/lang/System.h"
@@ -40,28 +49,35 @@
 #include "java/util/HashMap.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 #pragma clang diagnostic ignored "-Wprotocol"
 
 @interface ADXViewTransition () {
  @public
-  jint mId_;
-  jint mOnStateTransition_;
-  jboolean mDisabled_;
-  jint mPathMotionArc_;
-  jint mDuration_;
-  jint mUpDuration_;
-  jint mTargetId_;
+  int32_t mId_;
+  int32_t mOnStateTransition_;
+  bool mDisabled_;
+  int32_t mPathMotionArc_;
+  int32_t mDuration_;
+  int32_t mUpDuration_;
+  int32_t mTargetId_;
   NSString *mTargetString_;
-  jint mDefaultInterpolator_;
+  int32_t mDefaultInterpolator_;
   NSString *mDefaultInterpolatorString_;
-  jint mDefaultInterpolatorID_;
-  jint mSetsTag_;
-  jint mClearsTag_;
-  jint mIfTagSet_;
-  jint mIfTagNotSet_;
-  jint mSharedValueTarget_;
-  jint mSharedValueID_;
-  jint mSharedValueCurrent_;
+  int32_t mDefaultInterpolatorID_;
+  int32_t mSetsTag_;
+  int32_t mClearsTag_;
+  int32_t mIfTagSet_;
+  int32_t mIfTagNotSet_;
+  int32_t mSharedValueTarget_;
+  int32_t mSharedValueID_;
+  int32_t mSharedValueCurrent_;
 }
 
 - (void)updateTransitionWithADXMotionScene_Transition:(ADXMotionScene_Transition *)transition
@@ -77,17 +93,17 @@ inline NSString *ADXViewTransition_set_TAG(NSString *value);
 static NSString *ADXViewTransition_TAG = @"ViewTransition";
 J2OBJC_STATIC_FIELD_OBJ(ADXViewTransition, TAG, NSString *)
 
-inline jint ADXViewTransition_get_UNSET(void);
+inline int32_t ADXViewTransition_get_UNSET(void);
 #define ADXViewTransition_UNSET -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, UNSET, int32_t)
 
-inline jint ADXViewTransition_get_SPLINE_STRING(void);
+inline int32_t ADXViewTransition_get_SPLINE_STRING(void);
 #define ADXViewTransition_SPLINE_STRING -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, SPLINE_STRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, SPLINE_STRING, int32_t)
 
-inline jint ADXViewTransition_get_INTERPOLATOR_REFERENCE_ID(void);
+inline int32_t ADXViewTransition_get_INTERPOLATOR_REFERENCE_ID(void);
 #define ADXViewTransition_INTERPOLATOR_REFERENCE_ID -2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, INTERPOLATOR_REFERENCE_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXViewTransition, INTERPOLATOR_REFERENCE_ID, int32_t)
 
 __attribute__((unused)) static void ADXViewTransition_updateTransitionWithADXMotionScene_Transition_withADView_(ADXViewTransition *self, ADXMotionScene_Transition *transition, ADView *view);
 
@@ -98,7 +114,7 @@ __attribute__((unused)) static void ADXViewTransition_updateTransitionWithADXMot
 
 - (instancetype)initWithADXEasing:(ADXEasing *)capture$0;
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v;
+- (float)getInterpolationWithFloat:(float)v;
 
 @end
 
@@ -110,10 +126,11 @@ __attribute__((unused)) static ADXViewTransition_1 *new_ADXViewTransition_1_init
 
 __attribute__((unused)) static ADXViewTransition_1 *create_ADXViewTransition_1_initWithADXEasing_(ADXEasing *capture$0);
 
+
 @interface ADXViewTransition_Animate () {
  @public
-  jint mSetsTag_;
-  jint mClearsTag_;
+  int32_t mSetsTag_;
+  int32_t mClearsTag_;
 }
 
 @end
@@ -136,6 +153,7 @@ __attribute__((unused)) static ADXViewTransition_$Lambda$1 *new_ADXViewTransitio
 
 __attribute__((unused)) static ADXViewTransition_$Lambda$1 *create_ADXViewTransition_$Lambda$1_initWithADXViewTransition_withADViewArray_(ADXViewTransition *outer$, IOSObjectArray *capture$0);
 
+
 NSString *ADXViewTransition_VIEW_TRANSITION_TAG = @"ViewTransition";
 NSString *ADXViewTransition_KEY_FRAME_SET_TAG = @"KeyFrameSet";
 NSString *ADXViewTransition_CONSTRAINT_OVERRIDE = @"ConstraintOverride";
@@ -151,35 +169,35 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jint)getSharedValueCurrent {
+- (int32_t)getSharedValueCurrent {
   return mSharedValueCurrent_;
 }
 
-- (void)setSharedValueCurrentWithInt:(jint)sharedValueCurrent {
+- (void)setSharedValueCurrentWithInt:(int32_t)sharedValueCurrent {
   self->mSharedValueCurrent_ = sharedValueCurrent;
 }
 
-- (jint)getStateTransition {
+- (int32_t)getStateTransition {
   return mOnStateTransition_;
 }
 
-- (void)setStateTransitionWithInt:(jint)stateTransition {
+- (void)setStateTransitionWithInt:(int32_t)stateTransition {
   self->mOnStateTransition_ = stateTransition;
 }
 
-- (jint)getSharedValue {
+- (int32_t)getSharedValue {
   return mSharedValueTarget_;
 }
 
-- (void)setSharedValueWithInt:(jint)sharedValue {
+- (void)setSharedValueWithInt:(int32_t)sharedValue {
   self->mSharedValueTarget_ = sharedValue;
 }
 
-- (jint)getSharedValueID {
+- (int32_t)getSharedValueID {
   return mSharedValueID_;
 }
 
-- (void)setSharedValueIDWithInt:(jint)sharedValueID {
+- (void)setSharedValueIDWithInt:(int32_t)sharedValueID {
   self->mSharedValueID_ = sharedValueID;
 }
 
@@ -227,7 +245,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)applyTransitionWithADXViewTransitionController:(ADXViewTransitionController *)controller
                                    withADXMotionLayout:(ADXMotionLayout *)layout
-                                               withInt:(jint)fromId
+                                               withInt:(int32_t)fromId
                                   withADXConstraintSet:(ADXConstraintSet *)current
                                        withADViewArray:(IOSObjectArray *)views {
   if (mDisabled_) {
@@ -239,8 +257,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   if (mViewTransitionMode_ == ADXViewTransition_VIEWTRANSITIONMODE_ALLSTATES) {
     IOSIntArray *ids = [((ADXMotionLayout *) nil_chk(layout)) getConstraintSetIds];
-    for (jint i = 0; i < ((IOSIntArray *) nil_chk(ids))->size_; i++) {
-      jint id_ = IOSIntArray_Get(ids, i);
+    for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(ids))->size_; i++) {
+      int32_t id_ = IOSIntArray_Get(ids, i);
       if (id_ == fromId) {
         continue;
       }
@@ -250,8 +268,8 @@ J2OBJC_IGNORE_DESIGNATED_END
         ADView * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
         ADView * const *e__ = b__ + a__->size_;
         while (b__ < e__) {
-          ADView *view = *b__++;
-          ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((ADXConstraintSet *) nil_chk(cSet)) getConstraintWithInt:[((ADView *) nil_chk(view)) getId]]);
+          ADView *view = RETAIN_AND_AUTORELEASE(*b__++);
+          ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([((ADXConstraintSet *) nil_chk(cSet)) getConstraintWithInt:[view getId]]);
           if (mConstraintDelta_ != nil) {
             [mConstraintDelta_ applyDeltaWithADXConstraintSet_Constraint:constraint];
             [((JavaUtilHashMap *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->mCustomConstraints_)) putAllWithJavaUtilMap:((ADXConstraintSet_Constraint *) nil_chk(mConstraintDelta_))->mCustomConstraints_];
@@ -267,8 +285,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     ADView * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
     ADView * const *e__ = b__ + a__->size_;
     while (b__ < e__) {
-      ADView *view = *b__++;
-      ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([transformedState getConstraintWithInt:[((ADView *) nil_chk(view)) getId]]);
+      ADView *view = RETAIN_AND_AUTORELEASE(*b__++);
+      ADXConstraintSet_Constraint *constraint = JreRetainedLocalValue([transformedState getConstraintWithInt:[view getId]]);
       if (mConstraintDelta_ != nil) {
         [mConstraintDelta_ applyDeltaWithADXConstraintSet_Constraint:constraint];
         [((JavaUtilHashMap *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->mCustomConstraints_)) putAllWithJavaUtilMap:((ADXConstraintSet_Constraint *) nil_chk(mConstraintDelta_))->mCustomConstraints_];
@@ -284,7 +302,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     ADView * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
     ADView * const *e__ = b__ + a__->size_;
     while (b__ < e__) {
-      ADView *view = *b__++;
+      ADView *view = RETAIN_AND_AUTORELEASE(*b__++);
       ADXViewTransition_updateTransitionWithADXMotionScene_Transition_withADView_(self, tmpTransition, view);
     }
   }
@@ -297,15 +315,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXViewTransition_updateTransitionWithADXMotionScene_Transition_withADView_(self, transition, view);
 }
 
-- (jint)getId {
+- (int32_t)getId {
   return mId_;
 }
 
-- (void)setIdWithInt:(jint)id_ {
+- (void)setIdWithInt:(int32_t)id_ {
   self->mId_ = id_;
 }
 
-- (jboolean)matchesViewWithADView:(ADView *)view {
+- (bool)matchesViewWithADView:(ADView *)view {
   if (view == nil) {
     return false;
   }
@@ -331,7 +349,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return false;
 }
 
-- (jboolean)supportsWithInt:(jint)action {
+- (bool)supportsWithInt:(int32_t)action {
   if (mOnStateTransition_ == ADXViewTransition_ONSTATE_ACTION_DOWN) {
     return action == ADMotionEvent_ACTION_DOWN;
   }
@@ -344,17 +362,17 @@ J2OBJC_IGNORE_DESIGNATED_END
   return false;
 }
 
-- (jboolean)isEnabled {
+- (bool)isEnabled {
   return !mDisabled_;
 }
 
-- (void)setEnabledWithBoolean:(jboolean)enable {
+- (void)setEnabledWithBoolean:(bool)enable {
   self->mDisabled_ = !enable;
 }
 
-- (jboolean)checkTagsWithADView:(ADView *)view {
-  jboolean set = (mIfTagSet_ == ADXViewTransition_UNSET) ? true : (nil != [((ADView *) nil_chk(view)) getTagWithInt:mIfTagSet_]);
-  jboolean notSet = (mIfTagNotSet_ == ADXViewTransition_UNSET) ? true : nil == [((ADView *) nil_chk(view)) getTagWithInt:mIfTagNotSet_];
+- (bool)checkTagsWithADView:(ADView *)view {
+  bool set = (mIfTagSet_ == ADXViewTransition_UNSET) ? true : (nil != [((ADView *) nil_chk(view)) getTagWithInt:mIfTagSet_]);
+  bool notSet = (mIfTagNotSet_ == ADXViewTransition_UNSET) ? true : nil == [((ADView *) nil_chk(view)) getTagWithInt:mIfTagNotSet_];
   return set && notSet;
 }
 
@@ -506,7 +524,7 @@ void ADXViewTransition_updateTransitionWithADXMotionScene_Transition_withADView_
   }
   [((ADXMotionScene_Transition *) nil_chk(transition)) setPathMotionArcWithInt:self->mPathMotionArc_];
   [transition setInterpolatorInfoWithInt:self->mDefaultInterpolator_ withNSString:self->mDefaultInterpolatorString_ withInt:self->mDefaultInterpolatorID_];
-  jint id_ = [((ADView *) nil_chk(view)) getId];
+  int32_t id_ = [((ADView *) nil_chk(view)) getId];
   if (self->mKeyFrames_ != nil) {
     JavaUtilArrayList *keys = JreRetainedLocalValue([self->mKeyFrames_ getKeyFramesForViewWithInt:ADXKeyFrames_UNSET]);
     ADXKeyFrames *keyFrames = create_ADXKeyFrames_init();
@@ -519,6 +537,8 @@ void ADXViewTransition_updateTransitionWithADXMotionScene_Transition_withADView_
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransition)
 
+J2OBJC_NAME_MAPPING(ADXViewTransition, "androidx.constraintlayout.motion.widget", "ADX")
+
 @implementation ADXViewTransition_1
 
 - (instancetype)initWithADXEasing:(ADXEasing *)capture$0 {
@@ -526,8 +546,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransition)
   return self;
 }
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v {
-  return (jfloat) [((ADXEasing *) nil_chk(val$easing_)) getWithDouble:v];
+- (float)getInterpolationWithFloat:(float)v {
+  return (float) [((ADXEasing *) nil_chk(val$easing_)) getWithDouble:v];
 }
 
 - (void)dealloc {
@@ -550,7 +570,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransition)
     { "val$easing_", "LADXEasing;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXEasing;", "getInterpolation", "F", "LADXViewTransition;", "getInterpolatorWithADContext:" };
-  static const J2ObjcClassInfo _ADXViewTransition_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x8010, 2, 1, 3, -1, 4, -1, -1 };
+  static const J2ObjcClassInfo _ADXViewTransition_1 = { "", "androidx.constraintlayout.motion.widget", ptrTable, methods, fields, 7, 0x8000, 2, 1, 3, -1, 4, -1, -1 };
   return &_ADXViewTransition_1;
 }
 
@@ -573,17 +593,17 @@ ADXViewTransition_1 *create_ADXViewTransition_1_initWithADXEasing_(ADXEasing *ca
 
 - (instancetype)initWithADXViewTransitionController:(ADXViewTransitionController *)controller
                             withADXMotionController:(ADXMotionController *)motionController
-                                            withInt:(jint)duration
-                                            withInt:(jint)upDuration
-                                            withInt:(jint)mode
+                                            withInt:(int32_t)duration
+                                            withInt:(int32_t)upDuration
+                                            withInt:(int32_t)mode
                                  withADInterpolator:(id<ADInterpolator>)interpolator
-                                            withInt:(jint)setTag
-                                            withInt:(jint)clearTag {
+                                            withInt:(int32_t)setTag
+                                            withInt:(int32_t)clearTag {
   ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(self, controller, motionController, duration, upDuration, mode, interpolator, setTag, clearTag);
   return self;
 }
 
-- (void)reverseWithBoolean:(jboolean)dir {
+- (void)reverseWithBoolean:(bool)dir {
   reverse_ = dir;
   if (reverse_ && mUpDuration_ != ADXViewTransition_UNSET) {
     mDpositionDt_ = (mUpDuration_ == 0) ? JavaLangFloat_MAX_VALUE : 1.0f / mUpDuration_;
@@ -602,15 +622,15 @@ ADXViewTransition_1 *create_ADXViewTransition_1_initWithADXEasing_(ADXEasing *ca
 }
 
 - (void)mutateReverse {
-  jlong current = JavaLangSystem_nanoTime();
-  jlong elapse = current - mLastRender_;
+  int64_t current = JavaLangSystem_nanoTime();
+  int64_t elapse = current - mLastRender_;
   mLastRender_ = current;
-  JreMinusAssignFloatF(&mPosition_, ((jfloat) (elapse * 1E-6)) * mDpositionDt_);
+  JreMinusAssignFloatF(&mPosition_, ((float) (elapse * 1E-6)) * mDpositionDt_);
   if (mPosition_ < 0.0f) {
     mPosition_ = 0.0f;
   }
-  jfloat ipos = (mInterpolator_ == nil) ? mPosition_ : [((id<ADInterpolator>) nil_chk(mInterpolator_)) getInterpolationWithFloat:mPosition_];
-  jboolean repaint = [((ADXMotionController *) nil_chk(mMC_)) interpolateWithADView:mMC_->mView_ withFloat:ipos withLong:current withADXKeyCache:mCache_];
+  float ipos = (mInterpolator_ == nil) ? mPosition_ : [((id<ADInterpolator>) nil_chk(mInterpolator_)) getInterpolationWithFloat:mPosition_];
+  bool repaint = [((ADXMotionController *) nil_chk(mMC_)) interpolateWithADView:mMC_->mView_ withFloat:ipos withLong:current withADXKeyCache:mCache_];
   if (mPosition_ <= 0) {
     if (mSetsTag_ != ADXViewTransition_UNSET) {
       [((ADView *) nil_chk([((ADXMotionController *) nil_chk(mMC_)) getView])) setTagWithInt:mSetsTag_ withId:JavaLangLong_valueOfWithLong_(JavaLangSystem_nanoTime())];
@@ -626,15 +646,15 @@ ADXViewTransition_1 *create_ADXViewTransition_1_initWithADXEasing_(ADXEasing *ca
 }
 
 - (void)mutateForward {
-  jlong current = JavaLangSystem_nanoTime();
-  jlong elapse = current - mLastRender_;
+  int64_t current = JavaLangSystem_nanoTime();
+  int64_t elapse = current - mLastRender_;
   mLastRender_ = current;
-  JrePlusAssignFloatF(&mPosition_, ((jfloat) (elapse * 1E-6)) * mDpositionDt_);
+  JrePlusAssignFloatF(&mPosition_, ((float) (elapse * 1E-6)) * mDpositionDt_);
   if (mPosition_ >= 1.0f) {
     mPosition_ = 1.0f;
   }
-  jfloat ipos = (mInterpolator_ == nil) ? mPosition_ : [((id<ADInterpolator>) nil_chk(mInterpolator_)) getInterpolationWithFloat:mPosition_];
-  jboolean repaint = [((ADXMotionController *) nil_chk(mMC_)) interpolateWithADView:mMC_->mView_ withFloat:ipos withLong:current withADXKeyCache:mCache_];
+  float ipos = (mInterpolator_ == nil) ? mPosition_ : [((id<ADInterpolator>) nil_chk(mInterpolator_)) getInterpolationWithFloat:mPosition_];
+  bool repaint = [((ADXMotionController *) nil_chk(mMC_)) interpolateWithADView:mMC_->mView_ withFloat:ipos withLong:current withADXKeyCache:mCache_];
   if (mPosition_ >= 1) {
     if (mSetsTag_ != ADXViewTransition_UNSET) {
       [((ADView *) nil_chk([((ADXMotionController *) nil_chk(mMC_)) getView])) setTagWithInt:mSetsTag_ withId:JavaLangLong_valueOfWithLong_(JavaLangSystem_nanoTime())];
@@ -651,9 +671,9 @@ ADXViewTransition_1 *create_ADXViewTransition_1_initWithADXEasing_(ADXEasing *ca
   }
 }
 
-- (void)reactToWithInt:(jint)action
-             withFloat:(jfloat)x
-             withFloat:(jfloat)y {
+- (void)reactToWithInt:(int32_t)action
+             withFloat:(float)x
+             withFloat:(float)y {
   {
     ADView *view;
     switch (action) {
@@ -724,7 +744,7 @@ ADXViewTransition_1 *create_ADXViewTransition_1_initWithADXEasing_(ADXEasing *ca
 
 @end
 
-void ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransition_Animate *self, ADXViewTransitionController *controller, ADXMotionController *motionController, jint duration, jint upDuration, jint mode, id<ADInterpolator> interpolator, jint setTag, jint clearTag) {
+void ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransition_Animate *self, ADXViewTransitionController *controller, ADXMotionController *motionController, int32_t duration, int32_t upDuration, int32_t mode, id<ADInterpolator> interpolator, int32_t setTag, int32_t clearTag) {
   NSObject_init(self);
   JreStrongAssignAndConsume(&self->mCache_, new_ADXKeyCache_init());
   self->reverse_ = false;
@@ -747,11 +767,11 @@ void ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotion
   [self mutate];
 }
 
-ADXViewTransition_Animate *new_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, jint duration, jint upDuration, jint mode, id<ADInterpolator> interpolator, jint setTag, jint clearTag) {
+ADXViewTransition_Animate *new_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, int32_t duration, int32_t upDuration, int32_t mode, id<ADInterpolator> interpolator, int32_t setTag, int32_t clearTag) {
   J2OBJC_NEW_IMPL(ADXViewTransition_Animate, initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_, controller, motionController, duration, upDuration, mode, interpolator, setTag, clearTag)
 }
 
-ADXViewTransition_Animate *create_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, jint duration, jint upDuration, jint mode, id<ADInterpolator> interpolator, jint setTag, jint clearTag) {
+ADXViewTransition_Animate *create_ADXViewTransition_Animate_initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_(ADXViewTransitionController *controller, ADXMotionController *motionController, int32_t duration, int32_t upDuration, int32_t mode, id<ADInterpolator> interpolator, int32_t setTag, int32_t clearTag) {
   J2OBJC_CREATE_IMPL(ADXViewTransition_Animate, initWithADXViewTransitionController_withADXMotionController_withInt_withInt_withInt_withADInterpolator_withInt_withInt_, controller, motionController, duration, upDuration, mode, interpolator, setTag, clearTag)
 }
 
@@ -766,8 +786,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransition_Animate)
       ADView * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
       ADView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADView *view = *b__++;
-        [((ADView *) nil_chk(view)) setTagWithInt:this$0_->mSetsTag_ withId:JavaLangLong_valueOfWithLong_(JavaLangSystem_nanoTime())];
+        ADView *view = RETAIN_AND_AUTORELEASE(*b__++);
+        [view setTagWithInt:this$0_->mSetsTag_ withId:JavaLangLong_valueOfWithLong_(JavaLangSystem_nanoTime())];
       }
     }
   }
@@ -777,8 +797,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTransition_Animate)
       ADView * const *b__ = ((IOSObjectArray *) nil_chk(a__))->buffer_;
       ADView * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
-        ADView *view = *b__++;
-        [((ADView *) nil_chk(view)) setTagWithInt:this$0_->mClearsTag_ withId:nil];
+        ADView *view = RETAIN_AND_AUTORELEASE(*b__++);
+        [view setTagWithInt:this$0_->mClearsTag_ withId:nil];
       }
     }
   }

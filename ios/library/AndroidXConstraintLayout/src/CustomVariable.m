@@ -3,27 +3,41 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\CustomVariable.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CustomVariable.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "MotionWidget.h"
 #include "TypedValues.h"
 #include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/RuntimeException.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXCustomVariable () {
  @public
-  jint mType_;
-  jint mIntegerValue_;
-  jfloat mFloatValue_;
+  int32_t mType_;
+  int32_t mIntegerValue_;
+  float mFloatValue_;
   NSString *mStringValue_;
 }
 
-+ (jint)clampWithInt:(jint)c;
++ (int32_t)clampWithInt:(int32_t)c;
 
 @end
 
@@ -33,7 +47,7 @@ inline NSString *ADXCustomVariable_get_TAG(void);
 static NSString *ADXCustomVariable_TAG = @"TransitionLayout";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXCustomVariable, TAG, NSString *)
 
-__attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
+__attribute__((unused)) static int32_t ADXCustomVariable_clampWithInt_(int32_t c);
 
 @implementation ADXCustomVariable
 
@@ -47,34 +61,34 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
 }
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
+                         withInt:(int32_t)type
                     withNSString:(NSString *)value {
   ADXCustomVariable_initWithNSString_withInt_withNSString_(self, name, type, value);
   return self;
 }
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
-                         withInt:(jint)value {
+                         withInt:(int32_t)type
+                         withInt:(int32_t)value {
   ADXCustomVariable_initWithNSString_withInt_withInt_(self, name, type, value);
   return self;
 }
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
-                       withFloat:(jfloat)value {
+                         withInt:(int32_t)type
+                       withFloat:(float)value {
   ADXCustomVariable_initWithNSString_withInt_withFloat_(self, name, type, value);
   return self;
 }
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)type
-                     withBoolean:(jboolean)value {
+                         withInt:(int32_t)type
+                     withBoolean:(bool)value {
   ADXCustomVariable_initWithNSString_withInt_withBoolean_(self, name, type, value);
   return self;
 }
 
-+ (NSString *)colorStringWithInt:(jint)v {
++ (NSString *)colorStringWithInt:(int32_t)v {
   return ADXCustomVariable_colorStringWithInt_(v);
 }
 
@@ -97,23 +111,23 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   return JreStrcat("$$", str, @"????");
 }
 
-- (jint)getType {
+- (int32_t)getType {
   return mType_;
 }
 
-- (jboolean)getBooleanValue {
+- (bool)getBooleanValue {
   return mBooleanValue_;
 }
 
-- (jfloat)getFloatValue {
+- (float)getFloatValue {
   return mFloatValue_;
 }
 
-- (jint)getColorValue {
+- (int32_t)getColorValue {
   return mIntegerValue_;
 }
 
-- (jint)getIntegerValue {
+- (int32_t)getIntegerValue {
   return mIntegerValue_;
 }
 
@@ -121,7 +135,7 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   return mStringValue_;
 }
 
-- (jboolean)isContinuous {
+- (bool)isContinuous {
   switch (mType_) {
     case ADXTypedValues_Custom_TYPE_REFERENCE:
     case ADXTypedValues_Custom_TYPE_BOOLEAN:
@@ -132,15 +146,15 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   }
 }
 
-- (void)setFloatValueWithFloat:(jfloat)value {
+- (void)setFloatValueWithFloat:(float)value {
   mFloatValue_ = value;
 }
 
-- (void)setBooleanValueWithBoolean:(jboolean)value {
+- (void)setBooleanValueWithBoolean:(bool)value {
   mBooleanValue_ = value;
 }
 
-- (void)setIntValueWithInt:(jint)value {
+- (void)setIntValueWithInt:(int32_t)value {
   mIntegerValue_ = value;
 }
 
@@ -148,7 +162,7 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   JreStrongAssign(&mStringValue_, value);
 }
 
-- (jint)numberOfInterpolatedValues {
+- (int32_t)numberOfInterpolatedValues {
   switch (mType_) {
     case ADXTypedValues_Custom_TYPE_COLOR:
     return 4;
@@ -157,7 +171,7 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   }
 }
 
-- (jfloat)getValueToInterpolate {
+- (float)getValueToInterpolate {
   switch (mType_) {
     case ADXTypedValues_Custom_TYPE_INT:
     return mIntegerValue_;
@@ -177,13 +191,13 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
 
 - (void)getValuesToInterpolateWithFloatArray:(IOSFloatArray *)ret {
   {
-    jint a;
-    jint r;
-    jint g;
-    jint b;
-    jfloat f_r;
-    jfloat f_g;
-    jfloat f_b;
+    int32_t a;
+    int32_t r;
+    int32_t g;
+    int32_t b;
+    float f_r;
+    float f_g;
+    float f_b;
     switch (mType_) {
       case ADXTypedValues_Custom_TYPE_INT:
       *IOSFloatArray_GetRef(nil_chk(ret), 0) = mIntegerValue_;
@@ -192,13 +206,13 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
       *IOSFloatArray_GetRef(nil_chk(ret), 0) = mFloatValue_;
       break;
       case ADXTypedValues_Custom_TYPE_COLOR:
-      a = (jint) 0xFF & (JreRShift32(mIntegerValue_, 24));
-      r = (jint) 0xFF & (JreRShift32(mIntegerValue_, 16));
-      g = (jint) 0xFF & (JreRShift32(mIntegerValue_, 8));
-      b = (jint) 0xFF & (mIntegerValue_);
-      f_r = (jfloat) JavaLangMath_powWithDouble_withDouble_(r / 255.0f, 2.2);
-      f_g = (jfloat) JavaLangMath_powWithDouble_withDouble_(g / 255.0f, 2.2);
-      f_b = (jfloat) JavaLangMath_powWithDouble_withDouble_(b / 255.0f, 2.2);
+      a = (int32_t) 0xFF & (JreRShift32(mIntegerValue_, 24));
+      r = (int32_t) 0xFF & (JreRShift32(mIntegerValue_, 16));
+      g = (int32_t) 0xFF & (JreRShift32(mIntegerValue_, 8));
+      b = (int32_t) 0xFF & (mIntegerValue_);
+      f_r = (float) JavaLangMath_powWithDouble_withDouble_(r / 255.0f, 2.2);
+      f_g = (float) JavaLangMath_powWithDouble_withDouble_(g / 255.0f, 2.2);
+      f_b = (float) JavaLangMath_powWithDouble_withDouble_(b / 255.0f, 2.2);
       *IOSFloatArray_GetRef(nil_chk(ret), 0) = f_r;
       *IOSFloatArray_GetRef(ret, 1) = f_g;
       *IOSFloatArray_GetRef(ret, 2) = f_b;
@@ -228,7 +242,7 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
     break;
     case ADXTypedValues_Custom_TYPE_COLOR:
     mIntegerValue_ = ADXCustomVariable_hsvToRgbWithFloat_withFloat_withFloat_(IOSFloatArray_Get(nil_chk(value), 0), IOSFloatArray_Get(value, 1), IOSFloatArray_Get(value, 2));
-    mIntegerValue_ = (mIntegerValue_ & (jint) 0xFFFFFF) | (JreLShift32(ADXCustomVariable_clampWithInt_(JreFpToInt(((jint) 0xFF * IOSFloatArray_Get(value, 3)))), 24));
+    mIntegerValue_ = (mIntegerValue_ & (int32_t) 0xFFFFFF) | (JreLShift32(ADXCustomVariable_clampWithInt_(JreFpToInt(((int32_t) 0xFF * IOSFloatArray_Get(value, 3)))), 24));
     break;
     case ADXTypedValues_Custom_TYPE_STRING:
     @throw create_JavaLangRuntimeException_initWithNSString_(@"Color does not have a single color to interpolate");
@@ -238,13 +252,13 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   }
 }
 
-+ (jint)hsvToRgbWithFloat:(jfloat)hue
-                withFloat:(jfloat)saturation
-                withFloat:(jfloat)value {
++ (int32_t)hsvToRgbWithFloat:(float)hue
+                   withFloat:(float)saturation
+                   withFloat:(float)value {
   return ADXCustomVariable_hsvToRgbWithFloat_withFloat_withFloat_(hue, saturation, value);
 }
 
-- (jboolean)diffWithADXCustomVariable:(ADXCustomVariable *)CustomAttribute {
+- (bool)diffWithADXCustomVariable:(ADXCustomVariable *)CustomAttribute {
   if (CustomAttribute == nil || mType_ != CustomAttribute->mType_) {
     return false;
   }
@@ -267,13 +281,13 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
 }
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)attributeType {
+                         withInt:(int32_t)attributeType {
   ADXCustomVariable_initWithNSString_withInt_(self, name, attributeType);
   return self;
 }
 
 - (instancetype)initWithNSString:(NSString *)name
-                         withInt:(jint)attributeType
+                         withInt:(int32_t)attributeType
                           withId:(id)value {
   ADXCustomVariable_initWithNSString_withInt_withId_(self, name, attributeType, value);
   return self;
@@ -309,35 +323,35 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   }
 }
 
-+ (jint)clampWithInt:(jint)c {
++ (int32_t)clampWithInt:(int32_t)c {
   return ADXCustomVariable_clampWithInt_(c);
 }
 
-- (jint)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value {
-  jint r = ADXCustomVariable_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
-  jint g = ADXCustomVariable_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
-  jint b = ADXCustomVariable_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
-  jint a = ADXCustomVariable_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
-  jint color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
+- (int32_t)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value {
+  int32_t r = ADXCustomVariable_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+  int32_t g = ADXCustomVariable_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+  int32_t b = ADXCustomVariable_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+  int32_t a = ADXCustomVariable_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
+  int32_t color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
   return color;
 }
 
 - (void)setInterpolatedValueWithADXMotionWidget:(ADXMotionWidget *)view
                                  withFloatArray:(IOSFloatArray *)value {
   {
-    jint r;
-    jint g;
-    jint b;
-    jint a;
-    jint color;
+    int32_t r;
+    int32_t g;
+    int32_t b;
+    int32_t a;
+    int32_t color;
     switch (mType_) {
       case ADXTypedValues_Custom_TYPE_INT:
       [((ADXMotionWidget *) nil_chk(view)) setCustomAttributeWithNSString:mName_ withInt:mType_ withInt:JreFpToInt(IOSFloatArray_Get(nil_chk(value), 0))];
       break;
       case ADXTypedValues_Custom_TYPE_COLOR:
-      r = ADXCustomVariable_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
-      g = ADXCustomVariable_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
-      b = ADXCustomVariable_clampWithInt_(JreFpToInt(((jfloat) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
+      r = ADXCustomVariable_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(nil_chk(value), 0), 1.0 / 2.2) * 255.0f)));
+      g = ADXCustomVariable_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 1), 1.0 / 2.2) * 255.0f)));
+      b = ADXCustomVariable_clampWithInt_(JreFpToInt(((float) JavaLangMath_powWithDouble_withDouble_(IOSFloatArray_Get(value, 2), 1.0 / 2.2) * 255.0f)));
       a = ADXCustomVariable_clampWithInt_(JreFpToInt((IOSFloatArray_Get(value, 3) * 255.0f)));
       color = (JreLShift32(a, 24)) | (JreLShift32(r, 16)) | (JreLShift32(g, 8)) | b;
       [((ADXMotionWidget *) nil_chk(view)) setCustomAttributeWithNSString:mName_ withInt:mType_ withInt:color];
@@ -356,10 +370,10 @@ __attribute__((unused)) static jint ADXCustomVariable_clampWithInt_(jint c);
   }
 }
 
-+ (jint)rgbaTocColorWithFloat:(jfloat)r
-                    withFloat:(jfloat)g
-                    withFloat:(jfloat)b
-                    withFloat:(jfloat)a {
++ (int32_t)rgbaTocColorWithFloat:(float)r
+                       withFloat:(float)g
+                       withFloat:(float)b
+                       withFloat:(float)a {
   return ADXCustomVariable_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(r, g, b, a);
 }
 
@@ -507,7 +521,7 @@ ADXCustomVariable *create_ADXCustomVariable_initWithADXCustomVariable_(ADXCustom
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithADXCustomVariable_, c)
 }
 
-void ADXCustomVariable_initWithNSString_withInt_withNSString_(ADXCustomVariable *self, NSString *name, jint type, NSString *value) {
+void ADXCustomVariable_initWithNSString_withInt_withNSString_(ADXCustomVariable *self, NSString *name, int32_t type, NSString *value) {
   NSObject_init(self);
   self->mIntegerValue_ = JavaLangInteger_MIN_VALUE;
   self->mFloatValue_ = JavaLangFloat_NaN;
@@ -517,15 +531,15 @@ void ADXCustomVariable_initWithNSString_withInt_withNSString_(ADXCustomVariable 
   JreStrongAssign(&self->mStringValue_, value);
 }
 
-ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, jint type, NSString *value) {
+ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, int32_t type, NSString *value) {
   J2OBJC_NEW_IMPL(ADXCustomVariable, initWithNSString_withInt_withNSString_, name, type, value)
 }
 
-ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, jint type, NSString *value) {
+ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withNSString_(NSString *name, int32_t type, NSString *value) {
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithNSString_withInt_withNSString_, name, type, value)
 }
 
-void ADXCustomVariable_initWithNSString_withInt_withInt_(ADXCustomVariable *self, NSString *name, jint type, jint value) {
+void ADXCustomVariable_initWithNSString_withInt_withInt_(ADXCustomVariable *self, NSString *name, int32_t type, int32_t value) {
   NSObject_init(self);
   self->mIntegerValue_ = JavaLangInteger_MIN_VALUE;
   self->mFloatValue_ = JavaLangFloat_NaN;
@@ -540,15 +554,15 @@ void ADXCustomVariable_initWithNSString_withInt_withInt_(ADXCustomVariable *self
   }
 }
 
-ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, jint type, jint value) {
+ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, int32_t type, int32_t value) {
   J2OBJC_NEW_IMPL(ADXCustomVariable, initWithNSString_withInt_withInt_, name, type, value)
 }
 
-ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, jint type, jint value) {
+ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withInt_(NSString *name, int32_t type, int32_t value) {
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithNSString_withInt_withInt_, name, type, value)
 }
 
-void ADXCustomVariable_initWithNSString_withInt_withFloat_(ADXCustomVariable *self, NSString *name, jint type, jfloat value) {
+void ADXCustomVariable_initWithNSString_withInt_withFloat_(ADXCustomVariable *self, NSString *name, int32_t type, float value) {
   NSObject_init(self);
   self->mIntegerValue_ = JavaLangInteger_MIN_VALUE;
   self->mFloatValue_ = JavaLangFloat_NaN;
@@ -558,15 +572,15 @@ void ADXCustomVariable_initWithNSString_withInt_withFloat_(ADXCustomVariable *se
   self->mFloatValue_ = value;
 }
 
-ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, jint type, jfloat value) {
+ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, int32_t type, float value) {
   J2OBJC_NEW_IMPL(ADXCustomVariable, initWithNSString_withInt_withFloat_, name, type, value)
 }
 
-ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, jint type, jfloat value) {
+ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withFloat_(NSString *name, int32_t type, float value) {
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithNSString_withInt_withFloat_, name, type, value)
 }
 
-void ADXCustomVariable_initWithNSString_withInt_withBoolean_(ADXCustomVariable *self, NSString *name, jint type, jboolean value) {
+void ADXCustomVariable_initWithNSString_withInt_withBoolean_(ADXCustomVariable *self, NSString *name, int32_t type, bool value) {
   NSObject_init(self);
   self->mIntegerValue_ = JavaLangInteger_MIN_VALUE;
   self->mFloatValue_ = JavaLangFloat_NaN;
@@ -576,28 +590,28 @@ void ADXCustomVariable_initWithNSString_withInt_withBoolean_(ADXCustomVariable *
   self->mBooleanValue_ = value;
 }
 
-ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, jint type, jboolean value) {
+ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, int32_t type, bool value) {
   J2OBJC_NEW_IMPL(ADXCustomVariable, initWithNSString_withInt_withBoolean_, name, type, value)
 }
 
-ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, jint type, jboolean value) {
+ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withBoolean_(NSString *name, int32_t type, bool value) {
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithNSString_withInt_withBoolean_, name, type, value)
 }
 
-NSString *ADXCustomVariable_colorStringWithInt_(jint v) {
+NSString *ADXCustomVariable_colorStringWithInt_(int32_t v) {
   ADXCustomVariable_initialize();
   NSString *str = JreStrcat("$$", @"00000000", JavaLangInteger_toHexStringWithInt_(v));
   return JreStrcat("C$", '#', [str java_substring:[str java_length] - 8]);
 }
 
-jint ADXCustomVariable_hsvToRgbWithFloat_withFloat_withFloat_(jfloat hue, jfloat saturation, jfloat value) {
+int32_t ADXCustomVariable_hsvToRgbWithFloat_withFloat_withFloat_(float hue, float saturation, float value) {
   ADXCustomVariable_initialize();
-  jint h = JreFpToInt((hue * 6));
-  jfloat f = hue * 6 - h;
-  jint p = JreFpToInt((0.5f + 255 * value * (1 - saturation)));
-  jint q = JreFpToInt((0.5f + 255 * value * (1 - f * saturation)));
-  jint t = JreFpToInt((0.5f + 255 * value * (1 - (1 - f) * saturation)));
-  jint v = JreFpToInt((0.5f + 255 * value));
+  int32_t h = JreFpToInt((hue * 6));
+  float f = hue * 6 - h;
+  int32_t p = JreFpToInt((0.5f + 255 * value * (1 - saturation)));
+  int32_t q = JreFpToInt((0.5f + 255 * value * (1 - f * saturation)));
+  int32_t t = JreFpToInt((0.5f + 255 * value * (1 - (1 - f) * saturation)));
+  int32_t v = JreFpToInt((0.5f + 255 * value));
   switch (h) {
     case 0:
     return 0XFF000000 | ((JreLShift32(v, 16)) + (JreLShift32(t, 8)) + p);
@@ -615,7 +629,7 @@ jint ADXCustomVariable_hsvToRgbWithFloat_withFloat_withFloat_(jfloat hue, jfloat
   return 0;
 }
 
-void ADXCustomVariable_initWithNSString_withInt_(ADXCustomVariable *self, NSString *name, jint attributeType) {
+void ADXCustomVariable_initWithNSString_withInt_(ADXCustomVariable *self, NSString *name, int32_t attributeType) {
   NSObject_init(self);
   self->mIntegerValue_ = JavaLangInteger_MIN_VALUE;
   self->mFloatValue_ = JavaLangFloat_NaN;
@@ -624,15 +638,15 @@ void ADXCustomVariable_initWithNSString_withInt_(ADXCustomVariable *self, NSStri
   self->mType_ = attributeType;
 }
 
-ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_(NSString *name, jint attributeType) {
+ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_(NSString *name, int32_t attributeType) {
   J2OBJC_NEW_IMPL(ADXCustomVariable, initWithNSString_withInt_, name, attributeType)
 }
 
-ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_(NSString *name, jint attributeType) {
+ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_(NSString *name, int32_t attributeType) {
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithNSString_withInt_, name, attributeType)
 }
 
-void ADXCustomVariable_initWithNSString_withInt_withId_(ADXCustomVariable *self, NSString *name, jint attributeType, id value) {
+void ADXCustomVariable_initWithNSString_withInt_withId_(ADXCustomVariable *self, NSString *name, int32_t attributeType, id value) {
   NSObject_init(self);
   self->mIntegerValue_ = JavaLangInteger_MIN_VALUE;
   self->mFloatValue_ = JavaLangFloat_NaN;
@@ -642,11 +656,11 @@ void ADXCustomVariable_initWithNSString_withInt_withId_(ADXCustomVariable *self,
   [self setValueWithId:value];
 }
 
-ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, jint attributeType, id value) {
+ADXCustomVariable *new_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, int32_t attributeType, id value) {
   J2OBJC_NEW_IMPL(ADXCustomVariable, initWithNSString_withInt_withId_, name, attributeType, value)
 }
 
-ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, jint attributeType, id value) {
+ADXCustomVariable *create_ADXCustomVariable_initWithNSString_withInt_withId_(NSString *name, int32_t attributeType, id value) {
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithNSString_withInt_withId_, name, attributeType, value)
 }
 
@@ -668,9 +682,9 @@ ADXCustomVariable *create_ADXCustomVariable_initWithADXCustomVariable_withId_(AD
   J2OBJC_CREATE_IMPL(ADXCustomVariable, initWithADXCustomVariable_withId_, source, value)
 }
 
-jint ADXCustomVariable_clampWithInt_(jint c) {
+int32_t ADXCustomVariable_clampWithInt_(int32_t c) {
   ADXCustomVariable_initialize();
-  jint N = 255;
+  int32_t N = 255;
   c &= ~(JreRShift32(c, 31));
   c -= N;
   c &= (JreRShift32(c, 31));
@@ -678,14 +692,16 @@ jint ADXCustomVariable_clampWithInt_(jint c) {
   return c;
 }
 
-jint ADXCustomVariable_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(jfloat r, jfloat g, jfloat b, jfloat a) {
+int32_t ADXCustomVariable_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(float r, float g, float b, float a) {
   ADXCustomVariable_initialize();
-  jint ir = ADXCustomVariable_clampWithInt_(JreFpToInt((r * 255.0f)));
-  jint ig = ADXCustomVariable_clampWithInt_(JreFpToInt((g * 255.0f)));
-  jint ib = ADXCustomVariable_clampWithInt_(JreFpToInt((b * 255.0f)));
-  jint ia = ADXCustomVariable_clampWithInt_(JreFpToInt((a * 255.0f)));
-  jint color = (JreLShift32(ia, 24)) | (JreLShift32(ir, 16)) | (JreLShift32(ig, 8)) | ib;
+  int32_t ir = ADXCustomVariable_clampWithInt_(JreFpToInt((r * 255.0f)));
+  int32_t ig = ADXCustomVariable_clampWithInt_(JreFpToInt((g * 255.0f)));
+  int32_t ib = ADXCustomVariable_clampWithInt_(JreFpToInt((b * 255.0f)));
+  int32_t ia = ADXCustomVariable_clampWithInt_(JreFpToInt((a * 255.0f)));
+  int32_t color = (JreLShift32(ia, 24)) | (JreLShift32(ir, 16)) | (JreLShift32(ig, 8)) | ib;
   return color;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCustomVariable)
+
+J2OBJC_NAME_MAPPING(ADXCustomVariable, "androidx.constraintlayout.core.motion", "ADX")

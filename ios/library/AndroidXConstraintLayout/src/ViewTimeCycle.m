@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\utils\ViewTimeCycle.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAttribute.h"
 #include "CurveFit.h"
 #include "IOSClass.h"
@@ -17,13 +22,24 @@
 #include "TimeCycleSplineSet.h"
 #include "View.h"
 #include "ViewTimeCycle.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalAccessException.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/NoSuchMethodException.h"
 #include "java/lang/RuntimeException.h"
 #include "java/lang/reflect/InvocationTargetException.h"
 #include "java/lang/reflect/Method.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 inline NSString *ADXViewTimeCycle_get_TAG(void);
@@ -39,21 +55,21 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
 }
 
-- (jfloat)getWithFloat:(jfloat)pos
-              withLong:(jlong)time
-            withADView:(ADView *)view
-       withADXKeyCache:(ADXKeyCache *)cache {
+- (float)getWithFloat:(float)pos
+             withLong:(int64_t)time
+           withADView:(ADView *)view
+      withADXKeyCache:(ADXKeyCache *)cache {
   [((ADXCurveFit *) nil_chk(mCurveFit_)) getPosWithDouble:pos withFloatArray:mCache_];
-  jfloat period = IOSFloatArray_Get(nil_chk(mCache_), ADXTimeCycleSplineSet_CURVE_PERIOD);
+  float period = IOSFloatArray_Get(nil_chk(mCache_), ADXTimeCycleSplineSet_CURVE_PERIOD);
   if (period == 0) {
     mContinue_ = false;
     return IOSFloatArray_Get(mCache_, ADXTimeCycleSplineSet_CURVE_OFFSET);
@@ -64,14 +80,14 @@ J2OBJC_IGNORE_DESIGNATED_END
       last_cycle_ = 0;
     }
   }
-  jlong delta_time = time - last_time_;
-  last_cycle_ = (jfloat) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
+  int64_t delta_time = time - last_time_;
+  last_cycle_ = (float) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
   [((ADXKeyCache *) nil_chk(cache)) setFloatValueWithId:view withNSString:mType_ withInt:0 withFloat:last_cycle_];
   last_time_ = time;
-  jfloat v = IOSFloatArray_Get(nil_chk(mCache_), ADXTimeCycleSplineSet_CURVE_VALUE);
-  jfloat wave = [self calcWaveWithFloat:last_cycle_];
-  jfloat offset = IOSFloatArray_Get(nil_chk(mCache_), ADXTimeCycleSplineSet_CURVE_OFFSET);
-  jfloat value = v * wave + offset;
+  float v = IOSFloatArray_Get(nil_chk(mCache_), ADXTimeCycleSplineSet_CURVE_VALUE);
+  float wave = [self calcWaveWithFloat:last_cycle_];
+  float offset = IOSFloatArray_Get(nil_chk(mCache_), ADXTimeCycleSplineSet_CURVE_OFFSET);
+  float value = v * wave + offset;
   mContinue_ = (v != 0.0f || period != 0.0f);
   return value;
 }
@@ -82,7 +98,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (ADXViewTimeCycle *)makeSplineWithNSString:(NSString *)str
-                                    withLong:(jlong)currentTime {
+                                    withLong:(int64_t)currentTime {
   return ADXViewTimeCycle_makeSplineWithNSString_withLong_(str, currentTime);
 }
 
@@ -122,7 +138,7 @@ ADXViewTimeCycle *ADXViewTimeCycle_makeCustomSplineWithNSString_withADSparseArra
   return create_ADXViewTimeCycle_CustomSet_initWithNSString_withADSparseArray_(str, attrList);
 }
 
-ADXViewTimeCycle *ADXViewTimeCycle_makeSplineWithNSString_withLong_(NSString *str, jlong currentTime) {
+ADXViewTimeCycle *ADXViewTimeCycle_makeSplineWithNSString_withLong_(NSString *str, int64_t currentTime) {
   ADXViewTimeCycle_initialize();
   ADXViewTimeCycle *timeCycle;
   switch (JreIndexOfStr(str, (id[]){ ADXKey_ALPHA, ADXKey_ELEVATION, ADXKey_ROTATION, ADXKey_ROTATION_X, ADXKey_ROTATION_Y, ADXKey_TRANSITION_PATH_ROTATE, ADXKey_SCALE_X, ADXKey_SCALE_Y, ADXKey_TRANSLATION_X, ADXKey_TRANSLATION_Y, ADXKey_TRANSLATION_Z, ADXKey_PROGRESS }, 12)) {
@@ -171,6 +187,8 @@ ADXViewTimeCycle *ADXViewTimeCycle_makeSplineWithNSString_withLong_(NSString *st
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTimeCycle)
 
+J2OBJC_NAME_MAPPING(ADXViewTimeCycle, "androidx.constraintlayout.motion.utils", "ADX")
+
 @implementation ADXViewTimeCycle_ElevationSet
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -180,10 +198,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   {
     [((ADView *) nil_chk(view)) setElevationWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   }
@@ -231,10 +249,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setAlphaWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -280,10 +298,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -329,10 +347,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setRotationXWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -378,10 +396,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setRotationYWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -427,20 +445,20 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   return mContinue_;
 }
 
-- (jboolean)setPathRotateWithADView:(ADView *)view
-                    withADXKeyCache:(ADXKeyCache *)cache
-                          withFloat:(jfloat)t
-                           withLong:(jlong)time
-                         withDouble:(jdouble)dx
-                         withDouble:(jdouble)dy {
-  [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache] + (jfloat) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
+- (bool)setPathRotateWithADView:(ADView *)view
+                withADXKeyCache:(ADXKeyCache *)cache
+                      withFloat:(float)t
+                       withLong:(int64_t)time
+                     withDouble:(double)dx
+                     withDouble:(double)dy {
+  [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache] + (float) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
   return mContinue_;
 }
 
@@ -487,10 +505,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setScaleXWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -536,10 +554,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setScaleYWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -585,10 +603,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setTranslationXWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -634,10 +652,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADView *) nil_chk(view)) setTranslationYWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   return mContinue_;
 }
@@ -683,10 +701,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   {
     [((ADView *) nil_chk(view)) setTranslationZWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   }
@@ -733,20 +751,20 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTimeCycle_TranslationZset)
   return self;
 }
 
-- (void)setupWithInt:(jint)curveType {
-  jint size = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) size];
-  jint dimensionality = [((ADXConstraintAttribute *) nil_chk([((ADSparseArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
+- (void)setupWithInt:(int32_t)curveType {
+  int32_t size = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) size];
+  int32_t dimensionality = [((ADXConstraintAttribute *) nil_chk([((ADSparseArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
   IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:size];
   JreStrongAssignAndConsume(&mTempValues_, [IOSFloatArray newArrayWithLength:dimensionality + 2]);
   JreStrongAssignAndConsume(&mCache_CustomSet_, [IOSFloatArray newArrayWithLength:dimensionality]);
-  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ size, dimensionality + 2 }];
-  for (jint i = 0; i < size; i++) {
-    jint key = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
+  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ size, dimensionality + 2 }];
+  for (int32_t i = 0; i < size; i++) {
+    int32_t key = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
     ADXConstraintAttribute *ca = JreRetainedLocalValue([((ADSparseArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:i]);
     IOSFloatArray *waveProp = [((ADSparseArray *) nil_chk(mWaveProperties_)) valueAtWithInt:i];
     *IOSDoubleArray_GetRef(time, i) = key * 1E-2;
     [((ADXConstraintAttribute *) nil_chk(ca)) getValuesToInterpolateWithFloatArray:mTempValues_];
-    for (jint k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
+    for (int32_t k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
       *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), k) = IOSFloatArray_Get(mTempValues_, k);
     }
     *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), dimensionality) = IOSFloatArray_Get(nil_chk(waveProp), 0);
@@ -755,43 +773,43 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewTimeCycle_TranslationZset)
   JreStrongAssign(&mCurveFit_, ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(curveType, time, values));
 }
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset {
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset {
   @throw create_JavaLangRuntimeException_initWithNSString_(@"don't call for custom attribute call setPoint(pos, ConstraintAttribute,...)");
 }
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
 withADXConstraintAttribute:(ADXConstraintAttribute *)value
-              withFloat:(jfloat)period
-                withInt:(jint)shape
-              withFloat:(jfloat)offset {
+              withFloat:(float)period
+                withInt:(int32_t)shape
+              withFloat:(float)offset {
   [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) appendWithInt:position withId:value];
-  [((ADSparseArray *) nil_chk(mWaveProperties_)) appendWithInt:position withId:[IOSFloatArray arrayWithFloats:(jfloat[]){ period, offset } count:2]];
+  [((ADSparseArray *) nil_chk(mWaveProperties_)) appendWithInt:position withId:[IOSFloatArray arrayWithFloats:(float[]){ period, offset } count:2]];
   mWaveShape_ = JavaLangMath_maxWithInt_withInt_(mWaveShape_, shape);
 }
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   [((ADXCurveFit *) nil_chk(mCurveFit_)) getPosWithDouble:t withFloatArray:mTempValues_];
-  jfloat period = IOSFloatArray_Get(mTempValues_, ((IOSFloatArray *) nil_chk(mTempValues_))->size_ - 2);
-  jfloat offset = IOSFloatArray_Get(mTempValues_, mTempValues_->size_ - 1);
-  jlong delta_time = time - last_time_;
+  float period = IOSFloatArray_Get(mTempValues_, ((IOSFloatArray *) nil_chk(mTempValues_))->size_ - 2);
+  float offset = IOSFloatArray_Get(mTempValues_, mTempValues_->size_ - 1);
+  int64_t delta_time = time - last_time_;
   if (JavaLangFloat_isNaNWithFloat_(last_cycle_)) {
     last_cycle_ = [((ADXKeyCache *) nil_chk(cache)) getFloatValueWithId:view withNSString:mAttributeName_ withInt:0];
     if (JavaLangFloat_isNaNWithFloat_(last_cycle_)) {
       last_cycle_ = 0;
     }
   }
-  last_cycle_ = (jfloat) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
+  last_cycle_ = (float) (fmod((last_cycle_ + delta_time * 1E-9 * period), 1.0));
   last_time_ = time;
-  jfloat wave = [self calcWaveWithFloat:last_cycle_];
+  float wave = [self calcWaveWithFloat:last_cycle_];
   mContinue_ = false;
-  for (jint i = 0; i < ((IOSFloatArray *) nil_chk(mCache_CustomSet_))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSFloatArray *) nil_chk(mCache_CustomSet_))->size_; i++) {
     mContinue_ |= (IOSFloatArray_Get(nil_chk(mTempValues_), i) != 0.0);
     *IOSFloatArray_GetRef(mCache_CustomSet_, i) = IOSFloatArray_Get(mTempValues_, i) * wave + offset;
   }
@@ -868,10 +886,10 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)setPropertyWithADView:(ADView *)view
-                        withFloat:(jfloat)t
-                         withLong:(jlong)time
-                  withADXKeyCache:(ADXKeyCache *)cache {
+- (bool)setPropertyWithADView:(ADView *)view
+                    withFloat:(float)t
+                     withLong:(int64_t)time
+              withADXKeyCache:(ADXKeyCache *)cache {
   if ([view isKindOfClass:[ADXMotionLayout class]]) {
     [((ADXMotionLayout *) nil_chk(((ADXMotionLayout *) view))) setProgressWithFloat:[self getWithFloat:t withLong:time withADView:view withADXKeyCache:cache]];
   }

@@ -3,8 +3,21 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\Rectangle.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "Rectangle.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXRectangle
@@ -16,38 +29,38 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (void)setBoundsWithInt:(jint)x
-                 withInt:(jint)y
-                 withInt:(jint)width
-                 withInt:(jint)height {
+- (void)setBoundsWithInt:(int32_t)x
+                 withInt:(int32_t)y
+                 withInt:(int32_t)width
+                 withInt:(int32_t)height {
   self->x_ = x;
   self->y_ = y;
   self->width_ = width;
   self->height_ = height;
 }
 
-- (void)growWithInt:(jint)w
-            withInt:(jint)h {
+- (void)growWithInt:(int32_t)w
+            withInt:(int32_t)h {
   x_ -= w;
   y_ -= h;
   width_ += 2 * w;
   height_ += 2 * h;
 }
 
-- (jboolean)intersectsWithADXRectangle:(ADXRectangle *)bounds {
+- (bool)intersectsWithADXRectangle:(ADXRectangle *)bounds {
   return x_ >= ((ADXRectangle *) nil_chk(bounds))->x_ && x_ < bounds->x_ + bounds->width_ && y_ >= bounds->y_ && y_ < bounds->y_ + bounds->height_;
 }
 
-- (jboolean)containsWithInt:(jint)x
-                    withInt:(jint)y {
+- (bool)containsWithInt:(int32_t)x
+                withInt:(int32_t)y {
   return x >= self->x_ && x < self->x_ + self->width_ && y >= self->y_ && y < self->y_ + self->height_;
 }
 
-- (jint)getCenterX {
+- (int32_t)getCenterX {
   return JreIntDiv((x_ + width_), 2);
 }
 
-- (jint)getCenterY {
+- (int32_t)getCenterY {
   return JreIntDiv((y_ + height_), 2);
 }
 
@@ -98,3 +111,5 @@ ADXRectangle *create_ADXRectangle_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXRectangle)
+
+J2OBJC_NAME_MAPPING(ADXRectangle, "androidx.constraintlayout.core.widgets", "ADX")

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\CLRect.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLRect")
@@ -16,21 +17,23 @@
 #if !defined (ADXCLRect_) && (INCLUDE_ALL_CLRect || defined(INCLUDE_ADXCLRect))
 #define ADXCLRect_
 
+@class JavaLangInteger;
+
 @interface ADXCLRect : NSObject {
  @public
-  jint bottom_;
-  jint left_;
-  jint right_;
-  jint top_;
+  int32_t bottom_;
+  int32_t left_;
+  int32_t right_;
+  int32_t top_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (jint)height;
+- (int32_t)height;
 
-- (jint)width;
+- (int32_t)width;
 
 @end
 
@@ -45,6 +48,7 @@ FOUNDATION_EXPORT ADXCLRect *create_ADXCLRect_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLRect)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsCLRect ADXCLRect;
+
 
 #endif
 

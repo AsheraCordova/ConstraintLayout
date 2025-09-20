@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\WidgetRun.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
 #include "Dependency.h"
@@ -14,26 +19,37 @@
 #include "RunGroup.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Enum.h"
+#include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/util/List.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXWidgetRun ()
 
-- (void)resolveDimensionWithInt:(jint)orientation
-                        withInt:(jint)distance;
+- (void)resolveDimensionWithInt:(int32_t)orientation
+                        withInt:(int32_t)distance;
 
 @end
 
 __attribute__((unused)) static ADXDependencyNode *ADXWidgetRun_getTargetWithADXConstraintAnchor_(ADXWidgetRun *self, ADXConstraintAnchor *anchor);
 
-__attribute__((unused)) static void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, jint orientation, jint distance);
+__attribute__((unused)) static void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, int32_t orientation, int32_t distance);
 
-__attribute__((unused)) static jint ADXWidgetRun_getLimitedDimensionWithInt_withInt_(ADXWidgetRun *self, jint dimension, jint orientation);
+__attribute__((unused)) static int32_t ADXWidgetRun_getLimitedDimensionWithInt_withInt_(ADXWidgetRun *self, int32_t dimension, int32_t orientation);
 
-__attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withInt_(ADXWidgetRun_RunType *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withInt_(ADXWidgetRun_RunType *self, NSString *__name, int32_t __ordinal);
 
 @implementation ADXWidgetRun
 
@@ -62,38 +78,38 @@ __attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withIn
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jboolean)supportsWrapComputation {
+- (bool)supportsWrapComputation {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
 }
 
-- (jboolean)isDimensionResolved {
+- (bool)isDimensionResolved {
   return ((ADXDimensionDependency *) nil_chk(dimension_))->resolved_;
 }
 
-- (jboolean)isCenterConnection {
-  jint connections = 0;
-  jint count = [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) size];
-  for (jint i = 0; i < count; i++) {
+- (bool)isCenterConnection {
+  int32_t connections = 0;
+  int32_t count = [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXDependencyNode *dependency = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(start_))->targets_)) getWithInt:i]);
-    if (((ADXDependencyNode *) nil_chk(dependency))->run_ != self) {
+    if (!JreObjectEqualsEquals(((ADXDependencyNode *) nil_chk(dependency))->run_, self)) {
       connections++;
     }
   }
   count = [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) size];
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADXDependencyNode *dependency = JreRetainedLocalValue([((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(end_))->targets_)) getWithInt:i]);
-    if (((ADXDependencyNode *) nil_chk(dependency))->run_ != self) {
+    if (!JreObjectEqualsEquals(((ADXDependencyNode *) nil_chk(dependency))->run_, self)) {
       connections++;
     }
   }
   return connections >= 2;
 }
 
-- (jlong)wrapSizeWithInt:(jint)direction {
+- (int64_t)wrapSizeWithInt:(int32_t)direction {
   if (((ADXDimensionDependency *) nil_chk(dimension_))->resolved_) {
-    jlong size = dimension_->value_;
+    int64_t size = dimension_->value_;
     if ([self isCenterConnection]) {
       size += ((ADXDependencyNode *) nil_chk(start_))->margin_ - ((ADXDependencyNode *) nil_chk(end_))->margin_;
     }
@@ -117,15 +133,15 @@ __attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withIn
 - (void)updateRunCenterWithADXDependency:(id<ADXDependency>)dependency
                  withADXConstraintAnchor:(ADXConstraintAnchor *)startAnchor
                  withADXConstraintAnchor:(ADXConstraintAnchor *)endAnchor
-                                 withInt:(jint)orientation {
+                                 withInt:(int32_t)orientation {
   ADXDependencyNode *startTarget = ADXWidgetRun_getTargetWithADXConstraintAnchor_(self, startAnchor);
   ADXDependencyNode *endTarget = ADXWidgetRun_getTargetWithADXConstraintAnchor_(self, endAnchor);
   if (!(((ADXDependencyNode *) nil_chk(startTarget))->resolved_ && ((ADXDependencyNode *) nil_chk(endTarget))->resolved_)) {
     return;
   }
-  jint startPos = startTarget->value_ + [((ADXConstraintAnchor *) nil_chk(startAnchor)) getMargin];
-  jint endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ - [((ADXConstraintAnchor *) nil_chk(endAnchor)) getMargin];
-  jint distance = endPos - startPos;
+  int32_t startPos = startTarget->value_ + [((ADXConstraintAnchor *) nil_chk(startAnchor)) getMargin];
+  int32_t endPos = ((ADXDependencyNode *) nil_chk(endTarget))->value_ - [((ADXConstraintAnchor *) nil_chk(endAnchor)) getMargin];
+  int32_t distance = endPos - startPos;
   if (!((ADXDimensionDependency *) nil_chk(dimension_))->resolved_ && dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT)) {
     ADXWidgetRun_resolveDimensionWithInt_withInt_(self, orientation, distance);
   }
@@ -137,19 +153,19 @@ __attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withIn
     [((ADXDependencyNode *) nil_chk(end_)) resolveWithInt:endPos];
     return;
   }
-  jfloat bias = orientation == ADXConstraintWidget_HORIZONTAL ? [((ADXConstraintWidget *) nil_chk(widget_)) getHorizontalBiasPercent] : [((ADXConstraintWidget *) nil_chk(widget_)) getVerticalBiasPercent];
-  if (startTarget == endTarget) {
+  float bias = orientation == ADXConstraintWidget_HORIZONTAL ? [((ADXConstraintWidget *) nil_chk(widget_)) getHorizontalBiasPercent] : [((ADXConstraintWidget *) nil_chk(widget_)) getVerticalBiasPercent];
+  if (JreObjectEqualsEquals(startTarget, endTarget)) {
     startPos = startTarget->value_;
     endPos = endTarget->value_;
     bias = 0.5f;
   }
-  jint availableDistance = (endPos - startPos - ((ADXDimensionDependency *) nil_chk(dimension_))->value_);
+  int32_t availableDistance = (endPos - startPos - ((ADXDimensionDependency *) nil_chk(dimension_))->value_);
   [((ADXDependencyNode *) nil_chk(start_)) resolveWithInt:JreFpToInt((0.5f + startPos + availableDistance * bias))];
   [((ADXDependencyNode *) nil_chk(end_)) resolveWithInt:((ADXDependencyNode *) nil_chk(start_))->value_ + ((ADXDimensionDependency *) nil_chk(dimension_))->value_];
 }
 
-- (void)resolveDimensionWithInt:(jint)orientation
-                        withInt:(jint)distance {
+- (void)resolveDimensionWithInt:(int32_t)orientation
+                        withInt:(int32_t)distance {
   ADXWidgetRun_resolveDimensionWithInt_withInt_(self, orientation, distance);
 }
 
@@ -162,13 +178,13 @@ __attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withIn
 - (void)updateWithADXDependency:(id<ADXDependency>)dependency {
 }
 
-- (jint)getLimitedDimensionWithInt:(jint)dimension
-                           withInt:(jint)orientation {
+- (int32_t)getLimitedDimensionWithInt:(int32_t)dimension
+                              withInt:(int32_t)orientation {
   return ADXWidgetRun_getLimitedDimensionWithInt_withInt_(self, dimension, orientation);
 }
 
 - (ADXDependencyNode *)getTargetWithADXConstraintAnchor:(ADXConstraintAnchor *)anchor
-                                                withInt:(jint)orientation {
+                                                withInt:(int32_t)orientation {
   if (((ADXConstraintAnchor *) nil_chk(anchor))->mTarget_ == nil) {
     return nil;
   }
@@ -197,7 +213,7 @@ __attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withIn
 
 - (void)addTargetWithADXDependencyNode:(ADXDependencyNode *)node
                  withADXDependencyNode:(ADXDependencyNode *)target
-                               withInt:(jint)margin {
+                               withInt:(int32_t)margin {
   [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(node))->targets_)) addWithId:target];
   node->margin_ = margin;
   [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(target))->dependencies_)) addWithId:node];
@@ -205,7 +221,7 @@ __attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withIn
 
 - (void)addTargetWithADXDependencyNode:(ADXDependencyNode *)node
                  withADXDependencyNode:(ADXDependencyNode *)target
-                               withInt:(jint)marginFactor
+                               withInt:(int32_t)marginFactor
             withADXDimensionDependency:(ADXDimensionDependency *)dimensionDependency {
   [((id<JavaUtilList>) nil_chk(((ADXDependencyNode *) nil_chk(node))->targets_)) addWithId:target];
   [((id<JavaUtilList>) nil_chk(node->targets_)) addWithId:dimension_];
@@ -215,14 +231,14 @@ __attribute__((unused)) static void ADXWidgetRun_RunType_initWithNSString_withIn
   [((id<JavaUtilList>) nil_chk(((ADXDimensionDependency *) nil_chk(dimensionDependency))->dependencies_)) addWithId:node];
 }
 
-- (jlong)getWrapDimension {
+- (int64_t)getWrapDimension {
   if (((ADXDimensionDependency *) nil_chk(dimension_))->resolved_) {
     return dimension_->value_;
   }
   return 0;
 }
 
-- (jboolean)isResolved {
+- (bool)isResolved {
   return resolved_;
 }
 
@@ -360,7 +376,7 @@ ADXDependencyNode *ADXWidgetRun_getTargetWithADXConstraintAnchor_(ADXWidgetRun *
   return target;
 }
 
-void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, jint orientation, jint distance) {
+void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, int32_t orientation, int32_t distance) {
   switch (self->matchConstraintsType_) {
     case ADXConstraintWidget_MATCH_CONSTRAINT_SPREAD:
     {
@@ -373,9 +389,9 @@ void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, jint orie
       if (parent != nil) {
         ADXWidgetRun *run = orientation == ADXConstraintWidget_HORIZONTAL ? parent->horizontalRun_ : (id) parent->verticalRun_;
         if (((ADXDimensionDependency *) nil_chk(run->dimension_))->resolved_) {
-          jfloat percent = orientation == ADXConstraintWidget_HORIZONTAL ? ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintPercentWidth_ : ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintPercentHeight_;
-          jint targetDimensionValue = run->dimension_->value_;
-          jint size = JreFpToInt((0.5f + targetDimensionValue * percent));
+          float percent = orientation == ADXConstraintWidget_HORIZONTAL ? ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintPercentWidth_ : ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintPercentHeight_;
+          int32_t targetDimensionValue = run->dimension_->value_;
+          int32_t size = JreFpToInt((0.5f + targetDimensionValue * percent));
           [self->dimension_ resolveWithInt:ADXWidgetRun_getLimitedDimensionWithInt_withInt_(self, size, orientation)];
         }
       }
@@ -383,7 +399,7 @@ void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, jint orie
     break;
     case ADXConstraintWidget_MATCH_CONSTRAINT_WRAP:
     {
-      jint wrapValue = ADXWidgetRun_getLimitedDimensionWithInt_withInt_(self, ((ADXDimensionDependency *) nil_chk(self->dimension_))->wrapValue_, orientation);
+      int32_t wrapValue = ADXWidgetRun_getLimitedDimensionWithInt_withInt_(self, ((ADXDimensionDependency *) nil_chk(self->dimension_))->wrapValue_, orientation);
       [((ADXDimensionDependency *) nil_chk(self->dimension_)) resolveWithInt:JavaLangMath_minWithInt_withInt_(wrapValue, distance)];
     }
     break;
@@ -394,8 +410,8 @@ void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, jint orie
       else {
         ADXWidgetRun *run = (orientation == ADXConstraintWidget_HORIZONTAL) ? self->widget_->verticalRun_ : (id) self->widget_->horizontalRun_;
         if (((ADXDimensionDependency *) nil_chk(run->dimension_))->resolved_) {
-          jfloat ratio = [self->widget_ getDimensionRatio];
-          jint value;
+          float ratio = [self->widget_ getDimensionRatio];
+          int32_t value;
           if (orientation == ADXConstraintWidget_VERTICAL) {
             value = JreFpToInt((0.5f + ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_ / ratio));
           }
@@ -412,11 +428,11 @@ void ADXWidgetRun_resolveDimensionWithInt_withInt_(ADXWidgetRun *self, jint orie
   }
 }
 
-jint ADXWidgetRun_getLimitedDimensionWithInt_withInt_(ADXWidgetRun *self, jint dimension, jint orientation) {
+int32_t ADXWidgetRun_getLimitedDimensionWithInt_withInt_(ADXWidgetRun *self, int32_t dimension, int32_t orientation) {
   if (orientation == ADXConstraintWidget_HORIZONTAL) {
-    jint max = ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintMaxWidth_;
-    jint min = self->widget_->mMatchConstraintMinWidth_;
-    jint value = JavaLangMath_maxWithInt_withInt_(min, dimension);
+    int32_t max = ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintMaxWidth_;
+    int32_t min = self->widget_->mMatchConstraintMinWidth_;
+    int32_t value = JavaLangMath_maxWithInt_withInt_(min, dimension);
     if (max > 0) {
       value = JavaLangMath_minWithInt_withInt_(max, dimension);
     }
@@ -425,9 +441,9 @@ jint ADXWidgetRun_getLimitedDimensionWithInt_withInt_(ADXWidgetRun *self, jint d
     }
   }
   else {
-    jint max = ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintMaxHeight_;
-    jint min = self->widget_->mMatchConstraintMinHeight_;
-    jint value = JavaLangMath_maxWithInt_withInt_(min, dimension);
+    int32_t max = ((ADXConstraintWidget *) nil_chk(self->widget_))->mMatchConstraintMaxHeight_;
+    int32_t min = self->widget_->mMatchConstraintMinHeight_;
+    int32_t value = JavaLangMath_maxWithInt_withInt_(min, dimension);
     if (max > 0) {
       value = JavaLangMath_minWithInt_withInt_(max, dimension);
     }
@@ -439,6 +455,8 @@ jint ADXWidgetRun_getLimitedDimensionWithInt_withInt_(ADXWidgetRun *self, jint d
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXWidgetRun)
+
+J2OBJC_NAME_MAPPING(ADXWidgetRun, "androidx.constraintlayout.core.widgets.analyzer", "ADX")
 
 J2OBJC_INITIALIZED_DEFN(ADXWidgetRun_RunType)
 
@@ -456,6 +474,24 @@ ADXWidgetRun_RunType *ADXWidgetRun_RunType_values_[4];
 
 - (ADXWidgetRun_RunType_Enum)toNSEnum {
   return (ADXWidgetRun_RunType_Enum)[self ordinal];
+}
+
+- (ADXWidgetRun_RunType_Enum)enumValue {
+  return (ADXWidgetRun_RunType_Enum)[self ordinal];
+}
+
++ (ADXWidgetRun_RunType *)fromNSEnum:(ADXWidgetRun_RunType_Enum)nativeValue {
+  ADXWidgetRun_RunType *javaEnum = ADXWidgetRun_RunType_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXWidgetRun_RunType_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXWidgetRun_RunType_ORDINAL)ordinal {
+  return (ADXWidgetRun_RunType_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithRunType:(ADXWidgetRun_RunType_Enum)value {
+  return RETAIN_(ADXWidgetRun_RunType_fromOrdinal((ADXWidgetRun_RunType_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -486,7 +522,7 @@ ADXWidgetRun_RunType *ADXWidgetRun_RunType_values_[4];
     size_t allocSize = 4 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 4; i++) {
+    for (int32_t i = 0; i < 4; i++) {
       ((void)(ADXWidgetRun_RunType_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXWidgetRun_RunType_initWithNSString_withInt_(e, JreEnumConstantName(ADXWidgetRun_RunType_class_(), i), i);
     }
@@ -496,7 +532,7 @@ ADXWidgetRun_RunType *ADXWidgetRun_RunType_values_[4];
 
 @end
 
-void ADXWidgetRun_RunType_initWithNSString_withInt_(ADXWidgetRun_RunType *self, NSString *__name, jint __ordinal) {
+void ADXWidgetRun_RunType_initWithNSString_withInt_(ADXWidgetRun_RunType *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -514,12 +550,11 @@ ADXWidgetRun_RunType *ADXWidgetRun_RunType_valueOfWithNSString_(NSString *name) 
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXWidgetRun_RunType *ADXWidgetRun_RunType_fromOrdinal(NSUInteger ordinal) {
+ADXWidgetRun_RunType *ADXWidgetRun_RunType_fromOrdinal(ADXWidgetRun_RunType_ORDINAL ordinal) {
   ADXWidgetRun_RunType_initialize();
-  if (ordinal >= 4) {
+  if (ordinal < 0 || ordinal >= 4) {
     return nil;
   }
   return ADXWidgetRun_RunType_values_[ordinal];

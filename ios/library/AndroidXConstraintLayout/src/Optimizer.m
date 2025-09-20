@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\Optimizer.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
 #include "ConstraintWidgetContainer.h"
@@ -12,6 +17,14 @@
 #include "LinearSystem.h"
 #include "Optimizer.h"
 #include "SolverVariable.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 J2OBJC_INITIALIZED_DEFN(ADXOptimizer)
@@ -33,8 +46,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   ADXOptimizer_checkMatchParentWithADXConstraintWidgetContainer_withADXLinearSystem_withADXConstraintWidget_(container, system, widget);
 }
 
-+ (jboolean)enabledWithInt:(jint)optimizationLevel
-                   withInt:(jint)optimization {
++ (bool)enabledWithInt:(int32_t)optimizationLevel
+               withInt:(int32_t)optimization {
   return ADXOptimizer_enabledWithInt_withInt_(optimizationLevel, optimization);
 }
 
@@ -101,8 +114,8 @@ void ADXOptimizer_checkMatchParentWithADXConstraintWidgetContainer_withADXLinear
   ((ADXConstraintWidget *) nil_chk(widget))->mHorizontalResolution_ = ADXConstraintWidget_UNKNOWN;
   widget->mVerticalResolution_ = ADXConstraintWidget_UNKNOWN;
   if (IOSObjectArray_Get(nil_chk(((ADXConstraintWidgetContainer *) nil_chk(container))->mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_HORIZONTAL) != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) && IOSObjectArray_Get(widget->mListDimensionBehaviors_, ADXConstraintWidget_DIMENSION_HORIZONTAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-    jint left = ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mMargin_;
-    jint right = [container getWidth] - ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mMargin_;
+    int32_t left = ((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mMargin_;
+    int32_t right = [container getWidth] - ((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mMargin_;
     JreStrongAssign(&((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mSolverVariable_, [((ADXLinearSystem *) nil_chk(system)) createObjectVariableWithId:widget->mLeft_]);
     JreStrongAssign(&((ADXConstraintAnchor *) nil_chk(widget->mRight_))->mSolverVariable_, [system createObjectVariableWithId:widget->mRight_]);
     [system addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(widget->mLeft_))->mSolverVariable_ withInt:left];
@@ -111,8 +124,8 @@ void ADXOptimizer_checkMatchParentWithADXConstraintWidgetContainer_withADXLinear
     [widget setHorizontalDimensionWithInt:left withInt:right];
   }
   if (IOSObjectArray_Get(nil_chk(container->mListDimensionBehaviors_), ADXConstraintWidget_DIMENSION_VERTICAL) != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, WRAP_CONTENT) && IOSObjectArray_Get(widget->mListDimensionBehaviors_, ADXConstraintWidget_DIMENSION_VERTICAL) == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT)) {
-    jint top = ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mMargin_;
-    jint bottom = [container getHeight] - ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mMargin_;
+    int32_t top = ((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mMargin_;
+    int32_t bottom = [container getHeight] - ((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mMargin_;
     JreStrongAssign(&((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mSolverVariable_, [((ADXLinearSystem *) nil_chk(system)) createObjectVariableWithId:widget->mTop_]);
     JreStrongAssign(&((ADXConstraintAnchor *) nil_chk(widget->mBottom_))->mSolverVariable_, [system createObjectVariableWithId:widget->mBottom_]);
     [system addEqualityWithADXSolverVariable:((ADXConstraintAnchor *) nil_chk(widget->mTop_))->mSolverVariable_ withInt:top];
@@ -126,9 +139,11 @@ void ADXOptimizer_checkMatchParentWithADXConstraintWidgetContainer_withADXLinear
   }
 }
 
-jboolean ADXOptimizer_enabledWithInt_withInt_(jint optimizationLevel, jint optimization) {
+bool ADXOptimizer_enabledWithInt_withInt_(int32_t optimizationLevel, int32_t optimization) {
   ADXOptimizer_initialize();
   return (optimizationLevel & optimization) == optimization;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXOptimizer)
+
+J2OBJC_NAME_MAPPING(ADXOptimizer, "androidx.constraintlayout.core.widgets", "ADX")

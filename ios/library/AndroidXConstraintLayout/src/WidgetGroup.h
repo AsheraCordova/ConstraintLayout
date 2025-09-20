@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\WidgetGroup.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_WidgetGroup")
@@ -18,7 +19,10 @@
 
 @class ADXConstraintWidget;
 @class ADXLinearSystem;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
+@class NSString;
 
 /*!
  @brief Represents a group of widget for the grouping mechanism.
@@ -26,17 +30,17 @@
 @interface ADXWidgetGroup : NSObject {
  @public
   JavaUtilArrayList *widgets_;
-  jint id__;
-  jboolean authoritative_;
-  jint orientation_;
+  int32_t id__;
+  bool authoritative_;
+  int32_t orientation_;
   JavaUtilArrayList *results_;
 }
 
 #pragma mark Public
 
-- (instancetype)initWithInt:(jint)orientation;
+- (instancetype)initWithInt:(int32_t)orientation;
 
-- (jboolean)addWithADXConstraintWidget:(ADXConstraintWidget *)widget;
+- (bool)addWithADXConstraintWidget:(ADXConstraintWidget *)widget;
 
 - (void)apply;
 
@@ -44,25 +48,25 @@
 
 - (void)clear;
 
-- (jint)getId;
+- (int32_t)getId;
 
-- (jint)getOrientation;
+- (int32_t)getOrientation;
 
-- (jboolean)intersectWithWithADXWidgetGroup:(ADXWidgetGroup *)group;
+- (bool)intersectWithWithADXWidgetGroup:(ADXWidgetGroup *)group;
 
-- (jboolean)isAuthoritative;
+- (bool)isAuthoritative;
 
-- (jint)measureWrapWithADXLinearSystem:(ADXLinearSystem *)system
-                               withInt:(jint)orientation;
+- (int32_t)measureWrapWithADXLinearSystem:(ADXLinearSystem *)system
+                                  withInt:(int32_t)orientation;
 
-- (void)moveToWithInt:(jint)orientation
+- (void)moveToWithInt:(int32_t)orientation
    withADXWidgetGroup:(ADXWidgetGroup *)widgetGroup;
 
-- (void)setAuthoritativeWithBoolean:(jboolean)isAuthoritative;
+- (void)setAuthoritativeWithBoolean:(bool)isAuthoritative;
 
-- (void)setOrientationWithInt:(jint)orientation;
+- (void)setOrientationWithInt:(int32_t)orientation;
 
-- (jint)size;
+- (int32_t)size;
 
 - (NSString *)description;
 
@@ -77,22 +81,23 @@ J2OBJC_EMPTY_STATIC_INIT(ADXWidgetGroup)
 J2OBJC_FIELD_SETTER(ADXWidgetGroup, widgets_, JavaUtilArrayList *)
 J2OBJC_FIELD_SETTER(ADXWidgetGroup, results_, JavaUtilArrayList *)
 
-inline jint ADXWidgetGroup_get_count(void);
-inline jint ADXWidgetGroup_set_count(jint value);
-inline jint *ADXWidgetGroup_getRef_count(void);
+inline int32_t ADXWidgetGroup_get_count(void);
+inline int32_t ADXWidgetGroup_set_count(int32_t value);
+inline int32_t *ADXWidgetGroup_getRef_count(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXWidgetGroup_count;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXWidgetGroup, count, jint)
+FOUNDATION_EXPORT int32_t ADXWidgetGroup_count;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXWidgetGroup, count, int32_t)
 
-FOUNDATION_EXPORT void ADXWidgetGroup_initWithInt_(ADXWidgetGroup *self, jint orientation);
+FOUNDATION_EXPORT void ADXWidgetGroup_initWithInt_(ADXWidgetGroup *self, int32_t orientation);
 
-FOUNDATION_EXPORT ADXWidgetGroup *new_ADXWidgetGroup_initWithInt_(jint orientation) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXWidgetGroup *new_ADXWidgetGroup_initWithInt_(int32_t orientation) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXWidgetGroup *create_ADXWidgetGroup_initWithInt_(jint orientation);
+FOUNDATION_EXPORT ADXWidgetGroup *create_ADXWidgetGroup_initWithInt_(int32_t orientation);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetGroup)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerWidgetGroup ADXWidgetGroup;
+
 
 #endif
 
@@ -102,17 +107,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetGroup)
 @class ADXConstraintWidget;
 @class ADXLinearSystem;
 @class ADXWidgetGroup;
+@class JavaLangInteger;
 @class JavaLangRefWeakReference;
 
 @interface ADXWidgetGroup_MeasureResult : NSObject {
  @public
   JavaLangRefWeakReference *widgetRef_;
-  jint left_;
-  jint top_;
-  jint right_;
-  jint bottom_;
-  jint baseline_;
-  jint orientation_;
+  int32_t left_;
+  int32_t top_;
+  int32_t right_;
+  int32_t bottom_;
+  int32_t baseline_;
+  int32_t orientation_;
 }
 
 #pragma mark Public
@@ -120,7 +126,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetGroup)
 - (instancetype)initWithADXWidgetGroup:(ADXWidgetGroup *)outer$
                withADXConstraintWidget:(ADXConstraintWidget *)widget
                    withADXLinearSystem:(ADXLinearSystem *)system
-                               withInt:(jint)orientation;
+                               withInt:(int32_t)orientation;
 
 - (void)apply;
 
@@ -134,13 +140,14 @@ J2OBJC_EMPTY_STATIC_INIT(ADXWidgetGroup_MeasureResult)
 
 J2OBJC_FIELD_SETTER(ADXWidgetGroup_MeasureResult, widgetRef_, JavaLangRefWeakReference *)
 
-FOUNDATION_EXPORT void ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup_MeasureResult *self, ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, jint orientation);
+FOUNDATION_EXPORT void ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup_MeasureResult *self, ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, int32_t orientation);
 
-FOUNDATION_EXPORT ADXWidgetGroup_MeasureResult *new_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, jint orientation) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXWidgetGroup_MeasureResult *new_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, int32_t orientation) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXWidgetGroup_MeasureResult *create_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, jint orientation);
+FOUNDATION_EXPORT ADXWidgetGroup_MeasureResult *create_ADXWidgetGroup_MeasureResult_initWithADXWidgetGroup_withADXConstraintWidget_withADXLinearSystem_withInt_(ADXWidgetGroup *outer$, ADXConstraintWidget *widget, ADXLinearSystem *system, int32_t orientation);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetGroup_MeasureResult)
+
 
 #endif
 

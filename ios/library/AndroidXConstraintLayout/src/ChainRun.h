@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\ChainRun.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ChainRun")
@@ -21,7 +22,11 @@
 #include "WidgetRun.h"
 
 @class ADXConstraintWidget;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class JavaLangLong;
 @class JavaUtilArrayList;
+@class NSString;
 @protocol ADXDependency;
 
 @interface ADXChainRun : ADXWidgetRun {
@@ -32,11 +37,11 @@
 #pragma mark Public
 
 - (instancetype)initWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                    withInt:(jint)orientation;
+                                    withInt:(int32_t)orientation;
 
 - (void)applyToWidget;
 
-- (jlong)getWrapDimension;
+- (int64_t)getWrapDimension;
 
 - (NSString *)description;
 
@@ -50,7 +55,7 @@
 
 - (void)reset;
 
-- (jboolean)supportsWrapComputation;
+- (bool)supportsWrapComputation;
 
 // Disallowed inherited constructors, do not use.
 
@@ -62,15 +67,16 @@ J2OBJC_EMPTY_STATIC_INIT(ADXChainRun)
 
 J2OBJC_FIELD_SETTER(ADXChainRun, widgets_, JavaUtilArrayList *)
 
-FOUNDATION_EXPORT void ADXChainRun_initWithADXConstraintWidget_withInt_(ADXChainRun *self, ADXConstraintWidget *widget, jint orientation);
+FOUNDATION_EXPORT void ADXChainRun_initWithADXConstraintWidget_withInt_(ADXChainRun *self, ADXConstraintWidget *widget, int32_t orientation);
 
-FOUNDATION_EXPORT ADXChainRun *new_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, jint orientation) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXChainRun *new_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, int32_t orientation) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXChainRun *create_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, jint orientation);
+FOUNDATION_EXPORT ADXChainRun *create_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, int32_t orientation);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXChainRun)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerChainRun ADXChainRun;
+
 
 #endif
 

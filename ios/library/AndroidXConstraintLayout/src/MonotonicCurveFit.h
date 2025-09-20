@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\MonotonicCurveFit.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MonotonicCurveFit")
@@ -23,6 +24,9 @@
 @class IOSDoubleArray;
 @class IOSFloatArray;
 @class IOSObjectArray;
+@class JavaLangDouble;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  @brief This performs a spline interpolation in multiple dimensions
@@ -43,20 +47,20 @@
  */
 + (ADXMonotonicCurveFit *)buildWaveWithNSString:(NSString *)configString;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v;
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j;
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j;
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v;
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j;
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j;
 
 - (IOSDoubleArray *)getTimePoints;
 
@@ -81,6 +85,7 @@ FOUNDATION_EXPORT ADXMonotonicCurveFit *ADXMonotonicCurveFit_buildWaveWithNSStri
 J2OBJC_TYPE_LITERAL_HEADER(ADXMonotonicCurveFit)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsMonotonicCurveFit ADXMonotonicCurveFit;
+
 
 #endif
 

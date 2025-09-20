@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\ConstraintLayoutImpl.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AbstractEnumToIntConverter.h"
 #include "BaseHasWidgets.h"
 #include "ConstraintLayout.h"
@@ -43,8 +48,12 @@
 #include "ASUIView.h"
 #include "HasLifeCycleDecorators.h"
 
-@protocol JavaUtilList;
-@protocol JavaUtilMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
@@ -112,7 +121,7 @@ __attribute__((unused)) static id ASConstraintLayoutImpl_getOptimizationLevel(AS
 
 @interface ASConstraintLayoutImpl_DallocHandler () {
  @public
-  __unsafe_unretained ASConstraintLayoutImpl *this$0_;
+  WEAK_ ASConstraintLayoutImpl *this$0_;
 }
 
 @end
@@ -200,7 +209,7 @@ J2OBJC_FIELD_SETTER(ASConstraintLayoutImpl_Layout_wrapBehaviorInParent, mapping_
 
 @interface ASConstraintLayoutImpl_ConstraintLayoutExt () {
  @public
-  __unsafe_unretained ASConstraintLayoutImpl *this$0_;
+  WEAK_ ASConstraintLayoutImpl *this$0_;
   ASMeasureEvent *measureFinished_;
   ASOnLayoutEvent *onLayoutEvent_;
   id<JavaUtilList> overlays_;
@@ -230,6 +239,7 @@ __attribute__((unused)) static void ASConstraintLayoutImpl_$Lambda$1_initWithASI
 __attribute__((unused)) static ASConstraintLayoutImpl_$Lambda$1 *new_ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static ASConstraintLayoutImpl_$Lambda$1 *create_ASConstraintLayoutImpl_$Lambda$1_initWithASIWidget_(id<ASIWidget> capture$0);
+
 
 J2OBJC_INITIALIZED_DEFN(ASConstraintLayoutImpl)
 
@@ -356,16 +366,16 @@ J2OBJC_IGNORE_DESIGNATED_END
   return constraintLayout_;
 }
 
-- (jboolean)removeWithASIWidget:(id<ASIWidget>)w {
-  jboolean remove = [super removeWithASIWidget:w];
+- (bool)removeWithASIWidget:(id<ASIWidget>)w {
+  bool remove = [super removeWithASIWidget:w];
   [((ADXConstraintLayout *) nil_chk(constraintLayout_)) removeViewWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ADView class])];
   ASConstraintLayoutImpl_nativeRemoveViewWithASIWidget_(self, w);
   return remove;
 }
 
-- (jboolean)removeWithInt:(jint)index {
+- (bool)removeWithInt:(int32_t)index {
   id<ASIWidget> widget = [((id<JavaUtilList>) nil_chk(widgets_)) getWithInt:index];
-  jboolean remove = [super removeWithInt:index];
+  bool remove = [super removeWithInt:index];
   if (index + 1 <= [((ADXConstraintLayout *) nil_chk(constraintLayout_)) getChildCount]) {
     [((ADXConstraintLayout *) nil_chk(constraintLayout_)) removeViewAtWithInt:index];
     ASConstraintLayoutImpl_nativeRemoveViewWithASIWidget_(self, widget);
@@ -378,7 +388,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)addWithASIWidget:(id<ASIWidget>)w
-                 withInt:(jint)index {
+                 withInt:(int32_t)index {
   if (index != -2) {
     ADView *view = (ADView *) cast_chk([((id<ASIWidget>) nil_chk(w)) asWidget], [ADView class]);
     ASConstraintLayoutImpl_createLayoutParamsWithADView_(self, view);
@@ -1038,7 +1048,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return uiView_;
 }
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v {
+- (bool)checkIosVersionWithNSString:(NSString *)v {
   return ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending);
 }
 
@@ -1093,7 +1103,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setVisibleWithBoolean:(jboolean)b {
+- (void)setVisibleWithBoolean:(bool)b {
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
@@ -1290,6 +1300,8 @@ id ASConstraintLayoutImpl_getOptimizationLevel(ASConstraintLayoutImpl *self) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl)
 
+J2OBJC_NAME_MAPPING(ASConstraintLayoutImpl, "com.ashera.constraintlayout", "AS")
+
 @implementation ASConstraintLayoutImpl_DallocHandler
 
 - (instancetype)initWithASConstraintLayoutImpl:(ASConstraintLayoutImpl *)outer$
@@ -1387,20 +1399,20 @@ void ASConstraintLayoutImpl_OptimizationLevel_init(ASConstraintLayoutImpl_Optimi
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"none" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"legacy" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"standard" withId:JavaLangInteger_valueOfWithInt_((jint) 0x257)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"direct" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"barrier" withId:JavaLangInteger_valueOfWithInt_((jint) 0x2)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"chains" withId:JavaLangInteger_valueOfWithInt_((jint) 0x4)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"dimensions" withId:JavaLangInteger_valueOfWithInt_((jint) 0x8)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"ratio" withId:JavaLangInteger_valueOfWithInt_((jint) 0x16)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"groups" withId:JavaLangInteger_valueOfWithInt_((jint) 0x32)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"graph" withId:JavaLangInteger_valueOfWithInt_((jint) 0x64)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"graph_wrap" withId:JavaLangInteger_valueOfWithInt_((jint) 0x128)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"cache_measures" withId:JavaLangInteger_valueOfWithInt_((jint) 0x256)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"dependency_ordering" withId:JavaLangInteger_valueOfWithInt_((jint) 0x512)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"grouping" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1024)];
+    (void) [self->mapping_ putWithId:@"none" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"legacy" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"standard" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x257)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"direct" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"barrier" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x2)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"chains" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x4)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"dimensions" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x8)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"ratio" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x16)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"groups" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x32)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"graph" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x64)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"graph_wrap" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x128)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"cache_measures" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x256)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"dependency_ordering" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x512)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"grouping" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1024)];
   }
 }
 
@@ -1458,8 +1470,8 @@ void ASConstraintLayoutImpl_Orientation_init(ASConstraintLayoutImpl_Orientation 
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"horizontal" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"vertical" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
+    (void) [self->mapping_ putWithId:@"horizontal" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"vertical" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
   }
 }
 
@@ -1639,9 +1651,9 @@ void ASConstraintLayoutImpl_Layout_constraintWidth_default_init(ASConstraintLayo
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"wrap" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"percent" withId:JavaLangInteger_valueOfWithInt_((jint) 0x2)];
+    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"wrap" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"percent" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x2)];
   }
 }
 
@@ -1699,9 +1711,9 @@ void ASConstraintLayoutImpl_Layout_constraintHeight_default_init(ASConstraintLay
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"wrap" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"percent" withId:JavaLangInteger_valueOfWithInt_((jint) 0x2)];
+    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"wrap" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"percent" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x2)];
   }
 }
 
@@ -1759,9 +1771,9 @@ void ASConstraintLayoutImpl_Layout_constraintHorizontal_chainStyle_init(ASConstr
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"spread_inside" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"packed" withId:JavaLangInteger_valueOfWithInt_((jint) 0x2)];
+    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"spread_inside" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"packed" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x2)];
   }
 }
 
@@ -1819,9 +1831,9 @@ void ASConstraintLayoutImpl_Layout_constraintVertical_chainStyle_init(ASConstrai
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"spread_inside" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"packed" withId:JavaLangInteger_valueOfWithInt_((jint) 0x2)];
+    (void) [self->mapping_ putWithId:@"spread" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"spread_inside" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"packed" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x2)];
   }
 }
 
@@ -1879,10 +1891,10 @@ void ASConstraintLayoutImpl_Layout_wrapBehaviorInParent_init(ASConstraintLayoutI
   ASAbstractEnumToIntConverter_init(self);
   self->mapping_ = new_JavaUtilHashMap_init();
   {
-    (void) [self->mapping_ putWithId:@"included" withId:JavaLangInteger_valueOfWithInt_((jint) 0x0)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"horizontal_only" withId:JavaLangInteger_valueOfWithInt_((jint) 0x1)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"vertical_only" withId:JavaLangInteger_valueOfWithInt_((jint) 0x2)];
-    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"skipped" withId:JavaLangInteger_valueOfWithInt_((jint) 0x3)];
+    (void) [self->mapping_ putWithId:@"included" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x0)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"horizontal_only" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x1)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"vertical_only" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x2)];
+    (void) [((id<JavaUtilMap>) nil_chk(self->mapping_)) putWithId:@"skipped" withId:JavaLangInteger_valueOfWithInt_((int32_t) 0x3)];
   }
 }
 
@@ -1907,8 +1919,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
   return self;
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   [super onMeasureWithInt:widthMeasureSpec withInt:heightMeasureSpec];
   id<ASIWidgetLifeCycleListener> listener = [this$0_ getListener];
   if (listener != nil) {
@@ -1918,11 +1930,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
   }
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b {
   [super onLayoutWithBoolean:changed withInt:l withInt:t withInt:r withInt:b];
   ASViewImpl_setDrawableBoundsWithASIWidget_withInt_withInt_withInt_withInt_(this$0_, l, t, r, b);
   if (![self isOverlay]) {
@@ -1949,8 +1961,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
           withNSObjectArray:(IOSObjectArray *)canvas {
 }
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height {
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height {
   [self setMeasuredDimensionWithInt:width withInt:height];
 }
 
@@ -2018,12 +2030,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
   displayFrame->bottom_ = displayFrame->top_ + [self getHeight];
 }
 
-- (void)offsetTopAndBottomWithInt:(jint)offset {
+- (void)offsetTopAndBottomWithInt:(int32_t)offset {
   [super offsetTopAndBottomWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
 
-- (void)offsetLeftAndRightWithInt:(jint)offset {
+- (void)offsetLeftAndRightWithInt:(int32_t)offset {
   [super offsetLeftAndRightWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
@@ -2053,7 +2065,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutImpl_Layout_wrapBehaviorInPar
   [this$0_ setAttributeWithNSString:name withId:value withBoolean:!([value isKindOfClass:[NSString class]])];
 }
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   [super setVisibilityWithInt:visibility];
   ASViewImpl_nativeSetVisibilityWithId_withBoolean_([this$0_ asNativeWidget], visibility != ADView_VISIBLE);
 }

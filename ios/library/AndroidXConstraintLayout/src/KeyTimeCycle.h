@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyTimeCycle.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyTimeCycle")
@@ -22,8 +23,10 @@
 
 @class ADAttributeSet;
 @class ADContext;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Defines container for a key frame of for storing KeyTimeCycles.
@@ -80,37 +83,37 @@ inline NSString *ADXKeyTimeCycle_get_WAVE_SHAPE(void);
 FOUNDATION_EXPORT NSString *ADXKeyTimeCycle_WAVE_SHAPE;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyTimeCycle, WAVE_SHAPE, NSString *)
 
-inline jint ADXKeyTimeCycle_get_SHAPE_SIN_WAVE(void);
+inline int32_t ADXKeyTimeCycle_get_SHAPE_SIN_WAVE(void);
 #define ADXKeyTimeCycle_SHAPE_SIN_WAVE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_SIN_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_SIN_WAVE, int32_t)
 
-inline jint ADXKeyTimeCycle_get_SHAPE_SQUARE_WAVE(void);
+inline int32_t ADXKeyTimeCycle_get_SHAPE_SQUARE_WAVE(void);
 #define ADXKeyTimeCycle_SHAPE_SQUARE_WAVE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_SQUARE_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_SQUARE_WAVE, int32_t)
 
-inline jint ADXKeyTimeCycle_get_SHAPE_TRIANGLE_WAVE(void);
+inline int32_t ADXKeyTimeCycle_get_SHAPE_TRIANGLE_WAVE(void);
 #define ADXKeyTimeCycle_SHAPE_TRIANGLE_WAVE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_TRIANGLE_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_TRIANGLE_WAVE, int32_t)
 
-inline jint ADXKeyTimeCycle_get_SHAPE_SAW_WAVE(void);
+inline int32_t ADXKeyTimeCycle_get_SHAPE_SAW_WAVE(void);
 #define ADXKeyTimeCycle_SHAPE_SAW_WAVE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_SAW_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_SAW_WAVE, int32_t)
 
-inline jint ADXKeyTimeCycle_get_SHAPE_REVERSE_SAW_WAVE(void);
+inline int32_t ADXKeyTimeCycle_get_SHAPE_REVERSE_SAW_WAVE(void);
 #define ADXKeyTimeCycle_SHAPE_REVERSE_SAW_WAVE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_REVERSE_SAW_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_REVERSE_SAW_WAVE, int32_t)
 
-inline jint ADXKeyTimeCycle_get_SHAPE_COS_WAVE(void);
+inline int32_t ADXKeyTimeCycle_get_SHAPE_COS_WAVE(void);
 #define ADXKeyTimeCycle_SHAPE_COS_WAVE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_COS_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_COS_WAVE, int32_t)
 
-inline jint ADXKeyTimeCycle_get_SHAPE_BOUNCE(void);
+inline int32_t ADXKeyTimeCycle_get_SHAPE_BOUNCE(void);
 #define ADXKeyTimeCycle_SHAPE_BOUNCE 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_BOUNCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, SHAPE_BOUNCE, int32_t)
 
-inline jint ADXKeyTimeCycle_get_KEY_TYPE(void);
+inline int32_t ADXKeyTimeCycle_get_KEY_TYPE(void);
 #define ADXKeyTimeCycle_KEY_TYPE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyTimeCycle, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXKeyTimeCycle_init(ADXKeyTimeCycle *self);
 
@@ -121,6 +124,7 @@ FOUNDATION_EXPORT ADXKeyTimeCycle *create_ADXKeyTimeCycle_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyTimeCycle)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetKeyTimeCycle ADXKeyTimeCycle;
+
 
 #endif
 

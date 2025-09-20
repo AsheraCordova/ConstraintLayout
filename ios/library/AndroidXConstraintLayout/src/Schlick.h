@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Schlick.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Schlick")
@@ -20,22 +21,25 @@
 #define INCLUDE_ADXEasing 1
 #include "Easing.h"
 
+@class JavaLangDouble;
+@class NSString;
+
 /*!
  @brief Schlick’s bias and gain functions
   curve for use in an easing function including quantize functions
  */
 @interface ADXSchlick : ADXEasing {
  @public
-  jdouble mS_;
-  jdouble mT_;
-  jdouble eps_;
+  double mS_;
+  double mT_;
+  double eps_;
 }
 
 #pragma mark Public
 
-- (jdouble)getWithDouble:(jdouble)x;
+- (double)getWithDouble:(double)x;
 
-- (jdouble)getDiffWithDouble:(jdouble)x;
+- (double)getDiffWithDouble:(double)x;
 
 #pragma mark Package-Private
 
@@ -58,6 +62,7 @@ FOUNDATION_EXPORT ADXSchlick *create_ADXSchlick_initWithNSString_(NSString *conf
 J2OBJC_TYPE_LITERAL_HEADER(ADXSchlick)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsSchlick ADXSchlick;
+
 
 #endif
 

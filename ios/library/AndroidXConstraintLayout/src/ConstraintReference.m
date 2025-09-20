@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\ConstraintReference.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAnchor.h"
 #include "ConstraintReference.h"
 #include "ConstraintWidget.h"
@@ -14,6 +19,7 @@
 #include "State.h"
 #include "TypedValues.h"
 #include "WidgetFrame.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Exception.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
@@ -21,15 +27,18 @@
 #include "java/util/HashMap.h"
 #include "java/util/Set.h"
 
-@class JavaUtilArrayList;
-@class JavaUtilHashMap;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXConstraintReference () {
  @public
   id key_;
-  jfloat mCircularAngle_;
-  jfloat mCircularDistance_;
+  float mCircularAngle_;
+  float mCircularDistance_;
   id mView_;
   ADXConstraintWidget *mConstraintWidget_;
   JavaUtilHashMap *mCustomColors_;
@@ -166,19 +175,19 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
   return self;
 }
 
-- (void)setHorizontalChainStyleWithInt:(jint)chainStyle {
+- (void)setHorizontalChainStyleWithInt:(int32_t)chainStyle {
   mHorizontalChainStyle_ = chainStyle;
 }
 
-- (jint)getHorizontalChainStyle {
+- (int32_t)getHorizontalChainStyle {
   return mHorizontalChainStyle_;
 }
 
-- (void)setVerticalChainStyleWithInt:(jint)chainStyle {
+- (void)setVerticalChainStyleWithInt:(int32_t)chainStyle {
   mVerticalChainStyle_ = chainStyle;
 }
 
-- (jint)getVerticalChainStyleWithInt:(jint)chainStyle {
+- (int32_t)getVerticalChainStyleWithInt:(int32_t)chainStyle {
   return mVerticalChainStyle_;
 }
 
@@ -197,106 +206,106 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
   return self;
 }
 
-- (jfloat)getTranslationX {
+- (float)getTranslationX {
   return mTranslationX_;
 }
 
-- (jfloat)getTranslationY {
+- (float)getTranslationY {
   return mTranslationY_;
 }
 
-- (jfloat)getTranslationZ {
+- (float)getTranslationZ {
   return mTranslationZ_;
 }
 
-- (jfloat)getScaleX {
+- (float)getScaleX {
   return mScaleX_;
 }
 
-- (jfloat)getScaleY {
+- (float)getScaleY {
   return mScaleY_;
 }
 
-- (jfloat)getAlpha {
+- (float)getAlpha {
   return mAlpha_;
 }
 
-- (jfloat)getPivotX {
+- (float)getPivotX {
   return mPivotX_;
 }
 
-- (jfloat)getPivotY {
+- (float)getPivotY {
   return mPivotY_;
 }
 
-- (jfloat)getRotationX {
+- (float)getRotationX {
   return mRotationX_;
 }
 
-- (jfloat)getRotationY {
+- (float)getRotationY {
   return mRotationY_;
 }
 
-- (jfloat)getRotationZ {
+- (float)getRotationZ {
   return mRotationZ_;
 }
 
-- (ADXConstraintReference *)pivotXWithFloat:(jfloat)x {
+- (ADXConstraintReference *)pivotXWithFloat:(float)x {
   mPivotX_ = x;
   return self;
 }
 
-- (ADXConstraintReference *)pivotYWithFloat:(jfloat)y {
+- (ADXConstraintReference *)pivotYWithFloat:(float)y {
   mPivotY_ = y;
   return self;
 }
 
-- (ADXConstraintReference *)rotationXWithFloat:(jfloat)x {
+- (ADXConstraintReference *)rotationXWithFloat:(float)x {
   mRotationX_ = x;
   return self;
 }
 
-- (ADXConstraintReference *)rotationYWithFloat:(jfloat)y {
+- (ADXConstraintReference *)rotationYWithFloat:(float)y {
   mRotationY_ = y;
   return self;
 }
 
-- (ADXConstraintReference *)rotationZWithFloat:(jfloat)z {
+- (ADXConstraintReference *)rotationZWithFloat:(float)z {
   mRotationZ_ = z;
   return self;
 }
 
-- (ADXConstraintReference *)translationXWithFloat:(jfloat)x {
+- (ADXConstraintReference *)translationXWithFloat:(float)x {
   mTranslationX_ = x;
   return self;
 }
 
-- (ADXConstraintReference *)translationYWithFloat:(jfloat)y {
+- (ADXConstraintReference *)translationYWithFloat:(float)y {
   mTranslationY_ = y;
   return self;
 }
 
-- (ADXConstraintReference *)translationZWithFloat:(jfloat)z {
+- (ADXConstraintReference *)translationZWithFloat:(float)z {
   mTranslationZ_ = z;
   return self;
 }
 
-- (ADXConstraintReference *)scaleXWithFloat:(jfloat)x {
+- (ADXConstraintReference *)scaleXWithFloat:(float)x {
   mScaleX_ = x;
   return self;
 }
 
-- (ADXConstraintReference *)scaleYWithFloat:(jfloat)y {
+- (ADXConstraintReference *)scaleYWithFloat:(float)y {
   mScaleY_ = y;
   return self;
 }
 
-- (ADXConstraintReference *)alphaWithFloat:(jfloat)alpha {
+- (ADXConstraintReference *)alphaWithFloat:(float)alpha {
   mAlpha_ = alpha;
   return self;
 }
 
-- (ADXConstraintReference *)visibilityWithInt:(jint)visibility {
+- (ADXConstraintReference *)visibilityWithInt:(int32_t)visibility {
   mVisibility_ = visibility;
   return self;
 }
@@ -367,12 +376,12 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
 }
 
 - (void)addCustomColorWithNSString:(NSString *)name
-                           withInt:(jint)color {
+                           withInt:(int32_t)color {
   [((JavaUtilHashMap *) nil_chk(mCustomColors_)) putWithId:name withId:JavaLangInteger_valueOfWithInt_(color)];
 }
 
 - (void)addCustomFloatWithNSString:(NSString *)name
-                         withFloat:(jfloat)value {
+                         withFloat:(float)value {
   if (mCustomFloats_ == nil) {
     JreStrongAssignAndConsume(&mCustomFloats_, new_JavaUtilHashMap_init());
   }
@@ -480,8 +489,8 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
 }
 
 - (ADXConstraintReference *)circularConstraintWithId:(id)reference
-                                           withFloat:(jfloat)angle
-                                           withFloat:(jfloat)distance {
+                                           withFloat:(float)angle
+                                           withFloat:(float)distance {
   id ref = ADXConstraintReference_getWithId_(self, reference);
   JreStrongAssign(&mCircularConstraint_, ref);
   mCircularAngle_ = angle;
@@ -520,7 +529,7 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
   return [self marginWithInt:[((ADXState *) nil_chk(mState_)) convertDimensionWithId:marginValue]];
 }
 
-- (ADXConstraintReference *)marginWithInt:(jint)value {
+- (ADXConstraintReference *)marginWithInt:(int32_t)value {
   if (mLast_ != nil) {
     switch ([mLast_ ordinal]) {
       case ADXState_Constraint_Enum_LEFT_TO_LEFT:
@@ -583,7 +592,7 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
   return self;
 }
 
-- (ADXConstraintReference *)marginGoneWithInt:(jint)value {
+- (ADXConstraintReference *)marginGoneWithInt:(int32_t)value {
   if (mLast_ != nil) {
     switch ([mLast_ ordinal]) {
       case ADXState_Constraint_Enum_LEFT_TO_LEFT:
@@ -641,17 +650,17 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
   return self;
 }
 
-- (ADXConstraintReference *)horizontalBiasWithFloat:(jfloat)value {
+- (ADXConstraintReference *)horizontalBiasWithFloat:(float)value {
   mHorizontalBias_ = value;
   return self;
 }
 
-- (ADXConstraintReference *)verticalBiasWithFloat:(jfloat)value {
+- (ADXConstraintReference *)verticalBiasWithFloat:(float)value {
   mVerticalBias_ = value;
   return self;
 }
 
-- (ADXConstraintReference *)biasWithFloat:(jfloat)value {
+- (ADXConstraintReference *)biasWithFloat:(float)value {
   if (mLast_ == nil) {
     return self;
   }
@@ -851,7 +860,7 @@ J2OBJC_FIELD_SETTER(ADXConstraintReference_IncorrectConstraintException, mErrors
   }
   if (mCustomFloats_ != nil) {
     for (NSString * __strong key in nil_chk([mCustomFloats_ keySet])) {
-      jfloat value = [((JavaLangFloat *) nil_chk([((JavaUtilHashMap *) nil_chk(mCustomFloats_)) getWithId:key])) floatValue];
+      float value = [((JavaLangFloat *) nil_chk([((JavaUtilHashMap *) nil_chk(mCustomFloats_)) getWithId:key])) floatValue];
       [((ADXWidgetFrame *) nil_chk(((ADXConstraintWidget *) nil_chk(mConstraintWidget_))->frame_)) setCustomAttributeWithNSString:key withInt:ADXTypedValues_Custom_TYPE_FLOAT withFloat:value];
     }
   }
@@ -1309,6 +1318,8 @@ void ADXConstraintReference_applyConnectionWithADXConstraintWidget_withId_withAD
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintReference)
+
+J2OBJC_NAME_MAPPING(ADXConstraintReference, "androidx.constraintlayout.core.state", "ADX")
 
 @implementation ADXConstraintReference_ConstraintReferenceFactory
 

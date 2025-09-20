@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Utils.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Utils")
@@ -17,6 +18,9 @@
 #define ADXUtils_
 
 @class IOSFloatArray;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXUtils : NSObject
 
@@ -24,7 +28,7 @@
 
 - (instancetype)init;
 
-- (jint)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value;
+- (int32_t)getInterpolatedColorWithFloatArray:(IOSFloatArray *)value;
 
 + (void)logWithNSString:(NSString *)str;
 
@@ -35,12 +39,12 @@
             withNSString:(NSString *)value;
 
 + (void)logStackWithNSString:(NSString *)msg
-                     withInt:(jint)n;
+                     withInt:(int32_t)n;
 
-+ (jint)rgbaTocColorWithFloat:(jfloat)r
-                    withFloat:(jfloat)g
-                    withFloat:(jfloat)b
-                    withFloat:(jfloat)a;
++ (int32_t)rgbaTocColorWithFloat:(float)r
+                       withFloat:(float)g
+                       withFloat:(float)b
+                       withFloat:(float)a;
 
 + (void)socketSendWithNSString:(NSString *)str;
 
@@ -60,15 +64,16 @@ FOUNDATION_EXPORT void ADXUtils_logeWithNSString_withNSString_(NSString *tag, NS
 
 FOUNDATION_EXPORT void ADXUtils_socketSendWithNSString_(NSString *str);
 
-FOUNDATION_EXPORT jint ADXUtils_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(jfloat r, jfloat g, jfloat b, jfloat a);
+FOUNDATION_EXPORT int32_t ADXUtils_rgbaTocColorWithFloat_withFloat_withFloat_withFloat_(float r, float g, float b, float a);
 
-FOUNDATION_EXPORT void ADXUtils_logStackWithNSString_withInt_(NSString *msg, jint n);
+FOUNDATION_EXPORT void ADXUtils_logStackWithNSString_withInt_(NSString *msg, int32_t n);
 
 FOUNDATION_EXPORT void ADXUtils_logWithNSString_(NSString *str);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXUtils)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsUtils ADXUtils;
+
 
 #endif
 

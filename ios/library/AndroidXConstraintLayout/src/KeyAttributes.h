@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyAttributes.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyAttributes")
@@ -22,8 +23,10 @@
 
 @class ADAttributeSet;
 @class ADContext;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Defines container for a key frame of for storing KeyAttributes.
@@ -56,7 +59,7 @@
 /*!
  @brief Gets the curve fit type this drives the interpolation
  */
-- (jint)getCurveFit;
+- (int32_t)getCurveFit;
 
 @end
 
@@ -67,9 +70,9 @@ inline NSString *ADXKeyAttributes_get_NAME(void);
 FOUNDATION_EXPORT NSString *ADXKeyAttributes_NAME;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyAttributes, NAME, NSString *)
 
-inline jint ADXKeyAttributes_get_KEY_TYPE(void);
+inline int32_t ADXKeyAttributes_get_KEY_TYPE(void);
 #define ADXKeyAttributes_KEY_TYPE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyAttributes, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyAttributes, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXKeyAttributes_init(ADXKeyAttributes *self);
 
@@ -80,6 +83,7 @@ FOUNDATION_EXPORT ADXKeyAttributes *create_ADXKeyAttributes_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyAttributes)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetKeyAttributes ADXKeyAttributes;
+
 
 #endif
 

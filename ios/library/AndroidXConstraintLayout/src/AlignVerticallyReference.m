@@ -3,18 +3,30 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\AlignVerticallyReference.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AlignVerticallyReference.h"
 #include "ConstraintReference.h"
 #include "HelperReference.h"
 #include "J2ObjC_source.h"
 #include "State.h"
+#include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXAlignVerticallyReference () {
  @public
-  jfloat mBias_;
+  float mBias_;
 }
 
 @end
@@ -89,3 +101,5 @@ ADXAlignVerticallyReference *create_ADXAlignVerticallyReference_initWithADXState
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXAlignVerticallyReference)
+
+J2OBJC_NAME_MAPPING(ADXAlignVerticallyReference, "androidx.constraintlayout.core.state.helpers", "ADX")

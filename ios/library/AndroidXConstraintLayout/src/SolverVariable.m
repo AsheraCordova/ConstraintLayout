@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\SolverVariable.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ArrayRow.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
@@ -11,10 +16,21 @@
 #include "LinearSystem.h"
 #include "SolverVariable.h"
 #include "java/lang/AssertionError.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Enum.h"
+#include "java/lang/Float.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
 #include "java/util/Arrays.h"
 #include "java/util/HashSet.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXSolverVariable () {
@@ -29,47 +45,47 @@
 
 J2OBJC_FIELD_SETTER(ADXSolverVariable, mName_, NSString *)
 
-inline jboolean ADXSolverVariable_get_INTERNAL_DEBUG(void);
+inline bool ADXSolverVariable_get_INTERNAL_DEBUG(void);
 #define ADXSolverVariable_INTERNAL_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, INTERNAL_DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, INTERNAL_DEBUG, bool)
 
-inline jboolean ADXSolverVariable_get_VAR_USE_HASH(void);
+inline bool ADXSolverVariable_get_VAR_USE_HASH(void);
 #define ADXSolverVariable_VAR_USE_HASH false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, VAR_USE_HASH, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, VAR_USE_HASH, bool)
 
-inline jint ADXSolverVariable_get_uniqueSlackId(void);
-inline jint ADXSolverVariable_set_uniqueSlackId(jint value);
-inline jint *ADXSolverVariable_getRef_uniqueSlackId(void);
-static jint ADXSolverVariable_uniqueSlackId = 1;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueSlackId, jint)
+inline int32_t ADXSolverVariable_get_uniqueSlackId(void);
+inline int32_t ADXSolverVariable_set_uniqueSlackId(int32_t value);
+inline int32_t *ADXSolverVariable_getRef_uniqueSlackId(void);
+static int32_t ADXSolverVariable_uniqueSlackId = 1;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueSlackId, int32_t)
 
-inline jint ADXSolverVariable_get_uniqueErrorId(void);
-inline jint ADXSolverVariable_set_uniqueErrorId(jint value);
-inline jint *ADXSolverVariable_getRef_uniqueErrorId(void);
-static jint ADXSolverVariable_uniqueErrorId = 1;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueErrorId, jint)
+inline int32_t ADXSolverVariable_get_uniqueErrorId(void);
+inline int32_t ADXSolverVariable_set_uniqueErrorId(int32_t value);
+inline int32_t *ADXSolverVariable_getRef_uniqueErrorId(void);
+static int32_t ADXSolverVariable_uniqueErrorId = 1;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueErrorId, int32_t)
 
-inline jint ADXSolverVariable_get_uniqueUnrestrictedId(void);
-inline jint ADXSolverVariable_set_uniqueUnrestrictedId(jint value);
-inline jint *ADXSolverVariable_getRef_uniqueUnrestrictedId(void);
-static jint ADXSolverVariable_uniqueUnrestrictedId = 1;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueUnrestrictedId, jint)
+inline int32_t ADXSolverVariable_get_uniqueUnrestrictedId(void);
+inline int32_t ADXSolverVariable_set_uniqueUnrestrictedId(int32_t value);
+inline int32_t *ADXSolverVariable_getRef_uniqueUnrestrictedId(void);
+static int32_t ADXSolverVariable_uniqueUnrestrictedId = 1;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueUnrestrictedId, int32_t)
 
-inline jint ADXSolverVariable_get_uniqueConstantId(void);
-inline jint ADXSolverVariable_set_uniqueConstantId(jint value);
-inline jint *ADXSolverVariable_getRef_uniqueConstantId(void);
-static jint ADXSolverVariable_uniqueConstantId = 1;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueConstantId, jint)
+inline int32_t ADXSolverVariable_get_uniqueConstantId(void);
+inline int32_t ADXSolverVariable_set_uniqueConstantId(int32_t value);
+inline int32_t *ADXSolverVariable_getRef_uniqueConstantId(void);
+static int32_t ADXSolverVariable_uniqueConstantId = 1;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueConstantId, int32_t)
 
-inline jint ADXSolverVariable_get_uniqueId(void);
-inline jint ADXSolverVariable_set_uniqueId(jint value);
-inline jint *ADXSolverVariable_getRef_uniqueId(void);
-static jint ADXSolverVariable_uniqueId = 1;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueId, jint)
+inline int32_t ADXSolverVariable_get_uniqueId(void);
+inline int32_t ADXSolverVariable_set_uniqueId(int32_t value);
+inline int32_t *ADXSolverVariable_getRef_uniqueId(void);
+static int32_t ADXSolverVariable_uniqueId = 1;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXSolverVariable, uniqueId, int32_t)
 
 __attribute__((unused)) static NSString *ADXSolverVariable_getUniqueNameWithADXSolverVariable_Type_withNSString_(ADXSolverVariable_Type *type, NSString *prefix);
 
-__attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_withInt_(ADXSolverVariable_Type *self, NSString *__name, jint __ordinal);
+__attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_withInt_(ADXSolverVariable_Type *self, NSString *__name, int32_t __ordinal);
 
 @implementation ADXSolverVariable
 
@@ -95,16 +111,16 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
 }
 
 - (void)clearStrengths {
-  for (jint i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
+  for (int32_t i = 0; i < ADXSolverVariable_MAX_STRENGTH; i++) {
     *IOSFloatArray_GetRef(nil_chk(strengthVector_), i) = 0;
   }
 }
 
 - (NSString *)strengthsToString {
   NSString *representation = JreStrcat("@C", self, '[');
-  jboolean negative = false;
-  jboolean empty = true;
-  for (jint j = 0; j < ((IOSFloatArray *) nil_chk(strengthVector_))->size_; j++) {
+  bool negative = false;
+  bool empty = true;
+  for (int32_t j = 0; j < ((IOSFloatArray *) nil_chk(strengthVector_))->size_; j++) {
     JreStrAppend(&representation, "F", IOSFloatArray_Get(strengthVector_, j));
     if (IOSFloatArray_Get(strengthVector_, j) > 0) {
       negative = false;
@@ -133,8 +149,8 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
 
 - (void)addToRowWithADXArrayRow:(ADXArrayRow *)row {
   {
-    for (jint i = 0; i < mClientEquationsCount_; i++) {
-      if (IOSObjectArray_Get(nil_chk(mClientEquations_), i) == row) {
+    for (int32_t i = 0; i < mClientEquationsCount_; i++) {
+      if (JreObjectEqualsEquals(IOSObjectArray_Get(nil_chk(mClientEquations_), i), row)) {
         return;
       }
     }
@@ -148,10 +164,10 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
 
 - (void)removeFromRowWithADXArrayRow:(ADXArrayRow *)row {
   {
-    jint count = mClientEquationsCount_;
-    for (jint i = 0; i < count; i++) {
-      if (IOSObjectArray_Get(nil_chk(mClientEquations_), i) == row) {
-        for (jint j = i; j < count - 1; j++) {
+    int32_t count = mClientEquationsCount_;
+    for (int32_t i = 0; i < count; i++) {
+      if (JreObjectEqualsEquals(IOSObjectArray_Get(nil_chk(mClientEquations_), i), row)) {
+        for (int32_t j = i; j < count - 1; j++) {
           IOSObjectArray_Set(mClientEquations_, j, IOSObjectArray_Get(mClientEquations_, j + 1));
         }
         mClientEquationsCount_--;
@@ -164,8 +180,8 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
 - (void)updateReferencesWithNewDefinitionWithADXLinearSystem:(ADXLinearSystem *)system
                                              withADXArrayRow:(ADXArrayRow *)definition {
   {
-    jint count = mClientEquationsCount_;
-    for (jint i = 0; i < count; i++) {
+    int32_t count = mClientEquationsCount_;
+    for (int32_t i = 0; i < count; i++) {
       [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(nil_chk(mClientEquations_), i))) updateFromRowWithADXLinearSystem:system withADXArrayRow:definition withBoolean:false];
     }
     mClientEquationsCount_ = 0;
@@ -173,15 +189,15 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
 }
 
 - (void)setFinalValueWithADXLinearSystem:(ADXLinearSystem *)system
-                               withFloat:(jfloat)value {
+                               withFloat:(float)value {
   computedValue_ = value;
   isFinalValue_ = true;
   isSynonym_ = false;
   synonym_ = -1;
   synonymDelta_ = 0;
-  jint count = mClientEquationsCount_;
+  int32_t count = mClientEquationsCount_;
   definitionId_ = -1;
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(nil_chk(mClientEquations_), i))) updateFromFinalVariableWithADXLinearSystem:system withADXSolverVariable:self withBoolean:false];
   }
   mClientEquationsCount_ = 0;
@@ -189,13 +205,13 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
 
 - (void)setSynonymWithADXLinearSystem:(ADXLinearSystem *)system
                 withADXSolverVariable:(ADXSolverVariable *)synonymVariable
-                            withFloat:(jfloat)value {
+                            withFloat:(float)value {
   isSynonym_ = true;
   synonym_ = ((ADXSolverVariable *) nil_chk(synonymVariable))->id__;
   synonymDelta_ = value;
-  jint count = mClientEquationsCount_;
+  int32_t count = mClientEquationsCount_;
   definitionId_ = -1;
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     [((ADXArrayRow *) nil_chk(IOSObjectArray_Get(nil_chk(mClientEquations_), i))) updateFromSynonymVariableWithADXLinearSystem:system withADXSolverVariable:self withBoolean:false];
   }
   mClientEquationsCount_ = 0;
@@ -215,8 +231,8 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
   synonym_ = -1;
   synonymDelta_ = 0;
   {
-    jint count = mClientEquationsCount_;
-    for (jint i = 0; i < count; i++) {
+    int32_t count = mClientEquationsCount_;
+    for (int32_t i = 0; i < count; i++) {
       IOSObjectArray_Set(nil_chk(mClientEquations_), i, nil);
     }
     mClientEquationsCount_ = 0;
@@ -239,7 +255,7 @@ __attribute__((unused)) static void ADXSolverVariable_Type_initWithNSString_with
   JreStrongAssign(&mType_, type);
 }
 
-- (jint)compareToWithId:(ADXSolverVariable *)v {
+- (int32_t)compareToWithId:(ADXSolverVariable *)v {
   cast_chk(v, [ADXSolverVariable class]);
   return self->id__ - ((ADXSolverVariable *) nil_chk(v))->id__;
 }
@@ -433,6 +449,8 @@ ADXSolverVariable *create_ADXSolverVariable_initWithADXSolverVariable_Type_withN
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXSolverVariable)
 
+J2OBJC_NAME_MAPPING(ADXSolverVariable, "androidx.constraintlayout.core", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXSolverVariable_Type)
 
 ADXSolverVariable_Type *ADXSolverVariable_Type_values_[5];
@@ -449,6 +467,24 @@ ADXSolverVariable_Type *ADXSolverVariable_Type_values_[5];
 
 - (ADXSolverVariable_Type_Enum)toNSEnum {
   return (ADXSolverVariable_Type_Enum)[self ordinal];
+}
+
+- (ADXSolverVariable_Type_Enum)enumValue {
+  return (ADXSolverVariable_Type_Enum)[self ordinal];
+}
+
++ (ADXSolverVariable_Type *)fromNSEnum:(ADXSolverVariable_Type_Enum)nativeValue {
+  ADXSolverVariable_Type *javaEnum = ADXSolverVariable_Type_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXSolverVariable_Type_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXSolverVariable_Type_ORDINAL)ordinal {
+  return (ADXSolverVariable_Type_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithType:(ADXSolverVariable_Type_Enum)value {
+  return RETAIN_(ADXSolverVariable_Type_fromOrdinal((ADXSolverVariable_Type_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -480,7 +516,7 @@ ADXSolverVariable_Type *ADXSolverVariable_Type_values_[5];
     size_t allocSize = 5 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 5; i++) {
+    for (int32_t i = 0; i < 5; i++) {
       ((void)(ADXSolverVariable_Type_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXSolverVariable_Type_initWithNSString_withInt_(e, JreEnumConstantName(ADXSolverVariable_Type_class_(), i), i);
     }
@@ -490,7 +526,7 @@ ADXSolverVariable_Type *ADXSolverVariable_Type_values_[5];
 
 @end
 
-void ADXSolverVariable_Type_initWithNSString_withInt_(ADXSolverVariable_Type *self, NSString *__name, jint __ordinal) {
+void ADXSolverVariable_Type_initWithNSString_withInt_(ADXSolverVariable_Type *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -508,12 +544,11 @@ ADXSolverVariable_Type *ADXSolverVariable_Type_valueOfWithNSString_(NSString *na
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXSolverVariable_Type *ADXSolverVariable_Type_fromOrdinal(NSUInteger ordinal) {
+ADXSolverVariable_Type *ADXSolverVariable_Type_fromOrdinal(ADXSolverVariable_Type_ORDINAL ordinal) {
   ADXSolverVariable_Type_initialize();
-  if (ordinal >= 5) {
+  if (ordinal < 0 || ordinal >= 5) {
     return nil;
   }
   return ADXSolverVariable_Type_values_[ordinal];

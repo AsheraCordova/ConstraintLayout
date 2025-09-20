@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\ChainRun.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ChainRun.h"
 #include "ConstraintAnchor.h"
 #include "ConstraintWidget.h"
@@ -16,14 +21,24 @@
 #include "RunGroup.h"
 #include "VerticalWidgetRun.h"
 #include "WidgetRun.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/StringBuilder.h"
 #include "java/util/ArrayList.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXChainRun () {
  @public
-  jint chainStyle_;
+  int32_t chainStyle_;
 }
 
 - (void)build;
@@ -43,7 +58,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
 @implementation ADXChainRun
 
 - (instancetype)initWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                    withInt:(jint)orientation {
+                                    withInt:(int32_t)orientation {
   ADXChainRun_initWithADXConstraintWidget_withInt_(self, widget, orientation);
   return self;
 }
@@ -59,9 +74,9 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
   return [log description];
 }
 
-- (jboolean)supportsWrapComputation {
-  jint count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
-  for (jint i = 0; i < count; i++) {
+- (bool)supportsWrapComputation {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
     if (![((ADXWidgetRun *) nil_chk(run)) supportsWrapComputation]) {
       return false;
@@ -70,10 +85,10 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
   return true;
 }
 
-- (jlong)getWrapDimension {
-  jint count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
-  jlong wrapDimension = 0;
-  for (jint i = 0; i < count; i++) {
+- (int64_t)getWrapDimension {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
+  int64_t wrapDimension = 0;
+  for (int32_t i = 0; i < count; i++) {
     ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
     wrapDimension += ((ADXDependencyNode *) nil_chk(((ADXWidgetRun *) nil_chk(run))->start_))->margin_;
     wrapDimension += [run getWrapDimension];
@@ -103,18 +118,18 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     return;
   }
   ADXConstraintWidget *parent = JreRetainedLocalValue([((ADXConstraintWidget *) nil_chk(widget_)) getParent]);
-  jboolean isInRtl = false;
+  bool isInRtl = false;
   if ([parent isKindOfClass:[ADXConstraintWidgetContainer class]]) {
     isInRtl = [((ADXConstraintWidgetContainer *) nil_chk(((ADXConstraintWidgetContainer *) parent))) isRtl];
   }
-  jint distance = ((ADXDependencyNode *) nil_chk(end_))->value_ - ((ADXDependencyNode *) nil_chk(start_))->value_;
-  jint size = 0;
-  jint numMatchConstraints = 0;
-  jfloat weights = 0;
-  jint numVisibleWidgets = 0;
-  jint count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
-  jint firstVisibleWidget = -1;
-  for (jint i = 0; i < count; i++) {
+  int32_t distance = ((ADXDependencyNode *) nil_chk(end_))->value_ - ((ADXDependencyNode *) nil_chk(start_))->value_;
+  int32_t size = 0;
+  int32_t numMatchConstraints = 0;
+  float weights = 0;
+  int32_t numVisibleWidgets = 0;
+  int32_t count = [((JavaUtilArrayList *) nil_chk(widgets_)) size];
+  int32_t firstVisibleWidget = -1;
+  for (int32_t i = 0; i < count; i++) {
     ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
     if ([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getVisibility] == ADXConstraintWidget_GONE) {
       continue;
@@ -122,8 +137,8 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     firstVisibleWidget = i;
     break;
   }
-  jint lastVisibleWidget = -1;
-  for (jint i = count - 1; i >= 0; i--) {
+  int32_t lastVisibleWidget = -1;
+  for (int32_t i = count - 1; i >= 0; i--) {
     ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
     if ([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getVisibility] == ADXConstraintWidget_GONE) {
       continue;
@@ -131,8 +146,8 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     lastVisibleWidget = i;
     break;
   }
-  for (jint j = 0; j < 2; j++) {
-    for (jint i = 0; i < count; i++) {
+  for (int32_t j = 0; j < 2; j++) {
+    for (int32_t i = 0; i < count; i++) {
       ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
       if ([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getVisibility] == ADXConstraintWidget_GONE) {
         continue;
@@ -141,8 +156,8 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       if (i > 0 && i >= firstVisibleWidget) {
         size += ((ADXDependencyNode *) nil_chk(run->start_))->margin_;
       }
-      jint dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
-      jboolean treatAsFixed = run->dimensionBehavior_ != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
+      int32_t dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
+      bool treatAsFixed = run->dimensionBehavior_ != JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
       if (treatAsFixed) {
         if (orientation_ == ADXConstraintWidget_HORIZONTAL && !((ADXHorizontalWidgetRun *) nil_chk(((ADXConstraintWidget *) nil_chk(run->widget_))->horizontalRun_))->dimension_->resolved_) {
           return;
@@ -161,7 +176,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       }
       if (!treatAsFixed) {
         numMatchConstraints++;
-        jfloat weight = IOSFloatArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(run->widget_))->mWeight_), orientation_);
+        float weight = IOSFloatArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(run->widget_))->mWeight_), orientation_);
         if (weight >= 0) {
           JrePlusAssignFloatF(&weights, weight);
         }
@@ -181,7 +196,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     size = 0;
     weights = 0;
   }
-  jint position = ((ADXDependencyNode *) nil_chk(start_))->value_;
+  int32_t position = ((ADXDependencyNode *) nil_chk(start_))->value_;
   if (isInRtl) {
     position = ((ADXDependencyNode *) nil_chk(end_))->value_;
   }
@@ -193,24 +208,24 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       position -= JreFpToInt((0.5f + (size - distance) / 2.0f));
     }
   }
-  jint matchConstraintsDimension = 0;
+  int32_t matchConstraintsDimension = 0;
   if (numMatchConstraints > 0) {
-    matchConstraintsDimension = JreFpToInt((0.5f + (distance - size) / (jfloat) numMatchConstraints));
-    jint appliedLimits = 0;
-    for (jint i = 0; i < count; i++) {
+    matchConstraintsDimension = JreFpToInt((0.5f + (distance - size) / (float) numMatchConstraints));
+    int32_t appliedLimits = 0;
+    for (int32_t i = 0; i < count; i++) {
       ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
       if ([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getVisibility] == ADXConstraintWidget_GONE) {
         continue;
       }
       if (run->dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && !((ADXDimensionDependency *) nil_chk(run->dimension_))->resolved_) {
-        jint dimension = matchConstraintsDimension;
+        int32_t dimension = matchConstraintsDimension;
         if (weights > 0) {
-          jfloat weight = IOSFloatArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(run->widget_))->mWeight_), orientation_);
+          float weight = IOSFloatArray_Get(nil_chk(((ADXConstraintWidget *) nil_chk(run->widget_))->mWeight_), orientation_);
           dimension = JreFpToInt((0.5f + weight * (distance - size) / weights));
         }
-        jint max;
-        jint min;
-        jint value = dimension;
+        int32_t max;
+        int32_t min;
+        int32_t value = dimension;
         if (orientation_ == ADXConstraintWidget_HORIZONTAL) {
           max = ((ADXConstraintWidget *) nil_chk(run->widget_))->mMatchConstraintMaxWidth_;
           min = run->widget_->mMatchConstraintMinWidth_;
@@ -236,7 +251,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     if (appliedLimits > 0) {
       numMatchConstraints -= appliedLimits;
       size = 0;
-      for (jint i = 0; i < count; i++) {
+      for (int32_t i = 0; i < count; i++) {
         ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
         if ([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getVisibility] == ADXConstraintWidget_GONE) {
           continue;
@@ -261,7 +276,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     chainStyle_ = ADXConstraintWidget_CHAIN_PACKED;
   }
   if (chainStyle_ == ADXConstraintWidget_CHAIN_SPREAD_INSIDE) {
-    jint gap = 0;
+    int32_t gap = 0;
     if (numVisibleWidgets > 1) {
       gap = JreIntDiv((distance - size), (numVisibleWidgets - 1));
     }
@@ -271,8 +286,8 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     if (numMatchConstraints > 0) {
       gap = 0;
     }
-    for (jint i = 0; i < count; i++) {
-      jint index = i;
+    for (int32_t i = 0; i < count; i++) {
+      int32_t index = i;
       if (isInRtl) {
         index = count - (i + 1);
       }
@@ -304,7 +319,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       else {
         [((ADXDependencyNode *) nil_chk(run->start_)) resolveWithInt:position];
       }
-      jint dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
+      int32_t dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
       if (run->dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && run->matchConstraintsType_ == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP) {
         dimension = run->dimension_->wrapValue_;
       }
@@ -332,12 +347,12 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     }
   }
   else if (chainStyle_ == ADXConstraintWidget_CHAIN_SPREAD) {
-    jint gap = JreIntDiv((distance - size), (numVisibleWidgets + 1));
+    int32_t gap = JreIntDiv((distance - size), (numVisibleWidgets + 1));
     if (numMatchConstraints > 0) {
       gap = 0;
     }
-    for (jint i = 0; i < count; i++) {
-      jint index = i;
+    for (int32_t i = 0; i < count; i++) {
+      int32_t index = i;
       if (isInRtl) {
         index = count - (i + 1);
       }
@@ -367,7 +382,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       else {
         [((ADXDependencyNode *) nil_chk(run->start_)) resolveWithInt:position];
       }
-      jint dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
+      int32_t dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
       if (run->dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && run->matchConstraintsType_ == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP) {
         dimension = JavaLangMath_minWithInt_withInt_(dimension, run->dimension_->wrapValue_);
       }
@@ -394,11 +409,11 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     }
   }
   else if (chainStyle_ == ADXConstraintWidget_CHAIN_PACKED) {
-    jfloat bias = (orientation_ == ADXConstraintWidget_HORIZONTAL) ? [((ADXConstraintWidget *) nil_chk(widget_)) getHorizontalBiasPercent] : [((ADXConstraintWidget *) nil_chk(widget_)) getVerticalBiasPercent];
+    float bias = (orientation_ == ADXConstraintWidget_HORIZONTAL) ? [((ADXConstraintWidget *) nil_chk(widget_)) getHorizontalBiasPercent] : [((ADXConstraintWidget *) nil_chk(widget_)) getVerticalBiasPercent];
     if (isInRtl) {
       bias = 1 - bias;
     }
-    jint gap = JreFpToInt((0.5f + (distance - size) * bias));
+    int32_t gap = JreFpToInt((0.5f + (distance - size) * bias));
     if (gap < 0 || numMatchConstraints > 0) {
       gap = 0;
     }
@@ -408,8 +423,8 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     else {
       position += gap;
     }
-    for (jint i = 0; i < count; i++) {
-      jint index = i;
+    for (int32_t i = 0; i < count; i++) {
+      int32_t index = i;
       if (isInRtl) {
         index = count - (i + 1);
       }
@@ -433,7 +448,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       else {
         [((ADXDependencyNode *) nil_chk(run->start_)) resolveWithInt:position];
       }
-      jint dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
+      int32_t dimension = ((ADXDimensionDependency *) nil_chk(run->dimension_))->value_;
       if (run->dimensionBehavior_ == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT) && run->matchConstraintsType_ == ADXConstraintWidget_MATCH_CONSTRAINT_WRAP) {
         dimension = run->dimension_->wrapValue_;
       }
@@ -462,7 +477,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
 }
 
 - (void)applyToWidget {
-  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(widgets_)) size]; i++) {
+  for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(widgets_)) size]; i++) {
     ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(widgets_)) getWithInt:i]);
     [((ADXWidgetRun *) nil_chk(run)) applyToWidget];
   }
@@ -480,7 +495,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
   for (ADXWidgetRun * __strong run in nil_chk(widgets_)) {
     [((ADXWidgetRun *) nil_chk(run)) apply];
   }
-  jint count = [widgets_ size];
+  int32_t count = [widgets_ size];
   if (count < 1) {
     return;
   }
@@ -490,7 +505,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     ADXConstraintAnchor *startAnchor = JreRetainedLocalValue(((ADXConstraintWidget *) nil_chk(firstWidget))->mLeft_);
     ADXConstraintAnchor *endAnchor = JreRetainedLocalValue(((ADXConstraintWidget *) nil_chk(lastWidget))->mRight_);
     ADXDependencyNode *startTarget = JreRetainedLocalValue([self getTargetWithADXConstraintAnchor:startAnchor withInt:ADXConstraintWidget_HORIZONTAL]);
-    jint startMargin = [((ADXConstraintAnchor *) nil_chk(startAnchor)) getMargin];
+    int32_t startMargin = [((ADXConstraintAnchor *) nil_chk(startAnchor)) getMargin];
     ADXConstraintWidget *firstVisibleWidget = ADXChainRun_getFirstVisibleWidget(self);
     if (firstVisibleWidget != nil) {
       startMargin = [((ADXConstraintAnchor *) nil_chk(firstVisibleWidget->mLeft_)) getMargin];
@@ -499,7 +514,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       [self addTargetWithADXDependencyNode:start_ withADXDependencyNode:startTarget withInt:startMargin];
     }
     ADXDependencyNode *endTarget = JreRetainedLocalValue([self getTargetWithADXConstraintAnchor:endAnchor withInt:ADXConstraintWidget_HORIZONTAL]);
-    jint endMargin = [((ADXConstraintAnchor *) nil_chk(endAnchor)) getMargin];
+    int32_t endMargin = [((ADXConstraintAnchor *) nil_chk(endAnchor)) getMargin];
     ADXConstraintWidget *lastVisibleWidget = ADXChainRun_getLastVisibleWidget(self);
     if (lastVisibleWidget != nil) {
       endMargin = [((ADXConstraintAnchor *) nil_chk(lastVisibleWidget->mRight_)) getMargin];
@@ -512,7 +527,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
     ADXConstraintAnchor *startAnchor = JreRetainedLocalValue(((ADXConstraintWidget *) nil_chk(firstWidget))->mTop_);
     ADXConstraintAnchor *endAnchor = JreRetainedLocalValue(((ADXConstraintWidget *) nil_chk(lastWidget))->mBottom_);
     ADXDependencyNode *startTarget = JreRetainedLocalValue([self getTargetWithADXConstraintAnchor:startAnchor withInt:ADXConstraintWidget_VERTICAL]);
-    jint startMargin = [((ADXConstraintAnchor *) nil_chk(startAnchor)) getMargin];
+    int32_t startMargin = [((ADXConstraintAnchor *) nil_chk(startAnchor)) getMargin];
     ADXConstraintWidget *firstVisibleWidget = ADXChainRun_getFirstVisibleWidget(self);
     if (firstVisibleWidget != nil) {
       startMargin = [((ADXConstraintAnchor *) nil_chk(firstVisibleWidget->mTop_)) getMargin];
@@ -521,7 +536,7 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
       [self addTargetWithADXDependencyNode:start_ withADXDependencyNode:startTarget withInt:startMargin];
     }
     ADXDependencyNode *endTarget = JreRetainedLocalValue([self getTargetWithADXConstraintAnchor:endAnchor withInt:ADXConstraintWidget_VERTICAL]);
-    jint endMargin = [((ADXConstraintAnchor *) nil_chk(endAnchor)) getMargin];
+    int32_t endMargin = [((ADXConstraintAnchor *) nil_chk(endAnchor)) getMargin];
     ADXConstraintWidget *lastVisibleWidget = ADXChainRun_getLastVisibleWidget(self);
     if (lastVisibleWidget != nil) {
       endMargin = [((ADXConstraintAnchor *) nil_chk(lastVisibleWidget->mBottom_)) getMargin];
@@ -581,18 +596,18 @@ __attribute__((unused)) static ADXConstraintWidget *ADXChainRun_getLastVisibleWi
 
 @end
 
-void ADXChainRun_initWithADXConstraintWidget_withInt_(ADXChainRun *self, ADXConstraintWidget *widget, jint orientation) {
+void ADXChainRun_initWithADXConstraintWidget_withInt_(ADXChainRun *self, ADXConstraintWidget *widget, int32_t orientation) {
   ADXWidgetRun_initWithADXConstraintWidget_(self, widget);
   JreStrongAssignAndConsume(&self->widgets_, new_JavaUtilArrayList_init());
   self->orientation_ = orientation;
   ADXChainRun_build(self);
 }
 
-ADXChainRun *new_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, jint orientation) {
+ADXChainRun *new_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, int32_t orientation) {
   J2OBJC_NEW_IMPL(ADXChainRun, initWithADXConstraintWidget_withInt_, widget, orientation)
 }
 
-ADXChainRun *create_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, jint orientation) {
+ADXChainRun *create_ADXChainRun_initWithADXConstraintWidget_withInt_(ADXConstraintWidget *widget, int32_t orientation) {
   J2OBJC_CREATE_IMPL(ADXChainRun, initWithADXConstraintWidget_withInt_, widget, orientation)
 }
 
@@ -619,7 +634,7 @@ void ADXChainRun_build(ADXChainRun *self) {
       JreStrongAssign(&((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_))->verticalChainRun_, self);
     }
   }
-  jboolean isInRtl = (self->orientation_ == ADXConstraintWidget_HORIZONTAL) && [((ADXConstraintWidgetContainer *) nil_chk(((ADXConstraintWidgetContainer *) cast_chk([((ADXConstraintWidget *) nil_chk(self->widget_)) getParent], [ADXConstraintWidgetContainer class])))) isRtl];
+  bool isInRtl = (self->orientation_ == ADXConstraintWidget_HORIZONTAL) && [((ADXConstraintWidgetContainer *) nil_chk(((ADXConstraintWidgetContainer *) cast_chk([((ADXConstraintWidget *) nil_chk(self->widget_)) getParent], [ADXConstraintWidgetContainer class])))) isRtl];
   if (isInRtl && [((JavaUtilArrayList *) nil_chk(self->widgets_)) size] > 1) {
     JreStrongAssign(&self->widget_, ((ADXWidgetRun *) nil_chk([((JavaUtilArrayList *) nil_chk(self->widgets_)) getWithInt:[self->widgets_ size] - 1]))->widget_);
   }
@@ -627,7 +642,7 @@ void ADXChainRun_build(ADXChainRun *self) {
 }
 
 ADXConstraintWidget *ADXChainRun_getFirstVisibleWidget(ADXChainRun *self) {
-  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(self->widgets_)) size]; i++) {
+  for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(self->widgets_)) size]; i++) {
     ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(self->widgets_)) getWithInt:i]);
     if ([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getVisibility] != ADXConstraintWidget_GONE) {
       return run->widget_;
@@ -637,7 +652,7 @@ ADXConstraintWidget *ADXChainRun_getFirstVisibleWidget(ADXChainRun *self) {
 }
 
 ADXConstraintWidget *ADXChainRun_getLastVisibleWidget(ADXChainRun *self) {
-  for (jint i = [((JavaUtilArrayList *) nil_chk(self->widgets_)) size] - 1; i >= 0; i--) {
+  for (int32_t i = [((JavaUtilArrayList *) nil_chk(self->widgets_)) size] - 1; i >= 0; i--) {
     ADXWidgetRun *run = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(self->widgets_)) getWithInt:i]);
     if ([((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run))->widget_)) getVisibility] != ADXConstraintWidget_GONE) {
       return run->widget_;
@@ -647,3 +662,5 @@ ADXConstraintWidget *ADXChainRun_getLastVisibleWidget(ADXChainRun *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXChainRun)
+
+J2OBJC_NAME_MAPPING(ADXChainRun, "androidx.constraintlayout.core.widgets.analyzer", "ADX")

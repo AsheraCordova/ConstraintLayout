@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\SharedValues.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_SharedValues")
@@ -16,6 +17,7 @@
 #if !defined (ADXSharedValues_) && (INCLUDE_ALL_SharedValues || defined(INCLUDE_ADXSharedValues))
 #define ADXSharedValues_
 
+@class JavaLangInteger;
 @protocol ADXSharedValues_SharedValuesListener;
 
 /*!
@@ -32,7 +34,7 @@
  @param key
  @param listener
  */
-- (void)addListenerWithInt:(jint)key
+- (void)addListenerWithInt:(int32_t)key
 withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListener>)listener;
 
 /*!
@@ -45,21 +47,21 @@ withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListene
  @param key
  @param value
  */
-- (void)fireNewValueWithInt:(jint)key
-                    withInt:(jint)value;
+- (void)fireNewValueWithInt:(int32_t)key
+                    withInt:(int32_t)value;
 
 /*!
  @brief get the value from the map
  @param key
  */
-- (jint)getValueWithInt:(jint)key;
+- (int32_t)getValueWithInt:(int32_t)key;
 
 /*!
  @brief Remove listener for a key (will not be removed for other keys)
  @param key
  @param listener
  */
-- (void)removeListenerWithInt:(jint)key
+- (void)removeListenerWithInt:(int32_t)key
 withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListener>)listener;
 
 /*!
@@ -72,9 +74,9 @@ withADXSharedValues_SharedValuesListener:(id<ADXSharedValues_SharedValuesListene
 
 J2OBJC_EMPTY_STATIC_INIT(ADXSharedValues)
 
-inline jint ADXSharedValues_get_UNSET(void);
+inline int32_t ADXSharedValues_get_UNSET(void);
 #define ADXSharedValues_UNSET -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSharedValues, UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSharedValues, UNSET, int32_t)
 
 FOUNDATION_EXPORT void ADXSharedValues_init(ADXSharedValues *self);
 
@@ -86,10 +88,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSharedValues)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetSharedValues ADXSharedValues;
 
+
 #endif
 
 #if !defined (ADXSharedValues_SharedValuesListener_) && (INCLUDE_ALL_SharedValues || defined(INCLUDE_ADXSharedValues_SharedValuesListener))
 #define ADXSharedValues_SharedValuesListener_
+
+@class JavaLangInteger;
 
 /*!
  @brief interface for listeners
@@ -101,15 +106,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSharedValues)
  @param newValue
  @param oldValue
  */
-- (void)onNewValueWithInt:(jint)key
-                  withInt:(jint)newValue
-                  withInt:(jint)oldValue;
+- (void)onNewValueWithInt:(int32_t)key
+                  withInt:(int32_t)newValue
+                  withInt:(int32_t)oldValue;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXSharedValues_SharedValuesListener)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXSharedValues_SharedValuesListener)
+
 
 #endif
 

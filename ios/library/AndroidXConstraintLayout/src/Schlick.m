@@ -3,27 +3,41 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Schlick.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Easing.h"
 #include "J2ObjC_source.h"
 #include "Schlick.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Double.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXSchlick ()
 
-- (jdouble)funcWithDouble:(jdouble)x;
+- (double)funcWithDouble:(double)x;
 
-- (jdouble)dfuncWithDouble:(jdouble)x;
+- (double)dfuncWithDouble:(double)x;
 
 @end
 
-inline jboolean ADXSchlick_get_DEBUG(void);
+inline bool ADXSchlick_get_DEBUG(void);
 #define ADXSchlick_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSchlick, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSchlick, DEBUG, bool)
 
-__attribute__((unused)) static jdouble ADXSchlick_funcWithDouble_(ADXSchlick *self, jdouble x);
+__attribute__((unused)) static double ADXSchlick_funcWithDouble_(ADXSchlick *self, double x);
 
-__attribute__((unused)) static jdouble ADXSchlick_dfuncWithDouble_(ADXSchlick *self, jdouble x);
+__attribute__((unused)) static double ADXSchlick_dfuncWithDouble_(ADXSchlick *self, double x);
 
 @implementation ADXSchlick
 
@@ -32,19 +46,19 @@ __attribute__((unused)) static jdouble ADXSchlick_dfuncWithDouble_(ADXSchlick *s
   return self;
 }
 
-- (jdouble)funcWithDouble:(jdouble)x {
+- (double)funcWithDouble:(double)x {
   return ADXSchlick_funcWithDouble_(self, x);
 }
 
-- (jdouble)dfuncWithDouble:(jdouble)x {
+- (double)dfuncWithDouble:(double)x {
   return ADXSchlick_dfuncWithDouble_(self, x);
 }
 
-- (jdouble)getDiffWithDouble:(jdouble)x {
+- (double)getDiffWithDouble:(double)x {
   return ADXSchlick_dfuncWithDouble_(self, x);
 }
 
-- (jdouble)getWithDouble:(jdouble)x {
+- (double)getWithDouble:(double)x {
   return ADXSchlick_funcWithDouble_(self, x);
 }
 
@@ -81,10 +95,10 @@ __attribute__((unused)) static jdouble ADXSchlick_dfuncWithDouble_(ADXSchlick *s
 void ADXSchlick_initWithNSString_(ADXSchlick *self, NSString *configString) {
   ADXEasing_init(self);
   JreStrongAssign(&self->str_, configString);
-  jint start = [((NSString *) nil_chk(configString)) java_indexOf:'('];
-  jint off1 = [configString java_indexOf:',' fromIndex:start];
+  int32_t start = [((NSString *) nil_chk(configString)) java_indexOf:'('];
+  int32_t off1 = [configString java_indexOf:',' fromIndex:start];
   self->mS_ = JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([configString java_substring:start + 1 endIndex:off1])) java_trim]);
-  jint off2 = [configString java_indexOf:',' fromIndex:off1 + 1];
+  int32_t off2 = [configString java_indexOf:',' fromIndex:off1 + 1];
   self->mT_ = JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([configString java_substring:off1 + 1 endIndex:off2])) java_trim]);
 }
 
@@ -96,14 +110,14 @@ ADXSchlick *create_ADXSchlick_initWithNSString_(NSString *configString) {
   J2OBJC_CREATE_IMPL(ADXSchlick, initWithNSString_, configString)
 }
 
-jdouble ADXSchlick_funcWithDouble_(ADXSchlick *self, jdouble x) {
+double ADXSchlick_funcWithDouble_(ADXSchlick *self, double x) {
   if (x < self->mT_) {
     return self->mT_ * x / (x + self->mS_ * (self->mT_ - x));
   }
   return ((1 - self->mT_) * (x - 1)) / (1 - x - self->mS_ * (self->mT_ - x));
 }
 
-jdouble ADXSchlick_dfuncWithDouble_(ADXSchlick *self, jdouble x) {
+double ADXSchlick_dfuncWithDouble_(ADXSchlick *self, double x) {
   if (x < self->mT_) {
     return (self->mS_ * self->mT_ * self->mT_) / ((self->mS_ * (self->mT_ - x) + x) * (self->mS_ * (self->mT_ - x) + x));
   }
@@ -111,3 +125,5 @@ jdouble ADXSchlick_dfuncWithDouble_(ADXSchlick *self, jdouble x) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXSchlick)
+
+J2OBJC_NAME_MAPPING(ADXSchlick, "androidx.constraintlayout.core.motion.utils", "ADX")

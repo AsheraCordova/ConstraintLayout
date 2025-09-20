@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\TouchResponse.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_TouchResponse")
@@ -22,6 +23,10 @@
 @class ADXMotionLayout;
 @class ADXMotionScene;
 @class ADXOnSwipe;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADXMotionLayout_MotionTracker;
 
 /*!
@@ -29,9 +34,9 @@
  */
 @interface ADXTouchResponse : NSObject {
  @public
-  jfloat mRotateCenterX_;
-  jfloat mRotateCenterY_;
-  jboolean mIsRotateMode_;
+  float mRotateCenterX_;
+  float mRotateCenterY_;
+  bool mIsRotateMode_;
 }
 
 #pragma mark Public
@@ -42,24 +47,24 @@
 /*!
  @brief Get the view being used as anchor
  */
-- (jint)getAnchorId;
+- (int32_t)getAnchorId;
 
 /*!
  @brief Get how the drag progress will return to the start or end state on touch up.
  Can be ether COMPLETE_MODE_CONTINUOUS_VELOCITY (default) or COMPLETE_MODE_SPRING
  */
-- (jint)getAutoCompleteMode;
+- (int32_t)getAutoCompleteMode;
 
 /*!
  @brief flags to control
  */
-- (jint)getFlags;
+- (int32_t)getFlags;
 
 /*!
  @brief Gets the maximum velocity allowed on touch up.
  Velocity is the rate of change in "progress" per second.
  */
-- (jfloat)getMaxVelocity;
+- (float)getMaxVelocity;
 
 /*!
  @brief The spring's behaviour when it hits 0 or 1.It can be made ot overshoot or bounce
@@ -69,73 +74,73 @@
   bounceBoth = 3
  @return Bounce mode
  */
-- (jint)getSpringBoundary;
+- (int32_t)getSpringBoundary;
 
 /*!
  @brief the damping of the spring if using spring
   c in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
  @return NaN if not set
  */
-- (jfloat)getSpringDamping;
+- (float)getSpringDamping;
 
 /*!
  @brief the Mass of the spring if using spring
    m in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
  @return default is 1
  */
-- (jfloat)getSpringMass;
+- (float)getSpringMass;
 
 /*!
  @brief the stiffness of the spring if using spring
    K in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
  @return NaN if not set
  */
-- (jfloat)getSpringStiffness;
+- (float)getSpringStiffness;
 
 /*!
  @brief The threshold below
  @return NaN if not set
  */
-- (jfloat)getSpringStopThreshold;
+- (float)getSpringStopThreshold;
 
 /*!
  @brief set the id of the anchor
  @param id_
  */
-- (void)setAnchorIdWithInt:(jint)id_;
+- (void)setAnchorIdWithInt:(int32_t)id_;
 
 /*!
  @brief set the maximum Acceleration allowed for a motion.
  Acceleration is the rate of change velocity per second.
  @param acceleration
  */
-- (void)setMaxAccelerationWithFloat:(jfloat)acceleration;
+- (void)setMaxAccelerationWithFloat:(float)acceleration;
 
 /*!
  @brief Sets the maximum velocity allowed on touch up.
  Velocity is the rate of change in "progress" per second.
  @param velocity in progress per second 1 = one second to do the entire animation
  */
-- (void)setMaxVelocityWithFloat:(jfloat)velocity;
+- (void)setMaxVelocityWithFloat:(float)velocity;
 
-- (void)setRTLWithBoolean:(jboolean)rtl;
+- (void)setRTLWithBoolean:(bool)rtl;
 
 /*!
  @brief Set the location in the view to be the touch anchor
  @param x location in x 0 = left, 1 = right
  @param y location in y 0 = top, 1 = bottom
  */
-- (void)setTouchAnchorLocationWithFloat:(jfloat)x
-                              withFloat:(jfloat)y;
+- (void)setTouchAnchorLocationWithFloat:(float)x
+                              withFloat:(float)y;
 
-- (void)setTouchUpModeWithInt:(jint)touchUpMode;
+- (void)setTouchUpModeWithInt:(int32_t)touchUpMode;
 
 - (NSString *)description;
 
 #pragma mark Package-Private
 
-- (jfloat)dotWithFloat:(jfloat)dx
-             withFloat:(jfloat)dy;
+- (float)dotWithFloat:(float)dx
+            withFloat:(float)dy;
 
 /*!
  @brief This calculates the bounds of the mTouchRegionId view.
@@ -147,11 +152,11 @@
 - (ADRectF *)getLimitBoundsToWithADViewGroup:(ADViewGroup *)layout
                                  withADRectF:(ADRectF *)rect;
 
-- (jint)getLimitBoundsToId;
+- (int32_t)getLimitBoundsToId;
 
-- (jfloat)getMaxAcceleration;
+- (float)getMaxAcceleration;
 
-- (jboolean)getMoveWhenScrollAtTop;
+- (bool)getMoveWhenScrollAtTop;
 
 /*!
  @brief Calculate if a drag in this direction results in an increase or decrease in progress.
@@ -159,8 +164,8 @@
  @param dy drag direction in y
  @return the change in progress given that dx and dy
  */
-- (jfloat)getProgressDirectionWithFloat:(jfloat)dx
-                              withFloat:(jfloat)dy;
+- (float)getProgressDirectionWithFloat:(float)dx
+                             withFloat:(float)dy;
 
 /*!
  @brief This calculates the bounds of the mTouchRegionId view.
@@ -172,7 +177,7 @@
 - (ADRectF *)getTouchRegionWithADViewGroup:(ADViewGroup *)layout
                                withADRectF:(ADRectF *)rect;
 
-- (jint)getTouchRegionId;
+- (int32_t)getTouchRegionId;
 
 /*!
  @brief Process touch events
@@ -182,7 +187,7 @@
  */
 - (void)processTouchEventWithADMotionEvent:(ADMotionEvent *)event
          withADXMotionLayout_MotionTracker:(id<ADXMotionLayout_MotionTracker>)velocityTracker
-                                   withInt:(jint)currentState
+                                   withInt:(int32_t)currentState
                         withADXMotionScene:(ADXMotionScene *)motionScene;
 
 /*!
@@ -193,27 +198,27 @@
  */
 - (void)processTouchRotateEventWithADMotionEvent:(ADMotionEvent *)event
                withADXMotionLayout_MotionTracker:(id<ADXMotionLayout_MotionTracker>)velocityTracker
-                                         withInt:(jint)currentState
+                                         withInt:(int32_t)currentState
                               withADXMotionScene:(ADXMotionScene *)motionScene;
 
-- (void)scrollMoveWithFloat:(jfloat)dx
-                  withFloat:(jfloat)dy;
+- (void)scrollMoveWithFloat:(float)dx
+                  withFloat:(float)dy;
 
-- (void)scrollUpWithFloat:(jfloat)dx
-                withFloat:(jfloat)dy;
+- (void)scrollUpWithFloat:(float)dx
+                withFloat:(float)dy;
 
 /*!
  @brief set how the drag progress will return to the start or end state on touch up.
  */
-- (void)setAutoCompleteModeWithInt:(jint)autoCompleteMode;
+- (void)setAutoCompleteModeWithInt:(int32_t)autoCompleteMode;
 
-- (void)setDownWithFloat:(jfloat)lastTouchX
-               withFloat:(jfloat)lastTouchY;
+- (void)setDownWithFloat:(float)lastTouchX
+               withFloat:(float)lastTouchY;
 
 - (void)setupTouch;
 
-- (void)setUpTouchEventWithFloat:(jfloat)lastTouchX
-                       withFloat:(jfloat)lastTouchY;
+- (void)setUpTouchEventWithFloat:(float)lastTouchX
+                       withFloat:(float)lastTouchY;
 
 // Disallowed inherited constructors, do not use.
 
@@ -223,25 +228,25 @@
 
 J2OBJC_STATIC_INIT(ADXTouchResponse)
 
-inline jint ADXTouchResponse_get_FLAG_DISABLE_POST_SCROLL(void);
+inline int32_t ADXTouchResponse_get_FLAG_DISABLE_POST_SCROLL(void);
 #define ADXTouchResponse_FLAG_DISABLE_POST_SCROLL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, FLAG_DISABLE_POST_SCROLL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, FLAG_DISABLE_POST_SCROLL, int32_t)
 
-inline jint ADXTouchResponse_get_FLAG_DISABLE_SCROLL(void);
+inline int32_t ADXTouchResponse_get_FLAG_DISABLE_SCROLL(void);
 #define ADXTouchResponse_FLAG_DISABLE_SCROLL 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, FLAG_DISABLE_SCROLL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, FLAG_DISABLE_SCROLL, int32_t)
 
-inline jint ADXTouchResponse_get_FLAG_SUPPORT_SCROLL_UP(void);
+inline int32_t ADXTouchResponse_get_FLAG_SUPPORT_SCROLL_UP(void);
 #define ADXTouchResponse_FLAG_SUPPORT_SCROLL_UP 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, FLAG_SUPPORT_SCROLL_UP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, FLAG_SUPPORT_SCROLL_UP, int32_t)
 
-inline jint ADXTouchResponse_get_COMPLETE_MODE_CONTINUOUS_VELOCITY(void);
+inline int32_t ADXTouchResponse_get_COMPLETE_MODE_CONTINUOUS_VELOCITY(void);
 #define ADXTouchResponse_COMPLETE_MODE_CONTINUOUS_VELOCITY 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, COMPLETE_MODE_CONTINUOUS_VELOCITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, COMPLETE_MODE_CONTINUOUS_VELOCITY, int32_t)
 
-inline jint ADXTouchResponse_get_COMPLETE_MODE_SPRING(void);
+inline int32_t ADXTouchResponse_get_COMPLETE_MODE_SPRING(void);
 #define ADXTouchResponse_COMPLETE_MODE_SPRING 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, COMPLETE_MODE_SPRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXTouchResponse, COMPLETE_MODE_SPRING, int32_t)
 
 FOUNDATION_EXPORT void ADXTouchResponse_initPackagePrivateWithADXMotionLayout_withADXOnSwipe_(ADXTouchResponse *self, ADXMotionLayout *layout, ADXOnSwipe *onSwipe);
 
@@ -252,6 +257,7 @@ FOUNDATION_EXPORT ADXTouchResponse *create_ADXTouchResponse_initPackagePrivateWi
 J2OBJC_TYPE_LITERAL_HEADER(ADXTouchResponse)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetTouchResponse ADXTouchResponse;
+
 
 #endif
 

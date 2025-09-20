@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\DependencyNode.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintWidget.h"
 #include "Dependency.h"
 #include "DependencyNode.h"
@@ -11,6 +16,8 @@
 #include "J2ObjC_source.h"
 #include "WidgetRun.h"
 #include "java/io/Serializable.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Comparable.h"
 #include "java/lang/Enum.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -19,7 +26,14 @@
 #include "java/util/List.h"
 
 
-__attribute__((unused)) static void ADXDependencyNode_Type_initWithNSString_withInt_(ADXDependencyNode_Type *self, NSString *__name, jint __ordinal);
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
+__attribute__((unused)) static void ADXDependencyNode_Type_initWithNSString_withInt_(ADXDependencyNode_Type *self, NSString *__name, int32_t __ordinal);
 
 @implementation ADXDependencyNode
 
@@ -32,7 +46,7 @@ __attribute__((unused)) static void ADXDependencyNode_Type_initWithNSString_with
   return JreStrcat("$C@C@$I$IC", [((ADXConstraintWidget *) nil_chk(((ADXWidgetRun *) nil_chk(run_))->widget_)) getDebugName], ':', type_, '(', (resolved_ ? JavaLangInteger_valueOfWithInt_(value_) : (id) @"unresolved"), @") <t=", [((id<JavaUtilList>) nil_chk(targets_)) size], @":d=", [((id<JavaUtilList>) nil_chk(dependencies_)) size], '>');
 }
 
-- (void)resolveWithInt:(jint)value {
+- (void)resolveWithInt:(int32_t)value {
   if (resolved_) {
     return;
   }
@@ -58,7 +72,7 @@ __attribute__((unused)) static void ADXDependencyNode_Type_initWithNSString_with
     return;
   }
   ADXDependencyNode *target = nil;
-  jint numTargets = 0;
+  int32_t numTargets = 0;
   for (ADXDependencyNode * __strong t in nil_chk(targets_)) {
     if ([t isKindOfClass:[ADXDimensionDependency class]]) {
       continue;
@@ -186,6 +200,8 @@ ADXDependencyNode *create_ADXDependencyNode_initWithADXWidgetRun_(ADXWidgetRun *
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXDependencyNode)
 
+J2OBJC_NAME_MAPPING(ADXDependencyNode, "androidx.constraintlayout.core.widgets.analyzer", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXDependencyNode_Type)
 
 ADXDependencyNode_Type *ADXDependencyNode_Type_values_[8];
@@ -202,6 +218,24 @@ ADXDependencyNode_Type *ADXDependencyNode_Type_values_[8];
 
 - (ADXDependencyNode_Type_Enum)toNSEnum {
   return (ADXDependencyNode_Type_Enum)[self ordinal];
+}
+
+- (ADXDependencyNode_Type_Enum)enumValue {
+  return (ADXDependencyNode_Type_Enum)[self ordinal];
+}
+
++ (ADXDependencyNode_Type *)fromNSEnum:(ADXDependencyNode_Type_Enum)nativeValue {
+  ADXDependencyNode_Type *javaEnum = ADXDependencyNode_Type_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXDependencyNode_Type_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXDependencyNode_Type_ORDINAL)ordinal {
+  return (ADXDependencyNode_Type_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithType:(ADXDependencyNode_Type_Enum)value {
+  return RETAIN_(ADXDependencyNode_Type_fromOrdinal((ADXDependencyNode_Type_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -236,7 +270,7 @@ ADXDependencyNode_Type *ADXDependencyNode_Type_values_[8];
     size_t allocSize = 8 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 8; i++) {
+    for (int32_t i = 0; i < 8; i++) {
       ((void)(ADXDependencyNode_Type_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXDependencyNode_Type_initWithNSString_withInt_(e, JreEnumConstantName(ADXDependencyNode_Type_class_(), i), i);
     }
@@ -246,7 +280,7 @@ ADXDependencyNode_Type *ADXDependencyNode_Type_values_[8];
 
 @end
 
-void ADXDependencyNode_Type_initWithNSString_withInt_(ADXDependencyNode_Type *self, NSString *__name, jint __ordinal) {
+void ADXDependencyNode_Type_initWithNSString_withInt_(ADXDependencyNode_Type *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -264,12 +298,11 @@ ADXDependencyNode_Type *ADXDependencyNode_Type_valueOfWithNSString_(NSString *na
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXDependencyNode_Type *ADXDependencyNode_Type_fromOrdinal(NSUInteger ordinal) {
+ADXDependencyNode_Type *ADXDependencyNode_Type_fromOrdinal(ADXDependencyNode_Type_ORDINAL ordinal) {
   ADXDependencyNode_Type_initialize();
-  if (ordinal >= 8) {
+  if (ordinal < 0 || ordinal >= 8) {
     return nil;
   }
   return ADXDependencyNode_Type_values_[ordinal];

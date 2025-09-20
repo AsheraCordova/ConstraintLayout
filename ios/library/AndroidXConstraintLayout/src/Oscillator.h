@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Oscillator.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Oscillator")
@@ -19,6 +20,10 @@
 @class ADXMonotonicCurveFit;
 @class IOSDoubleArray;
 @class IOSFloatArray;
+@class JavaLangDouble;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 /*!
  @brief This generates variable frequency oscillation curves
@@ -30,39 +35,39 @@
   IOSDoubleArray *mArea_;
   NSString *mCustomType_;
   ADXMonotonicCurveFit *mCustomCurve_;
-  jint mType_;
-  jdouble PI2_;
+  int32_t mType_;
+  double PI2_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (void)addPointWithDouble:(jdouble)position
-                 withFloat:(jfloat)period;
+- (void)addPointWithDouble:(double)position
+                 withFloat:(float)period;
 
-- (jdouble)getSlopeWithDouble:(jdouble)time
-                   withDouble:(jdouble)phase
-                   withDouble:(jdouble)dphase;
+- (double)getSlopeWithDouble:(double)time
+                  withDouble:(double)phase
+                  withDouble:(double)dphase;
 
-- (jdouble)getValueWithDouble:(jdouble)time
-                   withDouble:(jdouble)phase;
+- (double)getValueWithDouble:(double)time
+                  withDouble:(double)phase;
 
 /*!
  @brief After adding point every thing must be normalized
  */
 - (void)normalize;
 
-- (void)setTypeWithInt:(jint)type
+- (void)setTypeWithInt:(int32_t)type
           withNSString:(NSString *)customType;
 
 - (NSString *)description;
 
 #pragma mark Package-Private
 
-- (jdouble)getDPWithDouble:(jdouble)time;
+- (double)getDPWithDouble:(double)time;
 
-- (jdouble)getPWithDouble:(jdouble)time;
+- (double)getPWithDouble:(double)time;
 
 @end
 
@@ -80,37 +85,37 @@ inline NSString *ADXOscillator_set_TAG(NSString *value);
 FOUNDATION_EXPORT NSString *ADXOscillator_TAG;
 J2OBJC_STATIC_FIELD_OBJ(ADXOscillator, TAG, NSString *)
 
-inline jint ADXOscillator_get_SIN_WAVE(void);
+inline int32_t ADXOscillator_get_SIN_WAVE(void);
 #define ADXOscillator_SIN_WAVE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, SIN_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, SIN_WAVE, int32_t)
 
-inline jint ADXOscillator_get_SQUARE_WAVE(void);
+inline int32_t ADXOscillator_get_SQUARE_WAVE(void);
 #define ADXOscillator_SQUARE_WAVE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, SQUARE_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, SQUARE_WAVE, int32_t)
 
-inline jint ADXOscillator_get_TRIANGLE_WAVE(void);
+inline int32_t ADXOscillator_get_TRIANGLE_WAVE(void);
 #define ADXOscillator_TRIANGLE_WAVE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, TRIANGLE_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, TRIANGLE_WAVE, int32_t)
 
-inline jint ADXOscillator_get_SAW_WAVE(void);
+inline int32_t ADXOscillator_get_SAW_WAVE(void);
 #define ADXOscillator_SAW_WAVE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, SAW_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, SAW_WAVE, int32_t)
 
-inline jint ADXOscillator_get_REVERSE_SAW_WAVE(void);
+inline int32_t ADXOscillator_get_REVERSE_SAW_WAVE(void);
 #define ADXOscillator_REVERSE_SAW_WAVE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, REVERSE_SAW_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, REVERSE_SAW_WAVE, int32_t)
 
-inline jint ADXOscillator_get_COS_WAVE(void);
+inline int32_t ADXOscillator_get_COS_WAVE(void);
 #define ADXOscillator_COS_WAVE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, COS_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, COS_WAVE, int32_t)
 
-inline jint ADXOscillator_get_BOUNCE(void);
+inline int32_t ADXOscillator_get_BOUNCE(void);
 #define ADXOscillator_BOUNCE 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, BOUNCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, BOUNCE, int32_t)
 
-inline jint ADXOscillator_get_CUSTOM(void);
+inline int32_t ADXOscillator_get_CUSTOM(void);
 #define ADXOscillator_CUSTOM 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, CUSTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOscillator, CUSTOM, int32_t)
 
 FOUNDATION_EXPORT void ADXOscillator_init(ADXOscillator *self);
 
@@ -121,6 +126,7 @@ FOUNDATION_EXPORT ADXOscillator *create_ADXOscillator_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXOscillator)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsOscillator ADXOscillator;
+
 
 #endif
 

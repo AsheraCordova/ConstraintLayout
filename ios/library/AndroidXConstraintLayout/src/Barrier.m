@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Barrier.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Barrier.h"
 #include "ConstraintHelper.h"
 #include "ConstraintLayout.h"
@@ -16,67 +21,75 @@
 #include "J2ObjC_source.h"
 #include "SparseArray.h"
 #include "View.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 
-static void (*ADXBarrier_super$_setVisibilityWithInt_)(id, SEL, jint);
+static void (*ADXBarrier_super$_setVisibilityWithInt_)(id, SEL, int32_t);
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXBarrier () {
  @public
-  jint mIndicatedType_;
-  jint mResolvedType_;
+  int32_t mIndicatedType_;
+  int32_t mResolvedType_;
   ADXCoreBarrier *mBarrier_;
 }
 
 - (void)updateTypeWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                  withInt:(jint)type
-                              withBoolean:(jboolean)isRtl;
+                                  withInt:(int32_t)type
+                              withBoolean:(bool)isRtl;
 
 @end
 
 J2OBJC_FIELD_SETTER(ADXBarrier, mBarrier_, ADXCoreBarrier *)
 
-__attribute__((unused)) static void ADXBarrier_updateTypeWithADXConstraintWidget_withInt_withBoolean_(ADXBarrier *self, ADXConstraintWidget *widget, jint type, jboolean isRtl);
+__attribute__((unused)) static void ADXBarrier_updateTypeWithADXConstraintWidget_withInt_withBoolean_(ADXBarrier *self, ADXConstraintWidget *widget, int32_t type, bool isRtl);
 
 J2OBJC_INITIALIZED_DEFN(ADXBarrier)
 
 @implementation ADXBarrier
 
-- (jint)getType {
+- (int32_t)getType {
   return mIndicatedType_;
 }
 
-- (void)setTypeWithInt:(jint)type {
+- (void)setTypeWithInt:(int32_t)type {
   mIndicatedType_ = type;
 }
 
 - (void)updateTypeWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                                  withInt:(jint)type
-                              withBoolean:(jboolean)isRtl {
+                                  withInt:(int32_t)type
+                              withBoolean:(bool)isRtl {
   ADXBarrier_updateTypeWithADXConstraintWidget_withInt_withBoolean_(self, widget, type, isRtl);
 }
 
 - (void)resolveRtlWithADXConstraintWidget:(ADXConstraintWidget *)widget
-                              withBoolean:(jboolean)isRtl {
+                              withBoolean:(bool)isRtl {
   ADXBarrier_updateTypeWithADXConstraintWidget_withInt_withBoolean_(self, widget, mIndicatedType_, isRtl);
 }
 
-- (void)setAllowsGoneWidgetWithBoolean:(jboolean)supportGone {
+- (void)setAllowsGoneWidgetWithBoolean:(bool)supportGone {
   [((ADXCoreBarrier *) nil_chk(mBarrier_)) setAllowsGoneWidgetWithBoolean:supportGone];
 }
 
-- (jboolean)allowsGoneWidget {
+- (bool)allowsGoneWidget {
   return [((ADXCoreBarrier *) nil_chk(mBarrier_)) getAllowsGoneWidget];
 }
 
-- (jboolean)getAllowsGoneWidget {
+- (bool)getAllowsGoneWidget {
   return [((ADXCoreBarrier *) nil_chk(mBarrier_)) getAllowsGoneWidget];
 }
 
-- (jint)getMargin {
+- (int32_t)getMargin {
   return [((ADXCoreBarrier *) nil_chk(mBarrier_)) getMargin];
 }
 
-- (void)setMarginWithInt:(jint)margin {
+- (void)setMarginWithInt:(int32_t)margin {
   [((ADXCoreBarrier *) nil_chk(mBarrier_)) setMarginWithInt:margin];
 }
 
@@ -88,7 +101,7 @@ J2OBJC_INITIALIZED_DEFN(ADXBarrier)
   if ([child isKindOfClass:[ADXCoreBarrier class]]) {
     ADXCoreBarrier *barrier = (ADXCoreBarrier *) child;
     ADXConstraintWidgetContainer *container = (ADXConstraintWidgetContainer *) cast_chk([((ADXHelperWidget *) nil_chk(child)) getParent], [ADXConstraintWidgetContainer class]);
-    jboolean isRtl = [((ADXConstraintWidgetContainer *) nil_chk(container)) isRtl];
+    bool isRtl = [((ADXConstraintWidgetContainer *) nil_chk(container)) isRtl];
     ADXBarrier_updateTypeWithADXConstraintWidget_withInt_withBoolean_(self, barrier, ((ADXConstraintSet_Layout *) nil_chk(((ADXConstraintSet_Constraint *) nil_chk(constraint))->layout_))->mBarrierDirection_, isRtl);
     [((ADXCoreBarrier *) nil_chk(barrier)) setAllowsGoneWidgetWithBoolean:constraint->layout_->mBarrierAllowsGoneWidgets_];
     [barrier setMarginWithInt:constraint->layout_->mBarrierMargin_];
@@ -161,14 +174,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [ADXBarrier class]) {
-    ADXBarrier_super$_setVisibilityWithInt_ = (void (*)(id, SEL, jint))[ADXConstraintHelper instanceMethodForSelector:@selector(setVisibilityWithInt:)];
+    ADXBarrier_super$_setVisibilityWithInt_ = (void (*)(id, SEL, int32_t))[ADXConstraintHelper instanceMethodForSelector:@selector(setVisibilityWithInt:)];
     J2OBJC_SET_INITIALIZED(ADXBarrier)
   }
 }
 
 @end
 
-void ADXBarrier_updateTypeWithADXConstraintWidget_withInt_withBoolean_(ADXBarrier *self, ADXConstraintWidget *widget, jint type, jboolean isRtl) {
+void ADXBarrier_updateTypeWithADXConstraintWidget_withInt_withBoolean_(ADXBarrier *self, ADXConstraintWidget *widget, int32_t type, bool isRtl) {
   self->mResolvedType_ = type;
   {
     if (isRtl) {
@@ -227,3 +240,5 @@ ADXBarrier *create_ADXBarrier_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXBarrier)
+
+J2OBJC_NAME_MAPPING(ADXBarrier, "androidx.constraintlayout.widget", "ADX")

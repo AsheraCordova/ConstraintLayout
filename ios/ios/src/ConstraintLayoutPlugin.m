@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\ConstraintLayoutPlugin.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BarrierImpl.h"
 #include "CarouselImpl.h"
 #include "CircularFlowImpl.h"
@@ -15,6 +20,12 @@
 #include "MotionLayoutImpl.h"
 #include "PlaceholderImpl.h"
 #include "WidgetFactory.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ASConstraintLayoutPlugin
@@ -73,3 +84,5 @@ void ASConstraintLayoutPlugin_initPlugin() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASConstraintLayoutPlugin)
+
+J2OBJC_NAME_MAPPING(ASConstraintLayoutPlugin, "com.ashera.constraintlayout", "AS")

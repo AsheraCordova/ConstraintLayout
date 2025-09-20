@@ -3,16 +3,30 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLParsingException.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLElement.h"
 #include "CLParsingException.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Character.h"
 #include "java/lang/Exception.h"
+#include "java/lang/Integer.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCLParsingException () {
  @public
   NSString *mReason_;
-  jint mLineNumber_;
+  int32_t mLineNumber_;
   NSString *mElementClass_;
 }
 
@@ -34,7 +48,7 @@ J2OBJC_FIELD_SETTER(ADXCLParsingException, mElementClass_, NSString *)
 }
 
 - (NSString *)description {
-  return JreStrcat("$I$$", @"CLParsingException (", ((jint) [self hash]), @") : ", [self reason]);
+  return JreStrcat("$I$$", @"CLParsingException (", ((int32_t) [self hash]), @") : ", [self reason]);
 }
 
 - (void)dealloc {
@@ -90,3 +104,5 @@ ADXCLParsingException *create_ADXCLParsingException_initWithNSString_withADXCLEl
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLParsingException)
+
+J2OBJC_NAME_MAPPING(ADXCLParsingException, "androidx.constraintlayout.core.parser", "ADX")

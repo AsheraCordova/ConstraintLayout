@@ -3,8 +3,20 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\MotionInterpolator.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "J2ObjC_source.h"
 #include "MotionInterpolator.h"
+#include "java/lang/Float.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXMotionInterpolator
@@ -16,13 +28,13 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v {
+- (float)getInterpolationWithFloat:(float)v {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
 }
 
-- (jfloat)getVelocity {
+- (float)getVelocity {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
   return 0;
@@ -53,3 +65,5 @@ void ADXMotionInterpolator_init(ADXMotionInterpolator *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionInterpolator)
+
+J2OBJC_NAME_MAPPING(ADXMotionInterpolator, "androidx.constraintlayout.motion.widget", "ADX")

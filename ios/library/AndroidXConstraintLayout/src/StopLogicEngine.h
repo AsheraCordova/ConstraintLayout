@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\StopLogicEngine.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_StopLogicEngine")
@@ -20,6 +21,10 @@
 #define INCLUDE_ADXStopEngine 1
 #include "StopEngine.h"
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class NSString;
+
 /*!
  @brief This contains the class to provide the logic for an animation to come to a stop.
  The setup defines a series of velocity gradients that gets to the desired position
@@ -32,12 +37,12 @@
 
 - (instancetype)init;
 
-- (void)configWithFloat:(jfloat)currentPos
-              withFloat:(jfloat)destination
-              withFloat:(jfloat)currentVelocity
-              withFloat:(jfloat)maxTime
-              withFloat:(jfloat)maxAcceleration
-              withFloat:(jfloat)maxVelocity;
+- (void)configWithFloat:(float)currentPos
+              withFloat:(float)destination
+              withFloat:(float)currentVelocity
+              withFloat:(float)maxTime
+              withFloat:(float)maxAcceleration
+              withFloat:(float)maxVelocity;
 
 /*!
  @brief Debugging logic to log the state.
@@ -46,15 +51,15 @@
  @return string useful for debugging the state of the StopLogic
  */
 - (NSString *)debugWithNSString:(NSString *)desc
-                      withFloat:(jfloat)time;
+                      withFloat:(float)time;
 
-- (jfloat)getInterpolationWithFloat:(jfloat)v;
+- (float)getInterpolationWithFloat:(float)v;
 
-- (jfloat)getVelocity;
+- (float)getVelocity;
 
-- (jfloat)getVelocityWithFloat:(jfloat)x;
+- (float)getVelocityWithFloat:(float)x;
 
-- (jboolean)isStopped;
+- (bool)isStopped;
 
 @end
 
@@ -69,6 +74,7 @@ FOUNDATION_EXPORT ADXStopLogicEngine *create_ADXStopLogicEngine_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXStopLogicEngine)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsStopLogicEngine ADXStopLogicEngine;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\WidgetFrame.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_WidgetFrame")
@@ -20,8 +21,12 @@
 @class ADXConstraintWidget;
 @class ADXCustomVariable;
 @class ADXTransition;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaLangStringBuilder;
 @class JavaUtilHashMap;
+@class NSString;
 @protocol JavaUtilSet;
 
 /*!
@@ -29,24 +34,24 @@
  */
 @interface ADXWidgetFrame : NSObject {
  @public
-  __unsafe_unretained ADXConstraintWidget *widget_;
-  jint left_;
-  jint top_;
-  jint right_;
-  jint bottom_;
-  jfloat pivotX_;
-  jfloat pivotY_;
-  jfloat rotationX_;
-  jfloat rotationY_;
-  jfloat rotationZ_;
-  jfloat translationX_;
-  jfloat translationY_;
-  jfloat translationZ_;
-  jfloat scaleX_;
-  jfloat scaleY_;
-  jfloat alpha_;
-  jfloat interpolatedPos_;
-  jint visibility_;
+  WEAK_ ADXConstraintWidget *widget_;
+  int32_t left_;
+  int32_t top_;
+  int32_t right_;
+  int32_t bottom_;
+  float pivotX_;
+  float pivotY_;
+  float rotationX_;
+  float rotationY_;
+  float rotationZ_;
+  float translationX_;
+  float translationY_;
+  float translationZ_;
+  float scaleX_;
+  float scaleY_;
+  float alpha_;
+  float interpolatedPos_;
+  int32_t visibility_;
   JavaUtilHashMap *mCustom_;
   NSString *name_;
 }
@@ -60,34 +65,34 @@
 - (instancetype)initWithADXWidgetFrame:(ADXWidgetFrame *)frame;
 
 - (void)addCustomColorWithNSString:(NSString *)name
-                           withInt:(jint)color;
+                           withInt:(int32_t)color;
 
 - (void)addCustomFloatWithNSString:(NSString *)name
-                         withFloat:(jfloat)value;
+                         withFloat:(float)value;
 
-- (jfloat)centerX;
+- (float)centerX;
 
-- (jfloat)centerY;
+- (float)centerY;
 
 - (ADXCustomVariable *)getCustomAttributeWithNSString:(NSString *)name;
 
 - (id<JavaUtilSet>)getCustomAttributeNames;
 
-- (jint)getCustomColorWithNSString:(NSString *)name;
+- (int32_t)getCustomColorWithNSString:(NSString *)name;
 
-- (jfloat)getCustomFloatWithNSString:(NSString *)name;
+- (float)getCustomFloatWithNSString:(NSString *)name;
 
-- (jint)height;
+- (int32_t)height;
 
-+ (void)interpolateWithInt:(jint)parentWidth
-                   withInt:(jint)parentHeight
++ (void)interpolateWithInt:(int32_t)parentWidth
+                   withInt:(int32_t)parentHeight
         withADXWidgetFrame:(ADXWidgetFrame *)frame
         withADXWidgetFrame:(ADXWidgetFrame *)start
         withADXWidgetFrame:(ADXWidgetFrame *)end
          withADXTransition:(ADXTransition *)transition
-                 withFloat:(jfloat)progress;
+                 withFloat:(float)progress;
 
-- (jboolean)isDefaultTransform;
+- (bool)isDefaultTransform;
 
 - (JavaLangStringBuilder *)serializeWithJavaLangStringBuilder:(JavaLangStringBuilder *)ret;
 
@@ -97,26 +102,26 @@
  @param sendPhoneOrientation
  */
 - (JavaLangStringBuilder *)serializeWithJavaLangStringBuilder:(JavaLangStringBuilder *)ret
-                                                  withBoolean:(jboolean)sendPhoneOrientation;
+                                                  withBoolean:(bool)sendPhoneOrientation;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                           withBoolean:(jboolean)value;
+                               withInt:(int32_t)type
+                           withBoolean:(bool)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                             withFloat:(jfloat)value;
+                               withInt:(int32_t)type
+                             withFloat:(float)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                               withInt:(jint)value;
+                               withInt:(int32_t)type
+                               withInt:(int32_t)value;
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
+                               withInt:(int32_t)type
                           withNSString:(NSString *)value;
 
-- (jboolean)setValueWithNSString:(NSString *)key
-                withADXCLElement:(ADXCLElement *)value;
+- (bool)setValueWithNSString:(NSString *)key
+            withADXCLElement:(ADXCLElement *)value;
 
 - (ADXWidgetFrame *)update;
 
@@ -124,7 +129,7 @@
 
 - (void)updateAttributesWithADXWidgetFrame:(ADXWidgetFrame *)frame;
 
-- (jint)width;
+- (int32_t)width;
 
 #pragma mark Package-Private
 
@@ -141,12 +146,12 @@ J2OBJC_EMPTY_STATIC_INIT(ADXWidgetFrame)
 J2OBJC_FIELD_SETTER(ADXWidgetFrame, mCustom_, JavaUtilHashMap *)
 J2OBJC_FIELD_SETTER(ADXWidgetFrame, name_, NSString *)
 
-inline jfloat ADXWidgetFrame_get_phone_orientation(void);
-inline jfloat ADXWidgetFrame_set_phone_orientation(jfloat value);
-inline jfloat *ADXWidgetFrame_getRef_phone_orientation(void);
+inline float ADXWidgetFrame_get_phone_orientation(void);
+inline float ADXWidgetFrame_set_phone_orientation(float value);
+inline float *ADXWidgetFrame_getRef_phone_orientation(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jfloat ADXWidgetFrame_phone_orientation;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXWidgetFrame, phone_orientation, jfloat)
+FOUNDATION_EXPORT float ADXWidgetFrame_phone_orientation;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXWidgetFrame, phone_orientation, float)
 
 FOUNDATION_EXPORT void ADXWidgetFrame_init(ADXWidgetFrame *self);
 
@@ -166,11 +171,12 @@ FOUNDATION_EXPORT ADXWidgetFrame *new_ADXWidgetFrame_initWithADXWidgetFrame_(ADX
 
 FOUNDATION_EXPORT ADXWidgetFrame *create_ADXWidgetFrame_initWithADXWidgetFrame_(ADXWidgetFrame *frame);
 
-FOUNDATION_EXPORT void ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetFrame_withADXWidgetFrame_withADXTransition_withFloat_(jint parentWidth, jint parentHeight, ADXWidgetFrame *frame, ADXWidgetFrame *start, ADXWidgetFrame *end, ADXTransition *transition, jfloat progress);
+FOUNDATION_EXPORT void ADXWidgetFrame_interpolateWithInt_withInt_withADXWidgetFrame_withADXWidgetFrame_withADXWidgetFrame_withADXTransition_withFloat_(int32_t parentWidth, int32_t parentHeight, ADXWidgetFrame *frame, ADXWidgetFrame *start, ADXWidgetFrame *end, ADXTransition *transition, float progress);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXWidgetFrame)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateWidgetFrame ADXWidgetFrame;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\VerticalChainReference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_VerticalChainReference")
@@ -49,6 +50,7 @@ FOUNDATION_EXPORT ADXVerticalChainReference *create_ADXVerticalChainReference_in
 J2OBJC_TYPE_LITERAL_HEADER(ADXVerticalChainReference)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateHelpersVerticalChainReference ADXVerticalChainReference;
+
 
 #endif
 

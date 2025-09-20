@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\SplineSet.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_SplineSet")
@@ -27,6 +28,10 @@
 @class ADXKeyFrameArray_CustomVar;
 @class IOSFloatArray;
 @class IOSIntArray;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 @protocol ADXTypedValues;
 
 /*!
@@ -43,11 +48,11 @@
 
 - (instancetype)init;
 
-- (jfloat)getWithFloat:(jfloat)t;
+- (float)getWithFloat:(float)t;
 
 - (ADXCurveFit *)getCurveFit;
 
-- (jfloat)getSlopeWithFloat:(jfloat)t;
+- (float)getSlopeWithFloat:(float)t;
 
 + (ADXSplineSet *)makeCustomSplineWithNSString:(NSString *)str
               withADXKeyFrameArray_CustomArray:(ADXKeyFrameArray_CustomArray *)attrList;
@@ -56,17 +61,17 @@
                    withADXKeyFrameArray_CustomVar:(ADXKeyFrameArray_CustomVar *)attrList;
 
 + (ADXSplineSet *)makeSplineWithNSString:(NSString *)str
-                                withLong:(jlong)currentTime;
+                                withLong:(int64_t)currentTime;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value;
 
 - (void)setPropertyWithADXTypedValues:(id<ADXTypedValues>)widget
-                            withFloat:(jfloat)t;
+                            withFloat:(float)t;
 
 - (void)setTypeWithNSString:(NSString *)type;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 - (NSString *)description;
 
@@ -84,11 +89,12 @@ FOUNDATION_EXPORT ADXSplineSet *ADXSplineSet_makeCustomSplineWithNSString_withAD
 
 FOUNDATION_EXPORT ADXSplineSet *ADXSplineSet_makeCustomSplineSetWithNSString_withADXKeyFrameArray_CustomVar_(NSString *str, ADXKeyFrameArray_CustomVar *attrList);
 
-FOUNDATION_EXPORT ADXSplineSet *ADXSplineSet_makeSplineWithNSString_withLong_(NSString *str, jlong currentTime);
+FOUNDATION_EXPORT ADXSplineSet *ADXSplineSet_makeSplineWithNSString_withLong_(NSString *str, int64_t currentTime);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXSplineSet)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsSplineSet ADXSplineSet;
+
 
 #endif
 
@@ -99,6 +105,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSplineSet)
 @class ADXKeyFrameArray_CustomArray;
 @class ADXWidgetFrame;
 @class IOSFloatArray;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXSplineSet_CustomSet : ADXSplineSet {
  @public
@@ -112,16 +121,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSplineSet)
 - (instancetype)initWithNSString:(NSString *)attribute
 withADXKeyFrameArray_CustomArray:(ADXKeyFrameArray_CustomArray *)attrList;
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
 withADXCLCustomAttribute:(ADXCLCustomAttribute *)value;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value;
 
 - (void)setPropertyWithADXWidgetFrame:(ADXWidgetFrame *)view
-                            withFloat:(jfloat)t;
+                            withFloat:(float)t;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 // Disallowed inherited constructors, do not use.
 
@@ -143,6 +152,7 @@ FOUNDATION_EXPORT ADXSplineSet_CustomSet *create_ADXSplineSet_CustomSet_initWith
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXSplineSet_CustomSet)
 
+
 #endif
 
 #if !defined (ADXSplineSet_CustomSpline_) && (INCLUDE_ALL_SplineSet || defined(INCLUDE_ADXSplineSet_CustomSpline))
@@ -152,6 +162,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSplineSet_CustomSet)
 @class ADXKeyFrameArray_CustomVar;
 @class ADXMotionWidget;
 @class IOSFloatArray;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADXTypedValues;
 
 @interface ADXSplineSet_CustomSpline : ADXSplineSet {
@@ -166,19 +179,19 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSplineSet_CustomSet)
 - (instancetype)initWithNSString:(NSString *)attribute
   withADXKeyFrameArray_CustomVar:(ADXKeyFrameArray_CustomVar *)attrList;
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
   withADXCustomVariable:(ADXCustomVariable *)value;
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value;
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value;
 
 - (void)setPropertyWithADXMotionWidget:(ADXMotionWidget *)view
-                             withFloat:(jfloat)t;
+                             withFloat:(float)t;
 
 - (void)setPropertyWithADXTypedValues:(id<ADXTypedValues>)widget
-                            withFloat:(jfloat)t;
+                            withFloat:(float)t;
 
-- (void)setupWithInt:(jint)curveType;
+- (void)setupWithInt:(int32_t)curveType;
 
 // Disallowed inherited constructors, do not use.
 
@@ -199,6 +212,7 @@ FOUNDATION_EXPORT ADXSplineSet_CustomSpline *new_ADXSplineSet_CustomSpline_initW
 FOUNDATION_EXPORT ADXSplineSet_CustomSpline *create_ADXSplineSet_CustomSpline_initWithNSString_withADXKeyFrameArray_CustomVar_(NSString *attribute, ADXKeyFrameArray_CustomVar *attrList);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXSplineSet_CustomSpline)
+
 
 #endif
 

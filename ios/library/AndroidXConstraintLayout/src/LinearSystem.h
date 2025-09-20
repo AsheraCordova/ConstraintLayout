@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\LinearSystem.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_LinearSystem")
@@ -23,6 +24,11 @@
 @class ADXSolverVariable;
 @class ADXSolverVariable_Type;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class JavaLangLong;
+@class NSString;
 @protocol ADXLinearSystem_Row;
 
 /*!
@@ -30,13 +36,13 @@
  */
 @interface ADXLinearSystem : NSObject {
  @public
-  jboolean hasSimpleDefinition_;
-  jint mVariablesID_;
+  bool hasSimpleDefinition_;
+  int32_t mVariablesID_;
   IOSObjectArray *mRows_;
-  jboolean graphOptimizer_;
-  jboolean newgraphOptimizer_;
-  jint mNumColumns_;
-  jint mNumRows_;
+  bool graphOptimizer_;
+  bool newgraphOptimizer_;
+  int32_t mNumColumns_;
+  int32_t mNumRows_;
   ADXCache *mCache_;
 }
 
@@ -57,12 +63,12 @@
  */
 - (void)addCenteringWithADXSolverVariable:(ADXSolverVariable *)a
                     withADXSolverVariable:(ADXSolverVariable *)b
-                                  withInt:(jint)m1
-                                withFloat:(jfloat)bias
+                                  withInt:(int32_t)m1
+                                withFloat:(float)bias
                     withADXSolverVariable:(ADXSolverVariable *)c
                     withADXSolverVariable:(ADXSolverVariable *)d
-                                  withInt:(jint)m2
-                                  withInt:(jint)strength;
+                                  withInt:(int32_t)m2
+                                  withInt:(int32_t)strength;
 
 /*!
  @brief Add the equations constraining a widget center to another widget center, positioned
@@ -74,8 +80,8 @@
  */
 - (void)addCenterPointWithADXConstraintWidget:(ADXConstraintWidget *)widget
                       withADXConstraintWidget:(ADXConstraintWidget *)target
-                                    withFloat:(jfloat)angle
-                                      withInt:(jint)radius;
+                                    withFloat:(float)angle
+                                      withInt:(int32_t)radius;
 
 /*!
  @brief Add the equation to the system
@@ -89,7 +95,7 @@
  @param value the value we set
  */
 - (void)addEqualityWithADXSolverVariable:(ADXSolverVariable *)a
-                                 withInt:(jint)value;
+                                 withInt:(int32_t)value;
 
 /*!
  @brief Add an equation of the form a = b + margin
@@ -100,13 +106,13 @@
  */
 - (ADXArrayRow *)addEqualityWithADXSolverVariable:(ADXSolverVariable *)a
                             withADXSolverVariable:(ADXSolverVariable *)b
-                                          withInt:(jint)margin
-                                          withInt:(jint)strength;
+                                          withInt:(int32_t)margin
+                                          withInt:(int32_t)strength;
 
 - (void)addGreaterBarrierWithADXSolverVariable:(ADXSolverVariable *)a
                          withADXSolverVariable:(ADXSolverVariable *)b
-                                       withInt:(jint)margin
-                                   withBoolean:(jboolean)hasMatchConstraintWidgets;
+                                       withInt:(int32_t)margin
+                                   withBoolean:(bool)hasMatchConstraintWidgets;
 
 /*!
  @brief Add an equation of the form a >= b + margin
@@ -117,13 +123,13 @@
  */
 - (void)addGreaterThanWithADXSolverVariable:(ADXSolverVariable *)a
                       withADXSolverVariable:(ADXSolverVariable *)b
-                                    withInt:(jint)margin
-                                    withInt:(jint)strength;
+                                    withInt:(int32_t)margin
+                                    withInt:(int32_t)strength;
 
 - (void)addLowerBarrierWithADXSolverVariable:(ADXSolverVariable *)a
                        withADXSolverVariable:(ADXSolverVariable *)b
-                                     withInt:(jint)margin
-                                 withBoolean:(jboolean)hasMatchConstraintWidgets;
+                                     withInt:(int32_t)margin
+                                 withBoolean:(bool)hasMatchConstraintWidgets;
 
 /*!
  @brief Add an equation of the form a <= b + margin
@@ -134,21 +140,21 @@
  */
 - (void)addLowerThanWithADXSolverVariable:(ADXSolverVariable *)a
                     withADXSolverVariable:(ADXSolverVariable *)b
-                                  withInt:(jint)margin
-                                  withInt:(jint)strength;
+                                  withInt:(int32_t)margin
+                                  withInt:(int32_t)strength;
 
 - (void)addRatioWithADXSolverVariable:(ADXSolverVariable *)a
                 withADXSolverVariable:(ADXSolverVariable *)b
                 withADXSolverVariable:(ADXSolverVariable *)c
                 withADXSolverVariable:(ADXSolverVariable *)d
-                            withFloat:(jfloat)ratio
-                              withInt:(jint)strength;
+                            withFloat:(float)ratio
+                              withInt:(int32_t)strength;
 
 - (void)addSynonymWithADXSolverVariable:(ADXSolverVariable *)a
                   withADXSolverVariable:(ADXSolverVariable *)b
-                                withInt:(jint)margin;
+                                withInt:(int32_t)margin;
 
-- (ADXSolverVariable *)createErrorVariableWithInt:(jint)strength
+- (ADXSolverVariable *)createErrorVariableWithInt:(int32_t)strength
                                      withNSString:(NSString *)prefix;
 
 - (ADXSolverVariable *)createExtraVariable;
@@ -168,7 +174,7 @@
 + (ADXArrayRow *)createRowDimensionPercentWithADXLinearSystem:(ADXLinearSystem *)linearSystem
                                         withADXSolverVariable:(ADXSolverVariable *)variableA
                                         withADXSolverVariable:(ADXSolverVariable *)variableC
-                                                    withFloat:(jfloat)percent;
+                                                    withFloat:(float)percent;
 
 - (ADXSolverVariable *)createSlackVariable;
 
@@ -180,15 +186,15 @@
 
 - (ADXCache *)getCache;
 
-- (jint)getMemoryUsed;
+- (int32_t)getMemoryUsed;
 
 + (ADXMetrics *)getMetrics;
 
-- (jint)getNumEquations;
+- (int32_t)getNumEquations;
 
-- (jint)getNumVariables;
+- (int32_t)getNumVariables;
 
-- (jint)getObjectVariableValueWithId:(id)object;
+- (int32_t)getObjectVariableValueWithId:(id)object;
 
 /*!
  @brief Minimize the current goal of the system.
@@ -205,8 +211,8 @@
 #pragma mark Package-Private
 
 - (void)addSingleErrorWithADXArrayRow:(ADXArrayRow *)row
-                              withInt:(jint)sign
-                              withInt:(jint)strength;
+                              withInt:(int32_t)sign
+                              withInt:(int32_t)strength;
 
 - (void)cleanupRows;
 
@@ -221,9 +227,9 @@
  */
 - (id<ADXLinearSystem_Row>)getGoal;
 
-- (ADXArrayRow *)getRowWithInt:(jint)n;
+- (ADXArrayRow *)getRowWithInt:(int32_t)n;
 
-- (jfloat)getValueForWithNSString:(NSString *)name;
+- (float)getValueForWithNSString:(NSString *)name;
 
 /*!
  @brief Returns a SolverVariable instance given a name and a type.
@@ -247,59 +253,59 @@ J2OBJC_EMPTY_STATIC_INIT(ADXLinearSystem)
 J2OBJC_FIELD_SETTER(ADXLinearSystem, mRows_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(ADXLinearSystem, mCache_, ADXCache *)
 
-inline jboolean ADXLinearSystem_get_FULL_DEBUG(void);
+inline bool ADXLinearSystem_get_FULL_DEBUG(void);
 #define ADXLinearSystem_FULL_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, FULL_DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, FULL_DEBUG, bool)
 
-inline jboolean ADXLinearSystem_get_DEBUG(void);
+inline bool ADXLinearSystem_get_DEBUG(void);
 #define ADXLinearSystem_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, DEBUG, bool)
 
-inline jboolean ADXLinearSystem_get_MEASURE(void);
+inline bool ADXLinearSystem_get_MEASURE(void);
 #define ADXLinearSystem_MEASURE false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, MEASURE, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXLinearSystem, MEASURE, bool)
 
-inline jboolean ADXLinearSystem_get_USE_DEPENDENCY_ORDERING(void);
-inline jboolean ADXLinearSystem_set_USE_DEPENDENCY_ORDERING(jboolean value);
-inline jboolean *ADXLinearSystem_getRef_USE_DEPENDENCY_ORDERING(void);
+inline bool ADXLinearSystem_get_USE_DEPENDENCY_ORDERING(void);
+inline bool ADXLinearSystem_set_USE_DEPENDENCY_ORDERING(bool value);
+inline bool *ADXLinearSystem_getRef_USE_DEPENDENCY_ORDERING(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXLinearSystem_USE_DEPENDENCY_ORDERING;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, USE_DEPENDENCY_ORDERING, jboolean)
+FOUNDATION_EXPORT bool ADXLinearSystem_USE_DEPENDENCY_ORDERING;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, USE_DEPENDENCY_ORDERING, bool)
 
-inline jboolean ADXLinearSystem_get_USE_BASIC_SYNONYMS(void);
-inline jboolean ADXLinearSystem_set_USE_BASIC_SYNONYMS(jboolean value);
-inline jboolean *ADXLinearSystem_getRef_USE_BASIC_SYNONYMS(void);
+inline bool ADXLinearSystem_get_USE_BASIC_SYNONYMS(void);
+inline bool ADXLinearSystem_set_USE_BASIC_SYNONYMS(bool value);
+inline bool *ADXLinearSystem_getRef_USE_BASIC_SYNONYMS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXLinearSystem_USE_BASIC_SYNONYMS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, USE_BASIC_SYNONYMS, jboolean)
+FOUNDATION_EXPORT bool ADXLinearSystem_USE_BASIC_SYNONYMS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, USE_BASIC_SYNONYMS, bool)
 
-inline jboolean ADXLinearSystem_get_SIMPLIFY_SYNONYMS(void);
-inline jboolean ADXLinearSystem_set_SIMPLIFY_SYNONYMS(jboolean value);
-inline jboolean *ADXLinearSystem_getRef_SIMPLIFY_SYNONYMS(void);
+inline bool ADXLinearSystem_get_SIMPLIFY_SYNONYMS(void);
+inline bool ADXLinearSystem_set_SIMPLIFY_SYNONYMS(bool value);
+inline bool *ADXLinearSystem_getRef_SIMPLIFY_SYNONYMS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXLinearSystem_SIMPLIFY_SYNONYMS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, SIMPLIFY_SYNONYMS, jboolean)
+FOUNDATION_EXPORT bool ADXLinearSystem_SIMPLIFY_SYNONYMS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, SIMPLIFY_SYNONYMS, bool)
 
-inline jboolean ADXLinearSystem_get_USE_SYNONYMS(void);
-inline jboolean ADXLinearSystem_set_USE_SYNONYMS(jboolean value);
-inline jboolean *ADXLinearSystem_getRef_USE_SYNONYMS(void);
+inline bool ADXLinearSystem_get_USE_SYNONYMS(void);
+inline bool ADXLinearSystem_set_USE_SYNONYMS(bool value);
+inline bool *ADXLinearSystem_getRef_USE_SYNONYMS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXLinearSystem_USE_SYNONYMS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, USE_SYNONYMS, jboolean)
+FOUNDATION_EXPORT bool ADXLinearSystem_USE_SYNONYMS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, USE_SYNONYMS, bool)
 
-inline jboolean ADXLinearSystem_get_SKIP_COLUMNS(void);
-inline jboolean ADXLinearSystem_set_SKIP_COLUMNS(jboolean value);
-inline jboolean *ADXLinearSystem_getRef_SKIP_COLUMNS(void);
+inline bool ADXLinearSystem_get_SKIP_COLUMNS(void);
+inline bool ADXLinearSystem_set_SKIP_COLUMNS(bool value);
+inline bool *ADXLinearSystem_getRef_SKIP_COLUMNS(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXLinearSystem_SKIP_COLUMNS;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, SKIP_COLUMNS, jboolean)
+FOUNDATION_EXPORT bool ADXLinearSystem_SKIP_COLUMNS;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, SKIP_COLUMNS, bool)
 
-inline jboolean ADXLinearSystem_get_OPTIMIZED_ENGINE(void);
-inline jboolean ADXLinearSystem_set_OPTIMIZED_ENGINE(jboolean value);
-inline jboolean *ADXLinearSystem_getRef_OPTIMIZED_ENGINE(void);
+inline bool ADXLinearSystem_get_OPTIMIZED_ENGINE(void);
+inline bool ADXLinearSystem_set_OPTIMIZED_ENGINE(bool value);
+inline bool *ADXLinearSystem_getRef_OPTIMIZED_ENGINE(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jboolean ADXLinearSystem_OPTIMIZED_ENGINE;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, OPTIMIZED_ENGINE, jboolean)
+FOUNDATION_EXPORT bool ADXLinearSystem_OPTIMIZED_ENGINE;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, OPTIMIZED_ENGINE, bool)
 
 inline ADXMetrics *ADXLinearSystem_get_sMetrics(void);
 inline ADXMetrics *ADXLinearSystem_set_sMetrics(ADXMetrics *value);
@@ -307,19 +313,19 @@ inline ADXMetrics *ADXLinearSystem_set_sMetrics(ADXMetrics *value);
 FOUNDATION_EXPORT ADXMetrics *ADXLinearSystem_sMetrics;
 J2OBJC_STATIC_FIELD_OBJ(ADXLinearSystem, sMetrics, ADXMetrics *)
 
-inline jlong ADXLinearSystem_get_ARRAY_ROW_CREATION(void);
-inline jlong ADXLinearSystem_set_ARRAY_ROW_CREATION(jlong value);
-inline jlong *ADXLinearSystem_getRef_ARRAY_ROW_CREATION(void);
+inline int64_t ADXLinearSystem_get_ARRAY_ROW_CREATION(void);
+inline int64_t ADXLinearSystem_set_ARRAY_ROW_CREATION(int64_t value);
+inline int64_t *ADXLinearSystem_getRef_ARRAY_ROW_CREATION(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jlong ADXLinearSystem_ARRAY_ROW_CREATION;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, ARRAY_ROW_CREATION, jlong)
+FOUNDATION_EXPORT int64_t ADXLinearSystem_ARRAY_ROW_CREATION;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, ARRAY_ROW_CREATION, int64_t)
 
-inline jlong ADXLinearSystem_get_OPTIMIZED_ARRAY_ROW_CREATION(void);
-inline jlong ADXLinearSystem_set_OPTIMIZED_ARRAY_ROW_CREATION(jlong value);
-inline jlong *ADXLinearSystem_getRef_OPTIMIZED_ARRAY_ROW_CREATION(void);
+inline int64_t ADXLinearSystem_get_OPTIMIZED_ARRAY_ROW_CREATION(void);
+inline int64_t ADXLinearSystem_set_OPTIMIZED_ARRAY_ROW_CREATION(int64_t value);
+inline int64_t *ADXLinearSystem_getRef_OPTIMIZED_ARRAY_ROW_CREATION(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jlong ADXLinearSystem_OPTIMIZED_ARRAY_ROW_CREATION;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, OPTIMIZED_ARRAY_ROW_CREATION, jlong)
+FOUNDATION_EXPORT int64_t ADXLinearSystem_OPTIMIZED_ARRAY_ROW_CREATION;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXLinearSystem, OPTIMIZED_ARRAY_ROW_CREATION, int64_t)
 
 FOUNDATION_EXPORT void ADXLinearSystem_init(ADXLinearSystem *self);
 
@@ -329,11 +335,12 @@ FOUNDATION_EXPORT ADXLinearSystem *create_ADXLinearSystem_init(void);
 
 FOUNDATION_EXPORT ADXMetrics *ADXLinearSystem_getMetrics(void);
 
-FOUNDATION_EXPORT ADXArrayRow *ADXLinearSystem_createRowDimensionPercentWithADXLinearSystem_withADXSolverVariable_withADXSolverVariable_withFloat_(ADXLinearSystem *linearSystem, ADXSolverVariable *variableA, ADXSolverVariable *variableC, jfloat percent);
+FOUNDATION_EXPORT ADXArrayRow *ADXLinearSystem_createRowDimensionPercentWithADXLinearSystem_withADXSolverVariable_withADXSolverVariable_withFloat_(ADXLinearSystem *linearSystem, ADXSolverVariable *variableA, ADXSolverVariable *variableC, float percent);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXLinearSystem)
 
 @compatibility_alias AndroidxConstraintlayoutCoreLinearSystem ADXLinearSystem;
+
 
 #endif
 
@@ -372,6 +379,7 @@ FOUNDATION_EXPORT ADXLinearSystem_ValuesRow *create_ADXLinearSystem_ValuesRow_in
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXLinearSystem_ValuesRow)
 
+
 #endif
 
 #if !defined (ADXLinearSystem_Row_) && (INCLUDE_ALL_LinearSystem || defined(INCLUDE_ADXLinearSystem_Row))
@@ -381,6 +389,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXLinearSystem_ValuesRow)
 @class ADXLinearSystem;
 @class ADXSolverVariable;
 @class IOSBooleanArray;
+@class JavaLangBoolean;
 
 @protocol ADXLinearSystem_Row < JavaObject >
 
@@ -397,21 +406,22 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXLinearSystem_ValuesRow)
 
 - (ADXSolverVariable *)getKey;
 
-- (jboolean)isEmpty;
+- (bool)isEmpty;
 
 - (void)updateFromRowWithADXLinearSystem:(ADXLinearSystem *)system
                          withADXArrayRow:(ADXArrayRow *)definition
-                             withBoolean:(jboolean)b;
+                             withBoolean:(bool)b;
 
 - (void)updateFromFinalVariableWithADXLinearSystem:(ADXLinearSystem *)system
                              withADXSolverVariable:(ADXSolverVariable *)variable
-                                       withBoolean:(jboolean)removeFromDefinition;
+                                       withBoolean:(bool)removeFromDefinition;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXLinearSystem_Row)
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXLinearSystem_Row)
+
 
 #endif
 

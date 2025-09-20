@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\SolverVariable.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_SolverVariable")
@@ -31,28 +32,32 @@
 @class ADXSolverVariable_Type;
 @class IOSFloatArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashSet;
+@class NSString;
 
 /*!
  @brief Represents a given variable used in the <code>linear expression solver</code>.
  */
 @interface ADXSolverVariable : NSObject < JavaLangComparable > {
  @public
-  jboolean inGoal_;
-  jint id__;
-  jint definitionId_;
-  jint strength_;
-  jfloat computedValue_;
-  jboolean isFinalValue_;
+  bool inGoal_;
+  int32_t id__;
+  int32_t definitionId_;
+  int32_t strength_;
+  float computedValue_;
+  bool isFinalValue_;
   IOSFloatArray *strengthVector_;
   IOSFloatArray *goalStrengthVector_;
   ADXSolverVariable_Type *mType_;
   IOSObjectArray *mClientEquations_;
-  jint mClientEquationsCount_;
-  jint usageInRowCount_;
-  jboolean isSynonym_;
-  jint synonym_;
-  jfloat synonymDelta_;
+  int32_t mClientEquationsCount_;
+  int32_t usageInRowCount_;
+  bool isSynonym_;
+  int32_t synonym_;
+  float synonymDelta_;
   JavaUtilHashSet *inRows_;
 }
 
@@ -71,7 +76,7 @@
 
 - (void)addToRowWithADXArrayRow:(ADXArrayRow *)row;
 
-- (jint)compareToWithId:(ADXSolverVariable *)v;
+- (int32_t)compareToWithId:(ADXSolverVariable *)v;
 
 /*!
  @brief Accessor for the name
@@ -84,13 +89,13 @@
 - (void)reset;
 
 - (void)setFinalValueWithADXLinearSystem:(ADXLinearSystem *)system
-                               withFloat:(jfloat)value;
+                               withFloat:(float)value;
 
 - (void)setNameWithNSString:(NSString *)name;
 
 - (void)setSynonymWithADXLinearSystem:(ADXLinearSystem *)system
                 withADXSolverVariable:(ADXSolverVariable *)synonymVariable
-                            withFloat:(jfloat)value;
+                            withFloat:(float)value;
 
 - (void)setTypeWithADXSolverVariable_Type:(ADXSolverVariable_Type *)type
                              withNSString:(NSString *)prefix;
@@ -125,45 +130,45 @@ J2OBJC_FIELD_SETTER(ADXSolverVariable, mType_, ADXSolverVariable_Type *)
 J2OBJC_FIELD_SETTER(ADXSolverVariable, mClientEquations_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(ADXSolverVariable, inRows_, JavaUtilHashSet *)
 
-inline jint ADXSolverVariable_get_STRENGTH_NONE(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_NONE(void);
 #define ADXSolverVariable_STRENGTH_NONE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_NONE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_NONE, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_LOW(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_LOW(void);
 #define ADXSolverVariable_STRENGTH_LOW 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_LOW, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_LOW, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_MEDIUM(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_MEDIUM(void);
 #define ADXSolverVariable_STRENGTH_MEDIUM 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_MEDIUM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_MEDIUM, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_HIGH(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_HIGH(void);
 #define ADXSolverVariable_STRENGTH_HIGH 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_HIGH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_HIGH, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_HIGHEST(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_HIGHEST(void);
 #define ADXSolverVariable_STRENGTH_HIGHEST 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_HIGHEST, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_HIGHEST, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_EQUALITY(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_EQUALITY(void);
 #define ADXSolverVariable_STRENGTH_EQUALITY 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_EQUALITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_EQUALITY, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_BARRIER(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_BARRIER(void);
 #define ADXSolverVariable_STRENGTH_BARRIER 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_BARRIER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_BARRIER, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_CENTERING(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_CENTERING(void);
 #define ADXSolverVariable_STRENGTH_CENTERING 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_CENTERING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_CENTERING, int32_t)
 
-inline jint ADXSolverVariable_get_STRENGTH_FIXED(void);
+inline int32_t ADXSolverVariable_get_STRENGTH_FIXED(void);
 #define ADXSolverVariable_STRENGTH_FIXED 8
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_FIXED, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, STRENGTH_FIXED, int32_t)
 
-inline jint ADXSolverVariable_get_MAX_STRENGTH(void);
+inline int32_t ADXSolverVariable_get_MAX_STRENGTH(void);
 #define ADXSolverVariable_MAX_STRENGTH 9
-J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, MAX_STRENGTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXSolverVariable, MAX_STRENGTH, int32_t)
 
 FOUNDATION_EXPORT void ADXSolverVariable_increaseErrorId(void);
 
@@ -183,6 +188,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSolverVariable)
 
 @compatibility_alias AndroidxConstraintlayoutCoreSolverVariable ADXSolverVariable;
 
+
 #endif
 
 #if !defined (ADXSolverVariable_Type_) && (INCLUDE_ALL_SolverVariable || defined(INCLUDE_ADXSolverVariable_Type))
@@ -193,14 +199,22 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXSolverVariable)
 #include "java/lang/Enum.h"
 
 @class IOSObjectArray;
+@class NSString;
 
-typedef NS_ENUM(NSUInteger, ADXSolverVariable_Type_Enum) {
-  ADXSolverVariable_Type_Enum_UNRESTRICTED = 0,
-  ADXSolverVariable_Type_Enum_CONSTANT = 1,
-  ADXSolverVariable_Type_Enum_SLACK = 2,
-  ADXSolverVariable_Type_Enum_ERROR = 3,
-  ADXSolverVariable_Type_Enum_UNKNOWN = 4,
+typedef NS_ENUM(int32_t, ADXSolverVariable_Type_Enum) {
+  ADXSolverVariable_Type_Enum_UNRESTRICTED NS_SWIFT_NAME(unrestricted) = 0,
+  ADXSolverVariable_Type_Enum_CONSTANT NS_SWIFT_NAME(constant) = 1,
+  ADXSolverVariable_Type_Enum_SLACK NS_SWIFT_NAME(slack) = 2,
+  ADXSolverVariable_Type_Enum_ERROR NS_SWIFT_NAME(error) = 3,
+  ADXSolverVariable_Type_Enum_UNKNOWN NS_SWIFT_NAME(unknown) = 4,
 };
+
+#if J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION
+#define ADXSolverVariable_Type_ORDINAL int32_t
+#else
+#define ADXSolverVariable_Type_ORDINAL ADXSolverVariable_Type_Enum
+#endif
+
 
 /*!
  @brief Type of variables
@@ -216,6 +230,13 @@ typedef NS_ENUM(NSUInteger, ADXSolverVariable_Type_Enum) {
 #pragma mark Package-Private
 
 - (ADXSolverVariable_Type_Enum)toNSEnum;
+
+@property(readonly) ADXSolverVariable_Type_Enum enumValue;
++ (ADXSolverVariable_Type *)fromNSEnum:(ADXSolverVariable_Type_Enum)value;
+
+- (ADXSolverVariable_Type_ORDINAL)ordinal NS_SWIFT_UNAVAILABLE("Use .enumValue");
+
+- (nullable instancetype)initWithType:(ADXSolverVariable_Type_Enum)value;
 
 @end
 
@@ -258,9 +279,10 @@ FOUNDATION_EXPORT IOSObjectArray *ADXSolverVariable_Type_values(void);
 
 FOUNDATION_EXPORT ADXSolverVariable_Type *ADXSolverVariable_Type_valueOfWithNSString_(NSString *name);
 
-FOUNDATION_EXPORT ADXSolverVariable_Type *ADXSolverVariable_Type_fromOrdinal(NSUInteger ordinal);
+FOUNDATION_EXPORT ADXSolverVariable_Type *ADXSolverVariable_Type_fromOrdinal(ADXSolverVariable_Type_ORDINAL ordinal);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXSolverVariable_Type)
+
 
 #endif
 

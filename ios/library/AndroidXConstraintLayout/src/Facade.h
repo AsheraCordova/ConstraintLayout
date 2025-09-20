@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\Facade.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Facade")
@@ -31,6 +32,7 @@ J2OBJC_EMPTY_STATIC_INIT(ADXFacade)
 J2OBJC_TYPE_LITERAL_HEADER(ADXFacade)
 
 #define AndroidxConstraintlayoutCoreStateHelpersFacade ADXFacade
+
 
 #endif
 

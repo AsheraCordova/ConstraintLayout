@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Easing.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Easing.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
@@ -10,9 +15,19 @@
 #include "Schlick.h"
 #include "StepCurve.h"
 #include "java/io/PrintStream.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Double.h"
+#include "java/lang/Integer.h"
 #include "java/lang/System.h"
 #include "java/util/Arrays.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 inline NSString *ADXEasing_get_STANDARD(void);
@@ -49,35 +64,35 @@ J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXEasing, LINEAR_NAME, NSString *)
 
 @interface ADXEasing_CubicEasing ()
 
-- (jdouble)getXWithDouble:(jdouble)t;
+- (double)getXWithDouble:(double)t;
 
-- (jdouble)getYWithDouble:(jdouble)t;
+- (double)getYWithDouble:(double)t;
 
-- (jdouble)getDiffXWithDouble:(jdouble)t;
+- (double)getDiffXWithDouble:(double)t;
 
-- (jdouble)getDiffYWithDouble:(jdouble)t;
+- (double)getDiffYWithDouble:(double)t;
 
 @end
 
-inline jdouble ADXEasing_CubicEasing_get_error(void);
-inline jdouble ADXEasing_CubicEasing_set_error(jdouble value);
-inline jdouble *ADXEasing_CubicEasing_getRef_error(void);
-static jdouble ADXEasing_CubicEasing_error = 0.01;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXEasing_CubicEasing, error, jdouble)
+inline double ADXEasing_CubicEasing_get_error(void);
+inline double ADXEasing_CubicEasing_set_error(double value);
+inline double *ADXEasing_CubicEasing_getRef_error(void);
+static double ADXEasing_CubicEasing_error = 0.01;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXEasing_CubicEasing, error, double)
 
-inline jdouble ADXEasing_CubicEasing_get_d_error(void);
-inline jdouble ADXEasing_CubicEasing_set_d_error(jdouble value);
-inline jdouble *ADXEasing_CubicEasing_getRef_d_error(void);
-static jdouble ADXEasing_CubicEasing_d_error = 1.0E-4;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXEasing_CubicEasing, d_error, jdouble)
+inline double ADXEasing_CubicEasing_get_d_error(void);
+inline double ADXEasing_CubicEasing_set_d_error(double value);
+inline double *ADXEasing_CubicEasing_getRef_d_error(void);
+static double ADXEasing_CubicEasing_d_error = 1.0E-4;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXEasing_CubicEasing, d_error, double)
 
-__attribute__((unused)) static jdouble ADXEasing_CubicEasing_getXWithDouble_(ADXEasing_CubicEasing *self, jdouble t);
+__attribute__((unused)) static double ADXEasing_CubicEasing_getXWithDouble_(ADXEasing_CubicEasing *self, double t);
 
-__attribute__((unused)) static jdouble ADXEasing_CubicEasing_getYWithDouble_(ADXEasing_CubicEasing *self, jdouble t);
+__attribute__((unused)) static double ADXEasing_CubicEasing_getYWithDouble_(ADXEasing_CubicEasing *self, double t);
 
-__attribute__((unused)) static jdouble ADXEasing_CubicEasing_getDiffXWithDouble_(ADXEasing_CubicEasing *self, jdouble t);
+__attribute__((unused)) static double ADXEasing_CubicEasing_getDiffXWithDouble_(ADXEasing_CubicEasing *self, double t);
 
-__attribute__((unused)) static jdouble ADXEasing_CubicEasing_getDiffYWithDouble_(ADXEasing_CubicEasing *self, jdouble t);
+__attribute__((unused)) static double ADXEasing_CubicEasing_getDiffYWithDouble_(ADXEasing_CubicEasing *self, double t);
 
 J2OBJC_INITIALIZED_DEFN(ADXEasing)
 
@@ -97,7 +112,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ADXEasing_getInterpolatorWithNSString_(configString);
 }
 
-- (jdouble)getWithDouble:(jdouble)x {
+- (double)getWithDouble:(double)x {
   return x;
 }
 
@@ -105,7 +120,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return str_;
 }
 
-- (jdouble)getDiffWithDouble:(jdouble)x {
+- (double)getDiffWithDouble:(double)x {
   return 1;
 }
 
@@ -205,6 +220,8 @@ ADXEasing *ADXEasing_getInterpolatorWithNSString_(NSString *configString) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXEasing)
 
+J2OBJC_NAME_MAPPING(ADXEasing, "androidx.constraintlayout.core.motion.utils", "ADX")
+
 @implementation ADXEasing_CubicEasing
 
 - (instancetype)initWithNSString:(NSString *)configString {
@@ -212,45 +229,45 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXEasing)
   return self;
 }
 
-- (instancetype)initWithDouble:(jdouble)x1
-                    withDouble:(jdouble)y1
-                    withDouble:(jdouble)x2
-                    withDouble:(jdouble)y2 {
+- (instancetype)initWithDouble:(double)x1
+                    withDouble:(double)y1
+                    withDouble:(double)x2
+                    withDouble:(double)y2 {
   ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(self, x1, y1, x2, y2);
   return self;
 }
 
-- (void)setupWithDouble:(jdouble)x1
-             withDouble:(jdouble)y1
-             withDouble:(jdouble)x2
-             withDouble:(jdouble)y2 {
+- (void)setupWithDouble:(double)x1
+             withDouble:(double)y1
+             withDouble:(double)x2
+             withDouble:(double)y2 {
   self->x1_ = x1;
   self->y1_ = y1;
   self->x2_ = x2;
   self->y2_ = y2;
 }
 
-- (jdouble)getXWithDouble:(jdouble)t {
+- (double)getXWithDouble:(double)t {
   return ADXEasing_CubicEasing_getXWithDouble_(self, t);
 }
 
-- (jdouble)getYWithDouble:(jdouble)t {
+- (double)getYWithDouble:(double)t {
   return ADXEasing_CubicEasing_getYWithDouble_(self, t);
 }
 
-- (jdouble)getDiffXWithDouble:(jdouble)t {
+- (double)getDiffXWithDouble:(double)t {
   return ADXEasing_CubicEasing_getDiffXWithDouble_(self, t);
 }
 
-- (jdouble)getDiffYWithDouble:(jdouble)t {
+- (double)getDiffYWithDouble:(double)t {
   return ADXEasing_CubicEasing_getDiffYWithDouble_(self, t);
 }
 
-- (jdouble)getDiffWithDouble:(jdouble)x {
-  jdouble t = 0.5;
-  jdouble range = 0.5;
+- (double)getDiffWithDouble:(double)x {
+  double t = 0.5;
+  double range = 0.5;
   while (range > ADXEasing_CubicEasing_d_error) {
-    jdouble tx = ADXEasing_CubicEasing_getXWithDouble_(self, t);
+    double tx = ADXEasing_CubicEasing_getXWithDouble_(self, t);
     JreTimesAssignDoubleD(&range, 0.5);
     if (tx < x) {
       JrePlusAssignDoubleD(&t, range);
@@ -259,24 +276,24 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXEasing)
       JreMinusAssignDoubleD(&t, range);
     }
   }
-  jdouble x1 = ADXEasing_CubicEasing_getXWithDouble_(self, t - range);
-  jdouble x2 = ADXEasing_CubicEasing_getXWithDouble_(self, t + range);
-  jdouble y1 = ADXEasing_CubicEasing_getYWithDouble_(self, t - range);
-  jdouble y2 = ADXEasing_CubicEasing_getYWithDouble_(self, t + range);
+  double x1 = ADXEasing_CubicEasing_getXWithDouble_(self, t - range);
+  double x2 = ADXEasing_CubicEasing_getXWithDouble_(self, t + range);
+  double y1 = ADXEasing_CubicEasing_getYWithDouble_(self, t - range);
+  double y2 = ADXEasing_CubicEasing_getYWithDouble_(self, t + range);
   return (y2 - y1) / (x2 - x1);
 }
 
-- (jdouble)getWithDouble:(jdouble)x {
+- (double)getWithDouble:(double)x {
   if (x <= 0.0) {
     return 0;
   }
   if (x >= 1.0) {
     return 1.0;
   }
-  jdouble t = 0.5;
-  jdouble range = 0.5;
+  double t = 0.5;
+  double range = 0.5;
   while (range > ADXEasing_CubicEasing_error) {
-    jdouble tx = ADXEasing_CubicEasing_getXWithDouble_(self, t);
+    double tx = ADXEasing_CubicEasing_getXWithDouble_(self, t);
     JreTimesAssignDoubleD(&range, 0.5);
     if (tx < x) {
       JrePlusAssignDoubleD(&t, range);
@@ -285,10 +302,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXEasing)
       JreMinusAssignDoubleD(&t, range);
     }
   }
-  jdouble x1 = ADXEasing_CubicEasing_getXWithDouble_(self, t - range);
-  jdouble x2 = ADXEasing_CubicEasing_getXWithDouble_(self, t + range);
-  jdouble y1 = ADXEasing_CubicEasing_getYWithDouble_(self, t - range);
-  jdouble y2 = ADXEasing_CubicEasing_getYWithDouble_(self, t + range);
+  double x1 = ADXEasing_CubicEasing_getXWithDouble_(self, t - range);
+  double x2 = ADXEasing_CubicEasing_getXWithDouble_(self, t + range);
+  double y1 = ADXEasing_CubicEasing_getYWithDouble_(self, t - range);
+  double y2 = ADXEasing_CubicEasing_getYWithDouble_(self, t + range);
   return (y2 - y1) * (x - x1) / (x2 - x1) + y1;
 }
 
@@ -335,14 +352,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXEasing)
 void ADXEasing_CubicEasing_initWithNSString_(ADXEasing_CubicEasing *self, NSString *configString) {
   ADXEasing_init(self);
   JreStrongAssign(&self->str_, configString);
-  jint start = [((NSString *) nil_chk(configString)) java_indexOf:'('];
-  jint off1 = [configString java_indexOf:',' fromIndex:start];
+  int32_t start = [((NSString *) nil_chk(configString)) java_indexOf:'('];
+  int32_t off1 = [configString java_indexOf:',' fromIndex:start];
   self->x1_ = JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([configString java_substring:start + 1 endIndex:off1])) java_trim]);
-  jint off2 = [configString java_indexOf:',' fromIndex:off1 + 1];
+  int32_t off2 = [configString java_indexOf:',' fromIndex:off1 + 1];
   self->y1_ = JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([configString java_substring:off1 + 1 endIndex:off2])) java_trim]);
-  jint off3 = [configString java_indexOf:',' fromIndex:off2 + 1];
+  int32_t off3 = [configString java_indexOf:',' fromIndex:off2 + 1];
   self->x2_ = JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([configString java_substring:off2 + 1 endIndex:off3])) java_trim]);
-  jint end = [configString java_indexOf:')' fromIndex:off3 + 1];
+  int32_t end = [configString java_indexOf:')' fromIndex:off3 + 1];
   self->y2_ = JavaLangDouble_parseDoubleWithNSString_([((NSString *) nil_chk([configString java_substring:off3 + 1 endIndex:end])) java_trim]);
 }
 
@@ -354,42 +371,42 @@ ADXEasing_CubicEasing *create_ADXEasing_CubicEasing_initWithNSString_(NSString *
   J2OBJC_CREATE_IMPL(ADXEasing_CubicEasing, initWithNSString_, configString)
 }
 
-void ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(ADXEasing_CubicEasing *self, jdouble x1, jdouble y1, jdouble x2, jdouble y2) {
+void ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(ADXEasing_CubicEasing *self, double x1, double y1, double x2, double y2) {
   ADXEasing_init(self);
   [self setupWithDouble:x1 withDouble:y1 withDouble:x2 withDouble:y2];
 }
 
-ADXEasing_CubicEasing *new_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(jdouble x1, jdouble y1, jdouble x2, jdouble y2) {
+ADXEasing_CubicEasing *new_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(double x1, double y1, double x2, double y2) {
   J2OBJC_NEW_IMPL(ADXEasing_CubicEasing, initWithDouble_withDouble_withDouble_withDouble_, x1, y1, x2, y2)
 }
 
-ADXEasing_CubicEasing *create_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(jdouble x1, jdouble y1, jdouble x2, jdouble y2) {
+ADXEasing_CubicEasing *create_ADXEasing_CubicEasing_initWithDouble_withDouble_withDouble_withDouble_(double x1, double y1, double x2, double y2) {
   J2OBJC_CREATE_IMPL(ADXEasing_CubicEasing, initWithDouble_withDouble_withDouble_withDouble_, x1, y1, x2, y2)
 }
 
-jdouble ADXEasing_CubicEasing_getXWithDouble_(ADXEasing_CubicEasing *self, jdouble t) {
-  jdouble t1 = 1 - t;
-  jdouble f1 = 3 * t1 * t1 * t;
-  jdouble f2 = 3 * t1 * t * t;
-  jdouble f3 = t * t * t;
+double ADXEasing_CubicEasing_getXWithDouble_(ADXEasing_CubicEasing *self, double t) {
+  double t1 = 1 - t;
+  double f1 = 3 * t1 * t1 * t;
+  double f2 = 3 * t1 * t * t;
+  double f3 = t * t * t;
   return self->x1_ * f1 + self->x2_ * f2 + f3;
 }
 
-jdouble ADXEasing_CubicEasing_getYWithDouble_(ADXEasing_CubicEasing *self, jdouble t) {
-  jdouble t1 = 1 - t;
-  jdouble f1 = 3 * t1 * t1 * t;
-  jdouble f2 = 3 * t1 * t * t;
-  jdouble f3 = t * t * t;
+double ADXEasing_CubicEasing_getYWithDouble_(ADXEasing_CubicEasing *self, double t) {
+  double t1 = 1 - t;
+  double f1 = 3 * t1 * t1 * t;
+  double f2 = 3 * t1 * t * t;
+  double f3 = t * t * t;
   return self->y1_ * f1 + self->y2_ * f2 + f3;
 }
 
-jdouble ADXEasing_CubicEasing_getDiffXWithDouble_(ADXEasing_CubicEasing *self, jdouble t) {
-  jdouble t1 = 1 - t;
+double ADXEasing_CubicEasing_getDiffXWithDouble_(ADXEasing_CubicEasing *self, double t) {
+  double t1 = 1 - t;
   return 3 * t1 * t1 * self->x1_ + 6 * t1 * t * (self->x2_ - self->x1_) + 3 * t * t * (1 - self->x2_);
 }
 
-jdouble ADXEasing_CubicEasing_getDiffYWithDouble_(ADXEasing_CubicEasing *self, jdouble t) {
-  jdouble t1 = 1 - t;
+double ADXEasing_CubicEasing_getDiffYWithDouble_(ADXEasing_CubicEasing *self, double t) {
+  double t1 = 1 - t;
   return 3 * t1 * t1 * self->y1_ + 6 * t1 * t * (self->y2_ - self->y1_) + 3 * t * t * (1 - self->y2_);
 }
 

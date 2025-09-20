@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\ArcCurveFit.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ArcCurveFit")
@@ -24,6 +25,8 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangDouble;
+@class JavaLangInteger;
 
 /*!
  @brief This provides provides a curve fit system that stitches the x,y path together with
@@ -40,20 +43,20 @@
                  withDoubleArray:(IOSDoubleArray *)time
                 withDoubleArray2:(IOSObjectArray *)y;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
          withDoubleArray:(IOSDoubleArray *)v;
 
-- (void)getPosWithDouble:(jdouble)t
+- (void)getPosWithDouble:(double)t
           withFloatArray:(IOSFloatArray *)v;
 
-- (jdouble)getPosWithDouble:(jdouble)t
-                    withInt:(jint)j;
+- (double)getPosWithDouble:(double)t
+                   withInt:(int32_t)j;
 
-- (void)getSlopeWithDouble:(jdouble)t
+- (void)getSlopeWithDouble:(double)t
            withDoubleArray:(IOSDoubleArray *)v;
 
-- (jdouble)getSlopeWithDouble:(jdouble)t
-                      withInt:(jint)j;
+- (double)getSlopeWithDouble:(double)t
+                     withInt:(int32_t)j;
 
 - (IOSDoubleArray *)getTimePoints;
 
@@ -67,21 +70,21 @@ J2OBJC_EMPTY_STATIC_INIT(ADXArcCurveFit)
 
 J2OBJC_FIELD_SETTER(ADXArcCurveFit, mArcs_, IOSObjectArray *)
 
-inline jint ADXArcCurveFit_get_ARC_START_VERTICAL(void);
+inline int32_t ADXArcCurveFit_get_ARC_START_VERTICAL(void);
 #define ADXArcCurveFit_ARC_START_VERTICAL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_VERTICAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_VERTICAL, int32_t)
 
-inline jint ADXArcCurveFit_get_ARC_START_HORIZONTAL(void);
+inline int32_t ADXArcCurveFit_get_ARC_START_HORIZONTAL(void);
 #define ADXArcCurveFit_ARC_START_HORIZONTAL 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_HORIZONTAL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_HORIZONTAL, int32_t)
 
-inline jint ADXArcCurveFit_get_ARC_START_FLIP(void);
+inline int32_t ADXArcCurveFit_get_ARC_START_FLIP(void);
 #define ADXArcCurveFit_ARC_START_FLIP 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_FLIP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_FLIP, int32_t)
 
-inline jint ADXArcCurveFit_get_ARC_START_LINEAR(void);
+inline int32_t ADXArcCurveFit_get_ARC_START_LINEAR(void);
 #define ADXArcCurveFit_ARC_START_LINEAR 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_LINEAR, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXArcCurveFit, ARC_START_LINEAR, int32_t)
 
 FOUNDATION_EXPORT void ADXArcCurveFit_initWithIntArray_withDoubleArray_withDoubleArray2_(ADXArcCurveFit *self, IOSIntArray *arcModes, IOSDoubleArray *time, IOSObjectArray *y);
 
@@ -92,6 +95,7 @@ FOUNDATION_EXPORT ADXArcCurveFit *create_ADXArcCurveFit_initWithIntArray_withDou
 J2OBJC_TYPE_LITERAL_HEADER(ADXArcCurveFit)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsArcCurveFit ADXArcCurveFit;
+
 
 #endif
 

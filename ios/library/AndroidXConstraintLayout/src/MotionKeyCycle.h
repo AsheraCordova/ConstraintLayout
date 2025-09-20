@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyCycle.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionKeyCycle")
@@ -20,8 +21,12 @@
 #define INCLUDE_ADXMotionKey 1
 #include "MotionKey.h"
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 @interface ADXMotionKeyCycle : ADXMotionKey
 
@@ -39,20 +44,20 @@
 
 - (void)getAttributeNamesWithJavaUtilHashSet:(JavaUtilHashSet *)attributes;
 
-- (jint)getIdWithNSString:(NSString *)name;
+- (int32_t)getIdWithNSString:(NSString *)name;
 
-- (jfloat)getValueWithNSString:(NSString *)key;
+- (float)getValueWithNSString:(NSString *)key;
 
 - (void)printAttributes;
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value;
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value;
 
 @end
 
@@ -83,37 +88,37 @@ inline NSString *ADXMotionKeyCycle_get_WAVE_SHAPE(void);
 FOUNDATION_EXPORT NSString *ADXMotionKeyCycle_WAVE_SHAPE;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionKeyCycle, WAVE_SHAPE, NSString *)
 
-inline jint ADXMotionKeyCycle_get_SHAPE_SIN_WAVE(void);
+inline int32_t ADXMotionKeyCycle_get_SHAPE_SIN_WAVE(void);
 #define ADXMotionKeyCycle_SHAPE_SIN_WAVE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_SIN_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_SIN_WAVE, int32_t)
 
-inline jint ADXMotionKeyCycle_get_SHAPE_SQUARE_WAVE(void);
+inline int32_t ADXMotionKeyCycle_get_SHAPE_SQUARE_WAVE(void);
 #define ADXMotionKeyCycle_SHAPE_SQUARE_WAVE 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_SQUARE_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_SQUARE_WAVE, int32_t)
 
-inline jint ADXMotionKeyCycle_get_SHAPE_TRIANGLE_WAVE(void);
+inline int32_t ADXMotionKeyCycle_get_SHAPE_TRIANGLE_WAVE(void);
 #define ADXMotionKeyCycle_SHAPE_TRIANGLE_WAVE 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_TRIANGLE_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_TRIANGLE_WAVE, int32_t)
 
-inline jint ADXMotionKeyCycle_get_SHAPE_SAW_WAVE(void);
+inline int32_t ADXMotionKeyCycle_get_SHAPE_SAW_WAVE(void);
 #define ADXMotionKeyCycle_SHAPE_SAW_WAVE 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_SAW_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_SAW_WAVE, int32_t)
 
-inline jint ADXMotionKeyCycle_get_SHAPE_REVERSE_SAW_WAVE(void);
+inline int32_t ADXMotionKeyCycle_get_SHAPE_REVERSE_SAW_WAVE(void);
 #define ADXMotionKeyCycle_SHAPE_REVERSE_SAW_WAVE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_REVERSE_SAW_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_REVERSE_SAW_WAVE, int32_t)
 
-inline jint ADXMotionKeyCycle_get_SHAPE_COS_WAVE(void);
+inline int32_t ADXMotionKeyCycle_get_SHAPE_COS_WAVE(void);
 #define ADXMotionKeyCycle_SHAPE_COS_WAVE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_COS_WAVE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_COS_WAVE, int32_t)
 
-inline jint ADXMotionKeyCycle_get_SHAPE_BOUNCE(void);
+inline int32_t ADXMotionKeyCycle_get_SHAPE_BOUNCE(void);
 #define ADXMotionKeyCycle_SHAPE_BOUNCE 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_BOUNCE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, SHAPE_BOUNCE, int32_t)
 
-inline jint ADXMotionKeyCycle_get_KEY_TYPE(void);
+inline int32_t ADXMotionKeyCycle_get_KEY_TYPE(void);
 #define ADXMotionKeyCycle_KEY_TYPE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyCycle, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionKeyCycle_init(ADXMotionKeyCycle *self);
 
@@ -124,6 +129,7 @@ FOUNDATION_EXPORT ADXMotionKeyCycle *create_ADXMotionKeyCycle_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionKeyCycle)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionKeyMotionKeyCycle ADXMotionKeyCycle;
+
 
 #endif
 

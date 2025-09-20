@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\helper\widget\Carousel.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "Carousel.h"
 #include "ConstraintSet.h"
 #include "IOSPrimitiveArray.h"
@@ -13,11 +18,19 @@
 #include "MotionScene.h"
 #include "View.h"
 #include "ViewParent.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/Runnable.h"
 #include "java/util/ArrayList.h"
 
-@class JavaUtilArrayList;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 #pragma clang diagnostic ignored "-Wprotocol"
@@ -26,35 +39,35 @@
  @public
   id<ADXCarousel_Adapter> mAdapter_;
   JavaUtilArrayList *mList_;
-  jint mPreviousIndex_;
-  jint mIndex_;
+  int32_t mPreviousIndex_;
+  int32_t mIndex_;
   ADXMotionLayout *mMotionLayout_;
-  jint firstViewReference_;
-  jboolean infiniteCarousel_;
-  jint backwardTransition_;
-  jint forwardTransition_;
-  jint previousState_;
-  jint nextState_;
-  jfloat dampening_;
-  jint startIndex_;
-  jint emptyViewBehavior_;
-  jint touchUpMode_;
-  jfloat velocityThreshold_;
-  jint mTargetIndex_;
-  jint mAnimateTargetDelay_;
+  int32_t firstViewReference_;
+  bool infiniteCarousel_;
+  int32_t backwardTransition_;
+  int32_t forwardTransition_;
+  int32_t previousState_;
+  int32_t nextState_;
+  float dampening_;
+  int32_t startIndex_;
+  int32_t emptyViewBehavior_;
+  int32_t touchUpMode_;
+  float velocityThreshold_;
+  int32_t mTargetIndex_;
+  int32_t mAnimateTargetDelay_;
 }
 
-- (void)enableAllTransitionsWithBoolean:(jboolean)enable;
+- (void)enableAllTransitionsWithBoolean:(bool)enable;
 
-- (jboolean)enableTransitionWithInt:(jint)transitionID
-                        withBoolean:(jboolean)enable;
+- (bool)enableTransitionWithInt:(int32_t)transitionID
+                    withBoolean:(bool)enable;
 
-- (jboolean)updateViewVisibilityWithADView:(ADView *)view
-                                   withInt:(jint)visibility;
+- (bool)updateViewVisibilityWithADView:(ADView *)view
+                               withInt:(int32_t)visibility;
 
-- (jboolean)updateViewVisibilityWithInt:(jint)constraintSetId
-                             withADView:(ADView *)view
-                                withInt:(jint)visibility;
+- (bool)updateViewVisibilityWithInt:(int32_t)constraintSetId
+                         withADView:(ADView *)view
+                            withInt:(int32_t)visibility;
 
 @end
 
@@ -62,21 +75,21 @@ J2OBJC_FIELD_SETTER(ADXCarousel, mAdapter_, id<ADXCarousel_Adapter>)
 J2OBJC_FIELD_SETTER(ADXCarousel, mList_, JavaUtilArrayList *)
 J2OBJC_FIELD_SETTER(ADXCarousel, mMotionLayout_, ADXMotionLayout *)
 
-inline jboolean ADXCarousel_get_DEBUG(void);
+inline bool ADXCarousel_get_DEBUG(void);
 #define ADXCarousel_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXCarousel, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXCarousel, DEBUG, bool)
 
 inline NSString *ADXCarousel_get_TAG(void);
 static NSString *ADXCarousel_TAG = @"Carousel";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXCarousel, TAG, NSString *)
 
-__attribute__((unused)) static void ADXCarousel_enableAllTransitionsWithBoolean_(ADXCarousel *self, jboolean enable);
+__attribute__((unused)) static void ADXCarousel_enableAllTransitionsWithBoolean_(ADXCarousel *self, bool enable);
 
-__attribute__((unused)) static jboolean ADXCarousel_enableTransitionWithInt_withBoolean_(ADXCarousel *self, jint transitionID, jboolean enable);
+__attribute__((unused)) static bool ADXCarousel_enableTransitionWithInt_withBoolean_(ADXCarousel *self, int32_t transitionID, bool enable);
 
-__attribute__((unused)) static jboolean ADXCarousel_updateViewVisibilityWithADView_withInt_(ADXCarousel *self, ADView *view, jint visibility);
+__attribute__((unused)) static bool ADXCarousel_updateViewVisibilityWithADView_withInt_(ADXCarousel *self, ADView *view, int32_t visibility);
 
-__attribute__((unused)) static jboolean ADXCarousel_updateViewVisibilityWithInt_withADView_withInt_(ADXCarousel *self, jint constraintSetId, ADView *view, jint visibility);
+__attribute__((unused)) static bool ADXCarousel_updateViewVisibilityWithInt_withADView_withInt_(ADXCarousel *self, int32_t constraintSetId, ADView *view, int32_t visibility);
 
 @interface ADXCarousel_Adapter : NSObject
 
@@ -101,14 +114,15 @@ __attribute__((unused)) static ADXCarousel_1 *new_ADXCarousel_1_initWithADXCarou
 
 __attribute__((unused)) static ADXCarousel_1 *create_ADXCarousel_1_initWithADXCarousel_(ADXCarousel *outer$);
 
+
 @interface ADXCarousel_1_1 : NSObject < JavaLangRunnable > {
  @public
   ADXCarousel_1 *this$0_;
-  jfloat val$v_;
+  float val$v_;
 }
 
 - (instancetype)initWithADXCarousel_1:(ADXCarousel_1 *)outer$
-                            withFloat:(jfloat)capture$0;
+                            withFloat:(float)capture$0;
 
 - (void)run;
 
@@ -116,11 +130,12 @@ __attribute__((unused)) static ADXCarousel_1 *create_ADXCarousel_1_initWithADXCa
 
 J2OBJC_EMPTY_STATIC_INIT(ADXCarousel_1_1)
 
-__attribute__((unused)) static void ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1_1 *self, ADXCarousel_1 *outer$, jfloat capture$0);
+__attribute__((unused)) static void ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1_1 *self, ADXCarousel_1 *outer$, float capture$0);
 
-__attribute__((unused)) static ADXCarousel_1_1 *new_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, jfloat capture$0) NS_RETURNS_RETAINED;
+__attribute__((unused)) static ADXCarousel_1_1 *new_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, float capture$0) NS_RETURNS_RETAINED;
 
-__attribute__((unused)) static ADXCarousel_1_1 *create_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, jfloat capture$0);
+__attribute__((unused)) static ADXCarousel_1_1 *create_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, float capture$0);
+
 
 @interface ADXCarousel_$Lambda$1 : NSObject < JavaLangRunnable > {
  @public
@@ -139,6 +154,7 @@ __attribute__((unused)) static ADXCarousel_$Lambda$1 *new_ADXCarousel_$Lambda$1_
 
 __attribute__((unused)) static ADXCarousel_$Lambda$1 *create_ADXCarousel_$Lambda$1_initWithADXCarousel_(ADXCarousel *outer$);
 
+
 @implementation ADXCarousel
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -152,19 +168,19 @@ J2OBJC_IGNORE_DESIGNATED_END
   JreStrongAssign(&mAdapter_, adapter);
 }
 
-- (jint)getCount {
+- (int32_t)getCount {
   if (mAdapter_ != nil) {
     return [mAdapter_ count];
   }
   return 0;
 }
 
-- (jint)getCurrentIndex {
+- (int32_t)getCurrentIndex {
   return mIndex_;
 }
 
-- (void)transitionToIndexWithInt:(jint)index
-                         withInt:(jint)delay {
+- (void)transitionToIndexWithInt:(int32_t)index
+                         withInt:(int32_t)delay {
   mTargetIndex_ = JavaLangMath_maxWithInt_withInt_(0, JavaLangMath_minWithInt_withInt_([self getCount] - 1, index));
   mAnimateTargetDelay_ = JavaLangMath_maxWithInt_withInt_(0, delay);
   [((ADXMotionLayout *) nil_chk(mMotionLayout_)) setTransitionDurationWithInt:mAnimateTargetDelay_];
@@ -176,14 +192,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)jumpToIndexWithInt:(jint)index {
+- (void)jumpToIndexWithInt:(int32_t)index {
   mIndex_ = JavaLangMath_maxWithInt_withInt_(0, JavaLangMath_minWithInt_withInt_([self getCount] - 1, index));
   [self refresh];
 }
 
 - (void)refresh {
-  jint count = [((JavaUtilArrayList *) nil_chk(mList_)) size];
-  for (jint i = 0; i < count; i++) {
+  int32_t count = [((JavaUtilArrayList *) nil_chk(mList_)) size];
+  for (int32_t i = 0; i < count; i++) {
     ADView *view = JreRetainedLocalValue([mList_ getWithInt:i]);
     if ([((id<ADXCarousel_Adapter>) nil_chk(mAdapter_)) count] == 0) {
       ADXCarousel_updateViewVisibilityWithADView_withInt_(self, view, emptyViewBehavior_);
@@ -198,14 +214,14 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)onTransitionChangeWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)startId
-                                      withInt:(jint)endId
-                                    withFloat:(jfloat)progress {
+                                      withInt:(int32_t)startId
+                                      withInt:(int32_t)endId
+                                    withFloat:(float)progress {
   mLastStartId_ = startId;
 }
 
 - (void)onTransitionCompletedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                         withInt:(jint)currentId {
+                                         withInt:(int32_t)currentId {
   mPreviousIndex_ = mIndex_;
   if (currentId == nextState_) {
     mIndex_++;
@@ -234,12 +250,12 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)enableAllTransitionsWithBoolean:(jboolean)enable {
+- (void)enableAllTransitionsWithBoolean:(bool)enable {
   ADXCarousel_enableAllTransitionsWithBoolean_(self, enable);
 }
 
-- (jboolean)enableTransitionWithInt:(jint)transitionID
-                        withBoolean:(jboolean)enable {
+- (bool)enableTransitionWithInt:(int32_t)transitionID
+                    withBoolean:(bool)enable {
   return ADXCarousel_enableTransitionWithInt_withBoolean_(self, transitionID, enable);
 }
 
@@ -253,8 +269,8 @@ J2OBJC_IGNORE_DESIGNATED_END
     return;
   }
   [((JavaUtilArrayList *) nil_chk(mList_)) clear];
-  for (jint i = 0; i < mCount_; i++) {
-    jint id_ = IOSIntArray_Get(nil_chk(mIds_), i);
+  for (int32_t i = 0; i < mCount_; i++) {
+    int32_t id_ = IOSIntArray_Get(nil_chk(mIds_), i);
     ADView *view = JreRetainedLocalValue([((ADXMotionLayout *) nil_chk(container)) getViewByIdWithInt:id_]);
     if (firstViewReference_ == id_) {
       startIndex_ = i;
@@ -276,14 +292,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADXMotionLayout *) nil_chk(mMotionLayout_)) remeasure];
 }
 
-- (jboolean)updateViewVisibilityWithADView:(ADView *)view
-                                   withInt:(jint)visibility {
+- (bool)updateViewVisibilityWithADView:(ADView *)view
+                               withInt:(int32_t)visibility {
   return ADXCarousel_updateViewVisibilityWithADView_withInt_(self, view, visibility);
 }
 
-- (jboolean)updateViewVisibilityWithInt:(jint)constraintSetId
-                             withADView:(ADView *)view
-                                withInt:(jint)visibility {
+- (bool)updateViewVisibilityWithInt:(int32_t)constraintSetId
+                         withADView:(ADView *)view
+                            withInt:(int32_t)visibility {
   return ADXCarousel_updateViewVisibilityWithInt_withADView_withInt_(self, constraintSetId, view, visibility);
 }
 
@@ -297,10 +313,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   if ([mAdapter_ count] == 0) {
     return;
   }
-  jint viewCount = [((JavaUtilArrayList *) nil_chk(mList_)) size];
-  for (jint i = 0; i < viewCount; i++) {
+  int32_t viewCount = [((JavaUtilArrayList *) nil_chk(mList_)) size];
+  for (int32_t i = 0; i < viewCount; i++) {
     ADView *view = JreRetainedLocalValue([mList_ getWithInt:i]);
-    jint index = mIndex_ + i - startIndex_;
+    int32_t index = mIndex_ + i - startIndex_;
     if (infiniteCarousel_) {
       if (index < 0) {
         if (emptyViewBehavior_ != ADView_INVISIBLE) {
@@ -362,7 +378,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (infiniteCarousel_) {
     return;
   }
-  jint count = [((id<ADXCarousel_Adapter>) nil_chk(mAdapter_)) count];
+  int32_t count = [((id<ADXCarousel_Adapter>) nil_chk(mAdapter_)) count];
   if (mIndex_ == 0) {
     ADXCarousel_enableTransitionWithInt_withBoolean_(self, backwardTransition_, false);
   }
@@ -379,83 +395,83 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jint)getBackwardTransition {
+- (int32_t)getBackwardTransition {
   return backwardTransition_;
 }
 
-- (void)setBackwardTransitionWithInt:(jint)backwardTransition {
+- (void)setBackwardTransitionWithInt:(int32_t)backwardTransition {
   self->backwardTransition_ = backwardTransition;
 }
 
-- (jint)getForwardTransition {
+- (int32_t)getForwardTransition {
   return forwardTransition_;
 }
 
-- (void)setForwardTransitionWithInt:(jint)forwardTransition {
+- (void)setForwardTransitionWithInt:(int32_t)forwardTransition {
   self->forwardTransition_ = forwardTransition;
 }
 
-- (jint)getPreviousState {
+- (int32_t)getPreviousState {
   return previousState_;
 }
 
-- (void)setPreviousStateWithInt:(jint)previousState {
+- (void)setPreviousStateWithInt:(int32_t)previousState {
   self->previousState_ = previousState;
 }
 
-- (jint)getNextState {
+- (int32_t)getNextState {
   return nextState_;
 }
 
-- (void)setNextStateWithInt:(jint)nextState {
+- (void)setNextStateWithInt:(int32_t)nextState {
   self->nextState_ = nextState;
 }
 
-- (jfloat)getDampening {
+- (float)getDampening {
   return dampening_;
 }
 
-- (void)setDampeningWithFloat:(jfloat)dampening {
+- (void)setDampeningWithFloat:(float)dampening {
   self->dampening_ = dampening;
 }
 
-- (jint)getEmptyViewBehavior {
+- (int32_t)getEmptyViewBehavior {
   return emptyViewBehavior_;
 }
 
-- (void)setEmptyViewBehaviorWithInt:(jint)emptyViewBehavior {
+- (void)setEmptyViewBehaviorWithInt:(int32_t)emptyViewBehavior {
   self->emptyViewBehavior_ = emptyViewBehavior;
 }
 
-- (jint)getTouchUpMode {
+- (int32_t)getTouchUpMode {
   return touchUpMode_;
 }
 
-- (void)setTouchUpModeWithInt:(jint)touchUpMode {
+- (void)setTouchUpModeWithInt:(int32_t)touchUpMode {
   self->touchUpMode_ = touchUpMode;
 }
 
-- (jfloat)getVelocityThreshold {
+- (float)getVelocityThreshold {
   return velocityThreshold_;
 }
 
-- (void)setVelocityThresholdWithFloat:(jfloat)velocityThreshold {
+- (void)setVelocityThresholdWithFloat:(float)velocityThreshold {
   self->velocityThreshold_ = velocityThreshold;
 }
 
-- (jint)getFirstViewReference {
+- (int32_t)getFirstViewReference {
   return firstViewReference_;
 }
 
-- (void)setFirstViewReferenceWithInt:(jint)firstViewReference {
+- (void)setFirstViewReferenceWithInt:(int32_t)firstViewReference {
   self->firstViewReference_ = firstViewReference;
 }
 
-- (jboolean)isInfiniteCarousel {
+- (bool)isInfiniteCarousel {
   return infiniteCarousel_;
 }
 
-- (void)setInfiniteCarouselWithBoolean:(jboolean)infiniteCarousel {
+- (void)setInfiniteCarouselWithBoolean:(bool)infiniteCarousel {
   self->infiniteCarousel_ = infiniteCarousel;
 }
 
@@ -608,14 +624,14 @@ ADXCarousel *create_ADXCarousel_init() {
   J2OBJC_CREATE_IMPL(ADXCarousel, init)
 }
 
-void ADXCarousel_enableAllTransitionsWithBoolean_(ADXCarousel *self, jboolean enable) {
+void ADXCarousel_enableAllTransitionsWithBoolean_(ADXCarousel *self, bool enable) {
   JavaUtilArrayList *transitions = JreRetainedLocalValue([((ADXMotionLayout *) nil_chk(self->mMotionLayout_)) getDefinedTransitions]);
   for (ADXMotionScene_Transition * __strong transition in nil_chk(transitions)) {
     [((ADXMotionScene_Transition *) nil_chk(transition)) setEnabledWithBoolean:enable];
   }
 }
 
-jboolean ADXCarousel_enableTransitionWithInt_withBoolean_(ADXCarousel *self, jint transitionID, jboolean enable) {
+bool ADXCarousel_enableTransitionWithInt_withBoolean_(ADXCarousel *self, int32_t transitionID, bool enable) {
   if (transitionID == -1) {
     return false;
   }
@@ -633,19 +649,19 @@ jboolean ADXCarousel_enableTransitionWithInt_withBoolean_(ADXCarousel *self, jin
   return true;
 }
 
-jboolean ADXCarousel_updateViewVisibilityWithADView_withInt_(ADXCarousel *self, ADView *view, jint visibility) {
+bool ADXCarousel_updateViewVisibilityWithADView_withInt_(ADXCarousel *self, ADView *view, int32_t visibility) {
   if (self->mMotionLayout_ == nil) {
     return false;
   }
-  jboolean needsMotionSceneRebuild = false;
+  bool needsMotionSceneRebuild = false;
   IOSIntArray *constraintSets = [self->mMotionLayout_ getConstraintSetIds];
-  for (jint i = 0; i < ((IOSIntArray *) nil_chk(constraintSets))->size_; i++) {
+  for (int32_t i = 0; i < ((IOSIntArray *) nil_chk(constraintSets))->size_; i++) {
     needsMotionSceneRebuild |= ADXCarousel_updateViewVisibilityWithInt_withADView_withInt_(self, IOSIntArray_Get(constraintSets, i), view, visibility);
   }
   return needsMotionSceneRebuild;
 }
 
-jboolean ADXCarousel_updateViewVisibilityWithInt_withADView_withInt_(ADXCarousel *self, jint constraintSetId, ADView *view, jint visibility) {
+bool ADXCarousel_updateViewVisibilityWithInt_withADView_withInt_(ADXCarousel *self, int32_t constraintSetId, ADView *view, int32_t visibility) {
   ADXConstraintSet *constraintSet = JreRetainedLocalValue([((ADXMotionLayout *) nil_chk(self->mMotionLayout_)) getConstraintSetWithInt:constraintSetId]);
   if (constraintSet == nil) {
     return false;
@@ -660,6 +676,8 @@ jboolean ADXCarousel_updateViewVisibilityWithInt_withADView_withInt_(ADXCarousel
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCarousel)
+
+J2OBJC_NAME_MAPPING(ADXCarousel, "androidx.constraintlayout.helper.widget", "ADX")
 
 @implementation ADXCarousel_Adapter
 
@@ -699,9 +717,9 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCarousel_Adapter)
   [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) remeasure];
   [((id<ADXCarousel_Adapter>) nil_chk(this$0_->mAdapter_)) onNewItemWithInt:this$0_->mIndex_];
   [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) setRedrawWithBoolean:true];
-  jfloat velocity = [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) getVelocity];
+  float velocity = [((ADXMotionLayout *) nil_chk(this$0_->mMotionLayout_)) getVelocity];
   if (this$0_->touchUpMode_ == ADXCarousel_TOUCH_UP_CARRY_ON && velocity > this$0_->velocityThreshold_ && this$0_->mIndex_ < [((id<ADXCarousel_Adapter>) nil_chk(this$0_->mAdapter_)) count] - 1) {
-    jfloat v = velocity * this$0_->dampening_;
+    float v = velocity * this$0_->dampening_;
     if (this$0_->mIndex_ == 0 && this$0_->mPreviousIndex_ > this$0_->mIndex_) {
       return;
     }
@@ -732,7 +750,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ADXCarousel_Adapter)
     { "this$0_", "LADXCarousel;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXCarousel;" };
-  static const J2ObjcClassInfo _ADXCarousel_1 = { "", "androidx.constraintlayout.helper.widget", ptrTable, methods, fields, 7, 0x8010, 2, 1, 0, -1, -1, -1, -1 };
+  static const J2ObjcClassInfo _ADXCarousel_1 = { "", "androidx.constraintlayout.helper.widget", ptrTable, methods, fields, 7, 0x8000, 2, 1, 0, -1, -1, -1, -1 };
   return &_ADXCarousel_1;
 }
 
@@ -754,7 +772,7 @@ ADXCarousel_1 *create_ADXCarousel_1_initWithADXCarousel_(ADXCarousel *outer$) {
 @implementation ADXCarousel_1_1
 
 - (instancetype)initWithADXCarousel_1:(ADXCarousel_1 *)outer$
-                            withFloat:(jfloat)capture$0 {
+                            withFloat:(float)capture$0 {
   ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(self, outer$, capture$0);
   return self;
 }
@@ -784,23 +802,23 @@ ADXCarousel_1 *create_ADXCarousel_1_initWithADXCarousel_(ADXCarousel *outer$) {
     { "val$v_", "F", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
   static const void *ptrTable[] = { "LADXCarousel_1;F", "LADXCarousel_1;", "run" };
-  static const J2ObjcClassInfo _ADXCarousel_1_1 = { "", "androidx.constraintlayout.helper.widget", ptrTable, methods, fields, 7, 0x8010, 2, 2, 1, -1, 2, -1, -1 };
+  static const J2ObjcClassInfo _ADXCarousel_1_1 = { "", "androidx.constraintlayout.helper.widget", ptrTable, methods, fields, 7, 0x8000, 2, 2, 1, -1, 2, -1, -1 };
   return &_ADXCarousel_1_1;
 }
 
 @end
 
-void ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1_1 *self, ADXCarousel_1 *outer$, jfloat capture$0) {
+void ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1_1 *self, ADXCarousel_1 *outer$, float capture$0) {
   JreStrongAssign(&self->this$0_, outer$);
   self->val$v_ = capture$0;
   NSObject_init(self);
 }
 
-ADXCarousel_1_1 *new_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, jfloat capture$0) {
+ADXCarousel_1_1 *new_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, float capture$0) {
   J2OBJC_NEW_IMPL(ADXCarousel_1_1, initWithADXCarousel_1_withFloat_, outer$, capture$0)
 }
 
-ADXCarousel_1_1 *create_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, jfloat capture$0) {
+ADXCarousel_1_1 *create_ADXCarousel_1_1_initWithADXCarousel_1_withFloat_(ADXCarousel_1 *outer$, float capture$0) {
   J2OBJC_CREATE_IMPL(ADXCarousel_1_1, initWithADXCarousel_1_withFloat_, outer$, capture$0)
 }
 

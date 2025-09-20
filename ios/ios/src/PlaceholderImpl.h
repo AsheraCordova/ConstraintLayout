@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\PlaceholderImpl.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_PlaceholderImpl")
@@ -23,6 +24,8 @@
 @class ADXPlaceholder;
 @class ASWidgetAttribute;
 @class IOSClass;
+@class JavaLangBoolean;
+@class NSString;
 @protocol ASIFragment;
 @protocol ASILifeCycleDecorator;
 @protocol ASIWidget;
@@ -48,7 +51,7 @@
 
 - (id)asWidget;
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v;
+- (bool)checkIosVersionWithNSString:(NSString *)v;
 
 - (void)createWithASIFragment:(id<ASIFragment>)fragment
               withJavaUtilMap:(id<JavaUtilMap>)params;
@@ -77,7 +80,7 @@
 
 - (void)setIdWithNSString:(NSString *)id_;
 
-- (void)setVisibleWithBoolean:(jboolean)b;
+- (void)setVisibleWithBoolean:(bool)b;
 
 @end
 
@@ -118,6 +121,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl)
 
 @compatibility_alias ComAsheraConstraintlayoutPlaceholderImpl ASPlaceholderImpl;
 
+
 #endif
 
 #if !defined (ASPlaceholderImpl_Placeholder_emptyVisibility_) && (INCLUDE_ALL_PlaceholderImpl || defined(INCLUDE_ASPlaceholderImpl_Placeholder_emptyVisibility))
@@ -154,6 +158,7 @@ FOUNDATION_EXPORT ASPlaceholderImpl_Placeholder_emptyVisibility *create_ASPlaceh
 
 J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
+
 #endif
 
 #if !defined (ASPlaceholderImpl_PlaceholderExt_) && (INCLUDE_ALL_PlaceholderImpl || defined(INCLUDE_ASPlaceholderImpl_PlaceholderExt))
@@ -177,6 +182,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 @class ASWidgetAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class NSString;
 @protocol ASIWidget;
 @protocol JavaUtilList;
 
@@ -195,9 +203,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
 - (void)getLocationOnScreenWithIntArray:(IOSIntArray *)appScreenLocation;
 
-- (jint)getMaxHeight;
+- (int32_t)getMaxHeight;
 
-- (jint)getMaxWidth;
+- (int32_t)getMaxWidth;
 
 - (id<JavaUtilList>)getMethods;
 
@@ -211,12 +219,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
 - (id<ASILifeCycleDecorator>)newInstanceWithASIWidget:(id<ASIWidget>)widget OBJC_METHOD_FAMILY_NONE;
 
-- (void)offsetLeftAndRightWithInt:(jint)offset;
+- (void)offsetLeftAndRightWithInt:(int32_t)offset;
 
-- (void)offsetTopAndBottomWithInt:(jint)offset;
+- (void)offsetTopAndBottomWithInt:(int32_t)offset;
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec;
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec;
 
 - (void)remeasure;
 
@@ -226,9 +234,9 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
                              withNSString:(NSString *)strValue
                                    withId:(id)objValue;
 
-- (void)setMaxHeightWithInt:(jint)height;
+- (void)setMaxHeightWithInt:(int32_t)height;
 
-- (void)setMaxWidthWithInt:(jint)width;
+- (void)setMaxWidthWithInt:(int32_t)width;
 
 - (void)setMyAttributeWithNSString:(NSString *)name
                             withId:(id)value;
@@ -243,7 +251,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
 - (void)setState4WithId:(id)value;
 
-- (void)setVisibilityWithInt:(jint)visibility;
+- (void)setVisibilityWithInt:(int32_t)visibility;
 
 - (void)state0;
 
@@ -259,16 +267,16 @@ J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_Placeholder_emptyVisibility)
 
 - (void)stateYes;
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height;
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height;
 
 #pragma mark Protected
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b;
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b;
 
 // Disallowed inherited constructors, do not use.
 
@@ -285,6 +293,7 @@ FOUNDATION_EXPORT ASPlaceholderImpl_PlaceholderExt *new_ASPlaceholderImpl_Placeh
 FOUNDATION_EXPORT ASPlaceholderImpl_PlaceholderExt *create_ASPlaceholderImpl_PlaceholderExt_initWithASPlaceholderImpl_(ASPlaceholderImpl *outer$);
 
 J2OBJC_TYPE_LITERAL_HEADER(ASPlaceholderImpl_PlaceholderExt)
+
 
 #endif
 

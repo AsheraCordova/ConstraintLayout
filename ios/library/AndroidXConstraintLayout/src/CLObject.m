@@ -3,12 +3,19 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLObject.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLContainer.h"
 #include "CLElement.h"
 #include "CLKey.h"
 #include "CLObject.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Iterable.h"
 #include "java/lang/StringBuilder.h"
 #include "java/util/ArrayList.h"
@@ -16,19 +23,23 @@
 #include "java/util/Spliterator.h"
 #include "java/util/function/Consumer.h"
 
-@protocol JavaUtilFunctionConsumer;
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXCLObject_CLObjectIterator : NSObject < JavaUtilIterator > {
  @public
   ADXCLObject *myObject_;
-  jint index_;
+  int32_t index_;
 }
 
 - (instancetype)initWithADXCLObject:(ADXCLObject *)outer$
                     withADXCLObject:(ADXCLObject *)clObject;
 
-- (jboolean)hasNext;
+- (bool)hasNext;
 
 - (id)next;
 
@@ -46,6 +57,7 @@ __attribute__((unused)) static ADXCLObject_CLObjectIterator *create_ADXCLObject_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLObject_CLObjectIterator)
 
+
 @implementation ADXCLObject
 
 - (instancetype)initWithCharArray:(IOSCharArray *)content {
@@ -59,7 +71,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLObject_CLObjectIterator)
 
 - (NSString *)toJSON {
   JavaLangStringBuilder *json = create_JavaLangStringBuilder_initWithNSString_(JreStrcat("$$", [self getDebugName], @"{ "));
-  jboolean first = true;
+  bool first = true;
   for (ADXCLElement * __strong element in nil_chk(mElements_)) {
     if (!first) {
       [json appendWithNSString:@", "];
@@ -77,11 +89,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXCLObject_CLObjectIterator)
   return [self toFormattedJSONWithInt:0 withInt:0];
 }
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent {
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent {
   JavaLangStringBuilder *json = create_JavaLangStringBuilder_initWithNSString_([self getDebugName]);
   [json appendWithNSString:@"{\n"];
-  jboolean first = true;
+  bool first = true;
   for (ADXCLElement * __strong element in nil_chk(mElements_)) {
     if (!first) {
       [json appendWithNSString:@",\n"];
@@ -158,6 +170,8 @@ ADXCLObject *ADXCLObject_allocateWithCharArray_(IOSCharArray *content) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLObject)
 
+J2OBJC_NAME_MAPPING(ADXCLObject, "androidx.constraintlayout.core.parser", "ADX")
+
 @implementation ADXCLObject_CLObjectIterator
 
 - (instancetype)initWithADXCLObject:(ADXCLObject *)outer$
@@ -166,7 +180,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLObject)
   return self;
 }
 
-- (jboolean)hasNext {
+- (bool)hasNext {
   return index_ < [((ADXCLObject *) nil_chk(myObject_)) size];
 }
 

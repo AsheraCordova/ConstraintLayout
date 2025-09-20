@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintLayout.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ApplicationInfo.h"
 #include "BasicMeasure.h"
 #include "ConstraintAnchor.h"
@@ -28,47 +33,55 @@
 #include "ViewGroup.h"
 #include "ViewParent.h"
 #include "VirtualLayout.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
+#include "java/lang/Float.h"
 #include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/util/ArrayList.h"
 #include "java/util/HashMap.h"
 
-@class JavaUtilArrayList;
-@class JavaUtilHashMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXConstraintLayout () {
  @public
   JavaUtilArrayList *mConstraintHelpers_;
-  jint mMinWidth_ConstraintLayout_;
-  jint mMinHeight_ConstraintLayout_;
-  jint mMaxWidth_;
-  jint mMaxHeight_;
-  jint mOptimizationLevel_;
+  int32_t mMinWidth_ConstraintLayout_;
+  int32_t mMinHeight_ConstraintLayout_;
+  int32_t mMaxWidth_;
+  int32_t mMaxHeight_;
+  int32_t mOptimizationLevel_;
   ADXConstraintSet *mConstraintSet_;
-  jint mConstraintSetId_;
+  int32_t mConstraintSetId_;
   JavaUtilHashMap *mDesignIds_;
-  jint mLastMeasureWidth_;
-  jint mLastMeasureHeight_;
+  int32_t mLastMeasureWidth_;
+  int32_t mLastMeasureHeight_;
   ADSparseArray *mTempMapIdToWidget_;
   ADXMetrics *mMetrics_;
-  jint mOnMeasureWidthMeasureSpec_;
-  jint mOnMeasureHeightMeasureSpec_;
+  int32_t mOnMeasureWidthMeasureSpec_;
+  int32_t mOnMeasureHeightMeasureSpec_;
 }
 
-- (jboolean)updateHierarchy;
+- (bool)updateHierarchy;
 
 - (void)setChildrenConstraints;
 
 - (void)setWidgetBaselineWithADXConstraintWidget:(ADXConstraintWidget *)widget
             withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
                                withADSparseArray:(ADSparseArray *)idToWidget
-                                         withInt:(jint)baselineTarget
+                                         withInt:(int32_t)baselineTarget
                     withADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)type;
 
-- (ADXConstraintWidget *)getTargetWidgetWithInt:(jint)id_;
+- (ADXConstraintWidget *)getTargetWidgetWithInt:(int32_t)id_;
 
-- (jint)getPaddingWidth;
+- (int32_t)getPaddingWidth;
 
 - (void)markHierarchyDirty;
 
@@ -84,57 +97,57 @@ inline NSString *ADXConstraintLayout_get_TAG(void);
 static NSString *ADXConstraintLayout_TAG = @"ConstraintLayout";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXConstraintLayout, TAG, NSString *)
 
-inline jboolean ADXConstraintLayout_get_USE_CONSTRAINTS_HELPER(void);
+inline bool ADXConstraintLayout_get_USE_CONSTRAINTS_HELPER(void);
 #define ADXConstraintLayout_USE_CONSTRAINTS_HELPER true
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, USE_CONSTRAINTS_HELPER, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, USE_CONSTRAINTS_HELPER, bool)
 
-inline jboolean ADXConstraintLayout_get_DEBUG(void);
+inline bool ADXConstraintLayout_get_DEBUG(void);
 #define ADXConstraintLayout_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, DEBUG, bool)
 
-inline jboolean ADXConstraintLayout_get_DEBUG_DRAW_CONSTRAINTS(void);
+inline bool ADXConstraintLayout_get_DEBUG_DRAW_CONSTRAINTS(void);
 #define ADXConstraintLayout_DEBUG_DRAW_CONSTRAINTS false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, DEBUG_DRAW_CONSTRAINTS, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, DEBUG_DRAW_CONSTRAINTS, bool)
 
-inline jboolean ADXConstraintLayout_get_MEASURE(void);
+inline bool ADXConstraintLayout_get_MEASURE(void);
 #define ADXConstraintLayout_MEASURE false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, MEASURE, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, MEASURE, bool)
 
-inline jboolean ADXConstraintLayout_get_OPTIMIZE_HEIGHT_CHANGE(void);
+inline bool ADXConstraintLayout_get_OPTIMIZE_HEIGHT_CHANGE(void);
 #define ADXConstraintLayout_OPTIMIZE_HEIGHT_CHANGE false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, OPTIMIZE_HEIGHT_CHANGE, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayout, OPTIMIZE_HEIGHT_CHANGE, bool)
 
 inline ADXSharedValues *ADXConstraintLayout_get_sSharedValues(void);
 inline ADXSharedValues *ADXConstraintLayout_set_sSharedValues(ADXSharedValues *value);
 static ADXSharedValues *ADXConstraintLayout_sSharedValues;
 J2OBJC_STATIC_FIELD_OBJ(ADXConstraintLayout, sSharedValues, ADXSharedValues *)
 
-__attribute__((unused)) static jboolean ADXConstraintLayout_updateHierarchy(ADXConstraintLayout *self);
+__attribute__((unused)) static bool ADXConstraintLayout_updateHierarchy(ADXConstraintLayout *self);
 
 __attribute__((unused)) static void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self);
 
-__attribute__((unused)) static void ADXConstraintLayout_setWidgetBaselineWithADXConstraintWidget_withADXConstraintLayout_LayoutParams_withADSparseArray_withInt_withADXConstraintAnchor_Type_(ADXConstraintLayout *self, ADXConstraintWidget *widget, ADXConstraintLayout_LayoutParams *layoutParams, ADSparseArray *idToWidget, jint baselineTarget, ADXConstraintAnchor_Type *type);
+__attribute__((unused)) static void ADXConstraintLayout_setWidgetBaselineWithADXConstraintWidget_withADXConstraintLayout_LayoutParams_withADSparseArray_withInt_withADXConstraintAnchor_Type_(ADXConstraintLayout *self, ADXConstraintWidget *widget, ADXConstraintLayout_LayoutParams *layoutParams, ADSparseArray *idToWidget, int32_t baselineTarget, ADXConstraintAnchor_Type *type);
 
-__attribute__((unused)) static ADXConstraintWidget *ADXConstraintLayout_getTargetWidgetWithInt_(ADXConstraintLayout *self, jint id_);
+__attribute__((unused)) static ADXConstraintWidget *ADXConstraintLayout_getTargetWidgetWithInt_(ADXConstraintLayout *self, int32_t id_);
 
 __attribute__((unused)) static ADXConstraintWidget *ADXConstraintLayout_getViewWidgetWithADView_(ADXConstraintLayout *self, ADView *view);
 
-__attribute__((unused)) static jint ADXConstraintLayout_getPaddingWidth(ADXConstraintLayout *self);
+__attribute__((unused)) static int32_t ADXConstraintLayout_getPaddingWidth(ADXConstraintLayout *self);
 
 __attribute__((unused)) static void ADXConstraintLayout_markHierarchyDirty(ADXConstraintLayout *self);
 
 @interface ADXConstraintLayout_Measurer () {
  @public
-  __unsafe_unretained ADXConstraintLayout *this$0_;
+  WEAK_ ADXConstraintLayout *this$0_;
 }
 
-- (jboolean)isSimilarSpecWithInt:(jint)lastMeasureSpec
-                         withInt:(jint)spec
-                         withInt:(jint)widgetSize;
+- (bool)isSimilarSpecWithInt:(int32_t)lastMeasureSpec
+                     withInt:(int32_t)spec
+                     withInt:(int32_t)widgetSize;
 
 @end
 
-__attribute__((unused)) static jboolean ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(ADXConstraintLayout_Measurer *self, jint lastMeasureSpec, jint spec, jint widgetSize);
+__attribute__((unused)) static bool ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(ADXConstraintLayout_Measurer *self, int32_t lastMeasureSpec, int32_t spec, int32_t widgetSize);
 
 NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
 
@@ -144,7 +157,7 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   return ADXConstraintLayout_getSharedValues();
 }
 
-- (void)setDesignInformationWithInt:(jint)type
+- (void)setDesignInformationWithInt:(int32_t)type
                              withId:(id)value1
                              withId:(id)value2 {
   if (type == ADXConstraintLayout_DESIGN_INFO_ID && [value1 isKindOfClass:[NSString class]] && [value2 isKindOfClass:[JavaLangInteger class]]) {
@@ -152,16 +165,16 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
       JreStrongAssignAndConsume(&mDesignIds_, new_JavaUtilHashMap_init());
     }
     NSString *name = (NSString *) cast_chk(value1, [NSString class]);
-    jint index = [((NSString *) nil_chk(name)) java_indexOfString:@"/"];
+    int32_t index = [((NSString *) nil_chk(name)) java_indexOfString:@"/"];
     if (index != -1) {
       name = [name java_substring:index + 1];
     }
-    jint id_ = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(value2, [JavaLangInteger class]))) intValue];
+    int32_t id_ = [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(value2, [JavaLangInteger class]))) intValue];
     [((JavaUtilHashMap *) nil_chk(mDesignIds_)) putWithId:name withId:JavaLangInteger_valueOfWithInt_(id_)];
   }
 }
 
-- (id)getDesignInformationWithInt:(jint)type
+- (id)getDesignInformationWithInt:(int32_t)type
                            withId:(id)value {
   if (type == ADXConstraintLayout_DESIGN_INFO_ID && [value isKindOfClass:[NSString class]]) {
     NSString *name = (NSString *) cast_chk(value, [NSString class]);
@@ -205,7 +218,7 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   mDirtyHierarchy_ = true;
 }
 
-- (void)setMinWidthWithInt:(jint)value {
+- (void)setMinWidthWithInt:(int32_t)value {
   if (value == mMinWidth_ConstraintLayout_) {
     return;
   }
@@ -213,7 +226,7 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   [self requestLayout];
 }
 
-- (void)setMinHeightWithInt:(jint)value {
+- (void)setMinHeightWithInt:(int32_t)value {
   if (value == mMinHeight_ConstraintLayout_) {
     return;
   }
@@ -221,15 +234,15 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   [self requestLayout];
 }
 
-- (jint)getMinWidth {
+- (int32_t)getMinWidth {
   return mMinWidth_ConstraintLayout_;
 }
 
-- (jint)getMinHeight {
+- (int32_t)getMinHeight {
   return mMinHeight_ConstraintLayout_;
 }
 
-- (void)setMaxWidthWithInt:(jint)value {
+- (void)setMaxWidthWithInt:(int32_t)value {
   if (value == mMaxWidth_) {
     return;
   }
@@ -237,7 +250,7 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   [self requestLayout];
 }
 
-- (void)setMaxHeightWithInt:(jint)value {
+- (void)setMaxHeightWithInt:(int32_t)value {
   if (value == mMaxHeight_) {
     return;
   }
@@ -245,15 +258,15 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   [self requestLayout];
 }
 
-- (jint)getMaxWidth {
+- (int32_t)getMaxWidth {
   return mMaxWidth_;
 }
 
-- (jint)getMaxHeight {
+- (int32_t)getMaxHeight {
   return mMaxHeight_;
 }
 
-- (jboolean)updateHierarchy {
+- (bool)updateHierarchy {
   return ADXConstraintLayout_updateHierarchy(self);
 }
 
@@ -261,7 +274,7 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   ADXConstraintLayout_setChildrenConstraints(self);
 }
 
-- (void)applyConstraintsFromLayoutParamsWithBoolean:(jboolean)isInEditMode
+- (void)applyConstraintsFromLayoutParamsWithBoolean:(bool)isInEditMode
                                          withADView:(ADView *)child
                             withADXConstraintWidget:(ADXConstraintWidget *)widget
                withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
@@ -280,9 +293,9 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   }
   if (layoutParams->isGuideline_) {
     ADXCoreGuideline *guideline = (ADXCoreGuideline *) cast_chk(widget, [ADXCoreGuideline class]);
-    jint resolvedGuideBegin = layoutParams->resolvedGuideBegin_;
-    jint resolvedGuideEnd = layoutParams->resolvedGuideEnd_;
-    jfloat resolvedGuidePercent = layoutParams->resolvedGuidePercent_;
+    int32_t resolvedGuideBegin = layoutParams->resolvedGuideBegin_;
+    int32_t resolvedGuideEnd = layoutParams->resolvedGuideEnd_;
+    float resolvedGuidePercent = layoutParams->resolvedGuidePercent_;
     if (resolvedGuidePercent != ADXConstraintLayout_LayoutParams_UNSET) {
       [guideline setGuidePercentWithFloat:resolvedGuidePercent];
     }
@@ -294,13 +307,13 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
     }
   }
   else {
-    jint resolvedLeftToLeft = layoutParams->resolvedLeftToLeft_;
-    jint resolvedLeftToRight = layoutParams->resolvedLeftToRight_;
-    jint resolvedRightToLeft = layoutParams->resolvedRightToLeft_;
-    jint resolvedRightToRight = layoutParams->resolvedRightToRight_;
-    jint resolveGoneLeftMargin = layoutParams->resolveGoneLeftMargin_;
-    jint resolveGoneRightMargin = layoutParams->resolveGoneRightMargin_;
-    jfloat resolvedHorizontalBias = layoutParams->resolvedHorizontalBias_;
+    int32_t resolvedLeftToLeft = layoutParams->resolvedLeftToLeft_;
+    int32_t resolvedLeftToRight = layoutParams->resolvedLeftToRight_;
+    int32_t resolvedRightToLeft = layoutParams->resolvedRightToLeft_;
+    int32_t resolvedRightToRight = layoutParams->resolvedRightToRight_;
+    int32_t resolveGoneLeftMargin = layoutParams->resolveGoneLeftMargin_;
+    int32_t resolveGoneRightMargin = layoutParams->resolveGoneRightMargin_;
+    float resolvedHorizontalBias = layoutParams->resolvedHorizontalBias_;
     if (layoutParams->circleConstraint_ != ADXConstraintLayout_LayoutParams_UNSET) {
       ADXConstraintWidget *target = JreRetainedLocalValue([((ADSparseArray *) nil_chk(idToWidget)) getWithInt:layoutParams->circleConstraint_]);
       if (target != nil) {
@@ -435,12 +448,12 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
 - (void)setWidgetBaselineWithADXConstraintWidget:(ADXConstraintWidget *)widget
             withADXConstraintLayout_LayoutParams:(ADXConstraintLayout_LayoutParams *)layoutParams
                                withADSparseArray:(ADSparseArray *)idToWidget
-                                         withInt:(jint)baselineTarget
+                                         withInt:(int32_t)baselineTarget
                     withADXConstraintAnchor_Type:(ADXConstraintAnchor_Type *)type {
   ADXConstraintLayout_setWidgetBaselineWithADXConstraintWidget_withADXConstraintLayout_LayoutParams_withADSparseArray_withInt_withADXConstraintAnchor_Type_(self, widget, layoutParams, idToWidget, baselineTarget, type);
 }
 
-- (ADXConstraintWidget *)getTargetWidgetWithInt:(jint)id_ {
+- (ADXConstraintWidget *)getTargetWidgetWithInt:(int32_t)id_ {
   return ADXConstraintLayout_getTargetWidgetWithInt_(self, id_);
 }
 
@@ -449,22 +462,22 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
 }
 
 - (void)resolveSystemWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
-                                              withInt:(jint)optimizationLevel
-                                              withInt:(jint)widthMeasureSpec
-                                              withInt:(jint)heightMeasureSpec {
-  jint widthMode = ADView_MeasureSpec_getModeWithInt_(widthMeasureSpec);
-  jint widthSize = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
-  jint heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
-  jint heightSize = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
-  jint paddingY = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingTop]);
-  jint paddingBottom = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingBottom]);
-  jint paddingHeight = paddingY + paddingBottom;
-  jint paddingWidth = ADXConstraintLayout_getPaddingWidth(self);
-  jint paddingX;
+                                              withInt:(int32_t)optimizationLevel
+                                              withInt:(int32_t)widthMeasureSpec
+                                              withInt:(int32_t)heightMeasureSpec {
+  int32_t widthMode = ADView_MeasureSpec_getModeWithInt_(widthMeasureSpec);
+  int32_t widthSize = ADView_MeasureSpec_getSizeWithInt_(widthMeasureSpec);
+  int32_t heightMode = ADView_MeasureSpec_getModeWithInt_(heightMeasureSpec);
+  int32_t heightSize = ADView_MeasureSpec_getSizeWithInt_(heightMeasureSpec);
+  int32_t paddingY = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingTop]);
+  int32_t paddingBottom = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingBottom]);
+  int32_t paddingHeight = paddingY + paddingBottom;
+  int32_t paddingWidth = ADXConstraintLayout_getPaddingWidth(self);
+  int32_t paddingX;
   [((ADXConstraintLayout_Measurer *) nil_chk(mMeasurer_)) captureLayoutInfoWithInt:widthMeasureSpec withInt:heightMeasureSpec withInt:paddingY withInt:paddingBottom withInt:paddingWidth withInt:paddingHeight];
   {
-    jint paddingStart = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingStart]);
-    jint paddingEnd = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingEnd]);
+    int32_t paddingStart = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingStart]);
+    int32_t paddingEnd = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingEnd]);
     if (paddingStart > 0 || paddingEnd > 0) {
       if ([self isRtl]) {
         paddingX = paddingEnd;
@@ -483,19 +496,19 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   [((ADXConstraintWidgetContainer *) nil_chk(layout)) measureWithInt:optimizationLevel withInt:widthMode withInt:widthSize withInt:heightMode withInt:heightSize withInt:mLastMeasureWidth_ withInt:mLastMeasureHeight_ withInt:paddingX withInt:paddingY];
 }
 
-- (void)resolveMeasuredDimensionWithInt:(jint)widthMeasureSpec
-                                withInt:(jint)heightMeasureSpec
-                                withInt:(jint)measuredWidth
-                                withInt:(jint)measuredHeight
-                            withBoolean:(jboolean)isWidthMeasuredTooSmall
-                            withBoolean:(jboolean)isHeightMeasuredTooSmall {
-  jint childState = 0;
-  jint heightPadding = ((ADXConstraintLayout_Measurer *) nil_chk(mMeasurer_))->paddingHeight_;
-  jint widthPadding = mMeasurer_->paddingWidth_;
-  jint androidLayoutWidth = measuredWidth + widthPadding;
-  jint androidLayoutHeight = measuredHeight + heightPadding;
-  jint resolvedWidthSize = ADView_resolveSizeAndStateWithInt_withInt_withInt_(androidLayoutWidth, widthMeasureSpec, childState);
-  jint resolvedHeightSize = ADView_resolveSizeAndStateWithInt_withInt_withInt_(androidLayoutHeight, heightMeasureSpec, JreLShift32(childState, ADView_MEASURED_HEIGHT_STATE_SHIFT));
+- (void)resolveMeasuredDimensionWithInt:(int32_t)widthMeasureSpec
+                                withInt:(int32_t)heightMeasureSpec
+                                withInt:(int32_t)measuredWidth
+                                withInt:(int32_t)measuredHeight
+                            withBoolean:(bool)isWidthMeasuredTooSmall
+                            withBoolean:(bool)isHeightMeasuredTooSmall {
+  int32_t childState = 0;
+  int32_t heightPadding = ((ADXConstraintLayout_Measurer *) nil_chk(mMeasurer_))->paddingHeight_;
+  int32_t widthPadding = mMeasurer_->paddingWidth_;
+  int32_t androidLayoutWidth = measuredWidth + widthPadding;
+  int32_t androidLayoutHeight = measuredHeight + heightPadding;
+  int32_t resolvedWidthSize = ADView_resolveSizeAndStateWithInt_withInt_withInt_(androidLayoutWidth, widthMeasureSpec, childState);
+  int32_t resolvedHeightSize = ADView_resolveSizeAndStateWithInt_withInt_withInt_(androidLayoutHeight, heightMeasureSpec, JreLShift32(childState, ADView_MEASURED_HEIGHT_STATE_SHIFT));
   resolvedWidthSize &= ADView_MEASURED_SIZE_MASK;
   resolvedHeightSize &= ADView_MEASURED_SIZE_MASK;
   resolvedWidthSize = JavaLangMath_minWithInt_withInt_(mMaxWidth_, resolvedWidthSize);
@@ -511,14 +524,14 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   mLastMeasureHeight_ = resolvedHeightSize;
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
-  jlong time = 0;
-  jboolean sameSpecsAsPreviousMeasure = (mOnMeasureWidthMeasureSpec_ == widthMeasureSpec && mOnMeasureHeightMeasureSpec_ == heightMeasureSpec);
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
+  int64_t time = 0;
+  bool sameSpecsAsPreviousMeasure = (mOnMeasureWidthMeasureSpec_ == widthMeasureSpec && mOnMeasureHeightMeasureSpec_ == heightMeasureSpec);
   sameSpecsAsPreviousMeasure = false;
   if (!mDirtyHierarchy_ && !sameSpecsAsPreviousMeasure) {
-    jint count = [self getChildCount];
-    for (jint i = 0; i < count; i++) {
+    int32_t count = [self getChildCount];
+    for (int32_t i = 0; i < count; i++) {
       ADView *child = [self getChildAtWithInt:i];
       if ([((ADView *) nil_chk(child)) isLayoutRequested]) {
         mDirtyHierarchy_ = true;
@@ -545,29 +558,29 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   [self resolveMeasuredDimensionWithInt:widthMeasureSpec withInt:heightMeasureSpec withInt:[((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) getWidth] withInt:[((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) getHeight] withBoolean:[((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) isWidthMeasuredTooSmall] withBoolean:[((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) isHeightMeasuredTooSmall]];
 }
 
-- (jboolean)isRtl {
+- (bool)isRtl {
   {
-    jboolean isRtlSupported = (((ADApplicationInfo *) nil_chk([((ADContext *) nil_chk([self getContext])) getApplicationInfo]))->flags_ & ADApplicationInfo_FLAG_SUPPORTS_RTL) != 0;
+    bool isRtlSupported = (((ADApplicationInfo *) nil_chk([((ADContext *) nil_chk([self getContext])) getApplicationInfo]))->flags_ & ADApplicationInfo_FLAG_SUPPORTS_RTL) != 0;
     return isRtlSupported && (ADView_LAYOUT_DIRECTION_RTL == [self getLayoutDirection]);
   }
 }
 
-- (jint)getPaddingWidth {
+- (int32_t)getPaddingWidth {
   return ADXConstraintLayout_getPaddingWidth(self);
 }
 
 - (void)setSelfDimensionBehaviourWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
-                                                          withInt:(jint)widthMode
-                                                          withInt:(jint)widthSize
-                                                          withInt:(jint)heightMode
-                                                          withInt:(jint)heightSize {
-  jint heightPadding = ((ADXConstraintLayout_Measurer *) nil_chk(mMeasurer_))->paddingHeight_;
-  jint widthPadding = mMeasurer_->paddingWidth_;
+                                                          withInt:(int32_t)widthMode
+                                                          withInt:(int32_t)widthSize
+                                                          withInt:(int32_t)heightMode
+                                                          withInt:(int32_t)heightSize {
+  int32_t heightPadding = ((ADXConstraintLayout_Measurer *) nil_chk(mMeasurer_))->paddingHeight_;
+  int32_t widthPadding = mMeasurer_->paddingWidth_;
   ADXConstraintWidget_DimensionBehaviour *widthBehaviour = JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
   ADXConstraintWidget_DimensionBehaviour *heightBehaviour = JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED);
-  jint desiredWidth = 0;
-  jint desiredHeight = 0;
-  jint childCount = [self getChildCount];
+  int32_t desiredWidth = 0;
+  int32_t desiredHeight = 0;
+  int32_t childCount = [self getChildCount];
   switch (widthMode) {
     case ADView_MeasureSpec_AT_MOST:
     {
@@ -631,14 +644,14 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   [layout setMinHeightWithInt:mMinHeight_ConstraintLayout_ - heightPadding];
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)left
-                    withInt:(jint)top
-                    withInt:(jint)right
-                    withInt:(jint)bottom {
-  jint widgetsCount = [self getChildCount];
-  jboolean isInEditMode = [self isInEditMode];
-  for (jint i = 0; i < widgetsCount; i++) {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)left
+                    withInt:(int32_t)top
+                    withInt:(int32_t)right
+                    withInt:(int32_t)bottom {
+  int32_t widgetsCount = [self getChildCount];
+  bool isInEditMode = [self isInEditMode];
+  for (int32_t i = 0; i < widgetsCount; i++) {
     ADView *child = [self getChildAtWithInt:i];
     ADXConstraintLayout_LayoutParams *params = (ADXConstraintLayout_LayoutParams *) cast_chk([((ADView *) nil_chk(child)) getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
     ADXConstraintWidget *widget = JreRetainedLocalValue(((ADXConstraintLayout_LayoutParams *) nil_chk(params))->widget_);
@@ -648,10 +661,10 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
     if (params->isInPlaceholder_) {
       continue;
     }
-    jint l = [((ADXConstraintWidget *) nil_chk(widget)) getX];
-    jint t = [widget getY];
-    jint r = l + [widget getWidth];
-    jint b = t + [widget getHeight];
+    int32_t l = [((ADXConstraintWidget *) nil_chk(widget)) getX];
+    int32_t t = [widget getY];
+    int32_t r = l + [widget getWidth];
+    int32_t b = t + [widget getHeight];
     [child layoutWithInt:l withInt:t withInt:r withInt:b];
     if ([child isKindOfClass:[ADXPlaceholder class]]) {
       ADXPlaceholder *holder = (ADXPlaceholder *) child;
@@ -662,21 +675,21 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
       }
     }
   }
-  jint helperCount = [((JavaUtilArrayList *) nil_chk(mConstraintHelpers_)) size];
+  int32_t helperCount = [((JavaUtilArrayList *) nil_chk(mConstraintHelpers_)) size];
   if (helperCount > 0) {
-    for (jint i = 0; i < helperCount; i++) {
+    for (int32_t i = 0; i < helperCount; i++) {
       ADXConstraintHelper *helper = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(mConstraintHelpers_)) getWithInt:i]);
       [((ADXConstraintHelper *) nil_chk(helper)) updatePostLayoutWithADXConstraintLayout:self];
     }
   }
 }
 
-- (void)setOptimizationLevelWithInt:(jint)level {
+- (void)setOptimizationLevelWithInt:(int32_t)level {
   mOptimizationLevel_ = level;
   [((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) setOptimizationLevelWithInt:level];
 }
 
-- (jint)getOptimizationLevel {
+- (int32_t)getOptimizationLevel {
   return [((ADXConstraintWidgetContainer *) nil_chk(mLayoutWidget_)) getOptimizationLevel];
 }
 
@@ -688,7 +701,7 @@ NSString *ADXConstraintLayout_VERSION = @"ConstraintLayout-2.1.0";
   JreStrongAssign(&mConstraintSet_, set);
 }
 
-- (ADView *)getViewByIdWithInt:(jint)id_ {
+- (ADView *)getViewByIdWithInt:(int32_t)id_ {
   return [((ADSparseArray *) nil_chk(mChildrenByIds_)) getWithInt:id_];
 }
 
@@ -861,10 +874,10 @@ ADXSharedValues *ADXConstraintLayout_getSharedValues() {
   return ADXConstraintLayout_sSharedValues;
 }
 
-jboolean ADXConstraintLayout_updateHierarchy(ADXConstraintLayout *self) {
-  jint count = [self getChildCount];
-  jboolean recompute = false;
-  for (jint i = 0; i < count; i++) {
+bool ADXConstraintLayout_updateHierarchy(ADXConstraintLayout *self) {
+  int32_t count = [self getChildCount];
+  bool recompute = false;
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = [self getChildAtWithInt:i];
     if ([((ADView *) nil_chk(child)) isLayoutRequested]) {
       recompute = true;
@@ -878,9 +891,9 @@ jboolean ADXConstraintLayout_updateHierarchy(ADXConstraintLayout *self) {
 }
 
 void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self) {
-  jboolean isInEditMode = [self isInEditMode];
-  jint count = [self getChildCount];
-  for (jint i = 0; i < count; i++) {
+  bool isInEditMode = [self isInEditMode];
+  int32_t count = [self getChildCount];
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = JreRetainedLocalValue([self getChildAtWithInt:i]);
     ADXConstraintWidget *widget = ADXConstraintLayout_getViewWidgetWithADView_(self, child);
     if (widget == nil) {
@@ -889,12 +902,12 @@ void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self) {
     [widget reset];
   }
   if (isInEditMode) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADView *view = [self getChildAtWithInt:i];
       @try {
         NSString *IdAsString = JreRetainedLocalValue([((ADResources *) nil_chk([self getResources])) getResourceNameWithInt:[((ADView *) nil_chk(view)) getId]]);
         [self setDesignInformationWithInt:ADXConstraintLayout_DESIGN_INFO_ID withId:IdAsString withId:JavaLangInteger_valueOfWithInt_([view getId])];
-        jint slashIndex = [((NSString *) nil_chk(IdAsString)) java_indexOf:'/'];
+        int32_t slashIndex = [((NSString *) nil_chk(IdAsString)) java_indexOf:'/'];
         if (slashIndex != -1) {
           IdAsString = [IdAsString java_substring:slashIndex + 1];
         }
@@ -905,7 +918,7 @@ void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self) {
     }
   }
   if (self->mConstraintSetId_ != -1) {
-    for (jint i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
       ADView *child = [self getChildAtWithInt:i];
       if ([((ADView *) nil_chk(child)) getId] == self->mConstraintSetId_ && [child isKindOfClass:[ADXConstraints class]]) {
         JreStrongAssign(&self->mConstraintSet_, [((ADXConstraints *) cast_chk(child, [ADXConstraints class])) getConstraintSet]);
@@ -916,14 +929,14 @@ void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self) {
     [self->mConstraintSet_ applyToInternalWithADXConstraintLayout:self withBoolean:true];
   }
   [((ADXConstraintWidgetContainer *) nil_chk(self->mLayoutWidget_)) removeAllChildren];
-  jint helperCount = [((JavaUtilArrayList *) nil_chk(self->mConstraintHelpers_)) size];
+  int32_t helperCount = [((JavaUtilArrayList *) nil_chk(self->mConstraintHelpers_)) size];
   if (helperCount > 0) {
-    for (jint i = 0; i < helperCount; i++) {
+    for (int32_t i = 0; i < helperCount; i++) {
       ADXConstraintHelper *helper = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(self->mConstraintHelpers_)) getWithInt:i]);
       [((ADXConstraintHelper *) nil_chk(helper)) updatePreLayoutWithADXConstraintLayout:self];
     }
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = JreRetainedLocalValue([self getChildAtWithInt:i]);
     if ([child isKindOfClass:[ADXPlaceholder class]]) {
       [((ADXPlaceholder *) nil_chk(((ADXPlaceholder *) child))) updatePreLayoutWithADXConstraintLayout:self];
@@ -932,12 +945,12 @@ void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self) {
   [((ADSparseArray *) nil_chk(self->mTempMapIdToWidget_)) clear];
   [((ADSparseArray *) nil_chk(self->mTempMapIdToWidget_)) putWithInt:ADXConstraintLayout_LayoutParams_PARENT_ID withId:self->mLayoutWidget_];
   [((ADSparseArray *) nil_chk(self->mTempMapIdToWidget_)) putWithInt:[self getId] withId:self->mLayoutWidget_];
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = [self getChildAtWithInt:i];
     ADXConstraintWidget *widget = ADXConstraintLayout_getViewWidgetWithADView_(self, child);
     [((ADSparseArray *) nil_chk(self->mTempMapIdToWidget_)) putWithInt:[((ADView *) nil_chk(child)) getId] withId:widget];
   }
-  for (jint i = 0; i < count; i++) {
+  for (int32_t i = 0; i < count; i++) {
     ADView *child = [self getChildAtWithInt:i];
     ADXConstraintWidget *widget = ADXConstraintLayout_getViewWidgetWithADView_(self, child);
     if (widget == nil) {
@@ -949,7 +962,7 @@ void ADXConstraintLayout_setChildrenConstraints(ADXConstraintLayout *self) {
   }
 }
 
-void ADXConstraintLayout_setWidgetBaselineWithADXConstraintWidget_withADXConstraintLayout_LayoutParams_withADSparseArray_withInt_withADXConstraintAnchor_Type_(ADXConstraintLayout *self, ADXConstraintWidget *widget, ADXConstraintLayout_LayoutParams *layoutParams, ADSparseArray *idToWidget, jint baselineTarget, ADXConstraintAnchor_Type *type) {
+void ADXConstraintLayout_setWidgetBaselineWithADXConstraintWidget_withADXConstraintLayout_LayoutParams_withADSparseArray_withInt_withADXConstraintAnchor_Type_(ADXConstraintLayout *self, ADXConstraintWidget *widget, ADXConstraintLayout_LayoutParams *layoutParams, ADSparseArray *idToWidget, int32_t baselineTarget, ADXConstraintAnchor_Type *type) {
   ADView *view = JreRetainedLocalValue([((ADSparseArray *) nil_chk(self->mChildrenByIds_)) getWithInt:baselineTarget]);
   ADXConstraintWidget *target = JreRetainedLocalValue([((ADSparseArray *) nil_chk(idToWidget)) getWithInt:baselineTarget]);
   if (target != nil && view != nil && [[view getLayoutParams] isKindOfClass:[ADXConstraintLayout_LayoutParams class]]) {
@@ -968,7 +981,7 @@ void ADXConstraintLayout_setWidgetBaselineWithADXConstraintWidget_withADXConstra
   }
 }
 
-ADXConstraintWidget *ADXConstraintLayout_getTargetWidgetWithInt_(ADXConstraintLayout *self, jint id_) {
+ADXConstraintWidget *ADXConstraintLayout_getTargetWidgetWithInt_(ADXConstraintLayout *self, int32_t id_) {
   if (id_ == ADXConstraintLayout_LayoutParams_PARENT_ID) {
     return self->mLayoutWidget_;
   }
@@ -976,11 +989,11 @@ ADXConstraintWidget *ADXConstraintLayout_getTargetWidgetWithInt_(ADXConstraintLa
     ADView *view = JreRetainedLocalValue([((ADSparseArray *) nil_chk(self->mChildrenByIds_)) getWithInt:id_]);
     if (view == nil) {
       view = [self findViewByIdWithInt:id_];
-      if (view != nil && view != self && [view getParent] == self) {
+      if (view != nil && !JreObjectEqualsEquals(view, self) && JreObjectEqualsEquals([view getParent], self)) {
         [self onViewAddedWithADView:view];
       }
     }
-    if (view == self) {
+    if (JreObjectEqualsEquals(view, self)) {
       return self->mLayoutWidget_;
     }
     return view == nil ? nil : ((ADXConstraintLayout_LayoutParams *) nil_chk(((ADXConstraintLayout_LayoutParams *) cast_chk([view getLayoutParams], [ADXConstraintLayout_LayoutParams class]))))->widget_;
@@ -988,7 +1001,7 @@ ADXConstraintWidget *ADXConstraintLayout_getTargetWidgetWithInt_(ADXConstraintLa
 }
 
 ADXConstraintWidget *ADXConstraintLayout_getViewWidgetWithADView_(ADXConstraintLayout *self, ADView *view) {
-  if (view == self) {
+  if (JreObjectEqualsEquals(view, self)) {
     return self->mLayoutWidget_;
   }
   if (view != nil) {
@@ -1003,9 +1016,9 @@ ADXConstraintWidget *ADXConstraintLayout_getViewWidgetWithADView_(ADXConstraintL
   return nil;
 }
 
-jint ADXConstraintLayout_getPaddingWidth(ADXConstraintLayout *self) {
-  jint widthPadding = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingLeft]) + JavaLangMath_maxWithInt_withInt_(0, [self getPaddingRight]);
-  jint rtlPadding = 0;
+int32_t ADXConstraintLayout_getPaddingWidth(ADXConstraintLayout *self) {
+  int32_t widthPadding = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingLeft]) + JavaLangMath_maxWithInt_withInt_(0, [self getPaddingRight]);
+  int32_t rtlPadding = 0;
   {
     rtlPadding = JavaLangMath_maxWithInt_withInt_(0, [self getPaddingStart]) + JavaLangMath_maxWithInt_withInt_(0, [self getPaddingEnd]);
   }
@@ -1067,14 +1080,16 @@ ADXConstraintLayout *create_ADXConstraintLayout_init() {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
 
+J2OBJC_NAME_MAPPING(ADXConstraintLayout, "androidx.constraintlayout.widget", "ADX")
+
 @implementation ADXConstraintLayout_Measurer
 
-- (void)captureLayoutInfoWithInt:(jint)widthSpec
-                         withInt:(jint)heightSpec
-                         withInt:(jint)top
-                         withInt:(jint)bottom
-                         withInt:(jint)width
-                         withInt:(jint)height {
+- (void)captureLayoutInfoWithInt:(int32_t)widthSpec
+                         withInt:(int32_t)heightSpec
+                         withInt:(int32_t)top
+                         withInt:(int32_t)bottom
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height {
   paddingTop_ = top;
   paddingBottom_ = bottom;
   paddingWidth_ = width;
@@ -1103,16 +1118,16 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
   if ([widget getParent] == nil) {
     return;
   }
-  jlong startMeasure;
-  jlong endMeasure;
+  int64_t startMeasure;
+  int64_t endMeasure;
   ADXConstraintWidget_DimensionBehaviour *horizontalBehavior = JreRetainedLocalValue(((ADXBasicMeasure_Measure *) nil_chk(measure))->horizontalBehavior_);
   ADXConstraintWidget_DimensionBehaviour *verticalBehavior = JreRetainedLocalValue(measure->verticalBehavior_);
-  jint horizontalDimension = measure->horizontalDimension_;
-  jint verticalDimension = measure->verticalDimension_;
-  jint horizontalSpec = 0;
-  jint verticalSpec = 0;
-  jint heightPadding = paddingTop_ + paddingBottom_;
-  jint widthPadding = paddingWidth_;
+  int32_t horizontalDimension = measure->horizontalDimension_;
+  int32_t verticalDimension = measure->verticalDimension_;
+  int32_t horizontalSpec = 0;
+  int32_t verticalSpec = 0;
+  int32_t heightPadding = paddingTop_ + paddingBottom_;
+  int32_t widthPadding = paddingWidth_;
   ADView *child = (ADView *) cast_chk([widget getCompanionWidget], [ADView class]);
   switch ([horizontalBehavior ordinal]) {
     case ADXConstraintWidget_DimensionBehaviour_Enum_FIXED:
@@ -1133,10 +1148,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
     case ADXConstraintWidget_DimensionBehaviour_Enum_MATCH_CONSTRAINT:
     {
       horizontalSpec = ADViewGroup_getChildMeasureSpecWithInt_withInt_withInt_(layoutWidthSpec_, widthPadding, ADViewGroup_LayoutParams_WRAP_CONTENT);
-      jboolean shouldDoWrap = widget->mMatchConstraintDefaultWidth_ == ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_WRAP;
+      bool shouldDoWrap = widget->mMatchConstraintDefaultWidth_ == ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_WRAP;
       if (measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, TRY_GIVEN_DIMENSIONS) || measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS)) {
-        jboolean otherDimensionStable = [((ADView *) nil_chk(child)) getMeasuredHeight] == [widget getHeight];
-        jboolean useCurrent = measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS) || !shouldDoWrap || (shouldDoWrap && otherDimensionStable) || ([child isKindOfClass:[ADXPlaceholder class]]) || ([widget isResolvedHorizontally]);
+        bool otherDimensionStable = [((ADView *) nil_chk(child)) getMeasuredHeight] == [widget getHeight];
+        bool useCurrent = measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS) || !shouldDoWrap || (shouldDoWrap && otherDimensionStable) || ([child isKindOfClass:[ADXPlaceholder class]]) || ([widget isResolvedHorizontally]);
         if (useCurrent) {
           horizontalSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_([widget getWidth], ADView_MeasureSpec_EXACTLY);
         }
@@ -1163,10 +1178,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
     case ADXConstraintWidget_DimensionBehaviour_Enum_MATCH_CONSTRAINT:
     {
       verticalSpec = ADViewGroup_getChildMeasureSpecWithInt_withInt_withInt_(layoutHeightSpec_, heightPadding, ADViewGroup_LayoutParams_WRAP_CONTENT);
-      jboolean shouldDoWrap = widget->mMatchConstraintDefaultHeight_ == ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_WRAP;
+      bool shouldDoWrap = widget->mMatchConstraintDefaultHeight_ == ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_WRAP;
       if (measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, TRY_GIVEN_DIMENSIONS) || measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS)) {
-        jboolean otherDimensionStable = [((ADView *) nil_chk(child)) getMeasuredWidth] == [widget getWidth];
-        jboolean useCurrent = measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS) || !shouldDoWrap || (shouldDoWrap && otherDimensionStable) || ([child isKindOfClass:[ADXPlaceholder class]]) || ([widget isResolvedVertically]);
+        bool otherDimensionStable = [((ADView *) nil_chk(child)) getMeasuredWidth] == [widget getWidth];
+        bool useCurrent = measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS) || !shouldDoWrap || (shouldDoWrap && otherDimensionStable) || ([child isKindOfClass:[ADXPlaceholder class]]) || ([widget isResolvedVertically]);
         if (useCurrent) {
           verticalSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_([widget getHeight], ADView_MeasureSpec_EXACTLY);
         }
@@ -1177,7 +1192,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
   ADXConstraintWidgetContainer *container = (ADXConstraintWidgetContainer *) cast_chk([widget getParent], [ADXConstraintWidgetContainer class]);
   if (container != nil && ADXOptimizer_enabledWithInt_withInt_(this$0_->mOptimizationLevel_, ADXOptimizer_OPTIMIZATION_CACHE_MEASURES)) {
     if ([((ADView *) nil_chk(child)) getMeasuredWidth] == [widget getWidth] && [child getMeasuredWidth] < [container getWidth] && [child getMeasuredHeight] == [widget getHeight] && [child getMeasuredHeight] < [container getHeight] && [child getBaseline] == [widget getBaselineDistance] && ![widget isMeasureRequested]) {
-      jboolean similar = ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(self, [widget getLastHorizontalMeasureSpec], horizontalSpec, [widget getWidth]) && ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(self, [widget getLastVerticalMeasureSpec], verticalSpec, [widget getHeight]);
+      bool similar = ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(self, [widget getLastHorizontalMeasureSpec], horizontalSpec, [widget getWidth]) && ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(self, [widget getLastVerticalMeasureSpec], verticalSpec, [widget getHeight]);
       if (similar) {
         measure->measuredWidth_ = [widget getWidth];
         measure->measuredHeight_ = [widget getHeight];
@@ -1186,19 +1201,19 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
       }
     }
   }
-  jboolean horizontalMatchConstraints = horizontalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
-  jboolean verticalMatchConstraints = verticalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
-  jboolean verticalDimensionKnown = (verticalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) || verticalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
-  jboolean horizontalDimensionKnown = (horizontalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) || horizontalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
-  jboolean horizontalUseRatio = horizontalMatchConstraints && widget->mDimensionRatio_ > 0;
-  jboolean verticalUseRatio = verticalMatchConstraints && widget->mDimensionRatio_ > 0;
+  bool horizontalMatchConstraints = horizontalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
+  bool verticalMatchConstraints = verticalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_CONSTRAINT);
+  bool verticalDimensionKnown = (verticalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) || verticalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
+  bool horizontalDimensionKnown = (horizontalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, MATCH_PARENT) || horizontalBehavior == JreLoadEnum(ADXConstraintWidget_DimensionBehaviour, FIXED));
+  bool horizontalUseRatio = horizontalMatchConstraints && widget->mDimensionRatio_ > 0;
+  bool verticalUseRatio = verticalMatchConstraints && widget->mDimensionRatio_ > 0;
   if (child == nil) {
     return;
   }
   ADXConstraintLayout_LayoutParams *params = (ADXConstraintLayout_LayoutParams *) cast_chk([child getLayoutParams], [ADXConstraintLayout_LayoutParams class]);
-  jint width = 0;
-  jint height = 0;
-  jint baseline = 0;
+  int32_t width = 0;
+  int32_t height = 0;
+  int32_t baseline = 0;
   if ((measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, TRY_GIVEN_DIMENSIONS) || measure->measureStrategy_ == JreLoadStatic(ADXBasicMeasure_Measure, USE_GIVEN_DIMENSIONS)) || !(horizontalMatchConstraints && widget->mMatchConstraintDefaultWidth_ == ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_SPREAD && verticalMatchConstraints && widget->mMatchConstraintDefaultHeight_ == ADXConstraintLayout_LayoutParams_MATCH_CONSTRAINT_SPREAD)) {
     if ([child isKindOfClass:[ADXVirtualLayout class]] && [widget isKindOfClass:[ADXCoreVirtualLayout class]]) {
       ADXCoreVirtualLayout *layout = (ADXCoreVirtualLayout *) cast_chk(widget, [ADXCoreVirtualLayout class]);
@@ -1208,8 +1223,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
       [child measureWithInt:horizontalSpec withInt:verticalSpec];
     }
     [widget setLastMeasureSpecWithInt:horizontalSpec withInt:verticalSpec];
-    jint w = [child getMeasuredWidth];
-    jint h = [child getMeasuredHeight];
+    int32_t w = [child getMeasuredWidth];
+    int32_t h = [child getMeasuredHeight];
     baseline = [child getBaseline];
     width = w;
     height = h;
@@ -1225,14 +1240,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
     if (widget->mMatchConstraintMaxHeight_ > 0) {
       height = JavaLangMath_minWithInt_withInt_(widget->mMatchConstraintMaxHeight_, height);
     }
-    jboolean optimizeDirect = ADXOptimizer_enabledWithInt_withInt_(this$0_->mOptimizationLevel_, ADXOptimizer_OPTIMIZATION_DIRECT);
+    bool optimizeDirect = ADXOptimizer_enabledWithInt_withInt_(this$0_->mOptimizationLevel_, ADXOptimizer_OPTIMIZATION_DIRECT);
     if (!optimizeDirect) {
       if (horizontalUseRatio && verticalDimensionKnown) {
-        jfloat ratio = widget->mDimensionRatio_;
+        float ratio = widget->mDimensionRatio_;
         width = JreFpToInt((0.5f + height * ratio));
       }
       else if (verticalUseRatio && horizontalDimensionKnown) {
-        jfloat ratio = widget->mDimensionRatio_;
+        float ratio = widget->mDimensionRatio_;
         height = JreFpToInt((0.5f + width / ratio));
       }
     }
@@ -1250,7 +1265,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
       baseline = [child getBaseline];
     }
   }
-  jboolean hasBaseline = baseline != -1;
+  bool hasBaseline = baseline != -1;
   measure->measuredNeedsSolverPass_ = ((width != measure->horizontalDimension_) || (height != measure->verticalDimension_));
   if (((ADXConstraintLayout_LayoutParams *) nil_chk(params))->needsBaseline_) {
     hasBaseline = true;
@@ -1264,23 +1279,23 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout)
   measure->measuredBaseline_ = baseline;
 }
 
-- (jboolean)isSimilarSpecWithInt:(jint)lastMeasureSpec
-                         withInt:(jint)spec
-                         withInt:(jint)widgetSize {
+- (bool)isSimilarSpecWithInt:(int32_t)lastMeasureSpec
+                     withInt:(int32_t)spec
+                     withInt:(int32_t)widgetSize {
   return ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(self, lastMeasureSpec, spec, widgetSize);
 }
 
 - (void)didMeasures {
-  jint widgetsCount = [((ADXConstraintLayout *) nil_chk(layout_)) getChildCount];
-  for (jint i = 0; i < widgetsCount; i++) {
+  int32_t widgetsCount = [((ADXConstraintLayout *) nil_chk(layout_)) getChildCount];
+  for (int32_t i = 0; i < widgetsCount; i++) {
     ADView *child = [((ADXConstraintLayout *) nil_chk(layout_)) getChildAtWithInt:i];
     if ([child isKindOfClass:[ADXPlaceholder class]]) {
       [((ADXPlaceholder *) nil_chk(((ADXPlaceholder *) child))) updatePostMeasureWithADXConstraintLayout:layout_];
     }
   }
-  jint helperCount = [((JavaUtilArrayList *) nil_chk(((ADXConstraintLayout *) nil_chk(layout_))->mConstraintHelpers_)) size];
+  int32_t helperCount = [((JavaUtilArrayList *) nil_chk(((ADXConstraintLayout *) nil_chk(layout_))->mConstraintHelpers_)) size];
   if (helperCount > 0) {
-    for (jint i = 0; i < helperCount; i++) {
+    for (int32_t i = 0; i < helperCount; i++) {
       ADXConstraintHelper *helper = JreRetainedLocalValue([((JavaUtilArrayList *) nil_chk(((ADXConstraintLayout *) nil_chk(layout_))->mConstraintHelpers_)) getWithInt:i]);
       [((ADXConstraintHelper *) nil_chk(helper)) updatePostMeasureWithADXConstraintLayout:layout_];
     }
@@ -1341,14 +1356,14 @@ ADXConstraintLayout_Measurer *create_ADXConstraintLayout_Measurer_initWithADXCon
   J2OBJC_CREATE_IMPL(ADXConstraintLayout_Measurer, initWithADXConstraintLayout_withADXConstraintLayout_, outer$, l)
 }
 
-jboolean ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(ADXConstraintLayout_Measurer *self, jint lastMeasureSpec, jint spec, jint widgetSize) {
+bool ADXConstraintLayout_Measurer_isSimilarSpecWithInt_withInt_withInt_(ADXConstraintLayout_Measurer *self, int32_t lastMeasureSpec, int32_t spec, int32_t widgetSize) {
   if (lastMeasureSpec == spec) {
     return true;
   }
-  jint lastMode = ADView_MeasureSpec_getModeWithInt_(lastMeasureSpec);
-  jint lastSize = ADView_MeasureSpec_getSizeWithInt_(lastMeasureSpec);
-  jint mode = ADView_MeasureSpec_getModeWithInt_(spec);
-  jint size = ADView_MeasureSpec_getSizeWithInt_(spec);
+  int32_t lastMode = ADView_MeasureSpec_getModeWithInt_(lastMeasureSpec);
+  int32_t lastSize = ADView_MeasureSpec_getSizeWithInt_(lastMeasureSpec);
+  int32_t mode = ADView_MeasureSpec_getModeWithInt_(spec);
+  int32_t size = ADView_MeasureSpec_getSizeWithInt_(spec);
   if (mode == ADView_MeasureSpec_EXACTLY && (lastMode == ADView_MeasureSpec_AT_MOST || lastMode == ADView_MeasureSpec_UNSPECIFIED) && widgetSize == size) {
     return true;
   }
@@ -1405,8 +1420,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout_Measurer)
   }
 }
 
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height {
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height {
   ADXConstraintLayout_LayoutParams_initWithInt_withInt_(self, width, height);
   return self;
 }
@@ -1416,10 +1431,10 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout_Measurer)
   return self;
 }
 
-- (void)resolveLayoutDirectionWithInt:(jint)layoutDirection {
-  jint originalLeftMargin = leftMargin_;
-  jint originalRightMargin = rightMargin_;
-  jboolean isRtl = false;
+- (void)resolveLayoutDirectionWithInt:(int32_t)layoutDirection {
+  int32_t originalLeftMargin = leftMargin_;
+  int32_t originalRightMargin = rightMargin_;
+  bool isRtl = false;
   {
     [super resolveLayoutDirectionWithInt:layoutDirection];
     isRtl = (ADView_LAYOUT_DIRECTION_RTL == [self getLayoutDirection]);
@@ -1437,7 +1452,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayout_Measurer)
   resolvedGuideEnd_ = guideEnd_;
   resolvedGuidePercent_ = guidePercent_;
   if (isRtl) {
-    jboolean startEndDefined = false;
+    bool startEndDefined = false;
     if (startToEnd_ != ADXConstraintLayout_LayoutParams_UNSET) {
       resolvedRightToLeft_ = startToEnd_;
       startEndDefined = true;
@@ -1816,7 +1831,7 @@ ADXConstraintLayout_LayoutParams *create_ADXConstraintLayout_LayoutParams_initWi
   J2OBJC_CREATE_IMPL(ADXConstraintLayout_LayoutParams, initWithADXConstraintLayout_LayoutParams_, source)
 }
 
-void ADXConstraintLayout_LayoutParams_initWithInt_withInt_(ADXConstraintLayout_LayoutParams *self, jint width, jint height) {
+void ADXConstraintLayout_LayoutParams_initWithInt_withInt_(ADXConstraintLayout_LayoutParams *self, int32_t width, int32_t height) {
   ADViewGroup_MarginLayoutParams_initWithInt_withInt_(self, width, height);
   self->guideBegin_ = ADXConstraintLayout_LayoutParams_UNSET;
   self->guideEnd_ = ADXConstraintLayout_LayoutParams_UNSET;
@@ -1891,11 +1906,11 @@ void ADXConstraintLayout_LayoutParams_initWithInt_withInt_(ADXConstraintLayout_L
   self->helped_ = false;
 }
 
-ADXConstraintLayout_LayoutParams *new_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(jint width, jint height) {
+ADXConstraintLayout_LayoutParams *new_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_NEW_IMPL(ADXConstraintLayout_LayoutParams, initWithInt_withInt_, width, height)
 }
 
-ADXConstraintLayout_LayoutParams *create_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(jint width, jint height) {
+ADXConstraintLayout_LayoutParams *create_ADXConstraintLayout_LayoutParams_initWithInt_withInt_(int32_t width, int32_t height) {
   J2OBJC_CREATE_IMPL(ADXConstraintLayout_LayoutParams, initWithInt_withInt_, width, height)
 }
 

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\utils\ViewSpline.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintAttribute.h"
 #include "CurveFit.h"
 #include "IOSClass.h"
@@ -16,13 +21,23 @@
 #include "SplineSet.h"
 #include "View.h"
 #include "ViewSpline.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
 #include "java/lang/Float.h"
 #include "java/lang/IllegalAccessException.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/NoSuchMethodException.h"
 #include "java/lang/RuntimeException.h"
 #include "java/lang/reflect/InvocationTargetException.h"
 #include "java/lang/reflect/Method.h"
+
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 inline NSString *ADXViewSpline_get_TAG(void);
@@ -39,7 +54,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   // can't call an abstract method
   [self doesNotRecognizeSelector:_cmd];
 }
@@ -129,6 +144,8 @@ ADXViewSpline *ADXViewSpline_makeSplineWithNSString_(NSString *str) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewSpline)
 
+J2OBJC_NAME_MAPPING(ADXViewSpline, "androidx.constraintlayout.motion.utils", "ADX")
+
 @implementation ADXViewSpline_ElevationSet
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -139,7 +156,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   {
     [((ADView *) nil_chk(view)) setElevationWithFloat:[self getWithFloat:t]];
   }
@@ -187,7 +204,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setAlphaWithFloat:[self getWithFloat:t]];
 }
 
@@ -233,7 +250,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t]];
 }
 
@@ -279,7 +296,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setRotationXWithFloat:[self getWithFloat:t]];
 }
 
@@ -325,7 +342,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setRotationYWithFloat:[self getWithFloat:t]];
 }
 
@@ -371,7 +388,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setPivotXWithFloat:[self getWithFloat:t]];
 }
 
@@ -417,7 +434,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setPivotYWithFloat:[self getWithFloat:t]];
 }
 
@@ -463,14 +480,14 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
 }
 
 - (void)setPathRotateWithADView:(ADView *)view
-                      withFloat:(jfloat)t
-                     withDouble:(jdouble)dx
-                     withDouble:(jdouble)dy {
-  [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t] + (jfloat) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
+                      withFloat:(float)t
+                     withDouble:(double)dx
+                     withDouble:(double)dy {
+  [((ADView *) nil_chk(view)) setRotationWithFloat:[self getWithFloat:t] + (float) JavaLangMath_toDegreesWithDouble_(JavaLangMath_atan2WithDouble_withDouble_(dy, dx))];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -517,7 +534,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setScaleXWithFloat:[self getWithFloat:t]];
 }
 
@@ -563,7 +580,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setScaleYWithFloat:[self getWithFloat:t]];
 }
 
@@ -609,7 +626,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setTranslationXWithFloat:[self getWithFloat:t]];
 }
 
@@ -655,7 +672,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADView *) nil_chk(view)) setTranslationYWithFloat:[self getWithFloat:t]];
 }
 
@@ -701,7 +718,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   {
     [((ADView *) nil_chk(view)) setTranslationZWithFloat:[self getWithFloat:t]];
   }
@@ -747,36 +764,36 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXViewSpline_TranslationZset)
   return self;
 }
 
-- (void)setupWithInt:(jint)curveType {
-  jint size = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) size];
-  jint dimensionality = [((ADXConstraintAttribute *) nil_chk([((ADSparseArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
+- (void)setupWithInt:(int32_t)curveType {
+  int32_t size = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) size];
+  int32_t dimensionality = [((ADXConstraintAttribute *) nil_chk([((ADSparseArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) numberOfInterpolatedValues];
   IOSDoubleArray *time = [IOSDoubleArray arrayWithLength:size];
   JreStrongAssignAndConsume(&mTempValues_, [IOSFloatArray newArrayWithLength:dimensionality]);
-  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(jint[]){ size, dimensionality }];
-  for (jint i = 0; i < size; i++) {
-    jint key = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
+  IOSObjectArray *values = [IOSDoubleArray arrayWithDimensions:2 lengths:(int32_t[]){ size, dimensionality }];
+  for (int32_t i = 0; i < size; i++) {
+    int32_t key = [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) keyAtWithInt:i];
     ADXConstraintAttribute *ca = JreRetainedLocalValue([((ADSparseArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:i]);
     *IOSDoubleArray_GetRef(time, i) = key * 1E-2;
     [((ADXConstraintAttribute *) nil_chk(ca)) getValuesToInterpolateWithFloatArray:mTempValues_];
-    for (jint k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
+    for (int32_t k = 0; k < ((IOSFloatArray *) nil_chk(mTempValues_))->size_; k++) {
       *IOSDoubleArray_GetRef(nil_chk(IOSObjectArray_Get(values, i)), k) = IOSFloatArray_Get(mTempValues_, k);
     }
   }
   JreStrongAssign(&mCurveFit_, ADXCurveFit_getWithInt_withDoubleArray_withDoubleArray2_(curveType, time, values));
 }
 
-- (void)setPointWithInt:(jint)position
-              withFloat:(jfloat)value {
+- (void)setPointWithInt:(int32_t)position
+              withFloat:(float)value {
   @throw create_JavaLangRuntimeException_initWithNSString_(@"don't call for custom attribute call setPoint(pos, ConstraintAttribute)");
 }
 
-- (void)setPointWithInt:(jint)position
+- (void)setPointWithInt:(int32_t)position
 withADXConstraintAttribute:(ADXConstraintAttribute *)value {
   [((ADSparseArray *) nil_chk(mConstraintAttributeList_)) appendWithInt:position withId:value];
 }
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   [((ADXCurveFit *) nil_chk(mCurveFit_)) getPosWithDouble:t withFloatArray:mTempValues_];
   [((ADXConstraintAttribute *) nil_chk([((ADSparseArray *) nil_chk(mConstraintAttributeList_)) valueAtWithInt:0])) setInterpolatedValueWithADView:view withFloatArray:mTempValues_];
 }
@@ -843,7 +860,7 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setPropertyWithADView:(ADView *)view
-                    withFloat:(jfloat)t {
+                    withFloat:(float)t {
   if ([view isKindOfClass:[ADXMotionLayout class]]) {
     [((ADXMotionLayout *) nil_chk(((ADXMotionLayout *) view))) setProgressWithFloat:[self getWithFloat:t]];
   }

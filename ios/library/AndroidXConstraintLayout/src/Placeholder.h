@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Placeholder.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Placeholder")
@@ -21,6 +22,7 @@
 #include "View.h"
 
 @class ADXConstraintLayout;
+@class JavaLangInteger;
 
 @interface ADXPlaceholder : ADView
 
@@ -30,11 +32,11 @@
 
 - (ADView *)getContent;
 
-- (jint)getEmptyVisibility;
+- (int32_t)getEmptyVisibility;
 
-- (void)setContentIdWithInt:(jint)id_;
+- (void)setContentIdWithInt:(int32_t)id_;
 
-- (void)setEmptyVisibilityWithInt:(jint)visibility;
+- (void)setEmptyVisibilityWithInt:(int32_t)visibility;
 
 - (void)updatePostMeasureWithADXConstraintLayout:(ADXConstraintLayout *)container;
 
@@ -53,6 +55,7 @@ FOUNDATION_EXPORT ADXPlaceholder *create_ADXPlaceholder_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXPlaceholder)
 
 @compatibility_alias AndroidxConstraintlayoutWidgetPlaceholder ADXPlaceholder;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\StepCurve.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_StepCurve")
@@ -21,6 +22,8 @@
 #include "Easing.h"
 
 @class ADXMonotonicCurveFit;
+@class JavaLangDouble;
+@class NSString;
 
 /*!
  @brief This class translates a series of floating point values into a continuous
@@ -34,9 +37,9 @@
 
 #pragma mark Public
 
-- (jdouble)getWithDouble:(jdouble)x;
+- (double)getWithDouble:(double)x;
 
-- (jdouble)getDiffWithDouble:(jdouble)x;
+- (double)getDiffWithDouble:(double)x;
 
 #pragma mark Package-Private
 
@@ -61,6 +64,7 @@ FOUNDATION_EXPORT ADXStepCurve *create_ADXStepCurve_initWithNSString_(NSString *
 J2OBJC_TYPE_LITERAL_HEADER(ADXStepCurve)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsStepCurve ADXStepCurve;
+
 
 #endif
 

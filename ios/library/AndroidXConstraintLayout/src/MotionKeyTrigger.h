@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKeyTrigger.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_MotionKeyTrigger")
@@ -22,15 +23,19 @@
 
 @class ADXFloatRect;
 @class ADXMotionWidget;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 @class JavaUtilHashMap;
 @class JavaUtilHashSet;
+@class NSString;
 
 @interface ADXMotionKeyTrigger : ADXMotionKey {
  @public
-  jfloat mTriggerSlack_;
-  jint mViewTransitionOnNegativeCross_;
-  jint mViewTransitionOnPositiveCross_;
-  jint mViewTransitionOnCross_;
+  float mTriggerSlack_;
+  int32_t mViewTransitionOnNegativeCross_;
+  int32_t mViewTransitionOnPositiveCross_;
+  int32_t mViewTransitionOnCross_;
   ADXFloatRect *mCollisionRect_;
   ADXFloatRect *mTargetRect_;
   JavaUtilHashMap *mMethodHashMap_;
@@ -44,26 +49,26 @@
 
 - (ADXMotionKey *)java_clone;
 
-- (void)conditionallyFireWithFloat:(jfloat)position
+- (void)conditionallyFireWithFloat:(float)position
                withADXMotionWidget:(ADXMotionWidget *)child;
 
 - (ADXMotionKeyTrigger *)copy__WithADXMotionKey:(ADXMotionKey *)src OBJC_METHOD_FAMILY_NONE;
 
 - (void)getAttributeNamesWithJavaUtilHashSet:(JavaUtilHashSet *)attributes;
 
-- (jint)getIdWithNSString:(NSString *)name;
+- (int32_t)getIdWithNSString:(NSString *)name;
 
-- (jboolean)setValueWithInt:(jint)type
-                withBoolean:(jboolean)value;
+- (bool)setValueWithInt:(int32_t)type
+            withBoolean:(bool)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value;
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value;
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value;
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value;
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value;
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value;
 
 @end
 
@@ -133,57 +138,57 @@ inline NSString *ADXMotionKeyTrigger_get_CROSS(void);
 FOUNDATION_EXPORT NSString *ADXMotionKeyTrigger_CROSS;
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXMotionKeyTrigger, CROSS, NSString *)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_VIEW_TRANSITION_ON_CROSS(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_VIEW_TRANSITION_ON_CROSS(void);
 #define ADXMotionKeyTrigger_TYPE_VIEW_TRANSITION_ON_CROSS 301
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_VIEW_TRANSITION_ON_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_VIEW_TRANSITION_ON_CROSS, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS(void);
 #define ADXMotionKeyTrigger_TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS 302
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_VIEW_TRANSITION_ON_POSITIVE_CROSS, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS(void);
 #define ADXMotionKeyTrigger_TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS 303
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_VIEW_TRANSITION_ON_NEGATIVE_CROSS, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_POST_LAYOUT(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_POST_LAYOUT(void);
 #define ADXMotionKeyTrigger_TYPE_POST_LAYOUT 304
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_POST_LAYOUT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_POST_LAYOUT, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_TRIGGER_SLACK(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_TRIGGER_SLACK(void);
 #define ADXMotionKeyTrigger_TYPE_TRIGGER_SLACK 305
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_SLACK, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_SLACK, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_TRIGGER_COLLISION_VIEW(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_TRIGGER_COLLISION_VIEW(void);
 #define ADXMotionKeyTrigger_TYPE_TRIGGER_COLLISION_VIEW 306
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_COLLISION_VIEW, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_COLLISION_VIEW, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_TRIGGER_COLLISION_ID(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_TRIGGER_COLLISION_ID(void);
 #define ADXMotionKeyTrigger_TYPE_TRIGGER_COLLISION_ID 307
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_COLLISION_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_COLLISION_ID, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_TRIGGER_ID(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_TRIGGER_ID(void);
 #define ADXMotionKeyTrigger_TYPE_TRIGGER_ID 308
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_ID, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_ID, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_POSITIVE_CROSS(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_POSITIVE_CROSS(void);
 #define ADXMotionKeyTrigger_TYPE_POSITIVE_CROSS 309
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_POSITIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_POSITIVE_CROSS, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_NEGATIVE_CROSS(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_NEGATIVE_CROSS(void);
 #define ADXMotionKeyTrigger_TYPE_NEGATIVE_CROSS 310
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_NEGATIVE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_NEGATIVE_CROSS, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_TRIGGER_RECEIVER(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_TRIGGER_RECEIVER(void);
 #define ADXMotionKeyTrigger_TYPE_TRIGGER_RECEIVER 311
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_RECEIVER, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_TRIGGER_RECEIVER, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_TYPE_CROSS(void);
+inline int32_t ADXMotionKeyTrigger_get_TYPE_CROSS(void);
 #define ADXMotionKeyTrigger_TYPE_CROSS 312
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_CROSS, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, TYPE_CROSS, int32_t)
 
-inline jint ADXMotionKeyTrigger_get_KEY_TYPE(void);
+inline int32_t ADXMotionKeyTrigger_get_KEY_TYPE(void);
 #define ADXMotionKeyTrigger_KEY_TYPE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, KEY_TYPE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXMotionKeyTrigger, KEY_TYPE, int32_t)
 
 FOUNDATION_EXPORT void ADXMotionKeyTrigger_init(ADXMotionKeyTrigger *self);
 
@@ -194,6 +199,7 @@ FOUNDATION_EXPORT ADXMotionKeyTrigger *create_ADXMotionKeyTrigger_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXMotionKeyTrigger)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionKeyMotionKeyTrigger ADXMotionKeyTrigger;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\HelperReference.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_HelperReference")
@@ -76,6 +77,7 @@ FOUNDATION_EXPORT ADXHelperReference *create_ADXHelperReference_initWithADXState
 J2OBJC_TYPE_LITERAL_HEADER(ADXHelperReference)
 
 @compatibility_alias AndroidxConstraintlayoutCoreStateHelperReference ADXHelperReference;
+
 
 #endif
 

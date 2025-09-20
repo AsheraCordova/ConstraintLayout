@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\TransitionAdapter.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_TransitionAdapter")
@@ -21,6 +22,9 @@
 #include "MotionLayout.h"
 
 @class ADXMotionLayout;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
 
 @interface ADXTransitionAdapter : NSObject < ADXMotionLayout_TransitionListener >
 
@@ -29,21 +33,21 @@
 - (instancetype)init;
 
 - (void)onTransitionChangeWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                      withInt:(jint)startId
-                                      withInt:(jint)endId
-                                    withFloat:(jfloat)progress;
+                                      withInt:(int32_t)startId
+                                      withInt:(int32_t)endId
+                                    withFloat:(float)progress;
 
 - (void)onTransitionCompletedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                         withInt:(jint)currentId;
+                                         withInt:(int32_t)currentId;
 
 - (void)onTransitionStartedWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)startId
-                                       withInt:(jint)endId;
+                                       withInt:(int32_t)startId
+                                       withInt:(int32_t)endId;
 
 - (void)onTransitionTriggerWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                       withInt:(jint)triggerId
-                                   withBoolean:(jboolean)positive
-                                     withFloat:(jfloat)progress;
+                                       withInt:(int32_t)triggerId
+                                   withBoolean:(bool)positive
+                                     withFloat:(float)progress;
 
 @end
 
@@ -54,6 +58,7 @@ FOUNDATION_EXPORT void ADXTransitionAdapter_init(ADXTransitionAdapter *self);
 J2OBJC_TYPE_LITERAL_HEADER(ADXTransitionAdapter)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetTransitionAdapter ADXTransitionAdapter;
+
 
 #endif
 

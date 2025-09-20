@@ -3,22 +3,36 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\Group.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintHelper.h"
 #include "ConstraintLayout.h"
 #include "ConstraintWidget.h"
 #include "Group.h"
 #include "J2ObjC_source.h"
 #include "ViewGroup.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXGroup
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   [super setVisibilityWithInt:visibility];
   [self applyLayoutFeatures];
 }
 
-- (void)setElevationWithFloat:(jfloat)elevation {
+- (void)setElevationWithFloat:(float)elevation {
   [super setElevationWithFloat:elevation];
   [self applyLayoutFeatures];
 }
@@ -78,3 +92,5 @@ ADXGroup *create_ADXGroup_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXGroup)
+
+J2OBJC_NAME_MAPPING(ADXGroup, "androidx.constraintlayout.widget", "ADX")

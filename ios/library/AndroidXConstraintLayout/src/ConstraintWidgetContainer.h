@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\ConstraintWidgetContainer.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_ConstraintWidgetContainer")
@@ -29,8 +30,12 @@
 @class ADXMetrics;
 @class IOSBooleanArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangInteger;
+@class JavaLangLong;
 @class JavaUtilArrayList;
 @class JavaUtilHashSet;
+@class NSString;
 @protocol ADXBasicMeasure_Measurer;
 
 /*!
@@ -43,21 +48,21 @@
   id<ADXBasicMeasure_Measurer> mMeasurer_;
   ADXMetrics *mMetrics_;
   ADXLinearSystem *mSystem_;
-  jint mPaddingLeft_;
-  jint mPaddingTop_;
-  jint mPaddingRight_;
-  jint mPaddingBottom_;
-  jint mHorizontalChainsSize_;
-  jint mVerticalChainsSize_;
+  int32_t mPaddingLeft_;
+  int32_t mPaddingTop_;
+  int32_t mPaddingRight_;
+  int32_t mPaddingBottom_;
+  int32_t mHorizontalChainsSize_;
+  int32_t mVerticalChainsSize_;
   IOSObjectArray *mVerticalChainsArray_;
   IOSObjectArray *mHorizontalChainsArray_;
-  jboolean mGroupsWrapOptimized_;
-  jboolean mHorizontalWrapOptimized_;
-  jboolean mVerticalWrapOptimized_;
-  jint mWrapFixedWidth_;
-  jint mWrapFixedHeight_;
-  jboolean mSkipSolver_;
-  jint mDebugSolverPassCount_;
+  bool mGroupsWrapOptimized_;
+  bool mHorizontalWrapOptimized_;
+  bool mVerticalWrapOptimized_;
+  int32_t mWrapFixedWidth_;
+  int32_t mWrapFixedHeight_;
+  bool mSkipSolver_;
+  int32_t mDebugSolverPassCount_;
   JavaUtilHashSet *widgetsToAdd_;
   ADXBasicMeasure_Measure *mMeasure_;
 }
@@ -74,8 +79,8 @@
  @param width width of the layout
  @param height height of the layout
  */
-- (instancetype)initWithInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 /*!
  @brief Constructor
@@ -84,20 +89,20 @@
  @param width width of the layout
  @param height height of the layout
  */
-- (instancetype)initWithInt:(jint)x
-                    withInt:(jint)y
-                    withInt:(jint)width
-                    withInt:(jint)height;
+- (instancetype)initWithInt:(int32_t)x
+                    withInt:(int32_t)y
+                    withInt:(int32_t)width
+                    withInt:(int32_t)height;
 
 - (instancetype)initWithNSString:(NSString *)debugName
-                         withInt:(jint)width
-                         withInt:(jint)height;
+                         withInt:(int32_t)width
+                         withInt:(int32_t)height;
 
 /*!
  @brief Add this widget to the solver
  @param system the solver we want to add the widget to
  */
-- (jboolean)addChildrenToSolverWithADXLinearSystem:(ADXLinearSystem *)system;
+- (bool)addChildrenToSolverWithADXLinearSystem:(ADXLinearSystem *)system;
 
 - (void)addHorizontalWrapMaxVariableWithADXConstraintAnchor:(ADXConstraintAnchor *)right;
 
@@ -105,12 +110,12 @@
 
 - (void)defineTerminalWidgets;
 
-- (jboolean)directMeasureWithBoolean:(jboolean)optimizeWrap;
+- (bool)directMeasureWithBoolean:(bool)optimizeWrap;
 
-- (jboolean)directMeasureSetupWithBoolean:(jboolean)optimizeWrap;
+- (bool)directMeasureSetupWithBoolean:(bool)optimizeWrap;
 
-- (jboolean)directMeasureWithOrientationWithBoolean:(jboolean)optimizeWrap
-                                            withInt:(jint)orientation;
+- (bool)directMeasureWithOrientationWithBoolean:(bool)optimizeWrap
+                                        withInt:(int32_t)orientation;
 
 - (void)fillMetricsWithADXMetrics:(ADXMetrics *)metrics;
 
@@ -125,7 +130,7 @@
 /*!
  @brief Returns the current optimization level
  */
-- (jint)getOptimizationLevel;
+- (int32_t)getOptimizationLevel;
 
 - (ADXLinearSystem *)getSystem;
 
@@ -144,7 +149,7 @@
  @brief Indicates if the container knows how to layout its content on its own
  @return true if the container does the layout, false otherwise
  */
-- (jboolean)handlesInternalConstraints;
+- (bool)handlesInternalConstraints;
 
 /*!
  @brief Invalidate the graph of constraints
@@ -159,29 +164,29 @@
 /*!
  @brief Return true if the height given is too small for the content laid out
  */
-- (jboolean)isHeightMeasuredTooSmall;
+- (bool)isHeightMeasuredTooSmall;
 
 /*!
  @brief Returns the rtl status.
  @return true if in RTL, false otherwise.
  */
-- (jboolean)isRtl;
+- (bool)isRtl;
 
 /*!
  @brief Return true if the width given is too small for the content laid out
  */
-- (jboolean)isWidthMeasuredTooSmall;
+- (bool)isWidthMeasuredTooSmall;
 
 /*!
  @brief Layout the tree of widgets
  */
 - (void)layout;
 
-+ (jboolean)measureWithInt:(jint)level
-   withADXConstraintWidget:(ADXConstraintWidget *)widget
++ (bool)measureWithInt:(int32_t)level
+withADXConstraintWidget:(ADXConstraintWidget *)widget
 withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer
 withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
-                   withInt:(jint)measureStrategy;
+               withInt:(int32_t)measureStrategy;
 
 /*!
  @brief Measure the layout
@@ -193,21 +198,21 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
  @param paddingX
  @param paddingY
  */
-- (jlong)measureWithInt:(jint)optimizationLevel
-                withInt:(jint)widthMode
-                withInt:(jint)widthSize
-                withInt:(jint)heightMode
-                withInt:(jint)heightSize
-                withInt:(jint)lastMeasureWidth
-                withInt:(jint)lastMeasureHeight
-                withInt:(jint)paddingX
-                withInt:(jint)paddingY;
+- (int64_t)measureWithInt:(int32_t)optimizationLevel
+                  withInt:(int32_t)widthMode
+                  withInt:(int32_t)widthSize
+                  withInt:(int32_t)heightMode
+                  withInt:(int32_t)heightSize
+                  withInt:(int32_t)lastMeasureWidth
+                  withInt:(int32_t)lastMeasureHeight
+                  withInt:(int32_t)paddingX
+                  withInt:(int32_t)paddingY;
 
 /*!
  @brief Returns true if the given feature should be optimized
  @param feature
  */
-- (jboolean)optimizeForWithInt:(jint)feature;
+- (bool)optimizeForWithInt:(int32_t)feature;
 
 - (void)release__;
 
@@ -219,7 +224,7 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
  @brief Resolves the system directly when possible
  @param value optimization level
  */
-- (void)setOptimizationLevelWithInt:(jint)value;
+- (void)setOptimizationLevelWithInt:(int32_t)value;
 
 /*!
  @brief Set the padding on this container.It will apply to the position of the children.
@@ -228,32 +233,32 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
  @param right right padding
  @param bottom bottom padding
  */
-- (void)setPaddingWithInt:(jint)left
-                  withInt:(jint)top
-                  withInt:(jint)right
-                  withInt:(jint)bottom;
+- (void)setPaddingWithInt:(int32_t)left
+                  withInt:(int32_t)top
+                  withInt:(int32_t)right
+                  withInt:(int32_t)bottom;
 
 /*!
  @brief Keep track of the # of passes
  @param pass
  */
-- (void)setPassWithInt:(jint)pass;
+- (void)setPassWithInt:(int32_t)pass;
 
 /*!
  @brief Set the rtl status.This has implications for Chains.
  @param isRtl true if we are in RTL.
  */
-- (void)setRtlWithBoolean:(jboolean)isRtl;
+- (void)setRtlWithBoolean:(bool)isRtl;
 
 /*!
  @brief Update the frame of the layout and its children from the solver
  @param system the solver we get the values from.
  */
-- (jboolean)updateChildrenFromSolverWithADXLinearSystem:(ADXLinearSystem *)system
-                                       withBooleanArray:(IOSBooleanArray *)flags;
+- (bool)updateChildrenFromSolverWithADXLinearSystem:(ADXLinearSystem *)system
+                                   withBooleanArray:(IOSBooleanArray *)flags;
 
-- (void)updateFromRunsWithBoolean:(jboolean)updateHorizontal
-                      withBoolean:(jboolean)updateVertical;
+- (void)updateFromRunsWithBoolean:(bool)updateHorizontal
+                      withBoolean:(bool)updateVertical;
 
 - (void)updateHierarchy;
 
@@ -265,7 +270,7 @@ withADXBasicMeasure_Measure:(ADXBasicMeasure_Measure *)measure
  @param type HORIZONTAL or VERTICAL chain
  */
 - (void)addChainWithADXConstraintWidget:(ADXConstraintWidget *)constraintWidget
-                                withInt:(jint)type;
+                                withInt:(int32_t)type;
 
 - (void)addVerticalWrapMaxVariableWithADXConstraintAnchor:(ADXConstraintAnchor *)bottom;
 
@@ -285,16 +290,16 @@ J2OBJC_FIELD_SETTER(ADXConstraintWidgetContainer, mHorizontalChainsArray_, IOSOb
 J2OBJC_FIELD_SETTER(ADXConstraintWidgetContainer, widgetsToAdd_, JavaUtilHashSet *)
 J2OBJC_FIELD_SETTER(ADXConstraintWidgetContainer, mMeasure_, ADXBasicMeasure_Measure *)
 
-inline jboolean ADXConstraintWidgetContainer_get_DEBUG_GRAPH(void);
+inline bool ADXConstraintWidgetContainer_get_DEBUG_GRAPH(void);
 #define ADXConstraintWidgetContainer_DEBUG_GRAPH false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, DEBUG_GRAPH, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintWidgetContainer, DEBUG_GRAPH, bool)
 
-inline jint ADXConstraintWidgetContainer_get_myCounter(void);
-inline jint ADXConstraintWidgetContainer_set_myCounter(jint value);
-inline jint *ADXConstraintWidgetContainer_getRef_myCounter(void);
+inline int32_t ADXConstraintWidgetContainer_get_myCounter(void);
+inline int32_t ADXConstraintWidgetContainer_set_myCounter(int32_t value);
+inline int32_t *ADXConstraintWidgetContainer_getRef_myCounter(void);
 /*! INTERNAL ONLY - Use accessor function from above. */
-FOUNDATION_EXPORT jint ADXConstraintWidgetContainer_myCounter;
-J2OBJC_STATIC_FIELD_PRIMITIVE(ADXConstraintWidgetContainer, myCounter, jint)
+FOUNDATION_EXPORT int32_t ADXConstraintWidgetContainer_myCounter;
+J2OBJC_STATIC_FIELD_PRIMITIVE(ADXConstraintWidgetContainer, myCounter, int32_t)
 
 FOUNDATION_EXPORT void ADXConstraintWidgetContainer_init(ADXConstraintWidgetContainer *self);
 
@@ -302,29 +307,30 @@ FOUNDATION_EXPORT ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer
 
 FOUNDATION_EXPORT ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_init(void);
 
-FOUNDATION_EXPORT void ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXConstraintWidgetContainer *self, jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(ADXConstraintWidgetContainer *self, int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(jint x, jint y, jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_withInt_withInt_(int32_t x, int32_t y, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT void ADXConstraintWidgetContainer_initWithInt_withInt_(ADXConstraintWidgetContainer *self, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintWidgetContainer_initWithInt_withInt_(ADXConstraintWidgetContainer *self, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_(jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_(jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithInt_withInt_(int32_t width, int32_t height);
 
-FOUNDATION_EXPORT void ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(ADXConstraintWidgetContainer *self, NSString *debugName, jint width, jint height);
+FOUNDATION_EXPORT void ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(ADXConstraintWidgetContainer *self, NSString *debugName, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, jint width, jint height) NS_RETURNS_RETAINED;
+FOUNDATION_EXPORT ADXConstraintWidgetContainer *new_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, int32_t width, int32_t height) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, jint width, jint height);
+FOUNDATION_EXPORT ADXConstraintWidgetContainer *create_ADXConstraintWidgetContainer_initWithNSString_withInt_withInt_(NSString *debugName, int32_t width, int32_t height);
 
-FOUNDATION_EXPORT jboolean ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(jint level, ADXConstraintWidget *widget, id<ADXBasicMeasure_Measurer> measurer, ADXBasicMeasure_Measure *measure, jint measureStrategy);
+FOUNDATION_EXPORT bool ADXConstraintWidgetContainer_measureWithInt_withADXConstraintWidget_withADXBasicMeasure_Measurer_withADXBasicMeasure_Measure_withInt_(int32_t level, ADXConstraintWidget *widget, id<ADXBasicMeasure_Measurer> measurer, ADXBasicMeasure_Measure *measure, int32_t measureStrategy);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXConstraintWidgetContainer)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsConstraintWidgetContainer ADXConstraintWidgetContainer;
+
 
 #endif
 

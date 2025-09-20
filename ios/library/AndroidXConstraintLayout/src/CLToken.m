@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLToken.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CLElement.h"
 #include "CLParser.h"
 #include "CLParsingException.h"
@@ -10,16 +15,27 @@
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Enum.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/Integer.h"
+#include "java/lang/Long.h"
 #include "java/lang/StringBuilder.h"
 
 
-__attribute__((unused)) static void ADXCLToken_Type_initWithNSString_withInt_(ADXCLToken_Type *self, NSString *__name, jint __ordinal);
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
+__attribute__((unused)) static void ADXCLToken_Type_initWithNSString_withInt_(ADXCLToken_Type *self, NSString *__name, int32_t __ordinal);
 
 @implementation ADXCLToken
 
-- (jboolean)getBoolean {
+- (bool)getBoolean {
   if (type_ == JreLoadEnum(ADXCLToken_Type, TRUE)) {
     return true;
   }
@@ -29,7 +45,7 @@ __attribute__((unused)) static void ADXCLToken_Type_initWithNSString_withInt_(AD
   @throw create_ADXCLParsingException_initWithNSString_withADXCLElement_(JreStrcat("$$C", @"this token is not a boolean: <", [self content], '>'), self);
 }
 
-- (jboolean)isNull {
+- (bool)isNull {
   if (type_ == JreLoadEnum(ADXCLToken_Type, NULL)) {
     return true;
   }
@@ -54,8 +70,8 @@ __attribute__((unused)) static void ADXCLToken_Type_initWithNSString_withInt_(AD
   }
 }
 
-- (NSString *)toFormattedJSONWithInt:(jint)indent
-                             withInt:(jint)forceIndent {
+- (NSString *)toFormattedJSONWithInt:(int32_t)indent
+                             withInt:(int32_t)forceIndent {
   JavaLangStringBuilder *json = create_JavaLangStringBuilder_init();
   [self addIndentWithJavaLangStringBuilder:json withInt:indent];
   [json appendWithNSString:[self content]];
@@ -66,9 +82,9 @@ __attribute__((unused)) static void ADXCLToken_Type_initWithNSString_withInt_(AD
   return type_;
 }
 
-- (jboolean)validateWithChar:(jchar)c
-                    withLong:(jlong)position {
-  jboolean isValid = false;
+- (bool)validateWithChar:(unichar)c
+                withLong:(int64_t)position {
+  bool isValid = false;
   switch ([type_ ordinal]) {
     case ADXCLToken_Type_Enum_TRUE:
     {
@@ -183,6 +199,8 @@ ADXCLElement *ADXCLToken_allocateWithCharArray_(IOSCharArray *content) {
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXCLToken)
 
+J2OBJC_NAME_MAPPING(ADXCLToken, "androidx.constraintlayout.core.parser", "ADX")
+
 J2OBJC_INITIALIZED_DEFN(ADXCLToken_Type)
 
 ADXCLToken_Type *ADXCLToken_Type_values_[4];
@@ -199,6 +217,24 @@ ADXCLToken_Type *ADXCLToken_Type_values_[4];
 
 - (ADXCLToken_Type_Enum)toNSEnum {
   return (ADXCLToken_Type_Enum)[self ordinal];
+}
+
+- (ADXCLToken_Type_Enum)enumValue {
+  return (ADXCLToken_Type_Enum)[self ordinal];
+}
+
++ (ADXCLToken_Type *)fromNSEnum:(ADXCLToken_Type_Enum)nativeValue {
+  ADXCLToken_Type *javaEnum = ADXCLToken_Type_fromOrdinal(nativeValue);
+  if (!javaEnum) @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"NSEnum ADXCLToken_Type_Enum out of range.");
+  return javaEnum;
+}
+
+- (ADXCLToken_Type_ORDINAL)ordinal {
+  return (ADXCLToken_Type_ORDINAL)[super ordinal];
+}
+
+- (nullable instancetype)initWithType:(ADXCLToken_Type_Enum)value {
+  return RETAIN_(ADXCLToken_Type_fromOrdinal((ADXCLToken_Type_ORDINAL)value));
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -229,7 +265,7 @@ ADXCLToken_Type *ADXCLToken_Type_values_[4];
     size_t allocSize = 4 * objSize;
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
-    for (jint i = 0; i < 4; i++) {
+    for (int32_t i = 0; i < 4; i++) {
       ((void)(ADXCLToken_Type_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       ADXCLToken_Type_initWithNSString_withInt_(e, JreEnumConstantName(ADXCLToken_Type_class_(), i), i);
     }
@@ -239,7 +275,7 @@ ADXCLToken_Type *ADXCLToken_Type_values_[4];
 
 @end
 
-void ADXCLToken_Type_initWithNSString_withInt_(ADXCLToken_Type *self, NSString *__name, jint __ordinal) {
+void ADXCLToken_Type_initWithNSString_withInt_(ADXCLToken_Type *self, NSString *__name, int32_t __ordinal) {
   JavaLangEnum_initWithNSString_withInt_(self, __name, __ordinal);
 }
 
@@ -257,12 +293,11 @@ ADXCLToken_Type *ADXCLToken_Type_valueOfWithNSString_(NSString *name) {
     }
   }
   @throw create_JavaLangIllegalArgumentException_initWithNSString_(name);
-  return nil;
 }
 
-ADXCLToken_Type *ADXCLToken_Type_fromOrdinal(NSUInteger ordinal) {
+ADXCLToken_Type *ADXCLToken_Type_fromOrdinal(ADXCLToken_Type_ORDINAL ordinal) {
   ADXCLToken_Type_initialize();
-  if (ordinal >= 4) {
+  if (ordinal < 0 || ordinal >= 4) {
     return nil;
   }
   return ADXCLToken_Type_values_[ordinal];

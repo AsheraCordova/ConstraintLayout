@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyAttributes.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "AttributeSet.h"
 #include "ConstraintAttribute.h"
 #include "Context.h"
@@ -12,6 +17,8 @@
 #include "KeyAttributes.h"
 #include "SplineSet.h"
 #include "ViewSpline.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Character.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/HashMap.h"
@@ -19,25 +26,32 @@
 #include "java/util/Set.h"
 
 
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXKeyAttributes () {
  @public
   NSString *mTransitionEasing_;
-  jint mCurveFit_;
-  jboolean mVisibility_;
-  jfloat mAlpha_;
-  jfloat mElevation_;
-  jfloat mRotation_;
-  jfloat mRotationX_;
-  jfloat mRotationY_;
-  jfloat mPivotX_;
-  jfloat mPivotY_;
-  jfloat mTransitionPathRotate_;
-  jfloat mScaleX_;
-  jfloat mScaleY_;
-  jfloat mTranslationX_;
-  jfloat mTranslationY_;
-  jfloat mTranslationZ_;
-  jfloat mProgress_;
+  int32_t mCurveFit_;
+  bool mVisibility_;
+  float mAlpha_;
+  float mElevation_;
+  float mRotation_;
+  float mRotationX_;
+  float mRotationY_;
+  float mPivotX_;
+  float mPivotY_;
+  float mTransitionPathRotate_;
+  float mScaleX_;
+  float mScaleY_;
+  float mTranslationX_;
+  float mTranslationY_;
+  float mTranslationZ_;
+  float mProgress_;
 }
 
 @end
@@ -48,9 +62,9 @@ inline NSString *ADXKeyAttributes_get_TAG(void);
 static NSString *ADXKeyAttributes_TAG = @"KeyAttributes";
 J2OBJC_STATIC_FIELD_OBJ_FINAL(ADXKeyAttributes, TAG, NSString *)
 
-inline jboolean ADXKeyAttributes_get_DEBUG(void);
+inline bool ADXKeyAttributes_get_DEBUG(void);
 #define ADXKeyAttributes_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyAttributes, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyAttributes, DEBUG, bool)
 
 @interface ADXKeyAttributes_Loader : NSObject
 
@@ -68,6 +82,7 @@ __attribute__((unused)) static ADXKeyAttributes_Loader *create_ADXKeyAttributes_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyAttributes_Loader)
 
+
 NSString *ADXKeyAttributes_NAME = @"KeyAttribute";
 
 @implementation ADXKeyAttributes
@@ -83,7 +98,7 @@ J2OBJC_IGNORE_DESIGNATED_END
          withADAttributeSet:(ADAttributeSet *)attrs {
 }
 
-- (jint)getCurveFit {
+- (int32_t)getCurveFit {
   return mCurveFit_;
 }
 
@@ -457,6 +472,8 @@ ADXKeyAttributes *create_ADXKeyAttributes_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXKeyAttributes)
+
+J2OBJC_NAME_MAPPING(ADXKeyAttributes, "androidx.constraintlayout.motion.widget", "ADX")
 
 @implementation ADXKeyAttributes_Loader
 

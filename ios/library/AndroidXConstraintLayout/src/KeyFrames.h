@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\KeyFrames.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyFrames")
@@ -19,7 +20,9 @@
 @class ADContext;
 @class ADXKey;
 @class ADXMotionController;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
+@class NSString;
 @protocol JavaUtilSet;
 
 /*!
@@ -37,22 +40,22 @@
 
 - (void)addKeyWithADXKey:(ADXKey *)key;
 
-- (JavaUtilArrayList *)getKeyFramesForViewWithInt:(jint)id_;
+- (JavaUtilArrayList *)getKeyFramesForViewWithInt:(int32_t)id_;
 
 - (id<JavaUtilSet>)getKeys;
 
 #pragma mark Package-Private
 
-+ (NSString *)nameWithInt:(jint)viewId
++ (NSString *)nameWithInt:(int32_t)viewId
             withADContext:(ADContext *)context;
 
 @end
 
 J2OBJC_STATIC_INIT(ADXKeyFrames)
 
-inline jint ADXKeyFrames_get_UNSET(void);
+inline int32_t ADXKeyFrames_get_UNSET(void);
 #define ADXKeyFrames_UNSET -1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrames, UNSET, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXKeyFrames, UNSET, int32_t)
 
 FOUNDATION_EXPORT void ADXKeyFrames_init(ADXKeyFrames *self);
 
@@ -60,11 +63,12 @@ FOUNDATION_EXPORT ADXKeyFrames *new_ADXKeyFrames_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ADXKeyFrames *create_ADXKeyFrames_init(void);
 
-FOUNDATION_EXPORT NSString *ADXKeyFrames_nameWithInt_withADContext_(jint viewId, ADContext *context);
+FOUNDATION_EXPORT NSString *ADXKeyFrames_nameWithInt_withADContext_(int32_t viewId, ADContext *context);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrames)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetKeyFrames ADXKeyFrames;
+
 
 #endif
 

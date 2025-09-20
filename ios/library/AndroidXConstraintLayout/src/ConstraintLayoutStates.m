@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\widget\ConstraintLayoutStates.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ConstraintLayout.h"
 #include "ConstraintLayoutStates.h"
 #include "ConstraintSet.h"
@@ -11,8 +16,16 @@
 #include "J2ObjC_source.h"
 #include "Log.h"
 #include "SparseArray.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ADXConstraintLayoutStates () {
@@ -30,9 +43,9 @@ J2OBJC_FIELD_SETTER(ADXConstraintLayoutStates, mStateList_, ADSparseArray *)
 J2OBJC_FIELD_SETTER(ADXConstraintLayoutStates, mConstraintSetMap_, ADSparseArray *)
 J2OBJC_FIELD_SETTER(ADXConstraintLayoutStates, mConstraintsChangedListener_, ADXConstraintsChangedListener *)
 
-inline jboolean ADXConstraintLayoutStates_get_DEBUG(void);
+inline bool ADXConstraintLayoutStates_get_DEBUG(void);
 #define ADXConstraintLayoutStates_DEBUG false
-J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayoutStates, DEBUG, jboolean)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXConstraintLayoutStates, DEBUG, bool)
 
 NSString *ADXConstraintLayoutStates_TAG = @"ConstraintLayoutStates";
 
@@ -40,14 +53,14 @@ NSString *ADXConstraintLayoutStates_TAG = @"ConstraintLayoutStates";
 
 - (instancetype)initWithADContext:(ADContext *)context
           withADXConstraintLayout:(ADXConstraintLayout *)layout
-                          withInt:(jint)resourceID {
+                          withInt:(int32_t)resourceID {
   ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(self, context, layout, resourceID);
   return self;
 }
 
-- (jboolean)needsToChangeWithInt:(jint)id_
-                       withFloat:(jfloat)width
-                       withFloat:(jfloat)height {
+- (bool)needsToChangeWithInt:(int32_t)id_
+                   withFloat:(float)width
+                   withFloat:(float)height {
   if (mCurrentStateId_ != id_) {
     return true;
   }
@@ -63,9 +76,9 @@ NSString *ADXConstraintLayoutStates_TAG = @"ConstraintLayoutStates";
   return true;
 }
 
-- (void)updateConstraintsWithInt:(jint)id_
-                       withFloat:(jfloat)width
-                       withFloat:(jfloat)height {
+- (void)updateConstraintsWithInt:(int32_t)id_
+                       withFloat:(float)width
+                       withFloat:(float)height {
   if (mCurrentStateId_ == id_) {
     ADXConstraintLayoutStates_State *state;
     if (id_ == -1) {
@@ -79,12 +92,12 @@ NSString *ADXConstraintLayoutStates_TAG = @"ConstraintLayoutStates";
         return;
       }
     }
-    jint match = [((ADXConstraintLayoutStates_State *) nil_chk(state)) findMatchWithFloat:width withFloat:height];
+    int32_t match = [((ADXConstraintLayoutStates_State *) nil_chk(state)) findMatchWithFloat:width withFloat:height];
     if (mCurrentConstraintNumber_ == match) {
       return;
     }
     ADXConstraintSet *constraintSet = (match == -1) ? mDefaultConstraintSet_ : ((ADXConstraintLayoutStates_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(state->mVariants_)) getWithInt:match]))->mConstraintSet_;
-    jint cid = (match == -1) ? state->mConstraintID_ : ((ADXConstraintLayoutStates_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(state->mVariants_)) getWithInt:match]))->mConstraintID_;
+    int32_t cid = (match == -1) ? state->mConstraintID_ : ((ADXConstraintLayoutStates_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(state->mVariants_)) getWithInt:match]))->mConstraintID_;
     if (constraintSet == nil) {
       return;
     }
@@ -100,9 +113,9 @@ NSString *ADXConstraintLayoutStates_TAG = @"ConstraintLayoutStates";
   else {
     mCurrentStateId_ = id_;
     ADXConstraintLayoutStates_State *state = JreRetainedLocalValue([((ADSparseArray *) nil_chk(mStateList_)) getWithInt:mCurrentStateId_]);
-    jint match = [((ADXConstraintLayoutStates_State *) nil_chk(state)) findMatchWithFloat:width withFloat:height];
+    int32_t match = [((ADXConstraintLayoutStates_State *) nil_chk(state)) findMatchWithFloat:width withFloat:height];
     ADXConstraintSet *constraintSet = (match == -1) ? state->mConstraintSet_ : ((ADXConstraintLayoutStates_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(state->mVariants_)) getWithInt:match]))->mConstraintSet_;
-    jint cid = (match == -1) ? state->mConstraintID_ : ((ADXConstraintLayoutStates_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(state->mVariants_)) getWithInt:match]))->mConstraintID_;
+    int32_t cid = (match == -1) ? state->mConstraintID_ : ((ADXConstraintLayoutStates_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(state->mVariants_)) getWithInt:match]))->mConstraintID_;
     if (constraintSet == nil) {
       ADLog_vWithNSString_withNSString_(ADXConstraintLayoutStates_TAG, JreStrcat("$I$F$F", @"NO Constraint set found ! id=", id_, @", dim =", width, @", ", height));
       return;
@@ -164,7 +177,7 @@ NSString *ADXConstraintLayoutStates_TAG = @"ConstraintLayoutStates";
 
 @end
 
-void ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADXConstraintLayoutStates *self, ADContext *context, ADXConstraintLayout *layout, jint resourceID) {
+void ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADXConstraintLayoutStates *self, ADContext *context, ADXConstraintLayout *layout, int32_t resourceID) {
   NSObject_init(self);
   self->mCurrentStateId_ = -1;
   self->mCurrentConstraintNumber_ = -1;
@@ -174,15 +187,17 @@ void ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt
   JreStrongAssign(&self->mConstraintLayout_, layout);
 }
 
-ADXConstraintLayoutStates *new_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, jint resourceID) {
+ADXConstraintLayoutStates *new_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, int32_t resourceID) {
   J2OBJC_NEW_IMPL(ADXConstraintLayoutStates, initWithADContext_withADXConstraintLayout_withInt_, context, layout, resourceID)
 }
 
-ADXConstraintLayoutStates *create_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, jint resourceID) {
+ADXConstraintLayoutStates *create_ADXConstraintLayoutStates_initWithADContext_withADXConstraintLayout_withInt_(ADContext *context, ADXConstraintLayout *layout, int32_t resourceID) {
   J2OBJC_CREATE_IMPL(ADXConstraintLayoutStates, initWithADContext_withADXConstraintLayout_withInt_, context, layout, resourceID)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXConstraintLayoutStates)
+
+J2OBJC_NAME_MAPPING(ADXConstraintLayoutStates, "androidx.constraintlayout.widget", "ADX")
 
 @implementation ADXConstraintLayoutStates_State
 
@@ -197,9 +212,9 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((JavaUtilArrayList *) nil_chk(mVariants_)) addWithId:size];
 }
 
-- (jint)findMatchWithFloat:(jfloat)width
-                 withFloat:(jfloat)height {
-  for (jint i = 0; i < [((JavaUtilArrayList *) nil_chk(mVariants_)) size]; i++) {
+- (int32_t)findMatchWithFloat:(float)width
+                    withFloat:(float)height {
+  for (int32_t i = 0; i < [((JavaUtilArrayList *) nil_chk(mVariants_)) size]; i++) {
     if ([((ADXConstraintLayoutStates_Variant *) nil_chk([((JavaUtilArrayList *) nil_chk(mVariants_)) getWithInt:i])) matchWithFloat:width withFloat:height]) {
       return i;
     }
@@ -264,8 +279,8 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
-- (jboolean)matchWithFloat:(jfloat)widthDp
-                 withFloat:(jfloat)heightDp {
+- (bool)matchWithFloat:(float)widthDp
+             withFloat:(float)heightDp {
   if (!JavaLangFloat_isNaNWithFloat_(mMinWidth_)) {
     if (widthDp < mMinWidth_) return false;
   }

@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\key\MotionKey.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "CustomVariable.h"
 #include "J2ObjC_source.h"
 #include "MotionKey.h"
@@ -14,9 +19,15 @@
 #include "java/util/HashSet.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 #pragma clang diagnostic ignored "-Wprotocol"
 
-jint ADXMotionKey_UNSET = -1;
+int32_t ADXMotionKey_UNSET = -1;
 NSString *ADXMotionKey_ALPHA = @"alpha";
 NSString *ADXMotionKey_ELEVATION = @"elevation";
 NSString *ADXMotionKey_ROTATION = @"rotationZ";
@@ -43,7 +54,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jboolean)matchesWithNSString:(NSString *)constraintTag {
+- (bool)matchesWithNSString:(NSString *)constraintTag {
   if (mTargetString_ == nil || constraintTag == nil) return false;
   return [constraintTag java_matches:mTargetString_];
 }
@@ -53,15 +64,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   [self doesNotRecognizeSelector:_cmd];
 }
 
-- (jfloat)toFloatWithId:(id)value {
+- (float)toFloatWithId:(id)value {
   return ([value isKindOfClass:[JavaLangFloat class]]) ? [((JavaLangFloat *) nil_chk((JavaLangFloat *) cast_chk(value, [JavaLangFloat class]))) floatValue] : JavaLangFloat_parseFloatWithNSString_([nil_chk(value) description]);
 }
 
-- (jint)toIntWithId:(id)value {
+- (int32_t)toIntWithId:(id)value {
   return ([value isKindOfClass:[JavaLangInteger class]]) ? [((JavaLangInteger *) nil_chk((JavaLangInteger *) cast_chk(value, [JavaLangInteger class]))) intValue] : JavaLangInteger_parseIntWithNSString_([nil_chk(value) description]);
 }
 
-- (jboolean)toBooleanWithId:(id)value {
+- (bool)toBooleanWithId:(id)value {
   return ([value isKindOfClass:[JavaLangBoolean class]]) ? [((JavaLangBoolean *) nil_chk((JavaLangBoolean *) cast_chk(value, [JavaLangBoolean class]))) booleanValue] : JavaLangBoolean_parseBooleanWithNSString_([nil_chk(value) description]);
 }
 
@@ -82,21 +93,21 @@ J2OBJC_IGNORE_DESIGNATED_END
   return 0;
 }
 
-- (ADXMotionKey *)setViewIdWithInt:(jint)id_ {
+- (ADXMotionKey *)setViewIdWithInt:(int32_t)id_ {
   mTargetId_ = id_;
   return self;
 }
 
-- (void)setFramePositionWithInt:(jint)pos {
+- (void)setFramePositionWithInt:(int32_t)pos {
   mFramePosition_ = pos;
 }
 
-- (jint)getFramePosition {
+- (int32_t)getFramePosition {
   return mFramePosition_;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                    withInt:(jint)value {
+- (bool)setValueWithInt:(int32_t)type
+                withInt:(int32_t)value {
   switch (type) {
     case ADXTypedValues_TYPE_FRAME_POSITION:
     mFramePosition_ = value;
@@ -105,13 +116,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   return false;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                  withFloat:(jfloat)value {
+- (bool)setValueWithInt:(int32_t)type
+              withFloat:(float)value {
   return false;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-               withNSString:(NSString *)value {
+- (bool)setValueWithInt:(int32_t)type
+           withNSString:(NSString *)value {
   switch (type) {
     case ADXTypedValues_TYPE_TARGET:
     JreStrongAssign(&mTargetString_, value);
@@ -120,31 +131,31 @@ J2OBJC_IGNORE_DESIGNATED_END
   return false;
 }
 
-- (jboolean)setValueWithInt:(jint)type
-                withBoolean:(jboolean)value {
+- (bool)setValueWithInt:(int32_t)type
+            withBoolean:(bool)value {
   return false;
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                             withFloat:(jfloat)value {
+                               withInt:(int32_t)type
+                             withFloat:(float)value {
   [((JavaUtilHashMap *) nil_chk(mCustom_)) putWithId:name withId:create_ADXCustomVariable_initWithNSString_withInt_withFloat_(name, type, value)];
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                               withInt:(jint)value {
+                               withInt:(int32_t)type
+                               withInt:(int32_t)value {
   [((JavaUtilHashMap *) nil_chk(mCustom_)) putWithId:name withId:create_ADXCustomVariable_initWithNSString_withInt_withInt_(name, type, value)];
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
-                           withBoolean:(jboolean)value {
+                               withInt:(int32_t)type
+                           withBoolean:(bool)value {
   [((JavaUtilHashMap *) nil_chk(mCustom_)) putWithId:name withId:create_ADXCustomVariable_initWithNSString_withInt_withBoolean_(name, type, value)];
 }
 
 - (void)setCustomAttributeWithNSString:(NSString *)name
-                               withInt:(jint)type
+                               withInt:(int32_t)type
                           withNSString:(NSString *)value {
   [((JavaUtilHashMap *) nil_chk(mCustom_)) putWithId:name withId:create_ADXCustomVariable_initWithNSString_withInt_withNSString_(name, type, value)];
 }
@@ -238,3 +249,5 @@ void ADXMotionKey_init(ADXMotionKey *self) {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXMotionKey)
+
+J2OBJC_NAME_MAPPING(ADXMotionKey, "androidx.constraintlayout.core.motion.key", "ADX")

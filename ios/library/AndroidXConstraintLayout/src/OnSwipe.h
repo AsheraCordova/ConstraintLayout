@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\OnSwipe.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_OnSwipe")
@@ -16,6 +17,10 @@
 #if !defined (ADXOnSwipe_) && (INCLUDE_ALL_OnSwipe || defined(INCLUDE_ADXOnSwipe))
 #define ADXOnSwipe_
 
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+
 /*!
  @brief Container for holding swipe infomation
  */
@@ -25,76 +30,76 @@
 
 - (instancetype)init;
 
-- (jint)getAutoCompleteMode;
+- (int32_t)getAutoCompleteMode;
 
-- (jint)getDragDirection;
+- (int32_t)getDragDirection;
 
-- (jfloat)getDragScale;
+- (float)getDragScale;
 
-- (jfloat)getDragThreshold;
+- (float)getDragThreshold;
 
-- (jint)getLimitBoundsTo;
+- (int32_t)getLimitBoundsTo;
 
-- (jfloat)getMaxAcceleration;
+- (float)getMaxAcceleration;
 
-- (jfloat)getMaxVelocity;
+- (float)getMaxVelocity;
 
-- (jboolean)getMoveWhenScrollAtTop;
+- (bool)getMoveWhenScrollAtTop;
 
-- (jint)getNestedScrollFlags;
+- (int32_t)getNestedScrollFlags;
 
-- (jint)getOnTouchUp;
+- (int32_t)getOnTouchUp;
 
-- (jint)getRotationCenterId;
+- (int32_t)getRotationCenterId;
 
 /*!
  @brief The behaviour at the boundaries 0 and 1
  */
-- (jint)getSpringBoundary;
+- (int32_t)getSpringBoundary;
 
-- (jfloat)getSpringDamping;
+- (float)getSpringDamping;
 
 /*!
  @brief Get the mass of the spring.
  the m in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
  */
-- (jfloat)getSpringMass;
+- (float)getSpringMass;
 
 /*!
  @brief get the stiffness of the spring
  @return NaN if not set
  */
-- (jfloat)getSpringStiffness;
+- (float)getSpringStiffness;
 
 /*!
  @brief The threshold for spring motion to stop.
  */
-- (jfloat)getSpringStopThreshold;
+- (float)getSpringStopThreshold;
 
-- (jint)getTouchAnchorId;
+- (int32_t)getTouchAnchorId;
 
-- (jint)getTouchAnchorSide;
+- (int32_t)getTouchAnchorSide;
 
-- (jint)getTouchRegionId;
+- (int32_t)getTouchRegionId;
 
 /*!
  @brief sets the behaviour at the boundaries 0 and 1
       COMPLETE_MODE_CONTINUOUS_VELOCITY = 0;
        COMPLETE_MODE_SPRING = 1;
  */
-- (void)setAutoCompleteModeWithInt:(jint)autoCompleteMode;
+- (void)setAutoCompleteModeWithInt:(int32_t)autoCompleteMode;
 
 /*!
  @brief The direction of the drag.
  @param dragDirection
  */
-- (ADXOnSwipe *)setDragDirectionWithInt:(jint)dragDirection;
+- (ADXOnSwipe *)setDragDirectionWithInt:(int32_t)dragDirection;
 
 /*!
  @brief Normally 1 this can be tweaked to make the acceleration faster
  @param dragScale
  */
-- (ADXOnSwipe *)setDragScaleWithInt:(jint)dragScale;
+- (ADXOnSwipe *)setDragScaleWithInt:(int32_t)dragScale;
 
 /*!
  @brief This sets the threshold before the animation is kicked off.
@@ -102,13 +107,13 @@
   System decides which animation to jump on.
  @param dragThreshold
  */
-- (ADXOnSwipe *)setDragThresholdWithInt:(jint)dragThreshold;
+- (ADXOnSwipe *)setDragThresholdWithInt:(int32_t)dragThreshold;
 
 /*!
  @brief Only allow touch actions to be initiated within this region
  @param id_
  */
-- (ADXOnSwipe *)setLimitBoundsToWithInt:(jint)id_;
+- (ADXOnSwipe *)setLimitBoundsToWithInt:(int32_t)id_;
 
 /*!
  @brief The maximum acceleration and deceleration of the animation
@@ -116,20 +121,20 @@
   Faster makes the object seem lighter and quicker
  @param maxAcceleration
  */
-- (ADXOnSwipe *)setMaxAccelerationWithInt:(jint)maxAcceleration;
+- (ADXOnSwipe *)setMaxAccelerationWithInt:(int32_t)maxAcceleration;
 
 /*!
  @brief The maximum velocity (Change in progress per second) animation can achive
  @param maxVelocity
  */
-- (ADXOnSwipe *)setMaxVelocityWithInt:(jint)maxVelocity;
+- (ADXOnSwipe *)setMaxVelocityWithInt:(int32_t)maxVelocity;
 
 /*!
  @brief When collaborating with a NestedScrollView do you progress form 0-1 only
   when the scroll view is at the top.
  @param moveWhenScrollAtTop
  */
-- (ADXOnSwipe *)setMoveWhenScrollAtTopWithBoolean:(jboolean)moveWhenScrollAtTop;
+- (ADXOnSwipe *)setMoveWhenScrollAtTopWithBoolean:(bool)moveWhenScrollAtTop;
 
 /*!
  @brief Various flag to control behaviours of nested scroll
@@ -137,7 +142,7 @@
   FLAG_DISABLE_SCROLL = 2;
  @param flags
  */
-- (ADXOnSwipe *)setNestedScrollFlagsWithInt:(jint)flags;
+- (ADXOnSwipe *)setNestedScrollFlagsWithInt:(int32_t)flags;
 
 /*!
  @brief Configures what happens when the user releases on mouse up.
@@ -145,14 +150,14 @@
   ON_UP_STOP, ON_UP_DECELERATE, ON_UP_DECELERATE_AND_COMPLETE
  @param mode default = ON_UP_AUTOCOMPLETE
  */
-- (ADXOnSwipe *)setOnTouchUpWithInt:(jint)mode;
+- (ADXOnSwipe *)setOnTouchUpWithInt:(int32_t)mode;
 
 /*!
  @brief The view to center the rotation about
  @param rotationCenterId
  @return this
  */
-- (ADXOnSwipe *)setRotateCenterWithInt:(jint)rotationCenterId;
+- (ADXOnSwipe *)setRotateCenterWithInt:(int32_t)rotationCenterId;
 
 /*!
  @brief The behaviour at the boundaries 0 and 1.
@@ -162,7 +167,7 @@
   SPRING_BOUNDARY_BOUNCE_BOTH = 3;
  @param springBoundary
  */
-- (ADXOnSwipe *)setSpringBoundaryWithInt:(jint)springBoundary;
+- (ADXOnSwipe *)setSpringBoundaryWithInt:(int32_t)springBoundary;
 
 /*!
  @brief Set the damping of the spring if using spring.
@@ -170,7 +175,7 @@
  @param springDamping
  @return this
  */
-- (ADXOnSwipe *)setSpringDampingWithFloat:(jfloat)springDamping;
+- (ADXOnSwipe *)setSpringDampingWithFloat:(float)springDamping;
 
 /*!
  @brief Set the Mass of the spring if using spring.
@@ -178,7 +183,7 @@
  @param springMass
  @return this
  */
-- (ADXOnSwipe *)setSpringMassWithFloat:(jfloat)springMass;
+- (ADXOnSwipe *)setSpringMassWithFloat:(float)springMass;
 
 /*!
  @brief set the stiffness of the spring if using spring.
@@ -187,7 +192,7 @@
   K in "a = (-k*x-c*v)/m" equation for the acceleration of a spring
  @param springStiffness
  */
-- (ADXOnSwipe *)setSpringStiffnessWithFloat:(jfloat)springStiffness;
+- (ADXOnSwipe *)setSpringStiffnessWithFloat:(float)springStiffness;
 
 /*!
  @brief set the threshold for spring motion to stop.
@@ -195,14 +200,14 @@
   If the spring will never go above that threshold again it will stop.
  @param springStopThreshold
  */
-- (ADXOnSwipe *)setSpringStopThresholdWithFloat:(jfloat)springStopThreshold;
+- (ADXOnSwipe *)setSpringStopThresholdWithFloat:(float)springStopThreshold;
 
 /*!
  @brief The id of the view who's movement is matched to your drag
   If not specified it will map to a linear movement across the width of the motionLayout
  @param side
  */
-- (ADXOnSwipe *)setTouchAnchorIdWithInt:(jint)side;
+- (ADXOnSwipe *)setTouchAnchorIdWithInt:(int32_t)side;
 
 /*!
  @brief This side of the view that matches the drag movement.
@@ -210,140 +215,140 @@
   (rotation is not considered)
  @param side
  */
-- (ADXOnSwipe *)setTouchAnchorSideWithInt:(jint)side;
+- (ADXOnSwipe *)setTouchAnchorSideWithInt:(int32_t)side;
 
 /*!
  @param side
  */
-- (ADXOnSwipe *)setTouchRegionIdWithInt:(jint)side;
+- (ADXOnSwipe *)setTouchRegionIdWithInt:(int32_t)side;
 
 @end
 
 J2OBJC_EMPTY_STATIC_INIT(ADXOnSwipe)
 
-inline jint ADXOnSwipe_get_COMPLETE_MODE_CONTINUOUS_VELOCITY(void);
+inline int32_t ADXOnSwipe_get_COMPLETE_MODE_CONTINUOUS_VELOCITY(void);
 #define ADXOnSwipe_COMPLETE_MODE_CONTINUOUS_VELOCITY 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, COMPLETE_MODE_CONTINUOUS_VELOCITY, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, COMPLETE_MODE_CONTINUOUS_VELOCITY, int32_t)
 
-inline jint ADXOnSwipe_get_COMPLETE_MODE_SPRING(void);
+inline int32_t ADXOnSwipe_get_COMPLETE_MODE_SPRING(void);
 #define ADXOnSwipe_COMPLETE_MODE_SPRING 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, COMPLETE_MODE_SPRING, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, COMPLETE_MODE_SPRING, int32_t)
 
-inline jint ADXOnSwipe_get_SPRING_BOUNDARY_OVERSHOOT(void);
+inline int32_t ADXOnSwipe_get_SPRING_BOUNDARY_OVERSHOOT(void);
 #define ADXOnSwipe_SPRING_BOUNDARY_OVERSHOOT 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_OVERSHOOT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_OVERSHOOT, int32_t)
 
-inline jint ADXOnSwipe_get_SPRING_BOUNDARY_BOUNCESTART(void);
+inline int32_t ADXOnSwipe_get_SPRING_BOUNDARY_BOUNCESTART(void);
 #define ADXOnSwipe_SPRING_BOUNDARY_BOUNCESTART 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_BOUNCESTART, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_BOUNCESTART, int32_t)
 
-inline jint ADXOnSwipe_get_SPRING_BOUNDARY_BOUNCEEND(void);
+inline int32_t ADXOnSwipe_get_SPRING_BOUNDARY_BOUNCEEND(void);
 #define ADXOnSwipe_SPRING_BOUNDARY_BOUNCEEND 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_BOUNCEEND, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_BOUNCEEND, int32_t)
 
-inline jint ADXOnSwipe_get_SPRING_BOUNDARY_BOUNCEBOTH(void);
+inline int32_t ADXOnSwipe_get_SPRING_BOUNDARY_BOUNCEBOTH(void);
 #define ADXOnSwipe_SPRING_BOUNDARY_BOUNCEBOTH 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_BOUNCEBOTH, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SPRING_BOUNDARY_BOUNCEBOTH, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_UP(void);
+inline int32_t ADXOnSwipe_get_DRAG_UP(void);
 #define ADXOnSwipe_DRAG_UP 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_UP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_UP, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_DOWN(void);
+inline int32_t ADXOnSwipe_get_DRAG_DOWN(void);
 #define ADXOnSwipe_DRAG_DOWN 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_DOWN, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_DOWN, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_LEFT(void);
+inline int32_t ADXOnSwipe_get_DRAG_LEFT(void);
 #define ADXOnSwipe_DRAG_LEFT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_LEFT, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_RIGHT(void);
+inline int32_t ADXOnSwipe_get_DRAG_RIGHT(void);
 #define ADXOnSwipe_DRAG_RIGHT 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_RIGHT, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_START(void);
+inline int32_t ADXOnSwipe_get_DRAG_START(void);
 #define ADXOnSwipe_DRAG_START 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_START, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_END(void);
+inline int32_t ADXOnSwipe_get_DRAG_END(void);
 #define ADXOnSwipe_DRAG_END 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_END, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_CLOCKWISE(void);
+inline int32_t ADXOnSwipe_get_DRAG_CLOCKWISE(void);
 #define ADXOnSwipe_DRAG_CLOCKWISE 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_CLOCKWISE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_CLOCKWISE, int32_t)
 
-inline jint ADXOnSwipe_get_DRAG_ANTICLOCKWISE(void);
+inline int32_t ADXOnSwipe_get_DRAG_ANTICLOCKWISE(void);
 #define ADXOnSwipe_DRAG_ANTICLOCKWISE 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_ANTICLOCKWISE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, DRAG_ANTICLOCKWISE, int32_t)
 
-inline jint ADXOnSwipe_get_FLAG_DISABLE_POST_SCROLL(void);
+inline int32_t ADXOnSwipe_get_FLAG_DISABLE_POST_SCROLL(void);
 #define ADXOnSwipe_FLAG_DISABLE_POST_SCROLL 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, FLAG_DISABLE_POST_SCROLL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, FLAG_DISABLE_POST_SCROLL, int32_t)
 
-inline jint ADXOnSwipe_get_FLAG_DISABLE_SCROLL(void);
+inline int32_t ADXOnSwipe_get_FLAG_DISABLE_SCROLL(void);
 #define ADXOnSwipe_FLAG_DISABLE_SCROLL 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, FLAG_DISABLE_SCROLL, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, FLAG_DISABLE_SCROLL, int32_t)
 
-inline jint ADXOnSwipe_get_SIDE_TOP(void);
+inline int32_t ADXOnSwipe_get_SIDE_TOP(void);
 #define ADXOnSwipe_SIDE_TOP 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_TOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_TOP, int32_t)
 
-inline jint ADXOnSwipe_get_SIDE_LEFT(void);
+inline int32_t ADXOnSwipe_get_SIDE_LEFT(void);
 #define ADXOnSwipe_SIDE_LEFT 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_LEFT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_LEFT, int32_t)
 
-inline jint ADXOnSwipe_get_SIDE_RIGHT(void);
+inline int32_t ADXOnSwipe_get_SIDE_RIGHT(void);
 #define ADXOnSwipe_SIDE_RIGHT 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_RIGHT, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_RIGHT, int32_t)
 
-inline jint ADXOnSwipe_get_SIDE_BOTTOM(void);
+inline int32_t ADXOnSwipe_get_SIDE_BOTTOM(void);
 #define ADXOnSwipe_SIDE_BOTTOM 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_BOTTOM, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_BOTTOM, int32_t)
 
-inline jint ADXOnSwipe_get_SIDE_MIDDLE(void);
+inline int32_t ADXOnSwipe_get_SIDE_MIDDLE(void);
 #define ADXOnSwipe_SIDE_MIDDLE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_MIDDLE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_MIDDLE, int32_t)
 
-inline jint ADXOnSwipe_get_SIDE_START(void);
+inline int32_t ADXOnSwipe_get_SIDE_START(void);
 #define ADXOnSwipe_SIDE_START 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_START, int32_t)
 
-inline jint ADXOnSwipe_get_SIDE_END(void);
+inline int32_t ADXOnSwipe_get_SIDE_END(void);
 #define ADXOnSwipe_SIDE_END 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, SIDE_END, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_AUTOCOMPLETE(void);
+inline int32_t ADXOnSwipe_get_ON_UP_AUTOCOMPLETE(void);
 #define ADXOnSwipe_ON_UP_AUTOCOMPLETE 0
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_AUTOCOMPLETE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_AUTOCOMPLETE, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_AUTOCOMPLETE_TO_START(void);
+inline int32_t ADXOnSwipe_get_ON_UP_AUTOCOMPLETE_TO_START(void);
 #define ADXOnSwipe_ON_UP_AUTOCOMPLETE_TO_START 1
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_AUTOCOMPLETE_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_AUTOCOMPLETE_TO_START, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_AUTOCOMPLETE_TO_END(void);
+inline int32_t ADXOnSwipe_get_ON_UP_AUTOCOMPLETE_TO_END(void);
 #define ADXOnSwipe_ON_UP_AUTOCOMPLETE_TO_END 2
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_AUTOCOMPLETE_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_AUTOCOMPLETE_TO_END, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_STOP(void);
+inline int32_t ADXOnSwipe_get_ON_UP_STOP(void);
 #define ADXOnSwipe_ON_UP_STOP 3
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_STOP, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_STOP, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_DECELERATE(void);
+inline int32_t ADXOnSwipe_get_ON_UP_DECELERATE(void);
 #define ADXOnSwipe_ON_UP_DECELERATE 4
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_DECELERATE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_DECELERATE, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_DECELERATE_AND_COMPLETE(void);
+inline int32_t ADXOnSwipe_get_ON_UP_DECELERATE_AND_COMPLETE(void);
 #define ADXOnSwipe_ON_UP_DECELERATE_AND_COMPLETE 5
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_DECELERATE_AND_COMPLETE, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_DECELERATE_AND_COMPLETE, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_NEVER_TO_START(void);
+inline int32_t ADXOnSwipe_get_ON_UP_NEVER_TO_START(void);
 #define ADXOnSwipe_ON_UP_NEVER_TO_START 6
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_NEVER_TO_START, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_NEVER_TO_START, int32_t)
 
-inline jint ADXOnSwipe_get_ON_UP_NEVER_TO_END(void);
+inline int32_t ADXOnSwipe_get_ON_UP_NEVER_TO_END(void);
 #define ADXOnSwipe_ON_UP_NEVER_TO_END 7
-J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_NEVER_TO_END, jint)
+J2OBJC_STATIC_FIELD_CONSTANT(ADXOnSwipe, ON_UP_NEVER_TO_END, int32_t)
 
 FOUNDATION_EXPORT void ADXOnSwipe_init(ADXOnSwipe *self);
 
@@ -354,6 +359,7 @@ FOUNDATION_EXPORT ADXOnSwipe *create_ADXOnSwipe_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXOnSwipe)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetOnSwipe ADXOnSwipe;
+
 
 #endif
 

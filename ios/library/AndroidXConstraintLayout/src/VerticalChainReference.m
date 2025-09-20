@@ -3,14 +3,26 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\state\helpers\VerticalChainReference.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "ChainReference.h"
 #include "ConstraintReference.h"
 #include "ConstraintWidget.h"
 #include "J2ObjC_source.h"
 #include "State.h"
 #include "VerticalChainReference.h"
+#include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/util/ArrayList.h"
+
+
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @implementation ADXVerticalChainReference
@@ -113,3 +125,5 @@ ADXVerticalChainReference *create_ADXVerticalChainReference_initWithADXState_(AD
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXVerticalChainReference)
+
+J2OBJC_NAME_MAPPING(ADXVerticalChainReference, "androidx.constraintlayout.core.state.helpers", "ADX")

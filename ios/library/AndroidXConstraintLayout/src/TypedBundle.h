@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\TypedBundle.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_TypedBundle")
@@ -20,48 +21,52 @@
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangBoolean;
+@class JavaLangFloat;
+@class JavaLangInteger;
+@class NSString;
 @protocol ADXTypedValues;
 
 @interface ADXTypedBundle : NSObject {
  @public
   IOSIntArray *mTypeInt_;
   IOSIntArray *mValueInt_;
-  jint mCountInt_;
+  int32_t mCountInt_;
   IOSIntArray *mTypeFloat_;
   IOSFloatArray *mValueFloat_;
-  jint mCountFloat_;
+  int32_t mCountFloat_;
   IOSIntArray *mTypeString_;
   IOSObjectArray *mValueString_;
-  jint mCountString_;
+  int32_t mCountString_;
   IOSIntArray *mTypeBoolean_;
   IOSBooleanArray *mValueBoolean_;
-  jint mCountBoolean_;
+  int32_t mCountBoolean_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (void)addWithInt:(jint)type
-       withBoolean:(jboolean)value;
+- (void)addWithInt:(int32_t)type
+       withBoolean:(bool)value;
 
-- (void)addWithInt:(jint)type
-         withFloat:(jfloat)value;
+- (void)addWithInt:(int32_t)type
+         withFloat:(float)value;
 
-- (void)addWithInt:(jint)type
-           withInt:(jint)value;
+- (void)addWithInt:(int32_t)type
+           withInt:(int32_t)value;
 
-- (void)addWithInt:(jint)type
+- (void)addWithInt:(int32_t)type
       withNSString:(NSString *)value;
 
-- (void)addIfNotNullWithInt:(jint)type
+- (void)addIfNotNullWithInt:(int32_t)type
                withNSString:(NSString *)value;
 
 - (void)applyDeltaWithADXTypedValues:(id<ADXTypedValues>)values;
 
 - (void)clear;
 
-- (jint)getIntegerWithInt:(jint)type;
+- (int32_t)getIntegerWithInt:(int32_t)type;
 
 @end
 
@@ -85,6 +90,7 @@ FOUNDATION_EXPORT ADXTypedBundle *create_ADXTypedBundle_init(void);
 J2OBJC_TYPE_LITERAL_HEADER(ADXTypedBundle)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsTypedBundle ADXTypedBundle;
+
 
 #endif
 

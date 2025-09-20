@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\KeyFrameArray.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_KeyFrameArray")
@@ -36,6 +37,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrameArray)
 
 @compatibility_alias AndroidxConstraintlayoutCoreMotionUtilsKeyFrameArray ADXKeyFrameArray;
 
+
 #endif
 
 #if !defined (ADXKeyFrameArray_CustomArray_) && (INCLUDE_ALL_KeyFrameArray || defined(INCLUDE_ADXKeyFrameArray_CustomArray))
@@ -44,32 +46,33 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrameArray)
 @class ADXCLCustomAttribute;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangInteger;
 
 @interface ADXKeyFrameArray_CustomArray : NSObject {
  @public
   IOSIntArray *keys_;
   IOSObjectArray *values_;
-  jint count_;
+  int32_t count_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (void)appendWithInt:(jint)position
+- (void)appendWithInt:(int32_t)position
 withADXCLCustomAttribute:(ADXCLCustomAttribute *)value;
 
 - (void)clear;
 
 - (void)dump;
 
-- (jint)keyAtWithInt:(jint)i;
+- (int32_t)keyAtWithInt:(int32_t)i;
 
-- (void)removeWithInt:(jint)position;
+- (void)removeWithInt:(int32_t)position;
 
-- (jint)size;
+- (int32_t)size;
 
-- (ADXCLCustomAttribute *)valueAtWithInt:(jint)i;
+- (ADXCLCustomAttribute *)valueAtWithInt:(int32_t)i;
 
 @end
 
@@ -86,6 +89,7 @@ FOUNDATION_EXPORT ADXKeyFrameArray_CustomArray *create_ADXKeyFrameArray_CustomAr
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrameArray_CustomArray)
 
+
 #endif
 
 #if !defined (ADXKeyFrameArray_CustomVar_) && (INCLUDE_ALL_KeyFrameArray || defined(INCLUDE_ADXKeyFrameArray_CustomVar))
@@ -94,32 +98,33 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrameArray_CustomArray)
 @class ADXCustomVariable;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangInteger;
 
 @interface ADXKeyFrameArray_CustomVar : NSObject {
  @public
   IOSIntArray *keys_;
   IOSObjectArray *values_;
-  jint count_;
+  int32_t count_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (void)appendWithInt:(jint)position
+- (void)appendWithInt:(int32_t)position
 withADXCustomVariable:(ADXCustomVariable *)value;
 
 - (void)clear;
 
 - (void)dump;
 
-- (jint)keyAtWithInt:(jint)i;
+- (int32_t)keyAtWithInt:(int32_t)i;
 
-- (void)removeWithInt:(jint)position;
+- (void)removeWithInt:(int32_t)position;
 
-- (jint)size;
+- (int32_t)size;
 
-- (ADXCustomVariable *)valueAtWithInt:(jint)i;
+- (ADXCustomVariable *)valueAtWithInt:(int32_t)i;
 
 @end
 
@@ -136,6 +141,7 @@ FOUNDATION_EXPORT ADXKeyFrameArray_CustomVar *create_ADXKeyFrameArray_CustomVar_
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrameArray_CustomVar)
 
+
 #endif
 
 #if !defined (ADXKeyFrameArray_FloatArray_) && (INCLUDE_ALL_KeyFrameArray || defined(INCLUDE_ADXKeyFrameArray_FloatArray))
@@ -144,32 +150,33 @@ J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrameArray_CustomVar)
 @class IOSFloatArray;
 @class IOSIntArray;
 @class IOSObjectArray;
+@class JavaLangInteger;
 
 @interface ADXKeyFrameArray_FloatArray : NSObject {
  @public
   IOSIntArray *keys_;
   IOSObjectArray *values_;
-  jint count_;
+  int32_t count_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-- (void)appendWithInt:(jint)position
+- (void)appendWithInt:(int32_t)position
        withFloatArray:(IOSFloatArray *)value;
 
 - (void)clear;
 
 - (void)dump;
 
-- (jint)keyAtWithInt:(jint)i;
+- (int32_t)keyAtWithInt:(int32_t)i;
 
-- (void)removeWithInt:(jint)position;
+- (void)removeWithInt:(int32_t)position;
 
-- (jint)size;
+- (int32_t)size;
 
-- (IOSFloatArray *)valueAtWithInt:(jint)i;
+- (IOSFloatArray *)valueAtWithInt:(int32_t)i;
 
 @end
 
@@ -185,6 +192,7 @@ FOUNDATION_EXPORT ADXKeyFrameArray_FloatArray *new_ADXKeyFrameArray_FloatArray_i
 FOUNDATION_EXPORT ADXKeyFrameArray_FloatArray *create_ADXKeyFrameArray_FloatArray_init(void);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXKeyFrameArray_FloatArray)
+
 
 #endif
 

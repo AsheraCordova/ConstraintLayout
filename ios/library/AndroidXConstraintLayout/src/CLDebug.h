@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\motion\widget\CLDebug.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLDebug")
@@ -21,6 +22,8 @@
 @class ADView;
 @class ADXMotionLayout;
 @class IOSIntArray;
+@class JavaLangInteger;
+@class NSString;
 
 @interface ADXCLDebug : NSObject
 
@@ -34,8 +37,8 @@
 
 + (NSString *)getLocation;
 
-+ (jint)getNameWithADContext:(ADContext *)context
-                     withInt:(jint)mCurrentState;
++ (int32_t)getNameWithADContext:(ADContext *)context
+                        withInt:(int32_t)mCurrentState;
 
 + (NSString *)getNameWithADContext:(ADContext *)context
                       withIntArray:(IOSIntArray *)referencedIds;
@@ -43,11 +46,11 @@
 + (NSString *)getNameWithADView:(ADView *)view;
 
 + (NSString *)getStateWithADXMotionLayout:(ADXMotionLayout *)motionLayout
-                                  withInt:(jint)currentState;
+                                  withInt:(int32_t)currentState;
 
 + (void)logStackWithNSString:(NSString *)tag
                 withNSString:(NSString *)string
-                     withInt:(jint)i;
+                     withInt:(int32_t)i;
 
 @end
 
@@ -63,21 +66,22 @@ FOUNDATION_EXPORT NSString *ADXCLDebug_getNameWithADView_(ADView *view);
 
 FOUNDATION_EXPORT NSString *ADXCLDebug_getLocation(void);
 
-FOUNDATION_EXPORT void ADXCLDebug_logStackWithNSString_withNSString_withInt_(NSString *tag, NSString *string, jint i);
+FOUNDATION_EXPORT void ADXCLDebug_logStackWithNSString_withNSString_withInt_(NSString *tag, NSString *string, int32_t i);
 
-FOUNDATION_EXPORT jint ADXCLDebug_getNameWithADContext_withInt_(ADContext *context, jint mCurrentState);
+FOUNDATION_EXPORT int32_t ADXCLDebug_getNameWithADContext_withInt_(ADContext *context, int32_t mCurrentState);
 
 FOUNDATION_EXPORT NSString *ADXCLDebug_getLoc(void);
 
 FOUNDATION_EXPORT NSString *ADXCLDebug_getNameWithADContext_withIntArray_(ADContext *context, IOSIntArray *referencedIds);
 
-FOUNDATION_EXPORT NSString *ADXCLDebug_getStateWithADXMotionLayout_withInt_(ADXMotionLayout *motionLayout, jint currentState);
+FOUNDATION_EXPORT NSString *ADXCLDebug_getStateWithADXMotionLayout_withInt_(ADXMotionLayout *motionLayout, int32_t currentState);
 
 FOUNDATION_EXPORT NSString *ADXCLDebug_getActionTypeWithADMotionEvent_(ADMotionEvent *event);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLDebug)
 
 @compatibility_alias AndroidxConstraintlayoutMotionWidgetCLDebug ADXCLDebug;
+
 
 #endif
 

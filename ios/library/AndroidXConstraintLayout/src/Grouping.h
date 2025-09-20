@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\widgets\analyzer\Grouping.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_Grouping")
@@ -20,6 +21,8 @@
 @class ADXConstraintWidgetContainer;
 @class ADXConstraintWidget_DimensionBehaviour;
 @class ADXWidgetGroup;
+@class JavaLangBoolean;
+@class JavaLangInteger;
 @class JavaUtilArrayList;
 @protocol ADXBasicMeasure_Measurer;
 
@@ -34,17 +37,17 @@
 - (instancetype)init;
 
 + (ADXWidgetGroup *)findDependentsWithADXConstraintWidget:(ADXConstraintWidget *)constraintWidget
-                                                  withInt:(jint)orientation
+                                                  withInt:(int32_t)orientation
                                     withJavaUtilArrayList:(JavaUtilArrayList *)list
                                        withADXWidgetGroup:(ADXWidgetGroup *)group;
 
-+ (jboolean)simpleSolvingPassWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
-                                 withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer;
++ (bool)simpleSolvingPassWithADXConstraintWidgetContainer:(ADXConstraintWidgetContainer *)layout
+                             withADXBasicMeasure_Measurer:(id<ADXBasicMeasure_Measurer>)measurer;
 
-+ (jboolean)validInGroupWithADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutHorizontal
-                        withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutVertical
-                        withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetHorizontal
-                        withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetVertical;
++ (bool)validInGroupWithADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutHorizontal
+                    withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)layoutVertical
+                    withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetHorizontal
+                    withADXConstraintWidget_DimensionBehaviour:(ADXConstraintWidget_DimensionBehaviour *)widgetVertical;
 
 @end
 
@@ -56,15 +59,16 @@ FOUNDATION_EXPORT ADXGrouping *new_ADXGrouping_init(void) NS_RETURNS_RETAINED;
 
 FOUNDATION_EXPORT ADXGrouping *create_ADXGrouping_init(void);
 
-FOUNDATION_EXPORT jboolean ADXGrouping_validInGroupWithADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_(ADXConstraintWidget_DimensionBehaviour *layoutHorizontal, ADXConstraintWidget_DimensionBehaviour *layoutVertical, ADXConstraintWidget_DimensionBehaviour *widgetHorizontal, ADXConstraintWidget_DimensionBehaviour *widgetVertical);
+FOUNDATION_EXPORT bool ADXGrouping_validInGroupWithADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_withADXConstraintWidget_DimensionBehaviour_(ADXConstraintWidget_DimensionBehaviour *layoutHorizontal, ADXConstraintWidget_DimensionBehaviour *layoutVertical, ADXConstraintWidget_DimensionBehaviour *widgetHorizontal, ADXConstraintWidget_DimensionBehaviour *widgetVertical);
 
-FOUNDATION_EXPORT jboolean ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(ADXConstraintWidgetContainer *layout, id<ADXBasicMeasure_Measurer> measurer);
+FOUNDATION_EXPORT bool ADXGrouping_simpleSolvingPassWithADXConstraintWidgetContainer_withADXBasicMeasure_Measurer_(ADXConstraintWidgetContainer *layout, id<ADXBasicMeasure_Measurer> measurer);
 
-FOUNDATION_EXPORT ADXWidgetGroup *ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJavaUtilArrayList_withADXWidgetGroup_(ADXConstraintWidget *constraintWidget, jint orientation, JavaUtilArrayList *list, ADXWidgetGroup *group);
+FOUNDATION_EXPORT ADXWidgetGroup *ADXGrouping_findDependentsWithADXConstraintWidget_withInt_withJavaUtilArrayList_withADXWidgetGroup_(ADXConstraintWidget *constraintWidget, int32_t orientation, JavaUtilArrayList *list, ADXWidgetGroup *group);
 
 J2OBJC_TYPE_LITERAL_HEADER(ADXGrouping)
 
 @compatibility_alias AndroidxConstraintlayoutCoreWidgetsAnalyzerGrouping ADXGrouping;
+
 
 #endif
 

@@ -3,6 +3,7 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\parser\CLParsingException.java
 //
 
+#import <Foundation/Foundation.h>
 #include "J2ObjC_header.h"
 
 #pragma push_macro("INCLUDE_ALL_CLParsingException")
@@ -21,7 +22,9 @@
 #include "java/lang/Exception.h"
 
 @class ADXCLElement;
+@class JavaLangBoolean;
 @class JavaLangThrowable;
+@class NSString;
 
 @interface ADXCLParsingException : JavaLangException
 
@@ -47,8 +50,8 @@
 
 - (instancetype)initWithNSString:(NSString *)arg0
            withJavaLangThrowable:(JavaLangThrowable *)arg1
-                     withBoolean:(jboolean)arg2
-                     withBoolean:(jboolean)arg3 NS_UNAVAILABLE;
+                     withBoolean:(bool)arg2
+                     withBoolean:(bool)arg3 NS_UNAVAILABLE;
 
 @end
 
@@ -63,6 +66,7 @@ FOUNDATION_EXPORT ADXCLParsingException *create_ADXCLParsingException_initWithNS
 J2OBJC_TYPE_LITERAL_HEADER(ADXCLParsingException)
 
 @compatibility_alias AndroidxConstraintlayoutCoreParserCLParsingException ADXCLParsingException;
+
 
 #endif
 

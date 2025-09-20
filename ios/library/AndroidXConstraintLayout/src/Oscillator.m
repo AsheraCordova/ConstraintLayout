@@ -3,18 +3,33 @@
 //  source: D:\Java\git\core-javafx-widget\SWTAndroidXConstraintLayout\src\main\java\androidx\constraintlayout\core\motion\utils\Oscillator.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "MonotonicCurveFit.h"
 #include "Oscillator.h"
+#include "java/lang/Boolean.h"
+#include "java/lang/Double.h"
+#include "java/lang/Float.h"
+#include "java/lang/Integer.h"
 #include "java/lang/Math.h"
 #include "java/lang/System.h"
 #include "java/util/Arrays.h"
 
 
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
+
+
 @interface ADXOscillator () {
  @public
-  jboolean mNormalized_;
+  bool mNormalized_;
 }
 
 @end
@@ -34,7 +49,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return JreStrcat("$$$$", @"pos =", JavaUtilArrays_toStringWithDoubleArray_(mPosition_), @" period=", JavaUtilArrays_toStringWithFloatArray_(mPeriod_));
 }
 
-- (void)setTypeWithInt:(jint)type
+- (void)setTypeWithInt:(int32_t)type
           withNSString:(NSString *)customType {
   mType_ = type;
   JreStrongAssign(&mCustomType_, customType);
@@ -43,10 +58,10 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)addPointWithDouble:(jdouble)position
-                 withFloat:(jfloat)period {
-  jint len = ((IOSFloatArray *) nil_chk(mPeriod_))->size_ + 1;
-  jint j = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(mPosition_, position);
+- (void)addPointWithDouble:(double)position
+                 withFloat:(float)period {
+  int32_t len = ((IOSFloatArray *) nil_chk(mPeriod_))->size_ + 1;
+  int32_t j = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(mPosition_, position);
   if (j < 0) {
     j = -j - 1;
   }
@@ -60,54 +75,54 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (void)normalize {
-  jdouble totalArea = 0;
-  jdouble totalCount = 0;
-  for (jint i = 0; i < ((IOSFloatArray *) nil_chk(mPeriod_))->size_; i++) {
+  double totalArea = 0;
+  double totalCount = 0;
+  for (int32_t i = 0; i < ((IOSFloatArray *) nil_chk(mPeriod_))->size_; i++) {
     JrePlusAssignDoubleD(&totalCount, IOSFloatArray_Get(mPeriod_, i));
   }
-  for (jint i = 1; i < mPeriod_->size_; i++) {
-    jfloat h = (IOSFloatArray_Get(mPeriod_, i - 1) + IOSFloatArray_Get(mPeriod_, i)) / 2;
-    jdouble w = IOSDoubleArray_Get(nil_chk(mPosition_), i) - IOSDoubleArray_Get(mPosition_, i - 1);
+  for (int32_t i = 1; i < mPeriod_->size_; i++) {
+    float h = (IOSFloatArray_Get(mPeriod_, i - 1) + IOSFloatArray_Get(mPeriod_, i)) / 2;
+    double w = IOSDoubleArray_Get(nil_chk(mPosition_), i) - IOSDoubleArray_Get(mPosition_, i - 1);
     totalArea = totalArea + w * h;
   }
-  for (jint i = 0; i < mPeriod_->size_; i++) {
+  for (int32_t i = 0; i < mPeriod_->size_; i++) {
     JreTimesAssignFloatD(IOSFloatArray_GetRef(mPeriod_, i), totalCount / totalArea);
   }
   *IOSDoubleArray_GetRef(nil_chk(mArea_), 0) = 0;
-  for (jint i = 1; i < mPeriod_->size_; i++) {
-    jfloat h = (IOSFloatArray_Get(mPeriod_, i - 1) + IOSFloatArray_Get(mPeriod_, i)) / 2;
-    jdouble w = IOSDoubleArray_Get(nil_chk(mPosition_), i) - IOSDoubleArray_Get(mPosition_, i - 1);
+  for (int32_t i = 1; i < mPeriod_->size_; i++) {
+    float h = (IOSFloatArray_Get(mPeriod_, i - 1) + IOSFloatArray_Get(mPeriod_, i)) / 2;
+    double w = IOSDoubleArray_Get(nil_chk(mPosition_), i) - IOSDoubleArray_Get(mPosition_, i - 1);
     *IOSDoubleArray_GetRef(mArea_, i) = IOSDoubleArray_Get(mArea_, i - 1) + w * h;
   }
   mNormalized_ = true;
 }
 
-- (jdouble)getPWithDouble:(jdouble)time {
+- (double)getPWithDouble:(double)time {
   if (time < 0) {
     time = 0;
   }
   else if (time > 1) {
     time = 1;
   }
-  jint index = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(mPosition_, time);
-  jdouble p = 0;
+  int32_t index = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(mPosition_, time);
+  double p = 0;
   if (index > 0) {
     p = 1;
   }
   else if (index != 0) {
     index = -index - 1;
-    jdouble t = time;
-    jdouble m = (IOSFloatArray_Get(nil_chk(mPeriod_), index) - IOSFloatArray_Get(mPeriod_, index - 1)) / (IOSDoubleArray_Get(nil_chk(mPosition_), index) - IOSDoubleArray_Get(mPosition_, index - 1));
+    double t = time;
+    double m = (IOSFloatArray_Get(nil_chk(mPeriod_), index) - IOSFloatArray_Get(mPeriod_, index - 1)) / (IOSDoubleArray_Get(nil_chk(mPosition_), index) - IOSDoubleArray_Get(mPosition_, index - 1));
     p = IOSDoubleArray_Get(nil_chk(mArea_), index - 1) + (IOSFloatArray_Get(mPeriod_, index - 1) - m * IOSDoubleArray_Get(mPosition_, index - 1)) * (t - IOSDoubleArray_Get(mPosition_, index - 1)) + m * (t * t - IOSDoubleArray_Get(mPosition_, index - 1) * IOSDoubleArray_Get(mPosition_, index - 1)) / 2;
   }
   return p;
 }
 
-- (jdouble)getValueWithDouble:(jdouble)time
-                   withDouble:(jdouble)phase {
-  jdouble angle = phase + [self getPWithDouble:time];
+- (double)getValueWithDouble:(double)time
+                  withDouble:(double)phase {
+  double angle = phase + [self getPWithDouble:time];
   {
-    jdouble x;
+    double x;
     switch (mType_) {
       default:
       case ADXOscillator_SIN_WAVE:
@@ -131,32 +146,32 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (jdouble)getDPWithDouble:(jdouble)time {
+- (double)getDPWithDouble:(double)time {
   if (time <= 0) {
     time = 0.00001;
   }
   else if (time >= 1) {
     time = .999999;
   }
-  jint index = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(mPosition_, time);
-  jdouble p = 0;
+  int32_t index = JavaUtilArrays_binarySearchWithDoubleArray_withDouble_(mPosition_, time);
+  double p = 0;
   if (index > 0) {
     return 0;
   }
   if (index != 0) {
     index = -index - 1;
-    jdouble t = time;
-    jdouble m = (IOSFloatArray_Get(nil_chk(mPeriod_), index) - IOSFloatArray_Get(mPeriod_, index - 1)) / (IOSDoubleArray_Get(nil_chk(mPosition_), index) - IOSDoubleArray_Get(mPosition_, index - 1));
+    double t = time;
+    double m = (IOSFloatArray_Get(nil_chk(mPeriod_), index) - IOSFloatArray_Get(mPeriod_, index - 1)) / (IOSDoubleArray_Get(nil_chk(mPosition_), index) - IOSDoubleArray_Get(mPosition_, index - 1));
     p = m * t + (IOSFloatArray_Get(mPeriod_, index - 1) - m * IOSDoubleArray_Get(mPosition_, index - 1));
   }
   return p;
 }
 
-- (jdouble)getSlopeWithDouble:(jdouble)time
-                   withDouble:(jdouble)phase
-                   withDouble:(jdouble)dphase {
-  jdouble angle = phase + [self getPWithDouble:time];
-  jdouble dangle_dtime = [self getDPWithDouble:time] + dphase;
+- (double)getSlopeWithDouble:(double)time
+                  withDouble:(double)phase
+                  withDouble:(double)dphase {
+  double angle = phase + [self getPWithDouble:time];
+  double dangle_dtime = [self getDPWithDouble:time] + dphase;
   switch (mType_) {
     default:
     case ADXOscillator_SIN_WAVE:
@@ -240,8 +255,8 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 void ADXOscillator_init(ADXOscillator *self) {
   NSObject_init(self);
-  JreStrongAssignAndConsume(&self->mPeriod_, [IOSFloatArray newArrayWithFloats:(jfloat[]){  } count:0]);
-  JreStrongAssignAndConsume(&self->mPosition_, [IOSDoubleArray newArrayWithDoubles:(jdouble[]){  } count:0]);
+  JreStrongAssignAndConsume(&self->mPeriod_, [IOSFloatArray newArrayWithFloats:(float[]){  } count:0]);
+  JreStrongAssignAndConsume(&self->mPosition_, [IOSDoubleArray newArrayWithDoubles:(double[]){  } count:0]);
   self->PI2_ = JavaLangMath_PI * 2;
   self->mNormalized_ = false;
 }
@@ -255,3 +270,5 @@ ADXOscillator *create_ADXOscillator_init() {
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ADXOscillator)
+
+J2OBJC_NAME_MAPPING(ADXOscillator, "androidx.constraintlayout.core.motion.utils", "ADX")

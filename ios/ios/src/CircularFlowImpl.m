@@ -3,6 +3,11 @@
 //  source: D:\Java\git\core-ios-widgets\IOSAndroidXConstraintLayoutPlugin\src\main\java\com\ashera\constraintlayout\CircularFlowImpl.java
 //
 
+#define J2OBJC_IMPORTED_BY_JAVA_IMPLEMENTATION 1
+
+
+
+
 #include "BaseWidget.h"
 #include "CircularFlow.h"
 #include "CircularFlowImpl.h"
@@ -27,6 +32,7 @@
 #include "ViewParent.h"
 #include "WidgetAttribute.h"
 #include "WidgetFactory.h"
+#include "java/lang/Boolean.h"
 #include "java/lang/Float.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
@@ -42,8 +48,12 @@
 
 #include "ASUIView.h"
 
-@protocol JavaUtilList;
-@protocol JavaUtilMap;
+
+@class NSString;
+
+
+#pragma clang diagnostic error "-Wreturn-type"
+#pragma clang diagnostic ignored "-Wswitch"
 
 
 @interface ASCircularFlowImpl ()
@@ -65,19 +75,19 @@
                                        withId:(id)objValue
                     withASILifeCycleDecorator:(id<ASILifeCycleDecorator>)decorator;
 
-- (void)addViewToCircularFlowWithInt:(jint)viewId
-                             withInt:(jint)radius
-                           withFloat:(jfloat)angle;
+- (void)addViewToCircularFlowWithInt:(int32_t)viewId
+                             withInt:(int32_t)radius
+                           withFloat:(float)angle;
 
-- (void)updateAngleWithInt:(jint)viewId
-                 withFloat:(jfloat)angle;
+- (void)updateAngleWithInt:(int32_t)viewId
+                 withFloat:(float)angle;
 
-- (void)updateRadiusWithInt:(jint)viewId
-                    withInt:(jint)radius;
+- (void)updateRadiusWithInt:(int32_t)viewId
+                    withInt:(int32_t)radius;
 
-- (void)updateReferenceWithInt:(jint)viewId
-                       withInt:(jint)radius
-                     withFloat:(jfloat)angle;
+- (void)updateReferenceWithInt:(int32_t)viewId
+                       withInt:(int32_t)radius
+                     withFloat:(float)angle;
 
 @end
 
@@ -95,22 +105,22 @@ __attribute__((unused)) static void ASCircularFlowImpl_setRadiusInDPWithId_(ASCi
 
 __attribute__((unused)) static void ASCircularFlowImpl_postSetAttributeWithASWidgetAttribute_withNSString_withId_withASILifeCycleDecorator_(ASCircularFlowImpl *self, ASWidgetAttribute *key, NSString *strValue, id objValue, id<ASILifeCycleDecorator> decorator);
 
-__attribute__((unused)) static void ASCircularFlowImpl_addViewToCircularFlowWithInt_withInt_withFloat_(ASCircularFlowImpl *self, jint viewId, jint radius, jfloat angle);
+__attribute__((unused)) static void ASCircularFlowImpl_addViewToCircularFlowWithInt_withInt_withFloat_(ASCircularFlowImpl *self, int32_t viewId, int32_t radius, float angle);
 
-__attribute__((unused)) static void ASCircularFlowImpl_updateAngleWithInt_withFloat_(ASCircularFlowImpl *self, jint viewId, jfloat angle);
+__attribute__((unused)) static void ASCircularFlowImpl_updateAngleWithInt_withFloat_(ASCircularFlowImpl *self, int32_t viewId, float angle);
 
-__attribute__((unused)) static void ASCircularFlowImpl_updateRadiusWithInt_withInt_(ASCircularFlowImpl *self, jint viewId, jint radius);
+__attribute__((unused)) static void ASCircularFlowImpl_updateRadiusWithInt_withInt_(ASCircularFlowImpl *self, int32_t viewId, int32_t radius);
 
-__attribute__((unused)) static void ASCircularFlowImpl_updateReferenceWithInt_withInt_withFloat_(ASCircularFlowImpl *self, jint viewId, jint radius, jfloat angle);
+__attribute__((unused)) static void ASCircularFlowImpl_updateReferenceWithInt_withInt_withFloat_(ASCircularFlowImpl *self, int32_t viewId, int32_t radius, float angle);
 
 @interface ASCircularFlowImpl_CircularFlowExt () {
  @public
-  __unsafe_unretained ASCircularFlowImpl *this$0_;
+  WEAK_ ASCircularFlowImpl *this$0_;
   ASMeasureEvent *measureFinished_;
   ASOnLayoutEvent *onLayoutEvent_;
   id<JavaUtilList> overlays_;
-  jint mMaxWidth_;
-  jint mMaxHeight_;
+  int32_t mMaxWidth_;
+  int32_t mMaxHeight_;
   id<JavaUtilMap> templates_;
 }
 
@@ -351,7 +361,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((ADXCircularFlow *) nil_chk(circularFlow_)) onAttachedToWindow];
 }
 
-- (jboolean)isAfterParentInitRequired {
+- (bool)isAfterParentInitRequired {
   return true;
 }
 
@@ -362,25 +372,25 @@ J2OBJC_IGNORE_DESIGNATED_END
   ASCircularFlowImpl_postSetAttributeWithASWidgetAttribute_withNSString_withId_withASILifeCycleDecorator_(self, key, strValue, objValue, decorator);
 }
 
-- (void)addViewToCircularFlowWithInt:(jint)viewId
-                             withInt:(jint)radius
-                           withFloat:(jfloat)angle {
+- (void)addViewToCircularFlowWithInt:(int32_t)viewId
+                             withInt:(int32_t)radius
+                           withFloat:(float)angle {
   ASCircularFlowImpl_addViewToCircularFlowWithInt_withInt_withFloat_(self, viewId, radius, angle);
 }
 
-- (void)updateAngleWithInt:(jint)viewId
-                 withFloat:(jfloat)angle {
+- (void)updateAngleWithInt:(int32_t)viewId
+                 withFloat:(float)angle {
   ASCircularFlowImpl_updateAngleWithInt_withFloat_(self, viewId, angle);
 }
 
-- (void)updateRadiusWithInt:(jint)viewId
-                    withInt:(jint)radius {
+- (void)updateRadiusWithInt:(int32_t)viewId
+                    withInt:(int32_t)radius {
   ASCircularFlowImpl_updateRadiusWithInt_withInt_(self, viewId, radius);
 }
 
-- (void)updateReferenceWithInt:(jint)viewId
-                       withInt:(jint)radius
-                     withFloat:(jfloat)angle {
+- (void)updateReferenceWithInt:(int32_t)viewId
+                       withInt:(int32_t)radius
+                     withFloat:(float)angle {
   ASCircularFlowImpl_updateReferenceWithInt_withInt_withFloat_(self, viewId, radius, angle);
 }
 
@@ -388,7 +398,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   return uiView_;
 }
 
-- (jboolean)checkIosVersionWithNSString:(NSString *)v {
+- (bool)checkIosVersionWithNSString:(NSString *)v {
   return ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending);
 }
 
@@ -399,7 +409,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-- (void)setVisibleWithBoolean:(jboolean)b {
+- (void)setVisibleWithBoolean:(bool)b {
   [((ADView *) nil_chk(((ADView *) cast_chk([self asWidget], [ADView class])))) setVisibilityWithInt:b ? ADView_VISIBLE : ADView_GONE];
 }
 
@@ -591,23 +601,25 @@ void ASCircularFlowImpl_postSetAttributeWithASWidgetAttribute_withNSString_withI
   }
 }
 
-void ASCircularFlowImpl_addViewToCircularFlowWithInt_withInt_withFloat_(ASCircularFlowImpl *self, jint viewId, jint radius, jfloat angle) {
+void ASCircularFlowImpl_addViewToCircularFlowWithInt_withInt_withFloat_(ASCircularFlowImpl *self, int32_t viewId, int32_t radius, float angle) {
   [((ADXCircularFlow *) nil_chk(self->circularFlow_)) addViewToCircularFlowWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk([((id<ASHasWidgets>) nil_chk([self getParent])) findWidgetByIdWithNSString:ASIdGenerator_getNameWithInt_(viewId)])) asWidget], [ADView class]) withInt:radius withFloat:angle];
 }
 
-void ASCircularFlowImpl_updateAngleWithInt_withFloat_(ASCircularFlowImpl *self, jint viewId, jfloat angle) {
+void ASCircularFlowImpl_updateAngleWithInt_withFloat_(ASCircularFlowImpl *self, int32_t viewId, float angle) {
   [((ADXCircularFlow *) nil_chk(self->circularFlow_)) updateAngleWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk([((id<ASHasWidgets>) nil_chk([self getParent])) findWidgetByIdWithNSString:ASIdGenerator_getNameWithInt_(viewId)])) asWidget], [ADView class]) withFloat:angle];
 }
 
-void ASCircularFlowImpl_updateRadiusWithInt_withInt_(ASCircularFlowImpl *self, jint viewId, jint radius) {
+void ASCircularFlowImpl_updateRadiusWithInt_withInt_(ASCircularFlowImpl *self, int32_t viewId, int32_t radius) {
   [((ADXCircularFlow *) nil_chk(self->circularFlow_)) updateRadiusWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk([((id<ASHasWidgets>) nil_chk([self getParent])) findWidgetByIdWithNSString:ASIdGenerator_getNameWithInt_(viewId)])) asWidget], [ADView class]) withInt:radius];
 }
 
-void ASCircularFlowImpl_updateReferenceWithInt_withInt_withFloat_(ASCircularFlowImpl *self, jint viewId, jint radius, jfloat angle) {
+void ASCircularFlowImpl_updateReferenceWithInt_withInt_withFloat_(ASCircularFlowImpl *self, int32_t viewId, int32_t radius, float angle) {
   [((ADXCircularFlow *) nil_chk(self->circularFlow_)) updateReferenceWithADView:(ADView *) cast_chk([((id<ASIWidget>) nil_chk([((id<ASHasWidgets>) nil_chk([self getParent])) findWidgetByIdWithNSString:ASIdGenerator_getNameWithInt_(viewId)])) asWidget], [ADView class]) withInt:radius withFloat:angle];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl)
+
+J2OBJC_NAME_MAPPING(ASCircularFlowImpl, "com.ashera.constraintlayout", "AS")
 
 @implementation ASCircularFlowImpl_CircularFlowExt
 
@@ -615,19 +627,19 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl)
   return this$0_;
 }
 
-- (void)setMaxWidthWithInt:(jint)width {
+- (void)setMaxWidthWithInt:(int32_t)width {
   mMaxWidth_ = width;
 }
 
-- (void)setMaxHeightWithInt:(jint)height {
+- (void)setMaxHeightWithInt:(int32_t)height {
   mMaxHeight_ = height;
 }
 
-- (jint)getMaxWidth {
+- (int32_t)getMaxWidth {
   return mMaxWidth_;
 }
 
-- (jint)getMaxHeight {
+- (int32_t)getMaxHeight {
   return mMaxHeight_;
 }
 
@@ -636,8 +648,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl)
   return self;
 }
 
-- (void)onMeasureWithInt:(jint)widthMeasureSpec
-                 withInt:(jint)heightMeasureSpec {
+- (void)onMeasureWithInt:(int32_t)widthMeasureSpec
+                 withInt:(int32_t)heightMeasureSpec {
   if (mMaxWidth_ > 0) {
     widthMeasureSpec = ADView_MeasureSpec_makeMeasureSpecWithInt_withInt_(mMaxWidth_, ADView_MeasureSpec_AT_MOST);
   }
@@ -653,11 +665,11 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl)
   }
 }
 
-- (void)onLayoutWithBoolean:(jboolean)changed
-                    withInt:(jint)l
-                    withInt:(jint)t
-                    withInt:(jint)r
-                    withInt:(jint)b {
+- (void)onLayoutWithBoolean:(bool)changed
+                    withInt:(int32_t)l
+                    withInt:(int32_t)t
+                    withInt:(int32_t)r
+                    withInt:(int32_t)b {
   [super onLayoutWithBoolean:changed withInt:l withInt:t withInt:r withInt:b];
   ASViewImpl_setDrawableBoundsWithASIWidget_withInt_withInt_withInt_withInt_(this$0_, l, t, r, b);
   if (![self isOverlay]) {
@@ -684,8 +696,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl)
           withNSObjectArray:(IOSObjectArray *)canvas {
 }
 
-- (void)updateMeasuredDimensionWithInt:(jint)width
-                               withInt:(jint)height {
+- (void)updateMeasuredDimensionWithInt:(int32_t)width
+                               withInt:(int32_t)height {
   [self setMeasuredDimensionWithInt:width withInt:height];
 }
 
@@ -753,12 +765,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl)
   displayFrame->bottom_ = displayFrame->top_ + [self getHeight];
 }
 
-- (void)offsetTopAndBottomWithInt:(jint)offset {
+- (void)offsetTopAndBottomWithInt:(int32_t)offset {
   [super offsetTopAndBottomWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
 
-- (void)offsetLeftAndRightWithInt:(jint)offset {
+- (void)offsetLeftAndRightWithInt:(int32_t)offset {
   [super offsetLeftAndRightWithInt:offset];
   ASViewImpl_nativeMakeFrameWithId_withInt_withInt_withInt_withInt_([this$0_ asNativeWidget], [self getLeft], [self getTop], [self getRight], [self getBottom]);
 }
@@ -788,7 +800,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASCircularFlowImpl)
   [this$0_ setAttributeWithNSString:name withId:value withBoolean:!([value isKindOfClass:[NSString class]])];
 }
 
-- (void)setVisibilityWithInt:(jint)visibility {
+- (void)setVisibilityWithInt:(int32_t)visibility {
   [super setVisibilityWithInt:visibility];
   ASViewImpl_nativeSetVisibilityWithId_withBoolean_([this$0_ asNativeWidget], visibility != ADView_VISIBLE);
 }
