@@ -2110,17 +2110,23 @@ J2OBJC_FIELD_SETTER(ASMotionLayoutImpl_TransitionFlagsConverter, mapping_, id<Ja
 - (void)handlePanStartWithASIWidget:(id<ASIWidget>)widget
                              withId:(id)eventWidget
                             withInt:(int32_t)x
-                            withInt:(int32_t)y;
+                            withInt:(int32_t)y
+                            withInt:(int32_t)rawX
+                            withInt:(int32_t)rawY;
 
 - (void)handlePanDragWithASIWidget:(id<ASIWidget>)widget
                             withId:(id)eventWidget
                            withInt:(int32_t)x
-                           withInt:(int32_t)y;
+                           withInt:(int32_t)y
+                           withInt:(int32_t)rawX
+                           withInt:(int32_t)rawY;
 
 - (void)handlePanEndWithASIWidget:(id<ASIWidget>)widget
                            withId:(id)eventWidget
                           withInt:(int32_t)x
-                          withInt:(int32_t)y;
+                          withInt:(int32_t)y
+                          withInt:(int32_t)rawX
+                          withInt:(int32_t)rawY;
 
 @end
 
@@ -9278,7 +9284,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (void)handlePanStartWithASIWidget:(id<ASIWidget>)widget
                              withId:(id)eventWidget
                             withInt:(int32_t)x
-                            withInt:(int32_t)y {
+                            withInt:(int32_t)y
+                            withInt:(int32_t)rawX
+                            withInt:(int32_t)rawY {
   this$0_->action_ = 1;
   ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(this$0_, val$transition_, ADMotionEvent_ACTION_DOWN, x, y);
 }
@@ -9286,7 +9294,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (void)handlePanDragWithASIWidget:(id<ASIWidget>)widget
                             withId:(id)eventWidget
                            withInt:(int32_t)x
-                           withInt:(int32_t)y {
+                           withInt:(int32_t)y
+                           withInt:(int32_t)rawX
+                           withInt:(int32_t)rawY {
   if (this$0_->action_ == 1) {
     ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(this$0_, val$transition_, ADMotionEvent_ACTION_MOVE, x, y);
   }
@@ -9295,7 +9305,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASMotionLayoutImpl_TransitionFlagsConverter)
 - (void)handlePanEndWithASIWidget:(id<ASIWidget>)widget
                            withId:(id)eventWidget
                           withInt:(int32_t)x
-                          withInt:(int32_t)y {
+                          withInt:(int32_t)y
+                          withInt:(int32_t)rawX
+                          withInt:(int32_t)rawY {
   if (this$0_->action_ == 1) {
     ASMotionLayoutImpl_processTouchEventWithADXMotionScene_Transition_withInt_withInt_withInt_(this$0_, val$transition_, ADMotionEvent_ACTION_UP, x, y);
     this$0_->action_ = 0;
@@ -9313,15 +9325,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ASMotionLayoutImpl_TransitionFlagsConverter)
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
   #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithASMotionLayoutImpl:withADXMotionScene_Transition:);
-  methods[1].selector = @selector(handlePanStartWithASIWidget:withId:withInt:withInt:);
-  methods[2].selector = @selector(handlePanDragWithASIWidget:withId:withInt:withInt:);
-  methods[3].selector = @selector(handlePanEndWithASIWidget:withId:withInt:withInt:);
+  methods[1].selector = @selector(handlePanStartWithASIWidget:withId:withInt:withInt:withInt:withInt:);
+  methods[2].selector = @selector(handlePanDragWithASIWidget:withId:withInt:withInt:withInt:withInt:);
+  methods[3].selector = @selector(handlePanEndWithASIWidget:withId:withInt:withInt:withInt:withInt:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
     { "this$0_", "LASMotionLayoutImpl;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
     { "val$transition_", "LADXMotionScene_Transition;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
   };
-  static const void *ptrTable[] = { "LASMotionLayoutImpl;LADXMotionScene_Transition;", "handlePanStart", "LASIWidget;LNSObject;II", "handlePanDrag", "handlePanEnd", "LASMotionLayoutImpl;", "nativeAddOnSwipeWithADXMotionScene_Transition:withASIWidget:" };
+  static const void *ptrTable[] = { "LASMotionLayoutImpl;LADXMotionScene_Transition;", "handlePanStart", "LASIWidget;LNSObject;IIII", "handlePanDrag", "handlePanEnd", "LASMotionLayoutImpl;", "nativeAddOnSwipeWithADXMotionScene_Transition:withASIWidget:" };
   static const J2ObjcClassInfo _ASMotionLayoutImpl_2 = { "", "com.ashera.constraintlayout", ptrTable, methods, fields, 7, 0x8000, 4, 2, 5, -1, 6, -1, -1 };
   return &_ASMotionLayoutImpl_2;
 }

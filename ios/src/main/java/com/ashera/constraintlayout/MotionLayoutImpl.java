@@ -4223,20 +4223,20 @@ private void postSetAttribute(WidgetAttribute key, String strValue, Object objVa
 private void nativeAddOnSwipe(androidx.constraintlayout.motion.widget.MotionScene.Transition transition, IWidget widget) {
 	ViewImpl.addPanListener(widget, widget.asNativeWidget(), uiView, new ViewImpl.PanCallBack() {
 		@Override
-		public void handlePanStart(IWidget widget, Object eventWidget, int x, int y) {
+		public void handlePanStart(IWidget widget, Object eventWidget, int x, int y, int rawX, int rawY) {
 			action = 1;
 			processTouchEvent(transition, MotionEvent.ACTION_DOWN, x, y);
 		}
 
 		@Override
-		public void handlePanDrag(IWidget widget, Object eventWidget, int x, int y) {
+		public void handlePanDrag(IWidget widget, Object eventWidget, int x, int y, int rawX, int rawY) {
 			if (action == 1) {
 				processTouchEvent(transition, MotionEvent.ACTION_MOVE, x, y);
 			}
 		}
 
 		@Override
-		public void handlePanEnd(IWidget widget, Object eventWidget, int x, int y) {
+		public void handlePanEnd(IWidget widget, Object eventWidget, int x, int y, int rawX, int rawY) {
 			if (action == 1) {
 				processTouchEvent(transition, MotionEvent.ACTION_UP, x, y);
 				action = 0;
