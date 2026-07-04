@@ -5628,9 +5628,11 @@ void ASMotionLayoutImpl_setLayoutDescriptionWithId_(ASMotionLayoutImpl *self, id
 }
 
 int32_t ASMotionLayoutImpl_getFirstTransitionId(ASMotionLayoutImpl *self) {
-  JavaUtilArrayList *definedTransitions = [((ADXMotionScene *) nil_chk([((ADXMotionLayout *) nil_chk(self->motionLayout_)) getScene])) getDefinedTransitions];
-  if ([((JavaUtilArrayList *) nil_chk(definedTransitions)) size] > 0) {
-    return [((ADXMotionScene_Transition *) nil_chk([definedTransitions getWithInt:0])) getId];
+  if ([((ADXMotionLayout *) nil_chk(self->motionLayout_)) getScene] != nil) {
+    JavaUtilArrayList *definedTransitions = [((ADXMotionScene *) nil_chk([((ADXMotionLayout *) nil_chk(self->motionLayout_)) getScene])) getDefinedTransitions];
+    if ([((JavaUtilArrayList *) nil_chk(definedTransitions)) size] > 0) {
+      return [((ADXMotionScene_Transition *) nil_chk([definedTransitions getWithInt:0])) getId];
+    }
   }
   return -1;
 }

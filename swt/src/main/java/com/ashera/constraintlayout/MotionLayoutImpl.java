@@ -1968,9 +1968,11 @@ public void initialized() {
 }
 
 private int getFirstTransitionId() {
-	ArrayList<androidx.constraintlayout.motion.widget.MotionScene.Transition> definedTransitions = motionLayout.getScene().getDefinedTransitions();
-	if (definedTransitions.size() > 0) {
-		return definedTransitions.get(0).getId();
+	if (motionLayout.getScene() != null) {
+		ArrayList<androidx.constraintlayout.motion.widget.MotionScene.Transition> definedTransitions = motionLayout.getScene().getDefinedTransitions();
+		if (definedTransitions.size() > 0) {
+			return definedTransitions.get(0).getId();
+		}
 	}
 	
 	return -1;
